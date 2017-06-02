@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using BettypeWith3rdProducts.Business.Models;
 using BettypeWith3rdProducts.Business.Services;
@@ -12,15 +13,17 @@ namespace BettypeWith3rdProducts.Business.Repositories
         DataTable QueryDataSouce(SourceMapping sourceMapping, DateRange dateRange, ViewOfData viewOfData, int sportId);
 
         IEnumerable<SportType> QuerySports(DataType dataType);
+
+        DateTime QueryLastDate();
     }
 
     public class DataSourceServiceImp : DataSourceService
     {
         private readonly IDynamicRepository dynamicRepository;
         private readonly DateRangeServiceProvider dateRangeService;
-        private readonly ViewOfDataServiceProvider viewOfDataService;
+        private readonly ParameterService viewOfDataService;
 
-        public DataSourceServiceImp(IDynamicRepository dynamicRepository, DateRangeServiceProvider dateRangeService, ViewOfDataServiceProvider viewOfDataService)
+        public DataSourceServiceImp(IDynamicRepository dynamicRepository, DateRangeServiceProvider dateRangeService, ParameterService viewOfDataService)
         {
             this.dynamicRepository = dynamicRepository;
             this.dateRangeService = dateRangeService;
@@ -31,13 +34,13 @@ namespace BettypeWith3rdProducts.Business.Repositories
         {
             var dataTable = new DataTable();
             var date = dateRangeService.Date(dateRange);
-            var view = viewOfDataService.View(viewOfData, sportId);
+            var parameter = viewOfDataService.GetParameter(viewOfData, sportId);
             var criteria = new BettypeProductCriteria
             {
                 DateStart = date.DateStart,
                 DateEnd = date.DateEnd,
-                Sportid = view.SportId,
-                Periodid = view.PeriodId,
+                Sportid = parameter.SportId,
+                Periodid = parameter.PeriodId,
                 StatisticId = (int)sourceMapping.DataType,
                 StoreProcedure = sourceMapping.StoreProcedure
             };
@@ -58,6 +61,11 @@ namespace BettypeWith3rdProducts.Business.Repositories
         public IEnumerable<SportType> QuerySports(DataType dataType)
         {
             return dynamicRepository.Fetch<SportType>(new SportCriteria { Include3rd = dataType == DataType.RealWiLoss });
+        }
+
+        public DateTime QueryLastDate()
+        {
+            return dynamicRepository.Get<LastDateModel>(new DWStatusByCubeCriteria()).LastDate;
         }
     }
 }

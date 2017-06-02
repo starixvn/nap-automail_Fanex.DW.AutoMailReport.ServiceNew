@@ -11,7 +11,7 @@ namespace BettypeWith3rdProducts.IntegrationTests
         {
             container.Register<IDynamicRepository, DynamicRepository>();
             container.Register<DateRangeServiceProvider, DateRangeServiceProviderImp>();
-            container.Register<ViewOfDataServiceProvider, ViewOfDataServiceProviderImp>();
+            container.Register<ParameterService, ParameterServiceImp>();
             container.Register<ApplicationConfigurationService, ApplicationConfigurationServiceImp>();
             container.Register<DataSourceService, DataSourceServiceImp>();
             container.Register<RawDataService, RawDataServiceImp>();

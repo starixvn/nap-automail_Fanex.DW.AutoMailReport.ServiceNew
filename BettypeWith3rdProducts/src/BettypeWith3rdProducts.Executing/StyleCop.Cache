@@ -1,10 +1,13 @@
 <stylecopresultscache>
   <version>12</version>
+  <project key="-1667770533">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
   <sourcecode name="FanexDataRegisterService.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2016/12/27 16:59:53.649</styleCop>
       <settingsFile>2016/12/27 16:59:53.633</settingsFile>
-      <sourceFile>2017/05/26 11:26:57.511</sourceFile>
+      <sourceFile>2017/06/02 10:04:02.543</sourceFile>
       <parser>2016/12/27 16:59:53.649</parser>
       <StyleCop.CSharp.DocumentationRules>2016/12/27 16:59:53.649</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1786954509</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -29,7 +32,7 @@
     <timestamps>
       <styleCop>2016/12/27 16:59:53.649</styleCop>
       <settingsFile>2016/12/27 16:59:53.633</settingsFile>
-      <sourceFile>2017/06/01 10:21:57.072</sourceFile>
+      <sourceFile>2017/06/02 10:21:21.791</sourceFile>
       <parser>2016/12/27 16:59:53.649</parser>
       <StyleCop.CSharp.DocumentationRules>2016/12/27 16:59:53.649</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1786954509</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -75,14 +78,11 @@
     </timestamps>
     <violations />
   </sourcecode>
-  <project key="-1667770533">
-    <configuration>DEBUG;TRACE</configuration>
-  </project>
   <sourcecode name="SimpleInjectorService.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2016/12/27 16:59:53.649</styleCop>
       <settingsFile>2016/12/27 16:59:53.633</settingsFile>
-      <sourceFile>2017/06/01 16:30:57.746</sourceFile>
+      <sourceFile>2017/06/02 13:36:33.141</sourceFile>
       <parser>2016/12/27 16:59:53.649</parser>
       <StyleCop.CSharp.DocumentationRules>2016/12/27 16:59:53.649</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1786954509</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -103,4 +103,7 @@
     </timestamps>
     <violations />
   </sourcecode>
+  <project key="-108816424">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
 </stylecopresultscache>

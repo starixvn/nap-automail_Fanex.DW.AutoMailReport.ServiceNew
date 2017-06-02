@@ -14,7 +14,7 @@ namespace BettypeWith3rdProducts.Business.Services
     public class DataSplitterServiceImp : DataSplitterService
     {
         private readonly RawDataService dataService;
-        private int numberOfColumnsOnEachSection = 70;
+        private readonly int numberOfColumnsOnEachSection = 70;
 
         public DataSplitterServiceImp(RawDataService dataService)
         {
@@ -108,7 +108,7 @@ namespace BettypeWith3rdProducts.Business.Services
             return lastRemovedIndex;
         }
 
-        private int CountBettypeGroup(List<string> columnNames, string currentBettype)
+        private static int CountBettypeGroup(List<string> columnNames, string currentBettype)
         {
             return columnNames
                 .Where(s => s.Contains("@#@"))
@@ -117,7 +117,7 @@ namespace BettypeWith3rdProducts.Business.Services
 
         private int GetNumberOfBettypeOnEachGroup(List<string> columnNames)
         {
-            var count = columnNames.Where(s => s.Contains("@#@")).Count();
+            var count = columnNames.Count(s => s.Contains("@#@"));
             if (count == 0)
             {
                 return count;

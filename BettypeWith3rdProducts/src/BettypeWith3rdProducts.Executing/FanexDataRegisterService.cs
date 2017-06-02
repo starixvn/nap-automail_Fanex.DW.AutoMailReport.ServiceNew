@@ -15,7 +15,7 @@ namespace BettypeWith3rdProducts.Executing
             DbSettingProviderManager
                 .StartNewSession()
                 .Use(new OldConnectionStringProvider())
-                .UseDefaultDbSettingProvider(resourcePath: $"~/App_Data/{envrironment}", ignoreRedundantParameters: false, enableWatching: true)
+                .UseDefaultDbSettingProvider($"~/App_Data/{envrironment}", enableWatching: true)
                 .Run();
         }
     }

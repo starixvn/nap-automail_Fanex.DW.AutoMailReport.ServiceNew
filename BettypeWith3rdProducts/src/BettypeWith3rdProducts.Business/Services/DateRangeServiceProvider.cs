@@ -10,7 +10,7 @@ namespace BettypeWith3rdProducts.Business.Services
 
     public class DateRangeServiceProviderImp : DateRangeServiceProvider
     {
-        private Dictionary<DateRange, DateRangeService> DateRanges
+        private static Dictionary<DateRange, DateRangeService> DateRanges
         {
             get
             {

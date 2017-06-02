@@ -1,0 +1,11 @@
+{
+  "ServerUri": "http://sonarqube.nexdev.net/dashboard?id=DW-AutoMail-ServiceNew/",
+  "Organization": null,
+  "ProjectKey": "DW-AutoMail-ServiceNew",
+  "Profiles": {
+    "CSharp": {
+      "ProfileKey": "cs-sonar-way-80515",
+      "ProfileTimestamp": "2017-05-26T17:21:30+07:00"
+    }
+  }
+}
