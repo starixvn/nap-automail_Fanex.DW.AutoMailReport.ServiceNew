@@ -1,0 +1,17 @@
+﻿using System.IO;
+using Newtonsoft.Json;
+using NUnit.Framework;
+
+namespace BettypeWith3rdProducts.UnitTests
+{
+    public static class TestLoader
+    {
+        public static T DataLoader<T>(string fileName)
+        {
+            var fullName = $@"{TestContext.CurrentContext.TestDirectory}\Templates\{fileName}";
+            var text = File.ReadAllText(fullName);
+            var data = JsonConvert.DeserializeObject<T>(text);
+            return data;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+﻿[
+  {
+    "DataType": 1,
+    "StoreProcedure": "Acc_Rpt_Automail_BettypeWithProducts",
+    "SheetName": "Real"
+  },
+  {
+    "DataType": 11,
+    "StoreProcedure": "Acc_Rpt_Automail_BettypeWithProducts",
+    "SheetName": "Virtual"
+  },
+  {
+    "DataType": 1,
+    "StoreProcedure": "Acc_Rpt_Automail_BettypeWithProducts_Juice",
+    "SheetName": "Real Juice & Leftover"
+  },
+  {
+    "DataType": 11,
+    "StoreProcedure": "Acc_Rpt_Automail_BettypeWithProducts_Juice",
+    "SheetName": "Virtual Juice & Leftover"
+  }
+]
