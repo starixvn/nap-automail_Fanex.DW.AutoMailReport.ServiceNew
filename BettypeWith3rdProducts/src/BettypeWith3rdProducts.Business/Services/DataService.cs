@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using BettypeWith3rdProducts.Business.Models;
-using BettypeWith3rdProducts.Business.Repositories;
 using BettypeWith3rdProducts.Business.Utility;
 
 namespace BettypeWith3rdProducts.Business.Services
@@ -17,14 +16,14 @@ namespace BettypeWith3rdProducts.Business.Services
     public class DataServiceImp : DataService
     {
         private readonly ApplicationConfigurationService appConfig;
-        private readonly DataSplitterService dataSplitterService;
-        private readonly DataSourceService dataSourceService;
+        private readonly SportSplitterService sportSplitterService;
+        private readonly RepositoryService repositoryService;
 
-        public DataServiceImp(ApplicationConfigurationService appConfig, DataSplitterService dataSplitterService, DataSourceService dataSourceService)
+        public DataServiceImp(ApplicationConfigurationService appConfig, SportSplitterService sportSplitterService, RepositoryService repositoryService)
         {
             this.appConfig = appConfig;
-            this.dataSplitterService = dataSplitterService;
-            this.dataSourceService = dataSourceService;
+            this.sportSplitterService = sportSplitterService;
+            this.repositoryService = repositoryService;
         }
 
         public Dictionary<string, Dictionary<string, List<DataTable>>> Execute()
@@ -33,7 +32,7 @@ namespace BettypeWith3rdProducts.Business.Services
             var sourceMappings = appConfig.SourceMappings;
             foreach (var sourceMapping in sourceMappings)
             {
-                dataSource.Add(sourceMapping.SheetName, dataSplitterService.Execute(sourceMapping));
+                dataSource.Add(sourceMapping.SheetName, sportSplitterService.Execute(sourceMapping));
             }
 
             return dataSource;
@@ -47,7 +46,7 @@ namespace BettypeWith3rdProducts.Business.Services
                 return true;
             }
 
-            result = dataSourceService.QueryLastDate() >= Convert.ToDateTime(SystemTime.Now.AddDays(-1).ToShortDateString());
+            result = repositoryService.QueryLastDate() >= Convert.ToDateTime(SystemTime.Now.AddDays(-1).ToShortDateString());
 
             return result;
         }

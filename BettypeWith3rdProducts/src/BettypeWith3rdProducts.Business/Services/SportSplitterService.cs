@@ -6,55 +6,62 @@ using BettypeWith3rdProducts.Business.Models;
 
 namespace BettypeWith3rdProducts.Business.Services
 {
-    public interface DataSplitterService
+    public interface SportSplitterService
     {
         Dictionary<string, List<DataTable>> Execute(SourceMapping sourceMapping);
     }
 
-    public class DataSplitterServiceImp : DataSplitterService
+    public class SportSplitterServiceImp : SportSplitterService
     {
-        private readonly RawDataService dataService;
+        private readonly RepositoryService repositoryService;
         private readonly int numberOfColumnsOnEachSection = 70;
+        private readonly int firstIndexSportSection;
 
-        public DataSplitterServiceImp(RawDataService dataService)
+        public SportSplitterServiceImp(RepositoryService repositoryService)
         {
-            this.dataService = dataService;
+            this.repositoryService = repositoryService;
+            firstIndexSportSection = 0;
         }
 
         public Dictionary<string, List<DataTable>> Execute(SourceMapping sourceMapping)
         {
             var result = new Dictionary<string, List<DataTable>>();
-            var dataSource = dataService.Query(sourceMapping);
-            var index = 0;
-            foreach (var product in dataSource)
-            {
-                if (index < 2)
-                {
-                    result.Add(product.Key, new List<DataTable> { product.Value });
-                }
-                else
-                {
-                    var sportSections = SplitSportSections(product.Value);
-                    result.Add(product.Key, sportSections);
-                }
-
-                index++;
-            }
+            SplitGeneralData(sourceMapping, result);
+            SplitSportData(sourceMapping, result);
 
             return result;
         }
 
-        private List<DataTable> SplitSportSections(DataTable value)
+        private void SplitGeneralData(SourceMapping sourceMapping, Dictionary<string, List<DataTable>> result)
+        {
+            var generalData = repositoryService.QueryGeneralData(sourceMapping);
+            foreach (var sport in generalData)
+            {
+                result.Add(sport.Key, new List<DataTable> { sport.Value });
+            }
+        }
+
+        private void SplitSportData(SourceMapping sourceMapping, Dictionary<string, List<DataTable>> result)
+        {
+            var detailData = repositoryService.QueryDetailData(sourceMapping);
+            foreach (var sport in detailData)
+            {
+                var sportSections = SplitSportIntoManySections(sport.Value);
+                result.Add(sport.Key, sportSections);
+            }
+        }
+
+        private List<DataTable> SplitSportIntoManySections(DataTable value)
         {
             var numberOfSections = GetNumberOfSections(value);
             var beginColumnIndex = 0;
             var endColumnIndex = 0;
             var lastRemovedIndex = 0;
-            var sportSections = new List<DataTable>();
+            var sections = new List<DataTable>();
 
-            for (var indexOfSection = 0; indexOfSection < numberOfSections; indexOfSection++)
+            for (var indexOfSportSection = 0; indexOfSportSection < numberOfSections; indexOfSportSection++)
             {
-                if (indexOfSection == 0)
+                if (indexOfSportSection == firstIndexSportSection)
                 {
                     beginColumnIndex = 1;
                     endColumnIndex = numberOfColumnsOnEachSection + 1;
@@ -66,13 +73,13 @@ namespace BettypeWith3rdProducts.Business.Services
                 }
 
                 endColumnIndex = endColumnIndex > value.Columns.Count ? value.Columns.Count : endColumnIndex;
-                lastRemovedIndex = CreateSportSection(value, beginColumnIndex, endColumnIndex, sportSections);
+                lastRemovedIndex = AddSportIntoSection(value, beginColumnIndex, endColumnIndex, sections);
             }
 
-            return sportSections;
+            return sections;
         }
 
-        private int CreateSportSection(DataTable value, int beginColumnIndex, int endColumnIndex, List<DataTable> sportSections)
+        private int AddSportIntoSection(DataTable value, int beginColumnIndex, int endColumnIndex, List<DataTable> sections)
         {
             var columnNames = new List<string>();
             var lastRemovedIndex = 0;
@@ -88,8 +95,9 @@ namespace BettypeWith3rdProducts.Business.Services
                 }
             }
 
-            var sportSection = value.AsDataView().ToTable(false, columnNames.ToArray());
-            sportSections.Add(sportSection);
+            var section = value.AsDataView().ToTable(false, columnNames.ToArray());
+            sections.Add(section);
+
             return lastRemovedIndex;
         }
 

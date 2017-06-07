@@ -23,8 +23,8 @@ namespace BettypeWith3rdProducts.Business.Services
 
         private readonly ExcelWorksheet dataTemplate;
 
-        public ExcelServiceImp
-            (ExcelPackage excelPackage,
+        public ExcelServiceImp(
+            ExcelPackage excelPackage,
             ApplicationConfigurationService appConfig,
             DataService dataService,
             DateRangeServiceProvider dateRangeServiceProvider,
@@ -156,7 +156,7 @@ namespace BettypeWith3rdProducts.Business.Services
             }
 
             var fileName = $@"{root}\Bettype_With_3rd_Products_Monthly_Winloss_For_{SystemTime.Now:yyyy_MM_dd}.xlsx";
-            excelPackage.SaveAs(new FileInfo(fileName));
+            excelPackage.SaveAs(new FileInfo(fileName), appConfig.ExcelPasswordProtected);
 
             return fileName;
         }

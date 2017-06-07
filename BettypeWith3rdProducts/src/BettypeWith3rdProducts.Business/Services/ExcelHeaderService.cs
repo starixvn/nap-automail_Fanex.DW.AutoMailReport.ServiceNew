@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Data;
-using OfficeOpenXml;
-using System.Linq;
 using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using OfficeOpenXml;
 
 namespace BettypeWith3rdProducts.Business.Services
 {
@@ -18,7 +18,6 @@ namespace BettypeWith3rdProducts.Business.Services
             var columns = new List<string>();
             RenderColumns(excelWorksheet, section, startRow, columns);
             MergeColumns(excelWorksheet, startRow, columns);
-
         }
 
         private static void RenderColumns(ExcelWorksheet excelWorksheet, DataTable section, int startRow, List<string> columns)

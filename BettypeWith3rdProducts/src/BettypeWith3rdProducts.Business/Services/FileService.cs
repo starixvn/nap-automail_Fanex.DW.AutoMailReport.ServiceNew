@@ -15,12 +15,12 @@ namespace BettypeWith3rdProducts.Business.Services
 
     public class FileServiceImp : FileService
     {
-        private readonly DataSourceService dataSourceService;
+        private readonly RepositoryService repositoryService;
         private readonly ApplicationConfigurationService appConfig;
 
-        public FileServiceImp(DataSourceService dataSourceService, ApplicationConfigurationService appConfig)
+        public FileServiceImp(RepositoryService repositoryService, ApplicationConfigurationService appConfig)
         {
-            this.dataSourceService = dataSourceService;
+            this.repositoryService = repositoryService;
             this.appConfig = appConfig;
         }
 
@@ -28,7 +28,7 @@ namespace BettypeWith3rdProducts.Business.Services
         {
             var templatePath = @"Templates\ContentWhenDataIsNotReady.cshtml";
             var emailTemplate = File.ReadAllText(templatePath);
-            var lastDate = dataSourceService.QueryLastDate();
+            var lastDate = repositoryService.QueryLastDate();
             return Engine.Razor.RunCompile(emailTemplate, templatePath, lastDate.GetType(), lastDate);
         }
 

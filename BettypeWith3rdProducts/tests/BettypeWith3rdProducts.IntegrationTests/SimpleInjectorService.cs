@@ -12,10 +12,9 @@ namespace BettypeWith3rdProducts.IntegrationTests
             container.Register<IDynamicRepository, DynamicRepository>();
             container.Register<DateRangeServiceProvider, DateRangeServiceProviderImp>();
             container.Register<ParameterService, ParameterServiceImp>();
-            container.Register<ApplicationConfigurationService, ApplicationConfigurationServiceImp>();
-            container.Register<DataSourceService, DataSourceServiceImp>();
-            container.Register<RawDataService, RawDataServiceImp>();
-            container.Register<DataSplitterService, DataSplitterServiceImp>();
+            container.Register<ApplicationConfigurationService, ApplicationConfigurationServiceImp>();            
+            container.Register<RepositoryService, RepositoryServiceImp>();
+            container.Register<SportSplitterService, SportSplitterServiceImp>();
             container.Register<DataService, DataServiceImp>();
         }
     }

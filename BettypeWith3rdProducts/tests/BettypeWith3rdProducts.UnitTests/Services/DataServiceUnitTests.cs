@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 using BettypeWith3rdProducts.Business.Models;
-using BettypeWith3rdProducts.Business.Repositories;
 using BettypeWith3rdProducts.Business.Services;
 using NSubstitute;
 using NUnit.CompareNetObjects;
@@ -21,14 +20,14 @@ namespace BettypeWith3rdProducts.UnitTests.Services
             appConfig.SourceMappings.Returns(sourceMappings);
 
             var dataSource = CreateDataSource();
-            var dataSplitterService = Substitute.For<DataSplitterService>();
+            var dataSplitterService = Substitute.For<SportSplitterService>();
             dataSplitterService.Execute(Arg.Any<SourceMapping>()).Returns(dataSource);
-            var dataSourceService = Substitute.For<DataSourceService>();
+            var repositoryService = Substitute.For<RepositoryService>();
 
             var expected = CreateExpected();
 
             // Act
-            var service = new DataServiceImp(appConfig, dataSplitterService, dataSourceService);
+            var service = new DataServiceImp(appConfig, dataSplitterService, repositoryService);
             var result = service.Execute();
 
             // Assert

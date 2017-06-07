@@ -139,9 +139,6 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-    <Content Include="Templates\BettypeProducts.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Templates\SourceMapping.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

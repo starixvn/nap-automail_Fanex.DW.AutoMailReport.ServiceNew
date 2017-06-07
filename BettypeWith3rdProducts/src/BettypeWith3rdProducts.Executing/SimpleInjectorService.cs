@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using BettypeWith3rdProducts.Business.Repositories;
 using BettypeWith3rdProducts.Business.Services;
 using BettypeWith3rdProducts.BusinessSubstitute;
 using Fanex.Data.Repository;
@@ -17,11 +16,10 @@ namespace BettypeWith3rdProducts.Executing
             container.Register<DateRangeServiceProvider, DateRangeServiceProviderImp>();
             container.Register<ParameterService, ParameterServiceImp>();
             container.Register<ApplicationConfigurationService, ApplicationConfigurationServiceImp>();
-            container.Register<DataSourceService, DataSourceServiceImp>();
-            container.Register<RawDataService, RawDataServiceImp>();
-            
-            container.Register<DataService, DataServiceSubstitute>();
-            container.Register<DataSplitterService, DataSplitterServiceImp>();
+            container.Register<RepositoryService, RepositoryServiceImp>();
+
+            container.Register<DataService, DataServiceImp>();
+            container.Register<SportSplitterService, SportSplitterServiceImp>();
             container.Register<ExcelService, ExcelServiceImp>();
             container.Register<ExcelHeaderService, ExcelHeaderServiceImp>();
             container.Register<FileService, FileServiceImp>();
