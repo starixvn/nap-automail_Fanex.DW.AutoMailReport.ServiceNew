@@ -18,7 +18,7 @@ namespace BettypeWith3rdProducts.Executing
             container.Register<ApplicationConfigurationService, ApplicationConfigurationServiceImp>();
             container.Register<RepositoryService, RepositoryServiceImp>();
 
-            container.Register<DataService, DataServiceImp>();
+            container.Register<DataService, DataServiceSubstitute>();
             container.Register<SportSplitterService, SportSplitterServiceImp>();
             container.Register<ExcelService, ExcelServiceImp>();
             container.Register<ExcelHeaderService, ExcelHeaderServiceImp>();

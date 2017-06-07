@@ -1,8 +1,8 @@
-﻿using System;
+﻿using BettypeWith3rdProducts.Business.Models;
+using BettypeWith3rdProducts.Business.Utility;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using BettypeWith3rdProducts.Business.Models;
-using BettypeWith3rdProducts.Business.Utility;
 
 namespace BettypeWith3rdProducts.Business.Services
 {
@@ -40,13 +40,12 @@ namespace BettypeWith3rdProducts.Business.Services
 
         public bool IsDataAvailable()
         {
-            var result = false;
             if (appConfig.ReportType == DateRange.Manual || !appConfig.IsCheckEnoughData)
             {
                 return true;
             }
 
-            result = repositoryService.QueryLastDate() >= Convert.ToDateTime(SystemTime.Now.AddDays(-1).ToShortDateString());
+            var result = repositoryService.QueryLastDate() >= Convert.ToDateTime(SystemTime.Now.AddDays(-1).ToShortDateString());
 
             return result;
         }

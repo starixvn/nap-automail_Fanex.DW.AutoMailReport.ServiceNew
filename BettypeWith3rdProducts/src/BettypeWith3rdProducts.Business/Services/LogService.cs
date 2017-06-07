@@ -19,7 +19,7 @@ namespace BettypeWith3rdProducts.Business.Services
             var sqlException = exception as SqlException;
             var stackTrace = new StackTrace(exception).GetFrames();
             var methodbase = stackTrace.Select(f => f.GetMethod()).FirstOrDefault();
-            var methodName = methodbase == null ? string.Empty : methodbase.Name;
+            var methodName = methodbase?.Name ?? string.Empty;
             var logInfo = new List<string>
             {
                 $"Message: {exception.Message}",

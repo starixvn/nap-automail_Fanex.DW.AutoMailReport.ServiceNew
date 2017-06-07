@@ -12,18 +12,12 @@ namespace BettypeWith3rdProducts.Business.Services
     {
         private int? sportId;
 
-        private Dictionary<ViewOfData, Parameter> Parameters
+        private Dictionary<ViewOfData, Parameter> Parameters => new Dictionary<ViewOfData, Parameter>
         {
-            get
-            {
-                return new Dictionary<ViewOfData, Parameter>
-                {
-                    { ViewOfData.All, new Parameter { SportId = null, PeriodId = 1 } },
-                    { ViewOfData.Detail, new Parameter { SportId = sportId, PeriodId = 1 } },
-                    { ViewOfData.Summary, new Parameter { SportId = null, PeriodId = null } },
-                };
-            }
-        }
+            { ViewOfData.All, new Parameter { SportId = null, PeriodId = 1 } },
+            { ViewOfData.Detail, new Parameter { SportId = sportId, PeriodId = 1 } },
+            { ViewOfData.Summary, new Parameter { SportId = null, PeriodId = null } },
+        };
 
         public Parameter GetParameter(ViewOfData viewOfData, int? sportId)
         {

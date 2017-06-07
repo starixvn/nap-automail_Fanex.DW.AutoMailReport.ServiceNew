@@ -36,7 +36,7 @@ namespace BettypeWith3rdProducts.Business.Services
         {
             var templatePath = $@"Templates\{templateFile}";
             var emailTemplate = File.ReadAllText(templatePath);
-            var tuple = new Tuple<string, string>(excelFileName, appConfig.NapReportURL);
+            var tuple = new Tuple<string, string>(excelFileName, appConfig.NapReportUrl.AbsoluteUri);
             return Engine.Razor.RunCompile(emailTemplate, templatePath, tuple.GetType(), tuple);
         }
     }

@@ -4,7 +4,7 @@ namespace BettypeWith3rdProducts.Business.Repositories
 {
     public class SportCriteria : CriteriaBase
     {
-        public bool Include3rd { get; set; }
+        public bool Include3Rd { get; set; }
 
         public override string GetSettingKey()
         {

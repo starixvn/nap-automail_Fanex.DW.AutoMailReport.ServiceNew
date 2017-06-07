@@ -1,6 +1,5 @@
 ﻿using System;
 using BettypeWith3rdProducts.Business.Models;
-using BettypeWith3rdProducts.Business.Repositories;
 using Fanex.MailDelivery.Core.Models;
 
 namespace BettypeWith3rdProducts.Business.Services
@@ -21,12 +20,12 @@ namespace BettypeWith3rdProducts.Business.Services
             this.mailService = mailService;
             this.logService = logService;
             this.dataService = dataService;
-        }  
+        }
 
         public JobMessage Execute()
         {
             var result = new ExecuteResult();
-            var jobMessage = new JobMessage();
+            JobMessage jobMessage;
             try
             {
                 result = SendNotification();
@@ -63,7 +62,7 @@ namespace BettypeWith3rdProducts.Business.Services
                 mailService.SendMailWhenDataIsNotReady();
                 return new ExecuteResult { Success = false, Message = "DataIsNotReady" };
             }
-            
+
             var mail = mailService.Execute();
             return new ExecuteResult { Success = true, Mail = mail };
         }

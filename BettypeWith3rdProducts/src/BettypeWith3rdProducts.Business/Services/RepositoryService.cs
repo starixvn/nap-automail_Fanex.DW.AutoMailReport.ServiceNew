@@ -70,7 +70,7 @@ namespace BettypeWith3rdProducts.Business.Services
         {
             var dataTable = QueryDataSouce(sourceMapping, appConfig.ReportType, viewOfData, 0);
             dataSource.Add(viewOfData.ToString(), dataTable);
-        }     
+        }
 
         private DataTable QueryDataSouce(SourceMapping sourceMapping, DateRange dateRange, ViewOfData viewOfData, int sportId)
         {
@@ -102,7 +102,7 @@ namespace BettypeWith3rdProducts.Business.Services
 
         private IEnumerable<SportType> QuerySports(DataType dataType)
         {
-            return dynamicRepository.Fetch<SportType>(new SportCriteria { Include3rd = dataType == DataType.RealWiLoss });
+            return dynamicRepository.Fetch<SportType>(new SportCriteria { Include3Rd = dataType == DataType.RealWiLoss });
         }
 
         public DateTime QueryLastDate()

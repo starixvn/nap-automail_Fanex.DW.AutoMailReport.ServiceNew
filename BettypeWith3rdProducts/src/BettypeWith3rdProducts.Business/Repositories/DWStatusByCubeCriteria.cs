@@ -5,10 +5,7 @@ namespace BettypeWith3rdProducts.Business.Repositories
     public class DWStatusByCubeCriteria : CriteriaBase
     {
 #pragma warning disable S2325 // static property
-        public string Cube
-        {
-            get { return "DW"; }
-        }
+        public string Cube => "DW";
 #pragma warning restore S2325 // static property
 
         public override string GetSettingKey()

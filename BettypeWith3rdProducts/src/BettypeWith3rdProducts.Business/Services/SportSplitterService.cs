@@ -1,8 +1,8 @@
-﻿using System;
+﻿using BettypeWith3rdProducts.Business.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using BettypeWith3rdProducts.Business.Models;
 
 namespace BettypeWith3rdProducts.Business.Services
 {
@@ -54,13 +54,13 @@ namespace BettypeWith3rdProducts.Business.Services
         private List<DataTable> SplitSportIntoManySections(DataTable value)
         {
             var numberOfSections = GetNumberOfSections(value);
-            var beginColumnIndex = 0;
             var endColumnIndex = 0;
             var lastRemovedIndex = 0;
             var sections = new List<DataTable>();
 
             for (var indexOfSportSection = 0; indexOfSportSection < numberOfSections; indexOfSportSection++)
             {
+                var beginColumnIndex = 0;
                 if (indexOfSportSection == firstIndexSportSection)
                 {
                     beginColumnIndex = 1;
@@ -79,12 +79,12 @@ namespace BettypeWith3rdProducts.Business.Services
             return sections;
         }
 
-        private int AddSportIntoSection(DataTable value, int beginColumnIndex, int endColumnIndex, List<DataTable> sections)
+        private static int AddSportIntoSection(DataTable value, int beginColumnIndex, int endColumnIndex, List<DataTable> sections)
         {
             var columnNames = new List<string>();
             var lastRemovedIndex = 0;
             columnNames.Add(value.Columns[0].ColumnName);
-            for (int columnIndex = beginColumnIndex; columnIndex < endColumnIndex; columnIndex++)
+            for (var columnIndex = beginColumnIndex; columnIndex < endColumnIndex; columnIndex++)
             {
                 var columnName = value.Columns[columnIndex].ColumnName;
                 var currentBettype = columnName.Split(new[] { "@#@" }, StringSplitOptions.RemoveEmptyEntries)[0];
@@ -101,7 +101,7 @@ namespace BettypeWith3rdProducts.Business.Services
             return lastRemovedIndex;
         }
 
-        private int RemoveRedundantBettypes(List<string> columnNames, string currentBettype)
+        private static int RemoveRedundantBettypes(List<string> columnNames, string currentBettype)
         {
             var lastRemovedIndex = 0;
             var numberOfBettypeOnEachGroup = GetNumberOfBettypeOnEachGroup(columnNames);
@@ -123,7 +123,7 @@ namespace BettypeWith3rdProducts.Business.Services
                 .Count(s => s.Split(new[] { "@#@" }, StringSplitOptions.RemoveEmptyEntries)[0] == currentBettype);
         }
 
-        private int GetNumberOfBettypeOnEachGroup(List<string> columnNames)
+        private static int GetNumberOfBettypeOnEachGroup(List<string> columnNames)
         {
             var count = columnNames.Count(s => s.Contains("@#@"));
             if (count == 0)

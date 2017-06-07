@@ -6,18 +6,7 @@ namespace BettypeWith3rdProducts.Business.Utility
     {
         private static DateTime dateTime;
 
-        public static DateTime Now
-        {
-            get
-            {
-                if (dateTime != DateTime.MinValue)
-                {
-                    return dateTime;
-                }
-
-                return DateTime.Now;
-            }
-        }
+        public static DateTime Now => dateTime != DateTime.MinValue ? dateTime : DateTime.Now;
 
         public static void Set(DateTime customDateTime)
         {
