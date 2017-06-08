@@ -13,5 +13,11 @@ namespace BettypeWith3rdProducts.UnitTests
             var data = JsonConvert.DeserializeObject<T>(text);
             return data;
         }
+
+        public static string DataLoader(string fileName)
+        {
+            var fullName = $@"{TestContext.CurrentContext.TestDirectory}\Templates\{fileName}";
+            return File.ReadAllText(fullName);            
+        }
     }
 }

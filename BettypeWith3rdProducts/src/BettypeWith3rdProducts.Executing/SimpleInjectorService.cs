@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System.Configuration;
+using System.IO;
+using BettypeWith3rdProducts.Business.Repositories;
 using BettypeWith3rdProducts.Business.Services;
 using BettypeWith3rdProducts.BusinessSubstitute;
 using Fanex.Data.Repository;
@@ -17,8 +19,7 @@ namespace BettypeWith3rdProducts.Executing
             container.Register<ParameterService, ParameterServiceImp>();
             container.Register<ApplicationConfigurationService, ApplicationConfigurationServiceImp>();
             container.Register<RepositoryService, RepositoryServiceImp>();
-
-            container.Register<DataService, DataServiceSubstitute>();
+            container.Register<DataSourceService, DataSourceServiceImp>();
             container.Register<SportSplitterService, SportSplitterServiceImp>();
             container.Register<ExcelService, ExcelServiceImp>();
             container.Register<ExcelHeaderService, ExcelHeaderServiceImp>();
@@ -28,6 +29,15 @@ namespace BettypeWith3rdProducts.Executing
             container.Register<MailService, MailServiceImp>();
             container.Register<DistributedNotificationService, DistributedNotificationServiceImp>();
             container.Register<LogService, LogServiceImp>();
+
+            if (ConfigurationManager.AppSettings["IsFakeData"] == "true")
+            {
+                container.Register<DataService, DataServiceSubstitute>();
+            }
+            else
+            {
+                container.Register<DataService, DataServiceImp>();
+            }
         }
     }
 }

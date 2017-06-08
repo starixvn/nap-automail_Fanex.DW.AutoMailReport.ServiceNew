@@ -1,8 +1,8 @@
-﻿using BettypeWith3rdProducts.Business.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using BettypeWith3rdProducts.Business.Models;
 
 namespace BettypeWith3rdProducts.Business.Services
 {
@@ -89,10 +89,9 @@ namespace BettypeWith3rdProducts.Business.Services
                 var columnName = value.Columns[columnIndex].ColumnName;
                 var currentBettype = columnName.Split(new[] { "@#@" }, StringSplitOptions.RemoveEmptyEntries)[0];
                 columnNames.Add(columnName);
-                if (columnIndex == endColumnIndex - 1)
-                {
-                    lastRemovedIndex = RemoveRedundantBettypes(columnNames, currentBettype);
-                }
+                lastRemovedIndex = columnIndex == endColumnIndex - 1
+                    ? RemoveRedundantBettypes(columnNames, currentBettype)
+                    : lastRemovedIndex;
             }
 
             var section = value.AsDataView().ToTable(false, columnNames.ToArray());
@@ -143,10 +142,9 @@ namespace BettypeWith3rdProducts.Business.Services
         {
             var columnCount = value.Columns.Count;
             var numberOfSections = columnCount / numberOfColumnsOnEachSection;
-            if (columnCount % numberOfColumnsOnEachSection > 0)
-            {
-                numberOfSections++;
-            }
+            numberOfSections = columnCount % numberOfColumnsOnEachSection > 0
+                ? numberOfSections + 1
+                : numberOfSections;
 
             return numberOfSections;
         }

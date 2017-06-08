@@ -1,5 +1,6 @@
 ﻿using System;
 using BettypeWith3rdProducts.Business.Models;
+using BettypeWith3rdProducts.Business.Utility;
 using Fanex.MailDelivery.Core.Models;
 
 namespace BettypeWith3rdProducts.Business.Services
@@ -46,14 +47,14 @@ namespace BettypeWith3rdProducts.Business.Services
                     JobStatus.DataIsNotReady,
                     TaskLog = new TaskLog
                     {
-                        LogTime = DateTime.Now,
+                        LogTime = SystemTime.Now,
                         Message = result.Message
                     }
                 };
             }
 
             return jobMessage;
-        }
+        }        
 
         private ExecuteResult SendNotification()
         {

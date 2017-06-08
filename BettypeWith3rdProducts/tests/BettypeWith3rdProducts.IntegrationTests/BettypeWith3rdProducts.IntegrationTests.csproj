@@ -133,6 +133,8 @@
   <ItemGroup>
     <Compile Include="FanexDataRegisterService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DistributedNotificationServiceTests.cs" />
+    <Compile Include="Services\MailStationServiceTests.cs" />
     <Compile Include="SimpleInjectorService.cs" />
     <Compile Include="TestLoader.cs" />
   </ItemGroup>
@@ -145,6 +147,18 @@
     <Content Include="Templates\BettypeProducts-All.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\ContentWhenDataIsNotReady.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\ContentWithAttachment.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\ContentWithoutAttachment.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Template.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Local\DBDWH.bodb_dwrs.dwrs.xml">
@@ -152,6 +166,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\BettypeWith3rdProducts.BusinessSubstitute\BettypeWith3rdProducts.BusinessSubstitute.csproj">
+      <Project>{22FDFE27-9C27-474C-A5E6-39362090B201}</Project>
+      <Name>BettypeWith3rdProducts.BusinessSubstitute</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\BettypeWith3rdProducts.Business\BettypeWith3rdProducts.Business.csproj">
       <Project>{82b059de-9ed6-45b8-8c90-5aef354e6e6e}</Project>
       <Name>BettypeWith3rdProducts.Business</Name>
@@ -160,9 +178,7 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

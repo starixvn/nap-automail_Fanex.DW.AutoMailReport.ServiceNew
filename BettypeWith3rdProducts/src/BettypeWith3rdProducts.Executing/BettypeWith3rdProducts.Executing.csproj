@@ -151,6 +151,9 @@
     <Content Include="deployment.ignore">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Configuration\BettypeWith3rdProducts.Executing.Local.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Templates\SourceMapping.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

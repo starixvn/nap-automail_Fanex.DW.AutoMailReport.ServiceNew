@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using BettypeWith3rdProducts.Business.Models;
 using BettypeWith3rdProducts.Business.Repositories;
-using Fanex.Data;
 using Fanex.Data.Repository;
 
 namespace BettypeWith3rdProducts.Business.Services
@@ -22,18 +21,21 @@ namespace BettypeWith3rdProducts.Business.Services
         private readonly ApplicationConfigurationService appConfig;
         private readonly IDynamicRepository dynamicRepository;
         private readonly DateRangeServiceProvider dateRangeService;
-        private readonly ParameterService viewOfDataService;
+        private readonly ParameterService parameterService;
+        private readonly DataSourceService dataSourceService;
 
         public RepositoryServiceImp(
             ApplicationConfigurationService appConfig,
             IDynamicRepository dynamicRepository,
             DateRangeServiceProvider dateRangeService,
-            ParameterService viewOfDataService)
+            ParameterService parameterService,
+            DataSourceService dataSourceService)
         {
             this.appConfig = appConfig;
             this.dynamicRepository = dynamicRepository;
             this.dateRangeService = dateRangeService;
-            this.viewOfDataService = viewOfDataService;
+            this.parameterService = parameterService;
+            this.dataSourceService = dataSourceService;
         }
 
         public Dictionary<string, DataTable> QueryGeneralData(SourceMapping sourceMapping)
@@ -74,9 +76,8 @@ namespace BettypeWith3rdProducts.Business.Services
 
         private DataTable QueryDataSouce(SourceMapping sourceMapping, DateRange dateRange, ViewOfData viewOfData, int sportId)
         {
-            var dataTable = new DataTable();
             var date = dateRangeService.Date(dateRange);
-            var parameter = viewOfDataService.GetParameter(viewOfData, sportId);
+            var parameter = parameterService.GetParameter(viewOfData, sportId);
             var criteria = new BettypeProductCriteria
             {
                 DateStart = date.DateStart,
@@ -87,17 +88,7 @@ namespace BettypeWith3rdProducts.Business.Services
                 StoreProcedure = sourceMapping.StoreProcedure
             };
 
-            using (ObjectDb db = new ObjectDb(criteria.GetSettingKey()))
-            {
-                db.AssignParamValues(criteria.GetSpParams());
-                var dataset = db.ExecuteDataSet();
-                if (dataset != null && dataset.Tables.Count > 0)
-                {
-                    dataTable = dataset.Tables[0];
-                }
-            }
-
-            return dataTable;
+            return dataSourceService.Query(criteria);
         }
 
         private IEnumerable<SportType> QuerySports(DataType dataType)

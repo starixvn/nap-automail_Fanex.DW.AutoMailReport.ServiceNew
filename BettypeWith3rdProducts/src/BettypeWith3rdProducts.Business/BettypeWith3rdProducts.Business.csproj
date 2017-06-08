@@ -137,6 +137,7 @@
     <Compile Include="Models\SportType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BettypeProductCriteria.cs" />
+    <Compile Include="Repositories\DataSourceService.cs" />
     <Compile Include="Repositories\DWStatusByCubeCriteria.cs" />
     <Compile Include="Repositories\SportCriteria.cs" />
     <Compile Include="Services\ApplicationConfigurationService.cs" />

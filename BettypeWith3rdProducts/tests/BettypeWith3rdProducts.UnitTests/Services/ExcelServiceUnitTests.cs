@@ -32,6 +32,9 @@ namespace BettypeWith3rdProducts.UnitTests.Services
             dateRangeService.DateEnd.Returns(new DateTime(2017, 01, 31));
             dateRangeServiceProvider.Date(Arg.Any<DateRange>()).Returns(dateRangeService);
             appConfig.ExportDataDirectory.Returns(@"\\10.70.70.242\www\Olympus\Fanex.Excel\BettypeWith3rdProducts");
+
+            var dataSource = CreateDataSource();
+            dataService.Execute().Returns(dataSource);
         }
 
         [Test]
@@ -39,8 +42,6 @@ namespace BettypeWith3rdProducts.UnitTests.Services
         {
             // Arrange
             InitializeSubstitute();
-            var dataSource = CreateDataSource();
-            dataService.Execute().Returns(dataSource);          
 
             // Act
             var service = new ExcelServiceImp(excelPackage, appConfig, dataService, dateRangeServiceProvider, excelHeaderService);
@@ -48,7 +49,37 @@ namespace BettypeWith3rdProducts.UnitTests.Services
 
             // Assert
             Assert.That(File.Exists(result));
+        }
+
+        [Test]
+        public void ExcelService_Always_NumberOfSheetsAre4()
+        {
+            // Arrange
+            InitializeSubstitute();
+
+            // Act
+            var service = new ExcelServiceImp(excelPackage, appConfig, dataService, dateRangeServiceProvider, excelHeaderService);
+            var result = service.Execute();
+
+            // Assert
             Assert.That(excelPackage.Workbook.Worksheets.Count == 4);
+        }
+
+        [Test]
+        public void ExcelService_Always_RenderRightDateRange()
+        {
+            // Arrange
+            InitializeSubstitute();
+            var expected = "MIS_Bettype with 3rd products From 01/01/2017 To 01/31/2017";
+
+            // Act
+            var service = new ExcelServiceImp(excelPackage, appConfig, dataService, dateRangeServiceProvider, excelHeaderService);
+            service.Execute();
+            var sheet = excelPackage.Workbook.Worksheets[1];
+            var result = sheet.Cells["B2"].Value.ToString();
+
+            // Assert
+            Assert.That(result.Equals(expected));
         }
 
         private Dictionary<string, Dictionary<string, List<DataTable>>> CreateDataSource()

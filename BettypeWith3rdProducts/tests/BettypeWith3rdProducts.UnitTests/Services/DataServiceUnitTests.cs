@@ -11,23 +11,30 @@ namespace BettypeWith3rdProducts.UnitTests.Services
     [Category("BettypeWith3rdProducts.UnitTests.Services DataServiceUnitTests")]
     public class DataServiceUnitTests
     {
+        private ApplicationConfigurationService appConfig;
+        private SportSplitterService sportSplitterService;
+        private RepositoryService repositoryService;
+
+        private void InitializeSubstitute()
+        {
+            appConfig = Substitute.For<ApplicationConfigurationService>();
+            sportSplitterService = Substitute.For<SportSplitterService>();
+            repositoryService = Substitute.For<RepositoryService>();
+        }
+
         [Test]
         public void Execute_Always_ReturnRightData()
         {
             // Arrange
+            InitializeSubstitute();
             var sourceMappings = TestLoader.DataLoader<List<SourceMapping>>("SourceMapping.json");
-            var appConfig = Substitute.For<ApplicationConfigurationService>();
             appConfig.SourceMappings.Returns(sourceMappings);
-
             var dataSource = CreateDataSource();
-            var dataSplitterService = Substitute.For<SportSplitterService>();
-            dataSplitterService.Execute(Arg.Any<SourceMapping>()).Returns(dataSource);
-            var repositoryService = Substitute.For<RepositoryService>();
-
+            sportSplitterService.Execute(Arg.Any<SourceMapping>()).Returns(dataSource);
             var expected = CreateExpected();
 
             // Act
-            var service = new DataServiceImp(appConfig, dataSplitterService, repositoryService);
+            var service = new DataServiceImp(appConfig, sportSplitterService, repositoryService);
             var result = service.Execute();
 
             // Assert
@@ -54,6 +61,38 @@ namespace BettypeWith3rdProducts.UnitTests.Services
                 { "Real Juice & Leftover",  dataSource },
                 { "Virtual Juice & Leftover",  dataSource }
             };
+        }
+
+        [Test]
+        public void IsDataAvailable_DateRangeIsManual_AlwaysReturnTrue()
+        {
+            // Arrange
+            InitializeSubstitute();
+            appConfig.ReportType.Returns(DateRange.Manual);
+            var expected = true;
+
+            // Act
+            var service = new DataServiceImp(appConfig, sportSplitterService, repositoryService);
+            var result = service.IsDataAvailable();
+
+            // Assert
+            Assert.That(result == expected);
+        }
+
+        [Test]
+        public void IsDataAvailable_IsNotCheckEnoughData_AlwaysReturnTrue()
+        {
+            // Arrange
+            InitializeSubstitute();
+            appConfig.IsCheckEnoughData.Returns(false);
+            var expected = true;
+
+            // Act
+            var service = new DataServiceImp(appConfig, sportSplitterService, repositoryService);
+            var result = service.IsDataAvailable();
+
+            // Assert
+            Assert.That(result == expected);
         }
     }
 }
