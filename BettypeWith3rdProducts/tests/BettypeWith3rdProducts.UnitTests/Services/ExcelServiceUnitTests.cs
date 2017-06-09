@@ -38,20 +38,6 @@ namespace BettypeWith3rdProducts.UnitTests.Services
         }
 
         [Test]
-        public void ExcelService_Always_ExportSuccessfully()
-        {
-            // Arrange
-            InitializeSubstitute();
-
-            // Act
-            var service = new ExcelServiceImp(excelPackage, appConfig, dataService, dateRangeServiceProvider, excelHeaderService);
-            var result = service.Execute();
-
-            // Assert
-            Assert.That(File.Exists(result));
-        }
-
-        [Test]
         public void ExcelService_Always_NumberOfSheetsAre4()
         {
             // Arrange
@@ -59,7 +45,7 @@ namespace BettypeWith3rdProducts.UnitTests.Services
 
             // Act
             var service = new ExcelServiceImp(excelPackage, appConfig, dataService, dateRangeServiceProvider, excelHeaderService);
-            var result = service.Execute();
+            service.Execute();
 
             // Assert
             Assert.That(excelPackage.Workbook.Worksheets.Count == 4);
@@ -102,6 +88,6 @@ namespace BettypeWith3rdProducts.UnitTests.Services
             dataTable.Columns.Add("HDP@#@WL");
 
             return dataTable;
-        }
+        }      
     }
 }

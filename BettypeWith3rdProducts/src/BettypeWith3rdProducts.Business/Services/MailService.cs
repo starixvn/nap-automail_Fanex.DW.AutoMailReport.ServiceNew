@@ -30,7 +30,8 @@ namespace BettypeWith3rdProducts.Business.Services
 
         public Mail Execute()
         {
-            var fileName = excelService.Execute();
+            excelService.Execute();
+            var fileName = excelService.Save();
             if (appConfig.FunctionIdWithoutAttachment > 0)
             {
                 var mail = mailContentBuilder.ReadContentWithoutAttachment(fileName);

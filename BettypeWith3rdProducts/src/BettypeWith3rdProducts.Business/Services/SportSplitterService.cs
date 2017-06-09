@@ -14,7 +14,6 @@ namespace BettypeWith3rdProducts.Business.Services
     public class SportSplitterServiceImp : SportSplitterService
     {
         private readonly RepositoryService repositoryService;
-        private readonly int numberOfColumnsOnEachSection = 70;
         private readonly int firstIndexSportSection;
 
         public SportSplitterServiceImp(RepositoryService repositoryService)
@@ -22,6 +21,8 @@ namespace BettypeWith3rdProducts.Business.Services
             this.repositoryService = repositoryService;
             firstIndexSportSection = 0;
         }
+
+        public virtual int NumberOfColumnsOnEachSection => 70;
 
         public Dictionary<string, List<DataTable>> Execute(SourceMapping sourceMapping)
         {
@@ -64,12 +65,12 @@ namespace BettypeWith3rdProducts.Business.Services
                 if (indexOfSportSection == firstIndexSportSection)
                 {
                     beginColumnIndex = 1;
-                    endColumnIndex = numberOfColumnsOnEachSection + 1;
+                    endColumnIndex = NumberOfColumnsOnEachSection + 1;
                 }
                 else
                 {
                     beginColumnIndex = endColumnIndex - lastRemovedIndex;
-                    endColumnIndex = beginColumnIndex + numberOfColumnsOnEachSection;
+                    endColumnIndex = beginColumnIndex + NumberOfColumnsOnEachSection;
                 }
 
                 endColumnIndex = endColumnIndex > value.Columns.Count ? value.Columns.Count : endColumnIndex;
@@ -141,8 +142,8 @@ namespace BettypeWith3rdProducts.Business.Services
         private int GetNumberOfSections(DataTable value)
         {
             var columnCount = value.Columns.Count;
-            var numberOfSections = columnCount / numberOfColumnsOnEachSection;
-            numberOfSections = columnCount % numberOfColumnsOnEachSection > 0
+            var numberOfSections = columnCount / NumberOfColumnsOnEachSection;
+            numberOfSections = columnCount % NumberOfColumnsOnEachSection > 0
                 ? numberOfSections + 1
                 : numberOfSections;
 

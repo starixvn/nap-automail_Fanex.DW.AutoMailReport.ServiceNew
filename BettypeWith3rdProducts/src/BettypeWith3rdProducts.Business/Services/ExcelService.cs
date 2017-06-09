@@ -10,7 +10,9 @@ namespace BettypeWith3rdProducts.Business.Services
 {
     public interface ExcelService
     {
-        string Execute();
+        void Execute();
+
+        string Save();
     }
 
     public class ExcelServiceImp : ExcelService
@@ -39,7 +41,7 @@ namespace BettypeWith3rdProducts.Business.Services
             dataTemplate = excelPackage.Workbook.Worksheets["Data"];
         }
 
-        public string Execute()
+        public void Execute()
         {
             var dataSource = dataService.Execute();
             foreach (var dataOnSheet in dataSource)
@@ -52,8 +54,7 @@ namespace BettypeWith3rdProducts.Business.Services
                 ExportData(excelWorksheet, sports);
             }
 
-            ClearnUpTemplate();
-            return Save();
+            ClearnUpTemplate();            
         }
 
         private void ExportData(ExcelWorksheet excelWorksheet, Dictionary<string, List<DataTable>> sports)
@@ -146,14 +147,11 @@ namespace BettypeWith3rdProducts.Business.Services
             excelWorksheet.View.FreezePanes(rowIndex, 3);
         }
 
-        private string Save()
+        public string Save()
         {
             var folder = $@"{SystemTime.Now:yyyy}\{SystemTime.Now:MM}";
             var root = $@"{appConfig.ExportDataDirectory}\{folder}";
-            if (!Directory.Exists(root))
-            {
-                Directory.CreateDirectory(root);
-            }
+            Directory.CreateDirectory(root);
 
             var fileName = $@"{root}\Bettype_With_3rd_Products_Monthly_Winloss_For_{SystemTime.Now:yyyy_MM_dd}.xlsx";
             excelPackage.SaveAs(new FileInfo(fileName), appConfig.ExcelPasswordProtected);

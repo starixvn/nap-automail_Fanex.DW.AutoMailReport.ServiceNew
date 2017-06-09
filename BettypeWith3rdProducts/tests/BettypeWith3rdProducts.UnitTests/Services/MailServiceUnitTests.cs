@@ -32,7 +32,7 @@ namespace BettypeWith3rdProducts.UnitTests.Services
             // Arrange
             InitializeSubstitute();
             appConfig.FunctionIdWithoutAttachment.Returns(10);
-            excelService.Execute().Returns(fileName);
+            excelService.Save().Returns(fileName);
 
             // Act
             var service = new MailServiceImp(excelService, mailContentBuilder, mailStationService, appConfig);
@@ -47,7 +47,7 @@ namespace BettypeWith3rdProducts.UnitTests.Services
         {
             // Arrange
             InitializeSubstitute();
-            excelService.Execute().Returns(fileName);
+            excelService.Save().Returns(fileName);
 
             // Act
             var service = new MailServiceImp(excelService, mailContentBuilder, mailStationService, appConfig);

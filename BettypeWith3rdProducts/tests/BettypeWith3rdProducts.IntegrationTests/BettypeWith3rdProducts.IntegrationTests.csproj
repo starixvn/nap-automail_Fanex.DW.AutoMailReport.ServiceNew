@@ -134,6 +134,7 @@
     <Compile Include="FanexDataRegisterService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DistributedNotificationServiceTests.cs" />
+    <Compile Include="Services\LogServiceTests.cs" />
     <Compile Include="Services\MailStationServiceTests.cs" />
     <Compile Include="SimpleInjectorService.cs" />
     <Compile Include="TestLoader.cs" />

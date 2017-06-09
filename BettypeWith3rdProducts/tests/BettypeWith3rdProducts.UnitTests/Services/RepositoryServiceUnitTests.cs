@@ -98,6 +98,50 @@ namespace BettypeWith3rdProducts.UnitTests.Services
             Assert.That(result, IsDeeplyEqual.To(expected));
         }
 
+        [Test]
+        public void QueryDetailData_DuplicatedSport_ReturnRightData()
+        {
+            // Arrange
+            InitializeSubstitute();
+            dynamicRepository.Fetch<SportType>(Arg.Any<CriteriaBase>()).Returns(new List<SportType>
+            {
+                new SportType { Sport = "Soccer", SportId = 1 },
+                new SportType { Sport = "Soccer", SportId = 1 },
+                new SportType { Sport = "Basketball", SportId = 2 },
+                new SportType { Sport = "Football", SportId = 3 }
+            });
+
+            var expected = CreateDetailData();
+
+            // Act
+            var service = new RepositoryServiceImp(appConfig, dynamicRepository, dateRangeServiceProvider, parameterService, dataSourceService);
+            var result = service.QueryDetailData(new SourceMapping());
+
+            // Assert
+            Assert.That(result, IsDeeplyEqual.To(expected));
+        }
+
+        [Test]
+        public void QueryDetailData_DataTableIsEmpty_ReturnRightData()
+        {
+            // Arrange
+            InitializeSubstitute();
+            dataSourceService.Query(Arg.Any<CriteriaBase>()).Returns(new DataTable());
+            dynamicRepository.Fetch<SportType>(Arg.Any<CriteriaBase>()).Returns(new List<SportType>
+            {
+                new SportType { Sport = "Soccer", SportId = 1 }
+            });
+
+            var expected = 0;
+
+            // Act
+            var service = new RepositoryServiceImp(appConfig, dynamicRepository, dateRangeServiceProvider, parameterService, dataSourceService);
+            var result = service.QueryDetailData(new SourceMapping());
+
+            // Assert
+            Assert.That(result.Count, Is.EqualTo(expected));
+        }
+
         private Dictionary<string, DataTable> CreateDetailData()
         {
             var dataTable = CreateDataTable();

@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using BettypeWith3rdProducts.Business.Models;
 using BettypeWith3rdProducts.Business.Services;
+using BettypeWith3rdProducts.Business.Utility;
 using NSubstitute;
 using NUnit.CompareNetObjects;
 using NUnit.Framework;
@@ -69,6 +71,24 @@ namespace BettypeWith3rdProducts.UnitTests.Services
             // Arrange
             InitializeSubstitute();
             appConfig.ReportType.Returns(DateRange.Manual);
+            appConfig.IsCheckEnoughData.Returns(true);
+            var expected = true;
+
+            // Act
+            var service = new DataServiceImp(appConfig, sportSplitterService, repositoryService);
+            var result = service.IsDataAvailable();
+
+            // Assert
+            Assert.That(result == expected);
+        }
+
+        [Test]
+        public void IsDataAvailable_QueryLastDateLargerThanSystemTime_AlwaysReturnTrue()
+        {
+            // Arrange
+            InitializeSubstitute();
+            appConfig.IsCheckEnoughData.Returns(false);
+            appConfig.ReportType.Returns(DateRange.Daily);
             var expected = true;
 
             // Act
@@ -84,7 +104,10 @@ namespace BettypeWith3rdProducts.UnitTests.Services
         {
             // Arrange
             InitializeSubstitute();
-            appConfig.IsCheckEnoughData.Returns(false);
+            appConfig.IsCheckEnoughData.Returns(true);
+            appConfig.ReportType.Returns(DateRange.Daily);
+            SystemTime.Set(new DateTime(2017, 01, 02));
+            repositoryService.QueryLastDate().Returns(new DateTime(2017, 01, 01));
             var expected = true;
 
             // Act

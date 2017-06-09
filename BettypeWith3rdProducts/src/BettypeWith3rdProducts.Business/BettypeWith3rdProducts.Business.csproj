@@ -136,10 +136,10 @@
     <Compile Include="Models\SourceMapping.cs" />
     <Compile Include="Models\SportType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\BettypeProductCriteria.cs" />
+    <Compile Include="Repositories\BettypeProductCriteria.generated.cs" />
     <Compile Include="Repositories\DataSourceService.cs" />
-    <Compile Include="Repositories\DWStatusByCubeCriteria.cs" />
-    <Compile Include="Repositories\SportCriteria.cs" />
+    <Compile Include="Repositories\DWStatusByCubeCriteria.generated.cs" />
+    <Compile Include="Repositories\SportCriteria.generated.cs" />
     <Compile Include="Services\ApplicationConfigurationService.cs" />
     <Compile Include="Services\DataService.cs" />
     <Compile Include="Services\DistributedNotificationService.cs" />

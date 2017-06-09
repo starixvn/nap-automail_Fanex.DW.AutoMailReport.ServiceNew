@@ -135,13 +135,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="App_Data\PRO\DBDWH.bodb_dwrs.dwrs.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\UAT\DBDWH.bodb_dwrs.dwrs.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Configuration\ConnectionString.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Configuration\ConnectionString.Local.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Configuration\ConnectionString.PRO.config">
+    <Content Include="Configuration\ConnectionString.LIVE.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Configuration\ConnectionString.UAT.config">
@@ -152,6 +158,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Configuration\BettypeWith3rdProducts.Executing.Local.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\BettypeWith3rdProducts.Executing.UAT.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\BettypeWith3rdProducts.Executing.LIVE.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />
