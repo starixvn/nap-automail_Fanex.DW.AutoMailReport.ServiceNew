@@ -1,7 +1,7 @@
 ﻿using System;
 using BettypeWith3rdProducts.Business.Models;
-using BettypeWith3rdProducts.Business.Utility;
 using Fanex.MailDelivery.Core.Models;
+using Fanex.Service.Core;
 
 namespace BettypeWith3rdProducts.Business.Services
 {
@@ -54,7 +54,7 @@ namespace BettypeWith3rdProducts.Business.Services
             }
 
             return jobMessage;
-        }        
+        }
 
         private ExecuteResult SendNotification()
         {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BettypeWith3rdProducts.Business.Utility
+namespace Fanex.Service.Core
 {
     public static class SystemTime
     {

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using BettypeWith3rdProducts.Business.Models;
-using BettypeWith3rdProducts.Business.Repositories;
 using BettypeWith3rdProducts.Business.Services;
 using Fanex.Data.Repository;
+using Fanex.Service.Core;
 using NSubstitute;
 using NUnit.CompareNetObjects;
 using NUnit.Framework;

@@ -70,6 +70,10 @@
       <HintPath>..\..\..\packages\Fanex.MailStation.1.1.0.1\lib\net40\Fanex.MailDelivery.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Fanex.Service.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Fanex.Service.Core.1.0.0.0-beta-03\lib\Fanex.Service.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="KellermanSoftware.Compare-NET-Objects, Version=3.1.0.0, Culture=neutral, PublicKeyToken=d970ace04cc85217, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\CompareNETObjects.3.01.0.0\lib\net451\KellermanSoftware.Compare-NET-Objects.dll</HintPath>
       <Private>True</Private>
@@ -123,6 +127,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />

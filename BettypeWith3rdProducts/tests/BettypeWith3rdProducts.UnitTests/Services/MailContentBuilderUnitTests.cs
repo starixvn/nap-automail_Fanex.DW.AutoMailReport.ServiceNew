@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using BettypeWith3rdProducts.Business.Services;
-using BettypeWith3rdProducts.Business.Utility;
 using Fanex.MailDelivery.Core.Models;
+using Fanex.Service.Core;
 using NSubstitute;
 using NUnit.CompareNetObjects;
 using NUnit.Framework;

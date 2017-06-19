@@ -13,9 +13,9 @@ namespace BettypeWith3rdProducts.IntegrationTests.Services
             // Arrange
             var mail = new Mail
             {
-                Body = "Body Test",
-                Subject = "Subject Test",
-                Title = "Title Test",
+                Body = "Bettype With 3rd Products is running Integration Tests",
+                Subject = "Automail Report - Bettype With 3rd Products",
+                Title = "Auto Generated Report Administrator",
                 MailingListId = 90
             };
 

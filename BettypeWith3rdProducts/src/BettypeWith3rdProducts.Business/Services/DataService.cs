@@ -1,8 +1,8 @@
-﻿using BettypeWith3rdProducts.Business.Models;
-using BettypeWith3rdProducts.Business.Utility;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using BettypeWith3rdProducts.Business.Models;
+using Fanex.Service.Core;
 
 namespace BettypeWith3rdProducts.Business.Services
 {

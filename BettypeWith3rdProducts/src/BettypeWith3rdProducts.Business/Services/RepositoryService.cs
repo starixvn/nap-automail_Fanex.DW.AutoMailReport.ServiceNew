@@ -4,6 +4,7 @@ using System.Data;
 using BettypeWith3rdProducts.Business.Models;
 using BettypeWith3rdProducts.Business.Repositories;
 using Fanex.Data.Repository;
+using Fanex.Service.Core;
 
 namespace BettypeWith3rdProducts.Business.Services
 {
@@ -59,7 +60,7 @@ namespace BettypeWith3rdProducts.Business.Services
                 }
 
                 var dataTable = QueryDataSouce(sourceMapping, appConfig.ReportType, ViewOfData.Detail, sport.SportId);
-                if (dataTable.Columns.Count > 0 && dataTable.Rows.Count > 0)
+                if (dataTable.Rows.Count > 0)
                 {
                     dataSource.Add(sport.Sport, dataTable);
                 }
@@ -71,7 +72,10 @@ namespace BettypeWith3rdProducts.Business.Services
         private void QueryDataByViewOfData(ViewOfData viewOfData, SourceMapping sourceMapping, Dictionary<string, DataTable> dataSource)
         {
             var dataTable = QueryDataSouce(sourceMapping, appConfig.ReportType, viewOfData, 0);
-            dataSource.Add(viewOfData.ToString(), dataTable);
+            if (dataTable.Rows.Count > 0)
+            {
+                dataSource.Add(viewOfData.ToString(), dataTable);
+            }
         }
 
         private DataTable QueryDataSouce(SourceMapping sourceMapping, DateRange dateRange, ViewOfData viewOfData, int sportId)

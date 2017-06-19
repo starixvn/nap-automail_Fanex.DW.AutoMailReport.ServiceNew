@@ -1,9 +1,9 @@
 ﻿using System.Configuration;
 using System.IO;
-using BettypeWith3rdProducts.Business.Repositories;
 using BettypeWith3rdProducts.Business.Services;
 using BettypeWith3rdProducts.BusinessSubstitute;
 using Fanex.Data.Repository;
+using Fanex.Service.Core;
 using OfficeOpenXml;
 using SimpleInjector;
 

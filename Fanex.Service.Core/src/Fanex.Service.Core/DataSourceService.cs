@@ -2,7 +2,7 @@
 using Fanex.Data;
 using Fanex.Data.Repository;
 
-namespace BettypeWith3rdProducts.Business.Repositories
+namespace Fanex.Service.Core
 {
     public interface DataSourceService
     {

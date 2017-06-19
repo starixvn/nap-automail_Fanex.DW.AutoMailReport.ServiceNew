@@ -1,6 +1,7 @@
 ﻿using System;
 using BettypeWith3rdProducts.Business.Repositories;
 using BettypeWith3rdProducts.Business.Services;
+using Fanex.Service.Core;
 using NUnit.Framework;
 using SimpleInjector;
 

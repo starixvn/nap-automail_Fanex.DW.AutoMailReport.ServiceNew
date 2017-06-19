@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using BettypeWith3rdProducts.Business.Models;
 using BettypeWith3rdProducts.Business.Services;
-using BettypeWith3rdProducts.Business.Utility;
+using Fanex.Service.Core;
 using NSubstitute;
 using NUnit.CompareNetObjects;
 using NUnit.Framework;

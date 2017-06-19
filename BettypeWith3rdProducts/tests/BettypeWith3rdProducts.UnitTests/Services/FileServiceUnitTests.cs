@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using BettypeWith3rdProducts.Business.Services;
-using BettypeWith3rdProducts.Business.Utility;
+using Fanex.Service.Core;
 using NSubstitute;
 using NUnit.Framework;
 

@@ -2,8 +2,8 @@
 using System.Data;
 using System.IO;
 using System.Linq;
-using BettypeWith3rdProducts.Business.Utility;
 using Fanex.Common;
+using Fanex.Service.Core;
 using OfficeOpenXml;
 
 namespace BettypeWith3rdProducts.Business.Services
@@ -54,7 +54,7 @@ namespace BettypeWith3rdProducts.Business.Services
                 ExportData(excelWorksheet, sports);
             }
 
-            ClearnUpTemplate();            
+            ClearnUpTemplate();
         }
 
         private void ExportData(ExcelWorksheet excelWorksheet, Dictionary<string, List<DataTable>> sports)

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using BettypeWith3rdProducts.Business.Utility;
 using Fanex.MailDelivery.Core.Models;
+using Fanex.Service.Core;
 
 namespace BettypeWith3rdProducts.Business.Services
 {
