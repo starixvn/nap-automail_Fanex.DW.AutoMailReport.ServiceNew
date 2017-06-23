@@ -17,6 +17,7 @@ namespace BettypeWith3rdProducts.DatabaseTests
             container.Register<ParameterService, ParameterServiceImp>();
             container.Register<ApplicationConfigurationService, ApplicationConfigurationServiceImp>();
             container.Register<RepositoryService, RepositoryServiceImp>();
+            container.Register<RepositoryBettypeProductService, RepositoryServiceImp>();
             container.Register<DataSourceService, DataSourceServiceImp>();
             container.Register<SportSplitterService, SportSplitterServiceImp>();
             container.Register<ExcelService, ExcelServiceImp>();

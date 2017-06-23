@@ -77,7 +77,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Service.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Fanex.Service.Core.1.0.0.0-beta-03\lib\Fanex.Service.Core.dll</HintPath>
+      <HintPath>..\..\..\packages\Fanex.Service.Core.1.0.0.0-beta-06\lib\Fanex.Service.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -134,8 +134,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Enums.cs" />
-    <Compile Include="Models\ExecuteResult.cs" />
-    <Compile Include="Models\LastDateModel.cs" />
     <Compile Include="Models\Parameter.cs" />
     <Compile Include="Models\SourceMapping.cs" />
     <Compile Include="Models\SportType.cs" />
@@ -145,14 +143,11 @@
     <Compile Include="Repositories\SportCriteria.generated.cs" />
     <Compile Include="Services\ApplicationConfigurationService.cs" />
     <Compile Include="Services\DataService.cs" />
-    <Compile Include="Services\DistributedNotificationService.cs" />
     <Compile Include="Services\ExcelHeaderService.cs" />
     <Compile Include="Services\ExcelService.cs" />
     <Compile Include="Services\FileService.cs" />
-    <Compile Include="Services\LogService.cs" />
     <Compile Include="Services\MailContentBuilder.cs" />
     <Compile Include="Services\MailService.cs" />
-    <Compile Include="Services\MailStationService.cs" />
     <Compile Include="Services\RepositoryService.cs" />
     <Compile Include="Services\SportSplitterService.cs" />
     <Compile Include="Services\DateRangeDailyServiceImp.cs" />

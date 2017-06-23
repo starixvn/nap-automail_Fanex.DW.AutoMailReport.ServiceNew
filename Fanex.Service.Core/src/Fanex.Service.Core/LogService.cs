@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using Fanex.Logging;
 
-namespace BettypeWith3rdProducts.Business.Services
+namespace Fanex.Service.Core
 {
     public interface LogService
     {

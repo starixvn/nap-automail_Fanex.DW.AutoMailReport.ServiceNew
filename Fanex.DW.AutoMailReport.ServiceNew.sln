@@ -51,6 +51,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.Service.Core.Database
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.Service.Core.UnitTests", "Fanex.Service.Core\tests\Fanex.Service.Core.UnitTests\Fanex.Service.Core.UnitTests.csproj", "{64D02526-7020-4A7F-8ECC-2C60192FEADC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BettypeWith3rdProducts.Executing", "BettypeWith3rdProducts\src\BettypeWith3rdProducts.Executing\BettypeWith3rdProducts.Executing.csproj", "{34524CF7-305E-4B3E-9C8E-298735DFBE79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastMarketWeeklyPerformance.Executing", "FastMarketWeeklyPerformance\src\FastMarketWeeklyPerformance.Executing\FastMarketWeeklyPerformance.Executing.csproj", "{9E437748-3E22-490A-A5A1-08050E007B20}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +109,14 @@ Global
 		{64D02526-7020-4A7F-8ECC-2C60192FEADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64D02526-7020-4A7F-8ECC-2C60192FEADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64D02526-7020-4A7F-8ECC-2C60192FEADC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34524CF7-305E-4B3E-9C8E-298735DFBE79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34524CF7-305E-4B3E-9C8E-298735DFBE79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34524CF7-305E-4B3E-9C8E-298735DFBE79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34524CF7-305E-4B3E-9C8E-298735DFBE79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E437748-3E22-490A-A5A1-08050E007B20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E437748-3E22-490A-A5A1-08050E007B20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E437748-3E22-490A-A5A1-08050E007B20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E437748-3E22-490A-A5A1-08050E007B20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -128,5 +140,7 @@ Global
 		{DE9D60A8-E148-4EC6-9196-33A207C16584} = {7E659E79-3BFE-4EC3-A1CC-7B7E46886476}
 		{FF030F6F-2110-49C5-BBA7-AE5B36610E35} = {DDD2F023-9BBE-4F17-A945-C912EE96A964}
 		{64D02526-7020-4A7F-8ECC-2C60192FEADC} = {DDD2F023-9BBE-4F17-A945-C912EE96A964}
+		{34524CF7-305E-4B3E-9C8E-298735DFBE79} = {3F2C5010-29D6-4CA0-A32D-AB6B459718B0}
+		{9E437748-3E22-490A-A5A1-08050E007B20} = {BC13045A-988F-4393-BC23-8CE5AAA083C2}
 	EndGlobalSection
 EndGlobal

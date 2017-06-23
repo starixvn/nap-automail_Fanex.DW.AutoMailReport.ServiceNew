@@ -71,7 +71,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Service.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Fanex.Service.Core.1.0.0.0-beta-03\lib\Fanex.Service.Core.dll</HintPath>
+      <HintPath>..\..\..\packages\Fanex.Service.Core.1.0.0.0-beta-06\lib\Fanex.Service.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="KellermanSoftware.Compare-NET-Objects, Version=3.1.0.0, Culture=neutral, PublicKeyToken=d970ace04cc85217, processorArchitecture=MSIL">
@@ -148,7 +148,6 @@
     <Compile Include="Services\DateRangeDailyServiceUnitTests.cs" />
     <Compile Include="Services\DateRangeManualServiceUnitTests.cs" />
     <Compile Include="Services\DateRangeServiceProviderUnitTests.cs" />
-    <Compile Include="Services\DistributedNotificationServiceUnitTests.cs" />
     <Compile Include="Services\DWStatusByCubeCriteriaUnitTests.cs" />
     <Compile Include="Services\ExcelHeaderServiceUnitTests.cs" />
     <Compile Include="Services\ExcelServiceUnitTests.cs" />
@@ -210,6 +209,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\BettypeWith3rdProducts.BusinessSubstitute\BettypeWith3rdProducts.BusinessSubstitute.csproj">
+      <Project>{22fdfe27-9c27-474c-a5e6-39362090b201}</Project>
+      <Name>BettypeWith3rdProducts.BusinessSubstitute</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\BettypeWith3rdProducts.Business\BettypeWith3rdProducts.Business.csproj">
       <Project>{82b059de-9ed6-45b8-8c90-5aef354e6e6e}</Project>
       <Name>BettypeWith3rdProducts.Business</Name>

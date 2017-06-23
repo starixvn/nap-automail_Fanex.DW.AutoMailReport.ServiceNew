@@ -1,6 +1,6 @@
 ﻿using Fanex.MailDelivery.Core.Models;
 
-namespace FastMarketWeeklyPerformance.Business.Models
+namespace Fanex.Service.Core
 {
     public class ExecuteResult
     {

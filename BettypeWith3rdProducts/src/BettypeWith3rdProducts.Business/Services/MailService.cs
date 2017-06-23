@@ -1,14 +1,8 @@
 ﻿using Fanex.MailDelivery.Core.Models;
+using Fanex.Service.Core;
 
 namespace BettypeWith3rdProducts.Business.Services
 {
-    public interface MailService
-    {
-        Mail Execute();
-
-        void SendMailWhenDataIsNotReady();
-    }
-
     public class MailServiceImp : MailService
     {
         private readonly ExcelService excelService;

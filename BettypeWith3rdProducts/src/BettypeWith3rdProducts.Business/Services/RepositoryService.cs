@@ -8,16 +8,14 @@ using Fanex.Service.Core;
 
 namespace BettypeWith3rdProducts.Business.Services
 {
-    public interface RepositoryService
+    public interface RepositoryBettypeProductService
     {
         Dictionary<string, DataTable> QueryGeneralData(SourceMapping sourceMapping);
 
-        Dictionary<string, DataTable> QueryDetailData(SourceMapping sourceMapping);
-
-        DateTime QueryLastDate();
+        Dictionary<string, DataTable> QueryDetailData(SourceMapping sourceMapping);       
     }
 
-    public class RepositoryServiceImp : RepositoryService
+    public class RepositoryServiceImp : RepositoryService, RepositoryBettypeProductService
     {
         private readonly ApplicationConfigurationService appConfig;
         private readonly IDynamicRepository dynamicRepository;
@@ -103,6 +101,18 @@ namespace BettypeWith3rdProducts.Business.Services
         public DateTime QueryLastDate()
         {
             return dynamicRepository.Get<LastDateModel>(new DWStatusByCubeCriteria()).LastDate;
+        }
+
+        public bool IsDataAvailable()
+        {
+            if (appConfig.ReportType == DateRange.Manual || !appConfig.IsCheckEnoughData)
+            {
+                return true;
+            }
+
+            var result = QueryLastDate() >= Convert.ToDateTime(SystemTime.Now.AddDays(-1).ToShortDateString());
+
+            return result;
         }
     }
 }

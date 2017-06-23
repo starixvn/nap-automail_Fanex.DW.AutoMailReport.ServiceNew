@@ -1,24 +1,22 @@
 ﻿using System;
-using BettypeWith3rdProducts.Business.Services;
 using Fanex.MailDelivery.Core.Models;
-using Fanex.Service.Core;
 using NSubstitute;
 using NUnit.Framework;
 
-namespace BettypeWith3rdProducts.UnitTests.Services
+namespace Fanex.Service.Core.UnitTests
 {
-    [Category("BettypeWith3rdProducts.UnitTests.Services DistributedNotificationServiceUnitTests")]
+    [Category("Fanex.Service.Core.UnitTests DistributedNotificationServiceUnitTests")]
     public class DistributedNotificationServiceUnitTests
     {
         private MailService mailService;
         private LogService logService;
-        private DataService dataService;
+        private RepositoryService repositoryService;
 
         private void InitializeSubstitute()
         {
             mailService = Substitute.For<MailService>();
             logService = Substitute.For<LogService>();
-            dataService = Substitute.For<DataService>();
+            repositoryService = Substitute.For<RepositoryService>();
         }
 
         [Test]
@@ -26,10 +24,10 @@ namespace BettypeWith3rdProducts.UnitTests.Services
         {
             // Arrange
             InitializeSubstitute();
-            dataService.IsDataAvailable().Returns(false);
+            repositoryService.IsDataAvailable().Returns(false);
 
             // Act
-            var service = new DistributedNotificationServiceImp(mailService, logService, dataService);
+            var service = new DistributedNotificationServiceImp(mailService, logService, repositoryService);
             service.Execute();
 
             // Assert
@@ -41,11 +39,11 @@ namespace BettypeWith3rdProducts.UnitTests.Services
         {
             // Arrange
             InitializeSubstitute();
-            dataService.IsDataAvailable().Returns(false);
+            repositoryService.IsDataAvailable().Returns(false);
             var expected = JobStatus.DataIsNotReady;
 
             // Act
-            var service = new DistributedNotificationServiceImp(mailService, logService, dataService);
+            var service = new DistributedNotificationServiceImp(mailService, logService, repositoryService);
             var result = service.Execute().JobStatus;
 
             // Assert
@@ -57,10 +55,10 @@ namespace BettypeWith3rdProducts.UnitTests.Services
         {
             // Arrange
             InitializeSubstitute();
-            dataService.IsDataAvailable().Returns(true);
+            repositoryService.IsDataAvailable().Returns(true);
 
             // Act
-            var service = new DistributedNotificationServiceImp(mailService, logService, dataService);
+            var service = new DistributedNotificationServiceImp(mailService, logService, repositoryService);
             service.Execute();
 
             // Assert
@@ -72,11 +70,11 @@ namespace BettypeWith3rdProducts.UnitTests.Services
         {
             // Arrange
             InitializeSubstitute();
-            dataService.IsDataAvailable().Returns(true);
+            repositoryService.IsDataAvailable().Returns(true);
             var expected = JobStatus.Success;
 
             // Act
-            var service = new DistributedNotificationServiceImp(mailService, logService, dataService);
+            var service = new DistributedNotificationServiceImp(mailService, logService, repositoryService);
             var result = service.Execute().JobStatus;
 
             // Assert
@@ -88,14 +86,14 @@ namespace BettypeWith3rdProducts.UnitTests.Services
         {
             // Arrange
             InitializeSubstitute();
-            dataService.IsDataAvailable().Returns(x => { throw new Exception(); });
+            repositoryService.IsDataAvailable().Returns(x => { throw new Exception(); });
 
             // Act
-            var service = new DistributedNotificationServiceImp(mailService, logService, dataService);
+            var service = new DistributedNotificationServiceImp(mailService, logService, repositoryService);
             service.Execute();
 
             // Assert
-            Assert.Throws<Exception>(() => dataService.IsDataAvailable());
+            Assert.Throws<Exception>(() => repositoryService.IsDataAvailable());
         }
 
         [Test]
@@ -103,10 +101,10 @@ namespace BettypeWith3rdProducts.UnitTests.Services
         {
             // Arrange
             InitializeSubstitute();
-            dataService.IsDataAvailable().Returns(x => { throw new Exception(); });
+            repositoryService.IsDataAvailable().Returns(x => { throw new Exception(); });
 
             // Act
-            var service = new DistributedNotificationServiceImp(mailService, logService, dataService);
+            var service = new DistributedNotificationServiceImp(mailService, logService, repositoryService);
             service.Execute();
 
             // Assert

@@ -2,6 +2,7 @@
 using System.IO;
 using BettypeWith3rdProducts.Business.Services;
 using Fanex.MailDelivery.Core.Models;
+using Fanex.Service.Core;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -15,7 +16,7 @@ namespace BettypeWith3rdProducts.UnitTests.Services
         private ExcelService excelService;
         private MailContentBuilder mailContentBuilder;
         private MailStationService mailStationService;
-        private ApplicationConfigurationService appConfig;        
+        private ApplicationConfigurationService appConfig;
 
         private void InitializeSubstitute()
         {

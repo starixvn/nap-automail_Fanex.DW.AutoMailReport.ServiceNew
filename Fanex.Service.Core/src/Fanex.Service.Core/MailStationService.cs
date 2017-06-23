@@ -1,7 +1,7 @@
 ﻿using Fanex.MailDelivery.Client;
 using Fanex.MailDelivery.Core.Models;
 
-namespace FastMarketWeeklyPerformance.Business.Services
+namespace Fanex.Service.Core
 {
     public interface MailStationService
     {

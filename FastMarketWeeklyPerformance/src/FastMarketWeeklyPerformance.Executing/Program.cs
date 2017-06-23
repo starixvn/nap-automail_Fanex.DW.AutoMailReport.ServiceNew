@@ -1,5 +1,5 @@
 ﻿using System;
-using FastMarketWeeklyPerformance.Business.Services;
+using Fanex.Service.Core;
 using Newtonsoft.Json;
 using SimpleInjector;
 

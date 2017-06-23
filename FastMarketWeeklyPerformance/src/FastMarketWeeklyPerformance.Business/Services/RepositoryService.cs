@@ -6,13 +6,6 @@ using FastMarketWeeklyPerformance.Business.Repositories;
 
 namespace FastMarketWeeklyPerformance.Business.Services
 {
-    public interface RepositoryService
-    {
-        DateTime QueryLastDate();
-
-        bool IsDataAvailable();
-    }
-
     public class RepositoryServiceImp : RepositoryService
     {
         private readonly IDynamicRepository dynamicRepository;

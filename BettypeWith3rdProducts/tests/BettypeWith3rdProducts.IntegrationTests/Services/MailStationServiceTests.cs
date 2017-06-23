@@ -1,5 +1,5 @@
-﻿using BettypeWith3rdProducts.Business.Services;
-using Fanex.MailDelivery.Core.Models;
+﻿using Fanex.MailDelivery.Core.Models;
+using Fanex.Service.Core;
 using NUnit.Framework;
 
 namespace BettypeWith3rdProducts.IntegrationTests.Services

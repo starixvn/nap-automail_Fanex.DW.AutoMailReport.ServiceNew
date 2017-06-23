@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BettypeWith3rdProducts.Business.Models
+namespace Fanex.Service.Core
 {
     public class LastDateModel
     {

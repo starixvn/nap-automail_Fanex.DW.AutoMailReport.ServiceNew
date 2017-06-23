@@ -1,9 +1,7 @@
 ﻿using System;
-using BettypeWith3rdProducts.Business.Models;
 using Fanex.MailDelivery.Core.Models;
-using Fanex.Service.Core;
 
-namespace BettypeWith3rdProducts.Business.Services
+namespace Fanex.Service.Core
 {
     public interface DistributedNotificationService
     {
@@ -14,13 +12,13 @@ namespace BettypeWith3rdProducts.Business.Services
     {
         private readonly MailService mailService;
         private readonly LogService logService;
-        private readonly DataService dataService;
+        private readonly RepositoryService repositoryService;
 
-        public DistributedNotificationServiceImp(MailService mailService, LogService logService, DataService dataService)
+        public DistributedNotificationServiceImp(MailService mailService, LogService logService, RepositoryService repositoryService)
         {
             this.mailService = mailService;
             this.logService = logService;
-            this.dataService = dataService;
+            this.repositoryService = repositoryService;
         }
 
         public JobMessage Execute()
@@ -31,11 +29,11 @@ namespace BettypeWith3rdProducts.Business.Services
             {
                 result = SendNotification();
             }
-            catch (Exception e)
+            catch (Exception exception)
             {
                 result.Success = false;
-                result.Message = e.Message;
-                logService.Log(e);
+                result.Message = exception.Message;
+                logService.Log(exception);
             }
             finally
             {
@@ -58,7 +56,7 @@ namespace BettypeWith3rdProducts.Business.Services
 
         private ExecuteResult SendNotification()
         {
-            if (!dataService.IsDataAvailable())
+            if (!repositoryService.IsDataAvailable())
             {
                 mailService.SendMailWhenDataIsNotReady();
                 return new ExecuteResult { Success = false, Message = "DataIsNotReady" };

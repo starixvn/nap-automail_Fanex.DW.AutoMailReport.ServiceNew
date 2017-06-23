@@ -16,7 +16,7 @@ namespace BettypeWith3rdProducts.UnitTests.Services
         public void Execute_SplitSportIntoManySections_ReturnRightData()
         {
             // Arrange
-            var repositoryService = Substitute.For<RepositoryService>();
+            var repositoryService = Substitute.For<RepositoryBettypeProductService>();
             var generalData = CreateGeneralData();
             var detailData = CreateDetailData();
             repositoryService.QueryGeneralData(Arg.Any<SourceMapping>()).Returns(generalData);
@@ -54,7 +54,7 @@ namespace BettypeWith3rdProducts.UnitTests.Services
         public void Execute_RemoveRedundantBettypes_ReturnRightData()
         {
             // Arrange
-            var repositoryService = Substitute.For<RepositoryService>();
+            var repositoryService = Substitute.For<RepositoryBettypeProductService>();
             var generalData = CreateGeneralData();
             var detailData = CreateDetailData();
             repositoryService.QueryGeneralData(Arg.Any<SourceMapping>()).Returns(generalData);

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using BettypeWith3rdProducts.Business.Models;
 using BettypeWith3rdProducts.Business.Services;
+using BettypeWith3rdProducts.BusinessSubstitute;
 using Fanex.Service.Core;
 using NSubstitute;
 using NUnit.CompareNetObjects;
@@ -70,8 +72,7 @@ namespace BettypeWith3rdProducts.UnitTests.Services
         {
             // Arrange
             InitializeSubstitute();
-            appConfig.ReportType.Returns(DateRange.Manual);
-            appConfig.IsCheckEnoughData.Returns(true);
+            repositoryService.IsDataAvailable().Returns(true);
             var expected = true;
 
             // Act
@@ -83,39 +84,31 @@ namespace BettypeWith3rdProducts.UnitTests.Services
         }
 
         [Test]
-        public void IsDataAvailable_QueryLastDateLargerThanSystemTime_AlwaysReturnTrue()
+        public void IsDataAvailable_Substitute_AlwaysReturnTrue()
         {
             // Arrange
-            InitializeSubstitute();
-            appConfig.IsCheckEnoughData.Returns(false);
-            appConfig.ReportType.Returns(DateRange.Daily);
             var expected = true;
 
             // Act
-            var service = new DataServiceImp(appConfig, sportSplitterService, repositoryService);
+            var service = new DataServiceSubstitute();
             var result = service.IsDataAvailable();
 
             // Assert
-            Assert.That(result == expected);
+            Assert.That(result, Is.EqualTo(expected));
         }
 
         [Test]
-        public void IsDataAvailable_IsNotCheckEnoughData_AlwaysReturnTrue()
+        public void Execute_Substitute_AlwaysReturnRightData()
         {
             // Arrange
-            InitializeSubstitute();
-            appConfig.IsCheckEnoughData.Returns(true);
-            appConfig.ReportType.Returns(DateRange.Daily);
-            SystemTime.Set(new DateTime(2017, 01, 02));
-            repositoryService.QueryLastDate().Returns(new DateTime(2017, 01, 01));
-            var expected = true;
+            Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
 
             // Act
-            var service = new DataServiceImp(appConfig, sportSplitterService, repositoryService);
-            var result = service.IsDataAvailable();
+            var service = new DataServiceSubstitute();
+            var result = service.Execute();
 
             // Assert
-            Assert.That(result == expected);
+            Assert.That(result.Count > 0);
         }
     }
 }

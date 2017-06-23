@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
-using BettypeWith3rdProducts.Business.Models;
 using Fanex.Service.Core;
 
 namespace BettypeWith3rdProducts.Business.Services
@@ -40,14 +38,7 @@ namespace BettypeWith3rdProducts.Business.Services
 
         public bool IsDataAvailable()
         {
-            if (appConfig.ReportType == DateRange.Manual || !appConfig.IsCheckEnoughData)
-            {
-                return true;
-            }
-
-            var result = repositoryService.QueryLastDate() >= Convert.ToDateTime(SystemTime.Now.AddDays(-1).ToShortDateString());
-
-            return result;
+            return repositoryService.IsDataAvailable();
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using BettypeWith3rdProducts.Business.Models;
+using Fanex.Service.Core;
 
 namespace BettypeWith3rdProducts.Business.Services
 {
@@ -13,10 +14,10 @@ namespace BettypeWith3rdProducts.Business.Services
 
     public class SportSplitterServiceImp : SportSplitterService
     {
-        private readonly RepositoryService repositoryService;
+        private readonly RepositoryBettypeProductService repositoryService;
         private readonly int firstIndexSportSection;
 
-        public SportSplitterServiceImp(RepositoryService repositoryService)
+        public SportSplitterServiceImp(RepositoryBettypeProductService repositoryService)
         {
             this.repositoryService = repositoryService;
             firstIndexSportSection = 0;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using BettypeWith3rdProducts.Business.Models;
+using BettypeWith3rdProducts.Business.Repositories;
 using BettypeWith3rdProducts.Business.Services;
 using Fanex.Data.Repository;
 using Fanex.Service.Core;
@@ -164,6 +165,24 @@ namespace BettypeWith3rdProducts.UnitTests.Services
             // Act
             var service = new RepositoryServiceImp(appConfig, dynamicRepository, dateRangeServiceProvider, parameterService, dataSourceService);
             var result = service.QueryLastDate();
+
+            // Assert
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void IsDataAvailable_LastDateLargerThanYesterday_ReturnTrue()
+        {
+            // Arrange
+            InitializeSubstitute();
+            SystemTime.Set(new DateTime(2017, 01, 02));
+            dynamicRepository.Get<LastDateModel>(Arg.Any<DWStatusByCubeCriteria>()).Returns(new LastDateModel { LastDate = new DateTime(2017, 01, 01) });
+            appConfig.IsCheckEnoughData.Returns(true);
+            var expected = true;
+
+            // Act
+            var service = new RepositoryServiceImp(appConfig, dynamicRepository, dateRangeServiceProvider, parameterService, dataSourceService);
+            var result = service.IsDataAvailable();
 
             // Assert
             Assert.That(result, Is.EqualTo(expected));

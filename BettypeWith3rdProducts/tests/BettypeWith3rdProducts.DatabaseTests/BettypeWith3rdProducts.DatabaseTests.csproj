@@ -51,7 +51,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Service.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Fanex.Service.Core.1.0.0.0-beta-03\lib\Fanex.Service.Core.dll</HintPath>
+      <HintPath>..\..\..\packages\Fanex.Service.Core.1.0.0.0-beta-06\lib\Fanex.Service.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">

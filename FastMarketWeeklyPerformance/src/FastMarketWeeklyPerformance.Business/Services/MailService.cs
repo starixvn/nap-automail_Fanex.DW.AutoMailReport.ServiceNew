@@ -5,13 +5,6 @@ using FastMarketWeeklyPerformance.Business.Models;
 
 namespace FastMarketWeeklyPerformance.Business.Services
 {
-    public interface MailService
-    {
-        Mail Execute();
-
-        void SendMailWhenDataIsNotReady();
-    }
-
     public class MailServiceImp : MailService
     {
         private readonly FileService fileService;
@@ -30,7 +23,7 @@ namespace FastMarketWeeklyPerformance.Business.Services
         }
 
         public Mail Execute()
-        {            
+        {
             var fileName = excelService.Export().Save();
             var attachments = new List<MailAttachment>
             {
