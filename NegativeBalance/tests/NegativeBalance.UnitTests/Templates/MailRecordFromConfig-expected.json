@@ -1,0 +1,40 @@
+﻿{
+  "MailID": 0,
+  "Config": {
+    "AppID": 0,
+    "AppName": null,
+    "Description": null,
+    "Setting": null,
+    "SettingID": 0,
+    "MailFrom": null,
+    "IsEncrypt": false
+  },
+  "AppID": 0,
+  "FuncID": 0,
+  "Function": {
+    "FuncID": 0,
+    "AppID": 0,
+    "Config": null,
+    "FuncName": null,
+    "Setting": null,
+    "SettingID": 0
+  },
+  "MailTo": "mail.from.config.file@a.com",
+  "Title": "title",
+  "Subject": "Automail Report - 12bet - List of Members with Negative Balance By Match - 01/01/2017 01:01:01 AM",
+  "Body": "body",
+  "MailCc": "",
+  "MailFrom": "",
+  "MailBcc": "",
+  "FileAttachments": null,
+  "Attachments": [],
+  "MailDate": null,
+  "MailUpdatedDate": null,
+  "AlternateView": [],
+  "CountSend": 0,
+  "SentSuccess": 0,
+  "SentFail": 0,
+  "CanRetry": true,
+  "ResentCount": 0,
+  "IsEncrypt": false
+}

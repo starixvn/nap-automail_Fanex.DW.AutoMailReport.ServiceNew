@@ -1,0 +1,373 @@
+﻿
+<div>
+    <div>
+        尊敬的客戶,<br />
+        <br />
+        Dear valued customer,
+        <br />
+        <br />
+        以下列出為可能導致受影響會員的負數餘額。請查看。<br />
+        <br />
+        Here are matches that might have caused negative balance for customers listed below.
+        Please kindly have a check.
+    </div>
+        <br />
+        <br />
+
+<div style="font-weight: bold">
+    賽事 1- Match 1: (试 1 vs 试 2) Test 1 vs Test 2
+</div>
+<br />
+<div>
+    賽事日期 - Event Date: 11/10/2015
+</div>
+<br />
+<div>
+    賽事碼 - Match Code: 991030MR2
+</div>
+<br />
+<div>
+    賽事ID- Match ID: 15314742
+</div>
+
+        <br />
+        <br />
+        <br />
+
+<table cellspacing="0" border="1" border="1" style="border-color: #CECCCD; border-style: Solid; font-size: 10pt; font-family: Tahoma, Arial, Verdana, Sans-Serif;" rules="all">
+    <thead>
+        <tr style="color: black; font-weight: bold">
+            <td align="center" style="width: 40px; background-color: #7A97D1;">
+                #
+                <br />
+            </td>
+            <td align="center" style="background-color: #7A97D1; width: 200px">
+                結算時間-
+                <br />
+                Settlement time
+            </td>
+            <td align="center" style="background-color: #7A97D1; width: 200px">
+                動作-
+                <br />
+                Action
+            </td>
+            <td align="center" style="background-color: #7A97D1; width: 100px">
+                上半場比分-
+                <br />
+                HT Score
+            </td>
+            <td align="center" style="width: 100px; background-color: #7A97D1;">
+                全場比分-
+                <br />
+                FT Score
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+                <tr style="color: black;">
+                    <td align="center" style="width: 40px;">
+                        1
+                    </td>
+                    <td align="center" style="width: 200px">
+                        11/15/2015 10:49:04 PM
+                    </td>
+                    <td align="center" style="width: 200px">
+                        (全部计算) Calculate All
+                    </td>
+                    <td align="center" style="width: 100px">
+                        0 - 0
+                    </td>
+                    <td align="center" style="width: 100px;">
+                        0 - 0
+                    </td>
+                </tr>
+                <tr style="color: black;">
+                    <td align="center" style="width: 40px;">
+                        2
+                    </td>
+                    <td align="center" style="width: 200px">
+                        11/15/2015 10:52:41 PM
+                    </td>
+                    <td align="center" style="width: 200px">
+                        (撤消混合过关结算) Undo Mix Parlay Settlement
+                    </td>
+                    <td align="center" style="width: 100px">
+                        0 - 0
+                    </td>
+                    <td align="center" style="width: 100px;">
+                        0 - 0
+                    </td>
+                </tr>
+                <tr style="color: black;">
+                    <td align="center" style="width: 40px;">
+                        3
+                    </td>
+                    <td align="center" style="width: 200px">
+                        11/15/2015 10:52:42 PM
+                    </td>
+                    <td align="center" style="width: 200px">
+                        (撤消结算) Undo Settlement
+                    </td>
+                    <td align="center" style="width: 100px">
+                        0 - 0
+                    </td>
+                    <td align="center" style="width: 100px;">
+                        0 - 0
+                    </td>
+                </tr>
+                <tr style="color: black;">
+                    <td align="center" style="width: 40px;">
+                        4
+                    </td>
+                    <td align="center" style="width: 200px">
+                        11/15/2015 10:54:53 PM
+                    </td>
+                    <td align="center" style="width: 200px">
+                        (全部计算) Calculate All
+                    </td>
+                    <td align="center" style="width: 100px">
+                        0 - 0
+                    </td>
+                    <td align="center" style="width: 100px;">
+                        0 - 0
+                    </td>
+                </tr>
+                <tr style="color: black;">
+                    <td align="center" style="width: 40px;">
+                        5
+                    </td>
+                    <td align="center" style="width: 200px">
+                        11/15/2015 10:57:07 PM
+                    </td>
+                    <td align="center" style="width: 200px">
+                        (撤消混合过关结算) Undo Mix Parlay Settlement
+                    </td>
+                    <td align="center" style="width: 100px">
+                        0 - 0
+                    </td>
+                    <td align="center" style="width: 100px;">
+                        0 - 0
+                    </td>
+                </tr>
+                <tr style="color: black;">
+                    <td align="center" style="width: 40px;">
+                        6
+                    </td>
+                    <td align="center" style="width: 200px">
+                        11/15/2015 10:57:08 PM
+                    </td>
+                    <td align="center" style="width: 200px">
+                        (撤消结算) Undo Settlement
+                    </td>
+                    <td align="center" style="width: 100px">
+                        0 - 0
+                    </td>
+                    <td align="center" style="width: 100px;">
+                        0 - 0
+                    </td>
+                </tr>
+                <tr style="color: black;">
+                    <td align="center" style="width: 40px;">
+                        7
+                    </td>
+                    <td align="center" style="width: 200px">
+                        11/16/2015 4:03:21 AM
+                    </td>
+                    <td align="center" style="width: 200px">
+                        (全部退款) Refund All
+                    </td>
+                    <td align="center" style="width: 100px">
+                        0 - 0
+                    </td>
+                    <td align="center" style="width: 100px;">
+                        0 - 0
+                    </td>
+                </tr>
+                <tr style="color: black;">
+                    <td align="center" style="width: 40px;">
+                        8
+                    </td>
+                    <td align="center" style="width: 200px">
+                        11/16/2015 4:56:57 AM
+                    </td>
+                    <td align="center" style="width: 200px">
+                        (撤消混合过关结算) Undo Mix Parlay Settlement
+                    </td>
+                    <td align="center" style="width: 100px">
+                        0 - 0
+                    </td>
+                    <td align="center" style="width: 100px;">
+                        0 - 0
+                    </td>
+                </tr>
+                <tr style="color: black;">
+                    <td align="center" style="width: 40px;">
+                        9
+                    </td>
+                    <td align="center" style="width: 200px">
+                        11/16/2015 4:56:58 AM
+                    </td>
+                    <td align="center" style="width: 200px">
+                        (撤消结算) Undo Settlement
+                    </td>
+                    <td align="center" style="width: 100px">
+                        0 - 0
+                    </td>
+                    <td align="center" style="width: 100px;">
+                        0 - 0
+                    </td>
+                </tr>
+                <tr style="color: black;">
+                    <td align="center" style="width: 40px;">
+                        10
+                    </td>
+                    <td align="center" style="width: 200px">
+                        11/16/2015 4:58:10 AM
+                    </td>
+                    <td align="center" style="width: 200px">
+                        (退款半场) Refund HT
+                    </td>
+                    <td align="center" style="width: 100px">
+                        0 - 0
+                    </td>
+                    <td align="center" style="width: 100px;">
+                        0 - 0
+                    </td>
+                </tr>
+                <tr style="color: black;">
+                    <td align="center" style="width: 40px;">
+                        11
+                    </td>
+                    <td align="center" style="width: 200px">
+                        11/16/2015 4:58:26 AM
+                    </td>
+                    <td align="center" style="width: 200px">
+                        (全部退款) Refund All
+                    </td>
+                    <td align="center" style="width: 100px">
+                        0 - 0
+                    </td>
+                    <td align="center" style="width: 100px;">
+                        0 - 0
+                    </td>
+                </tr>
+                <tr style="color: black;">
+                    <td align="center" style="width: 40px;">
+                        12
+                    </td>
+                    <td align="center" style="width: 200px">
+                        11/17/2015 3:31:04 AM
+                    </td>
+                    <td align="center" style="width: 200px">
+                        (撤消混合过关结算) Undo Mix Parlay Settlement
+                    </td>
+                    <td align="center" style="width: 100px">
+                        0 - 0
+                    </td>
+                    <td align="center" style="width: 100px;">
+                        0 - 0
+                    </td>
+                </tr>
+                <tr style="color: black;">
+                    <td align="center" style="width: 40px;">
+                        13
+                    </td>
+                    <td align="center" style="width: 200px">
+                        11/17/2015 3:31:05 AM
+                    </td>
+                    <td align="center" style="width: 200px">
+                        (撤消结算) Undo Settlement
+                    </td>
+                    <td align="center" style="width: 100px">
+                        0 - 0
+                    </td>
+                    <td align="center" style="width: 100px;">
+                        0 - 0
+                    </td>
+                </tr>
+                <tr style="color: black;">
+                    <td align="center" style="width: 40px;">
+                        14
+                    </td>
+                    <td align="center" style="width: 200px">
+                        11/17/2015 3:31:37 AM
+                    </td>
+                    <td align="center" style="width: 200px">
+                        (全部计算) Calculate All
+                    </td>
+                    <td align="center" style="width: 100px">
+                        0 - 0
+                    </td>
+                    <td align="center" style="width: 100px;">
+                        0 - 0
+                    </td>
+                </tr>
+    </tbody>
+</table>        <br />
+        <br />
+
+<div>
+    受影響之會員名單- List of affected members
+</div>
+<br />
+
+<table cellspacing="0" border="1" border="1" style="border-color: #CECCCD; border-style: Solid;
+            font-size: 10pt; font-family: Tahoma, Arial, Verdana, Sans-Serif;" rules="all">
+    <thead>
+        <tr style="color: black; font-weight: bold">
+            <td align="center" style="width: 40px; background-color: #7A97D1;">
+                序號<br />
+                No.
+            </td>
+            <td align="center" style="background-color: #7A97D1; width: 200px">
+                會員<br />
+                Members
+            </td>
+            <td align="center" style="background-color: #7A97D1; width: 200px">
+                余額<br />
+                Balance
+            </td>
+            <td align="center" style="background-color: #7A97D1; width: 100px">
+                貨幣<br />
+                Currency
+            </td>
+                <td align="center" style="width: 100px; background-color: #7A97D1;">
+                    廳註<br />
+                    Deposit Name
+                </td>
+        </tr>
+    </thead>
+    <tbody>
+                <tr style="color: black;">
+                    <td align="center" style="width: 40px;">
+                        1
+                    </td>
+                    <td align="right" style="width: 200px">
+                        12BETUUS02066
+                    </td>
+                    <td align="right" style="width: 200px">
+                        -9,112,744.1
+                    </td>
+                    <td align="right" style="width: 100px">
+                        UUS
+                    </td>
+                    <td align="right" style="width: 100px;">
+                        12Bet$zxc0008
+                    </td>
+                </tr>
+    </tbody>
+</table>    <br />
+    <div>
+        Regards.
+    </div>
+    <br />
+    <div>
+        注: 此報告並不列出導致負數餘額之原因。此郵件為自動發送郵件。請勿回覆。
+    </div>
+    <p style="font-style: italic">
+        Notes : Please be notified there is no reason stated for negative balance found
+        in the report.
+        <br />
+        This is an auto-mail. Please do not reply.
+    </p>
+</div>

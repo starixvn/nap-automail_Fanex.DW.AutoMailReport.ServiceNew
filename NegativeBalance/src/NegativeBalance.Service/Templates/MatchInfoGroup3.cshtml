@@ -1,0 +1,19 @@
+﻿@{ 
+    int index = @Model.Item1;
+    var match = @Model.Item2; 
+}
+<div style="font-weight: bold">
+    賽事 @index- Outright: @match.MatchInfo.LeagueNameCS - @match.MatchInfo.LeagueName
+</div>
+<br />
+<div>
+    Outright Bet: @match.MatchInfo.HomeNameCS - @match.MatchInfo.HomeName
+</div>
+<br />
+<div>
+    日期 - Date: @match.MatchInfo.EventDate.ToString("d")
+</div>
+<br />
+<div>
+    Outright ID: @match.MatchInfo.MatchId
+</div>
