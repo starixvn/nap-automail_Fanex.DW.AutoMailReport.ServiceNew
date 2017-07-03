@@ -37,5 +37,20 @@ namespace NegativeBalance.UnitTests.Services
                 SportId = 1
             };
         }
+
+        [Test]
+        public void Execute_rawMatchInfoNull_ReturnDefaultContent()
+        {
+            // Arrange
+            var rawMatchInfo = CreateRawMatchInfo();
+            var expected = new MatchInfo();
+
+            // Act
+            var service = new TransformServiceImp();
+            var result = service.Execute(null);
+
+            // Assert
+            Assert.That(result, IsDeeplyEqual.To(expected));
+        }
     }
 }

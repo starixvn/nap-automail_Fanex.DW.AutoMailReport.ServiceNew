@@ -95,16 +95,16 @@
   <ItemGroup>
     <Compile Include="Models\AppConfig.cs" />
     <Compile Include="Models\RawMatchInfo.cs" />
-    <Compile Include="Repositories\SelectBySiteCriteria.generated.cs" />
-    <Compile Include="Models\CustomerBalanceInfo.generated.cs" />
-    <Compile Include="Models\Site.generated.cs" />
-    <Compile Include="Models\Match.generated.cs" />
-    <Compile Include="Models\MatchInfo.generated.cs" />
-    <Compile Include="Models\MatchSettleLog.generated.cs" />
+    <Compile Include="Repositories\SelectBySiteCriteria.cs" />
+    <Compile Include="Models\CustomerBalanceInfo.cs" />
+    <Compile Include="Models\Site.cs" />
+    <Compile Include="Models\Match.cs" />
+    <Compile Include="Models\MatchInfo.cs" />
+    <Compile Include="Models\MatchSettleLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\SelectMailingListCriteria.generated.cs" />
-    <Compile Include="Repositories\SelectMatchLogCriteria.generated.cs" />
-    <Compile Include="Repositories\UpdateMatchSentCommand.generated.cs" />
+    <Compile Include="Repositories\SelectMailingListCriteria.cs" />
+    <Compile Include="Repositories\SelectMatchLogCriteria.cs" />
+    <Compile Include="Repositories\UpdateMatchSentCommand.cs" />
     <Compile Include="Services\ApplicationConfigurationService.cs" />
     <Compile Include="Services\BalanceNotificationService.cs" />
     <Compile Include="Services\DataService.cs" />

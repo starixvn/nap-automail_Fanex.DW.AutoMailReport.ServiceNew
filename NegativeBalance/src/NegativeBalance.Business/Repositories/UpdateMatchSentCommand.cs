@@ -13,7 +13,6 @@ namespace NegativeBalance.Business.Repositories
         [SpParam(SqlParamName = "ErrMsg")]
         public string ErrorMessage { get; set; }
 
-
         public override string GetSettingKey() => "Acc_BalanceNegativeUpd_StatusID";
 
         public override bool IsValid() => true;

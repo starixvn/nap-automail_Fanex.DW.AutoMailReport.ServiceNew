@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.IO;
 using BettypeWith3rdProducts.Business.Models;
 using BettypeWith3rdProducts.Business.Services;
+using Fanex.Service.Core;
 using NSubstitute;
 using NUnit.Framework;
 using OfficeOpenXml;
@@ -88,6 +88,23 @@ namespace BettypeWith3rdProducts.UnitTests.Services
             dataTable.Columns.Add("HDP@#@WL");
 
             return dataTable;
-        }      
+        }
+
+        [Test]
+        public void Save_Always_ReturnRightFileName()
+        {
+            // Arrange
+            InitializeSubstitute();
+            SystemTime.Set(new DateTime(2017, 01, 01));
+            appConfig.ExportDataDirectory.Returns(@"\\10.70.70.242\www\Olympus\Fanex.Excel\BettypeWith3rdProducts");
+            var expected = @"\\10.70.70.242\www\Olympus\Fanex.Excel\BettypeWith3rdProducts\2017\01\Bettype_With_3rd_Products_Monthly_Winloss_For_2017_01_01.xlsx";
+
+            // Act
+            var service = new ExcelServiceImp(excelPackage, appConfig, dataService, dateRangeServiceProvider, excelHeaderService);
+            var result = service.Save();
+
+            // Assert
+            Assert.That(result, Is.EqualTo(expected));
+        }
     }
 }

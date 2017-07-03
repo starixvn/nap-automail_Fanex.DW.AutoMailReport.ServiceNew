@@ -103,13 +103,10 @@ namespace BettypeWith3rdProducts.Business.Services
             excelWorksheet.Cells[startRow, 3, endRow, endColumn].StyleID = dataTemplate.Cells["C7"].StyleID;
             for (var columnIndex = 3; columnIndex < endColumn; columnIndex++)
             {
-                for (var rowIndex = startRow; rowIndex < endRow; rowIndex++)
+                for (var rowIndex = startRow; rowIndex <= endRow; rowIndex++)
                 {
                     var value = excelWorksheet.Cells[rowIndex, columnIndex].Value;
-                    if (value != null)
-                    {
-                        excelWorksheet.Cells[rowIndex, columnIndex].Value = Converter.To<double>(value);
-                    }
+                    excelWorksheet.Cells[rowIndex, columnIndex].Value = Converter.To<double>(value);
                 }
             }
         }

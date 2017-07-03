@@ -64,5 +64,20 @@ namespace NegativeBalance.DatabaseTests
             Assert.That(result.Item1.GetType() == typeof(MatchInfo));
             Assert.That(result.Item2.GetType() == typeof(List<MatchSettleLog>));
         }
+
+        [Test]
+        public void UpdateMatchSent_Always_UpdateSuccessfully()
+        {
+            // Arrange
+            var logsId = "1234";
+            var expected = true;
+
+            // Act
+            var service = new RepositoryBalanceServiceImp(dynamicRepository, transformService);
+            var result = service.UpdateMatchSent(logsId);
+
+            // Assert
+            Assert.That(result, Is.EqualTo(expected));
+        }
     }
 }
