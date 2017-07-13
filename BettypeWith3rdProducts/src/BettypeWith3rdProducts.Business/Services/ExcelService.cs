@@ -101,7 +101,7 @@ namespace BettypeWith3rdProducts.Business.Services
             var endRow = startRowIndex + section.Rows.Count + 4;
             var endColumn = section.Columns.Count + 1;
             excelWorksheet.Cells[startRow, 3, endRow, endColumn].StyleID = dataTemplate.Cells["C7"].StyleID;
-            for (var columnIndex = 3; columnIndex < endColumn; columnIndex++)
+            for (var columnIndex = 3; columnIndex <= endColumn; columnIndex++)
             {
                 for (var rowIndex = startRow; rowIndex <= endRow; rowIndex++)
                 {

@@ -11,11 +11,11 @@ namespace BettypeWith3rdProducts.Executing
         internal static void ConfigureFanexData()
         {
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
-            var envrironment = ConfigurationManager.AppSettings["Environment"];
+            var storedProcedurePath = ConfigurationManager.AppSettings["StoredProcedurePath"];
             DbSettingProviderManager
                 .StartNewSession()
                 .Use(new OldConnectionStringProvider())
-                .UseDefaultDbSettingProvider($"~/App_Data/{envrironment}", enableWatching: true)
+                .UseDefaultDbSettingProvider($@"~/{storedProcedurePath}", enableWatching: true)
                 .Run();
         }
     }

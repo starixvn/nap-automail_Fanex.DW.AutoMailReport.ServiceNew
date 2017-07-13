@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Functions>
+<Functions SiteName="Auto Mail - Bettype With 3rd Products">
   <Function Name="NAP-DW">
     <Setting Key="BI_GetDWStatusByCube" SpName="BI_GetDWStatusByCube" DbName="DBDWH.bodb_dwrs.dwrs" TimeOut="0" />
     <Setting Key="Acc_Rpt_Automail_BettypeWithProducts" SpName="Acc_Rpt_Automail_BettypeWithProducts_xtest" DbName="DBDWH.bodb_dwrs.dwrs" TimeOut="0"/>
