@@ -35,9 +35,11 @@ namespace BettypeWith3rdProducts.Business.Services
                 excelWorksheet.Cells[startRow, startColumn].Value = firstHeader;
                 excelWorksheet.Cells[startRow + 1, startColumn].Value = secondHeader;
                 columns.Add(firstHeader);
-                excelWorksheet.Column(startColumn).Width = 18;
+                excelWorksheet.Column(startColumn).AutoFit();
                 startColumn++;
             }
+
+            excelWorksheet.Column(2).Width = 18;
         }
 
         private static void MergeColumns(ExcelWorksheet excelWorksheet, int startRow, List<string> columns)

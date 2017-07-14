@@ -91,7 +91,7 @@ namespace BettypeWith3rdProducts.Business.Services
             {
                 excelWorksheet.Cells[startRow, startColumn].Value = section.AsEnumerable().Sum(row => Converter.To<double>(row[columnIndex]));
                 excelWorksheet.Cells[startRow, startColumn].StyleID = dataTemplate.Cells["C8"].StyleID;
-                startColumn++;
+                startColumn++;                
             }
         }
 
