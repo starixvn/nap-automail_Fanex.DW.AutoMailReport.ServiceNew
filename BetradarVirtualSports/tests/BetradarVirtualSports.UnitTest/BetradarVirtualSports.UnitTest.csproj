@@ -149,6 +149,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <Content Include="Templates\Betradar_Virtual_Sport_Daily_Report.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\BetradarVirtualSports.Business\BetradarVirtualSports.Business.csproj">
