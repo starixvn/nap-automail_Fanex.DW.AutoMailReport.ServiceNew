@@ -4,6 +4,7 @@ using System.IO;
 using BetradarVirtualSports.Business.Services;
 using Fanex.MailDelivery.Core.Models;
 using Fanex.Service.Core;
+using NSubstitute;
 using NUnit.CompareNetObjects;
 using NUnit.Framework;
 
@@ -12,10 +13,13 @@ namespace BetradarVirtualSports.UnitTest.Service
     [Category("BetradarVirtualSports.UnitTest.Service DistributedNotificationUnitTests")]
     public class MailServiceUnitTests
     {
-        [OneTimeSetUp]
+        private ApplicationConfigurationService appConfigService;
+
+        [SetUp]
         public void Initialize()
         {
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
+            appConfigService = Substitute.For<ApplicationConfigurationService>();
         }
 
         [Test]
@@ -33,7 +37,7 @@ namespace BetradarVirtualSports.UnitTest.Service
             };
 
             // Act
-            var service = new MailServiceImp();
+            var service = new MailServiceImp(appConfigService);
             var result = service.Execute();
 
             // Assert
