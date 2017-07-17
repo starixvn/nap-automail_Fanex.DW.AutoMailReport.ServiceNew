@@ -1,6 +1,6 @@
 ﻿using System;
-using BettypeWith3rdProducts.Business.Utility;
 using Fanex.Common;
+using Fanex.Service.Core;
 
 namespace BettypeWith3rdProducts.Business.Services
 {

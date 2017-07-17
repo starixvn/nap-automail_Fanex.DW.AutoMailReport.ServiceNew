@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{271D8A23-702F-4345-9FBC-6A5AF02AA842}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{730F713D-57F7-4CCC-B0A5-F3787FD22332}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastMarketWeeklyPerformance.Business", "FastMarketWeeklyPerformance\src\FastMarketWeeklyPerformance.Business\FastMarketWeeklyPerformance.Business.csproj", "{F7C77E26-D498-4F9D-80C1-1D0F1FEA7B2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastMarketWeeklyPerformance.Executing", "FastMarketWeeklyPerformance\src\FastMarketWeeklyPerformance.Executing\FastMarketWeeklyPerformance.Executing.csproj", "{9E437748-3E22-490A-A5A1-08050E007B20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastMarketWeeklyPerformance.UnitTests", "FastMarketWeeklyPerformance\tests\FastMarketWeeklyPerformance.UnitTests\FastMarketWeeklyPerformance.UnitTests.csproj", "{E4309BC6-6284-4AAB-B18E-19E947041BD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastMarketWeeklyPerformance.DatabaseTests", "FastMarketWeeklyPerformance\tests\FastMarketWeeklyPerformance.DatabaseTests\FastMarketWeeklyPerformance.DatabaseTests.csproj", "{1B7C6E20-09AD-42B7-94F5-BE1C4DD17B4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastMarketWeeklyPerformance.IntegrationTests", "FastMarketWeeklyPerformance\tests\FastMarketWeeklyPerformance.IntegrationTests\FastMarketWeeklyPerformance.IntegrationTests.csproj", "{500E9AA1-1B78-4DDF-94B3-CB886A27E269}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{040DD5BC-2B1C-4D21-96BE-8D07E8AA9981}"
+	ProjectSection(SolutionItems) = preProject
+		SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset = SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset
+		SonarQube\SolutionBinding.sqconfig = SonarQube\SolutionBinding.sqconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7C77E26-D498-4F9D-80C1-1D0F1FEA7B2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7C77E26-D498-4F9D-80C1-1D0F1FEA7B2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7C77E26-D498-4F9D-80C1-1D0F1FEA7B2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7C77E26-D498-4F9D-80C1-1D0F1FEA7B2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E437748-3E22-490A-A5A1-08050E007B20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E437748-3E22-490A-A5A1-08050E007B20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E437748-3E22-490A-A5A1-08050E007B20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E437748-3E22-490A-A5A1-08050E007B20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4309BC6-6284-4AAB-B18E-19E947041BD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4309BC6-6284-4AAB-B18E-19E947041BD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4309BC6-6284-4AAB-B18E-19E947041BD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4309BC6-6284-4AAB-B18E-19E947041BD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B7C6E20-09AD-42B7-94F5-BE1C4DD17B4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B7C6E20-09AD-42B7-94F5-BE1C4DD17B4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B7C6E20-09AD-42B7-94F5-BE1C4DD17B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B7C6E20-09AD-42B7-94F5-BE1C4DD17B4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{500E9AA1-1B78-4DDF-94B3-CB886A27E269}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{500E9AA1-1B78-4DDF-94B3-CB886A27E269}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{500E9AA1-1B78-4DDF-94B3-CB886A27E269}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{500E9AA1-1B78-4DDF-94B3-CB886A27E269}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F7C77E26-D498-4F9D-80C1-1D0F1FEA7B2A} = {271D8A23-702F-4345-9FBC-6A5AF02AA842}
+		{9E437748-3E22-490A-A5A1-08050E007B20} = {271D8A23-702F-4345-9FBC-6A5AF02AA842}
+		{E4309BC6-6284-4AAB-B18E-19E947041BD0} = {730F713D-57F7-4CCC-B0A5-F3787FD22332}
+		{1B7C6E20-09AD-42B7-94F5-BE1C4DD17B4C} = {730F713D-57F7-4CCC-B0A5-F3787FD22332}
+		{500E9AA1-1B78-4DDF-94B3-CB886A27E269} = {730F713D-57F7-4CCC-B0A5-F3787FD22332}
+	EndGlobalSection
+EndGlobal

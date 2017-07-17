@@ -1,0 +1,24 @@
+﻿@{
+    int index = @Model.Item1;
+    var match = @Model.Item2;
+}
+<div>
+    @index - @match.MatchInfo.SportNameCS - @match.MatchInfo.SportName
+</div>
+<br />
+<div>
+    賽事  - Match @index: (@match.MatchInfo.HomeNameCS vs @match.MatchInfo.AwayNameCS) @match.MatchInfo.HomeName vs @match.MatchInfo.AwayName
+</div>
+<br />
+<div>
+    賽事日期 - Event Date: @match.MatchInfo.EventDate.ToString("MM/dd/yyyy hh:mm tt")
+</div>
+<br />
+<div>
+    賽事碼 - Match Code: @match.MatchInfo.MatchCode
+</div>
+<br />
+<div>
+    賽事ID - Match ID: @match.MatchInfo.MatchId
+</div>
+

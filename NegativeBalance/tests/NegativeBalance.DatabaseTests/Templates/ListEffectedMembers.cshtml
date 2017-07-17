@@ -1,0 +1,81 @@
+﻿@using NegativeBalance.Business.Models;
+@{
+    var match = @Model;
+}
+<div>
+    受影響之會員名單- List of affected members
+</div>
+<br />
+
+<table cellspacing="0" border="1" border="1" style="border-color: #CECCCD; border-style: Solid;
+            font-size: 10pt; font-family: Tahoma, Arial, Verdana, Sans-Serif;" rules="all">
+    <thead>
+        <tr style="color: black; font-weight: bold">
+            <td align="center" style="width: 40px; background-color: #7A97D1;">
+                序號<br />
+                No.
+            </td>
+            <td align="center" style="background-color: #7A97D1; width: 200px">
+                會員<br />
+                Members
+            </td>
+            <td align="center" style="background-color: #7A97D1; width: 200px">
+                余額<br />
+                Balance
+            </td>
+            <td align="center" style="background-color: #7A97D1; width: 100px">
+                貨幣<br />
+                Currency
+            </td>
+            @if (match.LicenseeName.ToUpper() == "HAIFA")
+            {
+                <td align="center" style="width: 100px; background-color: #7A97D1;">
+                    廳註<br />
+                    Custominfo1
+                </td>
+            }
+            else
+            {
+                <td align="center" style="width: 100px; background-color: #7A97D1;">
+                    廳註<br />
+                    Deposit Name
+                </td>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @if (match.MatchSettleLogList.Count == 0)
+        {
+            <tr style="color: black;">
+                <td colspan='5' align="center">
+                    There is no data.
+                </td>
+            </tr>
+        }
+        else
+        {
+            int count = 1;
+            foreach (CustomerBalanceInfo customer in @match.CustomerInfoList)
+            {
+                <tr style="color: black;">
+                    <td align="center" style="width: 40px;">
+                        @count
+                    </td>
+                    <td align="right" style="width: 200px">
+                        @customer.UserName
+                    </td>
+                    <td align="right" style="width: 200px">
+                        @customer.TotalBalance.ToString("#,##0.##")
+                    </td>
+                    <td align="right" style="width: 100px">
+                        @customer.CurrencyName
+                    </td>
+                    <td align="right" style="width: 100px;">
+                        @customer.CustomInfo1
+                    </td>
+                </tr>
+                count++;
+            }
+        }
+    </tbody>
+</table>

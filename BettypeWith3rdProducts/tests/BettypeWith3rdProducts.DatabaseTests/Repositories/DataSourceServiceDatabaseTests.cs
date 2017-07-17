@@ -1,6 +1,7 @@
-﻿using System.Linq;
-using BettypeWith3rdProducts.Business.Models;
+﻿using System;
 using BettypeWith3rdProducts.Business.Repositories;
+using BettypeWith3rdProducts.Business.Services;
+using Fanex.Service.Core;
 using NUnit.Framework;
 using SimpleInjector;
 
@@ -9,7 +10,8 @@ namespace BettypeWith3rdProducts.DatabaseTests.Repositories
     [Category("BettypeWith3rdProducts.DatabaseTests.Repositories DataSourceServiceDatabaseTests")]
     public class DataSourceServiceDatabaseTests
     {
-        private DataSourceService service;
+        private DataSourceService dataSourceService;
+        private RepositoryService repositoryService;
 
         [OneTimeSetUp]
         public void InitDataBase()
@@ -24,40 +26,76 @@ namespace BettypeWith3rdProducts.DatabaseTests.Repositories
             SimpleInjectorService.Register(container);
             container.Verify(VerificationOption.VerifyOnly);
 
-            service = container.GetInstance<DataSourceService>();
+            dataSourceService = container.GetInstance<DataSourceService>();
+            repositoryService = container.GetInstance<RepositoryService>();
         }
 
         [Test]
-        public void QuerySports_RealWiLoss_ConnectToDatabaseSuccessfully()
-        {
-            // Act
-            var result = service.QuerySports(DataType.RealWiLoss);
-
-            // Assert
-            Assert.That(result.Count() > 0);
-        }
-
-        [Test]
-        public void QuerySports_VirtualWinLoss_ConnectToDatabaseSuccessfully()
-        {
-            // Act
-            var result = service.QuerySports(DataType.VirtualWinLoss);
-
-            // Assert
-            Assert.That(result.Count() > 0);
-        }
-
-        [Test]
-        public void QueryDataSouce_Always_ConnectToDatabaseSuccessfully()
+        public void Query_BettypeWithProducts_ConntectToDatabaseSuccessfully()
         {
             // Arrange
-            var sourceMapping = new SourceMapping { DataType = DataType.RealWiLoss, SheetName = "Real", StoreProcedure = "Acc_Rpt_Automail_BettypeWithProducts" };
+            var criteria = new BettypeProductCriteria
+            {
+                DateStart = new DateTime(2030, 01, 01),
+                DateEnd = new DateTime(2030, 01, 01),
+                Periodid = 1,
+                Sportid = 1,
+                StatisticId = 1,
+                StoreProcedure = "Acc_Rpt_Automail_BettypeWithProducts"
+            };
 
             // Act
-            var result = service.QueryDataSouce(sourceMapping, DateRange.Manual, ViewOfData.All, 1);
+            var result = dataSourceService.Query(criteria);
 
             // Assert
-            Assert.That(result.Columns.Count > 0);
+            Assert.That(result != null);
+        }
+
+        [Test]
+        public void Query_BettypeWithProductsJuice_ConntectToDatabaseSuccessfully()
+        {
+            // Arrange
+            var criteria = new BettypeProductCriteria
+            {
+                DateStart = new DateTime(2030, 01, 01),
+                DateEnd = new DateTime(2030, 01, 01),
+                Periodid = 1,
+                Sportid = 1,
+                StatisticId = 1,
+                StoreProcedure = "Acc_Rpt_Automail_BettypeWithProducts_Juice"
+            };
+
+            // Act
+            var result = dataSourceService.Query(criteria);
+
+            // Assert
+            Assert.That(result != null);
+        }
+
+        [Test]
+        public void Query_Sport_ConntectToDatabaseSuccessfully()
+        {
+            // Arrange
+            var criteria = new DWStatusByCubeCriteria();
+
+            // Act
+            var result = dataSourceService.Query(criteria);
+
+            // Assert
+            Assert.That(result != null);
+        }
+
+        [Test]
+        public void Query_GetDWStatusByCube_ConntectToDatabaseSuccessfully()
+        {
+            // Arrange
+            var criteria = new DWStatusByCubeCriteria();
+
+            // Act
+            var result = repositoryService.QueryLastDate();
+
+            // Assert
+            Assert.That(result.Year > 1);
         }
     }
 }

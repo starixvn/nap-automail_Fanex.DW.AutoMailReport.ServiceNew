@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{5B33D351-BC3C-4087-803A-C8CD0E89F8FB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{ABF08DC1-07AB-4287-9031-23AF08D18B2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NegativeBalance.Business", "NegativeBalance\src\NegativeBalance.Business\NegativeBalance.Business.csproj", "{55097A9B-CBD9-4121-AB8D-4D1BEE786DBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NegativeBalance.Service", "NegativeBalance\src\NegativeBalance.Service\NegativeBalance.Service.csproj", "{001B852A-C892-4AE6-9C04-4A0CCB8A809D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NegativeBalance.DatabaseTests", "NegativeBalance\tests\NegativeBalance.DatabaseTests\NegativeBalance.DatabaseTests.csproj", "{CD8211D4-99E8-4488-956D-4F0C7A9C02FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NegativeBalance.IntegrationTests", "NegativeBalance\tests\NegativeBalance.IntegrationTests\NegativeBalance.IntegrationTests.csproj", "{73B8E4E6-6273-4F63-8B1F-4944301199C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NegativeBalance.UnitTests", "NegativeBalance\tests\NegativeBalance.UnitTests\NegativeBalance.UnitTests.csproj", "{50429026-8BD2-48BE-BF3E-8DEBEDA1FF9F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{383BC3D3-3EDE-411E-91CA-B5498537FF63}"
+	ProjectSection(SolutionItems) = preProject
+		SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset = SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset
+		SonarQube\SolutionBinding.sqconfig = SonarQube\SolutionBinding.sqconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55097A9B-CBD9-4121-AB8D-4D1BEE786DBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55097A9B-CBD9-4121-AB8D-4D1BEE786DBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55097A9B-CBD9-4121-AB8D-4D1BEE786DBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55097A9B-CBD9-4121-AB8D-4D1BEE786DBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{001B852A-C892-4AE6-9C04-4A0CCB8A809D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{001B852A-C892-4AE6-9C04-4A0CCB8A809D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{001B852A-C892-4AE6-9C04-4A0CCB8A809D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{001B852A-C892-4AE6-9C04-4A0CCB8A809D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD8211D4-99E8-4488-956D-4F0C7A9C02FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD8211D4-99E8-4488-956D-4F0C7A9C02FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD8211D4-99E8-4488-956D-4F0C7A9C02FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD8211D4-99E8-4488-956D-4F0C7A9C02FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73B8E4E6-6273-4F63-8B1F-4944301199C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73B8E4E6-6273-4F63-8B1F-4944301199C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73B8E4E6-6273-4F63-8B1F-4944301199C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73B8E4E6-6273-4F63-8B1F-4944301199C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50429026-8BD2-48BE-BF3E-8DEBEDA1FF9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50429026-8BD2-48BE-BF3E-8DEBEDA1FF9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50429026-8BD2-48BE-BF3E-8DEBEDA1FF9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50429026-8BD2-48BE-BF3E-8DEBEDA1FF9F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{55097A9B-CBD9-4121-AB8D-4D1BEE786DBD} = {ABF08DC1-07AB-4287-9031-23AF08D18B2E}
+		{001B852A-C892-4AE6-9C04-4A0CCB8A809D} = {ABF08DC1-07AB-4287-9031-23AF08D18B2E}
+		{CD8211D4-99E8-4488-956D-4F0C7A9C02FE} = {5B33D351-BC3C-4087-803A-C8CD0E89F8FB}
+		{73B8E4E6-6273-4F63-8B1F-4944301199C8} = {5B33D351-BC3C-4087-803A-C8CD0E89F8FB}
+		{50429026-8BD2-48BE-BF3E-8DEBEDA1FF9F} = {5B33D351-BC3C-4087-803A-C8CD0E89F8FB}
+	EndGlobalSection
+EndGlobal

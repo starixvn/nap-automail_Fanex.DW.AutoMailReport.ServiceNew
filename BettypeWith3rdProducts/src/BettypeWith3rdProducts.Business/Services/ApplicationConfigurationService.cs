@@ -18,7 +18,7 @@ namespace BettypeWith3rdProducts.Business.Services
 
         bool IsCheckEnoughData { get; }
 
-        string NapReportURL { get; }
+        Uri NapReportUrl { get; }
 
         int FunctionIdNodata { get; }
 
@@ -50,7 +50,7 @@ namespace BettypeWith3rdProducts.Business.Services
 
         public bool IsCheckEnoughData => ConfigurationManager.AppSettings["IsCheckEnoughData"] == "true";
 
-        public string NapReportURL => ConfigurationManager.AppSettings["NapReportURL"];
+        public Uri NapReportUrl => new Uri(ConfigurationManager.AppSettings["NapReportURL"]);
 
         public int FunctionIdNodata => Converter.To<int>(ConfigurationManager.AppSettings["FunctionIdNodata"]);
 

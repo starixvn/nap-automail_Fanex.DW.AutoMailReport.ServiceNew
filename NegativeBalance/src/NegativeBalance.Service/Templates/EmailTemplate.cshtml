@@ -1,0 +1,78 @@
+﻿@using NegativeBalance.Business.Models;
+@{
+    int index = 1;
+    var matchInfoTemplateGroup = new Dictionary<int, int>
+    {
+        { 1, 1 },
+        { 2, 1 },
+        { 3, 3 },
+        { 4, 1 },
+        { 5, 1 },
+        { 6, 1 },
+        { 7, 7 }
+    };
+    var matchSettledLogTemplateGroup = new Dictionary<int, int>
+    {
+        { 1, 1 },
+        { 2, 1 },
+        { 3, 3 },
+        { 4, 1 },
+        { 5, 1 },
+        { 6, 1 },
+        { 7, 1 }
+    };
+}
+<div>
+    <div>
+        尊敬的客戶,<br />
+        <br />
+        Dear valued customer,
+        <br />
+        <br />
+        以下列出為可能導致受影響會員的負數餘額。請查看。<br />
+        <br />
+        Here are matches that might have caused negative balance for customers listed below.
+        Please kindly have a check.
+    </div>
+    @foreach (Match match in @Model)
+    {
+        <br />
+        <br />
+        if (index > 1)
+        {
+            <hr />
+        }
+
+        var tuple = new Tuple<int, Match>(index, match);
+        var groupId = match.MatchInfo.GroupId;
+        var matchInfoTemplateGroupId = matchInfoTemplateGroup.ContainsKey(groupId) ? matchInfoTemplateGroup[groupId] : 1;
+        var matchSettledLogTemplateGroupId = matchSettledLogTemplateGroup.ContainsKey(groupId) ? matchSettledLogTemplateGroup[groupId] : 1;
+        @Include("matchInfoGroup" + matchInfoTemplateGroupId, tuple)
+
+        <br />
+        <br />
+        <br />
+
+        @Include("matchSettledLogGroup" + matchSettledLogTemplateGroupId, match)
+
+        <br />
+        <br />
+        @Include("listEffectedMembers", match)
+
+        index++;
+    }
+    <br />
+    <div>
+        Regards.
+    </div>
+    <br />
+    <div>
+        注: 此報告並不列出導致負數餘額之原因。此郵件為自動發送郵件。請勿回覆。
+    </div>
+    <p style="font-style: italic">
+        Notes : Please be notified there is no reason stated for negative balance found
+        in the report.
+        <br />
+        This is an auto-mail. Please do not reply.
+    </p>
+</div>

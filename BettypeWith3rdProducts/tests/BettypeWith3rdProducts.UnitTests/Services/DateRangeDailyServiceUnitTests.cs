@@ -1,6 +1,6 @@
 ﻿using System;
 using BettypeWith3rdProducts.Business.Services;
-using BettypeWith3rdProducts.Business.Utility;
+using Fanex.Service.Core;
 using NUnit.Framework;
 
 namespace BettypeWith3rdProducts.UnitTests.Services
