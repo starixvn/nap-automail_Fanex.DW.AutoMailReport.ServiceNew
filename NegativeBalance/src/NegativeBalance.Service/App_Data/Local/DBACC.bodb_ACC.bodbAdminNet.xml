@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-  <Functions SiteName="Auto Mail - Negative Balance">
-  <Function Name="Negative Balance Report">
+<Functions SiteId="25" SiteName="Auto Mail">
+  <Function Name="Negative Balance">
     <Setting Key="Acc_MailingListSel" SpName="Acc_MailingListSel" DbName="DBACC.bodb_ACC.bodbAdminNet" TimeOut="0">
       <Mapping DataField="Site" ObjectProperty="LicenseeName"/>
       <Mapping DataField="IsAvailabe" ObjectProperty="IsAvailable"/>

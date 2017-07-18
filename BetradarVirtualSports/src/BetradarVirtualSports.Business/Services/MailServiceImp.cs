@@ -28,7 +28,7 @@ namespace BetradarVirtualSports.Business.Services
             {
                 Subject = $"{appConfig.Subject} {SystemTime.Now:MM/dd/yyyy}",
                 Title = appConfig.Title,
-                Body = File.ReadAllText(@"Templates\EmailTemplate-expected.txt"),
+                Body = File.ReadAllText(@"Templates\ReadContentWhenDataAvailable-expected.html"),
                 Attachments = attachments,
             };
 

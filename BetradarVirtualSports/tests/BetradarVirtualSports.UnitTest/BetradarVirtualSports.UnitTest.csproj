@@ -147,10 +147,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\FileServiceUnitTests.cs" />
     <Compile Include="Service\MailServiceUnitTests.cs" />
     <Compile Include="TestLoader.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Templates\ReadContentWhenDataAvailable-expected.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\ReadContentWhenDataIsNotReady-expected.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="app.config" />
     <None Include="packages.config" />
     <Content Include="Templates\Betradar_Virtual_Sport_Daily_Report.xlsx">
@@ -159,17 +166,18 @@
     <Content Include="Templates\AppConfig.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\ContentWhenDataIsNotReady.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\ContentWithAttachment.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\BetradarVirtualSports.Business\BetradarVirtualSports.Business.csproj">
       <Project>{398be05b-fb7d-4620-a597-574ac17c1962}</Project>
       <Name>BetradarVirtualSports.Business</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Templates\EmailTemplate-expected.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

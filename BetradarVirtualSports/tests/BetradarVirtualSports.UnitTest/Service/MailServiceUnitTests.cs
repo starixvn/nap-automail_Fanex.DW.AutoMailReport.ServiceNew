@@ -35,7 +35,7 @@ namespace BetradarVirtualSports.UnitTest.Service
             {
                 Subject = $"[Betradar Virtual Sports] - Daily Report {SystemTime.Now:MM/dd/yyyy}",
                 Title = "ONEworks Auto Generated Report Administrator",
-                Body = TestLoader.DataLoader("EmailTemplate-expected.txt"),
+                Body = TestLoader.DataLoader("ReadContentWhenDataAvailable-expected.html"),
                 Attachments = new List<MailAttachment> { new MailAttachment(fileName, FileExtension.MS_EXCEL) }
             };
 
