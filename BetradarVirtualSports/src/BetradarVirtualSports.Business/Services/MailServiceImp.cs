@@ -10,10 +10,12 @@ namespace BetradarVirtualSports.Business.Services
     public class MailServiceImp : MailService
     {
         private readonly AppConfig appConfig;
+        private readonly FileService fileService;
 
-        public MailServiceImp(ApplicationConfigurationService appConfigService)
+        public MailServiceImp(ApplicationConfigurationService appConfigService, FileService fileService)
         {
             appConfig = appConfigService.Configurations;
+            this.fileService = fileService;
         }
 
         public Mail Execute()
@@ -28,7 +30,7 @@ namespace BetradarVirtualSports.Business.Services
             {
                 Subject = $"{appConfig.Subject} {SystemTime.Now:MM/dd/yyyy}",
                 Title = appConfig.Title,
-                Body = File.ReadAllText(@"Templates\ReadContentWhenDataAvailable-expected.html"),
+                Body = fileService.ReadContentWhenDataIsAvailable(),
                 Attachments = attachments,
             };
 
