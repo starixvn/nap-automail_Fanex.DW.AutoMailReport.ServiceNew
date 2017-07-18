@@ -143,6 +143,9 @@
     <None Include="app.config" />
     <None Include="BetradarVirtualSports.Executing.ruleset" />
     <None Include="packages.config" />
+    <Content Include="Templates\AppConfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\..\..\packages\SonarAnalyzer.CSharp.6.1.0.2359\analyzers\Google.Protobuf.dll" />

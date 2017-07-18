@@ -26,8 +26,8 @@ namespace BetradarVirtualSports.Business.Services
 
             var mail = new Mail
             {
-                Subject = $"[Betradar Virtual Sports] - Daily Report {SystemTime.Now:mm/dd/yyyy}",
-                Title = "ONEworks Auto Generated Report Administrator",
+                Subject = $"{appConfig.Subject} {SystemTime.Now:MM/dd/yyyy}",
+                Title = appConfig.Title,
                 Body = File.ReadAllText(@"Templates\EmailTemplate-expected.txt"),
                 Attachments = attachments,
             };

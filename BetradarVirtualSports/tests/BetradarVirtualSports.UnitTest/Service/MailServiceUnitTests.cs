@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using BetradarVirtualSports.Business.Models;
 using BetradarVirtualSports.Business.Services;
 using Fanex.MailDelivery.Core.Models;
 using Fanex.Service.Core;
@@ -27,10 +28,12 @@ namespace BetradarVirtualSports.UnitTest.Service
         {
             // Arrange
             SystemTime.Set(new DateTime(2017, 01, 01));
+            var appConfig = TestLoader.DataLoader<AppConfig>("AppConfig.json");
+            appConfigService.Configurations.Returns(appConfig);
             var fileName = @"Templates\Betradar_Virtual_Sport_Daily_Report.xlsx";
             var expected = new Mail
             {
-                Subject = $"[Betradar Virtual Sports] - Daily Report {SystemTime.Now:mm/dd/yyyy}",
+                Subject = $"[Betradar Virtual Sports] - Daily Report {SystemTime.Now:MM/dd/yyyy}",
                 Title = "ONEworks Auto Generated Report Administrator",
                 Body = TestLoader.DataLoader("EmailTemplate-expected.txt"),
                 Attachments = new List<MailAttachment> { new MailAttachment(fileName, FileExtension.MS_EXCEL) }
