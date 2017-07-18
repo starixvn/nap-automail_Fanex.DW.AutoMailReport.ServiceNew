@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using BetradarVirtualSports.Business.Models;
 using Fanex.MailDelivery.Core.Models;
 using Fanex.Service.Core;
