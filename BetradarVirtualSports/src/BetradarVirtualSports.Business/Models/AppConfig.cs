@@ -1,4 +1,6 @@
-﻿namespace BetradarVirtualSports.Business.Models
+﻿using System;
+
+namespace BetradarVirtualSports.Business.Models
 {
     public class AppConfig
     {
@@ -13,5 +15,9 @@
         public string Subject { get; set; }
 
         public string Title { get; set; }
+
+        public bool IsManual { get; set; }
+
+        public DateTime Date { get; set; }
     }
 }

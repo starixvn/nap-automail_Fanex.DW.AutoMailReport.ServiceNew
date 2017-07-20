@@ -1,0 +1,146 @@
+﻿{
+  "Item1": [
+    {
+      "Date": "2017-07-01T00:00:00",
+      "Business": "CASH",
+      "Currency": "KRW",
+      "BetCount": 1,
+      "TotalBet": 20000.0000,
+      "TotalPayout": 0.0000,
+      "TotalWinLoss": -20000.0000,
+      "Margin": -100.0000
+    },
+    {
+      "Date": "2017-07-01T00:00:00",
+      "Business": "CASH",
+      "Currency": "THB",
+      "BetCount": 1,
+      "TotalBet": 2000.0000,
+      "TotalPayout": 3860.0000,
+      "TotalWinLoss": 1860.0000,
+      "Margin": 93.0000
+    },
+    {
+      "Date": "2017-07-01T00:00:00",
+      "Business": "CASH",
+      "Currency": "VND",
+      "BetCount": 21,
+      "TotalBet": 3381.0000,
+      "TotalPayout": 9560.6000,
+      "TotalWinLoss": 6179.6000,
+      "Margin": 182.7700
+    },
+    {
+      "Date": "2017-07-01T00:00:00",
+      "Business": "CREDIT",
+      "Currency": "IDR",
+      "BetCount": 65,
+      "TotalBet": 3529.0000,
+      "TotalPayout": 6547.6800,
+      "TotalWinLoss": 3018.6800,
+      "Margin": 85.5300
+    },
+    {
+      "Date": "2017-07-01T00:00:00",
+      "Business": "CREDIT",
+      "Currency": "KRW",
+      "BetCount": 10,
+      "TotalBet": 111000.0000,
+      "TotalPayout": 58000.0000,
+      "TotalWinLoss": -53000.0000,
+      "Margin": -47.7400
+    },
+    {
+      "Date": "2017-07-01T00:00:00",
+      "Business": "CREDIT",
+      "Currency": "MYR",
+      "BetCount": 3,
+      "TotalBet": 185.0000,
+      "TotalPayout": 328.8000,
+      "TotalWinLoss": 143.8000,
+      "Margin": 77.7200
+    },
+    {
+      "Date": "2017-07-01T00:00:00",
+      "Business": "CREDIT",
+      "Currency": "THB",
+      "BetCount": 45,
+      "TotalBet": 6048.0000,
+      "TotalPayout": 2339.2000,
+      "TotalWinLoss": -3708.8000,
+      "Margin": -61.3200
+    },
+    {
+      "Date": "2017-07-01T00:00:00",
+      "Business": "CREDIT",
+      "Currency": "USD",
+      "BetCount": 6,
+      "TotalBet": 64.0000,
+      "TotalPayout": 64.0000,
+      "TotalWinLoss": 0.0000,
+      "Margin": 0.0000
+    }
+  ],
+  "Item2": [
+    {
+      "Date": "2017-07-01T00:00:00",
+      "Business": "Total in",
+      "Currency": "IDR",
+      "BetCount": 65,
+      "TotalBet": 3529.0000,
+      "TotalPayout": 6547.6800,
+      "TotalWinLoss": 3018.6800,
+      "Margin": 85.5300
+    },
+    {
+      "Date": "2017-07-01T00:00:00",
+      "Business": "Total in",
+      "Currency": "KRW",
+      "BetCount": 11,
+      "TotalBet": 131000.0000,
+      "TotalPayout": 58000.0000,
+      "TotalWinLoss": -73000.0000,
+      "Margin": -55.7200
+    },
+    {
+      "Date": "2017-07-01T00:00:00",
+      "Business": "Total in",
+      "Currency": "MYR",
+      "BetCount": 3,
+      "TotalBet": 185.0000,
+      "TotalPayout": 328.8000,
+      "TotalWinLoss": 143.8000,
+      "Margin": 77.7200
+    },
+    {
+      "Date": "2017-07-01T00:00:00",
+      "Business": "Total in",
+      "Currency": "THB",
+      "BetCount": 46,
+      "TotalBet": 8048.0000,
+      "TotalPayout": 6199.2000,
+      "TotalWinLoss": -1848.8000,
+      "Margin": -22.9700
+    },
+    {
+      "Date": "2017-07-01T00:00:00",
+      "Business": "Total in",
+      "Currency": "USD",
+      "BetCount": 6,
+      "TotalBet": 64.0000,
+      "TotalPayout": 64.0000,
+      "TotalWinLoss": 0.0000,
+      "Margin": 0.0000
+    },
+    {
+      "Date": "2017-07-01T00:00:00",
+      "Business": "Total in",
+      "Currency": "VND",
+      "BetCount": 21,
+      "TotalBet": 3381.0000,
+      "TotalPayout": 9560.6000,
+      "TotalWinLoss": 6179.6000,
+      "Margin": 182.7700
+    }
+  ]
+}

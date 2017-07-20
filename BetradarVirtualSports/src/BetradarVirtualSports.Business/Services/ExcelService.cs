@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using BetradarVirtualSports.Business.Models;
+using System.Linq;
 using Epplus.Mapper.Extensions;
 using OfficeOpenXml;
 
@@ -16,54 +16,89 @@ namespace BetradarVirtualSports.Business.Services
 
     public class ExcelServiceImp : ExcelService
     {
-        private ExcelPackage excelPackage;
-        private ExcelWorksheet betradarVS_Daiily;
+        private readonly ExcelPackage excelPackage;
+        private readonly DataDailyService dataDailyService;
+        private readonly ApplicationConfigurationService appConfigService;
+        private readonly DateService dateService;
+
+        public ExcelServiceImp(ExcelPackage excelPackage, DataDailyService dataDailyService, ApplicationConfigurationService appConfigService, DateService dateService)
+        {
+            this.excelPackage = excelPackage;
+            this.dataDailyService = dataDailyService;
+            this.appConfigService = appConfigService;
+            this.dateService = dateService;
+        }
 
         public ExcelService Export()
         {
-            var templateAbsolutelyPath = @"Templates\Template.xlsx";
-            using (var stream = new FileStream(templateAbsolutelyPath, FileMode.Open, FileAccess.Read))
+            var date = dateService.Date;
+            var dailySheet = excelPackage.Workbook.Worksheets["BetradarVS_Daily"];
+            var totalSheet = excelPackage.Workbook.Worksheets["Total"];
+            var data = dataDailyService.QueryDaily(date);
+            var dailyData = data.Item1;
+            var totalData = data.Item2;
+
+            RenderHeaderInfomation(dailySheet, date);
+            if (dailyData.Any())
             {
-                excelPackage = new ExcelPackage(stream);
-                betradarVS_Daiily = excelPackage.Workbook.Worksheets["BetradarVS_Daiily"];
+                RenderContent(dailySheet, totalSheet, dailyData, totalData);
+            }
+            else
+            {
+                RenderNoData(dailySheet);
             }
 
-            var data = new List<GrossWinningDaily>
-            {
-                new GrossWinningDaily
-                {
-                    Date = new DateTime(2017, 01, 01),
-                    Business = "Cash",
-                    Currency = "MYR",
-                    BetCount = 1000,
-                    TotalBet = 1200,
-                    TotalPayout = 1300,
-                    TotalWinLoss = 4520,
-                    Margin = 1.86m
-                },
-                new GrossWinningDaily
-                {
-                    Date = new DateTime(2017, 01, 01),
-                    Business = "Cash",
-                    Currency = "MYR",
-                    BetCount = 1200,
-                    TotalBet = 1300,
-                    TotalPayout = 1100,
-                    TotalWinLoss = 400,
-                    Margin = 7.96m
-                },
-            };
-
-            betradarVS_Daiily.ApplyVertical(data);
+            ClearTemplateSheet(totalSheet);
 
             return this;
         }
 
+        private static void RenderContent(
+            ExcelWorksheet dailySheet,
+            ExcelWorksheet totalSheet,
+            IEnumerable<Models.GrossWinningDaily> dailyData,
+            IEnumerable<Models.GrossWinningDaily> totalData)
+        {
+            var beginRowIndex = 4;
+            var lastRowIndexDailySheet = dailyData.Count() + beginRowIndex;
+            var lastRowIndexTotalSheet = totalData.Count() + beginRowIndex;
+
+            dailySheet.ApplyVertical(dailyData);
+            totalSheet.ApplyVertical(totalData);
+            totalSheet.Cells[beginRowIndex, 1, lastRowIndexTotalSheet, 8].Copy(dailySheet.Cells[lastRowIndexDailySheet, 1]);
+
+            dailySheet.AutoMergeRowsHaveSameValue($"A1:A{lastRowIndexDailySheet - 1}");
+            dailySheet.AutoMergeRowsHaveSameValue($"A{lastRowIndexDailySheet}:A{lastRowIndexDailySheet + totalData.Count() - 1}");
+            dailySheet.AutoMergeRowsHaveSameValue($"B1:B{lastRowIndexDailySheet - 1}");
+            dailySheet.AutoMergeRowsHaveSameValue($"B12:B{lastRowIndexDailySheet + totalData.Count() - 1}");
+        }
+
+        private static void RenderHeaderInfomation(ExcelWorksheet sheet, DateTime date)
+        {
+            sheet.Cells["A2"].Value = $"{date:MM/dd/yyyy}";
+        }
+
+        private static void RenderNoData(ExcelWorksheet sheet)
+        {
+            sheet.Cells["A4"].Value = "There is no data displayed";
+            sheet.Cells["A4:H4"].Merge = true;
+        }
+
+        private void ClearTemplateSheet(ExcelWorksheet totalSheet)
+        {
+            excelPackage.Workbook.Worksheets.Delete(totalSheet);
+        }
+
         public string Save()
         {
-            var filename = @"D:\Fanex.Excel\BetradarVS_Daiily.xlsx";
-            excelPackage.SaveAs(new FileInfo(filename), string.Empty);
-            return string.Empty;
+            var date = dateService.Date;
+            var filename = $"Betradar_Virtual_Sports_Daily_Report_{date:MMddyyyy}.xlsx";
+            var folder = $@"{appConfigService.Configurations.ExportDataDirectory}\{date:yyyy}\{date:MM}";
+            var fullName = $@"{folder}\{filename}";
+            Directory.CreateDirectory(folder);
+            excelPackage.SaveAs(new FileInfo(fullName), appConfigService.Configurations.ExcelPasswordProtected);
+
+            return fullName;
         }
     }
 }

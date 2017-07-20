@@ -5,28 +5,28 @@ namespace BetradarVirtualSports.Business.Models
 {
     public class GrossWinningDaily
     {
-        [Cell("A2")]
+        [Cell("A4")]
         public DateTime Date { get; set; }
 
-        [Cell("B2")]
+        [Cell("B4")]
         public string Business { get; set; }
 
-        [Cell("C2")]
+        [Cell("C4")]
         public string Currency { get; set; }
 
-        [Cell("D2")]
+        [Cell("D4")]
         public int BetCount { get; set; }
 
-        [Cell("E2")]
+        [Cell("E4")]
         public decimal TotalBet { get; set; }
 
-        [Cell("F2")]
+        [Cell("F4")]
         public decimal TotalPayout { get; set; }
 
-        [Cell("G2")]
+        [Cell("G4")]
         public decimal TotalWinLoss { get; set; }
 
-        [Cell("H2")]
+        [Cell("H4")]
         public decimal Margin { get; set; }
     }
 }

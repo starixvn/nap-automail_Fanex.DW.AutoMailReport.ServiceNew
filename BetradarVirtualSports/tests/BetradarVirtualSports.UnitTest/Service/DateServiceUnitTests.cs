@@ -1,0 +1,50 @@
+﻿using System;
+using BetradarVirtualSports.Business.Models;
+using BetradarVirtualSports.Business.Services;
+using Fanex.Service.Core;
+using NSubstitute;
+using NUnit.Framework;
+
+namespace BetradarVirtualSports.UnitTest.Service
+{
+    [Category("BetradarVirtualSports.UnitTest.Service DateServiceUnitTests")]
+    public class DateServiceUnitTests
+    {
+        [Test]
+        public void Date_SetManualIsFalse_ReturnRightValue()
+        {
+            // Arrange
+            var appConfigService = Substitute.For<ApplicationConfigurationService>();
+            appConfigService.Configurations.Returns(TestLoader.DataLoader<AppConfig>("AppConfig.json"));
+            appConfigService.Configurations.IsManual = false;
+
+            var expected = new DateTime(2017, 01, 01);
+
+            // Act
+            var service = new DateServiceImp(appConfigService);
+            var result = service.Date;
+
+            // Assert
+            Assert.That(result, Is.EqualTo(result));
+        }
+
+        [Test]
+        public void Date_SetManualIsTrue_ReturnRightValue()
+        {
+            // Arrange
+            var appConfigService = Substitute.For<ApplicationConfigurationService>();
+            appConfigService.Configurations.Returns(TestLoader.DataLoader<AppConfig>("AppConfig.json"));
+            appConfigService.Configurations.IsManual = true;
+            SystemTime.Set(new DateTime(2017, 01, 10));
+
+            var expected = new DateTime(2017, 01, 09);
+
+            // Act
+            var service = new DateServiceImp(appConfigService);
+            var result = service.Date;
+
+            // Assert
+            Assert.That(result, Is.EqualTo(result));
+        }
+    }
+}

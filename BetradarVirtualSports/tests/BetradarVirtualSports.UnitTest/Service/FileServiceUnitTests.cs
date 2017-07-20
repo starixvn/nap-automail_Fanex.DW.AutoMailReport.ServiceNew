@@ -1,7 +1,9 @@
 ﻿using System;
 using System.IO;
+using BetradarVirtualSports.Business.Models;
 using BetradarVirtualSports.Business.Services;
 using Fanex.Service.Core;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace BetradarVirtualSports.UnitTest.Service
@@ -19,11 +21,19 @@ namespace BetradarVirtualSports.UnitTest.Service
         public void ReadContentWhenDataIsAvailable_Always_Successfully()
         {
             // Arrange
-            SystemTime.Set(new DateTime(2017, 01, 01));
+            var appConfigService = Substitute.For<ApplicationConfigurationService>();
+            appConfigService.Configurations.Returns(TestLoader.DataLoader<AppConfig>("AppConfig.json"));
+            appConfigService.Configurations.IsManual = false;
+            SystemTime.Set(new DateTime(2017, 01, 02));
+            var dateService = Substitute.For<DateService>();
+            dateService.Date.Returns(new DateTime(2017, 01, 01));
+            var repositoryService = Substitute.For<RepositoryService>();
+            repositoryService.QueryLastDate().Returns(new DateTime(2017, 01, 01));
+
             var expected = TestLoader.DataLoader("ReadContentWhenDataAvailable-expected.html");
 
             // Act
-            var fileService = new FileServiceImp();
+            var fileService = new FileServiceImp(dateService, repositoryService);
             var result = fileService.ReadContentWhenDataIsAvailable();
 
             // Assert

@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using Fanex.Common;
@@ -51,7 +53,7 @@ namespace BettypeWith3rdProducts.Business.Services
                 var sports = dataOnSheet.Value;
                 ExportTitle(excelWorksheet, sheetName);
                 FreezePanes(excelWorksheet);
-                ExportData(excelWorksheet, sports);
+                ExportData(excelWorksheet, sports);                
             }
 
             ClearnUpTemplate();
@@ -72,7 +74,7 @@ namespace BettypeWith3rdProducts.Business.Services
                     FotmatHeaderSportSection(excelWorksheet, section, startRowIndex);
                     FormatDateColumn(excelWorksheet, startRowIndex);
                     FormatDataSection(excelWorksheet, section, startRowIndex);
-                    FormatTotal(excelWorksheet, section, startRowIndex);
+                    FormatTotal(excelWorksheet, section, startRowIndex);                   
                 }
             }
 
