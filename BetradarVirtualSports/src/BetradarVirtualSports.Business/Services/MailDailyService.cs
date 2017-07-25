@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using BetradarVirtualSports.Business.Models;
-using Fanex.MailDelivery.Client;
 using Fanex.MailDelivery.Core.Models;
 using Fanex.Service.Core;
 
@@ -56,7 +54,7 @@ namespace BetradarVirtualSports.Business.Services
 
             if (appConfig.FunctionIdNodata > 0)
             {
-                mailStationService.Send(mail);               
+                mailStationService.Send(mail);
             }
         }
     }
