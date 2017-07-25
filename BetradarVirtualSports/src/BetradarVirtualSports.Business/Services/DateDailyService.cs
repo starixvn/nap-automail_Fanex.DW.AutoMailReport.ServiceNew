@@ -1,7 +1,7 @@
 ﻿using System;
 using Fanex.Service.Core;
 
-namespace BetradarVirtualSports.Business.Services
+namespace BetradarVirtualSportsDaily.Business.Services
 {
     public class DateDailyService : DateService
     {

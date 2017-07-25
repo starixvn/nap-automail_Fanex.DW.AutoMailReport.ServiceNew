@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using BetradarVirtualSports.Business.Services;
+using BetradarVirtualSportsDaily.Business.Services;
 using Fanex.Data.Repository;
 using NSubstitute;
 using NUnit.Framework;

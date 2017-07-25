@@ -1,5 +1,5 @@
 ﻿using System;
-using BetradarVirtualSports.Business.Services;
+using BetradarVirtualSportsDaily.Business.Services;
 using Fanex.Service.Core;
 using NUnit.Framework;
 

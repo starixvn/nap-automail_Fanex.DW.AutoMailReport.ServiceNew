@@ -3,7 +3,7 @@ using Fanex.Service.Core;
 using RazorEngine;
 using RazorEngine.Templating;
 
-namespace BetradarVirtualSports.Business.Services
+namespace BetradarVirtualSportsDaily.Business.Services
 {
     public interface FileService
     {

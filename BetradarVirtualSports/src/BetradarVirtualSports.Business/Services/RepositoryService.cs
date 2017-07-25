@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using BetradarVirtualSports.Business.Models;
-using BetradarVirtualSports.Business.Repositories;
+using BetradarVirtualSportsDaily.Business.Models;
+using BetradarVirtualSportsDaily.Business.Repositories;
 using Fanex.Data.Repository;
 using Fanex.Service.Core;
 
-namespace BetradarVirtualSports.Business.Services
+namespace BetradarVirtualSportsDaily.Business.Services
 {
     public interface DataDailyService
     {

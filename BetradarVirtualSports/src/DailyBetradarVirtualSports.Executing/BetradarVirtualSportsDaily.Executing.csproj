@@ -173,15 +173,15 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BetradarVirtualSports.Business\BetradarVirtualSports.Business.csproj">
-      <Project>{398be05b-fb7d-4620-a597-574ac17c1962}</Project>
-      <Name>BetradarVirtualSports.Business</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Analyzer Include="..\..\..\packages\SonarAnalyzer.CSharp.5.11.0.1761\analyzers\Google.Protobuf.dll" />
     <Analyzer Include="..\..\..\packages\SonarAnalyzer.CSharp.5.11.0.1761\analyzers\SonarAnalyzer.CSharp.dll" />
     <Analyzer Include="..\..\..\packages\SonarAnalyzer.CSharp.5.11.0.1761\analyzers\SonarAnalyzer.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BetradarVirtualSports.Business\BetradarVirtualSportsDaily.Business.csproj">
+      <Project>{398be05b-fb7d-4620-a597-574ac17c1962}</Project>
+      <Name>BetradarVirtualSportsDaily.Business</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

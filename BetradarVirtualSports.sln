@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSports.Datab
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSports.Integration", "BetradarVirtualSports\tests\BetradarVirtualSports.Integration\BetradarVirtualSports.Integration.csproj", "{305BB656-720C-45B6-A132-9770246D99AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSports.Business", "BetradarVirtualSports\src\BetradarVirtualSports.Business\BetradarVirtualSports.Business.csproj", "{398BE05B-FB7D-4620-A597-574AC17C1962}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{255ED2A3-FBCC-47FC-97EE-58C448B91871}"
 	ProjectSection(SolutionItems) = preProject
 		SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset = SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset
@@ -22,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsDaily.Executing", "BetradarVirtualSports\src\DailyBetradarVirtualSports.Executing\BetradarVirtualSportsDaily.Executing.csproj", "{A028EA62-4D0B-4C3D-A883-EA4A75042E42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsDaily.Business", "BetradarVirtualSports\src\BetradarVirtualSports.Business\BetradarVirtualSportsDaily.Business.csproj", "{398BE05B-FB7D-4620-A597-574AC17C1962}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,14 +41,14 @@ Global
 		{305BB656-720C-45B6-A132-9770246D99AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{305BB656-720C-45B6-A132-9770246D99AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{305BB656-720C-45B6-A132-9770246D99AF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{398BE05B-FB7D-4620-A597-574AC17C1962}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{398BE05B-FB7D-4620-A597-574AC17C1962}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{398BE05B-FB7D-4620-A597-574AC17C1962}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{398BE05B-FB7D-4620-A597-574AC17C1962}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A028EA62-4D0B-4C3D-A883-EA4A75042E42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A028EA62-4D0B-4C3D-A883-EA4A75042E42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A028EA62-4D0B-4C3D-A883-EA4A75042E42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A028EA62-4D0B-4C3D-A883-EA4A75042E42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{398BE05B-FB7D-4620-A597-574AC17C1962}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{398BE05B-FB7D-4620-A597-574AC17C1962}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{398BE05B-FB7D-4620-A597-574AC17C1962}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{398BE05B-FB7D-4620-A597-574AC17C1962}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,8 +57,8 @@ Global
 		{555E752C-D36D-467F-864C-B52DB015CD0A} = {93FE9016-6571-42D1-A9EA-E0C1CB715EC0}
 		{5983E3ED-0859-46A4-9EB0-98B6B6AE0A96} = {93FE9016-6571-42D1-A9EA-E0C1CB715EC0}
 		{305BB656-720C-45B6-A132-9770246D99AF} = {93FE9016-6571-42D1-A9EA-E0C1CB715EC0}
-		{398BE05B-FB7D-4620-A597-574AC17C1962} = {9DDC4FBC-D44F-4F41-906B-D522B66EF6AD}
 		{A028EA62-4D0B-4C3D-A883-EA4A75042E42} = {9DDC4FBC-D44F-4F41-906B-D522B66EF6AD}
+		{398BE05B-FB7D-4620-A597-574AC17C1962} = {9DDC4FBC-D44F-4F41-906B-D522B66EF6AD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45

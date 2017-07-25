@@ -5,7 +5,7 @@ using System.Linq;
 using Epplus.Mapper.Extensions;
 using OfficeOpenXml;
 
-namespace BetradarVirtualSports.Business.Services
+namespace BetradarVirtualSportsDaily.Business.Services
 {
     public interface ExcelService
     {

@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using BetradarVirtualSports.Business.Models;
+using BetradarVirtualSportsDaily.Business.Models;
 using Newtonsoft.Json;
 
-namespace BetradarVirtualSports.Business.Services
+namespace BetradarVirtualSportsDaily.Business.Services
 {
     public interface ApplicationConfigurationService
     {

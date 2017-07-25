@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
-using BetradarVirtualSports.Business.Models;
-using BetradarVirtualSports.Business.Repositories;
-using BetradarVirtualSports.Business.Services;
+using BetradarVirtualSportsDaily.Business.Models;
+using BetradarVirtualSportsDaily.Business.Repositories;
+using BetradarVirtualSportsDaily.Business.Services;
 using Fanex.Data.Repository;
 using Fanex.Service.Core;
 using NSubstitute;

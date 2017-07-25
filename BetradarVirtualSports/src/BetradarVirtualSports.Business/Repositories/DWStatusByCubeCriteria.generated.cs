@@ -1,6 +1,6 @@
 ﻿using Fanex.Data.Repository;
 
-namespace BetradarVirtualSports.Business.Repositories
+namespace BetradarVirtualSportsDaily.Business.Repositories
 {
     public class DWStatusByCubeCriteria : CriteriaBase
     {

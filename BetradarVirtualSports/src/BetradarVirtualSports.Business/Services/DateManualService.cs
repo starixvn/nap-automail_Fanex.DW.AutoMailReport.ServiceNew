@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BetradarVirtualSports.Business.Services
+namespace BetradarVirtualSportsDaily.Business.Services
 {
     public class DateManualService : DateService
     {

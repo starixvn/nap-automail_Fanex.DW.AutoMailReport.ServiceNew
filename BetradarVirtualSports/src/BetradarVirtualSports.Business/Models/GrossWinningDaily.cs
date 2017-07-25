@@ -1,7 +1,7 @@
 ﻿using System;
 using Epplus.Mapper.Annotations;
 
-namespace BetradarVirtualSports.Business.Models
+namespace BetradarVirtualSportsDaily.Business.Models
 {
     public class GrossWinningDaily
     {

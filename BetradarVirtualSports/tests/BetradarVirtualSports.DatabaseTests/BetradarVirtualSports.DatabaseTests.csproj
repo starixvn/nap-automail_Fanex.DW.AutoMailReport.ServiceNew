@@ -106,13 +106,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\BetradarVirtualSports.Business\BetradarVirtualSports.Business.csproj">
-      <Project>{398be05b-fb7d-4620-a597-574ac17c1962}</Project>
-      <Name>BetradarVirtualSports.Business</Name>
-    </ProjectReference>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+    <ProjectReference Include="..\..\src\BetradarVirtualSports.Business\BetradarVirtualSportsDaily.Business.csproj">
+      <Project>{398be05b-fb7d-4620-a597-574ac17c1962}</Project>
+      <Name>BetradarVirtualSportsDaily.Business</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

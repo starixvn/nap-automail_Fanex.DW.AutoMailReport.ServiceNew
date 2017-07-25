@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
-using BetradarVirtualSports.Business.Models;
-using BetradarVirtualSports.Business.Services;
+using BetradarVirtualSportsDaily.Business.Models;
+using BetradarVirtualSportsDaily.Business.Services;
 using NSubstitute;
 using NUnit.Framework;
 

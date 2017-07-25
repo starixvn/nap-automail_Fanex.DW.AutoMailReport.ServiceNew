@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using BetradarVirtualSports.Business.Services;
+using BetradarVirtualSportsDaily.Business.Services;
 using Fanex.Data.Repository;
 using Fanex.Service.Core;
 using OfficeOpenXml;

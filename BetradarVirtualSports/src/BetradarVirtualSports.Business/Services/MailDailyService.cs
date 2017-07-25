@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using BetradarVirtualSports.Business.Models;
+using BetradarVirtualSportsDaily.Business.Models;
 using Fanex.MailDelivery.Core.Models;
 using Fanex.Service.Core;
 
-namespace BetradarVirtualSports.Business.Services
+namespace BetradarVirtualSportsDaily.Business.Services
 {
     public class MailDailyService : MailService
     {

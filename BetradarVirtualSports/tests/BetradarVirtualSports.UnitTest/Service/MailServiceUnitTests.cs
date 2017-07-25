@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using BetradarVirtualSports.Business.Models;
-using BetradarVirtualSports.Business.Services;
+using BetradarVirtualSportsDaily.Business.Models;
+using BetradarVirtualSportsDaily.Business.Services;
 using Fanex.MailDelivery.Core.Models;
 using Fanex.Service.Core;
 using NSubstitute;

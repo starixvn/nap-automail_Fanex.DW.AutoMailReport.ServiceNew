@@ -2,7 +2,7 @@
 using Fanex.Data;
 using Fanex.Data.Repository;
 
-namespace BetradarVirtualSports.Business.Repositories
+namespace BetradarVirtualSportsDaily.Business.Repositories
 {
     public class DailyCriteria : CriteriaBase
     {

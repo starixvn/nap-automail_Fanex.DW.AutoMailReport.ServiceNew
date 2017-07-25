@@ -251,18 +251,13 @@
     <Content Include="AppReadme\Compare-NET-Objects-Help.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\..\..\packages\SonarAnalyzer.CSharp.6.2.0.2536\analyzers\Google.Protobuf.dll" />
-    <Analyzer Include="..\..\..\packages\SonarAnalyzer.CSharp.6.2.0.2536\analyzers\SonarAnalyzer.CSharp.dll" />
-    <Analyzer Include="..\..\..\packages\SonarAnalyzer.CSharp.6.2.0.2536\analyzers\SonarAnalyzer.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\BetradarVirtualSports.Business\BetradarVirtualSports.Business.csproj">
-      <Project>{398be05b-fb7d-4620-a597-574ac17c1962}</Project>
-      <Name>BetradarVirtualSports.Business</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\BetradarVirtualSports.Business\BetradarVirtualSportsDaily.Business.csproj">
+      <Project>{398be05b-fb7d-4620-a597-574ac17c1962}</Project>
+      <Name>BetradarVirtualSportsDaily.Business</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

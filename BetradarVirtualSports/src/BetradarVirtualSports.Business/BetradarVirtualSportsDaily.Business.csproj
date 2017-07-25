@@ -7,8 +7,8 @@
     <ProjectGuid>{398BE05B-FB7D-4620-A597-574AC17C1962}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BetradarVirtualSports.Business</RootNamespace>
-    <AssemblyName>BetradarVirtualSports.Business</AssemblyName>
+    <RootNamespace>BetradarVirtualSportsDaily.Business</RootNamespace>
+    <AssemblyName>BetradarVirtualSportsDaily.Business</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
