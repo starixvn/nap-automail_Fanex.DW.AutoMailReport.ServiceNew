@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using BetradarVirtualSports.Business.Models;
 using BetradarVirtualSports.Business.Services;
 using Fanex.Service.Core;
@@ -10,6 +11,12 @@ namespace BetradarVirtualSports.UnitTest.Service
     [Category("BetradarVirtualSports.UnitTest.Service DateServiceUnitTests")]
     public class DateServiceUnitTests
     {
+        [SetUp]
+        public void Initialize()
+        {
+            Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
+        }
+
         [Test]
         public void Date_SetManualIsFalse_ReturnRightValue()
         {

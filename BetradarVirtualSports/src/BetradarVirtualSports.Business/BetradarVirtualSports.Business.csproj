@@ -146,7 +146,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\AppConfig.cs" />
+    <Compile Include="Models\AppConfig.generated.cs" />
     <Compile Include="Models\GrossWinningDaily.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\DailyCriteria.generated.cs" />
