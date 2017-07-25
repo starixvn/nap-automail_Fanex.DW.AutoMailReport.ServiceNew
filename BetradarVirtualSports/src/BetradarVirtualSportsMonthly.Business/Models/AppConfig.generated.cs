@@ -1,0 +1,25 @@
+﻿using System;
+
+namespace BetradarVirtualSportsMonthly.Business
+{
+    public class AppConfig
+    {
+        public string ExportDataDirectory { get; set; }
+
+        public string ExcelPasswordProtected { get; set; }
+
+        public bool IsCheckEnoughData { get; set; }
+
+        public int FunctionIdNodata { get; set; }
+
+        public string Subject { get; set; }
+
+        public string Title { get; set; }
+
+        public bool IsManual { get; set; }
+
+        public DateTime FromDate { get; set; }
+
+        public DateTime ToDate { get; set; }
+    }
+}
