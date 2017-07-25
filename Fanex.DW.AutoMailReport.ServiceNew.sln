@@ -83,10 +83,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsDaily.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSports.DatabaseTests", "BetradarVirtualSports\tests\BetradarVirtualSports.DatabaseTests\BetradarVirtualSports.DatabaseTests.csproj", "{5983E3ED-0859-46A4-9EB0-98B6B6AE0A96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSports.Integration", "BetradarVirtualSports\tests\BetradarVirtualSports.Integration\BetradarVirtualSports.Integration.csproj", "{305BB656-720C-45B6-A132-9770246D99AF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSports.UnitTest", "BetradarVirtualSports\tests\BetradarVirtualSports.UnitTest\BetradarVirtualSports.UnitTest.csproj", "{555E752C-D36D-467F-864C-B52DB015CD0A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -181,14 +177,6 @@ Global
 		{5983E3ED-0859-46A4-9EB0-98B6B6AE0A96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5983E3ED-0859-46A4-9EB0-98B6B6AE0A96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5983E3ED-0859-46A4-9EB0-98B6B6AE0A96}.Release|Any CPU.Build.0 = Release|Any CPU
-		{305BB656-720C-45B6-A132-9770246D99AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{305BB656-720C-45B6-A132-9770246D99AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{305BB656-720C-45B6-A132-9770246D99AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{305BB656-720C-45B6-A132-9770246D99AF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{555E752C-D36D-467F-864C-B52DB015CD0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{555E752C-D36D-467F-864C-B52DB015CD0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{555E752C-D36D-467F-864C-B52DB015CD0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{555E752C-D36D-467F-864C-B52DB015CD0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -226,7 +214,5 @@ Global
 		{398BE05B-FB7D-4620-A597-574AC17C1962} = {0C47288A-ADA1-49EF-9954-C6C1FD4790EC}
 		{A028EA62-4D0B-4C3D-A883-EA4A75042E42} = {0C47288A-ADA1-49EF-9954-C6C1FD4790EC}
 		{5983E3ED-0859-46A4-9EB0-98B6B6AE0A96} = {488F2A9E-B395-42E2-8FEF-01D3B240710D}
-		{305BB656-720C-45B6-A132-9770246D99AF} = {488F2A9E-B395-42E2-8FEF-01D3B240710D}
-		{555E752C-D36D-467F-864C-B52DB015CD0A} = {488F2A9E-B395-42E2-8FEF-01D3B240710D}
 	EndGlobalSection
 EndGlobal
