@@ -10,8 +10,8 @@ using NUnit.Framework;
 
 namespace BetradarVirtualSportsDaily.UnitTests.Service
 {
-    [Category("BetradarVirtualSportsDaily.UnitTests.Service RepositoryServiceUnitTests")]
-    public class RepositoryServiceUnitTests
+    [Category("BetradarVirtualSportsDaily.UnitTests.Service DataServiceUnitTests")]
+    public class DataServiceUnitTests
     {
         private IDynamicRepository dynamicRepository;
         private ApplicationConfigurationService appConfigService;
@@ -49,6 +49,25 @@ namespace BetradarVirtualSportsDaily.UnitTests.Service
             appConfigService.Configurations.Returns(TestLoader.DataLoader<AppConfig>("AppConfig.json"));
             appConfigService.Configurations.IsManual = false;
             appConfigService.Configurations.IsCheckEnoughData = false;
+
+            // Act
+            var service = new RepositoryServiceImp(dynamicRepository, appConfigService);
+            var result = service.IsDataAvailable();
+
+            // Assert
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void IsDataAvailable_QueryLastDate_AlwaysReturnTrue()
+        {
+            // Arrange
+            var expected = true;
+            appConfigService.Configurations.Returns(TestLoader.DataLoader<AppConfig>("AppConfig.json"));
+            appConfigService.Configurations.IsManual = false;
+            appConfigService.Configurations.IsCheckEnoughData = true;
+            dynamicRepository.Get<LastDateModel>(Arg.Any<DWStatusByCubeCriteria>()).Returns(new LastDateModel { LastDate = new DateTime(2017, 01, 01) });
+            SystemTime.Set(new DateTime(2017, 01, 02));
 
             // Act
             var service = new RepositoryServiceImp(dynamicRepository, appConfigService);

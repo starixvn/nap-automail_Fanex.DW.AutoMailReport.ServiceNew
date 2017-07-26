@@ -17,11 +17,11 @@ namespace BetradarVirtualSportsDaily.Business.Services
     public class ExcelServiceImp : ExcelService
     {
         private readonly ExcelPackage excelPackage;
-        private readonly DataDailyService dataDailyService;
+        private readonly DataService dataDailyService;
         private readonly ApplicationConfigurationService appConfigService;
         private readonly DateService dateService;
 
-        public ExcelServiceImp(ExcelPackage excelPackage, DataDailyService dataDailyService, ApplicationConfigurationService appConfigService, DateService dateService)
+        public ExcelServiceImp(ExcelPackage excelPackage, DataService dataDailyService, ApplicationConfigurationService appConfigService, DateService dateService)
         {
             this.excelPackage = excelPackage;
             this.dataDailyService = dataDailyService;
@@ -67,10 +67,10 @@ namespace BetradarVirtualSportsDaily.Business.Services
             totalSheet.ApplyVertical(totalData);
             totalSheet.Cells[beginRowIndex, 1, lastRowIndexTotalSheet, 8].Copy(dailySheet.Cells[lastRowIndexDailySheet, 1]);
 
-            dailySheet.AutoMergeRowsHaveSameValue($"A1:A{lastRowIndexDailySheet - 1}");
-            dailySheet.AutoMergeRowsHaveSameValue($"A{lastRowIndexDailySheet}:A{lastRowIndexDailySheet + totalData.Count() - 1}");
-            dailySheet.AutoMergeRowsHaveSameValue($"B1:B{lastRowIndexDailySheet - 1}");
-            dailySheet.AutoMergeRowsHaveSameValue($"B12:B{lastRowIndexDailySheet + totalData.Count() - 1}");
+            dailySheet.AutoMergeRowsHaveSameValue($"A1:A{lastRowIndexDailySheet - 1}");            
+            dailySheet.AutoMergeRowsHaveSameValue($"B1:B{lastRowIndexDailySheet - 1}");            
+            dailySheet.Cells[$"A{lastRowIndexDailySheet}:B{lastRowIndexDailySheet + totalData.Count() - 1}"].Merge = true;
+            dailySheet.Cells[$"A{lastRowIndexDailySheet}:B{lastRowIndexDailySheet + totalData.Count() - 1}"].Value = "Total in";
         }
 
         private static void RenderHeaderInfomation(ExcelWorksheet sheet, DateTime date)

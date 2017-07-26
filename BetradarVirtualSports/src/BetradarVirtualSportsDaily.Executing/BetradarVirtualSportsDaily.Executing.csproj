@@ -166,6 +166,9 @@
     <Content Include="Templates\Daily-Template.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\AppConfig.Local.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Local\DBDWH.bodb_dwrs.dwrs.xml">

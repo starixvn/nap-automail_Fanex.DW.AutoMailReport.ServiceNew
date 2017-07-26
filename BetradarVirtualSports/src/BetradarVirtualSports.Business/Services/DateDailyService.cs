@@ -9,7 +9,8 @@ namespace BetradarVirtualSportsDaily.Business.Services
         {
             get
             {
-                return SystemTime.Now.AddDays(-1);
+                var date = $"{SystemTime.Now.AddDays(-1):yyyy/MM/dd}";
+                return Convert.ToDateTime(date);
             }
         }
     }

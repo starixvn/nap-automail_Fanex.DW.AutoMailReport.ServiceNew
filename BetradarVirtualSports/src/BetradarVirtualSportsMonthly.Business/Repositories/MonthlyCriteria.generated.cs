@@ -3,7 +3,7 @@ using Fanex.Data.Repository;
 
 namespace BetradarVirtualSportsMonthly.Business.Repositories
 {
-    public class DailyCriteria : CriteriaBase
+    public class MonthlyCriteria : CriteriaBase
     {
         public DateTime FromDate { get; set; }
 

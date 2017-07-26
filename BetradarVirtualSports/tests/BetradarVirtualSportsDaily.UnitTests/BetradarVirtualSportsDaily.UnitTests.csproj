@@ -158,10 +158,13 @@
     <Compile Include="Service\ExcelServiceUnitTests.cs" />
     <Compile Include="Service\FileServiceUnitTests.cs" />
     <Compile Include="Service\MailServiceUnitTests.cs" />
-    <Compile Include="Service\RepositoryServiceUnitTests.cs" />
+    <Compile Include="Service\DataServiceUnitTests.cs" />
     <Compile Include="TestLoader.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Templates\ContentWhenDataIsNotReady-expected.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Templates\ReadContentWhenDataAvailable-expected.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

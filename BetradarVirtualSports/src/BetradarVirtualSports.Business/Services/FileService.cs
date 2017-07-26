@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Fanex.Service.Core;
 using RazorEngine;
 using RazorEngine.Templating;
@@ -36,8 +37,10 @@ namespace BetradarVirtualSportsDaily.Business.Services
         {
             var templatePath = $@"Templates\ContentWhenDataIsNotReady.cshtml";
             var emailTemplate = File.ReadAllText(templatePath);
-            var date = repositoryService.QueryLastDate();
-            return Engine.Razor.RunCompile(emailTemplate, templatePath, date.GetType(), date);
+            var lastDate = repositoryService.QueryLastDate();
+            var yesterday = SystemTime.Now.AddDays(-1);
+            var dates = new Tuple<DateTime, DateTime>(lastDate, yesterday);
+            return Engine.Razor.RunCompile(emailTemplate, templatePath, dates.GetType(), dates);
         }
     }
 }

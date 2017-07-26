@@ -13,7 +13,7 @@ namespace BetradarVirtualSportsDaily.UnitTests.Service
     [Category("BetradarVirtualSportsDaily.UnitTests.Service ExcelServiceUnitTests")]
     public class ExcelServiceUnitTests
     {
-        private DataDailyService dataDailyService;
+        private DataService dataDailyService;
         private ApplicationConfigurationService appConfigService;
         private DateService dateService;
 
@@ -21,7 +21,7 @@ namespace BetradarVirtualSportsDaily.UnitTests.Service
         public void Initialize()
         {
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
-            dataDailyService = Substitute.For<DataDailyService>();
+            dataDailyService = Substitute.For<DataService>();
             appConfigService = Substitute.For<ApplicationConfigurationService>();
             dateService = Substitute.For<DateService>();
         }

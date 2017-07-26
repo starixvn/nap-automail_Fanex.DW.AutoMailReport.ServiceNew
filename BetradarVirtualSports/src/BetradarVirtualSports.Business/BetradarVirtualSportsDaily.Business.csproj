@@ -158,7 +158,7 @@
     <Compile Include="Services\ExcelService.cs" />
     <Compile Include="Services\FileService.cs" />
     <Compile Include="Services\MailDailyService.cs" />
-    <Compile Include="Services\RepositoryService.cs" />
+    <Compile Include="Services\DataService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

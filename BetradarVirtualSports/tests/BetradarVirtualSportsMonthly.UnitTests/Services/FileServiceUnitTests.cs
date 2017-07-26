@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BetradarVirtualSportsMonthly.Business.Services;
 using Fanex.Service.Core;
 using NSubstitute;
@@ -37,6 +33,23 @@ namespace BetradarVirtualSportsMonthly.UnitTests.Services
             // Act
             var service = new FileServiceImp(dateService, repositoryService);
             var result = service.ReadContentWhenDataIsAvailable();
+
+            // Assert
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void ReadContentWhenDataIsNotReady_Always_ReturnRightContent()
+        {
+            // Arrange
+            Initialize();
+            SystemTime.Set(new DateTime(2017, 01, 03));
+            repositoryService.QueryLastDate().Returns(new DateTime(2017, 01, 01));
+            var expected = TestLoader.DataLoader("ContentWhenDataIsNotReady-expected.txt");
+
+            // Act
+            var service = new FileServiceImp(dateService, repositoryService);
+            var result = service.ReadContentWhenDataIsNotReady();
 
             // Assert
             Assert.That(result, Is.EqualTo(expected));

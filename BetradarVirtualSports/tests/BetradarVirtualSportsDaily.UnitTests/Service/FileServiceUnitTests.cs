@@ -11,10 +11,15 @@ namespace BetradarVirtualSportsDaily.UnitTests.Service
     [Category("BetradarVirtualSportsDaily.UnitTests.Service FileServiceUnitTests")]
     public class FileServiceUnitTests
     {
+        private DateService dateService;
+        private RepositoryService repositoryService;
+
         [SetUp]
         public void Initialize()
         {
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
+            dateService = Substitute.For<DateService>();
+            repositoryService = Substitute.For<RepositoryService>();
         }
 
         [Test]
@@ -24,10 +29,8 @@ namespace BetradarVirtualSportsDaily.UnitTests.Service
             var appConfigService = Substitute.For<ApplicationConfigurationService>();
             appConfigService.Configurations.Returns(TestLoader.DataLoader<AppConfig>("AppConfig.json"));
             appConfigService.Configurations.IsManual = false;
-            SystemTime.Set(new DateTime(2017, 01, 02));
-            var dateService = Substitute.For<DateService>();
-            dateService.Date.Returns(new DateTime(2017, 01, 01));
-            var repositoryService = Substitute.For<RepositoryService>();
+            SystemTime.Set(new DateTime(2017, 01, 02));            
+            dateService.Date.Returns(new DateTime(2017, 01, 01));            
             repositoryService.QueryLastDate().Returns(new DateTime(2017, 01, 01));
 
             var expected = TestLoader.DataLoader("ReadContentWhenDataAvailable-expected.html");
@@ -35,6 +38,23 @@ namespace BetradarVirtualSportsDaily.UnitTests.Service
             // Act
             var fileService = new FileServiceImp(dateService, repositoryService);
             var result = fileService.ReadContentWhenDataIsAvailable();
+
+            // Assert
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void ReadContentWhenDataIsNotReady_Always_ReturnRightContent()
+        {
+            // Arrange
+            Initialize();
+            SystemTime.Set(new DateTime(2017, 01, 03));
+            repositoryService.QueryLastDate().Returns(new DateTime(2017, 01, 01));
+            var expected = TestLoader.DataLoader("ContentWhenDataIsNotReady-expected.txt");
+
+            // Act
+            var service = new FileServiceImp(dateService, repositoryService);
+            var result = service.ReadContentWhenDataIsNotReady();
 
             // Assert
             Assert.That(result, Is.EqualTo(expected));

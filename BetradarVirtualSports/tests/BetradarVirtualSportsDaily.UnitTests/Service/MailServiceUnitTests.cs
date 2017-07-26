@@ -60,6 +60,20 @@ namespace BetradarVirtualSportsDaily.UnitTests.Service
             Assert.That(result, IsDeeplyEqual.To(expected));
         }
 
+        [Test]
+        public void SendMailWhenDataIsNotReady_Always_Successfully()
+        {
+            // Arrange
+            appConfigService.Configurations.Returns(TestLoader.DataLoader<AppConfig>("AppConfig.json"));
+
+            // Act
+            var service = new MailDailyService(appConfigService, fileService, excelService, dateService, mailStationService);
+            service.SendMailWhenDataIsNotReady();
+
+            // Assert
+            mailStationService.Received().Send(Arg.Any<Mail>());
+        }
+
         [TearDown]
         public void Reset()
         {

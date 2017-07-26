@@ -23,11 +23,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsMonthl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsDaily.DatabaseTests", "BetradarVirtualSports\tests\BetradarVirtualSportsDaily.DatabaseTests\BetradarVirtualSportsDaily.DatabaseTests.csproj", "{5983E3ED-0859-46A4-9EB0-98B6B6AE0A96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsDaily.IntegrationTests", "BetradarVirtualSports\tests\BetradarVirtualSportsDaily.Integration\BetradarVirtualSportsDaily.IntegrationTests.csproj", "{305BB656-720C-45B6-A132-9770246D99AF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsDaily.UnitTests", "BetradarVirtualSports\tests\BetradarVirtualSportsDaily.UnitTest\BetradarVirtualSportsDaily.UnitTests.csproj", "{555E752C-D36D-467F-864C-B52DB015CD0A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsMonthly.UnitTests", "BetradarVirtualSports\tests\BetradarVirtualSportsMonthly.UnitTests\BetradarVirtualSportsMonthly.UnitTests.csproj", "{2078E3C5-F6E8-4013-A20B-C7D096599762}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsDaily.IntegrationTests", "BetradarVirtualSports\tests\BetradarVirtualSportsDaily.IntegrationTests\BetradarVirtualSportsDaily.IntegrationTests.csproj", "{305BB656-720C-45B6-A132-9770246D99AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsDaily.UnitTests", "BetradarVirtualSports\tests\BetradarVirtualSportsDaily.UnitTests\BetradarVirtualSportsDaily.UnitTests.csproj", "{555E752C-D36D-467F-864C-B52DB015CD0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +55,10 @@ Global
 		{5983E3ED-0859-46A4-9EB0-98B6B6AE0A96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5983E3ED-0859-46A4-9EB0-98B6B6AE0A96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5983E3ED-0859-46A4-9EB0-98B6B6AE0A96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2078E3C5-F6E8-4013-A20B-C7D096599762}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2078E3C5-F6E8-4013-A20B-C7D096599762}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2078E3C5-F6E8-4013-A20B-C7D096599762}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2078E3C5-F6E8-4013-A20B-C7D096599762}.Release|Any CPU.Build.0 = Release|Any CPU
 		{305BB656-720C-45B6-A132-9770246D99AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{305BB656-720C-45B6-A132-9770246D99AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{305BB656-720C-45B6-A132-9770246D99AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -63,10 +67,6 @@ Global
 		{555E752C-D36D-467F-864C-B52DB015CD0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{555E752C-D36D-467F-864C-B52DB015CD0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{555E752C-D36D-467F-864C-B52DB015CD0A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2078E3C5-F6E8-4013-A20B-C7D096599762}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2078E3C5-F6E8-4013-A20B-C7D096599762}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2078E3C5-F6E8-4013-A20B-C7D096599762}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2078E3C5-F6E8-4013-A20B-C7D096599762}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,9 +77,9 @@ Global
 		{A028EA62-4D0B-4C3D-A883-EA4A75042E42} = {9DDC4FBC-D44F-4F41-906B-D522B66EF6AD}
 		{17E82C0E-DC35-45A3-9B47-A270D58742E2} = {9DDC4FBC-D44F-4F41-906B-D522B66EF6AD}
 		{5983E3ED-0859-46A4-9EB0-98B6B6AE0A96} = {93FE9016-6571-42D1-A9EA-E0C1CB715EC0}
+		{2078E3C5-F6E8-4013-A20B-C7D096599762} = {93FE9016-6571-42D1-A9EA-E0C1CB715EC0}
 		{305BB656-720C-45B6-A132-9770246D99AF} = {93FE9016-6571-42D1-A9EA-E0C1CB715EC0}
 		{555E752C-D36D-467F-864C-B52DB015CD0A} = {93FE9016-6571-42D1-A9EA-E0C1CB715EC0}
-		{2078E3C5-F6E8-4013-A20B-C7D096599762} = {93FE9016-6571-42D1-A9EA-E0C1CB715EC0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45

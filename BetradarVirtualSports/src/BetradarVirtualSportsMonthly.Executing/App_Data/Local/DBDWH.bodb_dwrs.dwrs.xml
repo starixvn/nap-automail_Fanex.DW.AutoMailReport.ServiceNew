@@ -2,7 +2,7 @@
 <Functions SiteId="25" SiteName="Auto Mail">
   <Function Name="Betradar Virtual Sport Daily Report">
     <Setting Key="BI_GetDWStatusByCube" SpName="BI_GetDWStatusByCube" DbName="DBDWH.bodb_dwrs.dwrs" TimeOut="0" />
-    <Setting Key="Acc_Rpt_Automail_BetradarVS_GrossWinning_Daily" SpName="Acc_Rpt_Automail_BetradarVS_GrossWinning_Daily_xpre" DbName="DBDWH.bodb_dwrs.dwrs" TimeOut="0">
+    <Setting Key="Acc_Rpt_Automail_BetradarVS_GrossWinning_Monthly" SpName="Acc_Rpt_Automail_BetradarVS_GrossWinning_Monthly_xpre" DbName="DBDWH.bodb_dwrs.dwrs" TimeOut="0">
       <Mappings>
         <Mapping DataField="RptDate" ObjectProperty="Date" />
       </Mappings>

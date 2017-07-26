@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using BetradarVirtualSportsDaily.Business.Models;
-using BetradarVirtualSportsDaily.Business.Repositories;
+using BetradarVirtualSportsMonthly.Business.Models;
+using BetradarVirtualSportsMonthly.Business.Repositories;
 using Fanex.Data.Repository;
 using Fanex.Service.Core;
 
-namespace BetradarVirtualSportsDaily.Business.Services
+namespace BetradarVirtualSportsMonthly.Business.Services
 {
-    public interface DataDailyService
+    public interface DataService
     {
-        Tuple<IEnumerable<GrossWinningDaily>, IEnumerable<GrossWinningDaily>> QueryDaily(DateTime date);
+        Tuple<IEnumerable<GrossWinningMonthly>, IEnumerable<GrossWinningMonthly>> QueryMonthly(DateTime fromDate, DateTime toDate);
     }
 
-    public class RepositoryServiceImp : RepositoryService, DataDailyService
+    public class RepositoryServiceImp : RepositoryService, DataService
     {
         private readonly IDynamicRepository dynamicRepository;
         private readonly ApplicationConfigurationService appConfigService;
@@ -35,9 +35,9 @@ namespace BetradarVirtualSportsDaily.Business.Services
             return result;
         }
 
-        public Tuple<IEnumerable<GrossWinningDaily>, IEnumerable<GrossWinningDaily>> QueryDaily(DateTime date)
+        public Tuple<IEnumerable<GrossWinningMonthly>, IEnumerable<GrossWinningMonthly>> QueryMonthly(DateTime fromDate, DateTime toDate)
         {
-            return dynamicRepository.FetchMultiple<GrossWinningDaily, GrossWinningDaily>(new DailyCriteria { Date = date });
+            return dynamicRepository.FetchMultiple<GrossWinningMonthly, GrossWinningMonthly>(new MonthlyCriteria { FromDate = fromDate, ToDate = toDate });
         }
 
         public DateTime QueryLastDate()

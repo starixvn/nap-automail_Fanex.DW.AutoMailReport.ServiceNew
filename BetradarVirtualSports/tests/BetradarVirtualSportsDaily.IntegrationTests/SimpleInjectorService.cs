@@ -17,7 +17,7 @@ namespace BetradarVirtualSportsDaily.IntegrationTests
             container.Register<DateService, DateServiceImp>();
             container.Register<ExcelService, ExcelServiceImp>();
             container.Register<FileService, FileServiceImp>();
-            container.Register<DataDailyService, RepositoryServiceImp>();
+            container.Register<DataService, RepositoryServiceImp>();
             container.Register<RepositoryService, RepositoryServiceImp>();
             container.Register<MailStationService, MailStationServiceImp>();
             container.Register<MailService, MailDailyService>();
