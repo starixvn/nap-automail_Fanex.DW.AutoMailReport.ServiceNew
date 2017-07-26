@@ -1,10 +1,11 @@
 ﻿@{
-    string date = Model;
+    DateTime fromDate = Model.Item1;
+    DateTime toDate = Model.Item2;
 }
 <div>
     Dear All, <br/><br />
 
-    Kindly download attached file for Betradar Virtual Sport Daily Report on @date <br /><br />
+    Kindly download attached file for Betradar Virtual Sports Monthly Report from @fromDate.ToString("MM/dd/yyyy") to @toDate.ToString("MM/dd/yyyy") <br /><br />
 
     Thanks and best regards, <br /><br />
 

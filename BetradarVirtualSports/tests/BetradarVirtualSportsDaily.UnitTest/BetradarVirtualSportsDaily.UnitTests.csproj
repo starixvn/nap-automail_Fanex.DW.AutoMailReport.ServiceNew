@@ -7,8 +7,8 @@
     <ProjectGuid>{555E752C-D36D-467F-864C-B52DB015CD0A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BetradarVirtualSportsDaily.UnitTest</RootNamespace>
-    <AssemblyName>BetradarVirtualSportsDaily.UnitTest</AssemblyName>
+    <RootNamespace>BetradarVirtualSportsDaily.UnitTests</RootNamespace>
+    <AssemblyName>BetradarVirtualSportsDaily.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -5,7 +5,7 @@ using Fanex.Service.Core;
 using OfficeOpenXml;
 using SimpleInjector;
 
-namespace BetradarVirtualSportsDaily.Integration
+namespace BetradarVirtualSportsDaily.IntegrationTests
 {
     internal static class SimpleInjectorService
     {

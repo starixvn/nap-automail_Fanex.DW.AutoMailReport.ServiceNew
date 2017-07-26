@@ -9,9 +9,9 @@ using NSubstitute;
 using NUnit.CompareNetObjects;
 using NUnit.Framework;
 
-namespace BetradarVirtualSportsDaily.UnitTest.Service
+namespace BetradarVirtualSportsDaily.UnitTests.Service
 {
-    [Category("BetradarVirtualSportsDaily.UnitTest.Service DistributedNotificationUnitTests")]
+    [Category("BetradarVirtualSportsDaily.UnitTests.Service DistributedNotificationUnitTests")]
     public class MailServiceUnitTests
     {
         private ApplicationConfigurationService appConfigService;

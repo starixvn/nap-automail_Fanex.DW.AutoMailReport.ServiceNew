@@ -5,9 +5,9 @@ using BetradarVirtualSportsDaily.Business.Services;
 using NUnit.CompareNetObjects;
 using NUnit.Framework;
 
-namespace BetradarVirtualSportsDaily.UnitTest.Service
+namespace BetradarVirtualSportsDaily.UnitTests.Service
 {
-    [Category("BetradarVirtualSportsDaily.UnitTest.Service ApplicationConfigurationServiceUnitTests")]
+    [Category("BetradarVirtualSportsDaily.UnitTests.Service ApplicationConfigurationServiceUnitTests")]
     public class ApplicationConfigurationServiceUnitTests
     {
         [Test]

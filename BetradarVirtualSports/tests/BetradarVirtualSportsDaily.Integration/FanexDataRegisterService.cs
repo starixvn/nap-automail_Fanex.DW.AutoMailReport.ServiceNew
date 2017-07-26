@@ -4,7 +4,7 @@ using System.IO;
 using Fanex.Data;
 using Fanex.Data.OldConnectionStringProvider;
 
-namespace BetradarVirtualSportsDaily.Integration
+namespace BetradarVirtualSportsDaily.IntegrationTests
 {
     internal static class FanexDataRegisterService
     {

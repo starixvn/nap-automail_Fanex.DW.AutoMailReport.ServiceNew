@@ -8,9 +8,9 @@ using NSubstitute;
 using NUnit.Framework;
 using OfficeOpenXml;
 
-namespace BetradarVirtualSportsDaily.UnitTest.Service
+namespace BetradarVirtualSportsDaily.UnitTests.Service
 {
-    [Category("BetradarVirtualSportsDaily.UnitTest.Service ExcelServiceUnitTests")]
+    [Category("BetradarVirtualSportsDaily.UnitTests.Service ExcelServiceUnitTests")]
     public class ExcelServiceUnitTests
     {
         private DataDailyService dataDailyService;

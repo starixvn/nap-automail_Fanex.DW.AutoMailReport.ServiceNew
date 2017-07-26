@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using NUnit.Framework;
 
-namespace BetradarVirtualSportsDaily.UnitTest
+namespace BetradarVirtualSportsDaily.UnitTests
 {
     public static class TestLoader
     {

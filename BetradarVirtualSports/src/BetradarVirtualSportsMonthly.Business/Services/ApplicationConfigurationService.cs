@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using BetradarVirtualSportsMonthly.Business.Models;
 using Newtonsoft.Json;
 
 namespace BetradarVirtualSportsMonthly.Business.Services

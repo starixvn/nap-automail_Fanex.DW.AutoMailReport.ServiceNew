@@ -3,9 +3,9 @@ using BetradarVirtualSportsDaily.Business.Services;
 using Fanex.Service.Core;
 using NUnit.Framework;
 
-namespace BetradarVirtualSportsDaily.UnitTest.Service
+namespace BetradarVirtualSportsDaily.UnitTests.Service
 {
-    [Category("BetradarVirtualSportsDaily.UnitTest.Service DateDailyServiceUnitTests")]
+    [Category("BetradarVirtualSportsDaily.UnitTests.Service DateDailyServiceUnitTests")]
     public class DateDailyServiceUnitTests
     {
         [Test]

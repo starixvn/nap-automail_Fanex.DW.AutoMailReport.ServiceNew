@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BetradarVirtualSportsMonthly.Business
+namespace BetradarVirtualSportsMonthly.Business.Models
 {
     public class AppConfig
     {

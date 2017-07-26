@@ -3,9 +3,9 @@ using Fanex.Service.Core;
 using NUnit.Framework;
 using SimpleInjector;
 
-namespace BetradarVirtualSportsDaily.Integration
+namespace BetradarVirtualSportsDaily.IntegrationTests
 {
-    [Category("BetradarVirtualSportsDaily.Integration ProgramTests")]
+    [Category("BetradarVirtualSportsDaily.IntegrationTests ProgramTests")]
     public class ProgramTests
     {
         [Test]

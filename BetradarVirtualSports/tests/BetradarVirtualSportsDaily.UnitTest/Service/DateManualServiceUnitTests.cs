@@ -5,9 +5,9 @@ using BetradarVirtualSportsDaily.Business.Services;
 using NSubstitute;
 using NUnit.Framework;
 
-namespace BetradarVirtualSportsDaily.UnitTest.Service
+namespace BetradarVirtualSportsDaily.UnitTests.Service
 {
-    [Category("BetradarVirtualSportsDaily.UnitTest.Service DateManualServiceUnitTests")]
+    [Category("BetradarVirtualSportsDaily.UnitTests.Service DateManualServiceUnitTests")]
     public class DateManualServiceUnitTests
     {
         [Test]
