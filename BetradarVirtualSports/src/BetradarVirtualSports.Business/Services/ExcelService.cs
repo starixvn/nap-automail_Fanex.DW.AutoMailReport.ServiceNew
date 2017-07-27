@@ -68,7 +68,8 @@ namespace BetradarVirtualSportsDaily.Business.Services
             totalSheet.Cells[beginRowIndex, 1, lastRowIndexTotalSheet, 8].Copy(dailySheet.Cells[lastRowIndexDailySheet, 1]);
 
             dailySheet.AutoMergeRowsHaveSameValue($"A1:A{lastRowIndexDailySheet - 1}");            
-            dailySheet.AutoMergeRowsHaveSameValue($"B1:B{lastRowIndexDailySheet - 1}");            
+            dailySheet.AutoMergeRowsHaveSameValue($"B1:B{lastRowIndexDailySheet - 1}");
+            
             dailySheet.Cells[$"A{lastRowIndexDailySheet}:B{lastRowIndexDailySheet + totalData.Count() - 1}"].Merge = true;
             dailySheet.Cells[$"A{lastRowIndexDailySheet}:B{lastRowIndexDailySheet + totalData.Count() - 1}"].Value = "Total in";
         }

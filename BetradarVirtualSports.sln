@@ -29,6 +29,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsDaily.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsDaily.UnitTests", "BetradarVirtualSports\tests\BetradarVirtualSportsDaily.UnitTests\BetradarVirtualSportsDaily.UnitTests.csproj", "{555E752C-D36D-467F-864C-B52DB015CD0A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsMonthly.DatabaseTests", "BetradarVirtualSports\tests\BetradarVirtualSportsMonthly.DatabaseTests\BetradarVirtualSportsMonthly.DatabaseTests.csproj", "{FA4990A0-D23F-481E-908C-07F2B0439AC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsMonthly.IntegrationTests", "BetradarVirtualSports\tests\BetradarVirtualSportsMonthly.IntegrationTests\BetradarVirtualSportsMonthly.IntegrationTests.csproj", "{C7AF7DF7-89D3-45CE-A204-EA990E06721D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +71,14 @@ Global
 		{555E752C-D36D-467F-864C-B52DB015CD0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{555E752C-D36D-467F-864C-B52DB015CD0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{555E752C-D36D-467F-864C-B52DB015CD0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA4990A0-D23F-481E-908C-07F2B0439AC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA4990A0-D23F-481E-908C-07F2B0439AC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA4990A0-D23F-481E-908C-07F2B0439AC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA4990A0-D23F-481E-908C-07F2B0439AC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7AF7DF7-89D3-45CE-A204-EA990E06721D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7AF7DF7-89D3-45CE-A204-EA990E06721D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7AF7DF7-89D3-45CE-A204-EA990E06721D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7AF7DF7-89D3-45CE-A204-EA990E06721D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +92,8 @@ Global
 		{2078E3C5-F6E8-4013-A20B-C7D096599762} = {93FE9016-6571-42D1-A9EA-E0C1CB715EC0}
 		{305BB656-720C-45B6-A132-9770246D99AF} = {93FE9016-6571-42D1-A9EA-E0C1CB715EC0}
 		{555E752C-D36D-467F-864C-B52DB015CD0A} = {93FE9016-6571-42D1-A9EA-E0C1CB715EC0}
+		{FA4990A0-D23F-481E-908C-07F2B0439AC2} = {93FE9016-6571-42D1-A9EA-E0C1CB715EC0}
+		{C7AF7DF7-89D3-45CE-A204-EA990E06721D} = {93FE9016-6571-42D1-A9EA-E0C1CB715EC0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45

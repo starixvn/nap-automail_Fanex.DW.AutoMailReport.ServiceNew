@@ -7,8 +7,8 @@ using NUnit.Framework;
 
 namespace BetradarVirtualSportsDaily.DatabaseTests.Services
 {
-    [Category("BetradarVirtualSportsDaily.DatabaseTests.Services DataDailyServiceDatabaseTests")]
-    public class DataDailyServiceDatabaseTests
+    [Category("BetradarVirtualSportsDaily.DatabaseTests.Services DataServiceDatabaseTests")]
+    public class DataServiceDatabaseTests
     {
         [Test]
         public void QueryDaily_Always_ConnectToDatabaseSuccessfully()
