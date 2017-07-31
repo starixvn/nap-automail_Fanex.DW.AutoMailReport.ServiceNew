@@ -173,6 +173,9 @@
     <Content Include="Templates\DataService-QueryMatchesBySite-expected.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\MatchSettledLogGroup7.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\NegativeBalance.Business\NegativeBalance.Business.csproj">

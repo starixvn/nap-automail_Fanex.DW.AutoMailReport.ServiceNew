@@ -192,6 +192,9 @@
     <Content Include="Templates\AppConfig.Local.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\MatchSettledLogGroup7.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NegativeBalance.Business\NegativeBalance.Business.csproj">
