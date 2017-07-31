@@ -7,7 +7,7 @@ using SimpleInjector;
 
 namespace BetradarVirtualSports.Executing
 {
-    internal static class SimpleInjectorService
+    internal static class DailySimpleInjectorService
     {
         internal static void Register(Container container)
         {

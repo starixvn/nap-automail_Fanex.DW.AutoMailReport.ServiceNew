@@ -139,7 +139,7 @@
     <Compile Include="FanexDataRegisterService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimpleInjectorService.cs" />
+    <Compile Include="MonthlySimpleInjectorService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

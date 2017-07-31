@@ -12,7 +12,7 @@ namespace BetradarVirtualSports.Executing
             FanexDataRegisterService.ConfigureFanexData();
 
             Container container = new Container();
-            SimpleInjectorService.Register(container);
+            DailySimpleInjectorService.Register(container);
             container.Verify(VerificationOption.VerifyOnly);
 
             var service = container.GetInstance<DistributedNotificationService>();
