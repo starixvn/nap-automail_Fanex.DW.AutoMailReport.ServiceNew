@@ -46,7 +46,7 @@
                 <br />
                 Settlement time
             </td>
-            <td align="center" style="background-color: #7A97D1; width: 200px">
+            <td align="center" style="background-color: #7A97D1;">
                 動作-
                 <br />
                 Action
@@ -71,7 +71,7 @@
                     <td align="center" style="width: 200px">
                         11/15/2015 10:49:04 PM
                     </td>
-                    <td align="center" style="width: 200px">
+                    <td align="center">
                         (全部计算) Calculate All
                     </td>
                     <td align="center" style="width: 100px">
@@ -88,7 +88,7 @@
                     <td align="center" style="width: 200px">
                         11/15/2015 10:52:41 PM
                     </td>
-                    <td align="center" style="width: 200px">
+                    <td align="center">
                         (撤消混合过关结算) Undo Mix Parlay Settlement
                     </td>
                     <td align="center" style="width: 100px">
@@ -105,7 +105,7 @@
                     <td align="center" style="width: 200px">
                         11/15/2015 10:52:42 PM
                     </td>
-                    <td align="center" style="width: 200px">
+                    <td align="center">
                         (撤消结算) Undo Settlement
                     </td>
                     <td align="center" style="width: 100px">
@@ -122,7 +122,7 @@
                     <td align="center" style="width: 200px">
                         11/15/2015 10:54:53 PM
                     </td>
-                    <td align="center" style="width: 200px">
+                    <td align="center">
                         (全部计算) Calculate All
                     </td>
                     <td align="center" style="width: 100px">
@@ -139,7 +139,7 @@
                     <td align="center" style="width: 200px">
                         11/15/2015 10:57:07 PM
                     </td>
-                    <td align="center" style="width: 200px">
+                    <td align="center">
                         (撤消混合过关结算) Undo Mix Parlay Settlement
                     </td>
                     <td align="center" style="width: 100px">
@@ -156,7 +156,7 @@
                     <td align="center" style="width: 200px">
                         11/15/2015 10:57:08 PM
                     </td>
-                    <td align="center" style="width: 200px">
+                    <td align="center">
                         (撤消结算) Undo Settlement
                     </td>
                     <td align="center" style="width: 100px">
@@ -173,7 +173,7 @@
                     <td align="center" style="width: 200px">
                         11/16/2015 4:03:21 AM
                     </td>
-                    <td align="center" style="width: 200px">
+                    <td align="center">
                         (全部退款) Refund All
                     </td>
                     <td align="center" style="width: 100px">
@@ -190,7 +190,7 @@
                     <td align="center" style="width: 200px">
                         11/16/2015 4:56:57 AM
                     </td>
-                    <td align="center" style="width: 200px">
+                    <td align="center">
                         (撤消混合过关结算) Undo Mix Parlay Settlement
                     </td>
                     <td align="center" style="width: 100px">
@@ -207,7 +207,7 @@
                     <td align="center" style="width: 200px">
                         11/16/2015 4:56:58 AM
                     </td>
-                    <td align="center" style="width: 200px">
+                    <td align="center">
                         (撤消结算) Undo Settlement
                     </td>
                     <td align="center" style="width: 100px">
@@ -224,7 +224,7 @@
                     <td align="center" style="width: 200px">
                         11/16/2015 4:58:10 AM
                     </td>
-                    <td align="center" style="width: 200px">
+                    <td align="center">
                         (退款半场) Refund HT
                     </td>
                     <td align="center" style="width: 100px">
@@ -241,7 +241,7 @@
                     <td align="center" style="width: 200px">
                         11/16/2015 4:58:26 AM
                     </td>
-                    <td align="center" style="width: 200px">
+                    <td align="center">
                         (全部退款) Refund All
                     </td>
                     <td align="center" style="width: 100px">
@@ -258,7 +258,7 @@
                     <td align="center" style="width: 200px">
                         11/17/2015 3:31:04 AM
                     </td>
-                    <td align="center" style="width: 200px">
+                    <td align="center">
                         (撤消混合过关结算) Undo Mix Parlay Settlement
                     </td>
                     <td align="center" style="width: 100px">
@@ -275,7 +275,7 @@
                     <td align="center" style="width: 200px">
                         11/17/2015 3:31:05 AM
                     </td>
-                    <td align="center" style="width: 200px">
+                    <td align="center">
                         (撤消结算) Undo Settlement
                     </td>
                     <td align="center" style="width: 100px">
@@ -292,7 +292,7 @@
                     <td align="center" style="width: 200px">
                         11/17/2015 3:31:37 AM
                     </td>
-                    <td align="center" style="width: 200px">
+                    <td align="center">
                         (全部计算) Calculate All
                     </td>
                     <td align="center" style="width: 100px">
@@ -339,19 +339,19 @@
     </thead>
     <tbody>
                 <tr style="color: black;">
-                    <td align="center" style="width: 40px;">
+                    <td align="center">
                         1
                     </td>
-                    <td align="right" style="width: 200px">
+                    <td align="right">
                         12BETUUS02066
                     </td>
-                    <td align="right" style="width: 200px">
+                    <td align="right">
                         -9,112,744.1
                     </td>
-                    <td align="right" style="width: 100px">
+                    <td align="right">
                         UUS
                     </td>
-                    <td align="right" style="width: 100px;">
+                    <td align="right">
                         12Bet$zxc0008
                     </td>
                 </tr>

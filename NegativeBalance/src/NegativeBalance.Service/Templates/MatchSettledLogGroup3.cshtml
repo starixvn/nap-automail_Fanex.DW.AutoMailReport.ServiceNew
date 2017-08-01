@@ -14,7 +14,7 @@
                 <br />
                 Settlement time
             </td>
-            <td align="center" style="background-color: #7A97D1; width: 200px">
+            <td align="center" style="background-color: #7A97D1;">
                 動作-
                 <br />
                 Action
@@ -46,19 +46,19 @@
             foreach (MatchSettleLog matchSettleLog in @match.MatchSettleLogList)
             {
                 <tr style="color: black;">
-                    <td align="center" style="width: 40px;">
+                    <td align="center">
                         @count
                     </td>
-                    <td align="center" style="width: 200px">
+                    <td align="center">
                         @matchSettleLog.SettlementTime
                     </td>
-                    <td align="center" style="width: 200px">
+                    <td align="center">
                         (@matchSettleLog.ActionCS) @matchSettleLog.Action
                     </td>
-                    <td align="center" style="width: 100px">
+                    <td align="center">
                         @matchSettleLog.Result
                     </td>
-                    <td align="center" style="width: 100px;">
+                    <td align="center">
                         @matchSettleLog.Remark
                     </td>
                 </tr>

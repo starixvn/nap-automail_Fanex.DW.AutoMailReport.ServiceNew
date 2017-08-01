@@ -14,7 +14,7 @@
                 <br />
                 Settlement time
             </td>
-            <td align="center" style="background-color: #7A97D1; width: 200px">
+            <td align="center" style="background-color: #7A97D1;">
                 動作-
                 <br />
                 Action
@@ -52,8 +52,8 @@
                     <td align="center" style="width: 200px">
                         @matchSettleLog.SettlementTime
                     </td>
-                    <td align="center" style="width: 200px">
-                        @matchSettleLog.Action
+                    <td align="center">
+                        (@matchSettleLog.ActionCS) @matchSettleLog.Action
                     </td>
                     <td align="center" style="width: 100px">
                         @if (!@matchSettleLog.Action.ToLower().Contains("refund"))
