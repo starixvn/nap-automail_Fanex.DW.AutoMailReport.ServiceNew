@@ -13,4 +13,8 @@
 \\*.Local.config
 \\*.UAT.config
 \\*.PRO.config
+\\*.SIT.config
 \\*.local.json
+\\*.uat.json
+\\*.pro.json
+\\*.sit.json
