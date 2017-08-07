@@ -24,6 +24,7 @@ namespace NegativeBalance.Business.Services
             var matchInfoGroup7 = File.ReadAllText(@"Templates\MatchInfoGroup7.cshtml");
             var matchSettledLogGroup1 = File.ReadAllText(@"Templates\MatchSettledLogGroup1.cshtml");
             var matchSettledLogGroup3 = File.ReadAllText(@"Templates\MatchSettledLogGroup3.cshtml");
+            var matchSettledLogGroup7 = File.ReadAllText(@"Templates\MatchSettledLogGroup7.cshtml");
             var listEffectedMembers = File.ReadAllText(@"Templates\ListEffectedMembers.cshtml");
             var mailTemplate = File.ReadAllText(@"Templates\EmailTemplate.cshtml");
 
@@ -32,6 +33,7 @@ namespace NegativeBalance.Business.Services
             service.AddTemplate("matchInfoGroup7", matchInfoGroup7);
             service.AddTemplate("matchSettledLogGroup1", matchSettledLogGroup1);
             service.AddTemplate("matchSettledLogGroup3", matchSettledLogGroup3);
+            service.AddTemplate("matchSettledLogGroup7", matchSettledLogGroup7);
             service.AddTemplate("listEffectedMembers", listEffectedMembers);
             service.AddTemplate("mailTemplate", mailTemplate);
 
@@ -41,6 +43,7 @@ namespace NegativeBalance.Business.Services
             service.Compile("matchInfoGroup7", typeof(Tuple<int, Match>));
             service.Compile("matchSettledLogGroup1", typeof(Match));
             service.Compile("matchSettledLogGroup3", typeof(Match));
+            service.Compile("matchSettledLogGroup7", typeof(Match));
             service.Compile("listEffectedMembers", typeof(Match));
 
             result = service.Run("mailTemplate", typeof(List<Match>), matches);

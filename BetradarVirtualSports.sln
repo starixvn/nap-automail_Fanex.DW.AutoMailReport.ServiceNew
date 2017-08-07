@@ -1,0 +1,101 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9DDC4FBC-D44F-4F41-906B-D522B66EF6AD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{93FE9016-6571-42D1-A9EA-E0C1CB715EC0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{255ED2A3-FBCC-47FC-97EE-58C448B91871}"
+	ProjectSection(SolutionItems) = preProject
+		SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset = SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset
+		SonarQube\SolutionBinding.sqconfig = SonarQube\SolutionBinding.sqconfig
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsDaily.Business", "BetradarVirtualSports\src\BetradarVirtualSports.Business\BetradarVirtualSportsDaily.Business.csproj", "{398BE05B-FB7D-4620-A597-574AC17C1962}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsMonthly.Executing", "BetradarVirtualSports\src\BetradarVirtualSportsMonthly.Executing\BetradarVirtualSportsMonthly.Executing.csproj", "{6616745F-1C0E-4622-B8FA-63F1FD27D0C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsDaily.Executing", "BetradarVirtualSports\src\BetradarVirtualSportsDaily.Executing\BetradarVirtualSportsDaily.Executing.csproj", "{A028EA62-4D0B-4C3D-A883-EA4A75042E42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsMonthly.Business", "BetradarVirtualSports\src\BetradarVirtualSportsMonthly.Business\BetradarVirtualSportsMonthly.Business.csproj", "{17E82C0E-DC35-45A3-9B47-A270D58742E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsDaily.DatabaseTests", "BetradarVirtualSports\tests\BetradarVirtualSportsDaily.DatabaseTests\BetradarVirtualSportsDaily.DatabaseTests.csproj", "{5983E3ED-0859-46A4-9EB0-98B6B6AE0A96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsMonthly.UnitTests", "BetradarVirtualSports\tests\BetradarVirtualSportsMonthly.UnitTests\BetradarVirtualSportsMonthly.UnitTests.csproj", "{2078E3C5-F6E8-4013-A20B-C7D096599762}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsDaily.IntegrationTests", "BetradarVirtualSports\tests\BetradarVirtualSportsDaily.IntegrationTests\BetradarVirtualSportsDaily.IntegrationTests.csproj", "{305BB656-720C-45B6-A132-9770246D99AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsDaily.UnitTests", "BetradarVirtualSports\tests\BetradarVirtualSportsDaily.UnitTests\BetradarVirtualSportsDaily.UnitTests.csproj", "{555E752C-D36D-467F-864C-B52DB015CD0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsMonthly.DatabaseTests", "BetradarVirtualSports\tests\BetradarVirtualSportsMonthly.DatabaseTests\BetradarVirtualSportsMonthly.DatabaseTests.csproj", "{FA4990A0-D23F-481E-908C-07F2B0439AC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsMonthly.IntegrationTests", "BetradarVirtualSports\tests\BetradarVirtualSportsMonthly.IntegrationTests\BetradarVirtualSportsMonthly.IntegrationTests.csproj", "{C7AF7DF7-89D3-45CE-A204-EA990E06721D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{398BE05B-FB7D-4620-A597-574AC17C1962}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{398BE05B-FB7D-4620-A597-574AC17C1962}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{398BE05B-FB7D-4620-A597-574AC17C1962}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{398BE05B-FB7D-4620-A597-574AC17C1962}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6616745F-1C0E-4622-B8FA-63F1FD27D0C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6616745F-1C0E-4622-B8FA-63F1FD27D0C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6616745F-1C0E-4622-B8FA-63F1FD27D0C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6616745F-1C0E-4622-B8FA-63F1FD27D0C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A028EA62-4D0B-4C3D-A883-EA4A75042E42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A028EA62-4D0B-4C3D-A883-EA4A75042E42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A028EA62-4D0B-4C3D-A883-EA4A75042E42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A028EA62-4D0B-4C3D-A883-EA4A75042E42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17E82C0E-DC35-45A3-9B47-A270D58742E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17E82C0E-DC35-45A3-9B47-A270D58742E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17E82C0E-DC35-45A3-9B47-A270D58742E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17E82C0E-DC35-45A3-9B47-A270D58742E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5983E3ED-0859-46A4-9EB0-98B6B6AE0A96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5983E3ED-0859-46A4-9EB0-98B6B6AE0A96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5983E3ED-0859-46A4-9EB0-98B6B6AE0A96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5983E3ED-0859-46A4-9EB0-98B6B6AE0A96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2078E3C5-F6E8-4013-A20B-C7D096599762}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2078E3C5-F6E8-4013-A20B-C7D096599762}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2078E3C5-F6E8-4013-A20B-C7D096599762}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2078E3C5-F6E8-4013-A20B-C7D096599762}.Release|Any CPU.Build.0 = Release|Any CPU
+		{305BB656-720C-45B6-A132-9770246D99AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{305BB656-720C-45B6-A132-9770246D99AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{305BB656-720C-45B6-A132-9770246D99AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{305BB656-720C-45B6-A132-9770246D99AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{555E752C-D36D-467F-864C-B52DB015CD0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{555E752C-D36D-467F-864C-B52DB015CD0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{555E752C-D36D-467F-864C-B52DB015CD0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{555E752C-D36D-467F-864C-B52DB015CD0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA4990A0-D23F-481E-908C-07F2B0439AC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA4990A0-D23F-481E-908C-07F2B0439AC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA4990A0-D23F-481E-908C-07F2B0439AC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA4990A0-D23F-481E-908C-07F2B0439AC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7AF7DF7-89D3-45CE-A204-EA990E06721D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7AF7DF7-89D3-45CE-A204-EA990E06721D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7AF7DF7-89D3-45CE-A204-EA990E06721D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7AF7DF7-89D3-45CE-A204-EA990E06721D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{398BE05B-FB7D-4620-A597-574AC17C1962} = {9DDC4FBC-D44F-4F41-906B-D522B66EF6AD}
+		{6616745F-1C0E-4622-B8FA-63F1FD27D0C9} = {9DDC4FBC-D44F-4F41-906B-D522B66EF6AD}
+		{A028EA62-4D0B-4C3D-A883-EA4A75042E42} = {9DDC4FBC-D44F-4F41-906B-D522B66EF6AD}
+		{17E82C0E-DC35-45A3-9B47-A270D58742E2} = {9DDC4FBC-D44F-4F41-906B-D522B66EF6AD}
+		{5983E3ED-0859-46A4-9EB0-98B6B6AE0A96} = {93FE9016-6571-42D1-A9EA-E0C1CB715EC0}
+		{2078E3C5-F6E8-4013-A20B-C7D096599762} = {93FE9016-6571-42D1-A9EA-E0C1CB715EC0}
+		{305BB656-720C-45B6-A132-9770246D99AF} = {93FE9016-6571-42D1-A9EA-E0C1CB715EC0}
+		{555E752C-D36D-467F-864C-B52DB015CD0A} = {93FE9016-6571-42D1-A9EA-E0C1CB715EC0}
+		{FA4990A0-D23F-481E-908C-07F2B0439AC2} = {93FE9016-6571-42D1-A9EA-E0C1CB715EC0}
+		{C7AF7DF7-89D3-45CE-A204-EA990E06721D} = {93FE9016-6571-42D1-A9EA-E0C1CB715EC0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45
+	EndGlobalSection
+EndGlobal

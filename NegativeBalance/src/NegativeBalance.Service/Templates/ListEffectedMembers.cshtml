@@ -58,19 +58,19 @@
             foreach (CustomerBalanceInfo customer in @match.CustomerInfoList)
             {
                 <tr style="color: black;">
-                    <td align="center" style="width: 40px;">
+                    <td align="center">
                         @count
                     </td>
-                    <td align="right" style="width: 200px">
+                    <td align="right">
                         @customer.UserName
                     </td>
-                    <td align="right" style="width: 200px">
+                    <td align="right">
                         @customer.TotalBalance.ToString("#,##0.##")
                     </td>
-                    <td align="right" style="width: 100px">
+                    <td align="right">
                         @customer.CurrencyName
                     </td>
-                    <td align="right" style="width: 100px;">
+                    <td align="right">
                         @customer.CustomInfo1
                     </td>
                 </tr>

@@ -1,0 +1,9 @@
+﻿
+<div>
+    Dear DBA Teammate,<br /><br />
+    The store procedures belong to <b>Betradar Virtual Sport Monthly Report on 2017/01/02 </b> has been returned not enough data to send email to users.<br />
+    Because the <b>LastDate from DW is 2017/01/01</b>  <br />
+    So can you please have a check.<br /><br />
+    Regards.<br /><br />
+    This is an auto-mail. Please do not reply.
+</div>

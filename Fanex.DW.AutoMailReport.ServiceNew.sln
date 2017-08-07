@@ -71,6 +71,32 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NegativeBalance.Integration
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NegativeBalance.UnitTests", "NegativeBalance\tests\NegativeBalance.UnitTests\NegativeBalance.UnitTests.csproj", "{50429026-8BD2-48BE-BF3E-8DEBEDA1FF9F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BetradarVirtualSports", "BetradarVirtualSports", "{4E46BAE8-55DB-4F0C-90F2-EEBF0532FD3B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0C47288A-ADA1-49EF-9954-C6C1FD4790EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{488F2A9E-B395-42E2-8FEF-01D3B240710D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsDaily.Business", "BetradarVirtualSports\src\BetradarVirtualSports.Business\BetradarVirtualSportsDaily.Business.csproj", "{398BE05B-FB7D-4620-A597-574AC17C1962}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsDaily.Executing", "BetradarVirtualSports\src\BetradarVirtualSportsDaily.Executing\BetradarVirtualSportsDaily.Executing.csproj", "{A028EA62-4D0B-4C3D-A883-EA4A75042E42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsMonthly.Business", "BetradarVirtualSports\src\BetradarVirtualSportsMonthly.Business\BetradarVirtualSportsMonthly.Business.csproj", "{17E82C0E-DC35-45A3-9B47-A270D58742E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsMonthly.Executing", "BetradarVirtualSports\src\BetradarVirtualSportsMonthly.Executing\BetradarVirtualSportsMonthly.Executing.csproj", "{6616745F-1C0E-4622-B8FA-63F1FD27D0C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsDaily.DatabaseTests", "BetradarVirtualSports\tests\BetradarVirtualSportsDaily.DatabaseTests\BetradarVirtualSportsDaily.DatabaseTests.csproj", "{5983E3ED-0859-46A4-9EB0-98B6B6AE0A96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsDaily.IntegrationTests", "BetradarVirtualSports\tests\BetradarVirtualSportsDaily.IntegrationTests\BetradarVirtualSportsDaily.IntegrationTests.csproj", "{305BB656-720C-45B6-A132-9770246D99AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsDaily.UnitTests", "BetradarVirtualSports\tests\BetradarVirtualSportsDaily.UnitTests\BetradarVirtualSportsDaily.UnitTests.csproj", "{555E752C-D36D-467F-864C-B52DB015CD0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsMonthly.UnitTests", "BetradarVirtualSports\tests\BetradarVirtualSportsMonthly.UnitTests\BetradarVirtualSportsMonthly.UnitTests.csproj", "{2078E3C5-F6E8-4013-A20B-C7D096599762}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsMonthly.IntegrationTests", "BetradarVirtualSports\tests\BetradarVirtualSportsMonthly.IntegrationTests\BetradarVirtualSportsMonthly.IntegrationTests.csproj", "{C7AF7DF7-89D3-45CE-A204-EA990E06721D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsMonthly.DatabaseTests", "BetradarVirtualSports\tests\BetradarVirtualSportsMonthly.DatabaseTests\BetradarVirtualSportsMonthly.DatabaseTests.csproj", "{FA4990A0-D23F-481E-908C-07F2B0439AC2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +179,46 @@ Global
 		{50429026-8BD2-48BE-BF3E-8DEBEDA1FF9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50429026-8BD2-48BE-BF3E-8DEBEDA1FF9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50429026-8BD2-48BE-BF3E-8DEBEDA1FF9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{398BE05B-FB7D-4620-A597-574AC17C1962}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{398BE05B-FB7D-4620-A597-574AC17C1962}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{398BE05B-FB7D-4620-A597-574AC17C1962}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{398BE05B-FB7D-4620-A597-574AC17C1962}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A028EA62-4D0B-4C3D-A883-EA4A75042E42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A028EA62-4D0B-4C3D-A883-EA4A75042E42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A028EA62-4D0B-4C3D-A883-EA4A75042E42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A028EA62-4D0B-4C3D-A883-EA4A75042E42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17E82C0E-DC35-45A3-9B47-A270D58742E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17E82C0E-DC35-45A3-9B47-A270D58742E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17E82C0E-DC35-45A3-9B47-A270D58742E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17E82C0E-DC35-45A3-9B47-A270D58742E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6616745F-1C0E-4622-B8FA-63F1FD27D0C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6616745F-1C0E-4622-B8FA-63F1FD27D0C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6616745F-1C0E-4622-B8FA-63F1FD27D0C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6616745F-1C0E-4622-B8FA-63F1FD27D0C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5983E3ED-0859-46A4-9EB0-98B6B6AE0A96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5983E3ED-0859-46A4-9EB0-98B6B6AE0A96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5983E3ED-0859-46A4-9EB0-98B6B6AE0A96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5983E3ED-0859-46A4-9EB0-98B6B6AE0A96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{305BB656-720C-45B6-A132-9770246D99AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{305BB656-720C-45B6-A132-9770246D99AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{305BB656-720C-45B6-A132-9770246D99AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{305BB656-720C-45B6-A132-9770246D99AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{555E752C-D36D-467F-864C-B52DB015CD0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{555E752C-D36D-467F-864C-B52DB015CD0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{555E752C-D36D-467F-864C-B52DB015CD0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{555E752C-D36D-467F-864C-B52DB015CD0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2078E3C5-F6E8-4013-A20B-C7D096599762}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2078E3C5-F6E8-4013-A20B-C7D096599762}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2078E3C5-F6E8-4013-A20B-C7D096599762}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2078E3C5-F6E8-4013-A20B-C7D096599762}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7AF7DF7-89D3-45CE-A204-EA990E06721D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7AF7DF7-89D3-45CE-A204-EA990E06721D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7AF7DF7-89D3-45CE-A204-EA990E06721D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7AF7DF7-89D3-45CE-A204-EA990E06721D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA4990A0-D23F-481E-908C-07F2B0439AC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA4990A0-D23F-481E-908C-07F2B0439AC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA4990A0-D23F-481E-908C-07F2B0439AC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA4990A0-D23F-481E-908C-07F2B0439AC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -185,5 +251,17 @@ Global
 		{CD8211D4-99E8-4488-956D-4F0C7A9C02FE} = {0076E19E-E7F6-405C-8E62-4BD17DC2117B}
 		{73B8E4E6-6273-4F63-8B1F-4944301199C8} = {0076E19E-E7F6-405C-8E62-4BD17DC2117B}
 		{50429026-8BD2-48BE-BF3E-8DEBEDA1FF9F} = {0076E19E-E7F6-405C-8E62-4BD17DC2117B}
+		{0C47288A-ADA1-49EF-9954-C6C1FD4790EC} = {4E46BAE8-55DB-4F0C-90F2-EEBF0532FD3B}
+		{488F2A9E-B395-42E2-8FEF-01D3B240710D} = {4E46BAE8-55DB-4F0C-90F2-EEBF0532FD3B}
+		{398BE05B-FB7D-4620-A597-574AC17C1962} = {0C47288A-ADA1-49EF-9954-C6C1FD4790EC}
+		{A028EA62-4D0B-4C3D-A883-EA4A75042E42} = {0C47288A-ADA1-49EF-9954-C6C1FD4790EC}
+		{17E82C0E-DC35-45A3-9B47-A270D58742E2} = {0C47288A-ADA1-49EF-9954-C6C1FD4790EC}
+		{6616745F-1C0E-4622-B8FA-63F1FD27D0C9} = {0C47288A-ADA1-49EF-9954-C6C1FD4790EC}
+		{5983E3ED-0859-46A4-9EB0-98B6B6AE0A96} = {488F2A9E-B395-42E2-8FEF-01D3B240710D}
+		{305BB656-720C-45B6-A132-9770246D99AF} = {488F2A9E-B395-42E2-8FEF-01D3B240710D}
+		{555E752C-D36D-467F-864C-B52DB015CD0A} = {488F2A9E-B395-42E2-8FEF-01D3B240710D}
+		{2078E3C5-F6E8-4013-A20B-C7D096599762} = {488F2A9E-B395-42E2-8FEF-01D3B240710D}
+		{C7AF7DF7-89D3-45CE-A204-EA990E06721D} = {488F2A9E-B395-42E2-8FEF-01D3B240710D}
+		{FA4990A0-D23F-481E-908C-07F2B0439AC2} = {488F2A9E-B395-42E2-8FEF-01D3B240710D}
 	EndGlobalSection
 EndGlobal

@@ -1,6 +1,6 @@
 ﻿<Functions>
-  <Function Name="Negative Balance Report">
-    <Setting Key="Acc_BalanceNegativeSel_MatchLog" SpName="Acc_BalanceNegativeSel_MatchLog_xpre" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" TimeOut="0">
+  <Function Name="Negative Balance">
+    <Setting Key="Acc_BalanceNegativeSel_MatchLog" SpName="Acc_BalanceNegativeSel_MatchLog" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" TimeOut="0">
       <Mapping DataField="LogDate" ObjectProperty="SettlementTime"/>
       <Mapping DataField="ActionNameEN" ObjectProperty="Action"/>
       <Mapping DataField="ActionNameCS" ObjectProperty="ActionCS"/>

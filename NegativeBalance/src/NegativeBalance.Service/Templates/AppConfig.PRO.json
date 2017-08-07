@@ -1,0 +1,10 @@
+﻿{
+  "IntervalInSecond": 15,
+  "IsTest": false,
+  "IsSendMailFromConfig": false,
+  "MailTo": "robert.tran@starixsoft.com",
+  "MailCc": "bobby.nguyen@starixsoft.com,qa@starixsoft.com",
+  "MailBcc": "",
+  "Subject": "Automail Report - {0} - List of Members with Negative Balance By Match - {1}",
+  "Title": "Auto Generated Report Administrator"
+}

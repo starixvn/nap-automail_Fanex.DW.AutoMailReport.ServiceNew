@@ -1,11 +1,9 @@
-﻿@using Fanex.Service.Core;
-
-@{
+﻿@{
     var lastDate = Model;
 }
 <div>
     Dear DBA Teammate,<br /><br />
-    The store procedures belong to <b>Fast Market - Weekly Performance on @SystemTime.Now.AddDays(-1).ToString("yyyyMMdd") </b> has been returned not enough data to send email to users.<br />
+    The store procedures belong to <b>Fast Market - Weekly Performance on @DateTime.Today.AddDays(-1).ToString("yyyyMMdd") </b> has been returned not enough data to send email to users.<br />
     Because the <b>LastDate from DW is @lastDate.ToString("yyyy/MM/dd")</b>  <br />
     So can you please have a check.<br /><br />
     Regards.<br /><br />

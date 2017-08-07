@@ -1,0 +1,79 @@
+﻿@using NegativeBalance.Business.Models;
+@{
+    var match = @Model;
+}
+<table cellspacing="0" border="1" border="1" style="border-color: #CECCCD; border-style: Solid; font-size: 10pt; font-family: Tahoma, Arial, Verdana, Sans-Serif;" rules="all">
+    <thead>
+        <tr style="color: black; font-weight: bold">
+            <td align="center" style="width: 40px; background-color: #7A97D1;">
+                #
+                <br />
+            </td>
+            <td align="center" style="background-color: #7A97D1; width: 200px">
+                結算時間-
+                <br />
+                Settlement time
+            </td>
+            <td align="center" style="background-color: #7A97D1;">
+                動作-
+                <br />
+                Action
+            </td>
+            <td align="center" style="background-color: #7A97D1; width: 100px">
+                上半場比分-
+                <br />
+                HT Score
+            </td>
+            <td align="center" style="width: 100px; background-color: #7A97D1;">
+                全場比分-
+                <br />
+                FT Score
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @if (match.MatchSettleLogList.Count == 0)
+        {
+            <tr style="color: black;">
+                <td colspan='5' align="center">
+                    There is no data.
+                </td>
+            </tr>
+        }
+        else
+        {
+            int count = 1;
+            foreach (MatchSettleLog matchSettleLog in @match.MatchSettleLogList)
+            {
+                <tr style="color: black;">
+                    <td align="center" style="width: 40px;">
+                        @count
+                    </td>
+                    <td align="center" style="width: 200px">
+                        @matchSettleLog.SettlementTime
+                    </td>
+                    <td align="center">
+                        (@matchSettleLog.ActionCS) @matchSettleLog.Action
+                    </td>
+                    <td align="center" style="width: 100px">
+                        @if (!@matchSettleLog.Action.ToLower().Contains("refund"))
+                        {
+                            <span>@matchSettleLog.HTHomeScore</span>
+                            <span>-</span>
+                            <span>@matchSettleLog.HTAwayScore</span>
+                        }
+                    </td>
+                    <td align="center" style="width: 100px;">
+                        @if (!@matchSettleLog.Action.ToLower().Contains("refund"))
+                        {
+                            <span>@matchSettleLog.FinalHomeScore</span>
+                            <span>-</span>
+                            <span>@matchSettleLog.FinalAwayScore</span>
+                        }
+                    </td>
+                </tr>
+                count++;
+            }
+        }
+    </tbody>
+</table>
