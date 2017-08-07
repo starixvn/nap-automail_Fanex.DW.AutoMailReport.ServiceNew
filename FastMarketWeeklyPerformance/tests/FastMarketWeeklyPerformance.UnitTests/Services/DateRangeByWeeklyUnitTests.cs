@@ -12,7 +12,7 @@ namespace FastMarketWeeklyPerformance.UnitTests.Services
         public void FromDate_Always_ReturnRightValue()
         {
             // Arrange
-            SystemTime.Set(new DateTime(2017, 01, 09));
+            SystemTime.Set(new DateTime(2017, 01, 08));
             var expected = new DateTime(2017, 01, 01);
 
             // Act

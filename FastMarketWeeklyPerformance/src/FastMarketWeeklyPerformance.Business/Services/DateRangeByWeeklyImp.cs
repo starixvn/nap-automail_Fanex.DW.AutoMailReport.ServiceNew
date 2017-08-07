@@ -10,7 +10,7 @@ namespace FastMarketWeeklyPerformance.Business.Services
         {
             get
             {
-                var date = SystemTime.Now.AddDays(-8);
+                var date = SystemTime.Now.AddDays(-7);
                 return Converter.To<DateTime>($"{date:yyyy-MM-dd}");
             }
         }
