@@ -20,7 +20,7 @@ namespace NegativeBalance.Business.Services
             {
                 Body = content,
                 MailTo = site.ToList,
-                MailCc = site.BccList,
+                MailCc = site.CcList,
                 MailBcc = site.BccList,
                 Subject = appConfig.Subject.Replace("{0}", site.LicenseeName).Replace("{1}", $"{SystemTime.Now:dd/MM/yyyy hh:mm:ss tt}"),
                 Title = appConfig.Title
