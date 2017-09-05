@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A39DB7DA-9757-4900-BCDA-47D1414B598F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B038A415-59C5-4EE0-B1C6-3C557BDF5ED9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventMarketOffer.Business", "EventMarketOffer\src\EventMarketOffer.Business\EventMarketOffer.Business.csproj", "{3989146E-38EF-4D10-BA12-A8570D98D028}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventMarketOffer.Executing", "EventMarketOffer\src\EventMarketOffer.Executing\EventMarketOffer.Executing.csproj", "{416476E4-8E31-422C-8E97-FF303D818840}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventMarketOffer.UnitTests", "EventMarketOffer\tests\EventMarketOffer.UnitTests\EventMarketOffer.UnitTests.csproj", "{6C383526-7825-4C26-9967-CC4F405E8888}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventMarketOffer.IntegrationTests", "EventMarketOffer\tests\EventMarketOffer.IntegrationTests\EventMarketOffer.IntegrationTests.csproj", "{01605F78-346E-4E20-8862-98A67A6B46B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventMarketOffer.DatabaseTests", "EventMarketOffer\tests\EventMarketOffer.DatabaseTests\EventMarketOffer.DatabaseTests.csproj", "{0AD77F2F-35BD-4D2C-9DB4-AC4139C32E32}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{23DC3048-2B73-4F43-A4DA-267165872A8E}"
+	ProjectSection(SolutionItems) = preProject
+		SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset = SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset
+		SonarQube\SolutionBinding.sqconfig = SonarQube\SolutionBinding.sqconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3989146E-38EF-4D10-BA12-A8570D98D028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3989146E-38EF-4D10-BA12-A8570D98D028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3989146E-38EF-4D10-BA12-A8570D98D028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3989146E-38EF-4D10-BA12-A8570D98D028}.Release|Any CPU.Build.0 = Release|Any CPU
+		{416476E4-8E31-422C-8E97-FF303D818840}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{416476E4-8E31-422C-8E97-FF303D818840}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{416476E4-8E31-422C-8E97-FF303D818840}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{416476E4-8E31-422C-8E97-FF303D818840}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C383526-7825-4C26-9967-CC4F405E8888}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C383526-7825-4C26-9967-CC4F405E8888}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C383526-7825-4C26-9967-CC4F405E8888}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C383526-7825-4C26-9967-CC4F405E8888}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01605F78-346E-4E20-8862-98A67A6B46B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01605F78-346E-4E20-8862-98A67A6B46B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01605F78-346E-4E20-8862-98A67A6B46B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01605F78-346E-4E20-8862-98A67A6B46B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AD77F2F-35BD-4D2C-9DB4-AC4139C32E32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AD77F2F-35BD-4D2C-9DB4-AC4139C32E32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AD77F2F-35BD-4D2C-9DB4-AC4139C32E32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AD77F2F-35BD-4D2C-9DB4-AC4139C32E32}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3989146E-38EF-4D10-BA12-A8570D98D028} = {A39DB7DA-9757-4900-BCDA-47D1414B598F}
+		{416476E4-8E31-422C-8E97-FF303D818840} = {A39DB7DA-9757-4900-BCDA-47D1414B598F}
+		{6C383526-7825-4C26-9967-CC4F405E8888} = {B038A415-59C5-4EE0-B1C6-3C557BDF5ED9}
+		{01605F78-346E-4E20-8862-98A67A6B46B9} = {B038A415-59C5-4EE0-B1C6-3C557BDF5ED9}
+		{0AD77F2F-35BD-4D2C-9DB4-AC4139C32E32} = {B038A415-59C5-4EE0-B1C6-3C557BDF5ED9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\EnterpriseLibrary.Logging.5.0.505.1\lib\NET35;packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Logging.5.0.505.0\lib\NET35
+	EndGlobalSection
+EndGlobal

@@ -1,7 +1,7 @@
 ﻿{
   "ExportDataDirectory": "\\\\10.40.40.127\\e$\\Data.Web\\Fanex.Excel\\Fanex.ExcelBetradarVirtualSportsMonthly",
   "ExcelPasswordProtected": "",
-  "IsCheckEnoughData": false,
+  "IsCheckEnoughData": true,
   "FunctionIdNodata": 42,
   "Subject": "[Betradar Virtual Sports] - Monthly Report",
   "Title": "ONEworks Auto Generated Report Administrator",

@@ -1,0 +1,60 @@
+﻿@using TOControl.CustomerMovement.Business.Models;
+@{ 
+    IEnumerable<DirectCustomer> directCustomers = Model;
+}
+
+<table cellspacing="0" border="1" style="border-color: #CECCCD; border-style: Solid; font-size: 9pt; font-family: Tahoma, Arial, Verdana, Sans-Serif;" rules="all">
+    <thead>
+        <tr style="color: white; font-weight: bold">
+            <td align="center" colspan="4" style="background-color: #3c5ea5;">
+                New direct customer(s)
+            </td>
+        </tr>
+        <tr style="color: white; font-weight: bold">
+            <td align="center" style="width: 40px; background-color: #3c5ea5;">
+                #                
+            </td>
+            <td align="center" style="background-color: #3c5ea5; width: 200px">
+                Old Headline
+            </td>
+            <td align="center" style="background-color: #3c5ea5; width: 200px">
+                New Headline
+            </td>
+            <td align="center" style="background-color: #3c5ea5; width: 200px">
+                Date
+            </td>            
+        </tr>
+    </thead>
+    <tbody>
+        @if (!directCustomers.GetEnumerator().MoveNext())
+        {
+            <tr style="color: black;">
+                <td colspan='4' align="center">
+                    There is no data.
+                </td>
+            </tr>
+        }
+        else
+        {
+            int count = 1;
+            foreach (DirectCustomer directCustomer in directCustomers)
+            {
+                <tr style="color: black;">
+                    <td align="center">
+                        @count
+                    </td>
+                    <td align="center">
+                        @directCustomer.Username
+                    </td>
+                    <td align="center">
+                        @directCustomer.Level
+                    </td>
+                    <td align="center">
+                        @directCustomer.Date.ToString("MM/dd/yyyy hh:mm:ss tt")
+                    </td>                    
+                </tr>
+                count++;
+            }
+        }
+    </tbody>
+</table>

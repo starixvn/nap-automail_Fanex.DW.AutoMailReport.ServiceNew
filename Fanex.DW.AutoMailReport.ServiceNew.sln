@@ -97,21 +97,37 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsMonthl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetradarVirtualSportsMonthly.DatabaseTests", "BetradarVirtualSports\tests\BetradarVirtualSportsMonthly.DatabaseTests\BetradarVirtualSportsMonthly.DatabaseTests.csproj", "{FA4990A0-D23F-481E-908C-07F2B0439AC2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CustomerMovement", "CustomerMovement", "{476BC3F6-CC3D-42E6-AADF-EE39D9E1AE2A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TOControl.CustomerMovement", "TOControl.CustomerMovement", "{476BC3F6-CC3D-42E6-AADF-EE39D9E1AE2A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{88CDF30D-5C9C-4BD6-AF0F-14C8FC1D8454}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0E7609E0-5646-4141-8A48-82FF7216CCF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerMovement.Business", "CustomerMovement\src\CustomerMovement.Business\CustomerMovement.Business.csproj", "{5DDCEFBF-6722-4436-AFCF-3737522F0700}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventMarketOffer", "EventMarketOffer", "{BEF1009B-59B8-4AF1-9762-602A88D5C2A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerMovement.Executing", "CustomerMovement\src\CustomerMovement.Executing\CustomerMovement.Executing.csproj", "{C91FB9D4-C2B2-4673-999D-42F017723A80}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1BE45B6D-A418-4012-91E8-0D58579372D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerMovement.DatabaseTests", "CustomerMovement\tests\CustomerMovement.DatabaseTests\CustomerMovement.DatabaseTests.csproj", "{8166D37E-1FA1-4CE8-9A2D-D977A536C978}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F0B2D5EA-5ECE-477A-9479-FE1008438319}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerMovement.IntegrationTests", "CustomerMovement\tests\CustomerMovement.IntegrationTests\CustomerMovement.IntegrationTests.csproj", "{A961D5F2-51D2-4090-B819-10496B5F4785}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventMarketOffer.Business", "EventMarketOffer\src\EventMarketOffer.Business\EventMarketOffer.Business.csproj", "{3989146E-38EF-4D10-BA12-A8570D98D028}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerMovement.UnitTests", "CustomerMovement\tests\CustomerMovement.UnitTests\CustomerMovement.UnitTests.csproj", "{3DAB2EF5-7304-4094-B5C9-D5B64F48AC0A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventMarketOffer.Executing", "EventMarketOffer\src\EventMarketOffer.Executing\EventMarketOffer.Executing.csproj", "{416476E4-8E31-422C-8E97-FF303D818840}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventMarketOffer.DatabaseTests", "EventMarketOffer\tests\EventMarketOffer.DatabaseTests\EventMarketOffer.DatabaseTests.csproj", "{0AD77F2F-35BD-4D2C-9DB4-AC4139C32E32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventMarketOffer.IntegrationTests", "EventMarketOffer\tests\EventMarketOffer.IntegrationTests\EventMarketOffer.IntegrationTests.csproj", "{01605F78-346E-4E20-8862-98A67A6B46B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventMarketOffer.UnitTests", "EventMarketOffer\tests\EventMarketOffer.UnitTests\EventMarketOffer.UnitTests.csproj", "{6C383526-7825-4C26-9967-CC4F405E8888}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOControl.CustomerMovement.Business", "TOControl.CustomerMovement\src\TOControl.CustomerMovement.Business\TOControl.CustomerMovement.Business.csproj", "{5DDCEFBF-6722-4436-AFCF-3737522F0700}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOControl.CustomerMovement.Executing", "TOControl.CustomerMovement\src\TOControl.CustomerMovement.Executing\TOControl.CustomerMovement.Executing.csproj", "{C91FB9D4-C2B2-4673-999D-42F017723A80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOControl.CustomerMovement.DatabaseTests", "TOControl.CustomerMovement\tests\TOControl.CustomerMovement.DatabaseTests\TOControl.CustomerMovement.DatabaseTests.csproj", "{8166D37E-1FA1-4CE8-9A2D-D977A536C978}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOControl.CustomerMovement.IntegrationTests", "TOControl.CustomerMovement\tests\TOControl.CustomerMovement.IntegrationTests\TOControl.CustomerMovement.IntegrationTests.csproj", "{A961D5F2-51D2-4090-B819-10496B5F4785}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOControl.CustomerMovement.UnitTests", "TOControl.CustomerMovement\tests\TOControl.CustomerMovement.UnitTests\TOControl.CustomerMovement.UnitTests.csproj", "{3DAB2EF5-7304-4094-B5C9-D5B64F48AC0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -235,6 +251,26 @@ Global
 		{FA4990A0-D23F-481E-908C-07F2B0439AC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA4990A0-D23F-481E-908C-07F2B0439AC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA4990A0-D23F-481E-908C-07F2B0439AC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3989146E-38EF-4D10-BA12-A8570D98D028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3989146E-38EF-4D10-BA12-A8570D98D028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3989146E-38EF-4D10-BA12-A8570D98D028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3989146E-38EF-4D10-BA12-A8570D98D028}.Release|Any CPU.Build.0 = Release|Any CPU
+		{416476E4-8E31-422C-8E97-FF303D818840}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{416476E4-8E31-422C-8E97-FF303D818840}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{416476E4-8E31-422C-8E97-FF303D818840}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{416476E4-8E31-422C-8E97-FF303D818840}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AD77F2F-35BD-4D2C-9DB4-AC4139C32E32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AD77F2F-35BD-4D2C-9DB4-AC4139C32E32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AD77F2F-35BD-4D2C-9DB4-AC4139C32E32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AD77F2F-35BD-4D2C-9DB4-AC4139C32E32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01605F78-346E-4E20-8862-98A67A6B46B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01605F78-346E-4E20-8862-98A67A6B46B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01605F78-346E-4E20-8862-98A67A6B46B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01605F78-346E-4E20-8862-98A67A6B46B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C383526-7825-4C26-9967-CC4F405E8888}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C383526-7825-4C26-9967-CC4F405E8888}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C383526-7825-4C26-9967-CC4F405E8888}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C383526-7825-4C26-9967-CC4F405E8888}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5DDCEFBF-6722-4436-AFCF-3737522F0700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5DDCEFBF-6722-4436-AFCF-3737522F0700}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DDCEFBF-6722-4436-AFCF-3737522F0700}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -301,6 +337,13 @@ Global
 		{FA4990A0-D23F-481E-908C-07F2B0439AC2} = {488F2A9E-B395-42E2-8FEF-01D3B240710D}
 		{88CDF30D-5C9C-4BD6-AF0F-14C8FC1D8454} = {476BC3F6-CC3D-42E6-AADF-EE39D9E1AE2A}
 		{0E7609E0-5646-4141-8A48-82FF7216CCF5} = {476BC3F6-CC3D-42E6-AADF-EE39D9E1AE2A}
+		{1BE45B6D-A418-4012-91E8-0D58579372D6} = {BEF1009B-59B8-4AF1-9762-602A88D5C2A7}
+		{F0B2D5EA-5ECE-477A-9479-FE1008438319} = {BEF1009B-59B8-4AF1-9762-602A88D5C2A7}
+		{3989146E-38EF-4D10-BA12-A8570D98D028} = {1BE45B6D-A418-4012-91E8-0D58579372D6}
+		{416476E4-8E31-422C-8E97-FF303D818840} = {1BE45B6D-A418-4012-91E8-0D58579372D6}
+		{0AD77F2F-35BD-4D2C-9DB4-AC4139C32E32} = {F0B2D5EA-5ECE-477A-9479-FE1008438319}
+		{01605F78-346E-4E20-8862-98A67A6B46B9} = {F0B2D5EA-5ECE-477A-9479-FE1008438319}
+		{6C383526-7825-4C26-9967-CC4F405E8888} = {F0B2D5EA-5ECE-477A-9479-FE1008438319}
 		{5DDCEFBF-6722-4436-AFCF-3737522F0700} = {88CDF30D-5C9C-4BD6-AF0F-14C8FC1D8454}
 		{C91FB9D4-C2B2-4673-999D-42F017723A80} = {88CDF30D-5C9C-4BD6-AF0F-14C8FC1D8454}
 		{8166D37E-1FA1-4CE8-9A2D-D977A536C978} = {0E7609E0-5646-4141-8A48-82FF7216CCF5}

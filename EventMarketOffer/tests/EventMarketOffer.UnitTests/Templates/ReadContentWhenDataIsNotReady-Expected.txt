@@ -1,0 +1,9 @@
+﻿
+<div>
+    Dear DBA Teammate,<br /><br />
+    The store procedures belong to <b>Event Market Offer on 2017/07/09 </b> has been returned not enough data to send email to users.<br />
+    Because the <b>LastDate from DW is 2017/07/01</b>  <br />
+    So can you please have a check.<br /><br />
+    Regards.<br /><br />
+    This is an auto-mail. Please do not reply.
+</div>
