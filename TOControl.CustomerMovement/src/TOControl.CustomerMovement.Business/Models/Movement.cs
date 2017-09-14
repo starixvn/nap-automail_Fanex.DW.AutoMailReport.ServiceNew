@@ -4,6 +4,8 @@ namespace TOControl.CustomerMovement.Business.Models
 {
     public class Movement
     {
+        public int Id { get; set; }
+
         public string GroupHeadline { get; set; }
 
         public string GroupMember { get; set; }

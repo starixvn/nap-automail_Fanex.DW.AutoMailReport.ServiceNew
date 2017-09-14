@@ -312,6 +312,7 @@
     <Compile Include="Services\FileServiceUnitTests.cs" />
     <Compile Include="Services\MailMovementServiceUnitTests.cs" />
     <Compile Include="Services\NotificationMovementServiceUnitTests.cs" />
+    <Compile Include="Services\XMLServiceUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

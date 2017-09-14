@@ -1,13 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TOControl.CustomerMovement.Business.Enums;
 using TOControl.CustomerMovement.Business.Models;
 
 namespace TOControl.CustomerMovement.Business.Services
 {
     public class FakeDataService : DataService
     {
-        public Tuple<IEnumerable<GroupHeadline>, IEnumerable<Movement>, IEnumerable<DirectCustomer>> Query()
+        public List<int> Ids
+        {
+            get
+            {
+                return new List<int> { 1, 2, 3 };
+            }
+        }
+
+        public Tuple<IEnumerable<GroupHeadline>, IEnumerable<Movement>, IEnumerable<DirectCustomer>> Query(NotifiedByFunction notifiedByFunction)
         {
             var groupHeadline = CreateGroupHeadline();
             var customerMovememnt = CreateCustomerMovement();

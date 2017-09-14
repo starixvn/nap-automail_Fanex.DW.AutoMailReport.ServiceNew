@@ -129,6 +129,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOControl.CustomerMovement.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOControl.CustomerMovement.UnitTests", "TOControl.CustomerMovement\tests\TOControl.CustomerMovement.UnitTests\TOControl.CustomerMovement.UnitTests.csproj", "{3DAB2EF5-7304-4094-B5C9-D5B64F48AC0A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MasLossControl.CustomerMovement", "MasLossControl.CustomerMovement", "{5A5AD8D2-A525-4FA5-B552-16DAA0C6410F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BBD6D153-54C0-4D97-8722-ABE28B0A9602}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{AD90D8EC-A912-469D-ADCA-CFA1A063224A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxLossControl.CustomerMovement.Business", "MaxLossControl.CustomerMovement\src\MasLossControl.CustomerMovement.Business\MaxLossControl.CustomerMovement.Business.csproj", "{B2C02B07-CA29-4E09-9AF0-188DBEE55147}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxLossControl.CustomerMovement.Executing", "MaxLossControl.CustomerMovement\src\MasLossControl.CustomerMovement.Executing\MaxLossControl.CustomerMovement.Executing.csproj", "{FD90217B-4592-4BF0-B3AB-F742C59B39D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxLossControl.CustomerMovement.UnitTests", "MaxLossControl.CustomerMovement\tests\MaxLossControl.CustomerMovement.UnitTests\MaxLossControl.CustomerMovement.UnitTests.csproj", "{D0AFF9F8-B809-4353-8157-2E5FF0B75E37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasLossControl.CustomerMovement.Tests", "MaxLossControl.CustomerMovement\tests\MasLossControl.CustomerMovement.Tests\MasLossControl.CustomerMovement.Tests.csproj", "{CFE4A159-5FBE-4DC9-9C54-02319EA97EEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -291,6 +305,22 @@ Global
 		{3DAB2EF5-7304-4094-B5C9-D5B64F48AC0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DAB2EF5-7304-4094-B5C9-D5B64F48AC0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DAB2EF5-7304-4094-B5C9-D5B64F48AC0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2C02B07-CA29-4E09-9AF0-188DBEE55147}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2C02B07-CA29-4E09-9AF0-188DBEE55147}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2C02B07-CA29-4E09-9AF0-188DBEE55147}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2C02B07-CA29-4E09-9AF0-188DBEE55147}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD90217B-4592-4BF0-B3AB-F742C59B39D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD90217B-4592-4BF0-B3AB-F742C59B39D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD90217B-4592-4BF0-B3AB-F742C59B39D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD90217B-4592-4BF0-B3AB-F742C59B39D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0AFF9F8-B809-4353-8157-2E5FF0B75E37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0AFF9F8-B809-4353-8157-2E5FF0B75E37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0AFF9F8-B809-4353-8157-2E5FF0B75E37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0AFF9F8-B809-4353-8157-2E5FF0B75E37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFE4A159-5FBE-4DC9-9C54-02319EA97EEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFE4A159-5FBE-4DC9-9C54-02319EA97EEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFE4A159-5FBE-4DC9-9C54-02319EA97EEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFE4A159-5FBE-4DC9-9C54-02319EA97EEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -349,5 +379,11 @@ Global
 		{8166D37E-1FA1-4CE8-9A2D-D977A536C978} = {0E7609E0-5646-4141-8A48-82FF7216CCF5}
 		{A961D5F2-51D2-4090-B819-10496B5F4785} = {0E7609E0-5646-4141-8A48-82FF7216CCF5}
 		{3DAB2EF5-7304-4094-B5C9-D5B64F48AC0A} = {0E7609E0-5646-4141-8A48-82FF7216CCF5}
+		{BBD6D153-54C0-4D97-8722-ABE28B0A9602} = {5A5AD8D2-A525-4FA5-B552-16DAA0C6410F}
+		{AD90D8EC-A912-469D-ADCA-CFA1A063224A} = {5A5AD8D2-A525-4FA5-B552-16DAA0C6410F}
+		{B2C02B07-CA29-4E09-9AF0-188DBEE55147} = {BBD6D153-54C0-4D97-8722-ABE28B0A9602}
+		{FD90217B-4592-4BF0-B3AB-F742C59B39D7} = {BBD6D153-54C0-4D97-8722-ABE28B0A9602}
+		{D0AFF9F8-B809-4353-8157-2E5FF0B75E37} = {AD90D8EC-A912-469D-ADCA-CFA1A063224A}
+		{CFE4A159-5FBE-4DC9-9C54-02319EA97EEB} = {AD90D8EC-A912-469D-ADCA-CFA1A063224A}
 	EndGlobalSection
 EndGlobal

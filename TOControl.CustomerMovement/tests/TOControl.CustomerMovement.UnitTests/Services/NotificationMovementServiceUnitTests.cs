@@ -5,6 +5,7 @@ using Fanex.MailDelivery.Core.Models;
 using Fanex.Service.Core;
 using NSubstitute;
 using NUnit.Framework;
+using TOControl.CustomerMovement.Business.Enums;
 using TOControl.CustomerMovement.Business.Models;
 using TOControl.CustomerMovement.Business.Services;
 
@@ -30,7 +31,7 @@ namespace TOControl.CustomerMovement.UnitTests.Services
         public void Execute_ThrowException_MethodLogShouldBeCalled()
         {
             // Arrange
-            dataService.Query().Returns(x => { throw new Exception(); });
+            dataService.Query(Arg.Any<NotifiedByFunction>()).Returns(x => { throw new Exception(); });
 
             // Act
             var service = new NotificationMovementServiceImp(mailMovementService, logService, dataService);
@@ -65,7 +66,7 @@ namespace TOControl.CustomerMovement.UnitTests.Services
             service.Execute();
 
             // Assert
-            dataService.Received().Query();
+            dataService.Received().Query(Arg.Any<NotifiedByFunction>());
             mailMovementService.Received().Execute(Arg.Any<Tuple<IEnumerable<GroupHeadline>, IEnumerable<Movement>, IEnumerable<DirectCustomer>>>());
         }
     }

@@ -4,6 +4,8 @@ namespace TOControl.CustomerMovement.Business.Models
 {
     public class DirectCustomer
     {
+        public int Id { get; set; }
+
         public string Username { get; set; }
 
         public string Level { get; set; }

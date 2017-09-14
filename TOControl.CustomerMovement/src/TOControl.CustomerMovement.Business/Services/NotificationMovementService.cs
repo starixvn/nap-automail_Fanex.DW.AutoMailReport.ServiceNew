@@ -1,6 +1,7 @@
 ﻿using System;
 using Fanex.MailDelivery.Core.Models;
 using Fanex.Service.Core;
+using TOControl.CustomerMovement.Business.Enums;
 
 namespace TOControl.CustomerMovement.Business.Services
 {
@@ -58,7 +59,7 @@ namespace TOControl.CustomerMovement.Business.Services
 
         private ExecuteResult SendNotification()
         {
-            var data = dataService.Query();
+            var data = dataService.Query(NotifiedByFunction.TOControl);
             var mail = mailMovementService.Execute(data);
             return new ExecuteResult { Success = true, Mail = mail };
         }

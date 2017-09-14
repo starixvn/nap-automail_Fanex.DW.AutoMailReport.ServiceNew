@@ -67,7 +67,7 @@ namespace EventMarketOffer.Business.Services
 
         public string Save()
         {
-            var filename = $"Event_Market_Offered_From_{dateService.DateStart:dd_MMM_yyyy}_To_{dateService.DateEnd:dd_MM_yyyy}.xlsx";
+            var filename = $"Event_Market_Offered_From_{dateService.DateStart:dd_MMM_yyyy}_To_{dateService.DateEnd:dd_MMM_yyyy}.xlsx";
             var folder = $@"{appConfigService.Configurations.ExportDataDirectory}\{dateService.DateStart:yyyy}";
             var fullName = $@"{folder}\{filename}";
             Directory.CreateDirectory(folder);

@@ -11,9 +11,13 @@ namespace TOControl.CustomerMovement.Executing
         {
             container.Register<IDynamicRepository, DynamicRepository>();
             container.Register<LogService, LogServiceImp>();
-            container.Register<DataService, FakeDataService>();
+            container.Register<DataService, DataServiceImp>();
             container.Register<DateService, DateServiceImp>();
             container.Register<FileService, FileServiceImp>();
+            container.Register<XMLService, XMLServiceImp>();
+            container.Register<TOControlRepositoryService, TOControlRepositoryServiceImp>();
+            container.Register<TransformDataService, TransformDataServiceImp>();
+
             container.Register<MailMovementService, MailMovementServiceImp>();
             container.Register<ApplicationConfigurationService, ApplicationConfigurationServiceImp>();
             container.Register<NotificationMovementService, NotificationMovementServiceImp>();

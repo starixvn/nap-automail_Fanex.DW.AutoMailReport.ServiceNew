@@ -1,7 +1,7 @@
 ﻿using System;
 using Fanex.Data.Repository;
 
-namespace TOControl.CustomerMovement.Business.Repositories
+namespace MaxLossControl.CustomerMovement.Business.Repositories
 {
     public class Criteria : CriteriaBase
     {

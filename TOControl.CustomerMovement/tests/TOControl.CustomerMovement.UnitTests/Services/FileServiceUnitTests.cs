@@ -2,6 +2,7 @@
 using System.IO;
 using NSubstitute;
 using NUnit.Framework;
+using TOControl.CustomerMovement.Business.Enums;
 using TOControl.CustomerMovement.Business.Services;
 
 namespace TOControl.CustomerMovement.UnitTests.Services
@@ -19,7 +20,7 @@ namespace TOControl.CustomerMovement.UnitTests.Services
         public void ReadContent_Always_ReturnRightContent()
         {
             // Arrange
-            var data = new FakeDataService().Query();
+            var data = new FakeDataService().Query(Arg.Any<NotifiedByFunction>());
             var fromDate = new DateTime(2017, 08, 29);
             var toDate = new DateTime(2017, 08, 31);
             var date = Substitute.For<DateService>();
