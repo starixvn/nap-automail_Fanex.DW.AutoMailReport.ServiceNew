@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Functions SiteId="25" SiteName="Auto Mail">
-  <Function Name="Turnover Control - Customer Movement">
-    <Setting Key="Acc_CustomerSelByUserName" SpName="Acc_CustomerSelByUserName" DbName="DBAGE.bodb02.bodbAdminNet" TimeOut="0"></Setting>
-	</Function>
-</Functions>
