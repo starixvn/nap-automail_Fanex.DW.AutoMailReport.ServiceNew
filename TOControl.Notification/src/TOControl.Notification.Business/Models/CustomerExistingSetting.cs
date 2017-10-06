@@ -1,6 +1,6 @@
 ﻿namespace TOControl.Notification.Business.Models
 {
-    public class MovementRaw
+    public class CustomerExistingSetting
     {
         public int CustId { get; set; }
 

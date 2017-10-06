@@ -1,6 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 using SimpleInjector;
+using TOControl.Notification.Business.Enums;
 using TOControl.Notification.Business.Services;
 
 namespace TOControl.CustomerMovement.Executing
@@ -16,7 +17,8 @@ namespace TOControl.CustomerMovement.Executing
             container.Verify(VerificationOption.VerifyOnly);
 
             var service = container.GetInstance<NotificationMovementService>();
-            var result = service.Execute();
+            var notifiedByFunction = NotifiedByFunction.TOControl;
+            var result = service.Execute(notifiedByFunction);
 
             var json = JsonConvert.SerializeObject(result, Formatting.Indented);
 #pragma warning disable S2228 // Console logging should not be used

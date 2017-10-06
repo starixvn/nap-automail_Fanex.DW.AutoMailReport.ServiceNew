@@ -7,7 +7,7 @@ namespace TOControl.Notification.Business.Services
 {
     public interface NotificationMovementService
     {
-        JobMessage Execute();
+        JobMessage Execute(NotifiedByFunction notifiedByFunction);
     }
 
     public class NotificationMovementServiceImp : NotificationMovementService
@@ -23,14 +23,14 @@ namespace TOControl.Notification.Business.Services
             this.dataService = dataService;
         }
 
-        public JobMessage Execute()
+        public JobMessage Execute(NotifiedByFunction notifiedByFunction)
         {
             var result = new ExecuteResult();
             JobMessage jobMessage;
 
             try
             {
-                result = SendNotification();
+                result = SendNotification(notifiedByFunction);
             }
             catch (Exception exception)
             {
@@ -45,11 +45,11 @@ namespace TOControl.Notification.Business.Services
                     Mail = result.Mail,
                     JobStatus = result.Success ?
                     JobStatus.Success :
-                    JobStatus.JobFailed,
+                    JobStatus.DataIsNotReady,
                     TaskLog = new TaskLog
                     {
                         LogTime = SystemTime.Now,
-                        Message = result.Message
+                        Message = result.Message                        
                     }
                 };
             }
@@ -57,10 +57,12 @@ namespace TOControl.Notification.Business.Services
             return jobMessage;
         }
 
-        private ExecuteResult SendNotification()
+        private ExecuteResult SendNotification(NotifiedByFunction notifiedByFunction)
         {
-            var data = dataService.Query(NotifiedByFunction.TOControl);
+            var data = dataService.Query(notifiedByFunction);
             var mail = mailMovementService.Execute(data);
+            dataService.Update(notifiedByFunction);
+
             return new ExecuteResult { Success = true, Mail = mail };
         }
     }

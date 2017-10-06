@@ -7,7 +7,7 @@ namespace TOControl.Notification.Business.Services
     {
         GroupHeadline TransformGroupHeadline(GroupHeadlineRaw groupHeadlineRaw, RawData rawData);
 
-        Movement TransformMovement(MovementRaw movementRaw, RawData rawData);
+        CustomerMovement TransformMovement(CustomerMovementRaw movementRaw, RawData rawData);
 
         DirectCustomer TransformDirectCustomer(DirectCustomerRaw directCustomerRaw, RawData rawData);
     }
@@ -35,12 +35,12 @@ namespace TOControl.Notification.Business.Services
             };
         }
 
-        public Movement TransformMovement(MovementRaw movementRaw, RawData rawData)
+        public CustomerMovement TransformMovement(CustomerMovementRaw movementRaw, RawData rawData)
         {
             var groupHeadline = repositoryService.QuerySingleRow<string>(new GroupHeadlineSelectByGroupIdCrietria { GroupId = movementRaw.GroupId });
             var groupMember = repositoryService.QueryCustomerByCustId(movementRaw.CustId).Username;
 
-            return new Movement
+            return new CustomerMovement
             {
                 Id = rawData.Id,
                 GroupHeadline = groupHeadline,
@@ -53,6 +53,11 @@ namespace TOControl.Notification.Business.Services
         public DirectCustomer TransformDirectCustomer(DirectCustomerRaw directCustomerRaw, RawData rawData)
         {
             var userInfo = repositoryService.QueryCustomerByCustId(directCustomerRaw.CustId);
+            if (userInfo == null)
+            {
+                return new DirectCustomer { };
+            }
+
             var username = userInfo.Username;
             var level = userInfo.Level;
 

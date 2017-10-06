@@ -1,6 +1,6 @@
 ﻿@using TOControl.Notification.Business.Models;
 @{
-    IEnumerable<Movement> movements = Model;
+    IEnumerable<CustomerMovement> movements = Model;
 }
 
 <table cellspacing="0" border="1" style="border-color: #CECCCD; border-style: Solid; font-size: 9pt; font-family: Tahoma, Arial, Verdana, Sans-Serif;" rules="all">
@@ -41,7 +41,7 @@
         {
             int count = 1;
             string groupHeadline = "";
-            foreach (Movement movement in movements)
+            foreach (CustomerMovement movement in movements)
             {
                 <tr style="color: black;">
                     <td align="center">

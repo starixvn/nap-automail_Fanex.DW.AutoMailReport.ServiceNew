@@ -9,15 +9,15 @@ namespace TOControl.Notification.Business.Services
 {
     public interface FileService
     {
-        string ReadContent(Tuple<IEnumerable<GroupHeadline>, IEnumerable<Movement>, IEnumerable<DirectCustomer>> data, DateService date);
+        string ReadContent(Tuple<IEnumerable<GroupHeadline>, IEnumerable<CustomerMovement>, IEnumerable<DirectCustomer>> data, DateService date);
     }
 
     public class FileServiceImp : FileService
     {
-        public string ReadContent(Tuple<IEnumerable<GroupHeadline>, IEnumerable<Movement>, IEnumerable<DirectCustomer>> data, DateService date)
+        public string ReadContent(Tuple<IEnumerable<GroupHeadline>, IEnumerable<CustomerMovement>, IEnumerable<DirectCustomer>> data, DateService date)
         {
             var result = string.Empty;
-            var tuple = new Tuple<IEnumerable<GroupHeadline>, IEnumerable<Movement>, IEnumerable<DirectCustomer>, DateService>(data.Item1, data.Item2, data.Item3, date);
+            var tuple = new Tuple<IEnumerable<GroupHeadline>, IEnumerable<CustomerMovement>, IEnumerable<DirectCustomer>, DateService>(data.Item1, data.Item2, data.Item3, date);
 
             var service = Engine.Razor;
             var emailTemplate = File.ReadAllText(@"Templates\EmailTemplate.cshtml");
@@ -31,11 +31,11 @@ namespace TOControl.Notification.Business.Services
             service.AddTemplate("emailTemplate", emailTemplate);
             
             service.Compile("groupHeadline", typeof(IEnumerable<GroupHeadline>));
-            service.Compile("customerMovement", typeof(IEnumerable<Movement>));
+            service.Compile("customerMovement", typeof(IEnumerable<CustomerMovement>));
             service.Compile("directCustomers", typeof(IEnumerable<DirectCustomer>));
-            service.Compile("emailTemplate", typeof(Tuple<IEnumerable<GroupHeadline>, IEnumerable<Movement>, IEnumerable<DirectCustomer>, DateService>));
+            service.Compile("emailTemplate", typeof(Tuple<IEnumerable<GroupHeadline>, IEnumerable<CustomerMovement>, IEnumerable<DirectCustomer>, DateService>));
 
-            result = service.Run("emailTemplate", typeof(Tuple<IEnumerable<GroupHeadline>, IEnumerable<Movement>, IEnumerable<DirectCustomer>, DateService>), tuple);
+            result = service.Run("emailTemplate", typeof(Tuple<IEnumerable<GroupHeadline>, IEnumerable<CustomerMovement>, IEnumerable<DirectCustomer>, DateService>), tuple);
 
             return result;
         }

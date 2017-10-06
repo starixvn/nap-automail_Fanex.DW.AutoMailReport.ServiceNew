@@ -7,7 +7,7 @@ namespace TOControl.Notification.Business.Services
 {
     public interface MailMovementService
     {
-        Mail Execute(Tuple<IEnumerable<GroupHeadline>, IEnumerable<Movement>, IEnumerable<DirectCustomer>> data);
+        Mail Execute(Tuple<IEnumerable<GroupHeadline>, IEnumerable<CustomerMovement>, IEnumerable<DirectCustomer>> data);
     }
 
     public class MailMovementServiceImp : MailMovementService
@@ -23,7 +23,7 @@ namespace TOControl.Notification.Business.Services
             this.dateService = dateService;
         }
 
-        public Mail Execute(Tuple<IEnumerable<GroupHeadline>, IEnumerable<Movement>, IEnumerable<DirectCustomer>> data)
+        public Mail Execute(Tuple<IEnumerable<GroupHeadline>, IEnumerable<CustomerMovement>, IEnumerable<DirectCustomer>> data)
         {
             var mail = new Mail
             {

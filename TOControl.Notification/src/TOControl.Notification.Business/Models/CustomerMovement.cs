@@ -2,7 +2,7 @@
 
 namespace TOControl.Notification.Business.Models
 {
-    public class Movement
+    public class CustomerMovement
     {
         public int Id { get; set; }
 

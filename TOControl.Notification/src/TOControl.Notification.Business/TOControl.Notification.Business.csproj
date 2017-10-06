@@ -135,18 +135,21 @@
   <ItemGroup>
     <Compile Include="Enums\NotifiedByFunction.cs" />
     <Compile Include="Models\AppConfig.cs" />
+    <Compile Include="Models\CustomerExistingSetting.cs" />
     <Compile Include="Models\CustomerInfomation.cs" />
     <Compile Include="Models\DirectCustomer.cs" />
     <Compile Include="Models\DirectCustomerRaw.cs" />
     <Compile Include="Models\GroupHeadline.cs" />
     <Compile Include="Models\GroupHeadlineRaw.cs" />
-    <Compile Include="Models\Movement.cs" />
-    <Compile Include="Models\MovementRaw.cs" />
+    <Compile Include="Models\CustomerMovement.cs" />
+    <Compile Include="Models\CustomerMovementRaw.cs" />
     <Compile Include="Models\RawData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CustomerSelByUserNameCriteria.cs" />
+    <Compile Include="Repositories\EmailNotificationGlobalSettingSelectCriteria.cs" />
     <Compile Include="Repositories\GroupHeadlineSelectByGroupIdCrietria.cs" />
     <Compile Include="Repositories\NotificationInfoSelectByFunctionCriteria.cs" />
+    <Compile Include="Repositories\NotificationInfoUpdateByFunctionCommand.cs" />
     <Compile Include="Services\ApplicationConfigurationService.cs" />
     <Compile Include="Services\DataService.cs" />
     <Compile Include="Services\DateService.cs" />

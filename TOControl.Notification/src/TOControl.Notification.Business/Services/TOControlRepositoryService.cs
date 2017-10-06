@@ -12,6 +12,8 @@ namespace TOControl.Notification.Business.Services
         IEnumerable<T> QueryRawData<T>(CriteriaBase criteria);
 
         T QuerySingleRow<T>(CriteriaBase criteria);
+
+        void UpdateNotificationStatus(NonQueryCommand command);
     }
 
     public class TOControlRepositoryServiceImp : TOControlRepositoryService
@@ -37,6 +39,11 @@ namespace TOControl.Notification.Business.Services
         public T QuerySingleRow<T>(CriteriaBase criteria)
         {
             return dynamicRepository.Get<T>(criteria);
+        }
+
+        public void UpdateNotificationStatus(NonQueryCommand command)
+        {
+            dynamicRepository.Execute(command);
         }
     }
 }

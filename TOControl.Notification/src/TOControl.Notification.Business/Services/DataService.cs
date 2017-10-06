@@ -9,9 +9,9 @@ namespace TOControl.Notification.Business.Services
 {
     public interface DataService
     {
-        List<int> Ids { get; }
+        Tuple<IEnumerable<GroupHeadline>, IEnumerable<CustomerMovement>, IEnumerable<DirectCustomer>> Query(NotifiedByFunction notifiedByFunction);
 
-        Tuple<IEnumerable<GroupHeadline>, IEnumerable<Movement>, IEnumerable<DirectCustomer>> Query(NotifiedByFunction notifiedByFunction);
+        void Update(NotifiedByFunction notifiedByFunction);
     }
 
     public class DataServiceImp : DataService
@@ -32,32 +32,31 @@ namespace TOControl.Notification.Business.Services
             this.transformDataService = transformDataService;
             this.repositoryService = repositoryService;
 
-            Ids = new List<int>();
+            ValidIds = new List<int>();
+            InvalidIds = new List<int>();
         }
 
-        public List<int> Ids
+        private List<int> ValidIds
         {
             get;
         }
 
-        public Tuple<IEnumerable<GroupHeadline>, IEnumerable<Movement>, IEnumerable<DirectCustomer>> Query(NotifiedByFunction notifiedByFunction)
+        private List<int> InvalidIds
         {
-            var groupHeadlines = QueryGroupHeadline(notifiedByFunction);
-            var customerMovements = QueryCustomerMovement(notifiedByFunction);
-            var newDirectCustomers = QueryDirectCustomer(notifiedByFunction);
-
-            var idgroupHeadlines = groupHeadlines.Select(s => s.Id).ToList();
-            var idcustomerMovements = customerMovements.Select(s => s.Id).ToList();
-            var idnewDirectCustomers = newDirectCustomers.Select(s => s.Id).ToList();
-
-            Ids.AddRange(idgroupHeadlines);
-            Ids.AddRange(idcustomerMovements);
-            Ids.AddRange(idnewDirectCustomers);
-
-            return new Tuple<IEnumerable<GroupHeadline>, IEnumerable<Movement>, IEnumerable<DirectCustomer>>(groupHeadlines, customerMovements, newDirectCustomers);
+            get;
         }
 
-        private List<GroupHeadline> QueryGroupHeadline(NotifiedByFunction notifiedByFunction)
+        public Tuple<IEnumerable<GroupHeadline>, IEnumerable<CustomerMovement>, IEnumerable<DirectCustomer>> Query(NotifiedByFunction notifiedByFunction)
+        {
+            var customersExistingSetting = QueryCustomersExistingSetting(notifiedByFunction);
+            var groupHeadlines = QueryGroupHeadline(notifiedByFunction, customersExistingSetting);
+            var customerMovements = QueryCustomerMovement(notifiedByFunction, customersExistingSetting);
+            var newDirectCustomers = QueryDirectCustomer(notifiedByFunction);
+
+            return new Tuple<IEnumerable<GroupHeadline>, IEnumerable<CustomerMovement>, IEnumerable<DirectCustomer>>(groupHeadlines, customerMovements, newDirectCustomers);
+        }
+
+        private List<GroupHeadline> QueryGroupHeadline(NotifiedByFunction notifiedByFunction, List<CustomerExistingSetting> customersExistingSetting)
         {
             var result = new List<GroupHeadline>();
             var criteria = new NotificationInfoSelectByFunctionCriteria
@@ -75,14 +74,24 @@ namespace TOControl.Notification.Business.Services
                 var groupHeadlineRaw = xmlService.Parser<GroupHeadlineRaw>(xml);
                 var groupHeadline = transformDataService.TransformGroupHeadline(groupHeadlineRaw, rawData);
                 result.Add(groupHeadline);
+
+                var count = customersExistingSetting.Count(c => c.CustId == groupHeadlineRaw.CustId);
+                if (count > 0)
+                {
+                    ValidIds.Add(rawData.Id);
+                }
+                else
+                {
+                    InvalidIds.Add(rawData.Id);
+                }
             });
 
             return result;
         }
 
-        private List<Movement> QueryCustomerMovement(NotifiedByFunction notifiedByFunction)
+        private List<CustomerMovement> QueryCustomerMovement(NotifiedByFunction notifiedByFunction, List<CustomerExistingSetting> customersExistingSetting)
         {
-            var result = new List<Movement>();
+            var result = new List<CustomerMovement>();
             var criteria = new NotificationInfoSelectByFunctionCriteria
             {
                 FromDate = dateService.FromDate,
@@ -95,9 +104,19 @@ namespace TOControl.Notification.Business.Services
             rawXMLData.ToList().ForEach(rawData =>
             {
                 var xml = rawData.NotificationInfo;
-                var movementRaw = xmlService.Parser<MovementRaw>(xml);
+                var movementRaw = xmlService.Parser<CustomerMovementRaw>(xml);
                 var movement = transformDataService.TransformMovement(movementRaw, rawData);
                 result.Add(movement);
+
+                var count = customersExistingSetting.Count(c => c.GroupId == movementRaw.GroupId);
+                if (count > 0)
+                {
+                    ValidIds.Add(rawData.Id);
+                }
+                else
+                {
+                    InvalidIds.Add(rawData.Id);
+                }
             });
 
             var customerMovements = result.OrderBy(s => s.GroupHeadline).ToList();
@@ -124,17 +143,58 @@ namespace TOControl.Notification.Business.Services
                 var directCustomerRaw = xmlService.Parser<DirectCustomerRaw>(xml);
                 var directCustomer = transformDataService.TransformDirectCustomer(directCustomerRaw, rawData);
                 result.Add(directCustomer);
+                ValidIds.Add(rawData.Id);
             });
 
             return result;
         }
 
-        private static void UpdateNumberOfGroupHeadline(IEnumerable<Movement> customerMovements)
+        private static void UpdateNumberOfGroupHeadline(IEnumerable<CustomerMovement> customerMovements)
         {
             foreach (var m in customerMovements)
             {
                 m.Count = customerMovements.Count(c => c.GroupHeadline == m.GroupHeadline);
             }
+        }
+
+        private List<CustomerExistingSetting> QueryCustomersExistingSetting(NotifiedByFunction notifiedByFunction)
+        {
+            var criteria = new EmailNotificationGlobalSettingSelectCriteria
+            {
+                NotifiedByFunctionFlag = (int)notifiedByFunction
+            };
+
+            return repositoryService.QueryRawData<CustomerExistingSetting>(criteria).ToList();
+        }
+
+        public void Update(NotifiedByFunction notifiedByFunction)
+        {
+            UpdateValidIds(notifiedByFunction);
+            UpdateInvalidIds(notifiedByFunction);
+        }
+
+        private void UpdateValidIds(NotifiedByFunction notifiedByFunction)
+        {
+            var command = new NotificationInfoUpdateByFunctionCommand
+            {
+                NotificationIdList = string.Join(",", ValidIds),
+                IsNotifiedValue = 1,
+                NotifiedByFunctionFlag = (int)notifiedByFunction
+            };
+
+            repositoryService.UpdateNotificationStatus(command);
+        }
+
+        private void UpdateInvalidIds(NotifiedByFunction notifiedByFunction)
+        {
+            var command = new NotificationInfoUpdateByFunctionCommand
+            {
+                NotificationIdList = string.Join(",", InvalidIds),
+                IsNotifiedValue = 2,
+                NotifiedByFunctionFlag = (int)notifiedByFunction
+            };
+
+            repositoryService.UpdateNotificationStatus(command);
         }
     }
 }
