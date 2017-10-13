@@ -73,12 +73,12 @@ namespace TOControl.Notification.Business.Services
                 var xml = rawData.NotificationInfo;
                 var groupHeadlineRaw = xmlService.Parser<GroupHeadlineRaw>(xml);
                 var groupHeadline = transformDataService.TransformGroupHeadline(groupHeadlineRaw, rawData);
-                result.Add(groupHeadline);
 
                 var count = customersExistingSetting.Count(c => c.CustId == groupHeadlineRaw.CustId);
                 if (count > 0)
                 {
                     ValidIds.Add(rawData.Id);
+                    result.Add(groupHeadline);
                 }
                 else
                 {
@@ -106,12 +106,12 @@ namespace TOControl.Notification.Business.Services
                 var xml = rawData.NotificationInfo;
                 var movementRaw = xmlService.Parser<CustomerMovementRaw>(xml);
                 var movement = transformDataService.TransformMovement(movementRaw, rawData);
-                result.Add(movement);
 
                 var count = customersExistingSetting.Count(c => c.GroupId == movementRaw.GroupId);
                 if (count > 0)
                 {
                     ValidIds.Add(rawData.Id);
+                    result.Add(movement);
                 }
                 else
                 {

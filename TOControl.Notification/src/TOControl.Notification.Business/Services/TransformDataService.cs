@@ -1,4 +1,5 @@
-﻿using TOControl.Notification.Business.Models;
+﻿using Newtonsoft.Json;
+using TOControl.Notification.Business.Models;
 using TOControl.Notification.Business.Repositories;
 
 namespace TOControl.Notification.Business.Services

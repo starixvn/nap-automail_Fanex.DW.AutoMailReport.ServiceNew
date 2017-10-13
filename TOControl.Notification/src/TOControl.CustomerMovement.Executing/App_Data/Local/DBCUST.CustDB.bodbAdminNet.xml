@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Functions SiteId="25" SiteName="Auto Mail">
   <Function Name="Turnover Control - Customer Movement">
-    <Setting Key="NAP_Email_NotificationInfoSelectByFunction" SpName="NAP_Email_NotificationInfoSelectByFunction_xtest" DbName="DBCUST.CustDB.bodbAdminNet" TimeOut="0"></Setting>
+    <Setting Key="NAP_Email_NotificationInfoSelectByFunction" SpName="NAP_Email_NotificationInfoSelectByFunction_xpre" DbName="DBCUST.CustDB.bodbAdminNet" TimeOut="0"></Setting>
     <Setting Key="Acc_GroupHeadlineSelectByGroupID" SpName="Acc_GroupHeadlineSelectByGroupID_xtest" DbName="DBCUST.CustDB.bodbAdminNet" TimeOut="0"></Setting>
     <Setting Key="NAP_EmailNotification_GlobalSettingSelect" SpName="NAP_EmailNotification_GlobalSettingSelect_xtest" DbName="DBCUST.CustDB.bodbAdminNet" TimeOut="0"></Setting>
     <Setting Key="NAP_Email_NotificationInfoUpdateByFunction" SpName="NAP_Email_NotificationInfoUpdateByFunction_xtest" DbName="DBCUST.CustDB.bodbAdminNet" TimeOut="0"></Setting>
