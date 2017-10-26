@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1B898A58-7CB9-43CD-AFFC-3734D3BBB6E6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C6A9B87C-1A89-4B45-8681-9AB2D7775C46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOControl.Notification.Business", "TOControl.Notification\src\TOControl.Notification.Business\TOControl.Notification.Business.csproj", "{013CFD4A-F5F4-4837-889C-C45AC9D0A892}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{265B23E2-B709-40F1-969C-4FC0C47E8F09}"
+	ProjectSection(SolutionItems) = preProject
+		SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset = SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset
+		SonarQube\SolutionBinding.sqconfig = SonarQube\SolutionBinding.sqconfig
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOControl.CustomerMovement.Executing", "TOControl.Notification\src\TOControl.CustomerMovement.Executing\TOControl.CustomerMovement.Executing.csproj", "{B2A4E495-37D7-4A9E-9A7D-D1231B06ADF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LossMonitoring.CustomerMovement.Executing", "TOControl.Notification\src\LossMonitoring.CustomerMovement.Executing\LossMonitoring.CustomerMovement.Executing.csproj", "{6B7D3A67-113C-4ACE-866E-BC799FADB5DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TOControl.Notification.Business.UnitTests", "TOControl.Notification\tests\TOControl.Notification.Business.UnitTests\TOControl.Notification.Business.UnitTests.csproj", "{02FAA60F-C010-44E6-B7B4-7471C7057DBB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{013CFD4A-F5F4-4837-889C-C45AC9D0A892}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{013CFD4A-F5F4-4837-889C-C45AC9D0A892}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{013CFD4A-F5F4-4837-889C-C45AC9D0A892}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{013CFD4A-F5F4-4837-889C-C45AC9D0A892}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2A4E495-37D7-4A9E-9A7D-D1231B06ADF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2A4E495-37D7-4A9E-9A7D-D1231B06ADF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2A4E495-37D7-4A9E-9A7D-D1231B06ADF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2A4E495-37D7-4A9E-9A7D-D1231B06ADF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B7D3A67-113C-4ACE-866E-BC799FADB5DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B7D3A67-113C-4ACE-866E-BC799FADB5DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B7D3A67-113C-4ACE-866E-BC799FADB5DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B7D3A67-113C-4ACE-866E-BC799FADB5DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02FAA60F-C010-44E6-B7B4-7471C7057DBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02FAA60F-C010-44E6-B7B4-7471C7057DBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02FAA60F-C010-44E6-B7B4-7471C7057DBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02FAA60F-C010-44E6-B7B4-7471C7057DBB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{013CFD4A-F5F4-4837-889C-C45AC9D0A892} = {1B898A58-7CB9-43CD-AFFC-3734D3BBB6E6}
+		{B2A4E495-37D7-4A9E-9A7D-D1231B06ADF6} = {1B898A58-7CB9-43CD-AFFC-3734D3BBB6E6}
+		{6B7D3A67-113C-4ACE-866E-BC799FADB5DF} = {1B898A58-7CB9-43CD-AFFC-3734D3BBB6E6}
+		{02FAA60F-C010-44E6-B7B4-7471C7057DBB} = {C6A9B87C-1A89-4B45-8681-9AB2D7775C46}
+	EndGlobalSection
+EndGlobal
