@@ -21,6 +21,8 @@ namespace TOControl.Notification.Business.Models
 
         public int RoleId { get; set; }
 
+        public int Currency { get; set; }
+
         public string Level
         {
             get

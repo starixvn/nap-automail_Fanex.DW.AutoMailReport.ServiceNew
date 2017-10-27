@@ -11,5 +11,7 @@ namespace TOControl.Notification.Business.Models
         public string NewHeadline { get; set; }
 
         public DateTime Date { get; set; }
+
+        public int Currency { get; set; }
     }
 }

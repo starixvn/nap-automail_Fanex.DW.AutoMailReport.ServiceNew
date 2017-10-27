@@ -15,5 +15,7 @@ namespace TOControl.Notification.Business.Models
         public DateTime Date { get; set; }
 
         public int Count { get; set; }
+
+        public int Currency { get; set; }
     }
 }

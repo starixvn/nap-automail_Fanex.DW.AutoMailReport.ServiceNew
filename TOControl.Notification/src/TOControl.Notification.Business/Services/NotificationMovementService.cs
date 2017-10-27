@@ -2,6 +2,7 @@
 using Fanex.MailDelivery.Core.Models;
 using Fanex.Service.Core;
 using TOControl.Notification.Business.Enums;
+using System.Linq;
 
 namespace TOControl.Notification.Business.Services
 {
@@ -45,7 +46,7 @@ namespace TOControl.Notification.Business.Services
                     Mail = result.Mail,
                     JobStatus = result.Success ?
                     JobStatus.Success :
-                    JobStatus.DataIsNotReady,
+                    JobStatus.SuccessWithoutSendmail,
                     TaskLog = new TaskLog
                     {
                         LogTime = SystemTime.Now,
@@ -60,10 +61,15 @@ namespace TOControl.Notification.Business.Services
         private ExecuteResult SendNotification(NotifiedByFunction notifiedByFunction)
         {
             var data = dataService.Query(notifiedByFunction);
-            var mail = mailMovementService.Execute(data);
-            dataService.Update(notifiedByFunction);
+            var isHasData = data.Item1.Any() || data.Item2.Any() || data.Item3.Any();
+            var mail = new Mail();
+            if (isHasData)
+            {
+                mail = mailMovementService.Execute(data);
+                dataService.Update(notifiedByFunction);
+            }
 
-            return new ExecuteResult { Success = true, Mail = mail };
+            return new ExecuteResult { Success = isHasData, Mail = mail };
         }
     }
 }

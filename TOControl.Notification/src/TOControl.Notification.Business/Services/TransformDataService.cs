@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using TOControl.Notification.Business.Models;
+﻿using TOControl.Notification.Business.Models;
 using TOControl.Notification.Business.Repositories;
 
 namespace TOControl.Notification.Business.Services
@@ -25,29 +24,31 @@ namespace TOControl.Notification.Business.Services
         public GroupHeadline TransformGroupHeadline(GroupHeadlineRaw groupHeadlineRaw, RawData rawData)
         {
             var oldHeadline = repositoryService.QueryCustomerByCustId(groupHeadlineRaw.OldCustId).Username;
-            var newHeadline = repositoryService.QueryCustomerByCustId(groupHeadlineRaw.CustId).Username;
+            var newHeadlineInfo = repositoryService.QueryCustomerByCustId(groupHeadlineRaw.CustId);
 
             return new GroupHeadline
             {
                 Id = rawData.Id,
                 OldHeadline = oldHeadline,
-                NewHeadline = newHeadline,
-                Date = rawData.CreatedDate
+                NewHeadline = newHeadlineInfo.Username,
+                Date = rawData.CreatedDate,
+                Currency = newHeadlineInfo.Currency
             };
         }
 
         public CustomerMovement TransformMovement(CustomerMovementRaw movementRaw, RawData rawData)
         {
             var groupHeadline = repositoryService.QuerySingleRow<string>(new GroupHeadlineSelectByGroupIdCrietria { GroupId = movementRaw.GroupId });
-            var groupMember = repositoryService.QueryCustomerByCustId(movementRaw.CustId).Username;
+            var groupMember = repositoryService.QueryCustomerByCustId(movementRaw.CustId);
 
             return new CustomerMovement
             {
                 Id = rawData.Id,
                 GroupHeadline = groupHeadline,
-                GroupMember = groupMember,
+                GroupMember = groupMember.Username,
                 Date = rawData.CreatedDate,
-                Action = rawData.Action
+                Action = rawData.Action,
+                Currency = groupMember.Currency
             };
         }
 
@@ -59,15 +60,13 @@ namespace TOControl.Notification.Business.Services
                 return new DirectCustomer { };
             }
 
-            var username = userInfo.Username;
-            var level = userInfo.Level;
-
             return new DirectCustomer
             {
                 Id = rawData.Id,
-                Username = username,
-                Level = level,
-                Date = rawData.CreatedDate
+                Username = userInfo.Username,
+                Level = userInfo.Level,
+                Date = rawData.CreatedDate,
+                Currency = userInfo.Currency
             };
         }
     }
