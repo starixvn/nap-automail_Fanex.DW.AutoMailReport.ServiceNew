@@ -20,28 +20,31 @@ namespace TOControl.Notification.Business.Services
         private readonly XMLService xmlService;
         private readonly TransformDataService transformDataService;
         private readonly TOControlRepositoryService repositoryService;
+        private readonly ApplicationConfigurationService appConfig;
 
         public DataServiceImp(
             DateService dateService,
             XMLService xmlService,
             TransformDataService transformDataService,
-            TOControlRepositoryService repositoryService)
+            TOControlRepositoryService repositoryService,
+            ApplicationConfigurationService appConfig)
         {
             this.dateService = dateService;
             this.xmlService = xmlService;
             this.transformDataService = transformDataService;
             this.repositoryService = repositoryService;
+            this.appConfig = appConfig;
 
-            ValidIds = new List<int>();
-            InvalidIds = new List<int>();
+            ValidIds = new Dictionary<int, int>();
+            InvalidIds = new Dictionary<int, int>();
         }
 
-        private List<int> ValidIds
+        private Dictionary<int, int> ValidIds
         {
             get;
         }
 
-        private List<int> InvalidIds
+        private Dictionary<int, int> InvalidIds
         {
             get;
         }
@@ -77,16 +80,20 @@ namespace TOControl.Notification.Business.Services
                 var count = customersExistingSetting.Count(c => c.CustId == groupHeadlineRaw.CustId);
                 if (count > 0)
                 {
-                    ValidIds.Add(rawData.Id);
+                    ValidIds.Add(rawData.Id, groupHeadline.Currency);
                     result.Add(groupHeadline);
                 }
                 else
                 {
-                    InvalidIds.Add(rawData.Id);
+                    InvalidIds.Add(rawData.Id, groupHeadline.Currency);
                 }
             });
 
-            return result;
+            var testCurrency = result.Where(s => s.Currency == 20).ToList();
+            var realCurrency = result.Where(s => s.Currency != 20).ToList();
+            var data = appConfig.Configurations.IsRealCurrency ? realCurrency : testCurrency;
+
+            return data;
         }
 
         private List<CustomerMovement> QueryCustomerMovement(NotifiedByFunction notifiedByFunction, List<CustomerExistingSetting> customersExistingSetting)
@@ -110,19 +117,23 @@ namespace TOControl.Notification.Business.Services
                 var count = customersExistingSetting.Count(c => c.GroupId == movementRaw.GroupId);
                 if (count > 0)
                 {
-                    ValidIds.Add(rawData.Id);
+                    ValidIds.Add(rawData.Id, movement.Currency);
                     result.Add(movement);
                 }
                 else
                 {
-                    InvalidIds.Add(rawData.Id);
+                    InvalidIds.Add(rawData.Id, movement.Currency);
                 }
             });
 
             var customerMovements = result.OrderBy(s => s.GroupHeadline).ToList();
             UpdateNumberOfGroupHeadline(customerMovements);
 
-            return customerMovements;
+            var testCurrency = customerMovements.Where(s => s.Currency == 20).ToList();
+            var realCurrency = customerMovements.Where(s => s.Currency != 20).ToList();
+            var data = appConfig.Configurations.IsRealCurrency ? realCurrency : testCurrency;
+
+            return data;            
         }
 
         private List<DirectCustomer> QueryDirectCustomer(NotifiedByFunction notifiedByFunction)
@@ -143,10 +154,14 @@ namespace TOControl.Notification.Business.Services
                 var directCustomerRaw = xmlService.Parser<DirectCustomerRaw>(xml);
                 var directCustomer = transformDataService.TransformDirectCustomer(directCustomerRaw, rawData);
                 result.Add(directCustomer);
-                ValidIds.Add(rawData.Id);
+                ValidIds.Add(rawData.Id, directCustomer.Currency);
             });
 
-            return result;
+            var testCurrency = result.Where(s => s.Currency == 20).ToList();
+            var realCurrency = result.Where(s => s.Currency != 20).ToList();
+            var data = appConfig.Configurations.IsRealCurrency ? realCurrency : testCurrency;
+
+            return data;
         }
 
         private static void UpdateNumberOfGroupHeadline(IEnumerable<CustomerMovement> customerMovements)
@@ -175,9 +190,13 @@ namespace TOControl.Notification.Business.Services
 
         private void UpdateValidIds(NotifiedByFunction notifiedByFunction)
         {
+            var idtestCurrency = ValidIds.Where(s => s.Value == 20).Select(s => s.Key);
+            var idrealCurrency = ValidIds.Where(s => s.Value != 20).Select(s => s.Key);
+            var ids = appConfig.Configurations.IsRealCurrency ? idrealCurrency : idtestCurrency;
+
             var command = new NotificationInfoUpdateByFunctionCommand
             {
-                NotificationIdList = string.Join(",", ValidIds),
+                NotificationIdList = string.Join(",", ids),
                 IsNotifiedValue = 1,
                 NotifiedByFunctionFlag = (int)notifiedByFunction
             };
@@ -187,9 +206,13 @@ namespace TOControl.Notification.Business.Services
 
         private void UpdateInvalidIds(NotifiedByFunction notifiedByFunction)
         {
+            var idtestCurrency = InvalidIds.Where(s => s.Value == 20).Select(s => s.Key);
+            var idrealCurrency = InvalidIds.Where(s => s.Value != 20).Select(s => s.Key);
+            var ids = appConfig.Configurations.IsRealCurrency ? idrealCurrency : idtestCurrency;
+
             var command = new NotificationInfoUpdateByFunctionCommand
             {
-                NotificationIdList = string.Join(",", InvalidIds),
+                NotificationIdList = string.Join(",", ids),
                 IsNotifiedValue = 2,
                 NotifiedByFunctionFlag = (int)notifiedByFunction
             };

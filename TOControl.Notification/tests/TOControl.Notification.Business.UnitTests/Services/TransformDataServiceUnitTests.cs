@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NSubstitute;
 using NUnit.Framework;
 using TOControl.Notification.Business.Models;
@@ -36,7 +32,6 @@ namespace TOControl.Notification.Business.UnitTests.Services
             var result = service.TransformGroupHeadline(groupHeadlineRaw, rawData);
 
             // Assert
-
         }
     }
 }

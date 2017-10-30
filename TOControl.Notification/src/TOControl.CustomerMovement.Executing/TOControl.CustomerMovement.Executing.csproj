@@ -158,7 +158,7 @@
     <Content Include="deployment.ignore">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\AppConfig.json">
+    <Content Include="Templates\AppConfig.UAT.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\CustomerMovement.cshtml">
@@ -197,6 +197,21 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <Content Include="Templates\AppConfig.LocalReal.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\AppConfig.SIT.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\AppConfig.PRO.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\AppConfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\AppConfig.LocalTest.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="TOControl.CustomerMovement.Executing.ruleset" />
   </ItemGroup>
   <ItemGroup>

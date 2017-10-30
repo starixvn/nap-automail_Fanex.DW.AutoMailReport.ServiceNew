@@ -4,5 +4,6 @@
   "ToDate": "2017-12-10",
   "PeriodDate": 1,
   "Subject": "Turnover Monitor: Noticeable events report",
-  "Title": "Auto Generated Report Administrator"
+  "Title": "Auto Generated Report Administrator",
+  "IsRealCurrency": true
 }

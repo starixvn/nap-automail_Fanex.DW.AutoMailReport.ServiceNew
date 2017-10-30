@@ -16,6 +16,8 @@
 \\*.UAT.config
 \\*.PRO.config
 \\*.live.config
-\\*.local.json
+\\*.LocalReal.json
+\\*.LocalTest.json
 \\*.uat.json
+\\*.sit.json
 \\*.pro.json

@@ -15,5 +15,7 @@ namespace TOControl.Notification.Business.Models
         public DateTime FromDate { get; set; }
 
         public DateTime ToDate { get; set; }
+
+        public bool IsRealCurrency { get; set; }
     }
 }
