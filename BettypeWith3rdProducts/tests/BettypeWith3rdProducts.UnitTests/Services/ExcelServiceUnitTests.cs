@@ -15,7 +15,7 @@ namespace BettypeWith3rdProducts.UnitTests.Services
     {
         private ExcelPackage excelPackage;
         private ApplicationConfigurationService appConfig;
-        private DateRangeServiceProvider dateRangeServiceProvider;
+        private DateRangeService dateRangeService;
         private ExcelHeaderService excelHeaderService;
         private DataService dataService;
 
@@ -24,13 +24,13 @@ namespace BettypeWith3rdProducts.UnitTests.Services
             var fileName = $@"{TestContext.CurrentContext.TestDirectory}\Templates\Template.xlsx";
             excelPackage = new ExcelPackage(new System.IO.FileInfo(fileName));
             appConfig = Substitute.For<ApplicationConfigurationService>();
-            dateRangeServiceProvider = Substitute.For<DateRangeServiceProvider>();
+            this.dateRangeService = Substitute.For<DateRangeService>();
             excelHeaderService = new ExcelHeaderServiceImp();
-            dataService = Substitute.For<DataService>();
-            var dateRangeService = Substitute.For<DateRangeService>();
+            dataService = Substitute.For<DataService>();            
+
             dateRangeService.DateStart.Returns(new DateTime(2017, 01, 01));
             dateRangeService.DateEnd.Returns(new DateTime(2017, 01, 31));
-            dateRangeServiceProvider.Date(Arg.Any<DateRange>()).Returns(dateRangeService);
+            
             appConfig.ExportDataDirectory.Returns(@"\\10.70.70.242\www\Olympus\Fanex.Excel\BettypeWith3rdProducts");
 
             var dataSource = CreateDataSource();
@@ -44,7 +44,7 @@ namespace BettypeWith3rdProducts.UnitTests.Services
             InitializeSubstitute();
 
             // Act
-            var service = new ExcelServiceImp(excelPackage, appConfig, dataService, dateRangeServiceProvider, excelHeaderService);
+            var service = new ExcelServiceImp(excelPackage, appConfig, dataService, dateRangeService, excelHeaderService);
             service.Execute();
 
             // Assert
@@ -59,7 +59,7 @@ namespace BettypeWith3rdProducts.UnitTests.Services
             var expected = "MIS_Bettype with 3rd products From 01/01/2017 To 01/31/2017";
 
             // Act
-            var service = new ExcelServiceImp(excelPackage, appConfig, dataService, dateRangeServiceProvider, excelHeaderService);
+            var service = new ExcelServiceImp(excelPackage, appConfig, dataService, dateRangeService, excelHeaderService);
             service.Execute();
             var sheet = excelPackage.Workbook.Worksheets[1];
             var result = sheet.Cells["B2"].Value.ToString();
@@ -100,7 +100,7 @@ namespace BettypeWith3rdProducts.UnitTests.Services
             var expected = @"\\10.70.70.242\www\Olympus\Fanex.Excel\BettypeWith3rdProducts\2017\01\Bettype_With_3rd_Products_Monthly_Winloss_For_2017_01_01.xlsx";
 
             // Act
-            var service = new ExcelServiceImp(excelPackage, appConfig, dataService, dateRangeServiceProvider, excelHeaderService);
+            var service = new ExcelServiceImp(excelPackage, appConfig, dataService, dateRangeService, excelHeaderService);
             var result = service.Save();
 
             // Assert

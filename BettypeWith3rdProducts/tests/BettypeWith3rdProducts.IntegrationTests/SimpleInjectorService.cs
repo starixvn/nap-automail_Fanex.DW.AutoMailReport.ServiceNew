@@ -14,8 +14,7 @@ namespace BettypeWith3rdProducts.IntegrationTests
         {
             container.Register<IDynamicRepository, DynamicRepository>();
             container.Register(() => new ExcelPackage(new FileInfo(@"Templates\Template.xlsx")));
-            container.Register<DateRangeServiceProvider, DateRangeServiceProviderImp>();
-            container.Register<ParameterService, ParameterServiceImp>();
+            container.Register<DateRangeService, DateRangeServiceImp>();            
             container.Register<ApplicationConfigurationService, ApplicationConfigurationServiceImp>();
             container.Register<RepositoryService, RepositoryServiceImp>();
             container.Register<DataSourceService, DataSourceServiceImp>();

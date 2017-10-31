@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using BettypeWith3rdProducts.Business.Models;
 using BettypeWith3rdProducts.Business.Repositories;
 using BettypeWith3rdProducts.Business.Services;
 using Fanex.Data.Repository;
@@ -17,24 +16,20 @@ namespace BettypeWith3rdProducts.UnitTests.Services
     {
         private ApplicationConfigurationService appConfig;
         private IDynamicRepository dynamicRepository;
-        private DateRangeServiceProvider dateRangeServiceProvider;
-        private ParameterService parameterService;
+        private DateRangeService dateRangeService;
         private DataSourceService dataSourceService;
 
         private void InitializeSubstitute()
         {
             appConfig = Substitute.For<ApplicationConfigurationService>();
             dynamicRepository = Substitute.For<IDynamicRepository>();
-            dateRangeServiceProvider = Substitute.For<DateRangeServiceProvider>();
-            parameterService = new ParameterServiceImp();
+            this.dateRangeService = Substitute.For<DateRangeService>();
             dataSourceService = Substitute.For<DataSourceService>();
 
-            var dateRangeService = Substitute.For<DateRangeService>();
             dateRangeService.DateStart.Returns(new DateTime(2017, 01, 01));
             dateRangeService.DateEnd.Returns(new DateTime(2017, 01, 31));
 
-            dateRangeServiceProvider.Date(DateRange.Daily).Returns(dateRangeService);
-            appConfig.ReportType.Returns(DateRange.Daily);
+            appConfig.IsManual.Returns(false);
 
             var dataTable = CreateDataTable();
             dataSourceService.Query(Arg.Any<CriteriaBase>()).Returns(dataTable);
@@ -57,14 +52,28 @@ namespace BettypeWith3rdProducts.UnitTests.Services
             // Arrange
             InitializeSubstitute();
 
+            var rawDataSource = CreateRawDataSource();
             var expected = CreateGeneralData();
 
             // Act
-            var service = new RepositoryServiceImp(appConfig, dynamicRepository, dateRangeServiceProvider, parameterService, dataSourceService);
-            var result = service.QueryGeneralData(new SourceMapping());
+            var service = new RepositoryServiceImp(appConfig, dynamicRepository);
+            var result = service.QueryGeneralData(rawDataSource);
 
             // Assert
             Assert.That(result, IsDeeplyEqual.To(expected));
+        }
+
+        private Dictionary<string, DataTable> CreateRawDataSource()
+        {
+            var dataTable = CreateDataTable();
+            return new Dictionary<string, DataTable>
+            {
+                { "All", dataTable },
+                { "Summary", dataTable },
+                { "Soccer", dataTable },
+                { "Basketball", dataTable },
+                { "Baseball", dataTable }
+            };
         }
 
         private Dictionary<string, DataTable> CreateGeneralData()
@@ -82,41 +91,13 @@ namespace BettypeWith3rdProducts.UnitTests.Services
         {
             // Arrange
             InitializeSubstitute();
-            dynamicRepository.Fetch<SportType>(Arg.Any<CriteriaBase>()).Returns(new List<SportType>
-            {
-                new SportType { Sport = "Soccer", SportId = 1 },
-                new SportType { Sport = "Basketball", SportId = 2 },
-                new SportType { Sport = "Football", SportId = 3 }
-            });
 
+            var rawDataSource = CreateRawDataSource();
             var expected = CreateDetailData();
 
             // Act
-            var service = new RepositoryServiceImp(appConfig, dynamicRepository, dateRangeServiceProvider, parameterService, dataSourceService);
-            var result = service.QueryDetailData(new SourceMapping());
-
-            // Assert
-            Assert.That(result, IsDeeplyEqual.To(expected));
-        }
-
-        [Test]
-        public void QueryDetailData_DuplicatedSport_ReturnRightData()
-        {
-            // Arrange
-            InitializeSubstitute();
-            dynamicRepository.Fetch<SportType>(Arg.Any<CriteriaBase>()).Returns(new List<SportType>
-            {
-                new SportType { Sport = "Soccer", SportId = 1 },
-                new SportType { Sport = "Soccer", SportId = 1 },
-                new SportType { Sport = "Basketball", SportId = 2 },
-                new SportType { Sport = "Football", SportId = 3 }
-            });
-
-            var expected = CreateDetailData();
-
-            // Act
-            var service = new RepositoryServiceImp(appConfig, dynamicRepository, dateRangeServiceProvider, parameterService, dataSourceService);
-            var result = service.QueryDetailData(new SourceMapping());
+            var service = new RepositoryServiceImp(appConfig, dynamicRepository);
+            var result = service.QueryDetailData(rawDataSource);
 
             // Assert
             Assert.That(result, IsDeeplyEqual.To(expected));
@@ -127,17 +108,13 @@ namespace BettypeWith3rdProducts.UnitTests.Services
         {
             // Arrange
             InitializeSubstitute();
-            dataSourceService.Query(Arg.Any<CriteriaBase>()).Returns(new DataTable());
-            dynamicRepository.Fetch<SportType>(Arg.Any<CriteriaBase>()).Returns(new List<SportType>
-            {
-                new SportType { Sport = "Soccer", SportId = 1 }
-            });
 
+            var rawDataSource = new Dictionary<string, DataTable>();
             var expected = 0;
 
             // Act
-            var service = new RepositoryServiceImp(appConfig, dynamicRepository, dateRangeServiceProvider, parameterService, dataSourceService);
-            var result = service.QueryDetailData(new SourceMapping());
+            var service = new RepositoryServiceImp(appConfig, dynamicRepository);
+            var result = service.QueryDetailData(rawDataSource);
 
             // Assert
             Assert.That(result.Count, Is.EqualTo(expected));
@@ -150,7 +127,7 @@ namespace BettypeWith3rdProducts.UnitTests.Services
             {
                 { "Soccer", dataTable },
                 { "Basketball", dataTable },
-                { "Football", dataTable },
+                { "Baseball", dataTable }
             };
         }
 
@@ -163,7 +140,7 @@ namespace BettypeWith3rdProducts.UnitTests.Services
             var expected = new DateTime(2017, 01, 01);
 
             // Act
-            var service = new RepositoryServiceImp(appConfig, dynamicRepository, dateRangeServiceProvider, parameterService, dataSourceService);
+            var service = new RepositoryServiceImp(appConfig, dynamicRepository);
             var result = service.QueryLastDate();
 
             // Assert
@@ -181,7 +158,7 @@ namespace BettypeWith3rdProducts.UnitTests.Services
             var expected = true;
 
             // Act
-            var service = new RepositoryServiceImp(appConfig, dynamicRepository, dateRangeServiceProvider, parameterService, dataSourceService);
+            var service = new RepositoryServiceImp(appConfig, dynamicRepository);
             var result = service.IsDataAvailable();
 
             // Assert

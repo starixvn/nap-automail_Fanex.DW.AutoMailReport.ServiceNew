@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using BettypeWith3rdProducts.Business.Models;
-using Fanex.Service.Core;
 
 namespace BettypeWith3rdProducts.Business.Services
 {
@@ -15,11 +14,15 @@ namespace BettypeWith3rdProducts.Business.Services
     public class SportSplitterServiceImp : SportSplitterService
     {
         private readonly RepositoryBettypeProductService repositoryService;
+        private readonly RawDataSourceService rawDataSourceService;
+
         private readonly int firstIndexSportSection;
 
-        public SportSplitterServiceImp(RepositoryBettypeProductService repositoryService)
+        public SportSplitterServiceImp(RepositoryBettypeProductService repositoryService, RawDataSourceService rawDataSourceService)
         {
             this.repositoryService = repositoryService;
+            this.rawDataSourceService = rawDataSourceService;
+
             firstIndexSportSection = 0;
         }
 
@@ -27,25 +30,26 @@ namespace BettypeWith3rdProducts.Business.Services
 
         public Dictionary<string, List<DataTable>> Execute(SourceMapping sourceMapping)
         {
+            var rawDataSource = rawDataSourceService.QueryDataSouce(sourceMapping);
             var result = new Dictionary<string, List<DataTable>>();
-            SplitGeneralData(sourceMapping, result);
-            SplitSportData(sourceMapping, result);
+            SplitGeneralData(rawDataSource, result);
+            SplitSportData(rawDataSource, result);
 
             return result;
         }
 
-        private void SplitGeneralData(SourceMapping sourceMapping, Dictionary<string, List<DataTable>> result)
+        private void SplitGeneralData(Dictionary<string, DataTable> rawDataSource, Dictionary<string, List<DataTable>> result)
         {
-            var generalData = repositoryService.QueryGeneralData(sourceMapping);
+            var generalData = repositoryService.QueryGeneralData(rawDataSource);
             foreach (var sport in generalData)
             {
                 result.Add(sport.Key, new List<DataTable> { sport.Value });
             }
         }
 
-        private void SplitSportData(SourceMapping sourceMapping, Dictionary<string, List<DataTable>> result)
+        private void SplitSportData(Dictionary<string, DataTable> rawDataSource, Dictionary<string, List<DataTable>> result)
         {
-            var detailData = repositoryService.QueryDetailData(sourceMapping);
+            var detailData = repositoryService.QueryDetailData(rawDataSource);
             foreach (var sport in detailData)
             {
                 var sportSections = SplitSportIntoManySections(sport.Value);

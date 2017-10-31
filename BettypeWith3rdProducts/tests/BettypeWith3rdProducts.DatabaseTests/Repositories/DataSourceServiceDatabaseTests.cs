@@ -1,6 +1,5 @@
 ﻿using System;
 using BettypeWith3rdProducts.Business.Repositories;
-using BettypeWith3rdProducts.Business.Services;
 using Fanex.Service.Core;
 using NUnit.Framework;
 using SimpleInjector;
@@ -36,16 +35,14 @@ namespace BettypeWith3rdProducts.DatabaseTests.Repositories
             // Arrange
             var criteria = new BettypeProductCriteria
             {
-                DateStart = new DateTime(2030, 01, 01),
-                DateEnd = new DateTime(2030, 01, 01),
-                Periodid = 1,
-                Sportid = 1,
+                DateStart = new DateTime(2010, 10, 01),
+                DateEnd = new DateTime(2010, 10, 01),
                 StatisticId = 1,
                 StoreProcedure = "Acc_Rpt_Automail_BettypeWithProducts"
             };
 
             // Act
-            var result = dataSourceService.Query(criteria);
+            var result = dataSourceService.QueryMultiple(criteria);
 
             // Assert
             Assert.That(result != null);
@@ -59,8 +56,6 @@ namespace BettypeWith3rdProducts.DatabaseTests.Repositories
             {
                 DateStart = new DateTime(2030, 01, 01),
                 DateEnd = new DateTime(2030, 01, 01),
-                Periodid = 1,
-                Sportid = 1,
                 StatisticId = 1,
                 StoreProcedure = "Acc_Rpt_Automail_BettypeWithProducts_Juice"
             };

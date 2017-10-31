@@ -2,7 +2,6 @@
 using System.IO;
 using Fanex.Data;
 using Fanex.Data.OldConnectionStringProvider;
-using Fanex.Data.Repository;
 using NUnit.Framework;
 
 namespace Fanex.Service.Core.DatabaseTests
@@ -33,5 +32,18 @@ namespace Fanex.Service.Core.DatabaseTests
             // Assert
             Assert.That(result.Rows.Count > 0);
         }
-    }   
+
+        [Test]
+        public void QueryMultiple_Always_ConnectToDatabaseSuccessfully()
+        {
+            // Arrange
+            var service = new DataSourceServiceImp();
+
+            // Act
+            var result = service.QueryMultiple(new TestCriteria());
+
+            // Assert
+            Assert.That(result.Tables.Count > 0);
+        }
+    }
 }

@@ -176,6 +176,9 @@
     <Content Include="Templates\AppConfig.PRO.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\AppConfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TOControl.Notification.Business\TOControl.Notification.Business.csproj">

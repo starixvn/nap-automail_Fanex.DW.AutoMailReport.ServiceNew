@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using BettypeWith3rdProducts.Business.Models;
 using BettypeWith3rdProducts.Business.Repositories;
 using Fanex.Data.Repository;
 using Fanex.Service.Core;
@@ -10,92 +9,54 @@ namespace BettypeWith3rdProducts.Business.Services
 {
     public interface RepositoryBettypeProductService
     {
-        Dictionary<string, DataTable> QueryGeneralData(SourceMapping sourceMapping);
+        Dictionary<string, DataTable> QueryGeneralData(Dictionary<string, DataTable> rawDataSource);
 
-        Dictionary<string, DataTable> QueryDetailData(SourceMapping sourceMapping);       
+        Dictionary<string, DataTable> QueryDetailData(Dictionary<string, DataTable> rawDataSource);
     }
 
     public class RepositoryServiceImp : RepositoryService, RepositoryBettypeProductService
     {
         private readonly ApplicationConfigurationService appConfig;
         private readonly IDynamicRepository dynamicRepository;
-        private readonly DateRangeServiceProvider dateRangeService;
-        private readonly ParameterService parameterService;
-        private readonly DataSourceService dataSourceService;
 
-        public RepositoryServiceImp(
-            ApplicationConfigurationService appConfig,
-            IDynamicRepository dynamicRepository,
-            DateRangeServiceProvider dateRangeService,
-            ParameterService parameterService,
-            DataSourceService dataSourceService)
+        public RepositoryServiceImp(ApplicationConfigurationService appConfig, IDynamicRepository dynamicRepository)
         {
             this.appConfig = appConfig;
             this.dynamicRepository = dynamicRepository;
-            this.dateRangeService = dateRangeService;
-            this.parameterService = parameterService;
-            this.dataSourceService = dataSourceService;
         }
 
-        public Dictionary<string, DataTable> QueryGeneralData(SourceMapping sourceMapping)
+        public Dictionary<string, DataTable> QueryGeneralData(Dictionary<string, DataTable> rawDataSource)
         {
             var dataSource = new Dictionary<string, DataTable>();
-            QueryDataByViewOfData(ViewOfData.All, sourceMapping, dataSource);
-            QueryDataByViewOfData(ViewOfData.Summary, sourceMapping, dataSource);
-
-            return dataSource;
-        }
-
-        public Dictionary<string, DataTable> QueryDetailData(SourceMapping sourceMapping)
-        {
-            var dataSource = new Dictionary<string, DataTable>();
-            var sports = QuerySports(sourceMapping.DataType);
-            foreach (var sport in sports)
+            var index = 0;
+            foreach (var item in rawDataSource)
             {
-                if (dataSource.ContainsKey(sport.Sport))
+                if (index < 2)
                 {
-                    continue;
+                    dataSource.Add(item.Key, item.Value);
                 }
 
-                var dataTable = QueryDataSouce(sourceMapping, appConfig.ReportType, ViewOfData.Detail, sport.SportId);
-                if (dataTable.Rows.Count > 0)
-                {
-                    dataSource.Add(sport.Sport, dataTable);
-                }
+                index++;
             }
 
             return dataSource;
         }
 
-        private void QueryDataByViewOfData(ViewOfData viewOfData, SourceMapping sourceMapping, Dictionary<string, DataTable> dataSource)
+        public Dictionary<string, DataTable> QueryDetailData(Dictionary<string, DataTable> rawDataSource)
         {
-            var dataTable = QueryDataSouce(sourceMapping, appConfig.ReportType, viewOfData, 0);
-            if (dataTable.Rows.Count > 0)
+            var dataSource = new Dictionary<string, DataTable>();
+            var index = 0;
+            foreach (var item in rawDataSource)
             {
-                dataSource.Add(viewOfData.ToString(), dataTable);
+                if (index > 1)
+                {
+                    dataSource.Add(item.Key, item.Value);
+                }
+
+                index++;
             }
-        }
 
-        private DataTable QueryDataSouce(SourceMapping sourceMapping, DateRange dateRange, ViewOfData viewOfData, int sportId)
-        {
-            var date = dateRangeService.Date(dateRange);
-            var parameter = parameterService.GetParameter(viewOfData, sportId);
-            var criteria = new BettypeProductCriteria
-            {
-                DateStart = date.DateStart,
-                DateEnd = date.DateEnd,
-                Sportid = parameter.SportId,
-                Periodid = parameter.PeriodId,
-                StatisticId = (int)sourceMapping.DataType,
-                StoreProcedure = sourceMapping.StoreProcedure
-            };
-
-            return dataSourceService.Query(criteria);
-        }
-
-        private IEnumerable<SportType> QuerySports(DataType dataType)
-        {
-            return dynamicRepository.Fetch<SportType>(new SportCriteria { Include3Rd = dataType == DataType.RealWiLoss });
+            return dataSource;
         }
 
         public DateTime QueryLastDate()
@@ -105,7 +66,7 @@ namespace BettypeWith3rdProducts.Business.Services
 
         public bool IsDataAvailable()
         {
-            if (appConfig.ReportType == DateRange.Manual || !appConfig.IsCheckEnoughData)
+            if (appConfig.IsManual || !appConfig.IsCheckEnoughData)
             {
                 return true;
             }

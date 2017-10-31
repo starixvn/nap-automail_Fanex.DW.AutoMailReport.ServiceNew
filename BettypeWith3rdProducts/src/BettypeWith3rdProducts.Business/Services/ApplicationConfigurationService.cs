@@ -14,7 +14,7 @@ namespace BettypeWith3rdProducts.Business.Services
 
         string ExcelPasswordProtected { get; }
 
-        DateRange ReportType { get; }
+        bool IsManual { get; }
 
         bool IsCheckEnoughData { get; }
 
@@ -37,16 +37,7 @@ namespace BettypeWith3rdProducts.Business.Services
 
         public string ExcelPasswordProtected => ConfigurationManager.AppSettings["ExcelPasswordProtected"];
 
-        public DateRange ReportType
-        {
-            get
-            {
-                var reportType = ConfigurationManager.AppSettings["ReportType"];
-                DateRange dateRange;
-                Enum.TryParse(reportType, true, out dateRange);
-                return dateRange;
-            }
-        }
+        public bool IsManual => ConfigurationManager.AppSettings["IsManual"] == "true";        
 
         public bool IsCheckEnoughData => ConfigurationManager.AppSettings["IsCheckEnoughData"] == "true";
 
