@@ -23,13 +23,18 @@ namespace TOControl.Notification.Business.Services
 
         public GroupHeadline TransformGroupHeadline(GroupHeadlineRaw groupHeadlineRaw, RawData rawData)
         {
-            var oldHeadline = repositoryService.QueryCustomerByCustId(groupHeadlineRaw.OldCustId).Username;
+            var oldHeadline = repositoryService.QueryCustomerByCustId(groupHeadlineRaw.OldCustId);
             var newHeadlineInfo = repositoryService.QueryCustomerByCustId(groupHeadlineRaw.CustId);
+
+            if (oldHeadline == null || newHeadlineInfo == null)
+            {
+                return new GroupHeadline();
+            }
 
             return new GroupHeadline
             {
                 Id = rawData.Id,
-                OldHeadline = oldHeadline,
+                OldHeadline = oldHeadline.Username,
                 NewHeadline = newHeadlineInfo.Username,
                 Date = rawData.CreatedDate,
                 Currency = newHeadlineInfo.Currency
@@ -40,6 +45,10 @@ namespace TOControl.Notification.Business.Services
         {
             var groupHeadline = repositoryService.QuerySingleRow<string>(new GroupHeadlineSelectByGroupIdCrietria { GroupId = movementRaw.GroupId });
             var groupMember = repositoryService.QueryCustomerByCustId(movementRaw.CustId);
+            if (groupMember == null)
+            {
+                return new CustomerMovement();
+            }
 
             return new CustomerMovement
             {

@@ -7,6 +7,8 @@ namespace Fanex.Service.Core
     public interface DataSourceService
     {
         DataTable Query(CriteriaBase criteria);
+
+        DataSet QueryMultiple(CriteriaBase criteria);
     }
 
     public class DataSourceServiceImp : DataSourceService
@@ -24,6 +26,15 @@ namespace Fanex.Service.Core
             }
 
             return dataTable;
+        }
+
+        public DataSet QueryMultiple(CriteriaBase criteria)
+        {
+            using (ObjectDb db = new ObjectDb(criteria.GetSettingKey()))
+            {
+                db.AssignParamValues(criteria.GetSpParams());
+                return db.ExecuteDataSet();
+            }
         }
     }
 }

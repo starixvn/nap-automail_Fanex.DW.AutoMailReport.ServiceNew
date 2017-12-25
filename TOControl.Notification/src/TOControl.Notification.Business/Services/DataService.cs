@@ -124,16 +124,15 @@ namespace TOControl.Notification.Business.Services
                 {
                     InvalidIds.Add(rawData.Id, movement.Currency);
                 }
-            });
+            });            
 
-            var customerMovements = result.OrderBy(s => s.GroupHeadline).ToList();
+            var testCurrency = result.Where(s => s.Currency == 20).ToList();
+            var realCurrency = result.Where(s => s.Currency != 20).ToList();
+            var data = appConfig.Configurations.IsRealCurrency ? realCurrency : testCurrency;
+            var customerMovements = data.OrderBy(s => s.GroupHeadline).ToList();
             UpdateNumberOfGroupHeadline(customerMovements);
 
-            var testCurrency = customerMovements.Where(s => s.Currency == 20).ToList();
-            var realCurrency = customerMovements.Where(s => s.Currency != 20).ToList();
-            var data = appConfig.Configurations.IsRealCurrency ? realCurrency : testCurrency;
-
-            return data;            
+            return customerMovements;
         }
 
         private List<DirectCustomer> QueryDirectCustomer(NotifiedByFunction notifiedByFunction)

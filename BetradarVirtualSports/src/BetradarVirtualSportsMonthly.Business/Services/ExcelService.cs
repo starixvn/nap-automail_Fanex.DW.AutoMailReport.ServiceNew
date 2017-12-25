@@ -67,7 +67,7 @@ namespace BetradarVirtualSportsMonthly.Business.Services
 
             monthlySheet.ApplyVertical(monthlyData);
             totalSheet.ApplyVertical(totalData);
-            totalSheet.Cells[beginRowIndex, 1, lastRowIndexTotalSheet, 9].Copy(monthlySheet.Cells[lastRowIndexMonthlySheet, 1]);
+            totalSheet.Cells[beginRowIndex, 1, lastRowIndexTotalSheet, 10].Copy(monthlySheet.Cells[lastRowIndexMonthlySheet, 1]);
 
             monthlySheet.Cells[$"A{lastRowIndexMonthlySheet}:C{lastRowIndexMonthlySheet + totalData.Count() - 1}"].Merge = true;
             monthlySheet.Cells[$"A{lastRowIndexMonthlySheet}:C{lastRowIndexMonthlySheet + totalData.Count() - 1}"].Value = "Total in";

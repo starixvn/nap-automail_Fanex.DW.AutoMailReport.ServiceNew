@@ -6,9 +6,9 @@ namespace TOControl.Notification.Business.Models
     {
         public int Id { get; set; }
 
-        public string OldHeadline { get; set; }
+        public string OldHeadline { get; set; } = string.Empty;
 
-        public string NewHeadline { get; set; }
+        public string NewHeadline { get; set; } = string.Empty;
 
         public DateTime Date { get; set; }
 

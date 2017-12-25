@@ -1,6 +1,7 @@
 ﻿using System;
-using BettypeWith3rdProducts.Business.Models;
 using BettypeWith3rdProducts.Business.Services;
+using Fanex.Service.Core;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace BettypeWith3rdProducts.UnitTests.Services
@@ -8,47 +9,47 @@ namespace BettypeWith3rdProducts.UnitTests.Services
     [Category("BettypeWith3rdProducts.UnitTests.Services DateRangeServiceProviderUnitTests")]
     public class DateRangeServiceProviderUnitTests
     {
+        private ApplicationConfigurationService appConfig;
+
+        [SetUp]
+        public void Initialize()
+        {
+            appConfig = Substitute.For<ApplicationConfigurationService>();
+        }
+
         [Test]
         public void DateRange_Daily_ReturnRightObject()
         {
             // Arrange
-            var dateRange = DateRange.Daily;
-            var expected = typeof(DateRangeDailyServiceImp);
+            SystemTime.Set(new DateTime(2017, 11, 01));
+            var expected = Substitute.For<DateRangeService>();
+            appConfig.IsManual.Returns(false);
+            expected.DateStart.Returns(new DateTime(2017, 10, 01));
+            expected.DateEnd.Returns(new DateTime(2017, 10, 31));
 
             // Act
-            var service = new DateRangeServiceProviderImp();
-            var result = service.Date(dateRange).GetType();
+            var result = new DateRangeServiceImp(appConfig);
 
             // Assert
-            Assert.That(result, Is.EqualTo(expected));
+            Assert.That(result.DateStart, Is.EqualTo(expected.DateStart));
+            Assert.That(result.DateEnd, Is.EqualTo(expected.DateEnd));
         }
 
         [Test]
         public void DateRange_Manual_ReturnRightObject()
         {
             // Arrange
-            var dateRange = DateRange.Manual;
-            var expected = typeof(DateRangeManualServiceImp);
+            var expected = Substitute.For<DateRangeService>();
+            appConfig.IsManual.Returns(true);
+            expected.DateStart.Returns(new DateTime(2017, 04, 01));
+            expected.DateEnd.Returns(new DateTime(2017, 04, 30));
 
             // Act
-            var service = new DateRangeServiceProviderImp();
-            var result = service.Date(dateRange).GetType();
+            var result = new DateRangeServiceImp(appConfig);
 
             // Assert
-            Assert.That(result, Is.EqualTo(expected));
-        }
-
-        [Test]
-        [TestCase("Daily", ExpectedResult = DateRange.Daily)]
-        [TestCase("manual", ExpectedResult = DateRange.Manual)]
-        [TestCase("AnyText", ExpectedResult = DateRange.None)]
-        public DateRange Enum_Always_ReturnRightEnumType(string reportType)
-        {
-            // Arrange
-            DateRange dateRange;
-            Enum.TryParse(reportType, true, out dateRange);
-
-            return dateRange;
+            Assert.That(result.DateStart, Is.EqualTo(expected.DateStart));
+            Assert.That(result.DateEnd, Is.EqualTo(expected.DateEnd));
         }
     }
 }

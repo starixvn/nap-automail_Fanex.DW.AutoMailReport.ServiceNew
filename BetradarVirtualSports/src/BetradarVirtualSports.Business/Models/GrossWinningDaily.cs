@@ -15,18 +15,21 @@ namespace BetradarVirtualSportsDaily.Business.Models
         public string Currency { get; set; }
 
         [Cell("D4")]
-        public int BetCount { get; set; }
+        public string DeviceGroup { get; set; }
 
         [Cell("E4")]
-        public decimal TotalBet { get; set; }
+        public int BetCount { get; set; }
 
         [Cell("F4")]
-        public decimal TotalPayout { get; set; }
+        public decimal TotalBet { get; set; }
 
         [Cell("G4")]
-        public decimal TotalWinLoss { get; set; }
+        public decimal TotalPayout { get; set; }
 
         [Cell("H4")]
+        public decimal TotalWinLoss { get; set; }
+
+        [Cell("I4")]
         public decimal Margin { get; set; }
     }
 }

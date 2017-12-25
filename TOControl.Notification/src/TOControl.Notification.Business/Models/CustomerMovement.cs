@@ -6,11 +6,11 @@ namespace TOControl.Notification.Business.Models
     {
         public int Id { get; set; }
 
-        public string GroupHeadline { get; set; }
+        public string GroupHeadline { get; set; } = string.Empty;
 
-        public string GroupMember { get; set; }
+        public string GroupMember { get; set; } = string.Empty;
 
-        public string Action { get; set; }
+        public string Action { get; set; } = string.Empty;
 
         public DateTime Date { get; set; }
 

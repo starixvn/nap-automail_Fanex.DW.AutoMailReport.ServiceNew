@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using Fanex.Common;
@@ -21,7 +19,7 @@ namespace BettypeWith3rdProducts.Business.Services
     {
         private readonly ExcelPackage excelPackage;
         private readonly ApplicationConfigurationService appConfig;
-        private readonly DateRangeServiceProvider dateRangeServiceProvider;
+        private readonly DateRangeService dateRangeService;
         private readonly ExcelHeaderService excelHeaderService;
         private readonly DataService dataService;
 
@@ -31,13 +29,13 @@ namespace BettypeWith3rdProducts.Business.Services
             ExcelPackage excelPackage,
             ApplicationConfigurationService appConfig,
             DataService dataService,
-            DateRangeServiceProvider dateRangeServiceProvider,
+            DateRangeService dateRangeService,
             ExcelHeaderService excelHeaderService)
         {
             this.excelPackage = excelPackage;
             this.appConfig = appConfig;
             this.dataService = dataService;
-            this.dateRangeServiceProvider = dateRangeServiceProvider;
+            this.dateRangeService = dateRangeService;
             this.excelHeaderService = excelHeaderService;
 
             dataTemplate = excelPackage.Workbook.Worksheets["Data"];
@@ -53,7 +51,7 @@ namespace BettypeWith3rdProducts.Business.Services
                 var sports = dataOnSheet.Value;
                 ExportTitle(excelWorksheet, sheetName);
                 FreezePanes(excelWorksheet);
-                ExportData(excelWorksheet, sports);                
+                ExportData(excelWorksheet, sports);
             }
 
             ClearnUpTemplate();
@@ -74,7 +72,7 @@ namespace BettypeWith3rdProducts.Business.Services
                     FotmatHeaderSportSection(excelWorksheet, section, startRowIndex);
                     FormatDateColumn(excelWorksheet, startRowIndex);
                     FormatDataSection(excelWorksheet, section, startRowIndex);
-                    FormatTotal(excelWorksheet, section, startRowIndex);                   
+                    FormatTotal(excelWorksheet, section, startRowIndex);
                 }
             }
 
@@ -93,7 +91,7 @@ namespace BettypeWith3rdProducts.Business.Services
             {
                 excelWorksheet.Cells[startRow, startColumn].Value = section.AsEnumerable().Sum(row => Converter.To<double>(row[columnIndex]));
                 excelWorksheet.Cells[startRow, startColumn].StyleID = dataTemplate.Cells["C8"].StyleID;
-                startColumn++;                
+                startColumn++;
             }
         }
 
@@ -130,7 +128,7 @@ namespace BettypeWith3rdProducts.Business.Services
 
         private void ExportTitle(ExcelWorksheet excelWorksheet, string sheetName)
         {
-            var date = dateRangeServiceProvider.Date(appConfig.ReportType);
+            var date = dateRangeService;
             excelPackage.Workbook.Worksheets[$"{sheetName} Temp"].Cells["B2:B5"].Copy(excelWorksheet.Cells["B2"]);
             excelWorksheet.Cells["B2"].Value = excelWorksheet.Cells["B2"].Value.ToString()
                 .Replace("{0}", $"{date.DateStart:MM/dd/yyyy}")
