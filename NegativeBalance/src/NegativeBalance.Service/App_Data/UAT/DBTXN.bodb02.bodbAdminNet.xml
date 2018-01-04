@@ -1,6 +1,6 @@
 ﻿<Functions>
   <Function Name="Negative Balance">
-    <Setting Key="Acc_BalanceNegativeUpd_StatusID" SpName="Acc_BalanceNegativeUpd_StatusID" DbName="DBTXN.bodb02.bodbAdminNet" TimeOut="0"  />
-    <Setting Key="Acc_BalanceNegativeSel_BySite" SpName="Acc_BalanceNegativeSel_BySite" DbName="DBTXN.bodb02.bodbAdminNet" TimeOut="0" />
+    <Setting Key="Acc_BalanceNegativeUpd_StatusID" SpName="Acc_BalanceNegativeUpd_StatusID_UAT2" DbName="DBTXN.bodb02.bodbAdminNet" TimeOut="0"  />
+    <Setting Key="Acc_BalanceNegativeSel_BySite" SpName="Acc_BalanceNegativeSel_BySite_UAT2" DbName="DBTXN.bodb02.bodbAdminNet" TimeOut="0" />
   </Function>
 </Functions>
