@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{86751E6D-87E4-47A9-96E8-915824B095BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F0967C00-482E-45B4-9C49-8640975AEF9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.UpdateExchangeRate.Business", "UpdateExchangeRate\src\Fanex.UpdateExchangeRate.Business\Fanex.UpdateExchangeRate.Business.csproj", "{6904447E-A566-4FB2-87FB-A1E818FCC6AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.UpdateExchangeRate.Executing", "UpdateExchangeRate\src\Fanex.UpdateExchangeRate.Executing\Fanex.UpdateExchangeRate.Executing.csproj", "{16FFA15F-B54C-4020-8E36-DDF1C791385F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateExchangeRate.DatabaseTests", "UpdateExchangeRate\tests\UpdateExchangeRate.DatabaseTests\UpdateExchangeRate.DatabaseTests.csproj", "{21110D73-2DF2-4D04-8A4D-1CB724BE0BB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateExchangeRate.IntegrationTests", "UpdateExchangeRate\tests\UpdateExchangeRate.IntegrationTests\UpdateExchangeRate.IntegrationTests.csproj", "{478888AF-F780-4D49-98D5-3D94DBE387A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateExchangeRate.UnitTests", "UpdateExchangeRate\tests\UpdateExchangeRate.UnitTests\UpdateExchangeRate.UnitTests.csproj", "{5F68EB9B-8511-4E39-B8C2-6E149F8FE7E2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{DB2B771D-4C83-421D-84AA-4CB60AC37909}"
+	ProjectSection(SolutionItems) = preProject
+		SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset = SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset
+		SonarQube\SolutionBinding.sqconfig = SonarQube\SolutionBinding.sqconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6904447E-A566-4FB2-87FB-A1E818FCC6AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6904447E-A566-4FB2-87FB-A1E818FCC6AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6904447E-A566-4FB2-87FB-A1E818FCC6AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6904447E-A566-4FB2-87FB-A1E818FCC6AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16FFA15F-B54C-4020-8E36-DDF1C791385F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16FFA15F-B54C-4020-8E36-DDF1C791385F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16FFA15F-B54C-4020-8E36-DDF1C791385F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16FFA15F-B54C-4020-8E36-DDF1C791385F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21110D73-2DF2-4D04-8A4D-1CB724BE0BB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21110D73-2DF2-4D04-8A4D-1CB724BE0BB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21110D73-2DF2-4D04-8A4D-1CB724BE0BB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21110D73-2DF2-4D04-8A4D-1CB724BE0BB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{478888AF-F780-4D49-98D5-3D94DBE387A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{478888AF-F780-4D49-98D5-3D94DBE387A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{478888AF-F780-4D49-98D5-3D94DBE387A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{478888AF-F780-4D49-98D5-3D94DBE387A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F68EB9B-8511-4E39-B8C2-6E149F8FE7E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F68EB9B-8511-4E39-B8C2-6E149F8FE7E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F68EB9B-8511-4E39-B8C2-6E149F8FE7E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F68EB9B-8511-4E39-B8C2-6E149F8FE7E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6904447E-A566-4FB2-87FB-A1E818FCC6AD} = {86751E6D-87E4-47A9-96E8-915824B095BB}
+		{16FFA15F-B54C-4020-8E36-DDF1C791385F} = {86751E6D-87E4-47A9-96E8-915824B095BB}
+		{21110D73-2DF2-4D04-8A4D-1CB724BE0BB4} = {F0967C00-482E-45B4-9C49-8640975AEF9A}
+		{478888AF-F780-4D49-98D5-3D94DBE387A9} = {F0967C00-482E-45B4-9C49-8640975AEF9A}
+		{5F68EB9B-8511-4E39-B8C2-6E149F8FE7E2} = {F0967C00-482E-45B4-9C49-8640975AEF9A}
+	EndGlobalSection
+EndGlobal
