@@ -140,11 +140,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FanexDataRegisterService.cs" />
-    <Compile Include="NegativeBalanceInjector.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="FanexDataRegisterService.generated.cs" />
+    <Compile Include="NegativeBalanceInjector.generated.cs" />
+    <Compile Include="Program.generated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="NegativeBalanceService.cs" />
+    <Compile Include="NegativeBalanceService.generated.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
