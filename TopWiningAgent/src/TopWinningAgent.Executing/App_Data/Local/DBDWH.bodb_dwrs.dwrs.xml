@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Functions>
+  <Function Name="Auto-mail">
+    <Setting Key="Acc_Rpt_Automail_TopWinningAgent_Weekly" SpName="Acc_Rpt_Automail_TopWinningAgent_Weekly" DbName="DBDWH.bodb_dwrs.dwrs" TimeOut="0" />
+  </Function>
+</Functions>
