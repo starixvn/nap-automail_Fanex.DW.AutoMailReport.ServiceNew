@@ -1,0 +1,107 @@
+﻿[
+  {
+    "LevelId": 6,
+    "LevelNameForEmail": "90% & Above",
+    "LevelNameForLetstalk": "90",
+    "Rows": [
+      {
+        "Username": "M033R",
+        "RoleId": 3,
+        "RoleNameForEmail": "Headline",
+        "RoleNameForLetstalk": "H",
+        "Currency": "RM",
+        "GroupHeadlineId": 275,
+        "YesterdayBalance": -3652296.2493,
+        "TotalBalance": -3652296.2493,
+        "MaxLoss": -1000000.0000,
+        "LevelId": 6,
+        "Movement": 1,
+        "PercentageLoss": 365.2200
+      },
+      {
+        "Username": "S96h",
+        "RoleId": 4,
+        "RoleNameForEmail": "Super",
+        "RoleNameForLetstalk": "S",
+        "Currency": "HKK",
+        "GroupHeadlineId": 0,
+        "YesterdayBalance": -371195.7780,
+        "TotalBalance": -371195.7780,
+        "MaxLoss": -300000.0000,
+        "LevelId": 6,
+        "Movement": 1,
+        "PercentageLoss": 123.7300
+      },
+      {
+        "Username": "S42RM",
+        "RoleId": 4,
+        "RoleNameForEmail": "Super",
+        "RoleNameForLetstalk": "S",
+        "Currency": "RM",
+        "GroupHeadlineId": 0,
+        "YesterdayBalance": -361480.4814,
+        "TotalBalance": -361480.4814,
+        "MaxLoss": -300000.0000,
+        "LevelId": 6,
+        "Movement": 1,
+        "PercentageLoss": 120.4900
+      }
+    ]
+  },
+  {
+    "LevelId": 5,
+    "LevelNameForEmail": "80% - 89%",
+    "LevelNameForLetstalk": "80",
+    "Rows": [
+      {
+        "Username": "HS",
+        "RoleId": 4,
+        "RoleNameForEmail": "Headline",
+        "RoleNameForLetstalk": "H",
+        "Currency": "RM",
+        "GroupHeadlineId": 406,
+        "YesterdayBalance": -28021.2203,
+        "TotalBalance": -28021.2203,
+        "MaxLoss": -35000.0000,
+        "LevelId": 5,
+        "Movement": -1,
+        "PercentageLoss": 80.0600
+      }
+    ]
+  },
+  {
+    "LevelId": 4,
+    "LevelNameForEmail": "70% - 79%",
+    "LevelNameForLetstalk": "70",
+    "Rows": [
+      {
+        "Username": "LLKH",
+        "RoleId": 3,
+        "RoleNameForEmail": "Master",
+        "RoleNameForLetstalk": "M",
+        "Currency": "HK$",
+        "GroupHeadlineId": 0,
+        "YesterdayBalance": -2970000.6949,
+        "TotalBalance": -2970000.6949,
+        "MaxLoss": -3900000.0000,
+        "LevelId": 4,
+        "Movement": 1,
+        "PercentageLoss": 76.1500
+      },
+      {
+        "Username": "S922L",
+        "RoleId": 4,
+        "RoleNameForEmail": "Super",
+        "RoleNameForLetstalk": "S",
+        "Currency": "HKK",
+        "GroupHeadlineId": 0,
+        "YesterdayBalance": -286733.6072,
+        "TotalBalance": -286733.6072,
+        "MaxLoss": -400000.0000,
+        "LevelId": 4,
+        "Movement": 1,
+        "PercentageLoss": 71.6800
+      }
+    ]
+  }
+]

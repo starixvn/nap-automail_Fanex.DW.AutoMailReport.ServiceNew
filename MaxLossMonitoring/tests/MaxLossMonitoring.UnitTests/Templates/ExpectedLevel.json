@@ -1,0 +1,38 @@
+﻿[
+  {
+    "LevelId": 6,
+    "Value": 90,
+    "TextForEmail": "90% & Above",
+    "TextForLetstalk": "90"
+  },
+  {
+    "LevelId": 5,
+    "Value": 80,
+    "TextForEmail": "80% - 89%",
+    "TextForLetstalk": "80"
+  },
+  {
+    "LevelId": 4,
+    "Value": 70,
+    "TextForEmail": "70% - 79%",
+    "TextForLetstalk": "70"
+  },
+  {
+    "LevelId": 3,
+    "Value": 60,
+    "TextForEmail": "60% - 69%",
+    "TextForLetstalk": "60"
+  },
+  {
+    "LevelId": 2,
+    "Value": 50,
+    "TextForEmail": "50% - 59%",
+    "TextForLetstalk": "50"
+  },
+  {
+    "LevelId": 1,
+    "Value": 40,
+    "TextForEmail": "40% - 49%",
+    "TextForLetstalk": "40"
+  }
+]

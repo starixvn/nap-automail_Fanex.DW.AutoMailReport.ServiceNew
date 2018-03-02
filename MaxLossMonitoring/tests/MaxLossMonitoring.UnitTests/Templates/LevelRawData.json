@@ -1,0 +1,38 @@
+﻿[
+  {
+    "LevelId": 6,
+    "Value": 90,
+    "TextForEmail": "",
+    "TextForLetstalk": ""
+  },
+  {
+    "LevelId": 5,
+    "Value": 80,
+    "TextForEmail": "",
+    "TextForLetstalk": ""
+  },
+  {
+    "LevelId": 4,
+    "Value": 70,
+    "TextForEmail": "",
+    "TextForLetstalk": ""
+  },
+  {
+    "LevelId": 3,
+    "Value": 60,
+    "TextForEmail": "",
+    "TextForLetstalk": ""
+  },
+  {
+    "LevelId": 2,
+    "Value": 50,
+    "TextForEmail": "",
+    "TextForLetstalk": ""
+  },
+  {
+    "LevelId": 1,
+    "Value": 40,
+    "TextForEmail": "",
+    "TextForLetstalk": ""
+  }
+]

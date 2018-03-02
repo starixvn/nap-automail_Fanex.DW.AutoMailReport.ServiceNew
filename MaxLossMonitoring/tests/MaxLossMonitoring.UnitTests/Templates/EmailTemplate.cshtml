@@ -1,0 +1,85 @@
+﻿@using MaxLossMonitoring.Business.Models;
+@{
+    var groups = Model.Item1;
+    var detail = Model.Item2;
+    var url = Model.Item3;
+}
+<div style="color: #333; font-family: arial,sans-serif; font-size: 12px;">
+    <div>
+        <p>Dear All,</p>
+        <p>Please be notified that SMA(s) listed in the table below have reached the Maximum Loss value.</p>
+        <p>Please check and take timely actions accordingly</p>
+    </div>
+    <br />
+    <div style="max-height: 600px; width: 880px; overflow-y: auto;">
+        <table cellspacing="0" border="1" rules="all" style="border-color: #c5c5c5; border-style: solid; color: #333; font-family: arial,sans-serif; font-size: 12px;">
+            <thead>
+                <tr style="background-color: #3c5ea5; color: #fff; height: 25px;">
+                    <td align="center" style="width: 70px">#</td>
+                    <td align="center" style="width: 220px">Username</td>
+                    <td align="center" style="width: 85px">Level</td>
+                    <td align="center" style="width: 60px">Currency</td>
+                    <td align="center" style="width: 120px">Yesterday Balance</td>
+                    <td align="center" style="width: 120px">Total Balance</td>
+                    <td align="center" style="width: 120px">Max Loss</td>
+                    <td align="center" style="width: 105px">Loss Percentage</td>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int counter = 0;
+                    var colors = new Dictionary<int, string>
+                    {
+                        { 1, "#4F1777" },
+                        { 2, "#0D7F00" },
+                        { 3, "#1058C2" },
+                        { 4, "#FF6D1B" },
+                        { 5, "#D9127A" },
+                        { 6, "#D20001" }
+                    };
+
+                    foreach (MonitorList group in groups)
+                    {
+                        var levelColor = colors.ContainsKey(group.LevelId) ? colors[group.LevelId] : "#000";
+
+                        <tr style="height: 25px; background-color: #f1f1f1">
+                            <td style="color: @levelColor; font-weight: bold" colspan="8">@group.LevelNameForEmail (@group.Rows.Count)</td>
+                        </tr>
+
+                        foreach (MonitorListRaw row in group.Rows)
+                        {
+                            var icon = string.Empty;
+                            var iconAlt = string.Empty;
+
+                            counter++;
+                            var tuple = new Tuple<MonitorListRaw, int, bool>(row, counter, false);
+                            @Include("emailRowTemplate", tuple)
+
+                            var members = new List<MonitorListRaw>();
+                            foreach (MonitorListRaw subRow in detail)
+                            {
+                                if (row.GroupHeadlineId == subRow.GroupHeadlineId)
+                                {
+                                    members.Add(subRow);
+                                }
+                            }
+
+                            foreach(MonitorListRaw member in members)
+                            {
+                                var subTuple = new Tuple<MonitorListRaw, int, bool>(member, counter, true);
+                                @Include("emailRowTemplate", subTuple)
+                            }
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <p>
+        <b>* Note:</b> You also can access to  <a href="@url" target="_blank">Nap-Accounting Report</a> to download report. Your report is placed at Nap Accounting Report/Misc/Auto-Generated Reports.<br />
+        Please contact Starix IT if you can not access or download report.
+    </p><br /><br />
+    <p>Regards.</p>
+    <p style="font-style: italic; font-weight: bold;">This is an auto-mail. Please do not reply.</p>
+</div>

@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{461BD3AE-E8FF-46C2-BC18-14E6C3A3E472}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D5325A09-C1B5-46A5-BD7D-E782A61EE9AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxLossMonitoring.Business", "MaxLossMonitoring\src\MaxLossMonitoring.Business\MaxLossMonitoring.Business.csproj", "{BD18ABDF-6102-4AB7-A172-E72CE2253F4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxLossMonitoring.Executing", "MaxLossMonitoring\src\MaxLossMonitoring.Executing\MaxLossMonitoring.Executing.csproj", "{4D934AF3-0512-4B49-A535-4F5605C44FC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxLossMonitoring.UnitTests", "MaxLossMonitoring\tests\MaxLossMonitoring.UnitTests\MaxLossMonitoring.UnitTests.csproj", "{94D9BED1-1F04-4D9D-88D2-7B54B0FC11B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{39A7690F-D1DD-4DCE-B0BA-DAAA47FC02D1}"
+	ProjectSection(SolutionItems) = preProject
+		SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset = SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset
+		SonarQube\SolutionBinding.sqconfig = SonarQube\SolutionBinding.sqconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD18ABDF-6102-4AB7-A172-E72CE2253F4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD18ABDF-6102-4AB7-A172-E72CE2253F4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD18ABDF-6102-4AB7-A172-E72CE2253F4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD18ABDF-6102-4AB7-A172-E72CE2253F4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D934AF3-0512-4B49-A535-4F5605C44FC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D934AF3-0512-4B49-A535-4F5605C44FC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D934AF3-0512-4B49-A535-4F5605C44FC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D934AF3-0512-4B49-A535-4F5605C44FC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94D9BED1-1F04-4D9D-88D2-7B54B0FC11B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94D9BED1-1F04-4D9D-88D2-7B54B0FC11B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94D9BED1-1F04-4D9D-88D2-7B54B0FC11B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94D9BED1-1F04-4D9D-88D2-7B54B0FC11B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BD18ABDF-6102-4AB7-A172-E72CE2253F4E} = {461BD3AE-E8FF-46C2-BC18-14E6C3A3E472}
+		{4D934AF3-0512-4B49-A535-4F5605C44FC6} = {461BD3AE-E8FF-46C2-BC18-14E6C3A3E472}
+		{94D9BED1-1F04-4D9D-88D2-7B54B0FC11B6} = {D5325A09-C1B5-46A5-BD7D-E782A61EE9AD}
+	EndGlobalSection
+EndGlobal

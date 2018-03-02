@@ -1,0 +1,70 @@
+﻿@using MaxLossMonitoring.Business.Models;
+@{
+    MonitorListRaw row = @Model.Item1;
+    int counter = @Model.Item2;
+    bool isMemberUnderGroupHeaderline = @Model.Item3;
+}
+
+@{
+    var icon = string.Empty;
+    var iconAlt = string.Empty;
+    var space = "     ";
+
+    if (row.Movement > 0)
+    {
+        icon = "lruworradrawpu";
+        iconAlt = "Up";
+    }
+    else if (row.Movement < 0)
+    {
+        icon = "lruworradrawnwod";
+        iconAlt = "Down";
+    }
+    else
+    {
+        icon = "lruworradrawenillatnoziroh";
+        iconAlt = "Neutral";
+    }
+
+    <tr style="height: 25px;">
+        <td align="center">
+            @{
+                if (!isMemberUnderGroupHeaderline)
+                {
+                    <span>@counter</span>
+                }
+            }
+        </td>
+        <td align="left">
+            @{
+                if (isMemberUnderGroupHeaderline)
+                {
+                    <table style="width:220px; font-family: arial,sans-serif; font-size: 12px">
+                        <tr>
+                            <td style="width:20px"><span></span></td>
+                            <td style="width:5px">
+                                <img src="cid:@icon" alt="@iconAlt" />
+                            </td>
+                            <td align="left">@row.Username</td>
+                        </tr>
+                    </table>
+                }
+                else
+                {
+                    <table style="width:220px; font-family: arial,sans-serif; font-size: 12px">
+                        <tr>
+                            <td style="width:5px"><img src="cid:@icon" alt="@iconAlt" /></td>
+                            <td align="left">@row.Username</td>
+                        </tr>
+                    </table>
+                }
+            }
+        </td>
+        <td align="center">@row.RoleNameForEmail</td>
+        <td align="center">@row.Currency</td>
+        <td align="right">@row.YesterdayBalance.ToString("#,##0.#0")</td>
+        <td align="right">@row.TotalBalance.ToString("#,##0.#0")</td>
+        <td align="right">@row.MaxLoss.ToString("#,##0.#0")</td>
+        <td align="right">@row.PercentageLoss.ToString("#,##0.#0")%</td>
+    </tr>
+}
