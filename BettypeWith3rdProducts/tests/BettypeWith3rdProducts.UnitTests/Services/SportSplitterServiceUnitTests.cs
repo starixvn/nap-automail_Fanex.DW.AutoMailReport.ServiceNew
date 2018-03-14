@@ -49,5 +49,17 @@ namespace BettypeWith3rdProducts.UnitTests.Services
                 { "Soccer", dataTable }
             };
         }
+
+        [Test]
+        public void GetNumberOfSections()
+        {
+            var columnCount = 210;
+            var numberOfSections = columnCount / 70;
+            numberOfSections = columnCount % 70 > 0
+                ? numberOfSections + 1
+                : numberOfSections;
+
+            Assert.That(numberOfSections, Is.EqualTo(3));
+        }
     }
 }

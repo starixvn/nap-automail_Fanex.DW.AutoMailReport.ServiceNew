@@ -1,6 +1,6 @@
 ﻿{
-  "ExportDataDirectory": "\\\\10.40.40.73\\e$\\2.NAP\\14.NapReport\\Fanex.Excel\\TopWinningAgent",
-  "ExcelPasswordProtected": "",
-  "Subject": "Automail Report - Weekly Top Winning Agent from",
+  "ExportDataDirectory": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\WeeklyTopWinningAgent",
+  "ExcelPasswordProtected": "we168",
+  "Subject": "Automail Report - Weekly Top Winning Agent From",
   "Title": "Auto Generated Report Administrator"
 }

@@ -73,7 +73,7 @@ namespace TopWinningAgent.Business.Services
 
         public string Save()
         {
-            var fileName = $"Weekly_Top_Winning_Agent_From_{dateRangeService.FromDate(1):yyyy-MMM-dd}_To_{dateRangeService.ToDate():yyyy-MMM-dd}.xlsx";
+            var fileName = $"Weekly_Top_Winning_Agent_From_{dateRangeService.FromDate(1):yyyyMMdd}_To_{dateRangeService.ToDate():yyyyMMdd}.xlsx";
             var path = $@"{appConfigService.Configurations.ExportDataDirectory}\{SystemTime.Now:yyyy}\{SystemTime.Now:MM}";
             Directory.CreateDirectory(path);
             var fullPath = $@"{path}\{fileName}";
