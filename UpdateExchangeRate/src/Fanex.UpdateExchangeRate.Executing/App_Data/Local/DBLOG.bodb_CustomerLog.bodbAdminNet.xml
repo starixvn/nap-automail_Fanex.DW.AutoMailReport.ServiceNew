@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Functions SiteId="25" SiteName="Auto Mail">
+  <Function Name="Update Exchange Rate">
+    <Setting Key="Acc_rpt_Weekly_CurrencyUpdatedRate" SpName="Acc_rpt_Weekly_CurrencyUpdatedRate" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" TimeOut="0" />    
+  </Function>
+</Functions>

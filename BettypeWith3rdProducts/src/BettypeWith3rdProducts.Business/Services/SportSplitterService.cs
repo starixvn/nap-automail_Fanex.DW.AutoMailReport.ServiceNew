@@ -101,7 +101,10 @@ namespace BettypeWith3rdProducts.Business.Services
             }
 
             var section = value.AsDataView().ToTable(false, columnNames.ToArray());
-            sections.Add(section);
+            if (endColumnIndex > beginColumnIndex)
+            {
+                sections.Add(section);
+            }
 
             return lastRemovedIndex;
         }
