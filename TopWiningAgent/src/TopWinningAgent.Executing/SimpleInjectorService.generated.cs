@@ -22,6 +22,7 @@ namespace TopWinningAgent.Executing
             container.Register<MailService, MailServiceImp>();
             container.Register<DistributedNotificationService, DistributedNotificationServiceImp>();
             container.Register<RepositoryService, RepositoryServiceImp>();
+            container.Register<MailStationService, MailStationServiceImp>();
         }
     }
 }

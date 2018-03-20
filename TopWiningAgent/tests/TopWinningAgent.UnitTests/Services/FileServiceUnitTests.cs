@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Fanex.Service.Core;
+using NSubstitute;
 using NUnit.Framework;
 using TopWinningAgent.Business.Services;
 
@@ -17,9 +18,10 @@ namespace TopWinningAgent.UnitTests.Services
             SystemTime.Set(new DateTime(2018, 02, 28));
             var dateRangeService = new DateRangeServiceImp();
             var expected = File.ReadAllText("Templates/EmailContentResult.txt");
+            var repositoryService = Substitute.For<RepositoryService>();
 
             // Action
-            var service = new FileServiceImp(dateRangeService);
+            var service = new FileServiceImp(dateRangeService, repositoryService);
             var result = service.ReadContent();
 
             // Assert
