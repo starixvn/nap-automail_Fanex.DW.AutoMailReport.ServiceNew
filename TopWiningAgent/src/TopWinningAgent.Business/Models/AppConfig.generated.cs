@@ -9,5 +9,9 @@
         public string Subject { get; set; }
 
         public string Title { get; set; }
+
+        public bool IsCheckEnoughData { get; set; }
+
+        public int FunctionIdNodata { get; set; }
     }
 }

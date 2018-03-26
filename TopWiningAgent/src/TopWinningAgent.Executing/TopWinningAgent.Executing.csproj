@@ -196,6 +196,9 @@
     <Content Include="Templates\AppConfig.PRO.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\ContentWhenDataIsNotReady.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="TopWinningAgent.Executing.ruleset" />
   </ItemGroup>
   <ItemGroup>

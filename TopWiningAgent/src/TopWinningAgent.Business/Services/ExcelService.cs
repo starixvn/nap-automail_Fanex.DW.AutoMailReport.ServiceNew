@@ -42,16 +42,16 @@ namespace TopWinningAgent.Business.Services
         }
 
         private void FormatHeader(ExcelWorksheet excelWorksheet)
-        {
-            var title = $"{dateRangeService.FromDate(1):dd MMM yyyy} - {dateRangeService.ToDate(): dd MMM yyy}";
-            var headerLastWeek = $"Last Week ({dateRangeService.FromDate(1):dd MMM yyyy} - {dateRangeService.ToDate():dd MMM yyyy})";
-            var headerLast4Weeks = $"Last 4 Weeks ({dateRangeService.FromDate(4):dd MMM yyyy} - {dateRangeService.ToDate():dd MMM yyyy})";
-            var headerLast12Weeks = $"Last 12 Weeks ({dateRangeService.FromDate(12):dd MMM yyyy} - {dateRangeService.ToDate():dd MMM yyyy})";
+        {            
+            var title = $"{dateRangeService.FromDate(1): MMM dd, yyyy} - {dateRangeService.ToDate(): MMM dd, yyyy}";
+            var headerLastWeek = $"Last Week ({dateRangeService.FromDate(1):MMM dd, yyyy} - {dateRangeService.ToDate():MMM dd, yyyy})";
+            var headerLast4Weeks = $"Last 4 Weeks ({dateRangeService.FromDate(4):MMM dd, yyyy} - {dateRangeService.ToDate():MMM dd, yyyy})";
+            var headerLast12Weeks = $"Last 12 Weeks ({dateRangeService.FromDate(12):MMM dd, yyyy} - {dateRangeService.ToDate():MMM dd, yyyy})";
 
             excelWorksheet.Cells[3, 1].Value = title;
-            excelWorksheet.Cells[6, 3].Value = headerLastWeek;
-            excelWorksheet.Cells[6, 7].Value = headerLast4Weeks;
-            excelWorksheet.Cells[6, 11].Value = headerLast12Weeks;
+            excelWorksheet.Cells[6, 4].Value = headerLastWeek;
+            excelWorksheet.Cells[6, 9].Value = headerLast4Weeks;
+            excelWorksheet.Cells[6, 14].Value = headerLast12Weeks;
         }
 
         private static void FormatContent(ExcelWorksheet excelWorksheet, int rowCount, int columnCount)
