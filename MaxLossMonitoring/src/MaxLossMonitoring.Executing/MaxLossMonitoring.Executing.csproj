@@ -162,6 +162,9 @@
     <Compile Include="SimpleInjectorService.generated.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\PRO\DBAGE.bodb_AGE.bodbAdminNet.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="App_Data\UAT\DBAGE.bodb_AGE.bodbAdminNet.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -179,6 +182,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Configuration\MaxLossMonitoring.Executing.UAT.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\MaxLossMonitoring.Executing.PRO.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="job_scheduling_data_2_0.xsd">
@@ -210,6 +216,9 @@
     <Content Include="Templates\AppConfig.UAT.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\AppConfig.PRO.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MaxLossMonitoring.Business\MaxLossMonitoring.Business.csproj">
@@ -225,9 +234,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\Images\HorizontalLine.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\Images\List of SMA Reaching Allowable Max Loss.JPG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\Images\UpwardArrow.png">

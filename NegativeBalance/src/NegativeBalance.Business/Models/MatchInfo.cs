@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace NegativeBalance.Business.Models
 {
@@ -27,5 +28,25 @@ namespace NegativeBalance.Business.Models
         public string SportName { get; set; } = string.Empty;
 
         public string SportNameCS { get; set; } = string.Empty;
+
+        public bool IsValid
+        {
+            get
+            {
+                var listName = new List<string>
+                {
+                    LeagueName,
+                    LeagueNameCS,
+                    HomeName,
+                    HomeNameCS,
+                    AwayName,
+                    AwayNameCS,
+                    SportName,
+                    SportNameCS
+                };
+
+                return !listName.Exists(s => string.IsNullOrEmpty(s));
+            }
+        }
     }
 }

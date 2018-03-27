@@ -28,6 +28,7 @@ namespace NegativeBalance.Business.Services
         {
             var matches = new List<Match>();
             var customers = repository.QueryCustomerBalanceInfoBySite(site.LicenseeName, appConfigService.Configurations.IsTest);
+            UpdateGroupId(customers);
             var logIds = GetLogIds(customers);
             customers.GroupBy(g => new { g.MatchId, g.GroupId })
                 .Distinct()
@@ -47,6 +48,14 @@ namespace NegativeBalance.Business.Services
                 });
 
             return new Tuple<List<Match>, string>(matches, logIds);
+        }
+
+        private static void UpdateGroupId(List<CustomerBalanceInfo> customers)
+        {
+            customers.ForEach(custInfo => 
+            {
+                custInfo.GroupId = custInfo.GroupId == 2 ? 1 : custInfo.GroupId;
+            });
         }
 
         private static string GetLogIds(List<CustomerBalanceInfo> customers)

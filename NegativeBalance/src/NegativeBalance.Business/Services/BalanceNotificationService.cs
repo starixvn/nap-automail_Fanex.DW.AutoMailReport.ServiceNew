@@ -33,7 +33,8 @@
                 .ForEach(site =>
                 {
                     var data = dataService.QueryMatchesBySite(site);
-                    if (data.Item1.Count > 0)
+                    var isValid = data.Item1.Exists(s => s.MatchInfo.IsValid);
+                    if (data.Item1.Count > 0 && isValid)
                     {
                         var content = fileService.ReadContent(data.Item1);
                         var mail = recipientService.CreateMail(site, content);
