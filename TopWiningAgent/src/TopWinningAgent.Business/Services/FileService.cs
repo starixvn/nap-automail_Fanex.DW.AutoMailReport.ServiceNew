@@ -28,8 +28,8 @@ namespace TopWinningAgent.Business.Services
         {
             var templatePath = $@"Templates\ContentWithAttachment.cshtml";
             var emailTemplate = File.ReadAllText(templatePath);
-            var fromdate = $"{dateRangeService.FromDate(1):MM/dd/yyyy}";
-            var todate = $"{dateRangeService.ToDate():MM/dd/yyyy}";
+            var fromdate = $"{dateRangeService.FromDate(1):MMM dd, yyyy}";
+            var todate = $"{dateRangeService.ToDate():MMM dd, yyyy}";
             var tuple = new Tuple<string, string>(fromdate, todate);
             return Engine.Razor.RunCompile(emailTemplate, templatePath, tuple.GetType(), tuple);
         }

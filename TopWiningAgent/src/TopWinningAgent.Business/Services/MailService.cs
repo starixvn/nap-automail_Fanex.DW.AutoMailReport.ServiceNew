@@ -39,7 +39,7 @@ namespace TopWinningAgent.Business.Services
 
             var mail = new Mail
             {
-                Subject = $"{appConfig.Subject} {dateRangeService.FromDate(1): MM/dd/yyyy} to {dateRangeService.ToDate():MM/dd/yyyy}",
+                Subject = $"{appConfig.Subject} {dateRangeService.FromDate(1): MMM dd, yyyy} to {dateRangeService.ToDate():MMM dd, yyyy}",
                 Title = appConfig.Title,
                 Body = fileService.ReadContent(),
                 Attachments = attachments,
@@ -54,7 +54,7 @@ namespace TopWinningAgent.Business.Services
             {
                 var mail = new Mail
                 {
-                    Subject = $"{appConfig.Subject} {dateRangeService.FromDate(1): MM/dd/yyyy} to {dateRangeService.ToDate():MM/dd/yyyy}",
+                    Subject = $"{appConfig.Subject} {dateRangeService.FromDate(1): MMM dd, yyyy} to {dateRangeService.ToDate():MMM dd, yyyy}",
                     Title = appConfig.Title,
                     Body = fileService.ReadContentWhenDataIsNotReady(),
                     Attachments = new List<MailAttachment>(),
