@@ -21,7 +21,7 @@ namespace NegativeBalance.Business.Models
 
         public string MatchCode { get; set; } = string.Empty;
 
-        public int MatchId { get; set; } 
+        public int MatchId { get; set; }
 
         public int GroupId { get; set; }
 
@@ -45,7 +45,16 @@ namespace NegativeBalance.Business.Models
                     SportNameCS
                 };
 
-                return !listName.Exists(s => string.IsNullOrEmpty(s));
+                var isValidName = true;
+                listName.ForEach(name =>
+                {
+                    if (string.IsNullOrEmpty(name))
+                    {
+                        isValidName = false;
+                    }
+                });
+
+                return isValidName;
             }
         }
     }

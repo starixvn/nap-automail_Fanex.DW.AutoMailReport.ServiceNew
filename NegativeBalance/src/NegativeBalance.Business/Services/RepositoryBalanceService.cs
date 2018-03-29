@@ -13,7 +13,7 @@ namespace NegativeBalance.Business.Services
 
         List<CustomerBalanceInfo> QueryCustomerBalanceInfoBySite(string site, bool isTest);
 
-        Tuple<MatchInfo, List<MatchSettleLog>> QueryMatchSettledLog(int matchId, int groupId);
+        Tuple<MatchInfo, List<MatchSettleLog>> QueryMatchSettledLog(string licenseeName, int matchId, int groupId);
 
         bool UpdateMatchSent(string logIds);
     }
@@ -41,10 +41,10 @@ namespace NegativeBalance.Business.Services
             return dynamicRepository.Fetch<CustomerBalanceInfo>(new SelectBySiteCriteria { Site = site, IsTest = isTest }).ToList();
         }
 
-        public Tuple<MatchInfo, List<MatchSettleLog>> QueryMatchSettledLog(int matchId, int groupId)
+        public Tuple<MatchInfo, List<MatchSettleLog>> QueryMatchSettledLog(string licenseeName, int matchId, int groupId)
         {
             var result = dynamicRepository.FetchMultiple<RawMatchInfo, MatchSettleLog>(new SelectMatchLogCriteria { MatchId = matchId, GroupId = groupId });
-            var matchInfo = transformService.Execute(result.Item1.FirstOrDefault());
+            var matchInfo = transformService.Execute(licenseeName, result.Item1.FirstOrDefault());
             matchInfo.GroupId = groupId;
 
             return new Tuple<MatchInfo, List<MatchSettleLog>>(matchInfo, result.Item2.ToList());

@@ -28,39 +28,46 @@ namespace NegativeBalance.Business.Services
         {
             var matches = new List<Match>();
             var customers = repository.QueryCustomerBalanceInfoBySite(site.LicenseeName, appConfigService.Configurations.IsTest);
+            var matchIdsValid = new List<int>();
+
             UpdateGroupId(customers);
-            var logIds = GetLogIds(customers);
             customers.GroupBy(g => new { g.MatchId, g.GroupId })
                 .Distinct()
                 .ToList()
                 .ForEach(match =>
                 {
-                    var matchSettledLog = repository.QueryMatchSettledLog(match.Key.MatchId, match.Key.GroupId);
-                    var rawCustomersByMatch = customers.Where(s => s.MatchId == match.Key.MatchId && s.GroupId == match.Key.GroupId).ToList();
-                    var custombersByMatch = DistinctCustomers(rawCustomersByMatch);
-                    matches.Add(new Match
+                    var matchSettledLog = repository.QueryMatchSettledLog(site.LicenseeName, match.Key.MatchId, match.Key.GroupId);
+                    if (matchSettledLog.Item1.IsValid)
                     {
-                        LicenseeName = site.LicenseeName,
-                        MatchInfo = matchSettledLog.Item1,
-                        MatchSettleLogList = matchSettledLog.Item2,
-                        CustomerInfoList = custombersByMatch
-                    });
+                        matchIdsValid.Add(match.Key.MatchId);
+                        var rawCustomersByMatch = customers.Where(s => s.MatchId == match.Key.MatchId && s.GroupId == match.Key.GroupId).ToList();
+                        var custombersByMatch = DistinctCustomers(rawCustomersByMatch);
+                        matches.Add(new Match
+                        {
+                            LicenseeName = site.LicenseeName,
+                            MatchInfo = matchSettledLog.Item1,
+                            MatchSettleLogList = matchSettledLog.Item2,
+                            CustomerInfoList = custombersByMatch
+                        });
+                    }
                 });
+
+            var logIds = GetLogIds(customers, matchIdsValid);
 
             return new Tuple<List<Match>, string>(matches, logIds);
         }
 
         private static void UpdateGroupId(List<CustomerBalanceInfo> customers)
         {
-            customers.ForEach(custInfo => 
+            customers.ForEach(custInfo =>
             {
                 custInfo.GroupId = custInfo.GroupId == 2 ? 1 : custInfo.GroupId;
             });
         }
 
-        private static string GetLogIds(List<CustomerBalanceInfo> customers)
+        private static string GetLogIds(List<CustomerBalanceInfo> customers, List<int> matchIdsValid)
         {
-            var logIds = customers.Select(c => c.LogId).ToList();
+            var logIds = customers.Where(s => matchIdsValid.Contains(s.MatchId)).Select(c => c.LogId).ToList();
             return string.Join(",", logIds);
         }
 

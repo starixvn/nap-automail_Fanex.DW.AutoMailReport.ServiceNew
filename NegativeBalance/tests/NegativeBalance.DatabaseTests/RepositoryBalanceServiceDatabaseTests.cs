@@ -20,7 +20,7 @@ namespace NegativeBalance.DatabaseTests
             FanexDataRegisterService.ConfigureFanexData();
             NegativeBalanceInjector.Register(container);
             dynamicRepository = container.GetInstance<IDynamicRepository>();
-            transformService = container.GetInstance<TransformService>();            
+            transformService = container.GetInstance<TransformService>();
         }
 
         [Test]
@@ -58,7 +58,7 @@ namespace NegativeBalance.DatabaseTests
 
             // Act
             var service = new RepositoryBalanceServiceImp(dynamicRepository, transformService);
-            var result = service.QueryMatchSettledLog(matchId, groupId);
+            var result = service.QueryMatchSettledLog("12bet", matchId, groupId);
 
             // Assert
             Assert.That(result.Item1.GetType() == typeof(MatchInfo));
