@@ -47,11 +47,19 @@ namespace TopWinningAgent.Business.Services
             var headerLastWeek = $"Last Week ({dateRangeService.FromDate(1):MMM dd, yyyy} - {dateRangeService.ToDate():MMM dd, yyyy})";
             var headerLast4Weeks = $"Last 4 Weeks ({dateRangeService.FromDate(4):MMM dd, yyyy} - {dateRangeService.ToDate():MMM dd, yyyy})";
             var headerLast12Weeks = $"Last 12 Weeks ({dateRangeService.FromDate(12):MMM dd, yyyy} - {dateRangeService.ToDate():MMM dd, yyyy})";
+            var headerLast3Month = $"{dateRangeService.ToDate().AddMonths(-3): MMM yyyy}";
+            var headerLast2Month = $"{dateRangeService.ToDate().AddMonths(-2): MMM yyyy}";
+            var headerLast1Month = $"{dateRangeService.ToDate().AddMonths(-1): MMM yyyy}";
+            var headerLast0Month = $"{dateRangeService.ToDate(): MMM yyyy}";
 
             excelWorksheet.Cells[3, 1].Value = title;
             excelWorksheet.Cells[6, 4].Value = headerLastWeek;
             excelWorksheet.Cells[6, 9].Value = headerLast4Weeks;
             excelWorksheet.Cells[6, 14].Value = headerLast12Weeks;
+            excelWorksheet.Cells[6, 19].Value = headerLast3Month;
+            excelWorksheet.Cells[6, 20].Value = headerLast2Month;
+            excelWorksheet.Cells[6, 21].Value = headerLast1Month;
+            excelWorksheet.Cells[6, 22].Value = headerLast0Month;
         }
 
         private static void FormatContent(ExcelWorksheet excelWorksheet, int rowCount, int columnCount)
