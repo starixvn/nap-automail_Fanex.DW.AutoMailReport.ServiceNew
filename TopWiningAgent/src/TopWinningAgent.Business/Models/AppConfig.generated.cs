@@ -1,4 +1,6 @@
-﻿namespace TopWinningAgent.Business.Models
+﻿using System;
+
+namespace TopWinningAgent.Business.Models
 {
     public class AppConfig
     {
@@ -13,5 +15,9 @@
         public bool IsCheckEnoughData { get; set; }
 
         public int FunctionIdNodata { get; set; }
+
+        public bool IsManual { get; set; }
+
+        public DateTime DateServiceRun { get; set; }
     }
 }

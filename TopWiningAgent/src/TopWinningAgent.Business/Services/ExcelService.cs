@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Fanex.Service.Core;
 using OfficeOpenXml;
 using TopWinningAgent.Business.Repositories;
@@ -29,7 +30,13 @@ namespace TopWinningAgent.Business.Services
 
         public ExcelService Export()
         {
-            var dataSource = dataSourceService.Query(new Criteria());
+            DateTime? dateServiceRun = null;
+            if (appConfigService.Configurations.IsManual)
+            {
+                dateServiceRun = appConfigService.Configurations.DateServiceRun;
+            }
+
+            var dataSource = dataSourceService.Query(new Criteria { DateServiceRun = dateServiceRun });
             var rowCount = dataSource.Rows.Count;
             var columnCount = dataSource.Columns.Count;
             var excelWorksheet = excelPackage.Workbook.Worksheets["TOP WINNING AGENT"];
@@ -42,7 +49,7 @@ namespace TopWinningAgent.Business.Services
         }
 
         private void FormatHeader(ExcelWorksheet excelWorksheet)
-        {            
+        {
             var title = $"{dateRangeService.FromDate(1): MMM dd, yyyy} - {dateRangeService.ToDate(): MMM dd, yyyy}";
             var headerLastWeek = $"Last Week ({dateRangeService.FromDate(1):MMM dd, yyyy} - {dateRangeService.ToDate():MMM dd, yyyy})";
             var headerLast4Weeks = $"Last 4 Weeks ({dateRangeService.FromDate(4):MMM dd, yyyy} - {dateRangeService.ToDate():MMM dd, yyyy})";

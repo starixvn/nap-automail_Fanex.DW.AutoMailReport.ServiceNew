@@ -5,13 +5,9 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BEA56EA0-D9AE-4B51-8D7B-115AFA76A51A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{AFDB4837-6C59-4739-85BE-17384C084DC5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopWinningAgent.Business", "TopWiningAgent\src\TopWinningAgent.Business\TopWinningAgent.Business.csproj", "{0AF06C98-8EDD-4F08-BFED-83B4DC65FEAA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopWinningAgent.Executing", "TopWiningAgent\src\TopWinningAgent.Executing\TopWinningAgent.Executing.csproj", "{AC105E9C-3969-4E83-9179-DED62AB38A5E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopWinningAgent.UnitTests", "TopWiningAgent\tests\TopWinningAgent.UnitTests\TopWinningAgent.UnitTests.csproj", "{F2D66C19-471B-4108-BE9C-AF16F1C27992}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{668F2FCF-F6DC-477F-A399-21229C66D0A7}"
 	ProjectSection(SolutionItems) = preProject
@@ -33,10 +29,6 @@ Global
 		{AC105E9C-3969-4E83-9179-DED62AB38A5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC105E9C-3969-4E83-9179-DED62AB38A5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC105E9C-3969-4E83-9179-DED62AB38A5E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F2D66C19-471B-4108-BE9C-AF16F1C27992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F2D66C19-471B-4108-BE9C-AF16F1C27992}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F2D66C19-471B-4108-BE9C-AF16F1C27992}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F2D66C19-471B-4108-BE9C-AF16F1C27992}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +36,5 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{0AF06C98-8EDD-4F08-BFED-83B4DC65FEAA} = {BEA56EA0-D9AE-4B51-8D7B-115AFA76A51A}
 		{AC105E9C-3969-4E83-9179-DED62AB38A5E} = {BEA56EA0-D9AE-4B51-8D7B-115AFA76A51A}
-		{F2D66C19-471B-4108-BE9C-AF16F1C27992} = {AFDB4837-6C59-4739-85BE-17384C084DC5}
 	EndGlobalSection
 EndGlobal
