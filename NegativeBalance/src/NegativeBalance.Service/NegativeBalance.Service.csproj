@@ -148,7 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <Content Include="App_Data\PRO\DBOIC.bodb_OIC.bodbAdminNet.xml">
+    <Content Include="App_Data\PRO\DBACC.bodb_ACC.bodbAdminNet.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\PRO\DBLOG.bodb_CustomerLog.bodbAdminNet.xml">
@@ -157,7 +157,7 @@
     <Content Include="App_Data\PRO\DBTXN.bodb02.bodbAdminNet.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Data\SIT\DBOIC.bodb_OIC.bodbAdminNet.xml">
+    <Content Include="App_Data\SIT\DBACC.bodb_ACC.bodbAdminNet.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\SIT\DBLOG.bodb_CustomerLog.bodbAdminNet.xml">
@@ -166,7 +166,7 @@
     <Content Include="App_Data\SIT\DBTXN.bodb02.bodbAdminNet.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Data\UAT\DBOIC.bodb_OIC.bodbAdminNet.xml">
+    <Content Include="App_Data\UAT\DBACC.bodb_ACC.bodbAdminNet.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\UAT\DBLOG.bodb_CustomerLog.bodbAdminNet.xml">
@@ -192,7 +192,7 @@
     </Content>
     <None Include="NegativeBalance.Service.ruleset" />
     <None Include="packages.config" />
-    <Content Include="App_Data\Local\DBOIC.bodb_OIC.bodbAdminNet.xml">
+    <Content Include="App_Data\Local\DBACC.bodb_ACC.bodbAdminNet.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\Local\DBLOG.bodb_CustomerLog.bodbAdminNet.xml">
@@ -248,9 +248,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\..\..\packages\SonarAnalyzer.CSharp.6.3.0.2862\analyzers\Google.Protobuf.dll" />
-    <Analyzer Include="..\..\..\packages\SonarAnalyzer.CSharp.6.3.0.2862\analyzers\SonarAnalyzer.CSharp.dll" />
-    <Analyzer Include="..\..\..\packages\SonarAnalyzer.CSharp.6.3.0.2862\analyzers\SonarAnalyzer.dll" />
+    <Analyzer Include="..\..\..\packages\SonarAnalyzer.CSharp.6.7.1.4347\analyzers\Google.Protobuf.dll" />
+    <Analyzer Include="..\..\..\packages\SonarAnalyzer.CSharp.6.7.1.4347\analyzers\SonarAnalyzer.CSharp.dll" />
+    <Analyzer Include="..\..\..\packages\SonarAnalyzer.CSharp.6.7.1.4347\analyzers\SonarAnalyzer.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,4 +1,8 @@
-﻿namespace NegativeBalance.Business.Services
+﻿using System;
+using System.Collections.Generic;
+using NegativeBalance.Business.Models;
+
+namespace NegativeBalance.Business.Services
 {
     public interface BalanceNotificationService
     {
@@ -33,7 +37,9 @@
                 .ForEach(site =>
                 {
                     var data = dataService.QueryMatchesBySite(site);
-                    if (data.Item1.Count > 0)
+                    bool isValidData = CheckValidData(data);
+
+                    if (data.Item1.Count > 0 && isValidData)
                     {
                         var content = fileService.ReadContent(data.Item1);
                         var mail = recipientService.CreateMail(site, content);
@@ -44,6 +50,20 @@
                         }
                     }
                 });
+        }
+
+        private static bool CheckValidData(Tuple<List<Match>, string> data)
+        {
+            var isValidData = true;
+            data.Item1.ForEach(item =>
+            {
+                if (!item.MatchInfo.IsValid)
+                {
+                    isValidData = false;
+                }
+            });
+
+            return isValidData;
         }
     }
 }

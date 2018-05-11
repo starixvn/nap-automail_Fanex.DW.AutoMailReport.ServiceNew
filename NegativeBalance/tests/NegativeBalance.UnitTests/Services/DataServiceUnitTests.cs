@@ -30,7 +30,7 @@ namespace NegativeBalance.UnitTests.Services
             repository.QueryCustomerBalanceInfoBySite(Arg.Any<string>(), Arg.Any<bool>()).Returns(customers);
 
             var matchSettledLog = TestLoader.DataLoader<Tuple<MatchInfo, List<MatchSettleLog>>>("Repository-QueryMatchSettledLog.json");
-            repository.QueryMatchSettledLog(Arg.Any<int>(), Arg.Any<int>()).Returns(matchSettledLog);
+            repository.QueryMatchSettledLog(Arg.Any<string>(), Arg.Any<int>(), Arg.Any<int>()).Returns(matchSettledLog);
             var expected = TestLoader.DataLoader<Tuple<List<Match>, string>>("DataService-QueryMatchesBySite-expected.json");
 
             // Act

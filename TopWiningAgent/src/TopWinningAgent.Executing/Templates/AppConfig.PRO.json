@@ -4,5 +4,7 @@
   "Subject": "Automail Report - Weekly Top Winning Agent From",
   "Title": "Auto Generated Report Administrator",
   "IsCheckEnoughData": true,
-  "FunctionIdNodata": 42
+  "FunctionIdNodata": 42,
+  "IsManual": false,
+  "DateServiceRun": "2018-05-06"
 }

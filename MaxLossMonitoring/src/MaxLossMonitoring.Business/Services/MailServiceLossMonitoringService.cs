@@ -47,17 +47,35 @@ namespace MaxLossMonitoring.Business.Services
                 Title = appConfig.Title,
                 Body = fileService.ReadContentWithAttachedFile(dataSource),
                 Attachments = attachments,
-                AlternativeViews = new List<MailLinkedResource>
-                {
-                    new MailLinkedResource(upwardArrowUrl, FileExtension.IMG_PNG, "lruworradrawpu"),
-                    new MailLinkedResource(downwardArrowUrl, FileExtension.IMG_PNG, "lruworradrawnwod"),
-                    new MailLinkedResource(horizontalLineUrl, FileExtension.IMG_PNG, "lruworradrawenillatnoziroh"),
-                }
+                AlternativeViews = new List<MailLinkedResource> { }
             };
-            
+
+            AddAttachmentIcon(mail, dataSource);
             SendMailWithoutAttachedFile(new FileInfo(fileName).Name);
 
             return mail;
+        }
+
+        private void AddAttachmentIcon(Mail mail, Tuple<List<MonitorList>, List<MonitorListRaw>> dataSource)
+        {
+            var isUp = dataSource.Item2.Exists(s => s.Movement == 1) || dataSource.Item1.Exists(s => s.Rows.Exists(r => r.Movement == 1));
+            var isDown = dataSource.Item2.Exists(s => s.Movement == -1) || dataSource.Item1.Exists(s => s.Rows.Exists(r => r.Movement == -1)); 
+            var isHorizon = dataSource.Item2.Exists(s => s.Movement == 0) || dataSource.Item1.Exists(s => s.Rows.Exists(r => r.Movement == 0)); 
+
+            if (isUp)
+            {
+                mail.AlternativeViews.Add(new MailLinkedResource(upwardArrowUrl, FileExtension.IMG_PNG, "lruworradrawpu"));
+            }
+
+            if (isDown)
+            {
+                mail.AlternativeViews.Add(new MailLinkedResource(downwardArrowUrl, FileExtension.IMG_PNG, "lruworradrawnwod"));
+            }
+
+            if (isHorizon)
+            {
+                mail.AlternativeViews.Add(new MailLinkedResource(horizontalLineUrl, FileExtension.IMG_PNG, "lruworradrawenillatnoziroh"));
+            }
         }
 
         private void SendMailWithoutAttachedFile(string fileName)

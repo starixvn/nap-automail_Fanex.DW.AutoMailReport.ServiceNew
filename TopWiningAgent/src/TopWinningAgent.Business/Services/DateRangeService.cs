@@ -12,6 +12,18 @@ namespace TopWinningAgent.Business.Services
 
     public class DateRangeServiceImp : DateRangeService
     {
+        public DateRangeServiceImp(ApplicationConfigurationService appConfig)
+        {
+            if (appConfig.Configurations.IsManual)
+            {
+                SystemTime.Set(appConfig.Configurations.DateServiceRun.AddDays(-1));
+            }
+            else
+            {
+                SystemTime.Reset();
+            }
+        }
+
         public DateTime FromDate(int numberOfWeekInPast)
         {
             var dayOfWeek = DayOfWeek();
