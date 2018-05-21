@@ -65,7 +65,7 @@ namespace BetradarVirtualSportsDaily.Business.Services
 
             dailySheet.ApplyVertical(dailyData);
             totalSheet.ApplyVertical(totalData);
-            totalSheet.Cells[beginRowIndex, 1, lastRowIndexTotalSheet, 9].Copy(dailySheet.Cells[lastRowIndexDailySheet, 1]);
+            totalSheet.Cells[beginRowIndex, 1, lastRowIndexTotalSheet, 10].Copy(dailySheet.Cells[lastRowIndexDailySheet, 1]);
 
             dailySheet.AutoMergeRowsHaveSameValue($"A1:A{lastRowIndexDailySheet - 1}");            
             dailySheet.AutoMergeRowsHaveSameValue($"B1:B{lastRowIndexDailySheet - 1}");
@@ -82,7 +82,7 @@ namespace BetradarVirtualSportsDaily.Business.Services
         private static void RenderNoData(ExcelWorksheet sheet)
         {
             sheet.Cells["A4"].Value = "There is no data displayed";
-            sheet.Cells["A4:I4"].Merge = true;
+            sheet.Cells["A4:J4"].Merge = true;
         }
 
         private void ClearTemplateSheet(ExcelWorksheet totalSheet)
