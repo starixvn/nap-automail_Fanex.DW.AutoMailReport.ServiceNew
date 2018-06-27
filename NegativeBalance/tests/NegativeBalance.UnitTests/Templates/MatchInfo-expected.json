@@ -8,7 +8,8 @@
   "EventDate": "2015-11-10T00:00:00",
   "MatchCode": "991030MR2",
   "MatchId": 15314742,
-  "GroupId": 0,
+  "GroupId": 1,
   "SportName": "Soccer",
-  "SportNameCS": "足球"
+  "SportNameCS": "足球",
+  "IsValid": true
 }

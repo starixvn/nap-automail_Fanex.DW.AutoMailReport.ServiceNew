@@ -44,8 +44,7 @@ namespace NegativeBalance.Business.Services
         public Tuple<MatchInfo, List<MatchSettleLog>> QueryMatchSettledLog(string licenseeName, int matchId, int groupId)
         {
             var result = dynamicRepository.FetchMultiple<RawMatchInfo, MatchSettleLog>(new SelectMatchLogCriteria { MatchId = matchId, GroupId = groupId });
-            var matchInfo = transformService.Execute(licenseeName, result.Item1.FirstOrDefault());
-            matchInfo.GroupId = groupId;
+            var matchInfo = transformService.Execute(licenseeName, result.Item1.FirstOrDefault(), groupId);            
 
             return new Tuple<MatchInfo, List<MatchSettleLog>>(matchInfo, result.Item2.ToList());
         }
