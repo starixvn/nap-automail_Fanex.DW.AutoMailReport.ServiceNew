@@ -73,7 +73,7 @@ namespace NegativeBalance.UnitTests.Services
             var rawMatchInfo = new List<RawMatchInfo>();
             var matchSettleLog = new List<MatchSettleLog>();
             dynamicRepository.FetchMultiple<RawMatchInfo, MatchSettleLog>(Arg.Any<SelectMatchLogCriteria>()).Returns(new Tuple<IEnumerable<RawMatchInfo>, IEnumerable<MatchSettleLog>>(rawMatchInfo, matchSettleLog));
-            transformService.Execute(Arg.Any<string>(), Arg.Any<RawMatchInfo>()).Returns(new MatchInfo());
+            transformService.Execute(Arg.Any<string>(), Arg.Any<RawMatchInfo>(), Arg.Any<int>()).Returns(new MatchInfo());
 
             // Act
             var service = new RepositoryBalanceServiceImp(dynamicRepository, transformService);

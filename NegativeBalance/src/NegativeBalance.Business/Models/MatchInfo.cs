@@ -33,17 +33,33 @@ namespace NegativeBalance.Business.Models
         {
             get
             {
-                var listName = new List<string>
+                var listName = new List<string> { };
+                switch (GroupId)
                 {
-                    LeagueName,
-                    LeagueNameCS,
-                    HomeName,
-                    HomeNameCS,
-                    AwayName,
-                    AwayNameCS,
-                    SportName,
-                    SportNameCS
-                };
+                    case 1:
+                    case 2:
+                        listName.Add(HomeName);
+                        listName.Add(HomeNameCS);
+                        listName.Add(AwayName);
+                        listName.Add(AwayNameCS);
+                        break;
+
+                    case 3:
+                        listName.Add(HomeName);
+                        listName.Add(HomeNameCS);
+                        listName.Add(LeagueName);
+                        listName.Add(LeagueNameCS);
+                        break;
+
+                    default: // group 7: [Betradar] Virtual Sports 2
+                        listName.Add(HomeName);
+                        listName.Add(HomeNameCS);
+                        listName.Add(AwayName);
+                        listName.Add(AwayNameCS);
+                        listName.Add(SportName);
+                        listName.Add(SportNameCS);
+                        break;
+                }
 
                 var isValidName = true;
                 listName.ForEach(name =>

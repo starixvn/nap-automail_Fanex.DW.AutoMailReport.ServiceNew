@@ -8,7 +8,7 @@ namespace NegativeBalance.Business.Services
 {
     public interface TransformService
     {
-        MatchInfo Execute(string licenseeName, RawMatchInfo rawMatchInfo);
+        MatchInfo Execute(string licenseeName, RawMatchInfo rawMatchInfo, int groupId);
     }
 
     public class TransformServiceImp : TransformService
@@ -16,7 +16,7 @@ namespace NegativeBalance.Business.Services
         private readonly string langEN = "en";
         private readonly string langCS = "cs";
 
-        public MatchInfo Execute(string licenseeName, RawMatchInfo rawMatchInfo)
+        public MatchInfo Execute(string licenseeName, RawMatchInfo rawMatchInfo, int groupId)
         {
             if (rawMatchInfo == null)
             {
@@ -25,6 +25,8 @@ namespace NegativeBalance.Business.Services
 
             var matchInfo = new MatchInfo
             {
+                GroupId = groupId,
+
                 MatchId = rawMatchInfo.MatchId,
                 MatchCode = rawMatchInfo.MatchCode,
                 EventDate = rawMatchInfo.EventDate,
@@ -35,7 +37,7 @@ namespace NegativeBalance.Business.Services
                 AwayName = RefData.GetTeamName(rawMatchInfo.AwayId.ToString(), langEN),
                 AwayNameCS = RefData.GetTeamName(rawMatchInfo.AwayId.ToString(), langCS),
                 SportName = RefData.GetSportName(rawMatchInfo.SportId.ToString(), langEN),
-                SportNameCS = RefData.GetSportName(rawMatchInfo.SportId.ToString(), langCS),
+                SportNameCS = RefData.GetSportName(rawMatchInfo.SportId.ToString(), langCS)                
             };
 
             WriteLog(licenseeName, rawMatchInfo, matchInfo);

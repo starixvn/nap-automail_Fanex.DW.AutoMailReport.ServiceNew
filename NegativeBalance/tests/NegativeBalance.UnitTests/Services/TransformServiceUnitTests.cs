@@ -18,7 +18,7 @@ namespace NegativeBalance.UnitTests.Services
 
             // Act
             var service = new TransformServiceImp();
-            var result = service.Execute("12bet", rawMatchInfo);
+            var result = service.Execute("12bet", rawMatchInfo, 1);
 
             // Assert
             Assert.That(result, IsDeeplyEqual.To(expected));
@@ -47,7 +47,7 @@ namespace NegativeBalance.UnitTests.Services
 
             // Act
             var service = new TransformServiceImp();
-            var result = service.Execute("12bet", null);
+            var result = service.Execute("12bet", null, 1);
 
             // Assert
             Assert.That(result, IsDeeplyEqual.To(expected));
