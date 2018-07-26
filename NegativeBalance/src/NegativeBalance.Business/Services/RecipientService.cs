@@ -27,7 +27,8 @@ namespace NegativeBalance.Business.Services
         private static Dictionary<string, string> LicenseesChangeName => new Dictionary<string, string>
         {
             { "bodog", "Haydock" },
-            { "avia", "Oriental Game" }
+            { "avia", "Oriental Game" },
+            { "ibo", "Kzing" },
         };
 
         public MailRecord CreateMail(Site site, string content)
