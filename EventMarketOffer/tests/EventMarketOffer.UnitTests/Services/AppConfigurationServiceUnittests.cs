@@ -22,7 +22,7 @@ namespace EventMarketOffer.UnitTests.Services
             // Arrange
             var expected = new AppConfig
             {
-                ExportDataDirectory = "\\\\10.70.70.242\\www\\Olympus\\Fanex.Excel\\EventMarketOffer",
+                ExportDataDirectory = "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\EventMarketOffer",
                 ExcelPasswordProtected = string.Empty,
                 IsCheckEnoughData = false,
                 IsManual = false,

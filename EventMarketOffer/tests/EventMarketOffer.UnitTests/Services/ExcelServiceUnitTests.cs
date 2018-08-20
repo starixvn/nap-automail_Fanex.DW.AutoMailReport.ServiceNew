@@ -50,8 +50,8 @@ namespace EventMarketOffer.UnitTests.Services
             // Arrange            
             dateService.DateStart.Returns(new DateTime(2017, 07, 01));
             dateService.DateEnd.Returns(new DateTime(2017, 07, 30));
-            appConfigService.Configurations.Returns(new AppConfig { ExportDataDirectory = "\\\\10.70.70.242\\www\\Olympus\\Fanex.Excel\\EventMarketOffer", ExcelPasswordProtected = string.Empty });
-            var expected = @"\\10.70.70.242\www\Olympus\Fanex.Excel\EventMarketOffer\2017\Event_Market_Offered_From_01_Jul_2017_To_30_Jul_2017.xlsx";
+            appConfigService.Configurations.Returns(new AppConfig { ExportDataDirectory = "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\EventMarketOffer", ExcelPasswordProtected = string.Empty });
+            var expected = @"\\10.18.200.120\www\Olympus\Fanex.Excel\EventMarketOffer\2017\Event_Market_Offered_From_01_Jul_2017_To_30_Jul_2017.xlsx";
 
             // Act
             var service = new ExcelServiceImp(excelPackage, appConfigService, dateService, dataService);

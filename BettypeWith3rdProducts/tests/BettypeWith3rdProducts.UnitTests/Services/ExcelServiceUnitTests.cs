@@ -31,7 +31,7 @@ namespace BettypeWith3rdProducts.UnitTests.Services
             dateRangeService.DateStart.Returns(new DateTime(2017, 01, 01));
             dateRangeService.DateEnd.Returns(new DateTime(2017, 01, 31));
             
-            appConfig.ExportDataDirectory.Returns(@"\\10.70.70.242\www\Olympus\Fanex.Excel\BettypeWith3rdProducts");
+            appConfig.ExportDataDirectory.Returns(@"\\10.18.200.120\www\Olympus\Fanex.Excel\BettypeWith3rdProducts");
 
             var dataSource = CreateDataSource();
             dataService.Execute().Returns(dataSource);
@@ -96,8 +96,8 @@ namespace BettypeWith3rdProducts.UnitTests.Services
             // Arrange
             InitializeSubstitute();
             SystemTime.Set(new DateTime(2017, 01, 01));
-            appConfig.ExportDataDirectory.Returns(@"\\10.70.70.242\www\Olympus\Fanex.Excel\BettypeWith3rdProducts");
-            var expected = @"\\10.70.70.242\www\Olympus\Fanex.Excel\BettypeWith3rdProducts\2017\01\Bettype_With_3rd_Products_Monthly_Winloss_For_2017_01_01.xlsx";
+            appConfig.ExportDataDirectory.Returns(@"\\10.18.200.120\www\Olympus\Fanex.Excel\BettypeWith3rdProducts");
+            var expected = @"\\10.18.200.120\www\Olympus\Fanex.Excel\BettypeWith3rdProducts\2017\01\Bettype_With_3rd_Products_Monthly_Winloss_For_2017_01_01.xlsx";
 
             // Act
             var service = new ExcelServiceImp(excelPackage, appConfig, dataService, dateRangeService, excelHeaderService);

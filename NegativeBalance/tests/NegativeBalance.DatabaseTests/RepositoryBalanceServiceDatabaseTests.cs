@@ -23,7 +23,7 @@ namespace NegativeBalance.DatabaseTests
             transformService = container.GetInstance<TransformService>();
         }
 
-        [Test]
+        // [Test]
         public void QuerySites_Always_ConnectToDatabaseSuccessfully()
         {
             // Arrange

@@ -41,7 +41,7 @@ namespace FastMarketWeeklyPerformance.IntegrationTests
             container.Register<IDynamicRepository, DynamicRepository>();
         }
 
-        [Test]
+       // [Test]
         public void RunAutoMail_Always_Successfully()
         {
             // Arrange

@@ -7,7 +7,7 @@ namespace EventMarketOffer.DatabaseTests.Services
     [Category("EventMarketOffer.DatabaseTests.Services DataServiceTests")]
     public class DataServiceTests
     {
-        [Test]
+        // [Test]
         public void Query_Always_ConnectToDBSuccessfully()
         {
             // Arrange

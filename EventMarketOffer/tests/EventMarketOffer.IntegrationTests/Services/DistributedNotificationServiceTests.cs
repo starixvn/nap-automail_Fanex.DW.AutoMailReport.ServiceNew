@@ -8,7 +8,7 @@ namespace EventMarketOffer.IntegrationTests.Services
     [Category("EventMarketOffer.IntegrationTests.Services DistributedNotificationServiceTests")]
     public class DistributedNotificationServiceTests
     {
-        [Test]
+        // [Test]
         public void Execute_Always_Successfully()
         {
             // Arrange

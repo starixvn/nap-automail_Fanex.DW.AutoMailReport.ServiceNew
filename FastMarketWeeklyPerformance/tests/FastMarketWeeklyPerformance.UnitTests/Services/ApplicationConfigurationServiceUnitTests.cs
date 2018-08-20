@@ -29,7 +29,7 @@ namespace FastMarketWeeklyPerformance.UnitTests.Services
         {
             return new AppConfig
             {
-                ExportDataDirectory = @"\\10.70.70.242\www\Olympus\Fanex.Excel\FastMarketWeeklyPerformance",
+                ExportDataDirectory = @"\\10.18.200.120\www\Olympus\Fanex.Excel\FastMarketWeeklyPerformance",
                 ExcelPasswordProtected = string.Empty,
                 ReportDateRange = ReportDateRange.Weekly,
                 IsCheckEnoughData = true,
