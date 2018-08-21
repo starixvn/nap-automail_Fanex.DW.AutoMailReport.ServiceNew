@@ -190,6 +190,9 @@
     <Content Include="Configurations\NegativeBalance.Service.PRO.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Configurations\NegativeBalance.Service.MNL.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="NegativeBalance.Service.ruleset" />
     <None Include="packages.config" />
     <Content Include="App_Data\Local\DBACC.bodb_ACC.bodbAdminNet.xml">
@@ -238,6 +241,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\AppConfig.SIT.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\AppConfig.MNL.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

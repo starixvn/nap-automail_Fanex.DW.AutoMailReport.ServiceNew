@@ -182,6 +182,12 @@
     <Content Include="Configuration\BettypeWith3rdProducts.Executing.LIVE.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Configuration\BettypeWith3rdProducts.Executing.MNL.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\ConnectionString.MNL.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Templates\SourceMapping.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
