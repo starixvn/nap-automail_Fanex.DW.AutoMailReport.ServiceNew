@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Fanex.Logging;
+using Fanex.RemotingRef;
 using NegativeBalance.Business.Models;
 using Newtonsoft.Json;
-using RemotingRef;
 
 namespace NegativeBalance.Business.Services
 {
@@ -13,8 +13,14 @@ namespace NegativeBalance.Business.Services
 
     public class TransformServiceImp : TransformService
     {
-        private readonly string langEN = "en";
-        private readonly string langCS = "cs";
+        private readonly string langEN = "en-US";
+        private readonly string langCS = "zh-CN";
+        private readonly IRemotingRefService remotingRefService;
+
+        public TransformServiceImp(IRemotingRefService remotingRefService)
+        {
+            this.remotingRefService = remotingRefService;
+        }
 
         public MatchInfo Execute(string licenseeName, RawMatchInfo rawMatchInfo, int groupId)
         {
@@ -30,14 +36,14 @@ namespace NegativeBalance.Business.Services
                 MatchId = rawMatchInfo.MatchId,
                 MatchCode = rawMatchInfo.MatchCode,
                 EventDate = rawMatchInfo.EventDate,
-                LeagueName = RefData.GetLeagueName(rawMatchInfo.LeagueId.ToString(), langEN),
-                LeagueNameCS = RefData.GetLeagueName(rawMatchInfo.LeagueId.ToString(), langCS),
-                HomeName = RefData.GetTeamName(rawMatchInfo.HomeId.ToString(), langEN),
-                HomeNameCS = RefData.GetTeamName(rawMatchInfo.HomeId.ToString(), langCS),
-                AwayName = RefData.GetTeamName(rawMatchInfo.AwayId.ToString(), langEN),
-                AwayNameCS = RefData.GetTeamName(rawMatchInfo.AwayId.ToString(), langCS),
-                SportName = RefData.GetSportName(rawMatchInfo.SportId.ToString(), langEN),
-                SportNameCS = RefData.GetSportName(rawMatchInfo.SportId.ToString(), langCS)                
+                LeagueName = remotingRefService.GetLeagueName(rawMatchInfo.LeagueId.ToString(), langEN),
+                LeagueNameCS = remotingRefService.GetLeagueName(rawMatchInfo.LeagueId.ToString(), langCS),
+                HomeName = remotingRefService.GetTeamName(rawMatchInfo.HomeId.ToString(), langEN),
+                HomeNameCS = remotingRefService.GetTeamName(rawMatchInfo.HomeId.ToString(), langCS),
+                AwayName = remotingRefService.GetTeamName(rawMatchInfo.AwayId.ToString(), langEN),
+                AwayNameCS = remotingRefService.GetTeamName(rawMatchInfo.AwayId.ToString(), langCS),
+                SportName = remotingRefService.GetSportName(rawMatchInfo.SportId.ToString(), langEN),
+                SportNameCS = remotingRefService.GetSportName(rawMatchInfo.SportId.ToString(), langCS)
             };
 
             WriteLog(licenseeName, rawMatchInfo, matchInfo);
@@ -51,7 +57,6 @@ namespace NegativeBalance.Business.Services
             {
                 var data = new List<object> { rawMatchInfo, matchInfo };
                 var json = JsonConvert.SerializeObject(data, Formatting.Indented);
-                IBCFile.Logger.Log(JsonConvert.SerializeObject(json, Formatting.Indented));
                 LogService.Error($"Negative Balance Report - Remoting Ref returned empty data that belongs to licensee: {licenseeName}: {json}");
             }
         }

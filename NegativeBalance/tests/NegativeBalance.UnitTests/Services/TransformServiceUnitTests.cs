@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Configuration;
+using Fanex.RemotingRef;
 using NegativeBalance.Business.Models;
 using NegativeBalance.Business.Services;
 using NUnit.CompareNetObjects;
@@ -9,6 +11,19 @@ namespace NegativeBalance.UnitTests.Services
     [Category("NegativeBalance.UnitTests.Services TransformServiceUnitTests")]
     public class TransformServiceUnitTests
     {
+        private IRemotingRefService remotingRefService;
+
+        [SetUp]
+        public void Init()
+        {
+            RefDataTypeContainer
+                .ConnectTo(new Uri(ConfigurationManager.AppSettings["RemoteRefURL"]))
+                .FromApplication("Fanex.NegativeBalance.Service")
+                .RegisterSupportedLanguages("en-US", "zh-CN");
+
+            remotingRefService = new RemotingRefService();
+        }
+
         [Test]
         public void Execute_Always_ReturnRightContent()
         {
@@ -17,7 +32,7 @@ namespace NegativeBalance.UnitTests.Services
             var expected = TestLoader.DataLoader<MatchInfo>("MatchInfo-expected.json");
 
             // Act
-            var service = new TransformServiceImp();
+            var service = new TransformServiceImp(remotingRefService);
             var result = service.Execute("12bet", rawMatchInfo, 1);
 
             // Assert
@@ -46,7 +61,7 @@ namespace NegativeBalance.UnitTests.Services
             var expected = new MatchInfo();
 
             // Act
-            var service = new TransformServiceImp();
+            var service = new TransformServiceImp(remotingRefService);
             var result = service.Execute("12bet", null, 1);
 
             // Assert
