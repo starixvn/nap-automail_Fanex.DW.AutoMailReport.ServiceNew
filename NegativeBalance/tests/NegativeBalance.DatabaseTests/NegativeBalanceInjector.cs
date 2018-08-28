@@ -1,4 +1,5 @@
 ﻿using Fanex.Data.Repository;
+using Fanex.RemotingRef;
 using Fanex.Service.Core;
 using NegativeBalance.Business.Services;
 using ONEbook.UM.Services;
@@ -22,6 +23,7 @@ namespace NegativeBalance.DatabaseTests
             container.Register<MailDeliverService, MailDeliverServiceImp>();
             container.Register<RecipientService, RecipientServiceImp>();
             container.Register<BalanceNotificationService, BalanceNotificationServiceImp>();
+            container.Register<IRemotingRefService, RemotingRefService>();
         }
     }
 }

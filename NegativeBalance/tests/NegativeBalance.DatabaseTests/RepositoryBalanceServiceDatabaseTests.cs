@@ -19,6 +19,7 @@ namespace NegativeBalance.DatabaseTests
             var container = new Container();
             FanexDataRegisterService.ConfigureFanexData();
             NegativeBalanceInjector.Register(container);
+            NegativeBalanceRemotingRefService.Register();
             dynamicRepository = container.GetInstance<IDynamicRepository>();
             transformService = container.GetInstance<TransformService>();
         }

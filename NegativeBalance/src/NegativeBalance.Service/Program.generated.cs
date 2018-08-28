@@ -11,6 +11,7 @@ namespace Topshelf.SimpleInjector.QuickStart.Content
             NegativeBalanceInjector.Register(container);
             container.Verify(VerificationOption.VerifyOnly);
             FanexDataRegisterService.ConfigureFanexData();
+            NegativeBalanceRemotingRefService.Register();
 
             HostFactory.Run(config =>
             {
