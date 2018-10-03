@@ -207,6 +207,12 @@
     <Content Include="Templates\MatchSettledLogGroup7.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\MailRecordFromDatabase-FullCC_BCC-expected.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\MailRecordFromDatabase-Full_BCC-expected.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\NegativeBalance.Business\NegativeBalance.Business.csproj">

@@ -10,8 +10,6 @@
 
         public string CcList { get; set; }
 
-        public string BccList { get; set; }
-
         public bool IsAvailable { get; set; }
     }
 }

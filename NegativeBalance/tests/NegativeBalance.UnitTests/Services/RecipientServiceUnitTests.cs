@@ -19,7 +19,7 @@ namespace NegativeBalance.UnitTests.Services
             var appConfig = CreateAppConfig(true);
             SystemTime.Set(new System.DateTime(2017, 01, 01, 01, 01, 01));
             appConfigService.Configurations.Returns(appConfig);
-            var site = new Site { ToList = "mail.from.database@a.com", CcList = string.Empty, BccList = string.Empty, LicenseeName = "12bet", SiteId = 1, IsAvailable = true };
+            var site = new Site { ToList = "mail.from.database@a.com", CcList = string.Empty, LicenseeName = "12bet", SiteId = 1, IsAvailable = true };
             var content = "body";
             var expected = TestLoader.DataLoader<MailRecord>("MailRecordFromConfig-expected.json");
 
@@ -32,16 +32,62 @@ namespace NegativeBalance.UnitTests.Services
         }
 
         [Test]
-        public void CreateMail_SendMailFromDatabase_ReturnRightContent()
+        public void CreateMail_SendMailFromDatabase_ReturnRightContent_Empty_CC_and_Bcc()
         {
             // Arrange
             var appConfigService = Substitute.For<ApplicationConfigurationService>();
             var appConfig = CreateAppConfig(false);
             SystemTime.Set(new System.DateTime(2017, 01, 01, 01, 01, 01));
             appConfigService.Configurations.Returns(appConfig);
-            var site = new Site { ToList = "mail.from.database@a.com", CcList = string.Empty, BccList = string.Empty, LicenseeName = "bodog", SiteId = 1, IsAvailable = true };
+            var site = new Site { ToList = "mail.from.database@a.com", CcList = string.Empty, LicenseeName = "bodog", SiteId = 1, IsAvailable = true };
             var content = "body";
             var expected = TestLoader.DataLoader<MailRecord>("MailRecordFromDatabase-expected.json");
+
+            // Act
+            var service = new RecipientServiceImp(appConfigService);
+            var result = service.CreateMail(site, content);
+
+            // Assert
+            Assert.That(result, IsDeeplyEqual.To(expected));
+        }
+
+        [Test]
+        public void CreateMail_SendMailFromDatabase_ReturnRightContent_Full_CC_and_Bcc()
+        {
+            // Arrange
+            var appConfigService = Substitute.For<ApplicationConfigurationService>();
+            var appConfig = CreateAppConfig(false);
+            appConfig.MailCc = "MailCc@MailCc.com";
+            appConfig.MailBcc = "MailBcc@MailBcc.com";
+
+            SystemTime.Set(new System.DateTime(2017, 01, 01, 01, 01, 01));
+            appConfigService.Configurations.Returns(appConfig);
+            var site = new Site { ToList = "mail.from.database@a.com", CcList = "CcList@CcList.com", LicenseeName = "bodog", SiteId = 1, IsAvailable = true };
+            var content = "body";
+            var expected = TestLoader.DataLoader<MailRecord>("MailRecordFromDatabase-FullCC_BCC-expected.json");
+
+            // Act
+            var service = new RecipientServiceImp(appConfigService);
+            var result = service.CreateMail(site, content);
+
+            // Assert
+            Assert.That(result, IsDeeplyEqual.To(expected));
+        }
+
+        [Test]
+        public void CreateMail_SendMailFromDatabase_ReturnRightContent_Full_Bcc()
+        {
+            // Arrange
+            var appConfigService = Substitute.For<ApplicationConfigurationService>();
+            var appConfig = CreateAppConfig(false);
+            appConfig.MailCc = "MailCc@MailCc.com";
+            appConfig.MailBcc = "MailBcc@MailBcc.com";
+
+            SystemTime.Set(new System.DateTime(2017, 01, 01, 01, 01, 01));
+            appConfigService.Configurations.Returns(appConfig);
+            var site = new Site { ToList = "mail.from.database@a.com", LicenseeName = "bodog", SiteId = 1, IsAvailable = true };
+            var content = "body";
+            var expected = TestLoader.DataLoader<MailRecord>("MailRecordFromDatabase-Full_BCC-expected.json");
 
             // Act
             var service = new RecipientServiceImp(appConfigService);

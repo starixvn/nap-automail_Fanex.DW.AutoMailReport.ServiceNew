@@ -4,7 +4,7 @@
   "IsSendMailFromConfig": true,
   "MailTo": "robert.tran@starixsoft.com",
   "MailCc": "",
-  "MailBcc": "",
+  "MailBcc": "qa@starixsoft.com",
   "Subject": "Automail Report - {0} - List of Members with Negative Balance By Match - {1}",
-  "Title": "Auto Generated Report Administrator" 
+  "Title": "Auto Generated Report Administrator"
 }
