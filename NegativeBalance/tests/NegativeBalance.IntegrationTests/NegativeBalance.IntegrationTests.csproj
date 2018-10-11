@@ -185,7 +185,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Local\DBACC.bodb_ACC.bodbAdminNet.xml">
+    <Content Include="App_Data\Local\DBOIC.bodb_OIC.bodbAdminNet.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\Local\DBLOG.bodb_CustomerLog.bodbAdminNet.xml">

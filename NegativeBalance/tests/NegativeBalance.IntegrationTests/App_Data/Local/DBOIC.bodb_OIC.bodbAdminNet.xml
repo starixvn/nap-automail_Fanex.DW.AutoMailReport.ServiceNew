@@ -1,6 +1,6 @@
 ﻿<Functions>
   <Function Name="Negative Balance Report">
-    <Setting Key="Acc_MailingListSel" SpName="Acc_MailingListSel_xtest" DbName="DBACC.bodb_ACC.bodbAdminNet" TimeOut="0">
+    <Setting Key="BetDeletionReport_MailingList_Select" SpName="BetDeletionReport_MailingList_Select_uat1" DbName="DBOIC.bodb_OIC.bodbAdminNet" TimeOut="0">
       <Mapping DataField="Site" ObjectProperty="LicenseeName"/>
       <Mapping DataField="IsAvailabe" ObjectProperty="IsAvailable"/>
     </Setting>

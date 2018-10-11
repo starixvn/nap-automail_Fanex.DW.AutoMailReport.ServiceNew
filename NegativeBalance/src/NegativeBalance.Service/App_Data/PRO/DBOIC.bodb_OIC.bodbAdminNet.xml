@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Functions SiteId="25" SiteName="Auto Mail">
-  <Function Name="Negative Balance">
-    <Setting Key="Acc_MailingListSel" SpName="Acc_MailingListSel" DbName="DBACC.bodb_ACC.bodbAdminNet" TimeOut="0">
+  <Function Name="Negative Balance">    
+    <Setting Key="BetDeletionReport_MailingList_Select" SpName="BetDeletionReport_MailingList_Select" DbName="DBOIC.bodb_OIC.bodbAdminNet" TimeOut="0">
       <Mapping DataField="Site" ObjectProperty="LicenseeName"/>
       <Mapping DataField="IsAvailabe" ObjectProperty="IsAvailable"/>
     </Setting>
-	</Function>
+  </Function>
 </Functions>
