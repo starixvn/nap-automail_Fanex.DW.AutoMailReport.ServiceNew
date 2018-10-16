@@ -16,7 +16,7 @@ namespace NegativeBalance.Business.Services
         public MailRecord CreateMail(Site site, string content)
         {
             var appConfig = appConfigService.Configurations;
-            //site.CcList = string.IsNullOrEmpty(site.CcList) ? appConfig.MailCc : site.CcList + ";" + appConfig.MailCc;
+            
             return new MailRecord
             {
                 Body = content,
