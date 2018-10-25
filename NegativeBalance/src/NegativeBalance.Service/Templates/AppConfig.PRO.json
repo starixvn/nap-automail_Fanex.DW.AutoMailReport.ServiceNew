@@ -5,6 +5,6 @@
   "MailTo": "",
   "MailCc": "",
   "MailBcc": "automail@enpine.com;cs@oneonone-solutions.com",
-  "Subject": "Automail Report - {0} - List of Members with Negative Balance By Match - {1}",
-  "Title": "Auto Generated Report Administrator"
+  "Subject": "[{0}] - 出現負數會員 | Negative Balance List ({1})",
+  "Title": "体育系统通知/Sportsbook Notice"
 }
