@@ -1,5 +1,5 @@
 ﻿{
-  "ExportDataDirectory": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\UAT\\ListofSMAReachingAllowableMaxLoss",
+  "ExportDataDirectory": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\ListofSMAReachingAllowableMaxLoss",
   "ExcelPasswordProtected": "",
   "Subject": "Automail Report - List of SMA Reaching Allowable Max Loss - {0} 10:00:00 PM (GMT-4)",
   "Title": "Auto Generated Report Administrator",
