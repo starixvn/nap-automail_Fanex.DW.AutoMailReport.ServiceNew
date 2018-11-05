@@ -26,13 +26,13 @@ namespace MaxLossMonitoring.UnitTests.Services
         {
             // Arrange
             var appConfig = Substitute.For<ApplicationConfigurationService>();
-            appConfig.Configurations.Returns(new AppConfig { ExportDataDirectory = "\\\\10.70.70.242\\www\\Olympus\\Fanex.Excel\\ListofSMAReachingAllowableMaxLoss", ExcelPasswordProtected = string.Empty });
+            appConfig.Configurations.Returns(new AppConfig { ExportDataDirectory = "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\ListofSMAReachingAllowableMaxLoss", ExcelPasswordProtected = string.Empty });
             var data = JsonConvert.DeserializeObject<Tuple<List<MonitorList>, List<MonitorListRaw>>>(File.ReadAllText("Templates/ExpectedQueryMonitorListForEmail.json"));
             var container = new Container();
             SimpleInjectorService.Register(container);
             var excel = container.GetInstance<ExcelPackage>();
             SystemTime.Set(new DateTime(2018, 03, 02));
-            var expected = @"\\10.70.70.242\www\Olympus\Fanex.Excel\ListofSMAReachingAllowableMaxLoss\2018\03\List_Of_SMA_Reaching_Allowable_Max_Loss_For_2018_03_02.xlsx";
+            var expected = @"\\10.18.200.120\www\Olympus\Fanex.Excel\ListofSMAReachingAllowableMaxLoss\2018\03\List_Of_SMA_Reaching_Allowable_Max_Loss_For_2018_03_02.xlsx";
 
             // Action
             var service = new ExcelServiceImp(appConfig, excel);

@@ -32,6 +32,10 @@
     <CodeAnalysisRuleSet>TOControl.CustomerMovement.Executing.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
+    <!-- Exclude the project from analysis -->
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
+  <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
