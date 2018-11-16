@@ -38,7 +38,7 @@ namespace NegativeBalance.UnitTests.Services
 
             // Act
             var service = new RepositoryBalanceServiceImp(dynamicRepository, transformService);
-            var result = service.QuerySites();
+            var result = service.QuerySites(false);
 
             // Assert
             Assert.That(result, IsDeeplyEqual.To(expected));

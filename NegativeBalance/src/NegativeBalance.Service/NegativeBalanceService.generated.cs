@@ -70,7 +70,7 @@ namespace Topshelf.SimpleInjector.QuickStart.Content
                 }
 
                 isOnProcessing = true;
-                notificationService.Execute();
+                notificationService.Execute(appConfigService.Configurations.IsTest);
                 isOnProcessing = false;
             }
             catch (Exception ex)

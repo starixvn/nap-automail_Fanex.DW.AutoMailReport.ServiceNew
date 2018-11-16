@@ -31,12 +31,12 @@ namespace NegativeBalance.UnitTests.Services
         {
             // Arrange
             Initialize();
-            repository.QuerySites().Returns(new List<Site> { new Site { LicenseeName = "12bet" } });
+            repository.QuerySites(false).Returns(new List<Site> { new Site { LicenseeName = "12bet" } });
             dataService.QueryMatchesBySite(Arg.Any<Site>()).Returns(new Tuple<List<Match>, string>(new List<Match>(), "12bet"));
 
             // Act
             var service = new BalanceNotificationServiceImp(repository, dataService, fileService, recipientService, mailDeliverService);
-            service.Execute();
+            service.Execute(false);
 
             // Assert
             fileService.DidNotReceive().ReadContent(Arg.Any<List<Match>>());
@@ -50,14 +50,14 @@ namespace NegativeBalance.UnitTests.Services
         {
             // Arrange
             Initialize();
-            repository.QuerySites().Returns(new List<Site> { new Site { LicenseeName = "12bet" } });
+            repository.QuerySites(false).Returns(new List<Site> { new Site { LicenseeName = "12bet" } });
             var data = TestLoader.DataLoader<Tuple<List<Match>, string>>("DataService-QueryMatchesBySite-expected.json");
             dataService.QueryMatchesBySite(Arg.Any<Site>()).Returns(data);
             mailDeliverService.Send(Arg.Any<MailRecord>()).Returns(false);
 
             // Act
             var service = new BalanceNotificationServiceImp(repository, dataService, fileService, recipientService, mailDeliverService);
-            service.Execute();
+            service.Execute(false);
 
             // Assert
             repository.DidNotReceive().UpdateMatchSent(Arg.Any<string>());
@@ -68,14 +68,14 @@ namespace NegativeBalance.UnitTests.Services
         {
             // Arrange
             Initialize();
-            repository.QuerySites().Returns(new List<Site> { new Site { LicenseeName = "12bet" } });
+            repository.QuerySites(false).Returns(new List<Site> { new Site { LicenseeName = "12bet" } });
             var data = TestLoader.DataLoader<Tuple<List<Match>, string>>("DataService-QueryMatchesBySite-expected.json");
             dataService.QueryMatchesBySite(Arg.Any<Site>()).Returns(data);
             mailDeliverService.Send(Arg.Any<MailRecord>()).Returns(true);
 
             // Act
             var service = new BalanceNotificationServiceImp(repository, dataService, fileService, recipientService, mailDeliverService);
-            service.Execute();
+            service.Execute(false);
 
             // Assert
             repository.Received().UpdateMatchSent(Arg.Any<string>());

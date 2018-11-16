@@ -1,10 +1,10 @@
 ﻿{
   "IntervalInSecond": 15,
-  "IsTest": false,
+  "IsTest": true,
   "IsSendMailFromConfig": true,
   "MailTo": "robert.tran@starixsoft.com",
   "MailCc": "",
   "MailBcc": "qa@starixsoft.com",
   "Subject": "[{0}] - 出現負數會員 | Negative Balance List ({1})",
-  "Title": "体育系统通知 | Sportsbook Notice"
+  "Title": "一本体育通知 | ONEbook Sports Notice"
 }

@@ -9,7 +9,7 @@ namespace NegativeBalance.Business.Services
 {
     public interface RepositoryBalanceService
     {
-        List<Site> QuerySites();
+        List<Site> QuerySites(bool isTest);
 
         List<CustomerBalanceInfo> QueryCustomerBalanceInfoBySite(string site, bool isTest);
 
@@ -29,8 +29,16 @@ namespace NegativeBalance.Business.Services
             this.transformService = transformService;
         }
 
-        public List<Site> QuerySites()
+        public List<Site> QuerySites(bool isTest)
         {
+            if(isTest)
+            {
+                return new List<Site>
+                {
+                    new Site { IsAvailable = true, LicenseeName = "spondemo", ToList = "testing@starixsoft.com" }
+                };
+            }
+
             return dynamicRepository.Fetch<Site>(new SelectMailingListCriteria())
                 .Where(s => s.IsAvailable)
                 .ToList();

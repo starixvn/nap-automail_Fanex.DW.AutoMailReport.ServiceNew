@@ -6,7 +6,7 @@ namespace NegativeBalance.Business.Services
 {
     public interface BalanceNotificationService
     {
-        void Execute();
+        void Execute(bool isTest);
     }
 
     public class BalanceNotificationServiceImp : BalanceNotificationService
@@ -31,9 +31,9 @@ namespace NegativeBalance.Business.Services
             this.mailDeliverService = mailDeliverService;
         }
 
-        public void Execute()
+        public void Execute(bool isTest)
         {
-            repository.QuerySites()
+            repository.QuerySites(isTest)
                 .ForEach(site =>
                 {
                     var data = dataService.QueryMatchesBySite(site);
