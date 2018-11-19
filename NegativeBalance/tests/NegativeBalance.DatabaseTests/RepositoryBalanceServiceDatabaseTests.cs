@@ -32,7 +32,7 @@ namespace NegativeBalance.DatabaseTests
 
             // Act
             var service = new RepositoryBalanceServiceImp(dynamicRepository, transformService);
-            var mailList = service.QuerySites();
+            var mailList = service.QuerySites(false);
             var result = mailList.Count > 0;
 
             // Assert
