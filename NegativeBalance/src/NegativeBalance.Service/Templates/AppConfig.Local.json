@@ -1,7 +1,7 @@
 ﻿{
   "IntervalInSecond": 15,
   "IsTest": false,
-  "IsSendMailFromConfig": false,
+  "IsSendMailFromConfig": true,
   "MailTo": "robert.tran@starixsoft.com",
   "MailCc": "qa@starixsoft.com",
   "MailBcc": "qa@starixsoft.com",

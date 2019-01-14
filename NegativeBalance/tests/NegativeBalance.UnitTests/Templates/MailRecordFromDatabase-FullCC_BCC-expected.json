@@ -21,7 +21,7 @@
   },
   "MailTo": "mail.from.database@a.com",
   "Title": "title",
-  "Subject": "Automail Report - Haydock - List of Members with Negative Balance By Match - 01/01/2017 01:01:01 AM",
+  "Subject": "Automail Report - HAYDOCK - List of Members with Negative Balance By Match - 01/01/2017 01:01:01 AM",
   "Body": "body",
   "MailCc": "CcList@CcList.com;MailCc@MailCc.com",
   "MailFrom": "",
