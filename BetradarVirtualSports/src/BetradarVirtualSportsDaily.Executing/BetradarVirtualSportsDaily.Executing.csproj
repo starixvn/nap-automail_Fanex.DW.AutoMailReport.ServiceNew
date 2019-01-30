@@ -148,10 +148,10 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="BetradarVirtualSportsDaily.Executing.ruleset" />
-    <Content Include="App_Data\PRO\DBDWH.bodb_dwrs.dwrs.xml">
+    <Content Include="App_Data\PRO\DBWH.bodb_dwrs.dwrs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Data\UAT\DBDWH.bodb_dwrs.dwrs.xml">
+    <Content Include="App_Data\UAT\DBWH.bodb_dwrs.dwrs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Configuration\BetradarVirtualSportsDaily.Executing.Local.exe.config">
@@ -199,7 +199,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Local\DBDWH.bodb_dwrs.dwrs.xml">
+    <Content Include="App_Data\Local\DBWH.bodb_dwrs.dwrs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

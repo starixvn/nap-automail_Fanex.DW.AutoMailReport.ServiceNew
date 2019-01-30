@@ -157,10 +157,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <Content Include="App_Data\PRO\DBDWH.bodb_dwrs.dwrs.xml">
+    <Content Include="App_Data\PRO\DBWH.bodb_dwrs.dwrs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Data\UAT\DBDWH.bodb_dwrs.dwrs.xml">
+    <Content Include="App_Data\UAT\DBWH.bodb_dwrs.dwrs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Configuration\TopWinningAgent.Executing.Local.exe.config">
@@ -182,7 +182,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <Content Include="App_Data\Local\DBDWH.bodb_dwrs.dwrs.xml">
+    <Content Include="App_Data\Local\DBWH.bodb_dwrs.dwrs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\AppConfig.json">
