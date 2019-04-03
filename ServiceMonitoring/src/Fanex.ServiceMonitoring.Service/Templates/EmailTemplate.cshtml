@@ -1,0 +1,52 @@
+﻿@using Fanex.ServiceMonitoring.Models;
+@{
+    List<ServiceModel> services = Model.Item1;
+}
+<div style="font-size:10pt; font-family:Tahoma, Arial, Verdana, Sans-Serif;">
+    <div>
+        Dear All,<br /><br />
+
+
+        Please be notified that the services as below has been restarted because they are maybe hung for a while.<br />
+    </div>
+    <br />
+    <table border="1" 
+            id="display" style="border-color:#c5c5c5; 
+            border-style:Solid;border-collapse:collapse;
+            font-size:10pt; font-family:Tahoma, Arial, Verdana, Sans-Serif;">
+        <thead>
+            <tr style="height: 25px;background-color:#3C5EA5; color: #FFFFFF; font-weight: bold;">
+                <td style="text-align:center; width:auto;">Service Name</td>
+                <td style="text-align:center; width:120px;">Interval</td>
+                <td style="text-align:center; width:120px;">IsActive</td>
+                <td style="text-align:center; width:120px;">IPServer</td>
+                <td style="text-align:center; width:200px;">Last Update</td>
+                <td style="text-align:center; width:150px;">DIFF - In Second</td>
+                <td style="text-align:center; width:auto;">Description</td>                
+            </tr>
+        </thead>
+        <tbody>
+            @{ 
+                foreach (ServiceModel service in services)
+                {
+                    <tr style="height: 25px; font-size:9pt; font-family:Tahoma, Arial, Verdana, Sans-Serif">
+                        <td style="text-align:left;">@service.ServiceName</td>
+                        <td style="text-align:center;">@service.Interval</td>
+                        <td style="text-align:center;">@service.IsActive</td>
+                        <td style="text-align:center;">@service.IPServer</td>
+                        <td style="text-align:center;">@service.LastUpdate.ToString("MM/dd/yyyy hh:mm:ss tt")</td>
+                        <td style="text-align:center;">@service.Diff.ToString("#,##0")s</td>
+                        <td style="text-align:left;">@service.Description</td>                        
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <br />
+    <div>
+        Kindly check/monitor yourself and carry out timely actions accordingly. <br /> <br />
+
+        Regards,<br /><br />
+        This is an auto mail. Please do not reply.
+    </div>
+</div>
