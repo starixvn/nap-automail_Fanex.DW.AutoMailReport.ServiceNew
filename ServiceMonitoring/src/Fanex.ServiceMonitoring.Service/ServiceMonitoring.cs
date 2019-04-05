@@ -28,18 +28,18 @@ namespace Fanex.ServiceMonitoring.Service
             this.mailService = mailService;
             this.log = log;
 
-          //  Register();
+            Register();
         }
 
         public bool Start()
         {
-            //timer.Start();
+            timer.Start();
             return true;
         }
 
         public bool Stop()
         {
-            //timer.Stop();
+            timer.Stop();
             return true;
         }
 

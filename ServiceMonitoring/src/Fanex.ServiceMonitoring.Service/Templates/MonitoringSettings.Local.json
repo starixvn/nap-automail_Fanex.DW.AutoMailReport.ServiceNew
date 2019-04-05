@@ -1,6 +1,6 @@
 ﻿{
   "SentryClientKey": "https://ec3ebc7f30e544ae875440513d4e06b7@sentry.nexdev.net/32",
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
-  "IntervalInSecond": 15,
+  "IntervalInSecond": 600,
   "MailTo": "robert.tran@starixsoft.com"
 }

@@ -15,8 +15,8 @@ namespace Topshelf.SimpleInjector.QuickStart.Content
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
             RegisterService.RegisterServices();
 
-          //  RegisterContainer();
-            //SetupTopShelf();
+            RegisterContainer();
+            SetupTopShelf();
         }
 
         private static void RegisterContainer()

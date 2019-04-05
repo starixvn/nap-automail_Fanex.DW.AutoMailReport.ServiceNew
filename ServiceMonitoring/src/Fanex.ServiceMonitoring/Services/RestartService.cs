@@ -16,6 +16,8 @@ namespace Fanex.ServiceMonitoring.Services
     public class RestartServiceImp : RestartService
     {
         private readonly Log log;
+        private const int Milisecond = 1000;
+        private const int SleepingTime = 15;
 
         public RestartServiceImp(Log log)
         {
@@ -61,8 +63,19 @@ namespace Fanex.ServiceMonitoring.Services
             if (result != null)
             {
                 result.Start();
-                service.Description = $"Restarted successfully";
-                service.IsRestartSuccessfully = true;
+
+                System.Threading.Thread.Sleep(SleepingTime * Milisecond);
+                result = ServiceController.GetServices().FirstOrDefault(s => s.ServiceName == service.ServiceName);
+                if (result.Status != ServiceControllerStatus.Running)
+                {
+                    service.Description = $"The service {service.ServiceName} has been restarted UNSUCCESSFULLY, status always Starting or {result.Status.ToString()} after {SleepingTime}s";
+                    service.IsRestartSuccessfully = false;
+                }
+                else
+                {
+                    service.Description = $"Restarted successfully";
+                    service.IsRestartSuccessfully = true;
+                }
             }
             else
             {
