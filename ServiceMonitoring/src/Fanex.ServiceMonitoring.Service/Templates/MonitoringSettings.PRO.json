@@ -1,6 +1,6 @@
 ﻿{
-  "SentryClientKey": "http://6e2245d2a8354a77a99b09e0b91c6a77@10.40.40.47:801/44",
-  "CategorySentryLog": "NAP-Report-Service-UAT",
+  "SentryClientKey": "http://874926f01ea946cbb7ffa9d701404834@10.40.40.47:801/45",
+  "CategorySentryLog": "NAP-Report-Service",
   "IntervalInSecond": 300,
   "MailTo": "robert.tran@starixsoft.com"
 }

@@ -5,13 +5,13 @@ using Fanex.Data;
 using Fanex.Data.OldConnectionStringProvider;
 using Fanex.Data.Repository;
 using Fanex.Logging;
-using Fanex.Logging.Sentry;
+using Fanex.Logging.Sentry.RavenClient;
 using Fanex.ServiceMonitoring.Models;
 using Fanex.ServiceMonitoring.Services;
 using Newtonsoft.Json;
 using ONEbook.UM.Services;
 using ONEbook.UM.Services.Impl;
-using Sentry;
+using SharpRaven;
 using SimpleInjector;
 
 namespace Fanex.ServiceMonitoring.Service

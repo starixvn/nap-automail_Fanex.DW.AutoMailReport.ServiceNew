@@ -1,5 +1,5 @@
 ﻿{
-  "SentryClientKey": "https://83e65fbd1aed4df3856dfe611b5aef8b@172.16.4.109:800/10",
+  "SentryClientKey": "http://83e65fbd1aed4df3856dfe611b5aef8b@172.16.4.109:800/10",
   "CategorySentryLog": "NAP-Report-Service-SIT",
   "IntervalInSecond": 300,
   "MailTo": "robert.tran@starixsoft.com"

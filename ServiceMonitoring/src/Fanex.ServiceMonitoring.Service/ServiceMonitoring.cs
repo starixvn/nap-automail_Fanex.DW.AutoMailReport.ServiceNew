@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Timers;
 using Fanex.ServiceMonitoring.Models;
 using Fanex.ServiceMonitoring.Services;
@@ -77,8 +78,12 @@ namespace Fanex.ServiceMonitoring.Service
                 isOnProcessing = false;
             }
             catch (Exception exception)
-            {
+            {                
                 isOnProcessing = false;
+                
+                File.WriteAllText(@"E:\1.Service\2.Nap-Reports-Auto-Mail-Services\ServiceMonitoring.txt", exception.Message);
+               // File.WriteAllText(@"D:\Web\10.Nap-AutoMail\ServiceMonitoring.txt", exception.Message);
+
                 log.Log(exception);
             }
         }
