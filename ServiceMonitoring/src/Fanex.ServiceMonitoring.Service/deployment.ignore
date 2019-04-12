@@ -1,0 +1,9 @@
+\\*.local.exe.config
+\\*.sit.exe.config
+\\*.uat.exe.config
+\\*.pro.exe.config
+\\*.uat.json
+\\*.pro.json
+\\*.local.json
+\\*.sit.json
+\\*.uat.json

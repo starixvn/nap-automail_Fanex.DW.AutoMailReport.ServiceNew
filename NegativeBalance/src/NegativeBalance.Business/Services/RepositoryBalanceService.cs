@@ -31,7 +31,7 @@ namespace NegativeBalance.Business.Services
 
         public List<Site> QuerySites(bool isTest)
         {
-            if(isTest)
+            if (isTest)
             {
                 return new List<Site>
                 {
@@ -52,7 +52,7 @@ namespace NegativeBalance.Business.Services
         public Tuple<MatchInfo, List<MatchSettleLog>> QueryMatchSettledLog(string licenseeName, int matchId, int groupId)
         {
             var result = dynamicRepository.FetchMultiple<RawMatchInfo, MatchSettleLog>(new SelectMatchLogCriteria { MatchId = matchId, GroupId = groupId });
-            var matchInfo = transformService.Execute(licenseeName, result.Item1.FirstOrDefault(), groupId);            
+            var matchInfo = transformService.Execute(licenseeName, result.Item1.FirstOrDefault(), groupId);
 
             return new Tuple<MatchInfo, List<MatchSettleLog>>(matchInfo, result.Item2.ToList());
         }
