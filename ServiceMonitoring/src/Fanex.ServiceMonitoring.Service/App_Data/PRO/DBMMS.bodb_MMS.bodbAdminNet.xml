@@ -1,0 +1,6 @@
+﻿<Functions>
+  <Function Name="Mail Report">
+    <Setting Key="Mail_Report_GetAllSchedule" SpName="Mail_Report_GetAllSchedule" DbName="DBMMS.bodb_MMS.bodbAdminNet" />
+    <Setting Key="Mail_Report_GetMailTaskList" SpName="Mail_Report_GetMailTaskList" DbName="DBMMS.bodb_MMS.bodbAdminNet" />
+  </Function>
+</Functions>

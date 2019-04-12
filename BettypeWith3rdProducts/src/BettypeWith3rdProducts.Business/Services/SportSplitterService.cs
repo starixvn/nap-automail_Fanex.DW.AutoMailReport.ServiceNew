@@ -13,6 +13,7 @@ namespace BettypeWith3rdProducts.Business.Services
 
     public class SportSplitterServiceImp : SportSplitterService
     {
+        private const int MaxNumberOfColumnsOnEachSection = 70;
         private readonly RepositoryBettypeProductService repositoryService;
         private readonly RawDataSourceService rawDataSourceService;
 
@@ -26,7 +27,7 @@ namespace BettypeWith3rdProducts.Business.Services
             firstIndexSportSection = 0;
         }
 
-        public virtual int NumberOfColumnsOnEachSection => 70;
+        public virtual int NumberOfColumnsOnEachSection => MaxNumberOfColumnsOnEachSection;
 
         public Dictionary<string, List<DataTable>> Execute(SourceMapping sourceMapping)
         {

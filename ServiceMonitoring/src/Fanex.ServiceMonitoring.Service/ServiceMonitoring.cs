@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Net;
 using System.Timers;
 using Fanex.ServiceMonitoring.Criterias;
-using Fanex.ServiceMonitoring.Models;
 using Fanex.ServiceMonitoring.Services;
 using ONEbook.UM.Services;
 
@@ -17,13 +14,18 @@ namespace Fanex.ServiceMonitoring.Service
         private readonly IUMControlAdapter umcontrolAdapter;
         private readonly DataService dataService;
         private readonly RestartService restartService;
-        private readonly MailService mailService;
+        private readonly MailService mailService;        
         private readonly Log log;
 
         private Timer timer;
         private bool isOnProcessing;
 
-        public ServiceMonitoring(IUMControlAdapter umcontrolAdapter, DataService dataService, RestartService restartService, MailService mailService, Log log)
+        public ServiceMonitoring(
+            IUMControlAdapter umcontrolAdapter,
+            DataService dataService,
+            RestartService restartService,
+            MailService mailService,
+            Log log)
         {
             this.umcontrolAdapter = umcontrolAdapter;
             this.dataService = dataService;
@@ -34,22 +36,15 @@ namespace Fanex.ServiceMonitoring.Service
             Register();
         }
 
-        public bool Start()
+        public void Start()
         {
-            timer.Start();
-            return true;
+            timer.Start();            
         }
-
-        public bool Stop()
-        {
-            timer.Stop();
-            return true;
-        }
-
+     
         private void Register()
         {
             timer = new Timer();
-            timer.Interval = AppConfigService.AppConfig.IntervalInSecond * Milliseconds;
+            timer.Interval = AppConfigService.AppConfig.IntervalInSecondServiceMonitor * Milliseconds;
             timer.Elapsed += (sender, e) =>
             {
                 if (!isOnProcessing)
@@ -61,8 +56,6 @@ namespace Fanex.ServiceMonitoring.Service
 
         private void Execute()
         {
-            List<ServiceModel> services;
-
             try
             {
                 if (umcontrolAdapter.GetUnderMaintenanceTime().IsUnderMaintenanceTime)
@@ -73,14 +66,16 @@ namespace Fanex.ServiceMonitoring.Service
                 isOnProcessing = true;
 
                 CheckIn();
-                services = dataService.QueryService();
+
+                var services = dataService.QueryService();
                 restartService.Execute(services);
                 dataService.WriteLogServiceRestartTime(services);
-                mailService.SendMail(services);                
+                mailService.SendMail(services);
+
                 isOnProcessing = false;
             }
             catch (Exception exception)
-            {                
+            {
                 isOnProcessing = false;
                 log.Log(exception);
             }
@@ -90,7 +85,7 @@ namespace Fanex.ServiceMonitoring.Service
         {
             var criteria = new ServiceMonitoringCheckInCriteria
             {
-                Interval = AppConfigService.AppConfig.IntervalInSecond,
+                Interval = AppConfigService.AppConfig.IntervalInSecondServiceMonitor,
                 IPServer = GetLocalIP(),
                 OrderBy = 255,
                 ServiceName = "Fanex.ServiceMonitoring.Service-MAIN"

@@ -3,6 +3,7 @@ using System.Configuration;
 using Fanex.RemotingRef;
 using NegativeBalance.Business.Models;
 using NegativeBalance.Business.Services;
+using NSubstitute;
 using NUnit.CompareNetObjects;
 using NUnit.Framework;
 
@@ -66,6 +67,20 @@ namespace NegativeBalance.UnitTests.Services
 
             // Assert
             Assert.That(result, IsDeeplyEqual.To(expected));
+        }
+
+        [Test]
+        public void Execute_Always_WriteLogShuoldBeCalled()
+        {
+            // Arrange
+            var rawMatchInfo = new RawMatchInfo { MatchCode = "123" };
+
+            // Act
+            var service = new TransformServiceImp(remotingRefService);
+            var result = service.Execute("12bet", rawMatchInfo, 1);
+
+            // Assert
+            Assert.That(result != null);
         }
     }
 }

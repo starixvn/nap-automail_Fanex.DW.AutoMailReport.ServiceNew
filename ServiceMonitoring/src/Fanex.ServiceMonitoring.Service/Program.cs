@@ -33,7 +33,7 @@ namespace Topshelf.SimpleInjector.QuickStart.Content
             {
                 config.UseSimpleInjector(container);
 
-                config.Service<ServiceMonitoring>(s =>
+                config.Service<StartInstance>(s =>
                 {
                     s.ConstructUsingSimpleInjector();
                     s.WhenStarted((service, control) => service.Start());
