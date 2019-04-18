@@ -250,6 +250,9 @@
     <Content Include="Templates\Fanex.ServiceMonitoring.Service.UAT.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\Fanex.ServiceMonitoring.Service.PRO.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="readme.txt" />
