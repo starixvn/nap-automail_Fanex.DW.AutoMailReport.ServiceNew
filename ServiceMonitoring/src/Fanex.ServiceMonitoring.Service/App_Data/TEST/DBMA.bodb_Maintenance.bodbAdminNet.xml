@@ -2,5 +2,6 @@
 	<Function Name="Service Monitoring">
     <Setting Key="ServiceMonitoring_Select" SpName="ServiceMonitoring_Select" DbName="DBMA.bodb_Maintenance.bodbAdminNet" Timeout="0"></Setting>
     <Setting Key="ServiceMonitoringDetail_Insert" SpName="ServiceMonitoringDetail_Insert" DbName="DBMA.bodb_Maintenance.bodbAdminNet" Timeout="0"></Setting>
+    <Setting Key="ServiceMonitoring_CheckIn" SpName="ServiceMonitoring_CheckIn" DbName="DBMA.bodb_Maintenance.bodbAdminNet" Timeout="0"></Setting>
   </Function>
 </Functions>

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Fanex.Data;
 using Fanex.Data.Repository;
 using Fanex.ServiceMonitoring.Criterias;
 using Fanex.ServiceMonitoring.Models;
@@ -11,6 +12,8 @@ namespace Fanex.ServiceMonitoring.Services
         List<ServiceModel> QueryService();
 
         void WriteLogServiceRestartTime(List<ServiceModel> services);
+
+        void CheckIn(ServiceMonitoringCheckInCriteria criteria);
     }
 
     public class DataServiceImp : DataService
@@ -40,6 +43,11 @@ namespace Fanex.ServiceMonitoring.Services
                 var criteria = new LogServiceRestartTimeCriteria { ServiceId = service.ServiceId };
                 repository.Execute(criteria);
             }
+        }
+
+        public void CheckIn(ServiceMonitoringCheckInCriteria criteria)
+        {
+            repository.Execute(criteria);
         }
     }
 }
