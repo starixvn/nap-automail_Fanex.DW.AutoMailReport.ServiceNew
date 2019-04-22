@@ -191,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Criterias\LogServiceRestartTimeCriteria.cs" />
+    <Compile Include="Criterias\ServiceMonitoringCheckInCriteria.cs" />
     <Compile Include="Models\ConfigSettingModel.cs" />
     <Compile Include="Models\ServiceModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

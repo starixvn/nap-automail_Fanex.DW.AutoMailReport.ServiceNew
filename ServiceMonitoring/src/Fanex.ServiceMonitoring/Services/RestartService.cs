@@ -14,10 +14,11 @@ namespace Fanex.ServiceMonitoring.Services
     }
 
     public class RestartServiceImp : RestartService
-    {
-        private readonly Log log;
+    {        
         private const int Milisecond = 1000;
         private const int SleepingTime = 15;
+
+        private readonly Log log;
 
         public RestartServiceImp(Log log)
         {

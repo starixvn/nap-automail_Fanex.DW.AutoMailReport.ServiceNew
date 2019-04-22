@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Timers;
+using Fanex.ServiceMonitoring.Criterias;
 using Fanex.ServiceMonitoring.Models;
 using Fanex.ServiceMonitoring.Services;
 using ONEbook.UM.Services;
@@ -70,22 +72,46 @@ namespace Fanex.ServiceMonitoring.Service
 
                 isOnProcessing = true;
 
+                CheckIn();
                 services = dataService.QueryService();
                 restartService.Execute(services);
                 dataService.WriteLogServiceRestartTime(services);
-                mailService.SendMail(services);
-
+                mailService.SendMail(services);                
                 isOnProcessing = false;
             }
             catch (Exception exception)
             {                
                 isOnProcessing = false;
-                
-                File.WriteAllText(@"E:\1.Service\2.Nap-Reports-Auto-Mail-Services\ServiceMonitoring.txt", exception.Message);
-               // File.WriteAllText(@"D:\Web\10.Nap-AutoMail\ServiceMonitoring.txt", exception.Message);
-
                 log.Log(exception);
             }
+        }
+
+        private void CheckIn()
+        {
+            var criteria = new ServiceMonitoringCheckInCriteria
+            {
+                Interval = AppConfigService.AppConfig.IntervalInSecond,
+                IPServer = GetLocalIP(),
+                OrderBy = 255,
+                ServiceName = "Fanex.ServiceMonitoring.Service-MAIN"
+            };
+
+            dataService.CheckIn(criteria);
+        }
+
+        private static string GetLocalIP()
+        {
+            var ip = string.Empty;
+            IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
+            foreach (IPAddress addr in localIPs)
+            {
+                if (addr.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    ip = addr.ToString();
+                }
+            }
+
+            return ip;
         }
     }
 }
