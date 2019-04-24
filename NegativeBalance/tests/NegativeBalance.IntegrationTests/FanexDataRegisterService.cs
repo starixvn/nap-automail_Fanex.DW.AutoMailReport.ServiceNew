@@ -13,7 +13,7 @@ namespace NegativeBalance.IntegrationTests
             DbSettingProviderManager
                 .StartNewSession()
                 .Use(new OldConnectionStringProvider())
-                .UseDefaultDbSettingProvider($"~/App_Data/Local", enableWatching: true)
+                .UseDefaultDbSettingProvider($"~/App_Data/Local")
                 .Run();
         }
     }

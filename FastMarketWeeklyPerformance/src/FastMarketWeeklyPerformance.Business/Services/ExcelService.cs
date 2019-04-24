@@ -62,13 +62,13 @@ namespace FastMarketWeeklyPerformance.Business.Services
 
         private static void FormatContent(ExcelWorksheet excelWorksheet, int rowCount, int columnCount)
         {
-            var startRowIndex = 8;
-            var endRowIndex = rowCount + startRowIndex - 1;
-            var startColumnIndex = 2;
-            var endColumnIndex = startColumnIndex + columnCount;
-            for (var columnIndex = startColumnIndex; columnIndex < endColumnIndex; columnIndex++)
+            const int StartRowIndex = 8;
+            var endRowIndex = rowCount + StartRowIndex - 1;
+            const int StartColumnIndex = 2;
+            var endColumnIndex = StartColumnIndex + columnCount;
+            for (var columnIndex = StartColumnIndex; columnIndex < endColumnIndex; columnIndex++)
             {
-                excelWorksheet.Cells[startRowIndex, columnIndex, endRowIndex, columnIndex].StyleID = excelWorksheet.Cells[startRowIndex, columnIndex].StyleID;
+                excelWorksheet.Cells[StartRowIndex, columnIndex, endRowIndex, columnIndex].StyleID = excelWorksheet.Cells[StartRowIndex, columnIndex].StyleID;
             }
         }
 

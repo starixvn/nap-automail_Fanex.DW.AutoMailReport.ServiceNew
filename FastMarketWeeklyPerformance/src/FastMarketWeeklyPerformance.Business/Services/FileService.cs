@@ -27,10 +27,10 @@ namespace FastMarketWeeklyPerformance.Business.Services
 
         public string ReadContentWhenDataIsNotReady()
         {
-            var templatePath = @"Templates\ContentWhenDataIsNotReady.cshtml";
-            var emailTemplate = File.ReadAllText(templatePath);
+            const string TemplatePath = @"Templates\ContentWhenDataIsNotReady.cshtml";
+            var emailTemplate = File.ReadAllText(TemplatePath);
             var lastDate = repositoryService.QueryLastDate();
-            return Engine.Razor.RunCompile(emailTemplate, templatePath, lastDate.GetType(), lastDate);
+            return Engine.Razor.RunCompile(emailTemplate, TemplatePath, lastDate.GetType(), lastDate);
         }
 
         public string ReadContentWhenDataIsAvailable()

@@ -13,18 +13,20 @@ namespace Fanex.Service.Core
         private readonly MailService mailService;
         private readonly LogService logService;
         private readonly RepositoryService repositoryService;
+        private JobMessage jobMessage;
 
         public DistributedNotificationServiceImp(MailService mailService, LogService logService, RepositoryService repositoryService)
         {
             this.mailService = mailService;
             this.logService = logService;
             this.repositoryService = repositoryService;
+            jobMessage = new JobMessage();
         }
 
         public JobMessage Execute()
         {
             var result = new ExecuteResult();
-            JobMessage jobMessage;
+
             try
             {
                 result = SendNotification();

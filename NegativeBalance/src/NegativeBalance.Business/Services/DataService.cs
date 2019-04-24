@@ -59,9 +59,10 @@ namespace NegativeBalance.Business.Services
 
         private static void UpdateGroupId(List<CustomerBalanceInfo> customers)
         {
+            const int GroupId = 2;
             customers.ForEach(custInfo =>
             {
-                custInfo.GroupId = custInfo.GroupId == 2 ? 1 : custInfo.GroupId;
+                custInfo.GroupId = custInfo.GroupId == GroupId ? 1 : custInfo.GroupId;
             });
         }
 

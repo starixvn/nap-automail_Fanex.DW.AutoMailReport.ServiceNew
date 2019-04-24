@@ -13,6 +13,8 @@ namespace BettypeWith3rdProducts.Business.Services
 
     public class ExcelHeaderServiceImp : ExcelHeaderService
     {
+        private const int WidthHeader = 18;
+
         public void SplitHeader(ExcelWorksheet excelWorksheet, DataTable section, int startRow)
         {
             var columns = new List<string>();
@@ -34,7 +36,7 @@ namespace BettypeWith3rdProducts.Business.Services
 
                 excelWorksheet.Cells[startRow, startColumn].Value = firstHeader;
                 excelWorksheet.Cells[startRow + 1, startColumn].Value = secondHeader;
-                excelWorksheet.Column(startColumn).Width = 18;
+                excelWorksheet.Column(startColumn).Width = WidthHeader;
                 columns.Add(firstHeader);
                 startColumn++;
             }            

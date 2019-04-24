@@ -80,5 +80,24 @@ namespace NegativeBalance.UnitTests.Services
             // Assert
             repository.Received().UpdateMatchSent(Arg.Any<string>());
         }
+
+        [Test]
+        public void Execute_CheckValidData_ShouldBeCalled()
+        {
+            // Arrange
+            Initialize();
+            repository.QuerySites(false).Returns(new List<Site> { new Site { LicenseeName = "12bet" } });
+            var data = TestLoader.DataLoader<Tuple<List<Match>, string>>("DataService-QueryMatchesBySite-expected.json");
+            data.Item1[0].MatchInfo = new MatchInfo();
+            dataService.QueryMatchesBySite(Arg.Any<Site>()).Returns(data);
+            mailDeliverService.Send(Arg.Any<MailRecord>()).Returns(false);
+
+            // Act
+            var service = new BalanceNotificationServiceImp(repository, dataService, fileService, recipientService, mailDeliverService);
+            service.Execute(false);
+
+            // Assert
+            repository.DidNotReceive().UpdateMatchSent(Arg.Any<string>());
+        }
     }
 }

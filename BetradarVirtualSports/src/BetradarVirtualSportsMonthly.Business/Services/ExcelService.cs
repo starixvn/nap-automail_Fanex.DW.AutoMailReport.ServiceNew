@@ -61,13 +61,14 @@ namespace BetradarVirtualSportsMonthly.Business.Services
             IEnumerable<GrossWinningMonthly> monthlyData,
             IEnumerable<GrossWinningMonthly> totalData)
         {
-            var beginRowIndex = 4;
-            var lastRowIndexMonthlySheet = monthlyData.Count() + beginRowIndex;
-            var lastRowIndexTotalSheet = totalData.Count() + beginRowIndex;
+            const int BeginRowIndex = 4;
+            const int LastColumnIndex = 10;
+            var lastRowIndexMonthlySheet = monthlyData.Count() + BeginRowIndex;
+            var lastRowIndexTotalSheet = totalData.Count() + BeginRowIndex;
 
             monthlySheet.ApplyVertical(monthlyData);
             totalSheet.ApplyVertical(totalData);
-            totalSheet.Cells[beginRowIndex, 1, lastRowIndexTotalSheet, 10].Copy(monthlySheet.Cells[lastRowIndexMonthlySheet, 1]);
+            totalSheet.Cells[BeginRowIndex, 1, lastRowIndexTotalSheet, LastColumnIndex].Copy(monthlySheet.Cells[lastRowIndexMonthlySheet, 1]);
 
             monthlySheet.Cells[$"A{lastRowIndexMonthlySheet}:C{lastRowIndexMonthlySheet + totalData.Count() - 1}"].Merge = true;
             monthlySheet.Cells[$"A{lastRowIndexMonthlySheet}:C{lastRowIndexMonthlySheet + totalData.Count() - 1}"].Value = "Total in";

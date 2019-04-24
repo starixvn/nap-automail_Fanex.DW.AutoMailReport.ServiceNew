@@ -6,12 +6,15 @@ namespace BetradarVirtualSportsMonthly.Business.Services
 {
     public class DateMonthlyService : DateService
     {
+        private const int MaxDay = 31;
+        private const int MaxMonth = 12;
+
         public DateTime FromDate
         {
             get
             {
                 var date = SystemTime.Now.AddDays(-1);
-                if (date.Day == 31 && date.Month == 12)
+                if (date.Day == MaxDay && date.Month == MaxMonth)
                 {
                     return Converter.To<DateTime>($"{date:yyyy-MM-01}");
                 }
@@ -25,7 +28,7 @@ namespace BetradarVirtualSportsMonthly.Business.Services
             get
             {
                 var date = SystemTime.Now.AddDays(-1);
-                if (date.Day == 31 && date.Month == 12)
+                if (date.Day == MaxDay && date.Month == MaxMonth)
                 {
                     return Converter.To<DateTime>($"{date:yyyy-MM-dd}");
                 }
