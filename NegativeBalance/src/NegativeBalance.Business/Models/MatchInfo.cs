@@ -33,18 +33,22 @@ namespace NegativeBalance.Business.Models
         {
             get
             {
+                const int GroupId1 = 1;
+                const int GroupId2 = 2;
+                const int GroupId3 = 3;
+
                 var listName = new List<string> { };
                 switch (GroupId)
                 {
-                    case 1:
-                    case 2:
+                    case GroupId1:
+                    case GroupId2:
                         listName.Add(HomeName);
                         listName.Add(HomeNameCS);
                         listName.Add(AwayName);
                         listName.Add(AwayNameCS);
                         break;
 
-                    case 3:
+                    case GroupId3:
                         listName.Add(HomeName);
                         listName.Add(HomeNameCS);
                         listName.Add(LeagueName);

@@ -1,7 +1,7 @@
 <Functions>
   <Function Name="SMA Loss Automail">
-    <Setting Key="NAP_LimitLoss_MonitorListDetail" SpName="NAP_LimitLoss_MonitorListDetail_xtest" DbName="DBAGE.bodb_AGE.bodbAdminNet" TimeOut="0" />
-    <Setting Key="NAP_LimitLoss_MonitorList" SpName="NAP_LimitLoss_MonitorList_xtest" DbName="DBAGE.bodb_AGE.bodbAdminNet" TimeOut="0" />
+    <Setting Key="NAP_LimitLoss_MonitorListDetail" SpName="NAP_LimitLoss_MonitorListDetail" DbName="DBAGE.bodb_AGE.bodbAdminNet" TimeOut="0" />
+    <Setting Key="NAP_LimitLoss_MonitorList" SpName="NAP_LimitLoss_MonitorList" DbName="DBAGE.bodb_AGE.bodbAdminNet" TimeOut="0" />
     <Setting Key="NAP_LimitLoss_ActionConfigSel" SpName="NAP_LimitLoss_ActionConfigSel" DbName="DBAGE.bodb_AGE.bodbAdminNet" TimeOut="0"></Setting>
   </Function>
 </Functions>

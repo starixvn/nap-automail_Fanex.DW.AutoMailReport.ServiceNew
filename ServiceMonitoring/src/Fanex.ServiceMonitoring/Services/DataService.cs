@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using Fanex.Data;
 using Fanex.Data.Repository;
 using Fanex.ServiceMonitoring.Criterias;
 using Fanex.ServiceMonitoring.Models;
@@ -14,6 +14,10 @@ namespace Fanex.ServiceMonitoring.Services
         void WriteLogServiceRestartTime(List<ServiceModel> services);
 
         void CheckIn(ServiceMonitoringCheckInCriteria criteria);
+
+        List<MailTaskModel> QueryMailTasks();
+
+        List<MailTaskDetailModel> QuerySchedules();
     }
 
     public class DataServiceImp : DataService
@@ -45,9 +49,23 @@ namespace Fanex.ServiceMonitoring.Services
             }
         }
 
+        public List<MailTaskModel> QueryMailTasks()
+        {
+            var fromDate = AppConfigService.AppConfig.IsManual ? AppConfigService.AppConfig.FromDate : DateTime.Today;
+            var toDate = AppConfigService.AppConfig.IsManual ? AppConfigService.AppConfig.ToDate : DateTime.Today;
+            var criteria = new MailReportCriteria { FromDate = fromDate, ToDate = toDate, Status = -1, SiteId = -1 };
+            return repository.Fetch<MailTaskModel>(criteria).ToList();
+        }
+
         public void CheckIn(ServiceMonitoringCheckInCriteria criteria)
         {
             repository.Execute(criteria);
+        }
+
+        public List<MailTaskDetailModel> QuerySchedules()
+        {
+            var criteria = new GetAllScheduleCriteria { SiteId = -1 };
+            return repository.Fetch<MailTaskDetailModel>(criteria).ToList();
         }
     }
 }

@@ -29,9 +29,10 @@ namespace BettypeWith3rdProducts.Business.Services
         {
             var dataSource = new Dictionary<string, DataTable>();
             var index = 0;
+            const int MaxIndex = 2;
             foreach (var item in rawDataSource)
             {
-                if (index < 2)
+                if (index < MaxIndex)
                 {
                     dataSource.Add(item.Key, item.Value);
                 }

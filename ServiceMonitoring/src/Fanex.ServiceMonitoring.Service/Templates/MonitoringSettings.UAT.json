@@ -1,6 +1,15 @@
 ﻿{
   "SentryClientKey": "http://6e2245d2a8354a77a99b09e0b91c6a77@10.40.40.47:801/44",
   "CategorySentryLog": "NAP-Report-Service-UAT",
-  "IntervalInSecond": 300,
-  "MailTo": "robert.tran@starixsoft.com"
+  "IntervalInSecondServiceMonitor": 300,
+  "IntervalInSecondMailMonitor": 1800,
+  "MailTo": "robert.tran@starixsoft.com",
+  "DataType": "UAT",
+  "TargetName": "Starix-Letstalk-Reports",
+  "LetstalkGroup": "Starix-Letstalk-Reports-Issue-UAT",
+  "Environment": "UAT",
+  "AllowIP": "10.40.40.73",
+  "IsManual": false,
+  "FromDate": "2019-04-22",
+  "ToDate": "2019-04-22"
 }

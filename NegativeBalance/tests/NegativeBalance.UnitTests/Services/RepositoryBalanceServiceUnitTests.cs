@@ -45,6 +45,28 @@ namespace NegativeBalance.UnitTests.Services
         }
 
         [Test]
+        public void QuerySites_IsTest_ReturnSitesAvailable()
+        {
+            // Arrange
+            Initialize();
+            var sites = new List<Site>
+            {
+                new Site { LicenseeName = "12bet", IsAvailable = true },
+                new Site { LicenseeName = "m88", IsAvailable = false }
+            };
+
+            dynamicRepository.Fetch<Site>(Arg.Any<SelectMailingListCriteria>()).Returns(sites);
+            var expected = new List<Site> { new Site { LicenseeName = "spondemo", IsAvailable = true, ToList = "testing@starixsoft.com" } };
+
+            // Act
+            var service = new RepositoryBalanceServiceImp(dynamicRepository, transformService);
+            var result = service.QuerySites(true);
+
+            // Assert
+            Assert.That(result, IsDeeplyEqual.To(expected));
+        }
+
+        [Test]
         public void QueryCustomerBalanceInfoBySite_Always_ReturnRightData()
         {
             // Arrange

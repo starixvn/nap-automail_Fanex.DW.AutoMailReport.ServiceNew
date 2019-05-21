@@ -97,10 +97,11 @@ namespace BettypeWith3rdProducts.Business.Services
 
         private void FormatDataSection(ExcelWorksheet excelWorksheet, DataTable section, int startRowIndex)
         {
+            const int StartColumn = 3;
             var startRow = startRowIndex + 5;
             var endRow = startRowIndex + section.Rows.Count + 4;
             var endColumn = section.Columns.Count + 1;
-            excelWorksheet.Cells[startRow, 3, endRow, endColumn].StyleID = dataTemplate.Cells["C7"].StyleID;
+            excelWorksheet.Cells[startRow, StartColumn, endRow, endColumn].StyleID = dataTemplate.Cells["C7"].StyleID;
             for (var columnIndex = 3; columnIndex <= endColumn; columnIndex++)
             {
                 for (var rowIndex = startRow; rowIndex <= endRow; rowIndex++)
@@ -120,9 +121,10 @@ namespace BettypeWith3rdProducts.Business.Services
 
         private void FotmatHeaderSportSection(ExcelWorksheet excelWorksheet, DataTable section, int startRowIndex)
         {
+            const int StartColumn = 2;
             var startRow = startRowIndex + 3;
             var endColumn = section.Columns.Count + 1;
-            excelWorksheet.Cells[startRow, 2, startRow + 1, endColumn].StyleID = dataTemplate.Cells["B6"].StyleID;
+            excelWorksheet.Cells[startRow, StartColumn, startRow + 1, endColumn].StyleID = dataTemplate.Cells["B6"].StyleID;
             excelHeaderService.SplitHeader(excelWorksheet, section, startRow);
         }
 
@@ -140,8 +142,9 @@ namespace BettypeWith3rdProducts.Business.Services
 
         private static void FreezePanes(ExcelWorksheet excelWorksheet)
         {
+            const int ColumnIndex = 3;
             var rowIndex = excelWorksheet.Dimension.End.Row + 1;
-            excelWorksheet.View.FreezePanes(rowIndex, 3);
+            excelWorksheet.View.FreezePanes(rowIndex, ColumnIndex);
         }
 
         public string Save()

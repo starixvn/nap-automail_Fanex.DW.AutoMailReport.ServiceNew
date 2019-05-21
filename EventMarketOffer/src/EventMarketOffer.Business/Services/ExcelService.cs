@@ -36,11 +36,11 @@ namespace EventMarketOffer.Business.Services
 
             var dataTable = dataService.Query();
 
-            var beginRowIndex = 3;
-            var lastRowIndex = dataTable.Rows.Count + beginRowIndex - 1;
+            const int BeginRowIndex = 3;
+            var lastRowIndex = dataTable.Rows.Count + BeginRowIndex - 1;
             var lastColumnIndex = dataTable.Columns.Count;
 
-            RenderContent(market, total, dataTable, beginRowIndex, lastRowIndex, lastColumnIndex);
+            RenderContent(market, total, dataTable, BeginRowIndex, lastRowIndex, lastColumnIndex);
             RenderTotal(market, total, dataTable, lastRowIndex);
 
             return this;

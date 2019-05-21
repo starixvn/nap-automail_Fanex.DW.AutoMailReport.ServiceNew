@@ -59,13 +59,14 @@ namespace BetradarVirtualSportsDaily.Business.Services
             IEnumerable<Models.GrossWinningDaily> dailyData,
             IEnumerable<Models.GrossWinningDaily> totalData)
         {
-            var beginRowIndex = 4;
-            var lastRowIndexDailySheet = dailyData.Count() + beginRowIndex;
-            var lastRowIndexTotalSheet = totalData.Count() + beginRowIndex;
+            const int BeginRowIndex = 4;
+            const int LastColumnIndex = 10;
+            var lastRowIndexDailySheet = dailyData.Count() + BeginRowIndex;
+            var lastRowIndexTotalSheet = totalData.Count() + BeginRowIndex;
 
             dailySheet.ApplyVertical(dailyData);
             totalSheet.ApplyVertical(totalData);
-            totalSheet.Cells[beginRowIndex, 1, lastRowIndexTotalSheet, 10].Copy(dailySheet.Cells[lastRowIndexDailySheet, 1]);
+            totalSheet.Cells[BeginRowIndex, 1, lastRowIndexTotalSheet, LastColumnIndex].Copy(dailySheet.Cells[lastRowIndexDailySheet, 1]);
 
             dailySheet.AutoMergeRowsHaveSameValue($"A1:A{lastRowIndexDailySheet - 1}");            
             dailySheet.AutoMergeRowsHaveSameValue($"B1:B{lastRowIndexDailySheet - 1}");
