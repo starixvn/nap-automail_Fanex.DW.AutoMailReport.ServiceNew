@@ -1,0 +1,42 @@
+﻿[
+  {
+    "Sport": "Soccer",
+    "LeagueId": 59507,
+    "HomeId": 83,
+    "AwayId": 59,
+    "GlobalShowTime": "2019-06-02T02:40:00",
+    "MarketId": "990001300",
+    "DateTimePlaced": "2019-05-29T23:33:46.793",
+    "BetDescription": "Tom Event - selection_name 113; Tom Event - selection_name 2466; Tom Event - selection_name 3687",
+    "NoOfLegsPerBet": 3,
+    "BetStatus": "Settled",
+    "DeviceGroup": "Non-mobile",
+    "BetPrice": 1.9900,
+    "Code": "CNY",
+    "Stake": 100.0,
+    "Result": "LOSE",
+    "Payout": 0.0,
+    "Commission": 0.8,
+    "GrossRevenue": 99.2
+  },
+  {
+    "Sport": "Soccer",
+    "LeagueId": 59507,
+    "HomeId": 83,
+    "AwayId": 59,
+    "GlobalShowTime": "2019-06-02T02:40:00",
+    "MarketId": "990001300",
+    "DateTimePlaced": "2019-05-29T23:33:46.793",
+    "BetDescription": "Tom Event - selection_name 113; Tom Event - selection_name 2466; Tom Event - selection_name 3687",
+    "NoOfLegsPerBet": 3,
+    "BetStatus": "Settled",
+    "DeviceGroup": "Non-mobile",
+    "BetPrice": 1.9900,
+    "Code": "CNY",
+    "Stake": 100.0,
+    "Result": "LOSE",
+    "Payout": 0.0,
+    "Commission": 0.8,
+    "GrossRevenue": 99.2
+  }
+]

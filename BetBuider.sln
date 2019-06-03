@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DB5E93EE-DF3F-4138-9947-73D3366AA7BD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E7AC2115-3DAF-4A19-96C9-EF4595580500}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetBuilder.Business", "BetBuider\src\Fanex.BetBuilder.Business\Fanex.BetBuilder.Business.csproj", "{88A37F25-B68B-4AD6-BC7A-18CD36762FE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetBuilder.UnitTests", "BetBuider\test\Fanex.BetBuilder.UnitTests\Fanex.BetBuilder.UnitTests.csproj", "{D745ECE8-C073-44A1-8DEF-62CC87CAFFFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{AA2EFA1D-5620-4335-8100-8E3D33CBE07F}"
+	ProjectSection(SolutionItems) = preProject
+		SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset = SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset
+		SonarQube\SolutionBinding.sqconfig = SonarQube\SolutionBinding.sqconfig
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetBuilder.Daily.Executing", "BetBuider\src\Fanex.BetBuilder.Daily.Executing\Fanex.BetBuilder.Daily.Executing.csproj", "{58CA3C7B-369C-48C9-9C79-B3895CE95DC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BetBuilder.Monthly.Executing", "BetBuider\src\Fanex.BetBuilder.Monthly.Executing\Fanex.BetBuilder.Monthly.Executing.csproj", "{F6786558-B7EE-47F1-A135-8EB5A563FE58}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88A37F25-B68B-4AD6-BC7A-18CD36762FE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88A37F25-B68B-4AD6-BC7A-18CD36762FE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88A37F25-B68B-4AD6-BC7A-18CD36762FE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88A37F25-B68B-4AD6-BC7A-18CD36762FE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D745ECE8-C073-44A1-8DEF-62CC87CAFFFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D745ECE8-C073-44A1-8DEF-62CC87CAFFFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D745ECE8-C073-44A1-8DEF-62CC87CAFFFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D745ECE8-C073-44A1-8DEF-62CC87CAFFFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58CA3C7B-369C-48C9-9C79-B3895CE95DC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58CA3C7B-369C-48C9-9C79-B3895CE95DC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58CA3C7B-369C-48C9-9C79-B3895CE95DC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58CA3C7B-369C-48C9-9C79-B3895CE95DC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6786558-B7EE-47F1-A135-8EB5A563FE58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6786558-B7EE-47F1-A135-8EB5A563FE58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6786558-B7EE-47F1-A135-8EB5A563FE58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6786558-B7EE-47F1-A135-8EB5A563FE58}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{88A37F25-B68B-4AD6-BC7A-18CD36762FE3} = {DB5E93EE-DF3F-4138-9947-73D3366AA7BD}
+		{D745ECE8-C073-44A1-8DEF-62CC87CAFFFF} = {E7AC2115-3DAF-4A19-96C9-EF4595580500}
+		{58CA3C7B-369C-48C9-9C79-B3895CE95DC7} = {DB5E93EE-DF3F-4138-9947-73D3366AA7BD}
+		{F6786558-B7EE-47F1-A135-8EB5A563FE58} = {DB5E93EE-DF3F-4138-9947-73D3366AA7BD}
+	EndGlobalSection
+EndGlobal

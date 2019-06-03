@@ -1,0 +1,34 @@
+﻿@{
+    DateTime fromDate = Model.Item1;
+    DateTime toDate = Model.Item2;
+    bool isNoData = Model.Item3;
+}
+<div style="font-size:11pt; font-family:Tahoma, Arial, Verdana, Sans-Serif;">
+    @if (isNoData)
+    {
+        <div>
+            Dear All, <br /> <br />
+
+            There is no difference for Bet Builder Monthly Cross Check Report from @fromDate.ToString("MM/dd/yyyy") to @toDate.ToString("MM/dd/yyyy") <br /> <br />
+
+            Thanks and best regards, <br /> <br />
+
+            ----------------------------- <br /> <br />
+
+            This is an auto-mail from ONEworks Report System. Please do not reply.
+        </div>
+    }
+    else
+    {
+        <div>
+            Dear All, <br /> <br />
+
+            Kindly download attached file for Bet Builder Monthly Gross Report from @fromDate.ToString("MM/dd/yyyy") to @toDate.ToString("MM/dd/yyyy") <br /> <br />
+
+            Thanks and best regards, <br /> <br />
+
+            ----------------------------- <br /> <br />
+            This is an auto-mail from ONEworks Report System. Please do not reply.
+        </div>
+    }
+</div>

@@ -90,5 +90,20 @@ namespace BetradarVirtualSportsMonthly.UnitTests.Services
             // Assert
             dynamicRepository.Received().Get<LastDateModel>(Arg.Any<DWStatusByCubeCriteria>());
         }
+
+        [Test]
+        public void QueryMonthly_Always_MethodShouldBeCalled()
+        {
+            // Arrange
+            var fromdate = new DateTime(2019, 05, 01);
+            var todate = new DateTime(2019, 05, 01);
+
+            // Act
+            var service = new RepositoryServiceImp(dynamicRepository, appConfigService);
+            service.QueryMonthly(fromdate, todate);
+
+            // Assert
+            dynamicRepository.Received().FetchMultiple<GrossWinningMonthly, GrossWinningMonthly>(Arg.Any<MonthlyCriteria>());
+        }
     }
 }
