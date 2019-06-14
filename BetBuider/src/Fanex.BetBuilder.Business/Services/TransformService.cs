@@ -51,7 +51,9 @@ namespace Fanex.BetBuilder.Business.Services
                 result.Add(model);
             });
 
-            result = result.OrderBy(s => s.LeagueName)
+            result = result
+                .OrderBy(s => s.WinLostDate)
+                .ThenBy(s => s.LeagueName)
                 .ThenBy(s => s.FixtureName)
                 .ThenBy(s => s.MarketId)
                 .ToList();

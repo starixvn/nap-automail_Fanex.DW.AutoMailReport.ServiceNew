@@ -80,7 +80,7 @@ namespace Fanex.BetBuilder.Business.Services
         {
             var fromDate = dateTimeService.FromDate();
             var toDate = dateTimeService.ToDate();
-            var filename = $"Bet_Builder_Monthly_Gross_Check_Report_{fromDate:yyyyMMdd}_{toDate:yyyyMMdd}.xlsx";
+            var filename = $"Bet_Builder_Monthly_Cross_Check_Report_{fromDate:yyyyMMdd}_{toDate:yyyyMMdd}.xlsx";
 
             var path = $@"{AppConfigService.AppConfig.FilePath}\{fromDate:yyyy}";
             if (!Directory.Exists(path))
