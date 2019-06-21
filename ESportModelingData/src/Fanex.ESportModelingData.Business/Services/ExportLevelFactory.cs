@@ -28,7 +28,7 @@ namespace Fanex.ESportModelingData.Business.Services
                 { Level1, new ExportLevel1ServiceImp(exportBaseService) },
                 { Level2, new ExportLevel2ServiceImp(exportBaseService) },
                 { Level3, new ExportLevel3ServiceImp(exportBaseService) },
-                { Level4, new ExportLevel3ServiceImp(exportBaseService) }
+                { Level4, new ExportLevel4ServiceImp(exportBaseService) }
             };
         }
     }

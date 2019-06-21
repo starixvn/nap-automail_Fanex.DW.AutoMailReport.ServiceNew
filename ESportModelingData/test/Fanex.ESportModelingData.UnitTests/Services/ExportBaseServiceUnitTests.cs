@@ -16,8 +16,7 @@ namespace Fanex.ESportModelingData.UnitTests.Services
         public void ExporDimension_MethodExecute_ShouldBeCalled()
         {
             // Arrange
-            var csvService = Substitute.For<CsvService>();
-            var rawData = new List<RawModelingDataModel>();
+            var csvService = Substitute.For<CsvService>();            
             var text = File.ReadAllText("Templates/RawModelingDataModel.json");
             var status = JsonConvert.DeserializeObject<List<RawModelingDataModel>>(text);
 
@@ -27,7 +26,7 @@ namespace Fanex.ESportModelingData.UnitTests.Services
             .ToList()
             .ForEach(statusGroup =>
             {
-                service.ExporDimension("", "", "", statusGroup);
+                service.ExporDimension(string.Empty, string.Empty, string.Empty, statusGroup);
             });
 
             // Assert

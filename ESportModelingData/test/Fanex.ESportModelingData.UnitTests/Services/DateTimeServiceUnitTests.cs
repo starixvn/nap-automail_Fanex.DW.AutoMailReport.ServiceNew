@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Fanex.ESportModelingData.Business.Models;
 using Fanex.ESportModelingData.Business.Services;
 using Fanex.Service.Core;
@@ -116,7 +115,6 @@ namespace Fanex.ESportModelingData.UnitTests.Services
 
             // Act
             var service = new DateTimeServiceImp();
-
             var result = service.DateEnd();
 
             // Assert

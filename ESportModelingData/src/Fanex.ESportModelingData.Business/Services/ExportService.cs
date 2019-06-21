@@ -25,24 +25,42 @@ namespace Fanex.ESportModelingData.Business.Services
         {
             var parentFolder = $@"{dateEnd:yyyy}\{dateEnd:MM}";
             var folderName = $@"{parentFolder}\E-Sports Weekly Modeling Data From {dateStart:dd-MM-yyyy} To {dateEnd:dd-MM-yyyy}";
-            var originalPath = AppConfigService.AppConfig.FilePath;
+            var originalFilePath = AppConfigService.AppConfig.FilePath;
+            var originalPath = AppConfigService.AppConfig.Path;
             AppConfigService.AppConfig.FilePath += $@"\{folderName}";
-            var levelInstance = exportLevelFactory.Execute();            
+            var levelInstance = exportLevelFactory.Execute();
             rawData
                 .OrderBy(o => o.Level)
                 .GroupBy(g => new { g.Level, g.Sport })
                 .ToList()
                 .ForEach(level =>
                 {
-                    levelInstance[level.Key.Level].Execute(level);                    
+                    levelInstance[level.Key.Level].Execute(level);
                 });
 
-            var result = ZipFile();
-            Delete();
+            var zipFile = ZipFile();
+            MoveFile(parentFolder, zipFile);
+            DeleteFolder(originalFilePath);
 
-            AppConfigService.AppConfig.FilePath = originalPath;
+            AppConfigService.AppConfig.FilePath = originalFilePath;
+            AppConfigService.AppConfig.Path = originalPath;
 
-            return result;
+            return zipFile;
+        }
+
+        private static void MoveFile(string folderName, string zipFile)
+        {
+            AppConfigService.AppConfig.Path += $@"\{folderName}";
+            Directory.CreateDirectory(AppConfigService.AppConfig.Path);
+
+            var fileName = new FileInfo(zipFile).Name;
+            var fullPath = AppConfigService.AppConfig.Path + @"\" + fileName;
+            if (File.Exists(fullPath))
+            {
+                File.Delete(fullPath);
+            }
+
+            File.Move(zipFile, fullPath);
         }
 
         private static string ZipFile()
@@ -56,9 +74,8 @@ namespace Fanex.ESportModelingData.Business.Services
             return zipFile;
         }
 
-        private static void Delete()
+        private static void DeleteFolder(string path)
         {
-            var path = AppConfigService.AppConfig.FilePath;
             if (Directory.Exists(path))
             {
                 Directory.Delete(path, true);

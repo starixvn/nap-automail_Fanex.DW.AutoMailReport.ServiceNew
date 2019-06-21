@@ -62,7 +62,7 @@ namespace Fanex.ESportModelingData.Business.Services
         {
             var dateList = paramService.Dates();
             var minDate = dateList.FirstOrDefault().DateStart;
-            var maxDate = dateList.LastOrDefault().DateEnd;            
+            var maxDate = dateList.LastOrDefault().DateEnd;
             var shortNames = new List<string>();
             foreach (var date in dateList)
             {

@@ -191,7 +191,7 @@
     <Compile Include="Services\ParamService.cs" />
     <Compile Include="Services\RepositoryService.cs" />
     <Compile Include="Services\DateTimeService.cs" />
-    <Compile Include="Services\Log.cs" />
+    <Compile Include="Services\Log.native.cs" />
     <Compile Include="Services\ModelingDataNotificationService.cs" />
   </ItemGroup>
   <ItemGroup>

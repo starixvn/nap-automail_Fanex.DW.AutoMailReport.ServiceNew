@@ -16,6 +16,8 @@ namespace Fanex.ESportModelingData.Business.Models
 
         public string FilePath { get; set; }
 
+        public string Path { get; set; }
+
         public string Password { get; set; }
 
         public string DownloadLink { get; set; }
