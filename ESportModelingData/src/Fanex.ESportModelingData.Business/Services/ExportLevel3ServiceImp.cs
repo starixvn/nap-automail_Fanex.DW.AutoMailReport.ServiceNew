@@ -1,0 +1,40 @@
+﻿using System.IO;
+using System.Linq;
+using Fanex.ESportModelingData.Business.Models;
+
+namespace Fanex.ESportModelingData.Business.Services
+{
+    public class ExportLevel3ServiceImp : ExportLevelService
+    {
+        private readonly ExportBaseService exportBaseService;
+
+        public ExportLevel3ServiceImp(ExportBaseService exportBaseService)
+        {
+            this.exportBaseService = exportBaseService;
+        }
+
+        public void Execute(IGrouping<dynamic, RawModelingDataModel> level)
+        {
+            level.GroupBy(g => new { g.Game })
+            .ToList()
+            .ForEach(game =>
+            {
+                game.GroupBy(b => new { b.BetTypeGroup })
+                .ToList()
+                .ForEach(bettypeGroup =>
+                {
+                    var folder = $@"{exportBaseService.Replace(level.Key.Sport)}\{exportBaseService.Replace(game.Key.Game)}\{exportBaseService.Replace(bettypeGroup.Key.BetTypeGroup)}";
+                    var path = $@"{AppConfigService.AppConfig.FilePath}\{folder}";
+                    Directory.CreateDirectory(path);
+
+                    bettypeGroup.GroupBy(s => new { s.Status })
+                    .ToList()
+                    .ForEach(status =>
+                    {
+                        exportBaseService.ExporDimension(path, bettypeGroup.Key.BetTypeGroup + " Group", status.Key.Status, status);
+                    });
+                });
+            });
+        }
+    }
+}

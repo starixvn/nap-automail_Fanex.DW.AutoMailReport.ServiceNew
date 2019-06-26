@@ -8,7 +8,6 @@ namespace BetradarVirtualSportsMonthly.IntegrationTests
     [Category("BetradarVirtualSportsMonthly.IntegrationTests ProgramTests")]
     public class ProgramTests
     {
-        [Test]
         public void Execute_Always_Successfully()
         {
             // Arrange

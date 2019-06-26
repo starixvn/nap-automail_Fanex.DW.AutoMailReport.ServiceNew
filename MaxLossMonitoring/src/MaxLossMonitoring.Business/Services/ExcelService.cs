@@ -44,7 +44,7 @@ namespace MaxLossMonitoring.Business.Services
             foreach (var group in data.Item1)
             {
                 excelWorksheet.Cells[startRowIndex, startColumnIndex, startRowIndex, endColumnIndex].Value = $"{group.LevelNameForEmail} ({group.Rows.Count})";
-                excelWorksheet.Cells[startRowIndex, startColumnIndex, startRowIndex, endColumnIndex].StyleID = groupTemplate.Cells[group.LevelId, 1].StyleID;
+                excelWorksheet.Cells[startRowIndex, startColumnIndex, startRowIndex, endColumnIndex].StyleID = groupTemplate.Cells[group.LevelId == 0 ? 1 : group.LevelId, 1].StyleID;
                 excelWorksheet.Cells[startRowIndex, startColumnIndex, startRowIndex, endColumnIndex].Merge = true;
 
                 startRowIndex++;

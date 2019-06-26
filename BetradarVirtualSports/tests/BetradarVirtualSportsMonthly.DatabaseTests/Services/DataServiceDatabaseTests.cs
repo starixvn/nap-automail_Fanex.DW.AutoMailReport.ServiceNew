@@ -11,7 +11,6 @@ namespace BetradarVirtualSportsMonthly.DatabaseTests.Services
     [Category("BetradarVirtualSportsMonthly.DatabaseTests.Services DataServiceDatabaseTests")]
     public class DataServiceDatabaseTests
     {
-        [Test]
         public void QueryDaily_Always_ConnectToDatabaseSuccessfully()
         {
             // Arrange

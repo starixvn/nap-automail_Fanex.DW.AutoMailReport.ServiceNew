@@ -132,18 +132,6 @@
       <HintPath>..\..\..\packages\RestSharp.105.2.3\lib\net46\RestSharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sentry, Version=1.1.2.0, Culture=neutral, PublicKeyToken=fba2ec45388e2af0, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Sentry.1.1.2\lib\net461\Sentry.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Sentry.PlatformAbstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fba2ec45388e2af0, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Sentry.PlatformAbstractions.1.0.0\lib\net45\Sentry.PlatformAbstractions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Sentry.Protocol, Version=1.0.3.0, Culture=neutral, PublicKeyToken=fba2ec45388e2af0, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Sentry.Protocol.1.0.3\lib\net46\Sentry.Protocol.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="SharpRaven, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\SharpRaven.2.4.0\lib\net45\SharpRaven.dll</HintPath>
       <Private>True</Private>
