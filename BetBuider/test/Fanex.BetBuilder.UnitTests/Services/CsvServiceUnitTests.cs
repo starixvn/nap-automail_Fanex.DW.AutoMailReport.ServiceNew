@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using Fanex.BetBuilder.Business.Models;
 using Fanex.BetBuilder.Business.Services;
-using Fanex.Service.Core;
 using Newtonsoft.Json;
 using NSubstitute;
 using NUnit.Framework;
@@ -46,14 +45,13 @@ namespace Fanex.BetBuilder.UnitTests.Services
             var dataModel = JsonConvert.DeserializeObject<List<DailyDataModel>>(text);
             var param = Substitute.For<CriteriaService>();
             param.WinlostDate.Returns(new DateTime(2019, 05, 01));
-            var expected = true;
 
             // Act
             var service = new CsvServiceImp(param);
             var path = service.ExportCsv(dataModel);
             
             // Assert
-            Assert.That(File.Exists(path), Is.EqualTo(expected));
+            Assert.That(File.Exists(path), Is.EqualTo(true));
         }
     }
 }

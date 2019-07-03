@@ -41,9 +41,10 @@ namespace BetradarVirtualSportsMonthly.Business.Services
             var totalData = data.Item2;
 
             RenderHeaderInfomation(monthlySheet, fromDate, toDate);
-            if (monthlyData.Any())
+            var grossWinningMonthlies = monthlyData.ToList();
+            if (grossWinningMonthlies.Any())
             {
-                RenderContent(monthlySheet, totalSheet, monthlyData, totalData);
+                RenderContent(monthlySheet, totalSheet, grossWinningMonthlies, totalData);
             }
             else
             {

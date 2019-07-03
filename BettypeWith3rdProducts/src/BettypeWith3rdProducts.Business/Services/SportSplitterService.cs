@@ -67,7 +67,7 @@ namespace BettypeWith3rdProducts.Business.Services
 
             for (var indexOfSportSection = 0; indexOfSportSection < numberOfSections; indexOfSportSection++)
             {
-                var beginColumnIndex = 0;
+                int beginColumnIndex;
                 if (indexOfSportSection == firstIndexSportSection)
                 {
                     beginColumnIndex = 1;

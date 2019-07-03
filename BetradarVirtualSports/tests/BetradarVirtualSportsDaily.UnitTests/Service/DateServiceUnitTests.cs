@@ -32,7 +32,7 @@ namespace BetradarVirtualSportsDaily.UnitTests.Service
             var result = service.Date;
 
             // Assert
-            Assert.That(result, Is.EqualTo(result));
+            Assert.That(result, Is.EqualTo(expected));
         }
 
         [Test]
@@ -44,14 +44,14 @@ namespace BetradarVirtualSportsDaily.UnitTests.Service
             appConfigService.Configurations.IsManual = true;
             SystemTime.Set(new DateTime(2017, 01, 10));
 
-            var expected = new DateTime(2017, 01, 09);
+            var expected = new DateTime(2017, 07, 01);
 
             // Act
             var service = new DateServiceImp(appConfigService);
             var result = service.Date;
 
             // Assert
-            Assert.That(result, Is.EqualTo(result));
+            Assert.That(result, Is.EqualTo(expected));
         }
     }
 }

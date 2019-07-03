@@ -14,11 +14,10 @@ namespace Fanex.BetBuilder.UnitTests.Services
             // Arrange
             var expected = File.ReadAllText("Templates/DailyEmailContentNoData.txt");
             var winlostDate = new DateTime(2019, 05, 01);
-            var isNoData = true;
 
             // Act
             var service = new MailContentServiceImp();
-            var result = service.GenerateDailyMailContent(winlostDate, isNoData);
+            var result = service.GenerateDailyMailContent(winlostDate, true);
 
             // Assert
             Assert.That(result, Is.EqualTo(expected));
@@ -30,11 +29,10 @@ namespace Fanex.BetBuilder.UnitTests.Services
             // Arrange
             var expected = File.ReadAllText("Templates/DailyMailContentHasData.txt");
             var winlostDate = new DateTime(2019, 05, 01);
-            var isNoData = false;
 
             // Act
             var service = new MailContentServiceImp();
-            var result = service.GenerateDailyMailContent(winlostDate, isNoData);
+            var result = service.GenerateDailyMailContent(winlostDate, false);
 
             // Assert
             Assert.That(result, Is.EqualTo(expected));
@@ -47,11 +45,10 @@ namespace Fanex.BetBuilder.UnitTests.Services
             var expected = File.ReadAllText("Templates/MonthlyEmailContentNoData.txt");
             var fromdate = new DateTime(2019, 05, 01);
             var toate = new DateTime(2019, 05, 31);
-            var isNoData = true;
 
             // Act
             var service = new MailContentServiceImp();
-            var result = service.GenerateMonthlyMailContent(fromdate, toate, isNoData);
+            var result = service.GenerateMonthlyMailContent(fromdate, toate, true);
 
             // Assert
             Assert.That(result, Is.EqualTo(expected));
@@ -64,11 +61,10 @@ namespace Fanex.BetBuilder.UnitTests.Services
             var expected = File.ReadAllText("Templates/MonthlyMailContentHasData.txt");
             var fromdate = new DateTime(2019, 05, 01);
             var toate = new DateTime(2019, 05, 31);
-            var isNoData = false;
 
             // Act
             var service = new MailContentServiceImp();
-            var result = service.GenerateMonthlyMailContent(fromdate, toate, isNoData);
+            var result = service.GenerateMonthlyMailContent(fromdate, toate, false);
 
             // Assert
             Assert.That(result, Is.EqualTo(expected));

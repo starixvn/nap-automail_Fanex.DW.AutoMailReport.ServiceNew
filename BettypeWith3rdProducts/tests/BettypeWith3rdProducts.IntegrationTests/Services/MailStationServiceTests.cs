@@ -19,14 +19,12 @@ namespace BettypeWith3rdProducts.IntegrationTests.Services
                 MailingListId = 90
             };
 
-            var expected = true;
-
             // Act
             var service = new MailStationServiceImp();
             var result = service.Send(mail);
 
             // Assert
-            Assert.That(result, Is.EqualTo(expected));
+            Assert.That(result, Is.EqualTo(true));
         }
     }
 }

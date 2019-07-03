@@ -84,7 +84,6 @@ namespace BettypeWith3rdProducts.DatabaseTests.Repositories
         public void Query_GetDWStatusByCube_ConntectToDatabaseSuccessfully()
         {
             // Arrange
-            var criteria = new DWStatusByCubeCriteria();
 
             // Act
             var result = repositoryService.QueryLastDate();

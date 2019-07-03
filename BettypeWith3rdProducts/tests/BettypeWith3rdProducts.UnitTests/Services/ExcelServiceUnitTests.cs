@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using BettypeWith3rdProducts.Business.Models;
 using BettypeWith3rdProducts.Business.Services;
 using Fanex.Service.Core;
 using NSubstitute;
@@ -24,7 +23,7 @@ namespace BettypeWith3rdProducts.UnitTests.Services
             var fileName = $@"{TestContext.CurrentContext.TestDirectory}\Templates\Template.xlsx";
             excelPackage = new ExcelPackage(new System.IO.FileInfo(fileName));
             appConfig = Substitute.For<ApplicationConfigurationService>();
-            this.dateRangeService = Substitute.For<DateRangeService>();
+            dateRangeService = Substitute.For<DateRangeService>();
             excelHeaderService = new ExcelHeaderServiceImp();
             dataService = Substitute.For<DataService>();            
 

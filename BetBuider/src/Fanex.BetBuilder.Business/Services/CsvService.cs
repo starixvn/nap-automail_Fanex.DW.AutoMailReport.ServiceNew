@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using CsvHelper;
 using Fanex.BetBuilder.Business.Models;
@@ -24,14 +23,14 @@ namespace Fanex.BetBuilder.Business.Services
         public string ExportCsv(List<DailyDataModel> data)
         {
             var csvPath = GenerateFileName();
-            SaveFileCSV(data, csvPath);
+            SaveFileCsv(data, csvPath);
             var zipPath = ZipFile(csvPath);
             Delete(csvPath);
 
             return zipPath;
         }
 
-        private static void SaveFileCSV(List<DailyDataModel> data, string path)
+        private static void SaveFileCsv(List<DailyDataModel> data, string path)
         {
             using (var writer = new StreamWriter(path))
             {
@@ -60,10 +59,13 @@ namespace Fanex.BetBuilder.Business.Services
         {
             var zipFile = $@"{path.Replace(".csv", string.Empty)}.zip";
             var shortName = new FileInfo(path).Name;
-            var folderPath = new DirectoryInfo(path).Parent.FullName;
-            var zip = new FastZip();
-            zip.Password = AppConfigService.AppConfig.Password;
-            zip.CreateZip(zipFile, folderPath, false, shortName);
+            var directoryInfo = new DirectoryInfo(path).Parent;
+            if (directoryInfo != null)
+            {
+                var folderPath = directoryInfo.FullName;
+                var zip = new FastZip {Password = AppConfigService.AppConfig.Password};
+                zip.CreateZip(zipFile, folderPath, false, shortName);
+            }
 
             return zipFile;
         }

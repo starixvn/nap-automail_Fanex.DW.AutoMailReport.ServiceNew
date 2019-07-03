@@ -43,8 +43,7 @@ namespace Fanex.ServiceMonitoring.Service
      
         private void Register()
         {
-            timer = new Timer();
-            timer.Interval = AppConfigService.AppConfig.IntervalInSecondServiceMonitor * Milliseconds;
+            timer = new Timer {Interval = AppConfigService.AppConfig.IntervalInSecondServiceMonitor * Milliseconds};
             timer.Elapsed += (sender, e) =>
             {
                 if (!isOnProcessing)
@@ -86,7 +85,7 @@ namespace Fanex.ServiceMonitoring.Service
             var criteria = new ServiceMonitoringCheckInCriteria
             {
                 Interval = AppConfigService.AppConfig.IntervalInSecondServiceMonitor,
-                IPServer = GetLocalIP(),
+                IPServer = GetLocalIp(),
                 OrderBy = 255,
                 ServiceName = "Fanex.ServiceMonitoring.Service-MAIN"
             };
@@ -94,11 +93,11 @@ namespace Fanex.ServiceMonitoring.Service
             dataService.CheckIn(criteria);
         }
 
-        private static string GetLocalIP()
+        private static string GetLocalIp()
         {
             var ip = string.Empty;
-            IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
-            foreach (IPAddress addr in localIPs)
+            var localIPs = Dns.GetHostAddresses(Dns.GetHostName());
+            foreach (var addr in localIPs)
             {
                 if (addr.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
                 {

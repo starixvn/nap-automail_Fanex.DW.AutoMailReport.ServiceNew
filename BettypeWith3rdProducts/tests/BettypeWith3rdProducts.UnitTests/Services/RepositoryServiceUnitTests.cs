@@ -23,7 +23,7 @@ namespace BettypeWith3rdProducts.UnitTests.Services
         {
             appConfig = Substitute.For<ApplicationConfigurationService>();
             dynamicRepository = Substitute.For<IDynamicRepository>();
-            this.dateRangeService = Substitute.For<DateRangeService>();
+            dateRangeService = Substitute.For<DateRangeService>();
             dataSourceService = Substitute.For<DataSourceService>();
 
             dateRangeService.DateStart.Returns(new DateTime(2017, 01, 01));
@@ -155,14 +155,13 @@ namespace BettypeWith3rdProducts.UnitTests.Services
             SystemTime.Set(new DateTime(2017, 01, 02));
             dynamicRepository.Get<LastDateModel>(Arg.Any<DWStatusByCubeCriteria>()).Returns(new LastDateModel { LastDate = new DateTime(2017, 01, 01) });
             appConfig.IsCheckEnoughData.Returns(true);
-            var expected = true;
 
             // Act
             var service = new RepositoryServiceImp(appConfig, dynamicRepository);
             var result = service.IsDataAvailable();
 
             // Assert
-            Assert.That(result, Is.EqualTo(expected));
+            Assert.That(result, Is.EqualTo(true));
         }
     }
 }

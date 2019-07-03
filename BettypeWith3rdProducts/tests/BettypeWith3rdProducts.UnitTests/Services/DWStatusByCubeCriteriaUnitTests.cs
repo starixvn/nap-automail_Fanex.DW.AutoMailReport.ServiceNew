@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace BettypeWith3rdProducts.UnitTests.Services
 {
     [Category("BettypeWith3rdProducts.UnitTests.Services DWStatusByCubeCriteriaUnitTests")]
-    public class DWStatusByCubeCriteriaUnitTests
+    public class DwStatusByCubeCriteriaUnitTests
     {
         [Test]
         public void Cube_Always_ReturnRightValue()
@@ -36,13 +36,12 @@ namespace BettypeWith3rdProducts.UnitTests.Services
         public void IsValid_Always_ReturnRightTrue()
         {
             // Arrange
-            var expected = true;
 
             // Act
             var result = new DWStatusByCubeCriteria().IsValid();
 
             // Assert
-            Assert.That(result.Equals(expected));
+            Assert.That(result.Equals(true));
         }
     }
 }

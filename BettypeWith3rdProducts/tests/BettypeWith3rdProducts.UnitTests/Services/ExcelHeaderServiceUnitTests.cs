@@ -27,8 +27,8 @@ namespace BettypeWith3rdProducts.UnitTests.Services
             Assert.That(workSheet.Cells[3, 3].Value.ToString() == "TO");
             Assert.That(workSheet.Cells[3, 4].Value.ToString() == "WL");
 
-            Assert.That(workSheet.Cells[2, 2, 3, 2].Merge == true);
-            Assert.That(workSheet.Cells[2, 3, 2, 4].Merge == true);
+            Assert.That(workSheet.Cells[2, 2, 3, 2].Merge);
+            Assert.That(workSheet.Cells[2, 3, 2, 4].Merge);
         }
 
         private DataTable CreateDataSource()
