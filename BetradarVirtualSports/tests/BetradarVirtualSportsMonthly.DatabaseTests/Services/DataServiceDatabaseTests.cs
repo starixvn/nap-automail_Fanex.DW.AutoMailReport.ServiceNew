@@ -22,7 +22,6 @@ namespace BetradarVirtualSportsMonthly.DatabaseTests.Services
             // Act
             var service = new RepositoryServiceImp(new DynamicRepository(), appConfigService);
             var result = service.QueryMonthly(fromDate, toDate);
-            var json = JsonConvert.SerializeObject(result, Formatting.Indented);
 
             // Assert
             Assert.That(result.Item1.Any());

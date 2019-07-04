@@ -28,7 +28,6 @@ namespace BetradarVirtualSportsMonthly.UnitTests.Services
         public void IsDataAvailable_SetManualIsTrue_AlwaysReturnTrue()
         {
             // Arrange
-            var expected = true;
             appConfigService.Configurations.Returns(TestLoader.DataLoader<AppConfig>("AppConfig.json"));
             appConfigService.Configurations.IsManual = true;
             appConfigService.Configurations.IsCheckEnoughData = true;
@@ -38,14 +37,13 @@ namespace BetradarVirtualSportsMonthly.UnitTests.Services
             var result = service.IsDataAvailable();
 
             // Assert
-            Assert.That(result, Is.EqualTo(expected));
+            Assert.That(result, Is.EqualTo(true));
         }
 
         [Test]
         public void IsDataAvailable_SetCheckEnoughDataIsFalse_AlwaysReturnTrue()
         {
             // Arrange
-            var expected = true;
             appConfigService.Configurations.Returns(TestLoader.DataLoader<AppConfig>("AppConfig.json"));
             appConfigService.Configurations.IsManual = false;
             appConfigService.Configurations.IsCheckEnoughData = false;
@@ -55,14 +53,13 @@ namespace BetradarVirtualSportsMonthly.UnitTests.Services
             var result = service.IsDataAvailable();
 
             // Assert
-            Assert.That(result, Is.EqualTo(expected));
+            Assert.That(result, Is.EqualTo(true));
         }
 
         [Test]
         public void IsDataAvailable_QueryLastDate_AlwaysReturnTrue()
         {
             // Arrange
-            var expected = true;
             appConfigService.Configurations.Returns(TestLoader.DataLoader<AppConfig>("AppConfig.json"));
             appConfigService.Configurations.IsManual = false;
             appConfigService.Configurations.IsCheckEnoughData = true;
@@ -74,7 +71,7 @@ namespace BetradarVirtualSportsMonthly.UnitTests.Services
             var result = service.IsDataAvailable();
 
             // Assert
-            Assert.That(result, Is.EqualTo(expected));
+            Assert.That(result, Is.EqualTo(true));
         }
 
         [Test]

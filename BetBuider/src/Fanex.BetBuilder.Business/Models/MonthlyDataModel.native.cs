@@ -17,6 +17,7 @@ namespace Fanex.BetBuilder.Business.Models
         public DateTime? DateTimePlaced { get; set; }
 
         public DateTime? WinLostDate { get; set; }
+
         public long TransId { get; set; }
 
         public string BetDescription { get; set; }

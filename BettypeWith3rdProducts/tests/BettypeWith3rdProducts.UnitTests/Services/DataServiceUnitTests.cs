@@ -87,14 +87,13 @@ namespace BettypeWith3rdProducts.UnitTests.Services
         public void IsDataAvailable_Substitute_AlwaysReturnTrue()
         {
             // Arrange
-            var expected = true;
 
             // Act
             var service = new DataServiceSubstitute();
             var result = service.IsDataAvailable();
 
             // Assert
-            Assert.That(result, Is.EqualTo(expected));
+            Assert.That(result, Is.EqualTo(true));
         }
 
         [Test]

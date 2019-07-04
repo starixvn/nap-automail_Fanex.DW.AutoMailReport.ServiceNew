@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using FastMarketWeeklyPerformance.Business.Models;
 using FastMarketWeeklyPerformance.Business.Services;
 using NUnit.Framework;

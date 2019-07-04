@@ -31,7 +31,7 @@ namespace Fanex.BetBuilder.UnitTests.Services
             AppConfigService.AppConfig.IsManual = false;
             AppConfigService.AppConfig.WinlostDate = new DateTime(2019, 06, 12);
 
-            var expected = new DateTime(2019, 05, 01);
+            var expected = new DateTime(2019, 06, 01);
 
             // Act
             var service = new DateTimeServiceImp();
@@ -64,7 +64,7 @@ namespace Fanex.BetBuilder.UnitTests.Services
             AppConfigService.AppConfig.IsManual = false;
             AppConfigService.AppConfig.WinlostDate = new DateTime(2019, 06, 12);
 
-            var expected = new DateTime(2019, 05, 31);
+            var expected = new DateTime(2019, 06, 30);
 
             // Act
             var service = new DateTimeServiceImp();

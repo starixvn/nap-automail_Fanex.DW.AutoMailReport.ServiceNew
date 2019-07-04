@@ -10,14 +10,13 @@ namespace BettypeWith3rdProducts.UnitTests.Repositories
         public void IsValid_Always_ReturnTrue()
         {
             // Arrange
-            var expected = true;
 
             // Act
             var service = new BettypeProductCriteria();
             var result = service.IsValid();
 
             // Assert
-            Assert.That(result, Is.EqualTo(expected));
+            Assert.That(result, Is.EqualTo(true));
         }
     }
 }

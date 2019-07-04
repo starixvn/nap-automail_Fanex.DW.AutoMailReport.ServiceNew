@@ -7,6 +7,8 @@ using OfficeOpenXml;
 
 namespace BetradarVirtualSportsDaily.Business.Services
 {
+    using Models;
+
     public interface ExcelService
     {
         ExcelService Export();
@@ -39,9 +41,10 @@ namespace BetradarVirtualSportsDaily.Business.Services
             var totalData = data.Item2;
 
             RenderHeaderInfomation(dailySheet, date);
-            if (dailyData.Any())
+            var grossWinningDailies = dailyData as GrossWinningDaily[] ?? dailyData.ToArray();
+            if (grossWinningDailies.Any())
             {
-                RenderContent(dailySheet, totalSheet, dailyData, totalData);
+                RenderContent(dailySheet, totalSheet, grossWinningDailies, totalData);
             }
             else
             {
@@ -56,8 +59,8 @@ namespace BetradarVirtualSportsDaily.Business.Services
         private static void RenderContent(
             ExcelWorksheet dailySheet,
             ExcelWorksheet totalSheet,
-            IEnumerable<Models.GrossWinningDaily> dailyData,
-            IEnumerable<Models.GrossWinningDaily> totalData)
+            IEnumerable<GrossWinningDaily> dailyData,
+            IEnumerable<GrossWinningDaily> totalData)
         {
             const int BeginRowIndex = 4;
             const int LastColumnIndex = 10;

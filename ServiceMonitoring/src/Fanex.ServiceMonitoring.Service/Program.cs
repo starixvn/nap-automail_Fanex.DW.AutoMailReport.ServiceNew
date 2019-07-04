@@ -6,7 +6,7 @@ using SimpleInjector;
 
 namespace Topshelf.SimpleInjector.QuickStart.Content
 {
-    internal class Program
+    internal static class Program
     {
         private static Container container;
 

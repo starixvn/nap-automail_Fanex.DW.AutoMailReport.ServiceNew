@@ -52,7 +52,7 @@ namespace BettypeWith3rdProducts.UnitTests.Services
 
             // Act
             var service = new MailServiceImp(excelService, mailContentBuilder, mailStationService, appConfig);
-            var result = service.Execute();
+            service.Execute();
 
             // Assert
             mailContentBuilder.Received().ReadContentWithAttachment(Arg.Any<string>());

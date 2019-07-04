@@ -61,14 +61,13 @@ namespace BettypeWith3rdProducts.UnitTests.Services
         public void IsCheckEnoughData_Always_ReturnTrue()
         {
             // Arrange
-            var expected = true;
 
             // Act
             var service = new ApplicationConfigurationServiceImp();
             var result = service.IsCheckEnoughData;
 
             // Assert
-            Assert.That(result, Is.EqualTo(expected));
+            Assert.That(result, Is.EqualTo(true));
         }
 
         [Test]

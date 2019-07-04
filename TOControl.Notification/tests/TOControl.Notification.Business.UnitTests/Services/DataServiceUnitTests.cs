@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Fanex.Data.Repository;
 using NSubstitute;
 using NUnit.Framework;
 using TOControl.Notification.Business.Models;

@@ -664,8 +664,8 @@
   <sourcecode name="Enums.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2016/11/09 21:13:02.000</styleCop>
-      <settingsFile>2017/07/17 14:59:14.353</settingsFile>
-      <sourceFile>2017/12/25 15:17:31.749</sourceFile>
+      <settingsFile>2019/06/26 09:17:58.259</settingsFile>
+      <sourceFile>2019/06/26 09:17:58.254</sourceFile>
       <parser>2016/11/09 21:13:02.000</parser>
       <StyleCop.CSharp.DocumentationRules>2016/11/09 21:13:02.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1786954509</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -687,8 +687,8 @@
   <sourcecode name="SourceMapping.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2016/11/09 21:13:02.000</styleCop>
-      <settingsFile>2017/07/17 14:59:14.353</settingsFile>
-      <sourceFile>2019/04/23 10:20:47.620</sourceFile>
+      <settingsFile>2019/06/26 09:17:58.259</settingsFile>
+      <sourceFile>2019/06/26 09:17:58.254</sourceFile>
       <parser>2016/11/09 21:13:02.000</parser>
       <StyleCop.CSharp.DocumentationRules>2016/11/09 21:13:02.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1786954509</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -710,8 +710,8 @@
   <sourcecode name="AssemblyInfo.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2016/11/09 21:13:02.000</styleCop>
-      <settingsFile>2017/07/17 14:59:14.353</settingsFile>
-      <sourceFile>2017/05/26 09:29:08.288</sourceFile>
+      <settingsFile>2019/06/26 09:17:58.259</settingsFile>
+      <sourceFile>2019/07/03 15:59:23.200</sourceFile>
       <parser>2016/11/09 21:13:02.000</parser>
       <StyleCop.CSharp.DocumentationRules>2016/11/09 21:13:02.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1786954509</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -733,8 +733,8 @@
   <sourcecode name="ApplicationConfigurationService.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2016/11/09 21:13:02.000</styleCop>
-      <settingsFile>2017/07/17 14:59:14.353</settingsFile>
-      <sourceFile>2017/12/25 15:17:31.756</sourceFile>
+      <settingsFile>2019/06/26 09:17:58.259</settingsFile>
+      <sourceFile>2019/06/26 09:17:58.255</sourceFile>
       <parser>2016/11/09 21:13:02.000</parser>
       <StyleCop.CSharp.DocumentationRules>2016/11/09 21:13:02.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1786954509</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -756,8 +756,8 @@
   <sourcecode name="DataService.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2016/11/09 21:13:02.000</styleCop>
-      <settingsFile>2017/07/17 14:59:14.353</settingsFile>
-      <sourceFile>2017/07/17 14:59:14.293</sourceFile>
+      <settingsFile>2019/06/26 09:17:58.259</settingsFile>
+      <sourceFile>2019/06/26 09:17:58.256</sourceFile>
       <parser>2016/11/09 21:13:02.000</parser>
       <StyleCop.CSharp.DocumentationRules>2016/11/09 21:13:02.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1786954509</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -779,8 +779,8 @@
   <sourcecode name="DateRangeDailyServiceImp.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2016/11/09 21:13:02.000</styleCop>
-      <settingsFile>2017/07/17 14:59:14.353</settingsFile>
-      <sourceFile>2017/07/17 14:59:14.298</sourceFile>
+      <settingsFile>2019/06/26 09:17:58.259</settingsFile>
+      <sourceFile>2019/06/26 09:17:58.256</sourceFile>
       <parser>2016/11/09 21:13:02.000</parser>
       <StyleCop.CSharp.DocumentationRules>2016/11/09 21:13:02.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1786954509</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -802,8 +802,8 @@
   <sourcecode name="DateRangeManualServiceImp.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2016/11/09 21:13:02.000</styleCop>
-      <settingsFile>2017/07/17 14:59:14.353</settingsFile>
-      <sourceFile>2017/07/17 14:59:14.303</sourceFile>
+      <settingsFile>2019/06/26 09:17:58.259</settingsFile>
+      <sourceFile>2019/06/26 09:17:58.256</sourceFile>
       <parser>2016/11/09 21:13:02.000</parser>
       <StyleCop.CSharp.DocumentationRules>2016/11/09 21:13:02.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1786954509</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -825,8 +825,8 @@
   <sourcecode name="DateRangeService.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2016/11/09 21:13:02.000</styleCop>
-      <settingsFile>2017/07/17 14:59:14.353</settingsFile>
-      <sourceFile>2017/12/25 15:17:31.762</sourceFile>
+      <settingsFile>2019/06/26 09:17:58.259</settingsFile>
+      <sourceFile>2019/06/26 09:17:58.256</sourceFile>
       <parser>2016/11/09 21:13:02.000</parser>
       <StyleCop.CSharp.DocumentationRules>2016/11/09 21:13:02.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1786954509</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -848,8 +848,8 @@
   <sourcecode name="ExcelHeaderService.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2016/11/09 21:13:02.000</styleCop>
-      <settingsFile>2017/07/17 14:59:14.353</settingsFile>
-      <sourceFile>2019/05/21 09:09:42.370</sourceFile>
+      <settingsFile>2019/06/26 09:17:58.259</settingsFile>
+      <sourceFile>2019/06/26 09:17:58.257</sourceFile>
       <parser>2016/11/09 21:13:02.000</parser>
       <StyleCop.CSharp.DocumentationRules>2016/11/09 21:13:02.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1786954509</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -871,8 +871,8 @@
   <sourcecode name="ExcelService.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2016/11/09 21:13:02.000</styleCop>
-      <settingsFile>2017/07/17 14:59:14.353</settingsFile>
-      <sourceFile>2019/05/21 09:09:42.374</sourceFile>
+      <settingsFile>2019/06/26 09:17:58.259</settingsFile>
+      <sourceFile>2019/06/26 09:17:58.257</sourceFile>
       <parser>2016/11/09 21:13:02.000</parser>
       <StyleCop.CSharp.DocumentationRules>2016/11/09 21:13:02.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1786954509</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -894,8 +894,8 @@
   <sourcecode name="FileService.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2016/11/09 21:13:02.000</styleCop>
-      <settingsFile>2017/07/17 14:59:14.353</settingsFile>
-      <sourceFile>2019/05/21 09:09:42.378</sourceFile>
+      <settingsFile>2019/06/26 09:17:58.259</settingsFile>
+      <sourceFile>2019/06/26 09:17:58.257</sourceFile>
       <parser>2016/11/09 21:13:02.000</parser>
       <StyleCop.CSharp.DocumentationRules>2016/11/09 21:13:02.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1786954509</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -917,8 +917,8 @@
   <sourcecode name="MailContentBuilder.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2016/11/09 21:13:02.000</styleCop>
-      <settingsFile>2017/07/17 14:59:14.353</settingsFile>
-      <sourceFile>2017/07/17 14:59:14.325</sourceFile>
+      <settingsFile>2019/06/26 09:17:58.259</settingsFile>
+      <sourceFile>2019/06/26 09:17:58.257</sourceFile>
       <parser>2016/11/09 21:13:02.000</parser>
       <StyleCop.CSharp.DocumentationRules>2016/11/09 21:13:02.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1786954509</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -940,8 +940,8 @@
   <sourcecode name="MailService.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2016/11/09 21:13:02.000</styleCop>
-      <settingsFile>2017/07/17 14:59:14.353</settingsFile>
-      <sourceFile>2017/07/17 14:59:14.330</sourceFile>
+      <settingsFile>2019/06/26 09:17:58.259</settingsFile>
+      <sourceFile>2019/06/26 09:17:58.258</sourceFile>
       <parser>2016/11/09 21:13:02.000</parser>
       <StyleCop.CSharp.DocumentationRules>2016/11/09 21:13:02.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1786954509</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -963,8 +963,8 @@
   <sourcecode name="RawDataSourceService.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2016/11/09 21:13:02.000</styleCop>
-      <settingsFile>2017/07/17 14:59:14.353</settingsFile>
-      <sourceFile>2019/04/23 11:21:31.349</sourceFile>
+      <settingsFile>2019/06/26 09:17:58.259</settingsFile>
+      <sourceFile>2019/06/26 09:17:58.258</sourceFile>
       <parser>2016/11/09 21:13:02.000</parser>
       <StyleCop.CSharp.DocumentationRules>2016/11/09 21:13:02.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1786954509</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -986,8 +986,8 @@
   <sourcecode name="RepositoryService.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2016/11/09 21:13:02.000</styleCop>
-      <settingsFile>2017/07/17 14:59:14.353</settingsFile>
-      <sourceFile>2019/05/21 09:09:42.575</sourceFile>
+      <settingsFile>2019/06/26 09:17:58.259</settingsFile>
+      <sourceFile>2019/06/26 09:17:58.258</sourceFile>
       <parser>2016/11/09 21:13:02.000</parser>
       <StyleCop.CSharp.DocumentationRules>2016/11/09 21:13:02.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1786954509</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -1009,8 +1009,8 @@
   <sourcecode name="SportSplitterService.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2016/11/09 21:13:02.000</styleCop>
-      <settingsFile>2017/07/17 14:59:14.353</settingsFile>
-      <sourceFile>2019/05/21 09:09:42.580</sourceFile>
+      <settingsFile>2019/06/26 09:17:58.259</settingsFile>
+      <sourceFile>2019/07/03 15:59:23.201</sourceFile>
       <parser>2016/11/09 21:13:02.000</parser>
       <StyleCop.CSharp.DocumentationRules>2016/11/09 21:13:02.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>1786954509</StyleCop.CSharp.DocumentationRules.FilesHashCode>
