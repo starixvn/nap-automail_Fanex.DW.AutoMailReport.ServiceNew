@@ -148,7 +148,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="MailMonitoring.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -178,7 +177,6 @@
     <Content Include="App_Data\TEST\DBMA.bodb_Maintenance.bodbAdminNet.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="readme.txt" />
     <Content Include="Templates\MonitoringSettings.Local.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
