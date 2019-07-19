@@ -34,3 +34,4 @@ _ReSharper*/
 Fanex.Service.Core/MailService/MailService.cd
 .vs/config/applicationhost.config
 OpenCover/*
+**/packages/**

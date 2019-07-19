@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1817895D-CD01-43A9-9B51-5D256E90A3DA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2D4059D2-54B0-495F-A55A-58C002E606BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.FinanceTransfer.Business", "FinanceTransfer\src\Fanex.FinanceTransfer.Business\Fanex.FinanceTransfer.Business.csproj", "{AB4B5E73-1AFF-413B-91E0-7CDE9D0B9013}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.FinanceTransfer.Executing", "FinanceTransfer\src\Fanex.FinanceTransfer.Executing\Fanex.FinanceTransfer.Executing.csproj", "{77238CE9-70D8-4FC6-A2AC-2A08775D59CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{8556AAB1-0790-4FEF-9114-36CF0EE03C4B}"
+	ProjectSection(SolutionItems) = preProject
+		SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset = SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset
+		SonarQube\SolutionBinding.sqconfig = SonarQube\SolutionBinding.sqconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB4B5E73-1AFF-413B-91E0-7CDE9D0B9013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB4B5E73-1AFF-413B-91E0-7CDE9D0B9013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB4B5E73-1AFF-413B-91E0-7CDE9D0B9013}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB4B5E73-1AFF-413B-91E0-7CDE9D0B9013}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77238CE9-70D8-4FC6-A2AC-2A08775D59CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77238CE9-70D8-4FC6-A2AC-2A08775D59CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77238CE9-70D8-4FC6-A2AC-2A08775D59CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77238CE9-70D8-4FC6-A2AC-2A08775D59CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AB4B5E73-1AFF-413B-91E0-7CDE9D0B9013} = {1817895D-CD01-43A9-9B51-5D256E90A3DA}
+		{77238CE9-70D8-4FC6-A2AC-2A08775D59CC} = {1817895D-CD01-43A9-9B51-5D256E90A3DA}
+	EndGlobalSection
+EndGlobal
