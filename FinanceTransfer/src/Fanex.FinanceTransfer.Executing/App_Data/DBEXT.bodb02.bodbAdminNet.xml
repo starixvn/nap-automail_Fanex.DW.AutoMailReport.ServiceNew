@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Functions>
+  <Function Name="Auto-mail">
+    <Setting Key="AGE_SelBalanceUpDay" SpName="AGE_SelBalanceUpDay" DbName="DBEXT.bodb02.bodbAdminNet" TimeOut="0" />
+  </Function>
+</Functions>

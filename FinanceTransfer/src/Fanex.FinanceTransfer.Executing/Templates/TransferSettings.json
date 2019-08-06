@@ -1,0 +1,8 @@
+﻿{
+  "SentryClientKey": "https://ad29bef60cc04e78803c9030a33a2c06@sentry.nexdev.net/44",
+  "CategorySentryLog": "NAP-Report-Service-LOCAL",
+  "IsManual": false,
+  "MoveBetsDay": "2018-01-01",
+  "TransferMonthDate": "2018-12-31",
+  "MailFunctionId": 297
+}
