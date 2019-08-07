@@ -1,5 +1,5 @@
-﻿using System;
-using Fanex.Service.Core;
+﻿using Fanex.Service.Core;
+using System;
 
 namespace Fanex.ESportModelingData.Business.Services
 {

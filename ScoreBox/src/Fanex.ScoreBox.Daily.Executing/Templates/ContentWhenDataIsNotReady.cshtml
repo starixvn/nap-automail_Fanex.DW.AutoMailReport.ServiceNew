@@ -1,0 +1,21 @@
+﻿@{
+    var data = Model;
+    DateTime fromDate = data.Item1;
+    DateTime toDate = data.Item2;
+    DateTime lastDate = data.Item3;
+}
+<div>
+    Dear DBA Teammate,<br /><br />
+    The store procedures belong to <b> Automail - Daily Score Box Win Loss Report on @DateTime.Today.AddDays(-1).ToString("yyyy/MM/dd") </b> have been returned not enough data to send email to users.<br />
+    Because the <b>LastDate from DW is @lastDate.ToString("yyyy/MM/dd")</b>  <br />  <br/>
+    So can you please have a check.<br /><br />
+    Regards.<br /><br />
+    
+
+    ---------------------------------------------------------------------- <br/>
+    If you are not the addressee you may not copy, forward, disclose or use any part of it. <br/>
+    This is an auto-generated email, please do not reply. <br/>
+
+
+
+</div>

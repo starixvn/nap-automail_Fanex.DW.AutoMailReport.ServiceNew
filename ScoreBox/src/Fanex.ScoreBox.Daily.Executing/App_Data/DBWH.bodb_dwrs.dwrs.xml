@@ -1,0 +1,6 @@
+﻿<Functions>
+	<Function Name="Auto Mail - Score Box">
+    <Setting Key="BI_GetDWStatusByCube" SpName="BI_GetDWStatusByCube" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0"/>
+    <Setting Key="Acc_Rpt_DailyScoreBox" SpName="Acc_Rpt_DailyScoreBox" DbName="DBWH.bodb_dwrs.dwrs" Timeout="0"></Setting>    
+  </Function>
+</Functions>

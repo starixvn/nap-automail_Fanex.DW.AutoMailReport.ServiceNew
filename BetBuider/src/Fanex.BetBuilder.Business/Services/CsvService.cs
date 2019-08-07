@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using CsvHelper;
+﻿using CsvHelper;
 using Fanex.BetBuilder.Business.Models;
 using ICSharpCode.SharpZipLib.Zip;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Fanex.BetBuilder.Business.Services
 {
@@ -63,7 +63,7 @@ namespace Fanex.BetBuilder.Business.Services
             if (directoryInfo != null)
             {
                 var folderPath = directoryInfo.FullName;
-                var zip = new FastZip {Password = AppConfigService.AppConfig.Password};
+                var zip = new FastZip { Password = AppConfigService.AppConfig.Password };
                 zip.CreateZip(zipFile, folderPath, false, shortName);
             }
 
