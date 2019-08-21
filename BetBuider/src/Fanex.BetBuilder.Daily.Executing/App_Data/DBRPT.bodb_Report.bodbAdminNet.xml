@@ -1,0 +1,5 @@
+﻿<Functions>
+	<Function Name="Auto Mail - Bet Builder">
+    <Setting Key="Acc_Rpt_Daily_Bet_Builder_AutoMail" SpName="Acc_Rpt_Daily_Bet_Builder_AutoMail" DbName="DBRPT.bodb_Report.bodbAdminNet" Timeout="0"></Setting>    
+  </Function>
+</Functions>

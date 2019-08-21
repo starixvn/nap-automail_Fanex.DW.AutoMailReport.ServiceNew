@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F3FCDE7B-A902-4F93-8926-15AE53FA7FAE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{81880342-7D15-4991-8EDA-5A267C10C33C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.CN88DailyWL.Business", "CN88DailyWL\src\Fanex.CN88DailyWL.Business\Fanex.CN88DailyWL.Business.csproj", "{5598F65E-1B8E-4932-BA29-5CAE0A7B7319}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.CN88DailyWL.Executing", "CN88DailyWL\src\Fanex.CN88DailyWL.Executing\Fanex.CN88DailyWL.Executing.csproj", "{8B094023-22D7-481A-A899-F4701F30523E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.CN88DailyWL.Business.UnitTests", "CN88DailyWL\tests\Fanex.CN88DailyWL.Business.UnitTests\Fanex.CN88DailyWL.Business.UnitTests.csproj", "{2DDE5DC3-0F9E-4016-B5C8-31E4FB2A7F9B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{D10F09FB-5BA3-418C-BCFF-C53803039E25}"
+	ProjectSection(SolutionItems) = preProject
+		SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset = SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset
+		SonarQube\SolutionBinding.sqconfig = SonarQube\SolutionBinding.sqconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5598F65E-1B8E-4932-BA29-5CAE0A7B7319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5598F65E-1B8E-4932-BA29-5CAE0A7B7319}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5598F65E-1B8E-4932-BA29-5CAE0A7B7319}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5598F65E-1B8E-4932-BA29-5CAE0A7B7319}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B094023-22D7-481A-A899-F4701F30523E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B094023-22D7-481A-A899-F4701F30523E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B094023-22D7-481A-A899-F4701F30523E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B094023-22D7-481A-A899-F4701F30523E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DDE5DC3-0F9E-4016-B5C8-31E4FB2A7F9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DDE5DC3-0F9E-4016-B5C8-31E4FB2A7F9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DDE5DC3-0F9E-4016-B5C8-31E4FB2A7F9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DDE5DC3-0F9E-4016-B5C8-31E4FB2A7F9B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5598F65E-1B8E-4932-BA29-5CAE0A7B7319} = {F3FCDE7B-A902-4F93-8926-15AE53FA7FAE}
+		{8B094023-22D7-481A-A899-F4701F30523E} = {F3FCDE7B-A902-4F93-8926-15AE53FA7FAE}
+		{2DDE5DC3-0F9E-4016-B5C8-31E4FB2A7F9B} = {81880342-7D15-4991-8EDA-5A267C10C33C}
+	EndGlobalSection
+EndGlobal
