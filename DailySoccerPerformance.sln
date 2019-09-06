@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E7A65E4F-6685-4BCE-9E0A-294FD2A98738}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.SoccerPerformance.Business", "DailySoccerPerformance\src\Fanex.SoccerPerformance.Business\Fanex.SoccerPerformance.Business.csproj", "{4DA43BAA-5F47-4918-91B0-A3FF9D994B91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.SoccerPerformance.Executing", "DailySoccerPerformance\src\Fanex.SoccerPerformance.Executing\Fanex.SoccerPerformance.Executing.csproj", "{6F70ED49-25ED-4224-9EDD-369FE2A81947}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D174AEF3-BEC8-4F0B-A37B-EBC62E807F1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.SoccerPerformance.Tests", "DailySoccerPerformance\tests\Fanex.SoccerPerformance.Tests\Fanex.SoccerPerformance.Tests.csproj", "{847DF77F-5853-49B5-B9AC-7D36FBAC5846}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{7BCBA69C-39F4-4FD0-8B61-26349264AFC6}"
+	ProjectSection(SolutionItems) = preProject
+		SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset = SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset
+		SonarQube\SolutionBinding.sqconfig = SonarQube\SolutionBinding.sqconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4DA43BAA-5F47-4918-91B0-A3FF9D994B91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DA43BAA-5F47-4918-91B0-A3FF9D994B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DA43BAA-5F47-4918-91B0-A3FF9D994B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DA43BAA-5F47-4918-91B0-A3FF9D994B91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F70ED49-25ED-4224-9EDD-369FE2A81947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F70ED49-25ED-4224-9EDD-369FE2A81947}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F70ED49-25ED-4224-9EDD-369FE2A81947}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F70ED49-25ED-4224-9EDD-369FE2A81947}.Release|Any CPU.Build.0 = Release|Any CPU
+		{847DF77F-5853-49B5-B9AC-7D36FBAC5846}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{847DF77F-5853-49B5-B9AC-7D36FBAC5846}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{847DF77F-5853-49B5-B9AC-7D36FBAC5846}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{847DF77F-5853-49B5-B9AC-7D36FBAC5846}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4DA43BAA-5F47-4918-91B0-A3FF9D994B91} = {E7A65E4F-6685-4BCE-9E0A-294FD2A98738}
+		{6F70ED49-25ED-4224-9EDD-369FE2A81947} = {E7A65E4F-6685-4BCE-9E0A-294FD2A98738}
+		{847DF77F-5853-49B5-B9AC-7D36FBAC5846} = {D174AEF3-BEC8-4F0B-A37B-EBC62E807F1E}
+	EndGlobalSection
+EndGlobal
