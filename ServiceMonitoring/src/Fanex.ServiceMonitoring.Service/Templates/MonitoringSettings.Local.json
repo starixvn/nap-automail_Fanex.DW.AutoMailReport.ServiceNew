@@ -2,7 +2,7 @@
   "SentryClientKey": "https://ec3ebc7f30e544ae875440513d4e06b7@sentry.nexdev.net/32",
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
   "IntervalInSecondServiceMonitor": 120,
-  "IntervalInSecondMailMonitor": 18000,
+  "IntervalInSecondMailMonitor": 7200,
   "MailTo": "robert.tran@starixsoft.com",
   "DataType": "All",
   "TargetName": "Starix-Letstalk-Reports",
