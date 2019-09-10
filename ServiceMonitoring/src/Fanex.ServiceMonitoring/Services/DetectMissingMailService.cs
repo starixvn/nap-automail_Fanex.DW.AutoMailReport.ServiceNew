@@ -44,9 +44,7 @@ namespace Fanex.ServiceMonitoring.Services
 
             if (AppConfigService.AppConfig.DataType == "PRO")
             {
-                var result = data.Where(s => AppConfigService.MailNeedToMonitor.Contains(s)).ToList();
-
-                return result;
+                return data.Where(s => !s.Contains("UAT")).ToList();
             }
 
             return data;
