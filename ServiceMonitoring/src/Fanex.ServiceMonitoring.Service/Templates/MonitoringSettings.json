@@ -9,7 +9,7 @@
   "LetstalkGroup": "Starix-Letstalk-Reports-Issue-UAT",
   "Environment": "Local",
   "AllowIP": "10.19.10.73",
-  "IsManual": true,
+  "IsManual": false,
   "FromDate": "2019-04-22",
   "ToDate": "2019-04-22"
 }
