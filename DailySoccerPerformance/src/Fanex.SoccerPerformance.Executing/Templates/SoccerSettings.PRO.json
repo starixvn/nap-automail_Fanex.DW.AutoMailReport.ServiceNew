@@ -1,0 +1,13 @@
+﻿{
+  "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.40.40.47:801/60",
+  "CategorySentryLog": "NAP-Report-Service",
+  "IsManual": false,
+  "IsCheckEnoughData": true,
+  "FunctionIdNodata": 190,
+  "Yesterday": "2019-08-01",
+  "StartDate": "2019-08-01",
+  "EndDate":  "2019-09-11",
+  "FilePath": "\\\\10.40.40.127\\e$\\Data.Web\\Fanex.Excel\\DailySoccerPerformance",
+  "TargetName": "daily-house-wl",
+  "Group": "Soccer-Performance"
+}

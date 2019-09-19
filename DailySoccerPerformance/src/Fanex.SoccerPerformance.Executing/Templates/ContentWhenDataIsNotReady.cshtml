@@ -1,0 +1,11 @@
+﻿@{
+    var lastDate = Model.Item1;
+}
+<div>
+    Dear DBA Teammate,<br /><br />
+    The store procedures belong to <b> Letstalk - Daily Soccer Performance on @DateTime.Today.AddDays(-1).ToString("yyyyMMdd") </b> have been returned not enough data to send email to users.<br />
+    Because the <b>LastDate from DW is @lastDate.ToString("yyyy/MM/dd")</b>  <br /> 
+    So can you please have a check.<br /><br />
+    Regards.<br /><br />
+    This is an auto-mail. Please do not reply.
+</div>
