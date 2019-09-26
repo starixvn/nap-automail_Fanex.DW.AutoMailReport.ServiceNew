@@ -32,11 +32,23 @@ namespace Fanex.SoccerPerformance.Business.Services
 
         public List<string> Execute(Tuple<IEnumerable<SoccerModel>, IEnumerable<SoccerModel>> yesterdayData, Tuple<IEnumerable<SoccerModel>, IEnumerable<SoccerModel>> mtdData)
         {
+            const int rowIndex1 = 20;
+            const int rowIndex2 = 38;
+            const int rowHeight = 8;
+
             yesterdaySheet.Cells["A3"].LoadFromCollection(yesterdayData.Item1, false);
-            yesterdaySheet.Cells["A38"].LoadFromCollection(yesterdayData.Item2, false);
+            yesterdaySheet.Cells["A44"].LoadFromCollection(yesterdayData.Item2, false);
+            yesterdaySheet.InsertRow(rowIndex1, 1);
+            yesterdaySheet.Row(rowIndex1).Height = rowHeight;
+            yesterdaySheet.InsertRow(rowIndex2, 1);
+            yesterdaySheet.Row(rowIndex2).Height = rowHeight;
 
             mtdSheet.Cells["A3"].LoadFromCollection(mtdData.Item1, false);
-            mtdSheet.Cells["A38"].LoadFromCollection(mtdData.Item2, false);
+            mtdSheet.Cells["A44"].LoadFromCollection(mtdData.Item2, false);
+            mtdSheet.InsertRow(rowIndex1, 1);
+            mtdSheet.Row(rowIndex1).Height = rowHeight;
+            mtdSheet.InsertRow(rowIndex2, 1);
+            mtdSheet.Row(rowIndex2).Height = rowHeight;
 
             SetTitle();
 

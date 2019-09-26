@@ -38,11 +38,11 @@ namespace Fanex.SoccerPerformance.Business.Services
 
             const int FirstRow = 1;
             const int FirstColumn = 1;
-            const int LastRow = 39;
+            const int LastRow = 48;
             const int LastColumn = 7;
 
             const int NewWidth = 890;
-            const int NewHeight = 750;
+            const int NewHeight = 920;
             const int X = 55;
             const int Y = 65;
 
@@ -52,11 +52,11 @@ namespace Fanex.SoccerPerformance.Business.Services
             var mtdSheet = workbook.Worksheets[1];
 
             var imageYesterday = yesterdaySheet.ToImage(FirstRow, FirstColumn, LastRow, LastColumn);
-            var newImgYesterday = ResizeImage(imageYesterday, 1000, 880);
+            var newImgYesterday = ResizeImage(imageYesterday, 1000, 1050);
             newImgYesterday.Save(imageNameYesterday, ImageFormat.Png);
 
             var imageMTD = mtdSheet.ToImage(FirstRow, FirstColumn, LastRow, LastColumn);
-            var newImgMTD = ResizeImage(imageMTD, 1000, 880);
+            var newImgMTD = ResizeImage(imageMTD, 1000, 1050);
             newImgMTD.Save(imageNameMTD, ImageFormat.Png);
 
             Crop(imageNameYesterday, imageNameYesterdayFinal, NewWidth, NewHeight, X, Y);
