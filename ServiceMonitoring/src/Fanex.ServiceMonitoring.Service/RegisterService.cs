@@ -64,8 +64,8 @@ namespace Fanex.ServiceMonitoring.Service
             var text = File.ReadAllText("Templates/MonitoringSettings.json");
             AppConfigService.AppConfig = JsonConvert.DeserializeObject<ConfigSettingModel>(text);
 
-            text = File.ReadAllText("Templates/MailNeedToMonitor.json");
-            AppConfigService.MailNeedToMonitor = JsonConvert.DeserializeObject<List<string>>(text);
+            text = File.ReadAllText("Templates/MailNoNeedToMonitor.json");
+            AppConfigService.MailNoNeedToMonitor = JsonConvert.DeserializeObject<List<string>>(text);
         }
 
         private static void SentryRegister()
