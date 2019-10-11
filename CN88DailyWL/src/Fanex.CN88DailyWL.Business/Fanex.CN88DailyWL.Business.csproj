@@ -171,6 +171,7 @@
     <Compile Include="Services\DataService.cs" />
     <Compile Include="Services\DateService.cs" />
     <Compile Include="Services\ExcelService.cs" />
+    <Compile Include="Services\ImageService.cs" />
     <Compile Include="Services\Log.native.cs" />
     <Compile Include="Services\MessageService.cs" />
   </ItemGroup>

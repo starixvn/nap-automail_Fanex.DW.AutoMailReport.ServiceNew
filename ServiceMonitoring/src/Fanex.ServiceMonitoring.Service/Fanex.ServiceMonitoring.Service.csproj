@@ -219,7 +219,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Templates\MailNeedToMonitor.json">
+    <Content Include="Templates\MailNoNeedToMonitor.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

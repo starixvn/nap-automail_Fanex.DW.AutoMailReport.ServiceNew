@@ -1,12 +1,12 @@
 ﻿{
   "SentryClientKey": "https://ad29bef60cc04e78803c9030a33a2c06@sentry.nexdev.net/44",
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
-  "IsManual": false,
+  "IsManual": true,
   "IsCheckEnoughData": false,
   "FunctionIdNodata": 90,
-  "Yesterday": "2019-08-01",
-  "StartDate": "2019-08-01",
-  "EndDate":  "2019-09-11",
+  "Yesterday": "2019-09-01",
+  "StartDate": "2019-09-01",
+  "EndDate":  "2019-09-01",
   "FilePath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\DailySoccerPerformance",
   "TargetName": "daily-house-wl",
   "Group": "Soccer-Performance-Test"

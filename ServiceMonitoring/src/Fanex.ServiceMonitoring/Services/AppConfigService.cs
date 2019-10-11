@@ -10,7 +10,7 @@ namespace Fanex.ServiceMonitoring.Services
             get; set;
         }
 
-        public static List<string> MailNeedToMonitor
+        public static List<string> MailNoNeedToMonitor
         {
             get; set;
         }
