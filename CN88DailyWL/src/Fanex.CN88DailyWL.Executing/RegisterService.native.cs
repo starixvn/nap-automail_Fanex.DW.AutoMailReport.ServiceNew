@@ -41,6 +41,7 @@ namespace Fanex.CN88DailyWL.Executing
             container.Register<IDynamicRepository, DynamicRepository>();
             container.Register<DataService, DataServiceImp>();
             container.Register<ExcelService, ExcelServiceImp>();
+            container.Register<ImageService, ImageServiceImp>();
             container.Register<DateService, DateServiceImp>();
             container.Register<CN88NotifycationService, CN88NotifycationServiceImp>();
             container.Register(() => new ExcelPackage(new FileInfo(@"Templates/Template.xlsx")));

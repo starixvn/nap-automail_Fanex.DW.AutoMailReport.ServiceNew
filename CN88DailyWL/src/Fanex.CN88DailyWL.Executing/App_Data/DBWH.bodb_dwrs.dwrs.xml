@@ -1,5 +1,5 @@
 ﻿<Functions>
-	<Function Name="Auto Mail - Score Box">
+	<Function SiteId="25" SiteName="Auto Mail">
     <Setting Key="Acc_Rpt_CN88WinLoss" SpName="Acc_Rpt_CN88WinLoss" DbName="DBWH.bodb_dwrs.dwrs" Timeout="0"></Setting>
     <Setting Key="Acc_Rpt_GetAccountingPeriod" SpName="Acc_Rpt_GetAccountingPeriod" DbName="DBWH.bodb_dwrs.dwrs" Timeout="0"></Setting>    
   </Function>

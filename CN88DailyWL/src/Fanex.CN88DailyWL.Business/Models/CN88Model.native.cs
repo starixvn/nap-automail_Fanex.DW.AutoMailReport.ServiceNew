@@ -18,6 +18,12 @@
 
         public decimal CompanyIncome { get; set; }
 
+        public decimal CompanyIncome_Live { get; set; }
+
+        public decimal CompanyIncome_NonLive { get; set; }
+
+        public decimal CompanyIncome_Mix { get; set; }
+
         public decimal CompanyMargin { get; set; }
     }
 }

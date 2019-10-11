@@ -15,14 +15,22 @@ namespace Fanex.CN88DailyWL.Business.Services
         private readonly Log log;
         private readonly DataService dataService;
         private readonly ExcelService excelService;
+        private readonly ImageService imageService;
         private readonly MessageService messageService;
         private readonly LetstalkClientService letstalkService;
 
-        public CN88NotifycationServiceImp(Log log, DataService dataService, ExcelService excelService, MessageService messageService, LetstalkClientService letstalkService)
+        public CN88NotifycationServiceImp(
+            Log log, 
+            DataService dataService, 
+            ExcelService excelService,
+            ImageService imageService,
+            MessageService messageService, 
+            LetstalkClientService letstalkService)
         {
             this.log = log;
             this.dataService = dataService;
             this.excelService = excelService;
+            this.imageService = imageService;
             this.messageService = messageService;
             this.letstalkService = letstalkService;
         }
@@ -58,7 +66,8 @@ namespace Fanex.CN88DailyWL.Business.Services
         private ExecuteResultModel SendNotification()
         {
             var data = dataService.QueryData();
-            var fileNames = excelService.Execute(data);
+            var excelFile = excelService.Execute(data);
+            var fileNames = imageService.ExportImage(excelFile);
             var letstalkModel = messageService.CreateLetstalkModel(fileNames);
             var result = letstalkService.SendMessage(letstalkModel);
 

@@ -15,7 +15,7 @@ namespace Fanex.CN88DailyWL.Business.Services
             get
             {
                 var wldate = AppConfigService.AppConfig.IsManual
-                    ? AppConfigService.AppConfig.WinLostDate.AddDays(-1)
+                    ? AppConfigService.AppConfig.WinLostDate
                     : Convert.ToDateTime($"{SystemTime.Now.AddDays(-1):yyyy/MM/dd}");
 
                 return wldate;
