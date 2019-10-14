@@ -39,16 +39,16 @@ namespace Fanex.CN88DailyWL.Business.Services
 
             const int FirstRowEn = 1;
             const int FirstColumnEn = 2;
-            const int LastRowEn = 29;
+            const int LastRowEn = 35;
             const int LastColumnEn = 7;
 
-            const int FirstRowCn = 31;
+            const int FirstRowCn = 37;
             const int FirstColumnCn = 2;
-            const int LastRowCn = 59;
+            const int LastRowCn = 71;
             const int LastColumnCn = 7;
 
             const int NewWidth = 400;
-            const int NewHeight = 700;
+            const int NewHeight = 900;
             const int X = 100;
             const int Y = 100;
             
@@ -57,11 +57,11 @@ namespace Fanex.CN88DailyWL.Business.Services
             var sheet = workbook.Worksheets[0];
 
             var imageEn = sheet.ToImage(FirstRowEn, FirstColumnEn, LastRowEn, LastColumnEn);
-            var newImgEn = ResizeImage(imageEn, 600, 900);
+            var newImgEn = ResizeImage(imageEn, 600, 1100);
             newImgEn.Save(imageNameEn, ImageFormat.Png);
 
             var imageCn = sheet.ToImage(FirstRowCn, FirstColumnCn, LastRowCn, LastColumnCn);
-            var newImgCn = ResizeImage(imageCn, 600, 900);
+            var newImgCn = ResizeImage(imageCn, 600, 1100);
             newImgCn.Save(imageNameCn, ImageFormat.Png);
 
             Crop(imageNameEn, imageNameEnFinal, NewWidth, NewHeight, X, Y);
