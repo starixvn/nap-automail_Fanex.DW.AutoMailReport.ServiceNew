@@ -16,6 +16,12 @@
 
         public decimal CompanyTO { get; set; }
 
+        public decimal CompanyTO_Live { get; set; }
+
+        public decimal CompanyTO_NonLive { get; set; }
+
+        public decimal CompanyTO_Mix { get; set; }
+
         public decimal CompanyIncome { get; set; }
 
         public decimal CompanyIncome_Live { get; set; }

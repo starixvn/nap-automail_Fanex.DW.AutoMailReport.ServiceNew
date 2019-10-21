@@ -43,60 +43,72 @@ namespace Fanex.CN88DailyWL.Business.Services
             template.Cells["E5"].Value = data.MemberTO;
             template.Cells["E6"].Value = data.NetTO;
             template.Cells["E7"].Value = data.MemberWL;
-            template.Cells["E8"].Value = data.CompanyTO;
-            template.Cells["E9"].Value = data.CompanyIncome_Live;
-            template.Cells["E10"].Value = data.CompanyIncome_NonLive;
-            template.Cells["E11"].Value = data.CompanyIncome_Mix;
-            template.Cells["E12"].Value = data.CompanyIncome;
-            template.Cells["E13"].Value = data.CompanyMargin;
+            template.Cells["E8"].Value = data.CompanyTO_Live;
+            template.Cells["E9"].Value = data.CompanyTO_NonLive;
+            template.Cells["E10"].Value = data.CompanyTO_Mix;
+            template.Cells["E11"].Value = data.CompanyTO;
+            template.Cells["E12"].Value = data.CompanyIncome_Live;
+            template.Cells["E13"].Value = data.CompanyIncome_NonLive;
+            template.Cells["E14"].Value = data.CompanyIncome_Mix;
+            template.Cells["E15"].Value = data.CompanyIncome;
+            template.Cells["E16"].Value = data.CompanyMargin;
         }
 
         private void RenderDailyCN(CN88Model data)
         {
-            template.Cells["C32"].Value = $"   [{data.Date}]";
-            template.Cells["E33"].Value = data.ActiveMember;
-            template.Cells["E34"].Value = data.BetCount;
-            template.Cells["E35"].Value = data.MemberTO;
-            template.Cells["E36"].Value = data.NetTO;
-            template.Cells["E37"].Value = data.MemberWL;
-            template.Cells["E38"].Value = data.CompanyTO;
-            template.Cells["E39"].Value = data.CompanyIncome_Live;
-            template.Cells["E40"].Value = data.CompanyIncome_NonLive;
-            template.Cells["E41"].Value = data.CompanyIncome_Mix;            
-            template.Cells["E42"].Value = data.CompanyIncome;
-            template.Cells["E43"].Value = data.CompanyMargin;
+            template.Cells["C38"].Value = $"   [{data.Date}]";
+            template.Cells["E39"].Value = data.ActiveMember;
+            template.Cells["E40"].Value = data.BetCount;
+            template.Cells["E41"].Value = data.MemberTO;
+            template.Cells["E42"].Value = data.NetTO;
+            template.Cells["E43"].Value = data.MemberWL;
+            template.Cells["E44"].Value = data.CompanyTO_Live;
+            template.Cells["E45"].Value = data.CompanyTO_NonLive;
+            template.Cells["E46"].Value = data.CompanyTO_Mix;            
+            template.Cells["E47"].Value = data.CompanyTO;
+            template.Cells["E48"].Value = data.CompanyIncome_Live;
+            template.Cells["E49"].Value = data.CompanyIncome_NonLive;
+            template.Cells["E50"].Value = data.CompanyIncome_Mix;            
+            template.Cells["E51"].Value = data.CompanyIncome;
+            template.Cells["E52"].Value = data.CompanyMargin;
         }
 
         private void RenderPeriodEN(CN88Model data)
         {
-            template.Cells["C16"].Value = $"   [Current Period: {data.Date}]";
-            template.Cells["E17"].Value = data.ActiveMember;
-            template.Cells["E18"].Value = data.BetCount;
-            template.Cells["E19"].Value = data.MemberTO;
-            template.Cells["E20"].Value = data.NetTO;
-            template.Cells["E21"].Value = data.MemberWL;
-            template.Cells["E22"].Value = data.CompanyTO;
-            template.Cells["E23"].Value = data.CompanyIncome_Live;
-            template.Cells["E24"].Value = data.CompanyIncome_NonLive;
-            template.Cells["E25"].Value = data.CompanyIncome_Mix;            
-            template.Cells["E26"].Value = data.CompanyIncome;
-            template.Cells["E27"].Value = data.CompanyMargin;
+            template.Cells["C19"].Value = $"   [Current Period: {data.Date}]";
+            template.Cells["E20"].Value = data.ActiveMember;
+            template.Cells["E21"].Value = data.BetCount;
+            template.Cells["E22"].Value = data.MemberTO;
+            template.Cells["E23"].Value = data.NetTO;
+            template.Cells["E24"].Value = data.MemberWL;
+            template.Cells["E25"].Value = data.CompanyTO_Live;
+            template.Cells["E26"].Value = data.CompanyTO_NonLive;
+            template.Cells["E27"].Value = data.CompanyTO_Mix;
+            template.Cells["E28"].Value = data.CompanyTO;
+            template.Cells["E29"].Value = data.CompanyIncome_Live;
+            template.Cells["E30"].Value = data.CompanyIncome_NonLive;
+            template.Cells["E31"].Value = data.CompanyIncome_Mix;            
+            template.Cells["E32"].Value = data.CompanyIncome;
+            template.Cells["E33"].Value = data.CompanyMargin;
         }
 
         private void RenderPeriodCN(CN88Model data)
         {
-            template.Cells["C46"].Value = $"   [本期: {data.Date}]";
-            template.Cells["E47"].Value = data.ActiveMember;
-            template.Cells["E48"].Value = data.BetCount;
-            template.Cells["E49"].Value = data.MemberTO;
-            template.Cells["E50"].Value = data.NetTO;
-            template.Cells["E51"].Value = data.MemberWL;
-            template.Cells["E52"].Value = data.CompanyTO;
-            template.Cells["E53"].Value = data.CompanyIncome_Live;
-            template.Cells["E54"].Value = data.CompanyIncome_NonLive;
-            template.Cells["E55"].Value = data.CompanyIncome_Mix;
-            template.Cells["E56"].Value = data.CompanyIncome;
-            template.Cells["E57"].Value = data.CompanyMargin;
+            template.Cells["C55"].Value = $"   [本期: {data.Date}]";
+            template.Cells["E56"].Value = data.ActiveMember;
+            template.Cells["E57"].Value = data.BetCount;
+            template.Cells["E58"].Value = data.MemberTO;
+            template.Cells["E59"].Value = data.NetTO;
+            template.Cells["E60"].Value = data.MemberWL;
+            template.Cells["E61"].Value = data.CompanyTO_Live;
+            template.Cells["E62"].Value = data.CompanyTO_NonLive;
+            template.Cells["E63"].Value = data.CompanyTO_Mix;
+            template.Cells["E64"].Value = data.CompanyTO;
+            template.Cells["E65"].Value = data.CompanyIncome_Live;
+            template.Cells["E66"].Value = data.CompanyIncome_NonLive;
+            template.Cells["E67"].Value = data.CompanyIncome_Mix;
+            template.Cells["E68"].Value = data.CompanyIncome;
+            template.Cells["E69"].Value = data.CompanyMargin;
         }
 
         private string SaveExceFile()
