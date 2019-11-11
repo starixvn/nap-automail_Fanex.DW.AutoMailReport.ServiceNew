@@ -1,0 +1,10 @@
+﻿{
+  "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.40.40.47:801/60",
+  "CategorySentryLog": "NAP-Report-Service",
+  "IsManual": false,
+  "FromDate": "2018-12-22",
+  "ToDate": "2019-06-12",
+  "FilePath": "E:\\E_SportsWeeklyPowerBIData",
+  "Path": "\\\\10.40.40.127\\Data.Web\\Fanex.Excel\\E_SportsWeeklyPowerBIData",
+  "Password": ""  
+}
