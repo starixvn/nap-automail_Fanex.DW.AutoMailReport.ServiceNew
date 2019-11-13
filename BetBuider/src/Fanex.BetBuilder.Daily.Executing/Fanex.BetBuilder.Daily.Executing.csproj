@@ -181,7 +181,7 @@
     <Content Include="Templates\DailyEmailTemplate.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Fanex.BetBuilder.Daily.ExecutingLocal.exe.config">
+    <Content Include="Templates\Fanex.BetBuilder.Daily.Executing.Local.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\Fanex.BetBuilder.Daily.Executing.UAT.exe.config">

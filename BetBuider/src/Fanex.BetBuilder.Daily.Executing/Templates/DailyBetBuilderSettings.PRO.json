@@ -1,5 +1,5 @@
 ﻿{
-  "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.40.40.47:801/60",
+  "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.99.99.37:801/60",
   "CategorySentryLog": "NAP-Report-Service",
   "IsManual": false,
   "WinlostDate": "2019-06-02",
