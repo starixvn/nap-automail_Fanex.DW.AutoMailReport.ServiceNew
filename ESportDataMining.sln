@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6E0C2FCF-4816-463D-92C2-DC6D8642A5A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F5BFAC14-200A-40FF-8303-3229194BBC00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.ESportDataMining.Business", "ESportDataMining\src\Fanex.ESportDataMining.Business\Fanex.ESportDataMining.Business.csproj", "{5B69ABD4-8EE2-4391-B745-274E2D835A74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.ESportDataMining.Executing", "ESportDataMining\src\Fanex.ESportDataMining.Executing\Fanex.ESportDataMining.Executing.csproj", "{2B33E857-2E66-41A9-AC09-4BFC868A748A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B69ABD4-8EE2-4391-B745-274E2D835A74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B69ABD4-8EE2-4391-B745-274E2D835A74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B69ABD4-8EE2-4391-B745-274E2D835A74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B69ABD4-8EE2-4391-B745-274E2D835A74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B33E857-2E66-41A9-AC09-4BFC868A748A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B33E857-2E66-41A9-AC09-4BFC868A748A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B33E857-2E66-41A9-AC09-4BFC868A748A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B33E857-2E66-41A9-AC09-4BFC868A748A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5B69ABD4-8EE2-4391-B745-274E2D835A74} = {6E0C2FCF-4816-463D-92C2-DC6D8642A5A8}
+		{2B33E857-2E66-41A9-AC09-4BFC868A748A} = {6E0C2FCF-4816-463D-92C2-DC6D8642A5A8}
+	EndGlobalSection
+EndGlobal

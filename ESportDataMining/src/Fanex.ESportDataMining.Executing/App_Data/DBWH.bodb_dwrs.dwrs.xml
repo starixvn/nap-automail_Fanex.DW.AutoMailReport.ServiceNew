@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Functions>
+  <Function Name="Auto-mail">
+    <Setting Key="NAP_DW_Esport_Dim_Bettype" SpName="NAP_DW_Esport_Dim_Bettype" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+    <Setting Key="NAP_DW_Esport_FactCustEsport" SpName="NAP_DW_Esport_FactCustEsport" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+    <Setting Key="NAP_DW_Esport_Dim_LiveStatus" SpName="NAP_DW_Esport_Dim_LiveStatus" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+    <Setting Key="NAP_DW_Esport_Dim_Currency" SpName="NAP_DW_Esport_Dim_Currency" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+    <Setting Key="NAP_DW_Esport_Dim_Site" SpName="NAP_DW_Esport_Dim_Site" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+    <Setting Key="NAP_DW_Esport_Dim_Match" SpName="NAP_DW_Esport_Dim_Match" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+    <Setting Key="NAP_DW_Esport_Dim_Date" SpName="NAP_DW_Esport_Dim_Date" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+    <Setting Key="NAP_DW_Esport_Dim_League" SpName="NAP_DW_Esport_Dim_League" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+    <Setting Key="NAP_DW_Esport_Dim_Customer" SpName="NAP_DW_Esport_Dim_Customer" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+    <Setting Key="NAP_DW_Esport_Dim_Trader" SpName="NAP_DW_Esport_Dim_Trader" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+  </Function>
+</Functions>
