@@ -9,7 +9,9 @@ namespace Fanex.AbnormalBets.Business.Services
 {
     public interface RepositoryService
     {
-        Tuple<List<SummaryBetModel>, List<DetailBetModel>> Query(string site, DateTime rptDate);
+        Tuple<List<SummaryBetModel>, List<DetailBetModel>> QueryBet(string site, DateTime rptDate);
+
+        List<MailModel> QueryMail(DateTime rptDate);
     }
 
     public class RepositoryServiceImp : RepositoryService
@@ -21,11 +23,18 @@ namespace Fanex.AbnormalBets.Business.Services
             this.repository = repository;
         }
 
-        public Tuple<List<SummaryBetModel>, List<DetailBetModel>> Query(string site, DateTime rptDate)
+        public Tuple<List<SummaryBetModel>, List<DetailBetModel>> QueryBet(string site, DateTime rptDate)
         {
             var criteria = new AbnormalCriteria { Site = site, RptDate = rptDate };
             var result = repository.FetchMultiple<SummaryBetModel, DetailBetModel>(criteria);
             return new Tuple<List<SummaryBetModel>, List<DetailBetModel>>(result.Item1.ToList(), result.Item2.ToList());
+        }
+
+        public List<MailModel> QueryMail(DateTime rptDate)
+        {
+            var date = rptDate.AddDays(1);
+            var criteria = new CheckMailStatusCriteria { FromDate = date, ToDate = date };
+            return repository.Fetch<MailModel>(criteria).ToList();
         }
     }
 }

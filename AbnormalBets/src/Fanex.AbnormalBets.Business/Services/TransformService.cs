@@ -2,6 +2,7 @@
 using Fanex.RemotingRef;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Fanex.AbnormalBets.Business.Services
 {
@@ -41,7 +42,7 @@ namespace Fanex.AbnormalBets.Business.Services
                 {
                     Sport = $"{rrService.GetSportName(bet.SportType.ToString(), CodeEn)} {rrService.GetSportName(bet.SportType.ToString(), CodeCn)}",
                     League = $"{rrService.GetLeagueName(bet.LeagueId.ToString(), CodeEn)} {rrService.GetLeagueName(bet.LeagueId.ToString(), CodeCn)}",
-                    Match = $"{rrService.GetTeamName(bet.HomeId.ToString(), CodeEn)} -vs- {rrService.GetTeamName(bet.AwayId.ToString(), CodeEn)} {rrService.GetTeamName(bet.HomeId.ToString(), CodeCn)} -vs- {rrService.GetTeamName(bet.AwayId.ToString(), CodeCn)}",                    
+                    Match = $"{rrService.GetTeamName(bet.HomeId.ToString(), CodeEn)} -vs- {rrService.GetTeamName(bet.AwayId.ToString(), CodeEn)} {rrService.GetTeamName(bet.HomeId.ToString(), CodeCn)} -vs- {rrService.GetTeamName(bet.AwayId.ToString(), CodeCn)}",
                     KickOffTime = bet.KickOffTime.AddHours(12),
                     Live = bet.LiveIndicator ? "Live 现场" : "Non Live  现场",
                     NumberOfLicensees = bet.NumberOfLicensees,
@@ -53,7 +54,11 @@ namespace Fanex.AbnormalBets.Business.Services
                 });
             });
 
-            return summaries;
+            return summaries
+                .OrderByDescending(o => o.KickOffTime)
+                .ThenByDescending(o => o.Live)
+                .ThenByDescending(o => o.Bettype)
+                .ToList();
         }
 
         private List<DetailBetDTOModel> GetDetailBets(List<DetailBetModel> rawData)
@@ -85,7 +90,9 @@ namespace Fanex.AbnormalBets.Business.Services
                 });
             });
 
-            return details;
+            return details
+                .OrderByDescending(o => o.TransDate)
+                .ToList();
         }
     }
 }

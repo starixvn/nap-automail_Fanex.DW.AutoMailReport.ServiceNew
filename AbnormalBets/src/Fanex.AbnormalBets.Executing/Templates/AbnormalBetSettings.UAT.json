@@ -1,0 +1,35 @@
+﻿{
+  "SentryClientKey": "http://612764957dbb46ffa359103d8ffa08c6@10.99.99.37:801/59",
+  "CategorySentryLog": "NAP-Report-Service-UAT",
+  "IsManual": false,
+  "IsIgnoredCheckMailSent": false,
+  "RptDate": "2019-11-17",  
+  "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\AbnormalBet",
+  "Password": "",
+   "Sites": [
+    {
+      "MailId": 307,
+      "MailName": "Abnormal Bet Daily Report - All",
+      "SiteName": "All",
+      "Subject": "[ABI] - Abnormal Licensee bet {0}"
+    },
+    {
+      "MailId": 308,
+      "MailName": "Abnormal Bet Daily Report - CN88",
+      "SiteName": "CN88",
+      "Subject": "[ABI] - CN88 {0} 每日会员删票报告"
+    },
+    {
+      "MailId": 309,
+      "MailName": "Abnormal Bet Daily Report - KeenOcean",
+      "SiteName": "KeenOcean",
+      "Subject": "[ABI] KeenOcean Abnormal Licensee bet {0}"
+    },
+    {
+      "MailId": 310,
+      "MailName": "Abnormal Bet Daily Report - Haifa",
+      "SiteName": "Haifa",
+      "Subject": "[ABI] Haifa Abnormal Licensee bet {0}"
+    }
+  ]  
+}

@@ -111,6 +111,10 @@
       <HintPath>..\..\..\packages\RabbitMQ.Client.3.5.7\lib\net40\RabbitMQ.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\RazorEngine.3.10.0\lib\net45\RazorEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="SharpRaven, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\SharpRaven.2.4.0\lib\net45\SharpRaven.dll</HintPath>
       <Private>True</Private>
@@ -157,6 +161,10 @@
       <HintPath>..\..\..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -165,10 +173,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Criterias\AbnormalCriteria.cs" />
+    <Compile Include="Criterias\CheckMailStatusCriteria.cs" />
+    <Compile Include="Models\BetDetailModel.cs" />
     <Compile Include="Models\ConfigSettingModel.cs" />
     <Compile Include="Models\DetailBetDTOModel.cs" />
     <Compile Include="Models\DetailBetModel.cs" />
     <Compile Include="Models\ExecuteResultModel.cs" />
+    <Compile Include="Models\MailModel.cs" />
+    <Compile Include="Models\SiteModel.cs" />
     <Compile Include="Models\SummaryBetDTOModel.cs" />
     <Compile Include="Models\SummaryBetModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -178,6 +190,7 @@
     <Compile Include="Services\DateService.cs" />
     <Compile Include="Services\ExcelService.cs" />
     <Compile Include="Services\Log.cs" />
+    <Compile Include="Services\MailService.cs" />
     <Compile Include="Services\RepositoryService.cs" />
     <Compile Include="Services\TransformService.cs" />
   </ItemGroup>

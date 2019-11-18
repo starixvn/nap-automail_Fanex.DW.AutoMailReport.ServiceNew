@@ -1,6 +1,7 @@
 ﻿using Fanex.AbnormalBets.Business.Models;
 using Fanex.MailDelivery.Core.Models;
 using System;
+using System.Linq;
 
 namespace Fanex.AbnormalBets.Business.Services
 {
@@ -16,14 +17,22 @@ namespace Fanex.AbnormalBets.Business.Services
         private readonly DateService dateService;
         private readonly TransformService transformService;
         private readonly ExcelService excelService;
+        private readonly MailService mailService;
 
-        public AbnormalBetNotificationServiceImp(Log log, RepositoryService repositoryService, DateService dateService, TransformService transformService, ExcelService excelService)
+        public AbnormalBetNotificationServiceImp(
+            Log log,
+            RepositoryService repositoryService,
+            DateService dateService,
+            TransformService transformService,
+            ExcelService excelService,
+            MailService mailService)
         {
             this.log = log;
             this.repositoryService = repositoryService;
             this.dateService = dateService;
             this.transformService = transformService;
             this.excelService = excelService;
+            this.mailService = mailService;
         }
 
         public JobMessage Execute()
@@ -58,13 +67,21 @@ namespace Fanex.AbnormalBets.Business.Services
         private ExecuteResultModel SendNotification()
         {
             var date = dateService.Date();
-            foreach(var site in AppConfigService.AppConfig.MailIdSites)
+            var mails = repositoryService.QueryMail(date);
+            foreach (var site in AppConfigService.AppConfig.Sites)
             {
-                var rawData = repositoryService.Query(site.Value, date);
+                var isSent = mailService.IsMailSent(mails, site.MailName);
+                if (isSent)
+                {
+                    continue;
+                }
+                var rawData = repositoryService.QueryBet(site.SiteName, date);
+                var isNoData = !rawData.Item1.Any();
                 var betData = transformService.Execute(rawData);
-                var excelPath = excelService.Export(site.Value, date, betData);
+                var excelPath = isNoData ? string.Empty : excelService.Export(site.SiteName, date, betData);
+                mailService.SendMail(date, excelPath, isNoData, site.Subject, site.MailId);
             }
-            
+
             return new ExecuteResultModel { Success = true, Mail = null };
         }
     }

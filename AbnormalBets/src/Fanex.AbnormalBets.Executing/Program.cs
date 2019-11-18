@@ -14,8 +14,6 @@ namespace Fanex.AbnormalBets.Executing
             RegisterService.RegisterContainer(container);
             container.Verify(VerificationOption.VerifyOnly);
 
-            
-
             var service = container.GetInstance<AbnormalBetNotificationService>();
             var jobMessage = service.Execute();
             var json = JsonConvert.SerializeObject(jobMessage);

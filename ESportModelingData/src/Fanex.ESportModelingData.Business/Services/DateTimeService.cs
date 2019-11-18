@@ -14,24 +14,27 @@ namespace Fanex.ESportModelingData.Business.Services
     {
         public DateTime DateEnd()
         {
-            const int Week = 6;
+            if(AppConfigService.AppConfig.IsManual)
+            {
+                return AppConfigService.AppConfig.DateEnd;
+            }
 
+            const int Week = 6;
             return DateStart().AddDays(Week);
         }
 
         public DateTime DateStart()
         {
+            if (AppConfigService.AppConfig.IsManual)
+            {
+                return AppConfigService.AppConfig.DateStart;
+            }
+
             DateTime dateStart;
             int diff = GetDateDiff();
             var dateEnd = Today().AddDays(-diff);
             const int Week = 6;
-
             dateStart = dateEnd.AddDays(-Week);
-
-            if (AppConfigService.AppConfig.IsManual && dateStart <= AppConfigService.AppConfig.DateStart)
-            {
-                dateStart = dateStart.AddDays(Week + 1);
-            }
 
             return dateStart;
         }

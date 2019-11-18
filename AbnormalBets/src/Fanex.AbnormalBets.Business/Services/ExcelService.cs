@@ -14,23 +14,29 @@ namespace Fanex.AbnormalBets.Business.Services
 
     public class ExcelServiceImp : ExcelService
     {
-        private readonly ExcelPackage excelPackage;
-        private readonly ExcelWorksheet summaryTemplate;
-        private readonly ExcelWorksheet detailTemplate;
+        private ExcelPackage excelPackage;
+        private ExcelWorksheet summaryTemplate;
+        private ExcelWorksheet detailTemplate;        
 
         public ExcelServiceImp(ExcelPackage excelPackage)
         {
-            this.excelPackage = excelPackage;
-            summaryTemplate = excelPackage.Workbook.Worksheets["Summary"];
-            detailTemplate = excelPackage.Workbook.Worksheets["Detail"];
-            excelPackage.Workbook.Worksheets.Delete(detailTemplate);
+            this.excelPackage = excelPackage;            
         }
 
         public string Export(string site, DateTime rptDate, Tuple<List<SummaryBetDTOModel>, List<DetailBetDTOModel>> data)
         {
+            excelPackage = new ExcelPackage(new FileInfo(@"Templates/AbnormalBet.xlsx"));
+            Init();
             GenSummary(data.Item1);
-            GenDetail(data);
+            GenDetail(data.Item2);
             return SaveExceFile(site, rptDate);
+        }
+
+        private void Init()
+        {
+            summaryTemplate = excelPackage.Workbook.Worksheets["Summary"];
+            detailTemplate = excelPackage.Workbook.Worksheets["Detail"];
+            excelPackage.Workbook.Worksheets.Delete(detailTemplate);
         }
 
         private void GenSummary(List<SummaryBetDTOModel> bets)
@@ -44,26 +50,67 @@ namespace Fanex.AbnormalBets.Business.Services
             }
         }
 
-        private void GenDetail(Tuple<List<SummaryBetDTOModel>, List<DetailBetDTOModel>> data)
+        private void GenDetail(List<DetailBetDTOModel> data)
         {
-            var count = 1;
-            data.Item2
-                .GroupBy(g => new { g.Sport, g.League, g.Match, g.KickOffTime, g.Bettype, g.Betteam, g.Reason, g.FinalScore, g.Home })
+            var count = 1;            
+            data.GroupBy(g => new { g.Sport, g.League, g.Match, g.KickOffTime, g.Bettype, g.Betteam, g.Reason, g.FinalScore, g.Home, g.Live })
                 .ToList()
                 .ForEach(row => 
                 {
-                    var sheetName = count > 1
-                        ? $"{row.Key.Home} ({count})"
-                        : $"{row.Key.Home}";
+                    var sheetName = GetSheetName(row.Key.Home, count);
+                    var detail = detailTemplate;
+                    detail.Cells["B1"].Value = row.Key.Sport;
+                    detail.Cells["B2"].Value = row.Key.League;
+                    detail.Cells["B3"].Value = row.Key.Match;
+                    detail.Cells["B4"].Value = row.Key.KickOffTime;
+                    detail.Cells["B5"].Value = row.Key.Live;
+                    detail.Cells["B6"].Value = row.Key.Bettype;
+                    detail.Cells["B7"].Value = row.Key.Betteam;
+                    detail.Cells["B8"].Value = row.Key.Reason;
+                    detail.Cells["B9"].Value = row.Key.FinalScore;
 
-                    excelPackage.Workbook.Worksheets.Add(sheetName);
-                    ExcelWorksheet home = detailTemplate;
-                    home.Cells["B1"].Value = row.Key.Sport;
-                    home.Cells["B2"].Value = row.Key.League;
-                    home.Cells["B3"].Value = row.Key.Match;
-                    //home.Cells["B4"].Value = row.Key.ke;
                     count++;
+                    var betDetails = new List<BetDetailModel>();
+                    row.ToList()
+                    .ForEach(bet => 
+                    {
+                        betDetails.Add(new BetDetailModel
+                        {
+                            Username = bet.Username,
+                            Odds = bet.Odds,
+                            CurrencyName = bet.CurrencyName,
+                            Stake = bet.Stake,
+                            Hdp = bet.Hdp,
+                            LiveHomeScore = bet.LiveHomeScore,
+                            LiveAwayScore = bet.LiveAwayScore,
+                            TransDate = bet.TransDate,
+                            TransId = bet.TransId
+                        });
+                    });
+
+                    var lastRowIndex = detail.Dimension.End.Row;
+                    if (lastRowIndex > 12)
+                    {
+                        detail.DeleteRow(13, lastRowIndex);
+                    }
+
+                    detail.Cells["B12"].LoadFromCollection(betDetails, false);                    
+                    for (int i = 2; i <= 10; i++)
+                    {
+                        detail.Cells[12, i, 11 + betDetails.Count, i].StyleID = detail.Cells[12, i].StyleID;
+                    }
+
+                    excelPackage.Workbook.Worksheets.Add(sheetName, detail);
                 });
+        }
+
+        private string GetSheetName(string home, int count)
+        {
+            var index = home.Length > 27 ? 27 : home.Length;
+            var sheetname = home.Substring(0, index);
+            return count > 1
+                ? $"{sheetname}({count})"
+                : sheetname;
         }
 
         private string SaveExceFile(string site, DateTime rptDate)
@@ -77,8 +124,7 @@ namespace Fanex.AbnormalBets.Business.Services
             }
 
             path = $@"{path}\{fileName}";
-            excelPackage.SaveAs(new FileInfo(path), AppConfigService.AppConfig.Password);
-
+            excelPackage.SaveAs(new FileInfo(path), AppConfigService.AppConfig.Password);            
             return path;
         }
     }
