@@ -10,6 +10,8 @@ namespace Fanex.AbnormalBets.Business.Models
 
         public string Match { get; set; }
 
+        public string Home { get; set; }
+
         public DateTime KickOffTime { get; set; }
 
         public string Live { get; set; }

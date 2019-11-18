@@ -3,6 +3,7 @@ using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Fanex.AbnormalBets.Business.Services
 {
@@ -15,16 +16,20 @@ namespace Fanex.AbnormalBets.Business.Services
     {
         private readonly ExcelPackage excelPackage;
         private readonly ExcelWorksheet summaryTemplate;
+        private readonly ExcelWorksheet detailTemplate;
 
         public ExcelServiceImp(ExcelPackage excelPackage)
         {
             this.excelPackage = excelPackage;
             summaryTemplate = excelPackage.Workbook.Worksheets["Summary"];
+            detailTemplate = excelPackage.Workbook.Worksheets["Detail"];
+            excelPackage.Workbook.Worksheets.Delete(detailTemplate);
         }
 
         public string Export(string site, DateTime rptDate, Tuple<List<SummaryBetDTOModel>, List<DetailBetDTOModel>> data)
         {
             GenSummary(data.Item1);
+            GenDetail(data);
             return SaveExceFile(site, rptDate);
         }
 
@@ -37,6 +42,28 @@ namespace Fanex.AbnormalBets.Business.Services
                 summaryTemplate.Cells[rowIndex, columnIndex, bets.Count + rowIndex - 1, columnIndex].StyleID = summaryTemplate.Cells[rowIndex, columnIndex].StyleID;
                 summaryTemplate.Column(columnIndex).AutoFit(20);
             }
+        }
+
+        private void GenDetail(Tuple<List<SummaryBetDTOModel>, List<DetailBetDTOModel>> data)
+        {
+            var count = 1;
+            data.Item2
+                .GroupBy(g => new { g.Sport, g.League, g.Match, g.KickOffTime, g.Bettype, g.Betteam, g.Reason, g.FinalScore, g.Home })
+                .ToList()
+                .ForEach(row => 
+                {
+                    var sheetName = count > 1
+                        ? $"{row.Key.Home} ({count})"
+                        : $"{row.Key.Home}";
+
+                    excelPackage.Workbook.Worksheets.Add(sheetName);
+                    ExcelWorksheet home = detailTemplate;
+                    home.Cells["B1"].Value = row.Key.Sport;
+                    home.Cells["B2"].Value = row.Key.League;
+                    home.Cells["B3"].Value = row.Key.Match;
+                    //home.Cells["B4"].Value = row.Key.ke;
+                    count++;
+                });
         }
 
         private string SaveExceFile(string site, DateTime rptDate)
