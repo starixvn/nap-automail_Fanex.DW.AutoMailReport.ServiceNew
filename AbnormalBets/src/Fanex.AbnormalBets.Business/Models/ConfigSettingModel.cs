@@ -11,6 +11,8 @@ namespace Fanex.AbnormalBets.Business.Models
 
         public bool IsManual { get; set; }
 
+        public bool IsTest { get; set; }
+
         public bool IsIgnoredCheckMailSent { get; set; }
 
         public DateTime RptDate { get; set; }

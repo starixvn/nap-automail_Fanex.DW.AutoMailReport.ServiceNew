@@ -25,7 +25,7 @@ namespace Fanex.AbnormalBets.Business.Services
 
         public Tuple<List<SummaryBetModel>, List<DetailBetModel>> QueryBet(string site, DateTime rptDate)
         {
-            var criteria = new AbnormalCriteria { Site = site, RptDate = rptDate };
+            var criteria = new AbnormalCriteria { Site = site, RptDate = rptDate, IsTest = AppConfigService.AppConfig.IsTest };
             var result = repository.FetchMultiple<SummaryBetModel, DetailBetModel>(criteria);
             return new Tuple<List<SummaryBetModel>, List<DetailBetModel>>(result.Item1.ToList(), result.Item2.ToList());
         }

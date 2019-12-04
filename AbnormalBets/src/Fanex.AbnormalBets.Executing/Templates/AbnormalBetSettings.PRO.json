@@ -2,6 +2,7 @@
   "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.99.99.37:801/60",
   "CategorySentryLog": "NAP-Report-Service",
   "IsManual": false,
+  "IsTest": false,
   "IsIgnoredCheckMailSent": false,
   "RptDate": "2019-11-17",  
   "Path": "\\\\10.40.40.127\\Data.Web\\Fanex.Excel\\AbnormalBet",

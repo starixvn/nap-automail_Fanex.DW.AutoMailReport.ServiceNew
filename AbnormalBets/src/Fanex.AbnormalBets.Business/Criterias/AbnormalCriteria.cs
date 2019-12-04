@@ -9,6 +9,8 @@ namespace Fanex.AbnormalBets.Business.Criterias
 
         public DateTime RptDate { get; set; }
 
+        public bool IsTest { get; set; }
+
         public override string GetSettingKey() => "Acc_Rpt_AbnormalBetAutoMail";
 
         public override bool IsValid() => true;
