@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fanex.AbnormalBets.Business.Models.DailyLicensee;
+using System;
 using System.Collections.Generic;
 
 namespace Fanex.AbnormalBets.Business.Models

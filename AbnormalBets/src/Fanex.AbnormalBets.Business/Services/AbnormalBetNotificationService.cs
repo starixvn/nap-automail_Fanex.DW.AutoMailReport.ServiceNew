@@ -16,7 +16,7 @@ namespace Fanex.AbnormalBets.Business.Services
         private readonly RepositoryService repositoryService;
         private readonly DateService dateService;
         private readonly TransformService transformService;
-        private readonly ExcelService excelService;
+        private readonly ExcelLicenseeService excelService;
         private readonly MailService mailService;
 
         public AbnormalBetNotificationServiceImp(
@@ -24,7 +24,7 @@ namespace Fanex.AbnormalBets.Business.Services
             RepositoryService repositoryService,
             DateService dateService,
             TransformService transformService,
-            ExcelService excelService,
+            ExcelLicenseeService excelService,
             MailService mailService)
         {
             this.log = log;
@@ -75,10 +75,10 @@ namespace Fanex.AbnormalBets.Business.Services
                 {
                     continue;
                 }
-                var rawData = repositoryService.QueryBet(site.SiteName, date);
+                var rawData = repositoryService.QueryDailyLicenseeBet(site.SiteName, date);
                 var isNoData = !rawData.Item1.Any();
-                var betData = transformService.Execute(rawData);
-                var excelPath = isNoData ? string.Empty : excelService.Export(site.SiteName, date, betData);
+                var betData = transformService.ExecuteDailyLicensee(rawData);
+                var excelPath = isNoData ? string.Empty : excelService.Execute(site.SiteName, date, betData);
                 mailService.SendMail(date, excelPath, isNoData, site.Subject, site.MailId);
             }
 

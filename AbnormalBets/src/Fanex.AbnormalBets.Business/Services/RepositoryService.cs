@@ -1,5 +1,6 @@
 ﻿using Fanex.AbnormalBets.Business.Criterias;
-using Fanex.AbnormalBets.Business.Models;
+using Fanex.AbnormalBets.Business.Models.DailyCSD;
+using Fanex.AbnormalBets.Business.Models.DailyLicensee;
 using Fanex.Data.Repository;
 using System;
 using System.Collections.Generic;
@@ -9,9 +10,11 @@ namespace Fanex.AbnormalBets.Business.Services
 {
     public interface RepositoryService
     {
-        Tuple<List<SummaryBetModel>, List<DetailBetModel>> QueryBet(string site, DateTime rptDate);
+        Tuple<List<SummaryBetModel>, List<DetailBetModel>> QueryDailyLicenseeBet(string site, DateTime rptDate);
 
         List<MailModel> QueryMail(DateTime rptDate);
+
+        List<AbnormalBetDailyModel> QueryDailyCSDBet(DateTime rptDate);
     }
 
     public class RepositoryServiceImp : RepositoryService
@@ -23,7 +26,13 @@ namespace Fanex.AbnormalBets.Business.Services
             this.repository = repository;
         }
 
-        public Tuple<List<SummaryBetModel>, List<DetailBetModel>> QueryBet(string site, DateTime rptDate)
+        public List<AbnormalBetDailyModel> QueryDailyCSDBet(DateTime rptDate)
+        {
+            var criteria = new AbnormalDailyCSDCriteria { RptDate = rptDate, IsTest = AppConfigService.AppConfig.IsTest };
+            return repository.Fetch<AbnormalBetDailyModel>(criteria).ToList();
+        }
+
+        public Tuple<List<SummaryBetModel>, List<DetailBetModel>> QueryDailyLicenseeBet(string site, DateTime rptDate)
         {
             var criteria = new AbnormalCriteria { Site = site, RptDate = rptDate, IsTest = AppConfigService.AppConfig.IsTest };
             var result = repository.FetchMultiple<SummaryBetModel, DetailBetModel>(criteria);

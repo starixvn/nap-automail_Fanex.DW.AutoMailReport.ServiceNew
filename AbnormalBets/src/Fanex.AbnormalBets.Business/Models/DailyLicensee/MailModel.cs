@@ -1,4 +1,4 @@
-﻿namespace Fanex.AbnormalBets.Business.Models
+﻿namespace Fanex.AbnormalBets.Business.Models.DailyLicensee
 {
     public class MailModel
     {

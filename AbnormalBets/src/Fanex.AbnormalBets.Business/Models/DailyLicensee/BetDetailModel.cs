@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Fanex.AbnormalBets.Business.Models
+namespace Fanex.AbnormalBets.Business.Models.DailyLicensee
 {
     public class BetDetailModel
     {
@@ -14,9 +14,9 @@ namespace Fanex.AbnormalBets.Business.Models
 
         public decimal Hdp { get; set; }
 
-        public int LiveHomeScore { get; set; }
+        public int? LiveHomeScore { get; set; }
 
-        public int LiveAwayScore { get; set; }
+        public int? LiveAwayScore { get; set; }
 
         public DateTime TransDate { get; set; }
 

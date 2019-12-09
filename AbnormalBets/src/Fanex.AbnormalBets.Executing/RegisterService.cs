@@ -1,4 +1,5 @@
 ﻿using Fanex.AbnormalBets.Business.Models;
+using Fanex.AbnormalBets.Business.Models.DailyLicensee;
 using Fanex.AbnormalBets.Business.Services;
 using Fanex.Data;
 using Fanex.Data.Repository;
@@ -45,7 +46,7 @@ namespace Fanex.AbnormalBets.Executing
             container.Register<IRemotingRefService, RemotingRefService>();
             container.Register<BetteamService, BetteamServiceImp>();
             container.Register(() => new ExcelPackage(new FileInfo(@"Templates/AbnormalBet.xlsx")));
-            container.Register<ExcelService, ExcelServiceImp>();
+            container.Register<ExcelLicenseeService, ExcelLicenseeServiceImp>();
             container.Register<MailService, MailServiceImp>();
         }
 

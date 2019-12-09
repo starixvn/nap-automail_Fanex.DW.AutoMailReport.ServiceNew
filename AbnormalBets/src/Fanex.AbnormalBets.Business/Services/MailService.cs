@@ -1,4 +1,4 @@
-﻿using Fanex.AbnormalBets.Business.Models;
+﻿using Fanex.AbnormalBets.Business.Models.DailyLicensee;
 using Fanex.MailDelivery.Client;
 using Fanex.MailDelivery.Core.Models;
 using RazorEngine;

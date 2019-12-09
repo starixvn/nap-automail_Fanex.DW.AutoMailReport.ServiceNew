@@ -1,4 +1,4 @@
-﻿using Fanex.AbnormalBets.Business.Models;
+﻿using Fanex.AbnormalBets.Business.Models.DailyLicensee;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
@@ -7,23 +7,23 @@ using System.Linq;
 
 namespace Fanex.AbnormalBets.Business.Services
 {
-    public interface ExcelService
+    public interface ExcelLicenseeService
     {
-        string Export(string site, DateTime rptDate, Tuple<List<SummaryBetDTOModel>, List<DetailBetDTOModel>> data);
+        string Execute(string site, DateTime rptDate, Tuple<List<SummaryBetDTOModel>, List<DetailBetDTOModel>> data);
     }
 
-    public class ExcelServiceImp : ExcelService
+    public class ExcelLicenseeServiceImp : ExcelLicenseeService
     {
         private ExcelPackage excelPackage;
         private ExcelWorksheet summaryTemplate;
-        private ExcelWorksheet detailTemplate;        
+        private ExcelWorksheet detailTemplate;
 
-        public ExcelServiceImp(ExcelPackage excelPackage)
+        public ExcelLicenseeServiceImp(ExcelPackage excelPackage)
         {
-            this.excelPackage = excelPackage;            
+            this.excelPackage = excelPackage;
         }
 
-        public string Export(string site, DateTime rptDate, Tuple<List<SummaryBetDTOModel>, List<DetailBetDTOModel>> data)
+        public string Execute(string site, DateTime rptDate, Tuple<List<SummaryBetDTOModel>, List<DetailBetDTOModel>> data)
         {
             excelPackage = new ExcelPackage(new FileInfo(@"Templates/AbnormalBet.xlsx"));
             Init();
@@ -52,10 +52,10 @@ namespace Fanex.AbnormalBets.Business.Services
 
         private void GenDetail(List<DetailBetDTOModel> data)
         {
-            var count = 1;            
+            var count = 1;
             data.GroupBy(g => new { g.Sport, g.League, g.Match, g.KickOffTime, g.Bettype, g.Betteam, g.Reason, g.FinalScore, g.Home, g.Live })
                 .ToList()
-                .ForEach(row => 
+                .ForEach(row =>
                 {
                     var sheetName = GetSheetName(row.Key.Home, count);
                     var detail = detailTemplate;
@@ -72,7 +72,7 @@ namespace Fanex.AbnormalBets.Business.Services
                     count++;
                     var betDetails = new List<BetDetailModel>();
                     row.ToList()
-                    .ForEach(bet => 
+                    .ForEach(bet =>
                     {
                         betDetails.Add(new BetDetailModel
                         {
@@ -94,7 +94,7 @@ namespace Fanex.AbnormalBets.Business.Services
                         detail.DeleteRow(13, lastRowIndex);
                     }
 
-                    detail.Cells["B12"].LoadFromCollection(betDetails, false);                    
+                    detail.Cells["B12"].LoadFromCollection(betDetails, false);
                     for (int i = 2; i <= 10; i++)
                     {
                         detail.Cells[12, i, 11 + betDetails.Count, i].StyleID = detail.Cells[12, i].StyleID;
@@ -124,7 +124,7 @@ namespace Fanex.AbnormalBets.Business.Services
             }
 
             path = $@"{path}\{fileName}";
-            excelPackage.SaveAs(new FileInfo(path), AppConfigService.AppConfig.Password);            
+            excelPackage.SaveAs(new FileInfo(path), AppConfigService.AppConfig.Password);
             return path;
         }
     }

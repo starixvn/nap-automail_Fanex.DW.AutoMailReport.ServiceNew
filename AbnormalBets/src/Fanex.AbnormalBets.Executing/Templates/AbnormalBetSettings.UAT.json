@@ -5,30 +5,30 @@
   "IsTest": true,
   "IsIgnoredCheckMailSent": false,
   "RptDate": "2019-11-17",  
-  "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\AbnormalBet",
+  "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\AbnormalBet-Licensee",
   "Password": "",
    "Sites": [
     {
-      "MailId": 307,
-      "MailName": "Abnormal Bet Daily Report - All",
+      "MailId": 286,
+      "MailName": "Abnormal Bet Daily Report - All - UAT",
       "SiteName": "All",
       "Subject": "[ABI] - Abnormal Licensee bet {0}"
     },
     {
-      "MailId": 308,
-      "MailName": "Abnormal Bet Daily Report - CN88",
+      "MailId": 287,
+      "MailName": "Abnormal Bet Daily Report - CN88 - UAT",
       "SiteName": "CN88",
       "Subject": "[ABI] - CN88 {0} 每日会员删票报告"
     },
     {
-      "MailId": 309,
-      "MailName": "Abnormal Bet Daily Report - KeenOcean",
+      "MailId": 288,
+      "MailName": "Abnormal Bet Daily Report - KeenOcean - UAT",
       "SiteName": "KeenOcean",
       "Subject": "[ABI] KeenOcean Abnormal Licensee bet {0}"
     },
     {
-      "MailId": 310,
-      "MailName": "Abnormal Bet Daily Report - Haifa",
+      "MailId": 289,
+      "MailName": "Abnormal Bet Daily Report - Haifa - UAT",
       "SiteName": "Haifa",
       "Subject": "[ABI] Haifa Abnormal Licensee bet {0}"
     }
