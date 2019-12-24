@@ -33,7 +33,7 @@ namespace Fanex.AbnormalBets.Business.Services
         {
             var mail = new Mail
             {
-                Title = "ONEworks Auto Generated Report Administrator",
+                Title = "Auto Generated Report Administrator",
                 Body = LoadBody(rptDate, isNoData),
                 Subject = string.Format(subject, rptDate.ToString("MM/dd/yyyy")),
                 Attachments = isNoData ? new List<MailAttachment>() : new List<MailAttachment> { new MailAttachment(excelPath, FileExtension.MS_EXCEL) },
