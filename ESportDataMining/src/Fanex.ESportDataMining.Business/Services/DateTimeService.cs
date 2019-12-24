@@ -14,24 +14,27 @@ namespace Fanex.ESportDataMining.Business.Services
     {
         public DateTime ToDate()
         {
-            const int Week = 6;
+            if (AppConfigService.AppConfig.IsManual)
+            {
+                return AppConfigService.AppConfig.ToDate;
+            }
 
+            const int Week = 6;
             return FromDate().AddDays(Week);
         }
 
         public DateTime FromDate()
         {
+            if (AppConfigService.AppConfig.IsManual)
+            {
+                return AppConfigService.AppConfig.FromDate;
+            }
+
             DateTime dateStart;
             int diff = GetDateDiff();
             var dateEnd = Today().AddDays(-diff);
             const int Week = 6;
-
             dateStart = dateEnd.AddDays(-Week);
-
-            if (AppConfigService.AppConfig.IsManual && dateStart <= AppConfigService.AppConfig.FromDate)
-            {
-                dateStart = dateStart.AddDays(Week + 1);
-            }
 
             return dateStart;
         }

@@ -1,7 +1,7 @@
-﻿using System;
-using Fanex.UpdateExchangeRate.Business.Services;
+﻿using Fanex.UpdateExchangeRate.Business.Services;
 using Newtonsoft.Json;
 using SimpleInjector;
+using System;
 
 namespace Fanex.UpdateExchangeRate.Executing
 {

@@ -1,0 +1,33 @@
+﻿@{
+    var data = Model;    
+    bool isNoData = data.Item1;
+    DateTime rptDate = data.Item2;
+}
+<div style="font-family:Tahoma; font-size:10pt;">
+    @if (isNoData)
+    {
+        <div>
+            Dear All, <br /><br />
+
+            There is no daily data for Abnormal BetDaily Report on @rptDate.ToString("MM/dd/yyyy") <br /><br />
+
+            Thanks and best regards, <br /><br />
+
+            ---------------------------------------------------------------------- <br />
+            This is an auto-mail from ONEworks Report System. Please do not reply.
+        </div>
+    }
+    else
+    {
+        <div>
+            Dear All, <br /><br />            
+
+            Kindly download attached file for Abnormal Bet Daily Report on @rptDate.ToString("MM/dd/yyyy") <br /><br />
+
+            Thanks and best regards, <br /><br />
+
+            ---------------------------------------------------------------------- <br />
+            This is an auto-mail from ONEworks Report System. Please do not reply.
+        </div>
+    }
+</div>
