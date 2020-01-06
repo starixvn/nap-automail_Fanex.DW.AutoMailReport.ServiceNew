@@ -51,5 +51,11 @@ namespace Fanex.ScoreBox.Business.Models
         public decimal TotalWLLostRM { get; set; }
 
         public decimal TotalStakeDrawRM { get; set; }
+
+        public decimal MemberStake_RM { get; set; }
+
+        public decimal MemberWL_RM { get; set; }
+
+        public int LiveStatus { get; set; }
     }
 }

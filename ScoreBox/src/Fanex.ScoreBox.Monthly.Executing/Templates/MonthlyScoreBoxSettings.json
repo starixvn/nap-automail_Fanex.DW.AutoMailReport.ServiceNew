@@ -2,10 +2,10 @@
   "SentryClientKey": "https://ad29bef60cc04e78803c9030a33a2c06@sentry.nexdev.net/44",
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
   "IsDaily": false,
-  "IsManual": false,
+  "IsManual": true,
   "IsCheckEnoughData": false,
-  "FromDate": "2019-07-12",
-  "ToDate": "2019-07-23",
+  "FromDate": "2019-12-01",
+  "ToDate": "2019-12-31",
   "FilePath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\MonthlyScoreBoxWinLoss",
   "Password": "",
   "FunctionIdNodata": 90
