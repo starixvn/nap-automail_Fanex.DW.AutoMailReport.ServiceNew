@@ -109,7 +109,7 @@ namespace Fanex.AbnormalBets.Business.Services
                     Sport = rrService.GetSportName(bet.SportType.ToString(), CodeEn),
                     League = rrService.GetLeagueName(bet.Leagueid.ToString(), CodeEn),
                     Match = $"{rrService.GetTeamName(bet.HomeId.ToString(), CodeEn)} -vs- {rrService.GetTeamName(bet.AwayId.ToString(), CodeEn)}",
-                    KickOffTime = bet.KickOffTime.AddHours(12),
+                    GlobalShowTime = bet.GlobalShowTime.AddHours(12),
                     Live = bet.Live,
                     NonLive = bet.NonLive,
                     TotalOfTickets = bet.TotalOfTickets,
@@ -119,12 +119,13 @@ namespace Fanex.AbnormalBets.Business.Services
                     Reason = bet.Reason,
                     HTScore = $"{bet.HtHomeScore}-{bet.HtAwayScore}",
                     FinalScore = $"{bet.FinalHomeScore}-{bet.FinalAwayScore}",
-                    Username = bet.UserName
+                    Username = bet.UserName,
+                    CreatedDate = bet.CreatedDate
                 });
             });
 
             return result
-                .OrderByDescending(o => o.KickOffTime)
+                .OrderByDescending(o => o.GlobalShowTime)
                 .ToList();
         }
 

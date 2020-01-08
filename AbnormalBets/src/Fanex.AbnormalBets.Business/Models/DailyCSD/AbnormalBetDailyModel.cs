@@ -14,7 +14,7 @@ namespace Fanex.AbnormalBets.Business.Models.DailyCSD
 
         public int AwayId { get; set; }
 
-        public DateTime KickOffTime { get; set; }
+        public DateTime GlobalShowTime { get; set; }
 
         public string Bettypes { get; set; }
 
@@ -39,5 +39,7 @@ namespace Fanex.AbnormalBets.Business.Models.DailyCSD
         public string Sites { get; set; }
 
         public string AffectedSite { get; set; }
+
+        public DateTime CreatedDate { get; set; }
     }
 }

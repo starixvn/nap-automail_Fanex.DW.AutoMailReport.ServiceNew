@@ -1,9 +1,9 @@
 ﻿{
   "SentryClientKey": "https://ad29bef60cc04e78803c9030a33a2c06@sentry.nexdev.net/44",
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
-  "IsManual": true,
+  "IsManual": false,
   "IsTest": true,  
-  "RptDate": "2019-12-17",  
+  "RptDate": "2020-01-07",  
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\AbnormalBetDailyReport_CSD",
   "Password": ""   
 }

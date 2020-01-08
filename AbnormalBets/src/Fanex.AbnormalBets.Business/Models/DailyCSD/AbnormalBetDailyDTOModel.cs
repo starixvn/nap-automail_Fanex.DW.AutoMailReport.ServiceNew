@@ -12,7 +12,7 @@ namespace Fanex.AbnormalBets.Business.Models.DailyCSD
 
         public string Match { get; set; }
 
-        public DateTime KickOffTime { get; set; }
+        public DateTime GlobalShowTime { get; set; }
 
         public int Live { get; set; }
 
@@ -33,5 +33,7 @@ namespace Fanex.AbnormalBets.Business.Models.DailyCSD
         public string FinalScore { get; set; }
 
         public string Username { get; set; }
+
+        public DateTime CreatedDate { get; set; }
     }
 }

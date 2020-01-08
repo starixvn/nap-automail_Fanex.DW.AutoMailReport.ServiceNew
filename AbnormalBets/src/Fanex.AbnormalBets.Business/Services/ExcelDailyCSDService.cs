@@ -26,7 +26,7 @@ namespace Fanex.AbnormalBets.Business.Services
         {
             var rowIndex = 3;
             template.Cells["B3"].LoadFromCollection(data, false);
-            for (var columnIndex = 2; columnIndex <= 16; columnIndex++)
+            for (var columnIndex = 2; columnIndex <= 17; columnIndex++)
             {
                 template.Cells[rowIndex, columnIndex, data.Count + rowIndex - 1, columnIndex].StyleID = template.Cells[rowIndex, columnIndex].StyleID;
                 template.Column(columnIndex).AutoFit(17);
@@ -34,6 +34,7 @@ namespace Fanex.AbnormalBets.Business.Services
 
             template.Column(10).AutoFit(17, 50);
             template.Column(12).AutoFit(17, 50);
+            template.Column(17).AutoFit(22, 50);
 
             var fileName = $"Abnormal_Bet_For_{date:yyyy_MM_dd}.xlsx";
             var path = $@"{AppConfigService.AppConfig.Path}\{date:yyyy}\{date:MM}";
