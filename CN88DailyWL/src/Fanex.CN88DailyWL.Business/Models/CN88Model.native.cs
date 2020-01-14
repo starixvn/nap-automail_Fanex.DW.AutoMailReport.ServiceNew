@@ -4,6 +4,8 @@
     {
         public string Date { get; set; }
 
+        public string Headline { get; set; }
+
         public int ActiveMember { get; set; }
 
         public int BetCount { get; set; }

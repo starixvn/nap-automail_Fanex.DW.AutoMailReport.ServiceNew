@@ -37,19 +37,19 @@ namespace Fanex.CN88DailyWL.Business.Services
             var imageNameEnFinal = $@"{AppConfigService.AppConfig.FilePath}\{date:yyyy}\{date:MM}\CN88_Daily_WL_EN_Final_{date:ddMMyyyy}.png";
             var imageNameCnFinal = $@"{AppConfigService.AppConfig.FilePath}\{date:yyyy}\{date:MM}\CN88_Daily_WL_CN_Final_{date:ddMMyyyy}.png";
 
-            const int FirstRowEn = 1;
-            const int FirstColumnEn = 2;
-            const int LastRowEn = 35;
-            const int LastColumnEn = 7;
+            const int FirstRowEn = 2;
+            const int FirstColumnEn = 1;
+            const int LastRowEn = 34;
+            const int LastColumnEn = 5;
 
-            const int FirstRowCn = 37;
-            const int FirstColumnCn = 2;
-            const int LastRowCn = 71;
-            const int LastColumnCn = 7;
+            const int FirstRowCn = 36;
+            const int FirstColumnCn = 1;
+            const int LastRowCn = 68;
+            const int LastColumnCn = 5;
 
-            const int NewWidth = 400;
-            const int NewHeight = 900;
-            const int X = 100;
+            const int NewWidth = 520;
+            const int NewHeight = 1000;
+            const int X = 115;
             const int Y = 100;
             
             var workbook = new Workbook();
@@ -57,11 +57,11 @@ namespace Fanex.CN88DailyWL.Business.Services
             var sheet = workbook.Worksheets[0];
 
             var imageEn = sheet.ToImage(FirstRowEn, FirstColumnEn, LastRowEn, LastColumnEn);
-            var newImgEn = ResizeImage(imageEn, 600, 1100);
+            var newImgEn = ResizeImage(imageEn, 700, 1200);
             newImgEn.Save(imageNameEn, ImageFormat.Png);
 
             var imageCn = sheet.ToImage(FirstRowCn, FirstColumnCn, LastRowCn, LastColumnCn);
-            var newImgCn = ResizeImage(imageCn, 600, 1100);
+            var newImgCn = ResizeImage(imageCn, 700, 1200);
             newImgCn.Save(imageNameCn, ImageFormat.Png);
 
             Crop(imageNameEn, imageNameEnFinal, NewWidth, NewHeight, X, Y);
