@@ -32,8 +32,8 @@ namespace Fanex.TopLicensee.Service.Services
 
             imageName = $@"{imageName}\{imageProperty.ImageName}_On_{date:yyyyMMdd}.jpg";
             var imageNameFinal = $@"{AppConfigService.AppConfig.Path}\{date:yyyy}\{date:MM}\{imageProperty.ImageName}_Final_On_{date:yyyyMMdd}.jpg";
-            var workbook = new Workbook();
 
+            var workbook = new Workbook();
             workbook.OpenPassword = AppConfigService.AppConfig.Password;
             workbook.LoadFromFile(excelPath, ExcelVersion.Version2013);
             workbook.DocumentProperties.Clear();

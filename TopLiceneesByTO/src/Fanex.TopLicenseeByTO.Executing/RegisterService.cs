@@ -1,5 +1,7 @@
 ﻿using Fanex.Data;
 using Fanex.Data.Repository;
+using Fanex.LetstalkService.Client;
+using Fanex.LetstalkService.Core.Services;
 using Fanex.Logging;
 using Fanex.Logging.Sentry.RavenClient;
 using Fanex.TopLicensee.Service.Models;
@@ -41,6 +43,11 @@ namespace Fanex.TopLicenseeByTO.Executing
             container.Register<ImageService, ImageServiceImp>();
             //container.Register<MailService, MailServiceImp>();
             container.Register<DateService, DateServiceImp>();
+            container.Register<MessageService, MessageServiceImp>();
+
+            container.Register<LetstalkClientService, LetstalkClientServiceImp>();
+            container.Register<ApplicationSettingService, ApplicationSettingServiceImp>();
+            container.Register<WebApiClientService, WebApiClientServiceImp>();
         }
 
         private static void SentryRegister()

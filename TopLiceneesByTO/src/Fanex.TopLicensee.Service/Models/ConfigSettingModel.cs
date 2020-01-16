@@ -25,7 +25,7 @@ namespace Fanex.TopLicensee.Service.Models
 
         public DateTime RptDate { get; set; }
 
-        public List<SectionModel> Sports { get; set; } = new List<SectionModel>();
+        public Dictionary<string, List<SectionModel>> Sports { get; set; } = new Dictionary<string, List<SectionModel>>();
 
         public ImageProperty Image { get; set; } = new ImageProperty();
     }

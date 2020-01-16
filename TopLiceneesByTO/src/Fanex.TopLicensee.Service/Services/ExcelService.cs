@@ -7,7 +7,7 @@ namespace Fanex.TopLicensee.Service.Services
 {
     public interface ExcelService
     {
-        string Export(Dictionary<string, List<LicenseeTOModel>> sports);
+        string Export(string batch, Dictionary<string, List<LicenseeTOModel>> sports);
     }
 
     public class ExcelServiceImp : ExcelService
@@ -20,7 +20,7 @@ namespace Fanex.TopLicensee.Service.Services
             this.dateService = dateService;
         }
 
-        public string Export(Dictionary<string, List<LicenseeTOModel>> sports)
+        public string Export(string batch, Dictionary<string, List<LicenseeTOModel>> sports)
         {
             excelPackage = new ExcelPackage(new FileInfo("Templates/TopLicensee.xlsx"));
             var template = excelPackage.Workbook.Worksheets["Template"];
@@ -29,7 +29,7 @@ namespace Fanex.TopLicensee.Service.Services
                 ExportBySport(template, sport);
             }
 
-            return SaveCreatedFile();
+            return SaveCreatedFile(batch);
         }
 
         private void ExportBySport(ExcelWorksheet template, KeyValuePair<string, List<LicenseeTOModel>> sport)
@@ -56,6 +56,11 @@ namespace Fanex.TopLicensee.Service.Services
             {
                 sheet.Row(rowIndex).Height = 19.5d;
             }
+
+            var value = sheet.Cells[maxRowIndex, startColIndex + 1].Value;
+            sheet.Cells[maxRowIndex, startColIndex, maxRowIndex, startColIndex + 1].Merge = true;
+            sheet.Cells[maxRowIndex, startColIndex, maxRowIndex, startColIndex + 1].Value = value;
+            sheet.Cells[maxRowIndex, startColIndex, maxRowIndex, startColIndex + 1].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
         }
 
         private List<LicenseeTOModel> RefineData(List<LicenseeTOModel> data)
@@ -74,10 +79,10 @@ namespace Fanex.TopLicensee.Service.Services
             return data;
         }
 
-        private string SaveCreatedFile()
+        private string SaveCreatedFile(string batch)
         {
             var rptDate = dateService.GetRptDate();
-            var fileName = $"Daily_Created_IBO_Customers_Report_For_{rptDate:yyyyMMdd}.xlsx";
+            var fileName = $"Top_Licensees_by_TO_{batch}_For_{rptDate:yyyyMMdd}.xlsx";
             var path = $@"{AppConfigService.AppConfig.Path}\{rptDate:yyyy}\{rptDate:MM}";
             if (!Directory.Exists(path))
             {

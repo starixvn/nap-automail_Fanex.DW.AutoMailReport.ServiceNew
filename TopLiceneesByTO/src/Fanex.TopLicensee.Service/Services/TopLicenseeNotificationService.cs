@@ -1,5 +1,6 @@
 ﻿using Fanex.MailDelivery.Core.Models;
 using Fanex.TopLicensee.Service.Models;
+using Spire.Xls;
 using System;
 using System.Collections.Generic;
 
@@ -17,15 +18,22 @@ namespace Fanex.TopLicensee.Service.Services
         private readonly ExcelService excelService;
         private readonly ConfigSettingModel config;
         private readonly ImageService imageService;
+        private readonly MessageService messageService;
         //private readonly MailService mailService;
 
-        public TopLicenseeNotificationServiceImp(Log log, DataService dataService, ExcelService excelService/*, MailService mailService*/, ImageService imageService)
+        public TopLicenseeNotificationServiceImp(
+            Log log, 
+            DataService dataService, 
+            ExcelService excelService/*, MailService mailService*/, 
+            ImageService imageService,
+            MessageService messageService)
         {
             this.log = log;
             this.dataService = dataService;
             this.excelService = excelService;
-            //this.mailService = mailService;
+            //this.mailService = mailService;                        
             this.imageService = imageService;
+            this.messageService = messageService;
             config = AppConfigService.AppConfig;
         }
 
@@ -42,7 +50,7 @@ namespace Fanex.TopLicensee.Service.Services
                 result.Success = false;
                 result.Message = e.Message;
                 log.Log(e);
-            }
+            }   
             finally
             {
                 jobMessage.Mail = result.Mail;
@@ -65,19 +73,45 @@ namespace Fanex.TopLicensee.Service.Services
                 return new ExecuteResultModel { Success = false, Message = "DataIsNotReady" };
             }
 
-            var dictData = new Dictionary<string, List<LicenseeTOModel>>();
-            var sports = AppConfigService.AppConfig.Sports;
-            sports.ForEach(sport => 
+            var result = SendMessage();
+
+            return new ExecuteResultModel { Success = result, Mail = null };
+        }
+
+        private bool SendMessage()
+        {
+            var batches = AppConfigService.AppConfig.Sports;
+            var results = new List<bool>();
+            var imageBatches = new List<List<string>>();
+            foreach (var batch in batches)
             {
-                var data = dataService.QueryTopLicensee(sport.SportType);
-                dictData.Add(sport.SectionName, data);
+                var imageFiles = new List<string>();
+                var dictData = new Dictionary<string, List<LicenseeTOModel>>();
+                batch.Value.ForEach(sport =>
+                {
+                    var data = dataService.QueryTopLicensee(sport.SportType);
+                    dictData.Add(sport.SectionName, data);
+                });
+
+                var excelFile = excelService.Export(batch.Key, dictData);
+
+                batch.Value.ForEach(sport =>
+                {
+                    AppConfigService.AppConfig.Image.ImageName = sport.SectionName.Replace(" ", string.Empty);
+                    var imageFile = imageService.ExportImage(excelFile, sport.SectionName, AppConfigService.AppConfig.Image);
+                    imageFiles.Add(imageFile);
+                });
+
+                imageBatches.Add(imageFiles);
+            }
+
+            imageBatches.ForEach(files => 
+            {
+                var result = messageService.Send(files);
+                results.Add(result);
             });
 
-            var excelFiles = excelService.Export(dictData);
-            imageService.ExportImage(excelFiles, "All Sports", AppConfigService.AppConfig.Image);
-            //var mail = mailService.CreateMail(excelFiles);
-
-            return new ExecuteResultModel { Success = true, Mail = null };
+            return true;
         }
     }
 }
