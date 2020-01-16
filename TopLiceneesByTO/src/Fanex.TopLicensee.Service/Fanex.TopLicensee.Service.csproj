@@ -187,6 +187,7 @@
     <Compile Include="Services\ExcelService.cs" />
     <Compile Include="Services\ImageService.cs" />
     <Compile Include="Services\Log.cs" />
+    <Compile Include="Services\MailService.cs" />
     <Compile Include="Services\MessageService.cs" />
     <Compile Include="Services\TopLicenseeNotificationService.cs" />
   </ItemGroup>

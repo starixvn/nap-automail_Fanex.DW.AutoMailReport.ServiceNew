@@ -200,7 +200,7 @@
     <Content Include="Templates\Fanex.TopLicenseeByTO.Executing.PRO.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Fanex.TopLicenseeByTO.Executing.PRE.exe .config">
+    <Content Include="Templates\Fanex.TopLicenseeByTO.Executing.PRE.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\TopLicenseeByTOSettings.Local.json">

@@ -8,7 +8,7 @@
   "RptDate": "2020-12-30",
   "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\TopLicenseeByTO",
   "Password": "Star168",
-  "FunctionIdNodata": 90,
+  "FunctionIdNodata": 224,
   "Sports": {
     "Batch1": [
       {
@@ -24,32 +24,32 @@
     ],
     "Batch3": [
       {
+        "SportType": -2,
+        "SectionName": "PARLAY"
+      }
+    ],
+    "Batch4": [
+      {
         "SportType": 2,
         "SectionName": "BASKETBALL"
       }
     ],
-    "Batch4": [
+    "Batch5": [
       {
         "SportType": 43,
         "SectionName": "E-SPORT"
       }
     ],
-    "Batch5": [
+    "Batch6": [
       {
         "SportType": 5,
         "SectionName": "TENNIS"
       }
     ],
-    "Batch6": [
+    "Batch7": [
       {
         "SportType": -3,
         "SectionName": "OTHER SPORTS"
-      }
-    ],
-    "Batch7": [
-      {
-        "SportType": -2,
-        "SectionName": "PARLAY"
       }
     ]
   },
@@ -58,9 +58,9 @@
     "FirstColumn": 2,
     "LastRow": 55,
     "LastColumn": 7,
-    "CropWidth": 1780,
-    "CropHeight": 4480,
-    "X": 200,
-    "Y": 250
+    "CropWidth": 2350,
+    "CropHeight": 5290,
+    "X": 220,
+    "Y": 300
   }
 }

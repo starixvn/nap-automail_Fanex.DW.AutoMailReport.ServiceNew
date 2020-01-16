@@ -28,8 +28,8 @@ namespace Fanex.SoccerPerformance.Business.Services
                 TargetName = AppConfigService.AppConfig.TargetName,
                 Group = AppConfigService.AppConfig.Group,
                 LetstalkAttachments = letstalkAttachments,
-                Subject = "Soccer Performance Report",
-                Content = "This is auto-generated content by system."
+                Subject = string.Empty,
+                Content = string.Empty
             };
         }
     }

@@ -1,6 +1,5 @@
 ﻿using Fanex.MailDelivery.Core.Models;
 using Fanex.TopLicensee.Service.Models;
-using Spire.Xls;
 using System;
 using System.Collections.Generic;
 
@@ -15,26 +14,25 @@ namespace Fanex.TopLicensee.Service.Services
     {
         private readonly Log log;
         private readonly DataService dataService;
-        private readonly ExcelService excelService;
-        private readonly ConfigSettingModel config;
+        private readonly ExcelService excelService;        
         private readonly ImageService imageService;
         private readonly MessageService messageService;
-        //private readonly MailService mailService;
+        private readonly MailService mailService;
 
         public TopLicenseeNotificationServiceImp(
-            Log log, 
-            DataService dataService, 
-            ExcelService excelService/*, MailService mailService*/, 
+            Log log,
+            DataService dataService,
+            ExcelService excelService, 
+            MailService mailService,
             ImageService imageService,
             MessageService messageService)
         {
             this.log = log;
             this.dataService = dataService;
             this.excelService = excelService;
-            //this.mailService = mailService;                        
+            this.mailService = mailService;
             this.imageService = imageService;
-            this.messageService = messageService;
-            config = AppConfigService.AppConfig;
+            this.messageService = messageService;            
         }
 
         public JobMessage Execute()
@@ -50,7 +48,7 @@ namespace Fanex.TopLicensee.Service.Services
                 result.Success = false;
                 result.Message = e.Message;
                 log.Log(e);
-            }   
+            }
             finally
             {
                 jobMessage.Mail = result.Mail;
@@ -69,20 +67,25 @@ namespace Fanex.TopLicensee.Service.Services
         {
             if (!dataService.IsDataAvailable())
             {
-                //mailService.SendMailWhenDataIsNotReady();
+                mailService.SendMailWhenDataIsNotReady();
                 return new ExecuteResultModel { Success = false, Message = "DataIsNotReady" };
             }
 
             var result = SendMessage();
+            var message = string.Empty;
+            if (!result)
+            {
+                message = "Letsalk sent images Unsuccessfully.";
+            }
 
-            return new ExecuteResultModel { Success = result, Mail = null };
+            return new ExecuteResultModel { Success = result, Mail = null, Message = message };
         }
 
         private bool SendMessage()
         {
             var batches = AppConfigService.AppConfig.Sports;
-            var results = new List<bool>();
             var imageBatches = new List<List<string>>();
+            var success = true;
             foreach (var batch in batches)
             {
                 var imageFiles = new List<string>();
@@ -105,13 +108,17 @@ namespace Fanex.TopLicensee.Service.Services
                 imageBatches.Add(imageFiles);
             }
 
-            imageBatches.ForEach(files => 
+            imageBatches.ForEach(files =>
             {
                 var result = messageService.Send(files);
-                results.Add(result);
+                if (!result)
+                {
+                    success = result;
+                }
             });
 
-            return true;
+
+            return success;
         }
     }
 }
