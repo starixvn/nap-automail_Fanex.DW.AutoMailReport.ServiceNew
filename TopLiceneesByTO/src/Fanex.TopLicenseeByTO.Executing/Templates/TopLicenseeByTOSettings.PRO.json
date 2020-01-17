@@ -1,0 +1,66 @@
+﻿{
+  "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.99.99.37:801/60",
+  "CategorySentryLog": "NAP-Report-Service",
+  "TargetName": "daily-house-wl",
+  "Group": "To.Top-50-Licensee",
+  "IsCheckEnoughData": false,
+  "IsManual": false,
+  "RptDate": "2020-12-30",
+  "Path": "\\\\10.40.40.127\\Data.Web\\Fanex.Excel\\TopLicenseeByTO",
+  "Password": "Star168",
+  "FunctionIdNodata": 190,
+  "Sports": {
+    "Batch1": [
+      {
+        "SportType": 0,
+        "SectionName": "All Sports"
+      }
+    ],
+    "Batch2": [
+      {
+        "SportType": 1,
+        "SectionName": "SOCCER"
+      }
+    ],
+    "Batch3": [
+      {
+        "SportType": -2,
+        "SectionName": "PARLAY"
+      }
+    ],
+    "Batch4": [
+      {
+        "SportType": 2,
+        "SectionName": "BASKETBALL"
+      }
+    ],
+    "Batch5": [
+      {
+        "SportType": 43,
+        "SectionName": "E-SPORT"
+      }
+    ],
+    "Batch6": [
+      {
+        "SportType": 5,
+        "SectionName": "TENNIS"
+      }
+    ],
+    "Batch7": [
+      {
+        "SportType": -3,
+        "SectionName": "OTHER SPORTS"
+      }
+    ]
+  },
+  "Image": {
+    "FirstRow": 2,
+    "FirstColumn": 2,
+    "LastRow": 55,
+    "LastColumn": 7,
+    "CropWidth": 2350,
+    "CropHeight": 5290,
+    "X": 220,
+    "Y": 300
+  }
+}

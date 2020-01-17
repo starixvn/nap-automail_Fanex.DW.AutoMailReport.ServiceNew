@@ -84,8 +84,13 @@ namespace Fanex.SoccerPerformance.Business.Services
             var fileNames = excelService.Execute(yesterdayData, mtdData);
             var letstalkModel = messageService.CreateLetstalkModel(fileNames);
             var result = letstalkService.SendMessage(letstalkModel);
+            var message = string.Empty;
+            if(!result)
+            {
+                message = "Letstalk send images unsuccessfully.";
+            }
 
-            return new ExecuteResultModel { Success = result };
+            return new ExecuteResultModel { Success = result, Message = message };
         }
     }
 }
