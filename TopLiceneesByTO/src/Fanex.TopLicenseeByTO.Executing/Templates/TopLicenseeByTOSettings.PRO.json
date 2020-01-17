@@ -2,7 +2,7 @@
   "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.99.99.37:801/60",
   "CategorySentryLog": "NAP-Report-Service",
   "TargetName": "daily-house-wl",
-  "Group": "To.Top-50-Licensee",
+  "Group": "Top-50-Licensee",
   "IsCheckEnoughData": false,
   "IsManual": false,
   "RptDate": "2020-12-30",
@@ -37,7 +37,7 @@
     "Batch5": [
       {
         "SportType": 43,
-        "SectionName": "E-SPORT"
+        "SectionName": "E-SPORTS"
       }
     ],
     "Batch6": [
