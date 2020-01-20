@@ -23,7 +23,7 @@ namespace Fanex.CN88DailyPerformance.Service.Services
             return new Mail
             {
                 Title = "Auto Generated Report Administrator",
-                Subject = $"Automail Report - Daily IBO Customer Statistics Report - {SystemTime.Now.AddDays(-1):yyyy/MM/dd}",
+                Subject = $"CN88 Daily Performance Report - {SystemTime.Now.AddDays(-1):yyyy/MM/dd}",
                 Body = LoadBody(excelFile),
                 Attachments = mailAttachments,
             };
