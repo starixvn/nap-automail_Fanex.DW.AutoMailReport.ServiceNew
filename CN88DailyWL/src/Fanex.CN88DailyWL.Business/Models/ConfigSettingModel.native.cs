@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fanex.CN88DailyWL.Business.Model;
+using System;
 
 namespace Fanex.CN88DailyWL.Business.Models
 {
@@ -17,5 +18,9 @@ namespace Fanex.CN88DailyWL.Business.Models
         public string TargetName { get; set; }
 
         public string Group { get; set; }
+
+        public ImageProperty EN { get; set; }
+
+        public ImageProperty CN { get; set; }
     }
 }

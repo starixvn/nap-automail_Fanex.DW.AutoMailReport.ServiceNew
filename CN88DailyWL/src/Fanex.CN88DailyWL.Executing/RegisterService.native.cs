@@ -45,7 +45,7 @@ namespace Fanex.CN88DailyWL.Executing
             container.Register<DateService, DateServiceImp>();
             container.Register<CN88NotifycationService, CN88NotifycationServiceImp>();
             container.Register(() => new ExcelPackage(new FileInfo(@"Templates/Template.xlsx")));
-            container.Register<MessageService, MessageServiceImp>();            
+            container.Register<MessageService, MessageServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
             container.Register<ApplicationSettingService, ApplicationSettingServiceImp>();
