@@ -2,7 +2,7 @@
   "SentryClientKey": "http://612764957dbb46ffa359103d8ffa08c6@10.99.99.37:801/59",
   "CategorySentryLog": "NAP-Report-Service-UAT",
   "IsManual": false,
-  "WinLostDate": "2019-07-22",
+  "WinLostDate": "2020-01-19",
   "FilePath": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\CN88DailyWinLoss",
   "TargetName": "CN88",
   "Group": "CN88-DailyWL-Test",
@@ -11,19 +11,19 @@
     "FirstColumn": 1,
     "LastRow": 34,
     "LastColumn": 5,
-    "CropWidth": 1350,
-    "CropHeight": 2250,
-    "X": 300,
-    "Y": 200
+    "CropWidth": 1750,
+    "CropHeight": 2630,
+    "X": 355,
+    "Y": 240
   },
   "CN": {
     "FirstRow": 36,
     "FirstColumn": 1,
     "LastRow": 68,
     "LastColumn": 5,
-    "CropWidth": 1350,
-    "CropHeight": 2250,
-    "X": 300,
-    "Y": 200
+    "CropWidth": 1750,
+    "CropHeight": 2630,
+    "X": 355,
+    "Y": 240
   }
 }

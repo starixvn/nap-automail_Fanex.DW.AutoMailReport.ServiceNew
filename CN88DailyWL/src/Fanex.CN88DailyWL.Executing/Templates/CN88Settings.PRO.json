@@ -11,19 +11,19 @@
     "FirstColumn": 1,
     "LastRow": 34,
     "LastColumn": 5,
-    "CropWidth": 1350,
-    "CropHeight": 2250,
-    "X": 300,
-    "Y": 200
+    "CropWidth": 1750,
+    "CropHeight": 2630,
+    "X": 355,
+    "Y": 240
   },
   "CN": {
     "FirstRow": 36,
     "FirstColumn": 1,
     "LastRow": 68,
     "LastColumn": 5,
-    "CropWidth": 1350,
-    "CropHeight": 2250,
-    "X": 300,
-    "Y": 200
+    "CropWidth": 1750,
+    "CropHeight": 2630,
+    "X": 355,
+    "Y": 240
   }
 }
