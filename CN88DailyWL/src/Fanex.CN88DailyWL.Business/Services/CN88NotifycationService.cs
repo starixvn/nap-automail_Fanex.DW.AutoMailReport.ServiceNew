@@ -20,11 +20,11 @@ namespace Fanex.CN88DailyWL.Business.Services
         private readonly LetstalkClientService letstalkService;
 
         public CN88NotifycationServiceImp(
-            Log log, 
-            DataService dataService, 
+            Log log,
+            DataService dataService,
             ExcelService excelService,
             ImageService imageService,
-            MessageService messageService, 
+            MessageService messageService,
             LetstalkClientService letstalkService)
         {
             this.log = log;
@@ -67,7 +67,7 @@ namespace Fanex.CN88DailyWL.Business.Services
         {
             var data = dataService.QueryData();
             var excelFile = excelService.Execute(data);
-            var fileNames = imageService.ExportImage(excelFile);
+            var fileNames = imageService.ExportImage(excelFile, AppConfigService.AppConfig.EN, AppConfigService.AppConfig.CN);
             var letstalkModel = messageService.CreateLetstalkModel(fileNames);
             var result = letstalkService.SendMessage(letstalkModel);
 

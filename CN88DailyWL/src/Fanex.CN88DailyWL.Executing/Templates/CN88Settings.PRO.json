@@ -5,5 +5,25 @@
   "WinLostDate": "2019-07-22",
   "FilePath": "\\\\10.40.40.127\\Data.Web\\Fanex.Excel\\CN88DailyWinLoss",
   "TargetName": "CN88",
-  "Group": "CN88-DailyWL-PRO"
+  "Group": "CN88-DailyWL-PRO",
+  "EN": {
+    "FirstRow": 2,
+    "FirstColumn": 1,
+    "LastRow": 34,
+    "LastColumn": 5,
+    "CropWidth": 1350,
+    "CropHeight": 2250,
+    "X": 300,
+    "Y": 200
+  },
+  "CN": {
+    "FirstRow": 36,
+    "FirstColumn": 1,
+    "LastRow": 68,
+    "LastColumn": 5,
+    "CropWidth": 1350,
+    "CropHeight": 2250,
+    "X": 300,
+    "Y": 200
+  }
 }
