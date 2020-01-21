@@ -45,7 +45,7 @@ namespace Fanex.ScoreBox.Business.Services
 
         private static string LoadBody(string fileName, bool isNoData, DateTime fromDate, DateTime toDate)
         {
-            var shortName = new FileInfo(fileName).Name.Replace(".xlsx", string.Empty);
+            var shortName = isNoData ? string.Empty : new FileInfo(fileName).Name.Replace(".xlsx", string.Empty);
             var tuple = new Tuple<string, bool, DateTime, DateTime>(shortName, isNoData, fromDate, toDate);
             var template = File.ReadAllText("Templates/NotificationEmail.cshtml");
             var result = Engine.Razor.RunCompile(template, $"template{DateTime.Now.Ticks}", model: tuple);

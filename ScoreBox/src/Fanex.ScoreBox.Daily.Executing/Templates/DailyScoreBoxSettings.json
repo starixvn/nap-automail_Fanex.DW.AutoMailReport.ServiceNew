@@ -4,8 +4,8 @@
   "IsDaily": true,
   "IsManual": false,
   "IsCheckEnoughData": true,
-  "FromDate": "2019-07-12",
-  "ToDate": "2019-07-23",
+  "FromDate": "2019-11-01",
+  "ToDate": "2019-11-30",
   "FilePath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\DailyScoreBoxWinLoss",
   "Password": "",
   "FunctionIdNodata":  90
