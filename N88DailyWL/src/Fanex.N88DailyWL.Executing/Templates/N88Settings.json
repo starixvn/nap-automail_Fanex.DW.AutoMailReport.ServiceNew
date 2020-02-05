@@ -1,0 +1,35 @@
+﻿{
+  "SentryClientKey": "https://ad29bef60cc04e78803c9030a33a2c06@sentry.nexdev.net/44",
+  "CategorySentryLog": "NAP-Report-Service-LOCAL",
+  "IsCheckEnoughData": false,
+  "IsManual": true,
+  "FromDate": "2020-01-01",
+  "ToDate": "2020-01-31",
+  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\N88DailyWL",
+  "TargetName": "N88",
+  "Group": "N88-DailyWL-Test",
+  "Password": "",
+  "FunctionIdNodata": 90,
+  "N88": {
+    "FirstRow": 3,
+    "FirstColumn": 2,
+    "LastRow": 17,
+    "LastColumn": 4,
+    "CropWidth": 1370,
+    "CropHeight": 1250,
+    "ImageName": "N88DailyWL",
+    "X": 200,
+    "Y": 210
+  },
+  "Deposit": {
+    "FirstRow": 3,
+    "FirstColumn": 7,
+    "LastRow": 4,
+    "LastColumn": 10,
+    "CropWidth": 1055,
+    "CropHeight": 195,
+    "ImageName": "FirstDeposit",
+    "X": 200,
+    "Y": 210
+  }
+}

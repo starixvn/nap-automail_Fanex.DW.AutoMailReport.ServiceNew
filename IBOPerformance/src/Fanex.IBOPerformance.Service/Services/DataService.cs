@@ -32,7 +32,7 @@ namespace Fanex.IBOPerformance.Service.Services
 
         public bool IsDataAvailable()
         {
-            if (!AppConfigService.AppConfig.IsCheckEnoughData)
+            if (AppConfigService.AppConfig.IsManual || !AppConfigService.AppConfig.IsCheckEnoughData)
             {
                 return true;
             }
