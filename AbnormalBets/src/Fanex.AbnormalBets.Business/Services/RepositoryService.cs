@@ -10,11 +10,13 @@ namespace Fanex.AbnormalBets.Business.Services
 {
     public interface RepositoryService
     {
-        Tuple<List<SummaryBetModel>, List<DetailBetModel>> QueryDailyLicenseeBet(string site, DateTime rptDate);
+        Tuple<List<SummaryBetModel>, List<DetailBetModel>, List<UserLocationModel>> QueryDailyLicenseeBet(string site, DateTime rptDate);
 
         List<MailModel> QueryMail(DateTime rptDate);
 
         List<AbnormalBetDailyModel> QueryDailyCSDBet(DateTime rptDate);
+
+        LocationModel QueryIP(string ip);
     }
 
     public class RepositoryServiceImp : RepositoryService
@@ -32,11 +34,22 @@ namespace Fanex.AbnormalBets.Business.Services
             return repository.Fetch<AbnormalBetDailyModel>(criteria).ToList();
         }
 
-        public Tuple<List<SummaryBetModel>, List<DetailBetModel>> QueryDailyLicenseeBet(string site, DateTime rptDate)
+        public Tuple<List<SummaryBetModel>, List<DetailBetModel>, List<UserLocationModel>> QueryDailyLicenseeBet(string site, DateTime rptDate)
         {
             var criteria = new AbnormalCriteria { Site = site, RptDate = rptDate, IsTest = AppConfigService.AppConfig.IsTest };
-            var result = repository.FetchMultiple<SummaryBetModel, DetailBetModel>(criteria);
-            return new Tuple<List<SummaryBetModel>, List<DetailBetModel>>(result.Item1.ToList(), result.Item2.ToList());
+            var result = repository.FetchMultiple<SummaryBetModel, DetailBetModel, UserLocationModel>(criteria);
+
+            return new Tuple<List<SummaryBetModel>, List<DetailBetModel>, List<UserLocationModel>>(
+                result.Item1.ToList(), 
+                result.Item2.ToList(),
+                result.Item3.ToList());
+        }
+
+        public LocationModel QueryIP(string ip)
+        {
+            ip = string.IsNullOrEmpty(ip) ? string.Empty : ip.Trim();
+            var criteria = new GetIPInfoCriteria { IP = ip };
+            return repository.Get<LocationModel>(criteria);
         }
 
         public List<MailModel> QueryMail(DateTime rptDate)

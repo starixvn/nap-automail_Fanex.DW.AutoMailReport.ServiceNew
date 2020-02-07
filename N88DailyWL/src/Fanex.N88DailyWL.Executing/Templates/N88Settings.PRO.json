@@ -1,6 +1,6 @@
 ﻿{
-  "SentryClientKey": "https://ad29bef60cc04e78803c9030a33a2c06@sentry.nexdev.net/44",
-  "CategorySentryLog": "NAP-Report-Service-LOCAL",
+  "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.99.99.37:801/60",
+  "CategorySentryLog": "NAP-Report-Service",
   "IsCheckEnoughData": true,
   "IsManual": false,
   "FromDate": "2020-01-01",

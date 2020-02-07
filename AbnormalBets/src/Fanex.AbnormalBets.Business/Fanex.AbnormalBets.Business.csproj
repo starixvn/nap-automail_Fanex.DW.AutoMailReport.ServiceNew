@@ -175,12 +175,15 @@
     <Compile Include="Criterias\AbnormalCriteria.cs" />
     <Compile Include="Criterias\AbnormalDailyCSDCriteria.cs" />
     <Compile Include="Criterias\CheckMailStatusCriteria.cs" />
+    <Compile Include="Criterias\GetIPInfoCriteria.cs" />
     <Compile Include="Models\DailyCSD\AbnormalBetDailyDTOModel.cs" />
     <Compile Include="Models\DailyCSD\AbnormalBetDailyModel.cs" />
-    <Compile Include="Models\DailyLicensee\BetDetailModel.cs" />
+    <Compile Include="Models\DailyLicensee\ShortTicketDetailModel.cs" />
     <Compile Include="Models\ConfigSettingModel.cs" />
     <Compile Include="Models\DailyLicensee\DetailBetDTOModel.cs" />
     <Compile Include="Models\DailyLicensee\DetailBetModel.cs" />
+    <Compile Include="Models\DailyLicensee\LocationModel.cs" />
+    <Compile Include="Models\DailyLicensee\UserLocationModel.cs" />
     <Compile Include="Models\ExecuteResultModel.cs" />
     <Compile Include="Models\DailyLicensee\MailModel.cs" />
     <Compile Include="Models\DailyLicensee\SiteModel.cs" />

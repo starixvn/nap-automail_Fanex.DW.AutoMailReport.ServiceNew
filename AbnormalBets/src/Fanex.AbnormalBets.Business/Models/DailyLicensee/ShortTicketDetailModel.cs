@@ -2,7 +2,7 @@
 
 namespace Fanex.AbnormalBets.Business.Models.DailyLicensee
 {
-    public class BetDetailModel
+    public class ShortTicketDetailModel
     {
         public string Username { get; set; }
 
