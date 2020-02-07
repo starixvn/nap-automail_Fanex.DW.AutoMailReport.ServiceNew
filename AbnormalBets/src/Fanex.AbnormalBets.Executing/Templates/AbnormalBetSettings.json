@@ -1,7 +1,7 @@
 ﻿{
   "SentryClientKey": "https://ad29bef60cc04e78803c9030a33a2c06@sentry.nexdev.net/44",
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
-  "IsManual": true,
+  "IsManual": false,
   "IsTest": true,
   "IsIgnoredCheckMailSent": true,
   "RptDate": "2019-12-08",  
@@ -31,6 +31,24 @@
       "MailName": "Abnormal Bet Daily Report - Haifa",
       "SiteName": "Haifa",
       "Subject": "[ABI] Haifa Abnormal Licensee bet {0}"
+    },
+    {
+      "MailId": 324,
+      "MailName": "Abnormal Bet Daily Report - IBO",
+      "SiteName": "IBO",
+      "Subject": "[ABI] IBO Abnormal Licensee bet {0}"
+    },
+    {
+      "MailId": 325,
+      "MailName": "Abnormal Bet Daily Report - BoBBet",
+      "SiteName": "BoBBet",
+      "Subject": "[ABI] BoBBet Abnormal Licensee bet {0}"
+    },
+    {
+      "MailId": 326,
+      "MailName": "Abnormal Bet Daily Report - Tianbo",
+      "SiteName": "Tianbo",
+      "Subject": "[ABI] Tianbo Abnormal Licensee bet {0}"
     }
   ]  
 }

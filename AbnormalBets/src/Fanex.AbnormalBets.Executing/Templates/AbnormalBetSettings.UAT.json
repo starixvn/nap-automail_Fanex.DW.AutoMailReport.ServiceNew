@@ -31,6 +31,24 @@
       "MailName": "Abnormal Bet Daily Report - Haifa - UAT",
       "SiteName": "Haifa",
       "Subject": "[ABI] Haifa Abnormal Licensee bet {0}"
+    },
+    {
+      "MailId": 307,
+      "MailName": "Abnormal Bet Daily Report - IBO - UAT",
+      "SiteName": "IBO",
+      "Subject": "[ABI] IBO Abnormal Licensee bet {0}"
+    },
+    {
+      "MailId": 308,
+      "MailName": "Abnormal Bet Daily Report - BoBBet - UAT",
+      "SiteName": "BoBBet",
+      "Subject": "[ABI] BoBBet Abnormal Licensee bet {0}"
+    },
+    {
+      "MailId": 309,
+      "MailName": "Abnormal Bet Daily Report - Tianbo - UAT",
+      "SiteName": "Tianbo",
+      "Subject": "[ABI] Tianbo Abnormal Licensee bet {0}"
     }
   ]  
 }
