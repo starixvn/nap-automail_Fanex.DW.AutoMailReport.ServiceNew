@@ -10,7 +10,10 @@ namespace Fanex.AbnormalBets.Business.Services
 {
     public interface RepositoryService
     {
-        Tuple<List<SummaryBetModel>, List<DetailBetModel>, List<UserLocationModel>> QueryDailyLicenseeBet(string site, DateTime rptDate);
+        Tuple<
+            List<SummaryBetModel>,
+            List<DetailBetModel>,
+            List<UserLocationModel>> QueryDailyLicenseeBet(string site, DateTime rptDate);
 
         List<MailModel> QueryMail(DateTime rptDate);
 
@@ -34,13 +37,25 @@ namespace Fanex.AbnormalBets.Business.Services
             return repository.Fetch<AbnormalBetDailyModel>(criteria).ToList();
         }
 
-        public Tuple<List<SummaryBetModel>, List<DetailBetModel>, List<UserLocationModel>> QueryDailyLicenseeBet(string site, DateTime rptDate)
+        public Tuple<
+            List<SummaryBetModel>,
+            List<DetailBetModel>,
+            List<UserLocationModel>> QueryDailyLicenseeBet(string site, DateTime rptDate)
         {
-            var criteria = new AbnormalCriteria { Site = site, RptDate = rptDate, IsTest = AppConfigService.AppConfig.IsTest };
+            var criteria = new AbnormalCriteria
+            {
+                Site = site,
+                RptDate = rptDate,
+                IsTest = AppConfigService.AppConfig.IsTest
+            };
+
             var result = repository.FetchMultiple<SummaryBetModel, DetailBetModel, UserLocationModel>(criteria);
 
-            return new Tuple<List<SummaryBetModel>, List<DetailBetModel>, List<UserLocationModel>>(
-                result.Item1.ToList(), 
+            return new Tuple<
+                List<SummaryBetModel>,
+                List<DetailBetModel>,
+                List<UserLocationModel>>(
+                result.Item1.ToList(),
                 result.Item2.ToList(),
                 result.Item3.ToList());
         }

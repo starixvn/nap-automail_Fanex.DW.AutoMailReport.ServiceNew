@@ -4,12 +4,12 @@
     {
         public string Username { get; set; }
 
-        public string LastLoginIp { get; set; }
+        public string IpLogin { get; set; }
 
         public string LastLogionLocation { get; set; }
 
-        public string TiketIp { get; set; }
+        public string TicketIps { get; set; }
 
-        public string TiketLocationIp { get; set; }
+        public string TicketLocationIp { get; set; }
     }
 }

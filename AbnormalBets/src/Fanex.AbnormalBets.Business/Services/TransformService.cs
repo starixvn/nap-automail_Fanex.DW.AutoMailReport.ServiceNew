@@ -9,7 +9,13 @@ namespace Fanex.AbnormalBets.Business.Services
 {
     public interface TransformService
     {
-        Tuple<List<SummaryBetDTOModel>, List<DetailBetDTOModel>, List<UserLocationModel>> ExecuteDailyLicensee(Tuple<List<SummaryBetModel>, List<DetailBetModel>, List<UserLocationModel>> rawData);
+        Tuple<
+            List<SummaryBetDTOModel>, 
+            List<DetailBetDTOModel>, 
+            List<UserLocationModel>> ExecuteDailyLicensee(Tuple<
+                List<SummaryBetModel>, 
+                List<DetailBetModel>, 
+                List<UserLocationModel>> rawData);
 
         List<AbnormalBetDailyDTOModel> ExecuteDailyCSD(List<AbnormalBetDailyModel> rawData);
     }
@@ -23,20 +29,32 @@ namespace Fanex.AbnormalBets.Business.Services
         private readonly string CodeEn = "en-US";
         private readonly string CodeCn = "zh-CN";
 
-        public TransformServiceImp(IRemotingRefService rrService, BetteamService betteamService, RepositoryService repositoryService)
+        public TransformServiceImp(
+            IRemotingRefService rrService, 
+            BetteamService betteamService, 
+            RepositoryService repositoryService)
         {
             this.rrService = rrService;
             this.betteamService = betteamService;
             this.repositoryService = repositoryService;
         }
 
-        public Tuple<List<SummaryBetDTOModel>, List<DetailBetDTOModel>, List<UserLocationModel>> ExecuteDailyLicensee(Tuple<List<SummaryBetModel>, List<DetailBetModel>, List<UserLocationModel>> rawData)
+        public Tuple<
+            List<SummaryBetDTOModel>, 
+            List<DetailBetDTOModel>, 
+            List<UserLocationModel>> ExecuteDailyLicensee(Tuple<
+                List<SummaryBetModel>, 
+                List<DetailBetModel>, 
+                List<UserLocationModel>> rawData)
         {
             var summaries = GetSumaryBets(rawData.Item1);
             var details = GetDetailBets(rawData.Item2);
             var locations = GetLocation(rawData.Item3);
 
-            return new Tuple<List<SummaryBetDTOModel>, List<DetailBetDTOModel>, List<UserLocationModel>>(summaries, details, locations);
+            return new Tuple<
+                List<SummaryBetDTOModel>, 
+                List<DetailBetDTOModel>, 
+                List<UserLocationModel>>(summaries, details, locations);
         }
 
         private List<SummaryBetDTOModel> GetSumaryBets(List<SummaryBetModel> rawData)
@@ -106,26 +124,43 @@ namespace Fanex.AbnormalBets.Business.Services
         private List<UserLocationModel> GetLocation(List<UserLocationModel> rawData)
         {
             var locations = new List<UserLocationModel>();
-            rawData.ForEach(location => 
+            rawData.ForEach(location =>
             {
                 locations.Add(new UserLocationModel
                 {
                     Username = location.Username,
-                    LastLoginIp = location.LastLoginIp,
-                    LastLogionLocation = GetLocationFromIp(location.LastLoginIp),
-                    TiketIp = location.TiketIp,
-                    TiketLocationIp = GetLocationFromIp(location.TiketLocationIp)
+                    IpLogin = location.IpLogin,
+                    LastLogionLocation = GetLocationFromIp(location.IpLogin),
+                    TicketIps = location.TicketIps,
+                    TicketLocationIp = GetLocationFromIp(location.TicketIps)
                 });
             });
 
             return locations;
         }
 
-
         private string GetLocationFromIp(string ip)
         {
-            var location = repositoryService.QueryIP(ip);
-            return $"{location.CountryLong}, {location.IpCity}, {location.IpCity}";
+            if(string.IsNullOrEmpty(ip))
+            {
+                return string.Empty;
+            }
+
+            var locations = new List<string>();
+            ip.Split(',').ToList().ForEach(i =>
+            {
+                var location = repositoryService.QueryIP(i);
+                var list = new List<string>
+                {
+                    location.CountryLong,
+                    location.IpRegion,
+                    location.IpCity
+                };
+
+                locations.Add(string.Join(", ", list.Where(s => s.Length > 2)));
+            });
+
+            return string.Join("; ", locations);
         }
 
         public List<AbnormalBetDailyDTOModel> ExecuteDailyCSD(List<AbnormalBetDailyModel> rawData)

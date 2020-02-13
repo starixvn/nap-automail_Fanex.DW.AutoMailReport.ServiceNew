@@ -39,8 +39,7 @@ namespace Fanex.AbnormalBets.Business.Services
         {
             summaryTemplate = excelPackage.Workbook.Worksheets["Summary"];
             detailTemplate = excelPackage.Workbook.Worksheets["Detail"];
-            ipTemplate = excelPackage.Workbook.Worksheets["IP Summary"];
-            excelPackage.Workbook.Worksheets.Delete(detailTemplate);
+            ipTemplate = excelPackage.Workbook.Worksheets["IP Summary"];            
         }
 
         private void GenSummary(List<SummaryBetDTOModel> bets)
@@ -88,7 +87,9 @@ namespace Fanex.AbnormalBets.Business.Services
                             LiveHomeScore = bet.LiveHomeScore,
                             LiveAwayScore = bet.LiveAwayScore,
                             TransDate = bet.TransDate,
-                            TransId = bet.TransId
+                            TransId = bet.TransId,
+                            Ip = bet.Ip,
+                            Location = bet.Location
                         });
                     });
 
@@ -139,6 +140,7 @@ namespace Fanex.AbnormalBets.Business.Services
             }
 
             path = $@"{path}\{fileName}";
+            excelPackage.Workbook.Worksheets.Delete(detailTemplate);
             excelPackage.SaveAs(new FileInfo(path), AppConfigService.AppConfig.Password);
             return path;
         }

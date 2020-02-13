@@ -45,7 +45,7 @@ namespace Fanex.AbnormalBets.Executing
             container.Register<AbnormalBetNotificationService, AbnormalBetNotificationServiceImp>();
             container.Register<IRemotingRefService, RemotingRefService>();
             container.Register<BetteamService, BetteamServiceImp>();
-            container.Register(() => new ExcelPackage(new FileInfo(@"Templates/AbnormalBet.xlsx")));
+            container.Register(() => new ExcelPackage());
             container.Register<ExcelLicenseeService, ExcelLicenseeServiceImp>();
             container.Register<MailService, MailServiceImp>();
         }

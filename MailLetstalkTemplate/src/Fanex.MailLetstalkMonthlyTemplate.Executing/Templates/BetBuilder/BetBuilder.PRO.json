@@ -13,6 +13,6 @@
   "StartExelRowIndex": "2",
   "EmailTemplate": "BetBuilder/BetBuilder.cshtml",
   "EmailSubject": "[Bet Builder] - Monthly Report {0}",
-  "MailId": "314",
-  "MailName": "Mail Template Testing"
+  "MailId": "272",
+  "MailName": "Bet Builder Daily Report"
 }
