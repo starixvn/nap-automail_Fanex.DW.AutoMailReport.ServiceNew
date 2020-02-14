@@ -15,6 +15,8 @@ namespace Fanex.TopLicensee.Service.Services
         LastDateModel QueryLastDate();
 
         List<LicenseeTOModel> QueryTopLicensee(int sportType);
+
+        Tuple<List<TopLicenseeMarginModel>, List<TopLicenseeMarginModel>> QueryDailyTopLicenseeMargin(bool isDaily);
     }
 
     public class DataServiceImp : DataService
@@ -45,10 +47,23 @@ namespace Fanex.TopLicensee.Service.Services
 
         public List<LicenseeTOModel> QueryTopLicensee(int sportType)
         {
-            var criteria = new TopLicenseeByTOCriteria { RptDate = dateService.GetRptDate(), SportType = sportType };
-            var result = repository.FetchMultiple<SectionModel, LicenseeTOModel>(criteria);            
+            var criteria = new TopLicenseeByTOCriteria { RptDate = dateService.ToDate, SportType = sportType };
+            var result = repository.FetchMultiple<SectionModel, LicenseeTOModel>(criteria);
             var data = result.Item2.ToList();
             return data;
+        }
+
+        public Tuple<List<TopLicenseeMarginModel>, List<TopLicenseeMarginModel>> QueryDailyTopLicenseeMargin(bool isDaily)
+        {
+            var criteria = new TopLicenseeMarginCriteria
+            {
+                FromDate = isDaily ? dateService.ToDate : dateService.FromDate,
+                ToDate = dateService.ToDate
+            };
+
+            var result = repository.FetchMultiple<TopLicenseeMarginModel, TopLicenseeMarginModel>(criteria);
+
+            return new Tuple<List<TopLicenseeMarginModel>, List<TopLicenseeMarginModel>>(result.Item1.ToList(), result.Item2.ToList());
         }
     }
 }

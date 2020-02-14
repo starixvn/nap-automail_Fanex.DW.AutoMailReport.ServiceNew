@@ -10,6 +10,8 @@ namespace Fanex.TopLicensee.Service.Services
     public interface ImageService
     {
         string ExportImage(string excelPath, string sheetNameNeedToExport, ImageProperty imageProperty);
+
+        void ResizeImage(string org, string des, int finalWidth, int finalHeight, int imageQuality);
     }
 
     public class ImageServiceImp : ImageService
@@ -23,7 +25,7 @@ namespace Fanex.TopLicensee.Service.Services
 
         public string ExportImage(string excelPath, string sheetNameNeedToExport, ImageProperty imageProperty)
         {
-            var date = dateService.GetRptDate();
+            var date = dateService.ToDate;
             var imageName = $@"{AppConfigService.AppConfig.Path}\{date:yyyy}\{date:MM}";
             if (!Directory.Exists(imageName))
             {
@@ -32,6 +34,7 @@ namespace Fanex.TopLicensee.Service.Services
 
             imageName = $@"{imageName}\{imageProperty.ImageName}_On_{date:yyyyMMdd}.jpg";
             var imageNameFinal = $@"{AppConfigService.AppConfig.Path}\{date:yyyy}\{date:MM}\{imageProperty.ImageName}_Final_On_{date:yyyyMMdd}.jpg";
+            var imageNameResizeWidth = $@"{AppConfigService.AppConfig.Path}\{date:yyyy}\{date:MM}\{imageProperty.ImageName}_ResizeWidth_On_{date:yyyyMMdd}.jpg";
 
             var workbook = new Workbook();
             workbook.OpenPassword = AppConfigService.AppConfig.Password;
@@ -44,6 +47,12 @@ namespace Fanex.TopLicensee.Service.Services
             images.Save(imageName, ImageFormat.Jpeg);
 
             Crop(imageName, imageNameFinal, imageProperty.CropWidth, imageProperty.CropHeight, imageProperty.X, imageProperty.Y);
+
+            if (imageProperty.IsResize)
+            {
+                ResizeImage(imageNameFinal, imageNameResizeWidth, imageProperty.ResizeNewWidth, 0, 100);
+                return imageNameResizeWidth;
+            }
 
             return imageNameFinal;
         }
@@ -91,6 +100,56 @@ namespace Fanex.TopLicensee.Service.Services
             g.Dispose();
 
             return bmp;
+        }
+
+        public void ResizeImage(string org, string des, int finalWidth, int finalHeight, int imageQuality)
+        {
+            Bitmap newBMP;
+            Graphics graphicTemp;
+            Bitmap bmp = new Bitmap(org);
+
+            int iWidth;
+            int iHeight;
+            if ((finalHeight == 0) && (finalWidth != 0))
+            {
+                iWidth = finalWidth;
+                iHeight = (bmp.Size.Height * iWidth / bmp.Size.Width);
+            }
+            else if ((finalHeight != 0) && (finalWidth == 0))
+            {
+                iHeight = finalHeight;
+                iWidth = (bmp.Size.Width * iHeight / bmp.Size.Height);
+            }
+            else
+            {
+                iWidth = finalWidth;
+                iHeight = finalHeight;
+            }
+
+            newBMP = new Bitmap(iWidth, iHeight);
+            graphicTemp = Graphics.FromImage(newBMP);
+            graphicTemp.CompositingMode = CompositingMode.SourceOver;
+            graphicTemp.CompositingQuality = CompositingQuality.HighQuality;
+            graphicTemp.SmoothingMode = SmoothingMode.HighQuality;
+            graphicTemp.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            graphicTemp.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            graphicTemp.DrawImage(bmp, 0, 0, iWidth, iHeight);
+            graphicTemp.Dispose();
+            EncoderParameters encoderParams = new EncoderParameters();
+            EncoderParameter encoderParam = new EncoderParameter(Encoder.Quality, imageQuality);
+            encoderParams.Param[0] = encoderParam;
+            ImageCodecInfo[] arrayICI = ImageCodecInfo.GetImageEncoders();
+            for (int fwd = 0; fwd <= arrayICI.Length - 1; fwd++)
+            {
+                if (arrayICI[fwd].FormatDescription.Equals("JPEG"))
+                {
+                    newBMP.SetResolution(300, 300);
+                    newBMP.Save(des, arrayICI[fwd], encoderParams);
+                }
+            }
+
+            newBMP.Dispose();
+            bmp.Dispose();
         }
     }
 }

@@ -5,17 +5,17 @@ using System.IO;
 
 namespace Fanex.TopLicensee.Service.Services
 {
-    public interface ExcelService
+    public interface ExcelTop50Service
     {
         string Export(string batch, Dictionary<string, List<LicenseeTOModel>> sports);
     }
 
-    public class ExcelServiceImp : ExcelService
+    public class ExcelTop50ServiceImp : ExcelTop50Service
     {
         private ExcelPackage excelPackage;
         private readonly DateService dateService;
 
-        public ExcelServiceImp(DateService dateService)
+        public ExcelTop50ServiceImp(DateService dateService)
         {
             this.dateService = dateService;
         }
@@ -39,7 +39,7 @@ namespace Fanex.TopLicensee.Service.Services
 
             var data = RefineData(sport.Value);
             sheet.Cells["B2"].Value = sport.Key;
-            sheet.Cells["D2"].Value = $"{dateService.GetRptDate():yyyyMMdd}";
+            sheet.Cells["D2"].Value = $"{dateService.ToDate:yyyyMMdd}";
             sheet.Cells["B4"].LoadFromCollection(data, false);
             var totalCol = 6;
             var startColIndex = 2;
@@ -81,7 +81,7 @@ namespace Fanex.TopLicensee.Service.Services
 
         private string SaveCreatedFile(string batch)
         {
-            var rptDate = dateService.GetRptDate();
+            var rptDate = dateService.ToDate;
             var fileName = $"Top_Licensees_by_TO_{batch}_For_{rptDate:yyyyMMdd}.xlsx";
             var path = $@"{AppConfigService.AppConfig.Path}\{rptDate:yyyy}\{rptDate:MM}";
             if (!Directory.Exists(path))

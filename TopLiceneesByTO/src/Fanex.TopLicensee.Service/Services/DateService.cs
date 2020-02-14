@@ -5,16 +5,33 @@ namespace Fanex.TopLicensee.Service.Services
 {
     public interface DateService
     {
-        DateTime GetRptDate();
+        DateTime FromDate { get; }
+
+        DateTime ToDate { get; }
     }
 
     public class DateServiceImp : DateService
     {
-        public DateTime GetRptDate()
+        public DateTime FromDate
         {
-            return AppConfigService.AppConfig.IsManual
-                            ? AppConfigService.AppConfig.RptDate
-                            : Convert.ToDateTime(SystemTime.Now.AddDays(-1).ToShortDateString());
+            get
+            {
+                var date = SystemTime.Now.AddDays(-1);
+                return AppConfigService.AppConfig.IsManual
+                           ? AppConfigService.AppConfig.FromDate
+                           : Convert.ToDateTime($"{date:yyyy-MM-01}");
+            }
+        }
+
+        public DateTime ToDate
+        {
+            get
+            {
+                var date = SystemTime.Now.AddDays(-1);
+                return AppConfigService.AppConfig.IsManual
+                           ? AppConfigService.AppConfig.ToDate
+                           : Convert.ToDateTime($"{date:yyyy-MM-dd}");
+            }
         }
     }
 }

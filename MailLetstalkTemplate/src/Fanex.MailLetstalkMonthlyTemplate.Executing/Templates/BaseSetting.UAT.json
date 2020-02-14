@@ -1,5 +1,5 @@
 ﻿{
-  "SentryClientKey": "http://612764957dbb46ffa359103d8ffa08c6@10.99.99.37:801/59",
+  "SentryClientKey": "http://612764957dbb46ffa359103d8ffa08c6@10.99.99.51:801/59",
   "CategorySentryLog": "NAP-Report-Service-UAT",
   "IsIgnoredCheckMailSent":  true
 }

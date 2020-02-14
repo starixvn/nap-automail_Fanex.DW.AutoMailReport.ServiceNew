@@ -14,7 +14,8 @@ namespace Fanex.TopLicensee.Service.Services
     {
         private readonly Log log;
         private readonly DataService dataService;
-        private readonly ExcelService excelService;        
+        private readonly ExcelTop50Service excelService;
+        private readonly ExcelTopLicenseeMarginService excelTopLicenseeMargin;
         private readonly ImageService imageService;
         private readonly MessageService messageService;
         private readonly MailService mailService;
@@ -22,7 +23,8 @@ namespace Fanex.TopLicensee.Service.Services
         public TopLicenseeNotificationServiceImp(
             Log log,
             DataService dataService,
-            ExcelService excelService, 
+            ExcelTop50Service excelService,
+            ExcelTopLicenseeMarginService excelTopLicenseeMargin,
             MailService mailService,
             ImageService imageService,
             MessageService messageService)
@@ -30,9 +32,10 @@ namespace Fanex.TopLicensee.Service.Services
             this.log = log;
             this.dataService = dataService;
             this.excelService = excelService;
+            this.excelTopLicenseeMargin = excelTopLicenseeMargin;
             this.mailService = mailService;
             this.imageService = imageService;
-            this.messageService = messageService;            
+            this.messageService = messageService;
         }
 
         public JobMessage Execute()
@@ -71,21 +74,42 @@ namespace Fanex.TopLicensee.Service.Services
                 return new ExecuteResultModel { Success = false, Message = "DataIsNotReady" };
             }
 
-            var result = SendMessage();
+            var imageSentFail = new List<string>();
+            var result = SendMessage(imageSentFail);
             var message = string.Empty;
+            
             if (!result)
             {
-                message = "Letsalk sent images Unsuccessfully.";
+                message = $"Letsalk sent images Unsuccessfully.{Environment.NewLine} {string.Join(Environment.NewLine, imageSentFail)}";
             }
 
             return new ExecuteResultModel { Success = result, Mail = null, Message = message };
         }
 
-        private bool SendMessage()
+        private bool SendMessage(List<string> imageSentFail)
         {
-            var batches = AppConfigService.AppConfig.Sports;
             var imageBatches = new List<List<string>>();
             var success = true;
+
+            ExportImageTop50(imageBatches);
+            ExportImageTopLicenseeMargin(imageBatches);
+
+            imageBatches.ForEach(files =>
+            {
+                var result = messageService.Send(files);
+                if (!result)
+                {
+                    success = result;
+                    imageSentFail.AddRange(files);
+                }
+            });
+
+            return success;
+        }
+
+        private void ExportImageTop50(List<List<string>> imageBatches)
+        {
+            var batches = AppConfigService.AppConfig.Sports;
             foreach (var batch in batches)
             {
                 var imageFiles = new List<string>();
@@ -100,25 +124,28 @@ namespace Fanex.TopLicensee.Service.Services
 
                 batch.Value.ForEach(sport =>
                 {
-                    AppConfigService.AppConfig.Image.ImageName = sport.SectionName.Replace(" ", string.Empty);
-                    var imageFile = imageService.ExportImage(excelFile, sport.SectionName, AppConfigService.AppConfig.Image);
+                    AppConfigService.AppConfig.Image["Top50"].ImageName = sport.SectionName.Replace(" ", string.Empty);
+                    var imageFile = imageService.ExportImage(excelFile, sport.SectionName, AppConfigService.AppConfig.Image["Top50"]);
                     imageFiles.Add(imageFile);
                 });
 
                 imageBatches.Add(imageFiles);
             }
+        }
 
-            imageBatches.ForEach(files =>
-            {
-                var result = messageService.Send(files);
-                if (!result)
-                {
-                    success = result;
-                }
-            });
+        private void ExportImageTopLicenseeMargin(List<List<string>> imageBatches)
+        {
+            var data = dataService.QueryDailyTopLicenseeMargin(true);
+            var excelFile = excelTopLicenseeMargin.Export("Daily", data);
+            AppConfigService.AppConfig.Image["TopLicenseeMargin"].ImageName = "TopLicenseeMargin_Daily";
+            var imageName = imageService.ExportImage(excelFile, "Template", AppConfigService.AppConfig.Image["TopLicenseeMargin"]);
+            imageBatches.Add(new List<string> { imageName });
 
-
-            return success;
+            data = dataService.QueryDailyTopLicenseeMargin(false);
+            excelFile = excelTopLicenseeMargin.Export("MTD", data);
+            AppConfigService.AppConfig.Image["TopLicenseeMargin"].ImageName = "TopLicenseeMargin_MTD";
+            imageName = imageService.ExportImage(excelFile, "Template", AppConfigService.AppConfig.Image["TopLicenseeMargin"]);
+            imageBatches.Add(new List<string> { imageName });
         }
     }
 }

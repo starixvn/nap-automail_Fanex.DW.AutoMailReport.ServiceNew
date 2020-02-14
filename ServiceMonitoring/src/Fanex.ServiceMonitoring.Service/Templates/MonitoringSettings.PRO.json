@@ -1,5 +1,5 @@
 ﻿{
-  "SentryClientKey": "http://874926f01ea946cbb7ffa9d701404834@10.99.99.37:801/45",
+  "SentryClientKey": "http://874926f01ea946cbb7ffa9d701404834@10.99.99.51:801/45",
   "CategorySentryLog": "NAP-Report-Service",
   "IntervalInSecondServiceMonitor": 300,
   "IntervalInSecondMailMonitor": 1800,

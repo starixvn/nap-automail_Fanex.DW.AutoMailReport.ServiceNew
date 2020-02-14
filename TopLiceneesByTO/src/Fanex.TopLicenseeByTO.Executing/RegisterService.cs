@@ -39,7 +39,8 @@ namespace Fanex.TopLicenseeByTO.Executing
             container.Register<IDynamicRepository, DynamicRepository>();
             container.Register<DataService, DataServiceImp>();
             container.Register<TopLicenseeNotificationService, TopLicenseeNotificationServiceImp>();
-            container.Register<ExcelService, ExcelServiceImp>();
+            container.Register<ExcelTop50Service, ExcelTop50ServiceImp>();
+            container.Register<ExcelTopLicenseeMarginService, ExcelTopLicenseeMarginServiceImp>();
             container.Register<ImageService, ImageServiceImp>();
             container.Register<MailService, MailServiceImp>();
             container.Register<DateService, DateServiceImp>();

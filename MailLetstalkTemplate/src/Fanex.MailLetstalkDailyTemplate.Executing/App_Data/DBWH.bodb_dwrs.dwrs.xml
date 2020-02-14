@@ -2,9 +2,6 @@
 <Functions>
   <Function SiteId="25" SiteName="Auto Mail">
     <Setting Key="BI_GetDWStatusByCube" SpName="BI_GetDWStatusByCube" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0"/>
-    <Setting Key="Acc_Rpt_Letstalk_N88" SpName="Acc_Rpt_Letstalk_N88" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
-    <Setting Key="Acc_Rpt_Automail_CN88Daily" SpName="Acc_Rpt_Automail_CN88Daily" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
-    <Setting Key="Acc_Rpt_HouseNetIncome_SB_Credit" SpName="Acc_Rpt_HouseNetIncome_SB_Credit" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
-    <Setting Key="GET_SR_League" SpName="GET_SR_League" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+    <Setting Key="Acc_Rpt_Automail_BasketballDailyPerformance" SpName="Acc_Rpt_Automail_BasketballDailyPerformance" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0"/>
   </Function>
 </Functions>
