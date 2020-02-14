@@ -1,0 +1,14 @@
+﻿[
+  {
+    "ReportFile": "League/League.json",
+    "IsActive": true,
+    "IsEmailEnabled": true,
+    "IsLetstalkEnabled": false
+  },
+  {
+    "ReportFile": "BetBuilder/BetBuilder.json",
+    "IsActive": true,
+    "IsEmailEnabled": true,
+    "IsLetstalkEnabled": false
+  }
+]

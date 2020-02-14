@@ -1,0 +1,18 @@
+﻿{
+  "SPName": "Acc_Rpt_Monthly_Bet_Builder",
+  "IsCheckEnoughData": false,
+  "DateRange": "Monthly",
+  "FromDate": "2020-01-01",
+  "ToDate": "2020-01-31",
+  "Path": "\\\\10.40.40.127\\Data.Web\\Fanex.Excel\\BetBuilderMonthly",
+  "Password": "",
+  "FunctionIdNodata": 224,
+  "TemplateExcelFile": "BetBuilder/BetBuilderMonthly.xlsx",
+  "SheetExcelTemplateName": [ "Monthly" ],
+  "CellAddressRender": [ "A2" ],
+  "StartExelRowIndex": "2",
+  "EmailTemplate": "BetBuilder/BetBuilder.cshtml",
+  "EmailSubject": "[Bet Builder] - Monthly Report {0}",
+  "MailId": "272",
+  "MailName": "Bet Builder Daily Report"
+}

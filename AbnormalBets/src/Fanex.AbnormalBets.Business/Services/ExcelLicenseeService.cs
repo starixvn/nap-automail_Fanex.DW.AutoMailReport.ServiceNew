@@ -9,7 +9,7 @@ namespace Fanex.AbnormalBets.Business.Services
 {
     public interface ExcelLicenseeService
     {
-        string Execute(string site, DateTime rptDate, Tuple<List<SummaryBetDTOModel>, List<DetailBetDTOModel>> data);
+        string Execute(string site, DateTime rptDate, Tuple<List<SummaryBetDTOModel>, List<DetailBetDTOModel>, List<UserLocationModel>> data);
     }
 
     public class ExcelLicenseeServiceImp : ExcelLicenseeService
@@ -17,18 +17,21 @@ namespace Fanex.AbnormalBets.Business.Services
         private ExcelPackage excelPackage;
         private ExcelWorksheet summaryTemplate;
         private ExcelWorksheet detailTemplate;
+        private ExcelWorksheet ipTemplate;
 
         public ExcelLicenseeServiceImp(ExcelPackage excelPackage)
         {
             this.excelPackage = excelPackage;
         }
 
-        public string Execute(string site, DateTime rptDate, Tuple<List<SummaryBetDTOModel>, List<DetailBetDTOModel>> data)
+        public string Execute(string site, DateTime rptDate, Tuple<List<SummaryBetDTOModel>, List<DetailBetDTOModel>, List<UserLocationModel>> data)
         {
             excelPackage = new ExcelPackage(new FileInfo(@"Templates/AbnormalBet.xlsx"));
             Init();
             GenSummary(data.Item1);
             GenDetail(data.Item2);
+            GetIPSummary(data.Item3);
+
             return SaveExceFile(site, rptDate);
         }
 
@@ -36,7 +39,7 @@ namespace Fanex.AbnormalBets.Business.Services
         {
             summaryTemplate = excelPackage.Workbook.Worksheets["Summary"];
             detailTemplate = excelPackage.Workbook.Worksheets["Detail"];
-            excelPackage.Workbook.Worksheets.Delete(detailTemplate);
+            ipTemplate = excelPackage.Workbook.Worksheets["IP Summary"];            
         }
 
         private void GenSummary(List<SummaryBetDTOModel> bets)
@@ -70,11 +73,11 @@ namespace Fanex.AbnormalBets.Business.Services
                     detail.Cells["B9"].Value = row.Key.FinalScore;
 
                     count++;
-                    var betDetails = new List<BetDetailModel>();
+                    var betDetails = new List<ShortTicketDetailModel>();
                     row.ToList()
                     .ForEach(bet =>
                     {
-                        betDetails.Add(new BetDetailModel
+                        betDetails.Add(new ShortTicketDetailModel
                         {
                             Username = bet.Username,
                             Odds = bet.Odds,
@@ -84,7 +87,9 @@ namespace Fanex.AbnormalBets.Business.Services
                             LiveHomeScore = bet.LiveHomeScore,
                             LiveAwayScore = bet.LiveAwayScore,
                             TransDate = bet.TransDate,
-                            TransId = bet.TransId
+                            TransId = bet.TransId,
+                            Ip = bet.Ip,
+                            Location = bet.Location
                         });
                     });
 
@@ -95,13 +100,24 @@ namespace Fanex.AbnormalBets.Business.Services
                     }
 
                     detail.Cells["B12"].LoadFromCollection(betDetails, false);
-                    for (int i = 2; i <= 10; i++)
+                    for (int columnIndex = 2; columnIndex <= 12; columnIndex++)
                     {
-                        detail.Cells[12, i, 11 + betDetails.Count, i].StyleID = detail.Cells[12, i].StyleID;
+                        detail.Cells[12, columnIndex, 11 + betDetails.Count, columnIndex].StyleID = detail.Cells[12, columnIndex].StyleID;
                     }
 
                     excelPackage.Workbook.Worksheets.Add(sheetName, detail);
                 });
+        }
+
+        private void GetIPSummary(List<UserLocationModel> data)
+        {
+            var rowIndex = 2;
+            ipTemplate.Cells["A2"].LoadFromCollection(data, false);
+            for (var columnIndex = 1; columnIndex <= 5; columnIndex++)
+            {
+                ipTemplate.Cells[rowIndex, columnIndex, data.Count + rowIndex - 1, columnIndex].StyleID = ipTemplate.Cells[rowIndex, columnIndex].StyleID;
+                ipTemplate.Column(columnIndex).AutoFit(20);
+            }
         }
 
         private string GetSheetName(string home, int count)
@@ -124,6 +140,7 @@ namespace Fanex.AbnormalBets.Business.Services
             }
 
             path = $@"{path}\{fileName}";
+            excelPackage.Workbook.Worksheets.Delete(detailTemplate);
             excelPackage.SaveAs(new FileInfo(path), AppConfigService.AppConfig.Password);
             return path;
         }

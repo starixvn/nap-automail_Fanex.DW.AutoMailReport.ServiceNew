@@ -45,5 +45,7 @@ namespace Fanex.AbnormalBets.Business.Models.DailyLicensee
         public int? LiveAwayScore { get; set; }
 
         public DateTime TransDate { get; set; }
+
+        public string Ip { get; set; }
     }
 }

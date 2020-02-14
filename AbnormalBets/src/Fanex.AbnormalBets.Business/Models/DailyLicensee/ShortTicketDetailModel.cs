@@ -2,7 +2,7 @@
 
 namespace Fanex.AbnormalBets.Business.Models.DailyLicensee
 {
-    public class BetDetailModel
+    public class ShortTicketDetailModel
     {
         public string Username { get; set; }
 
@@ -21,5 +21,9 @@ namespace Fanex.AbnormalBets.Business.Models.DailyLicensee
         public DateTime TransDate { get; set; }
 
         public long TransId { get; set; }
+
+        public string Ip { get; set; }
+
+        public string Location { get; set; }
     }
 }

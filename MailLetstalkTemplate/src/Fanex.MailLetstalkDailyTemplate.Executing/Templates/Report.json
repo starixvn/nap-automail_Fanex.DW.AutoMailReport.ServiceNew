@@ -1,0 +1,8 @@
+﻿[
+  {
+    "ReportFile": "DHWL/DHWL.json",
+    "IsActive": true,
+    "IsEmailEnabled": true,
+    "IsLetstalkEnabled": true
+  }
+]
