@@ -3,9 +3,10 @@
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
   "TargetName": "daily-house-wl",
   "Group": "Top-50-Licensee-QC",
-  "IsCheckEnoughData": true,
-  "IsManual": false,
-  "RptDate": "2020-12-30",
+  "IsCheckEnoughData": false,
+  "IsManual": true,
+  "FromDate": "2019-12-01",
+  "Todate": "2019-12-10",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\TopLicenseeByTO",
   "Password": "",
   "FunctionIdNodata": 90,
@@ -54,13 +55,27 @@
     ]
   },
   "Image": {
-    "FirstRow": 2,
-    "FirstColumn": 2,
-    "LastRow": 55,
-    "LastColumn": 7,
-    "CropWidth": 1970,
-    "CropHeight": 4480,
-    "X": 200,
-    "Y": 250
+    "Top50": {
+      "FirstRow": 2,
+      "FirstColumn": 2,
+      "LastRow": 55,
+      "LastColumn": 7,
+      "CropWidth": 1970,
+      "CropHeight": 4480,
+      "X": 200,
+      "Y": 250
+    },
+    "TopLicenseeMargin": {
+      "FirstRow": 2,
+      "FirstColumn": 2,
+      "LastRow": 65,
+      "LastColumn": 10,
+      "CropWidth": 2370,
+      "CropHeight": 5270,
+      "X": 200,
+      "Y": 200,
+      "IsResize": true,
+      "ResizeNewWidth": 1200
+    }
   }
 }

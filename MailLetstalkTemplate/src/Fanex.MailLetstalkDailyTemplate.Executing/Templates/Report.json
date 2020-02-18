@@ -1,8 +1,8 @@
 ﻿[
   {
-    "ReportFile": "DHWL/DHWL.json",
+    "ReportFile": "Basketball/Basketball.json",
     "IsActive": true,
     "IsEmailEnabled": true,
-    "IsLetstalkEnabled": true
+    "IsLetstalkEnabled": false
   }
 ]

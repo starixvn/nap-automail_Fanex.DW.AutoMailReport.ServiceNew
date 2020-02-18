@@ -1,0 +1,18 @@
+﻿{
+  "SPName": "Acc_Rpt_Automail_BasketballDailyPerformance",
+  "IsCheckEnoughData": false,
+  "DateRange": "Manual",
+  "FromDate": "2020-01-01",
+  "ToDate": "2020-01-10",
+  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\BasketballDailyPerformance",
+  "Password": "",
+  "FunctionIdNodata": 90,
+  "TemplateExcelFile": "Basketball/Basketball.xlsx",
+  "SheetExcelTemplateName": ["Data"],
+  "CellAddressRender": [ "A3" ],
+  "StartExelRowIndex": "3",
+  "EmailTemplate": "Basketball/Basketball.cshtml",
+  "EmailSubject": "[Basketball] - Daily Report {0}",
+  "MailId": "327",
+  "MailName": "Mail Template Testing"   
+}

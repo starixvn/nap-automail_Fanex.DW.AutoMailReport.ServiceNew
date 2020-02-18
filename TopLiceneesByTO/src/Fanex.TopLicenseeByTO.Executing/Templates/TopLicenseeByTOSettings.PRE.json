@@ -1,11 +1,12 @@
 ﻿{
-  "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.99.99.37:801/60",
+  "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.99.99.51:801/60",
   "CategorySentryLog": "NAP-Report-Service",
   "TargetName": "daily-house-wl",
   "Group": "Top-50-Licensee-ManagementTest",
   "IsCheckEnoughData": true,
   "IsManual": false,
-  "RptDate": "2020-12-30",
+  "FromDate": "2019-12-01",
+  "Todate": "2019-12-01",
   "Path": "\\\\10.40.40.127\\Data.Web\\Fanex.Excel\\TopLicenseeByTO-PRE",
   "Password": "Star168",
   "FunctionIdNodata": 190,
@@ -54,13 +55,27 @@
     ]
   },
   "Image": {
-    "FirstRow": 2,
-    "FirstColumn": 2,
-    "LastRow": 55,
-    "LastColumn": 7,
-    "CropWidth": 2350,
-    "CropHeight": 5290,
-    "X": 220,
-    "Y": 300
+    "Top50": {
+      "FirstRow": 2,
+      "FirstColumn": 2,
+      "LastRow": 55,
+      "LastColumn": 7,
+      "CropWidth": 2350,
+      "CropHeight": 5290,
+      "X": 220,
+      "Y": 300
+    },
+    "TopLicenseeMargin": {
+      "FirstRow": 2,
+      "FirstColumn": 2,
+      "LastRow": 65,
+      "LastColumn": 10,
+      "CropWidth": 2860,
+      "CropHeight": 6250,
+      "X": 200,
+      "Y": 200,
+      "IsResize": true,
+      "ResizeNewWidth": 1200
+    }
   }
 }
