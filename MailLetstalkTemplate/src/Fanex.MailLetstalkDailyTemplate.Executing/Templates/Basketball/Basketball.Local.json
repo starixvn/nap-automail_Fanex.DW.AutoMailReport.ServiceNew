@@ -1,18 +1,20 @@
 ﻿{
-  "SPName": "Acc_Rpt_Automail_BasketballDailyPerformance",
+  "SPName": "Acc_Rpt_Automail_BasketballDailyVRPerformance",
   "IsCheckEnoughData": false,
-  "DateRange": "Manual",
+  "DateRange": "Yesterday",
   "FromDate": "2020-01-01",
   "ToDate": "2020-01-10",
-  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\BasketballDailyPerformance",
+  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\Basketball - Daily VR Performance",
   "Password": "",
   "FunctionIdNodata": 90,
   "TemplateExcelFile": "Basketball/Basketball.xlsx",
   "SheetExcelTemplateName": ["Data"],
-  "CellAddressRender": [ "A3" ],
+  "CellAddressRender": [ "B3" ],
   "StartExelRowIndex": "3",
   "EmailTemplate": "Basketball/Basketball.cshtml",
-  "EmailSubject": "[Basketball] - Daily Report {0}",
+  "EmailSubject": "[Basketball] - Daily VR Performance Report {0}",
   "MailId": "327",
-  "MailName": "Mail Template Testing"   
+  "MailName": "Mail Template Testing",
+  "FileName": "Basketball - Daily VR Performance",
+  "StartExcelColumnIndex": 2
 }

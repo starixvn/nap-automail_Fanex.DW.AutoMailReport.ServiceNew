@@ -7,7 +7,7 @@
   "ToDate": "2020-01-31",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\N88DailyWL",
   "TargetName": "N88",
-  "Group": "N88-DailyWL-Test",
+  "Group": [ "N88-DailyWL-Test", "N88-DailyWL-Internal-Test" ],
   "Password": "",
   "FunctionIdNodata": 90,
   "N88": {
@@ -24,12 +24,12 @@
   "Deposit": {
     "FirstRow": 3,
     "FirstColumn": 7,
-    "LastRow": 4,
+    "LastRow": 6,
     "LastColumn": 10,
-    "CropWidth": 1055,
-    "CropHeight": 195,
+    "CropWidth": 1250,
+    "CropHeight": 350,
     "ImageName": "FirstDeposit",
     "X": 200,
-    "Y": 210
+    "Y": 215
   }
 }

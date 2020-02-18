@@ -12,7 +12,7 @@
       "MailId": 286,
       "MailName": "Abnormal Bet Daily Report - All - UAT",
       "SiteName": "All",
-      "Subject": "[ABI] - Abnormal Licensee bet {0}"
+      "Subject": "[ABI] - 非正规投注玩家 -  Abnormal Player bet {0}"
     },
     {
       "MailId": 287,
@@ -24,31 +24,31 @@
       "MailId": 288,
       "MailName": "Abnormal Bet Daily Report - KeenOcean - UAT",
       "SiteName": "KeenOcean",
-      "Subject": "[ABI] KeenOcean Abnormal Licensee bet {0}"
+      "Subject": "[ABI] - 非正规投注玩家 - KeenOcean Abnormal Licensee bet {0}"
     },
     {
       "MailId": 289,
       "MailName": "Abnormal Bet Daily Report - Haifa - UAT",
       "SiteName": "Haifa",
-      "Subject": "[ABI] Haifa Abnormal Licensee bet {0}"
+      "Subject": "[ABI] - 非正规投注玩家 - Haifa Abnormal Licensee bet {0}"
     },
     {
       "MailId": 307,
       "MailName": "Abnormal Bet Daily Report - IBO - UAT",
       "SiteName": "IBO",
-      "Subject": "[ABI] IBO Abnormal Licensee bet {0}"
+      "Subject": "[ABI] - 非正规投注玩家 - IBO Abnormal Licensee bet {0}"
     },
     {
       "MailId": 308,
       "MailName": "Abnormal Bet Daily Report - BoBBet - UAT",
       "SiteName": "BoBBet",
-      "Subject": "[ABI] BoBBet Abnormal Licensee bet {0}"
+      "Subject": "[ABI] - 非正规投注玩家 - BoBBet Abnormal Licensee bet {0}"
     },
     {
       "MailId": 309,
       "MailName": "Abnormal Bet Daily Report - Tianbo - UAT",
       "SiteName": "Tianbo",
-      "Subject": "[ABI] Tianbo Abnormal Licensee bet {0}"
+      "Subject": "[ABI]- 非正规投注玩家 - Tianbo Abnormal Licensee bet {0}"
     }
   ]  
 }

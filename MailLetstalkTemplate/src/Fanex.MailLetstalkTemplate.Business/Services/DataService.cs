@@ -29,7 +29,6 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
 
         public DataSet QueryData(string spName)
         {
-            var dataTable = new DataTable();
             var date = dateRangeServiceProfier.Date(AppConfigService.Config.DateRange);
             ObjectDb db = new ObjectDb(spName);
             var param = new Dictionary<string, DateTime>

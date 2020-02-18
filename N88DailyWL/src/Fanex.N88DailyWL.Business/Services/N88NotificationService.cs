@@ -3,6 +3,7 @@ using Fanex.MailDelivery.Core.Models;
 using Fanex.N88DailyWL.Business.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Fanex.N88DailyWL.Business.Services
 {
@@ -22,10 +23,10 @@ namespace Fanex.N88DailyWL.Business.Services
         private readonly LetstalkClientService letstalkService;
 
         public N88NotificationServiceImp(
-            Log log, 
-            DataService dataService, 
-            DateService dateService, 
-            ExcelService excelService, 
+            Log log,
+            DataService dataService,
+            DateService dateService,
+            ExcelService excelService,
             ImageService imageService,
             MessageService messageService,
             LetstalkClientService letstalkService)
@@ -79,9 +80,16 @@ namespace Fanex.N88DailyWL.Business.Services
             var imageN88Path = imageService.ExportImage(excelPath, "Template", AppConfigService.AppConfig.N88);
             var imageDepositPath = imageService.ExportImage(excelPath, "Template", AppConfigService.AppConfig.Deposit);
             var letstalkModel = messageService.CreateLetstalkModel(new List<string> { imageN88Path, imageDepositPath });
-            var result = letstalkService.SendMessage(letstalkModel);
+            var result = new List<bool>();
+            letstalkModel.ForEach(model =>
+            {
+                var status = letstalkService.SendMessage(model);
+                result.Add(status);
+            });
 
-            return new ExecuteResultModel { Success = result };
+            var sendResult = !result.Any(c => !c);
+            var message = sendResult ? string.Empty : "Letstalk sends images unsuccessfully.";
+            return new ExecuteResultModel { Success = sendResult, Message = message };
         }
     }
 }

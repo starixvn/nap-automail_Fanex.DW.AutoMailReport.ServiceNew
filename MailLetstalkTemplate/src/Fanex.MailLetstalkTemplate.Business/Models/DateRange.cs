@@ -5,6 +5,7 @@
         None,
         Daily,
         Monthly,
+        Yesterday,
         Manual
     }
 }

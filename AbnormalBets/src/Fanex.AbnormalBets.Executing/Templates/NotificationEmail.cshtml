@@ -7,6 +7,14 @@
     @if (isNoData)
     {
         <div>
+            亲爱的客户您好，<br /><br />
+
+            今日 @rptDate.ToString("MM/dd/yyyy") 没有任何非正规投注。<br /><br />
+
+            谢谢<br /><br />
+        </div>
+
+        <div>
             Dear All, <br /><br />
 
             There is no daily data for Abnormal BetDaily Report on @rptDate.ToString("MM/dd/yyyy") <br /><br />
@@ -14,11 +22,19 @@
             Thanks and best regards, <br /><br />
 
             ---------------------------------------------------------------------- <br />
+            此邮件是系统自动发送，请勿直接回覆！<br />
             This is an auto-mail from Report System. Please do not reply.
         </div>
     }
     else
     {
+        <div>
+            您好，<br /><br />            
+
+            请参考附件 @rptDate.ToString("MM/dd/yyyy") 非正规投注报告，<br /><br />            
+
+            谢谢<br /><br />            
+        </div>
         <div>
             Dear All, <br /><br />            
 
@@ -27,6 +43,7 @@
             Thanks and best regards, <br /><br />
 
             ---------------------------------------------------------------------- <br />
+            此邮件是系统自动发送，请勿直接回覆！<br /><br />
             This is an auto-mail from Report System. Please do not reply.
         </div>
     }

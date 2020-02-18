@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Fanex.N88DailyWL.Business.Models
 {
@@ -14,7 +15,7 @@ namespace Fanex.N88DailyWL.Business.Models
 
         public string TargetName { get; set; }
 
-        public string Group { get; set; }
+        public List<string> Group { get; set; }
 
         public string Password { get; set; }
 
