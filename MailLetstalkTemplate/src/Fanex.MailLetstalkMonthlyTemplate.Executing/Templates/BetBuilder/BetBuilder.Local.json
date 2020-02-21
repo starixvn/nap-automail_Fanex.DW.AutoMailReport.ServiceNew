@@ -14,5 +14,7 @@
   "EmailTemplate": "BetBuilder/BetBuilder.cshtml",
   "EmailSubject": "[Bet Builder] - Monthly Report {0}",
   "MailId": "327",
-  "MailName": "Mail Template Testing"
+  "MailName": "Mail Template Testing",
+  "FileName": "Bet Builder - Monthly Report",
+  "StartExcelColumnIndex": 1
 }

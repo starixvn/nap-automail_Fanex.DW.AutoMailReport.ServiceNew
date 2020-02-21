@@ -1,0 +1,20 @@
+﻿{
+  "SPName": "Acc_Rpt_Automail_EsportsMonthlySite",
+  "IsCheckEnoughData": false,
+  "DateRange": "Monthly",
+  "FromDate": "2020-01-01",
+  "ToDate": "2020-01-31",
+  "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\CreditLine",
+  "Password": "Star168",
+  "FunctionIdNodata": 224,
+  "TemplateExcelFile": "EsportsPerformancebySite/EsportsPerformancebySite.xlsx",
+  "SheetExcelTemplateName": [ "Credit", "Deposit" ],
+  "CellAddressRender": [ "A2", "A2" ],
+  "StartExelRowIndex": "2",
+  "EmailTemplate": "EsportsPerformancebySite/EsportsPerformancebySite.cshtml",
+  "EmailSubject": "E-sports - Monthly Performance by Site {0}",
+  "MailId": "314",
+  "MailName": "Mail Monthly Template - UAT",
+  "FileName": "E-sports - Monthly Performance by Site",
+  "StartExcelColumnIndex": 1
+}

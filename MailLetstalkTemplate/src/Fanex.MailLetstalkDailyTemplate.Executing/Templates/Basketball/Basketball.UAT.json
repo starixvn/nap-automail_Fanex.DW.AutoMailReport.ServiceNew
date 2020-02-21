@@ -14,7 +14,7 @@
   "EmailTemplate": "Basketball/Basketball.cshtml",
   "EmailSubject": "[Basketball] - Daily VR Performance Report {0}",
   "MailId": "318",
-  "MailName": "Mail Daily Template",
+  "MailName": "Mail Daily Template - UAT",
   "FileName": "Basketball - Daily VR Performance",
   "StartExcelColumnIndex": 2
 }

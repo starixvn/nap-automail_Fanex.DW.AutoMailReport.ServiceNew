@@ -8,13 +8,13 @@
   "Password": "Star168",
   "FunctionIdNodata": 90,
   "TemplateExcelFile": "BasketballPerformance/BasketballPerformance.xlsx",
-  "SheetExcelTemplateName": ["Data"],
-  "CellAddressRender": [ "A2" ],
+  "SheetExcelTemplateName": ["Data", "Hedging Data"],
+  "CellAddressRender": [ "A2", "A2" ],
   "StartExelRowIndex": "2",
   "EmailTemplate": "BasketballPerformance/BasketballPerformance.cshtml",
   "EmailSubject": "[Basketball] - Daily Performance Report {0}",
   "MailId": "318",
-  "MailName": "Mail Daily Template",
+  "MailName": "Mail Daily Template - UAT",
   "FileName": "Basketball - Daily Performance",
   "StartExcelColumnIndex": 1
 }

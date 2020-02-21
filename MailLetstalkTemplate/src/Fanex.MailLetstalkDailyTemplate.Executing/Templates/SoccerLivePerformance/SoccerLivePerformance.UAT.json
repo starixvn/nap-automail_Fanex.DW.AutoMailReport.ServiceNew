@@ -14,7 +14,7 @@
   "EmailTemplate": "SoccerLivePerformance/SoccerLivePerformance.cshtml",
   "EmailSubject": "Soccer - Live Performance - Daily Report {0}",
   "MailId": "318",
-  "MailName": "Mail Daily Template",
+  "MailName": "Mail Daily Template - UAT",
   "FileName": "Soccer - Live Performance",
   "StartExcelColumnIndex": 2
 }

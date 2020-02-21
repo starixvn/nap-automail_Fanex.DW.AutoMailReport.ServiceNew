@@ -5,7 +5,7 @@
   "FromDate": "2020-01-01",
   "ToDate": "2020-01-31",
   "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\BetBuilderMonthly",
-  "Password": "",
+  "Password": "Star168",
   "FunctionIdNodata": 224,
   "TemplateExcelFile": "BetBuilder/BetBuilderMonthly.xlsx",
   "SheetExcelTemplateName": [ "Monthly" ],
@@ -14,5 +14,7 @@
   "EmailTemplate": "BetBuilder/BetBuilder.cshtml",
   "EmailSubject": "[Bet Builder] - Monthly Report {0}",
   "MailId": "314",
-  "MailName": "Mail Template Testing"
+  "MailName": "Mail Monthly Template - UAT",
+  "FileName": "Bet Builder - Monthly Report",
+  "StartExcelColumnIndex": 1
 }

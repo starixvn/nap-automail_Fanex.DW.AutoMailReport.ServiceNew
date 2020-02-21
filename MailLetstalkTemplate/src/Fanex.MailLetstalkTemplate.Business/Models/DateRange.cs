@@ -4,6 +4,7 @@
     {
         None,
         Daily,
+        Weekly,
         Monthly,
         Yesterday,
         Manual

@@ -1,0 +1,20 @@
+﻿{
+  "SPName": "Acc_Rpt_Automail_SportbookMonthlyCredit",
+  "IsCheckEnoughData": false,
+  "DateRange": "Manual",
+  "FromDate": "2020-02-01",
+  "ToDate": "2020-02-10",
+  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\Sportbook-CreditLine",
+  "Password": "",
+  "FunctionIdNodata": 90,
+  "TemplateExcelFile": "Sportbook-CreditLine/Sportbook-CreditLine.xlsx",
+  "SheetExcelTemplateName": [ "Data" ],
+  "CellAddressRender": [ "A4" ],
+  "StartExelRowIndex": "4",
+  "EmailTemplate": "Sportbook-CreditLine/Sportbook-CreditLine.cshtml",
+  "EmailSubject": "Sportbook - Monthly Credit Line Performance {0}",
+  "MailId": "327",
+  "MailName": "Mail Template Testing",
+  "FileName": "Sportbook - Monthly Credit Line Performance",
+  "StartExcelColumnIndex": 1
+}
