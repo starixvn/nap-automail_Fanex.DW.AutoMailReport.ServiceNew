@@ -7,7 +7,7 @@
   "ToDate": "2020-01-31",
   "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\N88DailyWL",
   "TargetName": "N88",
-  "Group": "N88-DailyWL-Test",
+  "Group": [ "N88-DailyWL-Test", "N88-DailyWL-Internal-Test" ],
   "Password": "",
   "FunctionIdNodata": 90,
   "N88": {
@@ -24,10 +24,10 @@
   "Deposit": {
     "FirstRow": 3,
     "FirstColumn": 7,
-    "LastRow": 4,
+    "LastRow": 6,
     "LastColumn": 10,
-    "CropWidth": 1235,
-    "CropHeight": 205,
+    "CropWidth": 1460,
+    "CropHeight": 400,
     "ImageName": "FirstDeposit",
     "X": 240,
     "Y": 260

@@ -9,6 +9,8 @@ namespace Fanex.MailLetstalkTemplate.Business.Models
 
         public bool IsCheckEnoughData { get; set; }
 
+        public bool IsIgnoredCheckMailSent { get; set; } = true;
+
         public string Path { get; set; }
 
         public string TargetName { get; set; }
@@ -42,5 +44,9 @@ namespace Fanex.MailLetstalkTemplate.Business.Models
         public int MailId { get; set; }
 
         public string MailName { get; set; }
+
+        public string FileName { get; set; }
+
+        public int StartExcelColumnIndex { get; set; } = 1;
     }
 }

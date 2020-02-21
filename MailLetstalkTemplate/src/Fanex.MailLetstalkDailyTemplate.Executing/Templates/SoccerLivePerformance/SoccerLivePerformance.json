@@ -1,0 +1,20 @@
+﻿{
+  "SPName": "Acc_Rpt_Automail_SoccerLivePerformance",
+  "IsCheckEnoughData": false,  
+  "DateRange": "Manual",
+  "FromDate": "2020-02-02",
+  "ToDate": "2020-02-12",
+  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\Soccer - Live Performance",
+  "Password": "",
+  "FunctionIdNodata": 90,
+  "TemplateExcelFile": "SoccerLivePerformance/SoccerLivePerformance.xlsx",
+  "SheetExcelTemplateName": ["Data"],
+  "CellAddressRender": [ "B5" ],
+  "StartExelRowIndex": "5",
+  "EmailTemplate": "SoccerLivePerformance/SoccerLivePerformance.cshtml",
+  "EmailSubject": "Soccer - Live Performance - Daily Report {0}",
+  "MailId": "327",
+  "MailName": "Mail Template Testing",
+  "FileName": "Soccer - Live Performance",
+  "StartExcelColumnIndex": 2
+}

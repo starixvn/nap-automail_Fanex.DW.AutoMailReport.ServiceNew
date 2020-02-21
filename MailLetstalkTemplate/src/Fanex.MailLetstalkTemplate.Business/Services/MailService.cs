@@ -28,7 +28,7 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
 
         public bool IsMailSent(List<MailModel> mails, string mail)
         {
-            if (AppConfigService.BaseSetting.IsIgnoredCheckMailSent)
+            if (AppConfigService.Config.IsIgnoredCheckMailSent)
             {
                 return false;
             }

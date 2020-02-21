@@ -4,8 +4,6 @@
     {
         public string SentryClientKey { get; set; }
 
-        public string CategorySentryLog { get; set; }
-
-        public bool IsIgnoredCheckMailSent { get; set; }
+        public string CategorySentryLog { get; set; }        
     }
 }
