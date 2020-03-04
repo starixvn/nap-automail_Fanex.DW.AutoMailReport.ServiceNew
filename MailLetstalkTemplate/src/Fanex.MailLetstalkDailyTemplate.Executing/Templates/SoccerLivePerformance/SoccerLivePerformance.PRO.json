@@ -14,8 +14,8 @@
   "StartExelRowIndex": "5",
   "EmailTemplate": "SoccerLivePerformance/SoccerLivePerformance.cshtml",
   "EmailSubject": "Soccer - Live Performance - Daily Report {0}",
-  "MailId": "318",
-  "MailName": "Mail Daily Template",
+  "MailId": "322",
+  "MailName": "Soccer - Live Performance",
   "FileName": "Soccer - Live Performance",
   "StartExcelColumnIndex": 2
 }

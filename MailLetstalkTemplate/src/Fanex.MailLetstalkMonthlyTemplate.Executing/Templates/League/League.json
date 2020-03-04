@@ -14,5 +14,7 @@
   "EmailTemplate": "League/League.cshtml",
   "EmailSubject": "[SR_League] - Monthly Report {0}",
   "MailId": "327",
-  "MailName": "Mail Template Testing"
+  "MailName": "Mail Template Testing",
+  "FileName": "SR_League - Match - Monthly Report",
+  "StartExcelColumnIndex": 1
 }

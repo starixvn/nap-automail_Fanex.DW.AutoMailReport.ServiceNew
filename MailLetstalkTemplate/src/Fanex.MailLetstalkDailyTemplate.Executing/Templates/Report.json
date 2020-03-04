@@ -1,20 +1,17 @@
 ﻿[
   {
     "ReportFile": "Basketball/Basketball.json",
-    "IsActive": true,
-    "IsEmailEnabled": true,
-    "IsLetstalkEnabled": false
+    "IsActive": false,
+    "IsEmailEnabled": true    
   },
   {
     "ReportFile": "SoccerLivePerformance/SoccerLivePerformance.json",
     "IsActive": true,
-    "IsEmailEnabled": true,
-    "IsLetstalkEnabled": false
+    "IsEmailEnabled": true
   },
   {
     "ReportFile": "BasketballPerformance/BasketballPerformance.json",
     "IsActive": true,
-    "IsEmailEnabled": true,
-    "IsLetstalkEnabled": false
+    "IsEmailEnabled": true
   }
 ]

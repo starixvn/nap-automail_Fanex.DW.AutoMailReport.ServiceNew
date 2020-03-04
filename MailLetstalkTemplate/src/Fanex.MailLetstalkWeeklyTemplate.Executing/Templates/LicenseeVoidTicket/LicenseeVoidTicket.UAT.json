@@ -1,0 +1,20 @@
+﻿{
+  "SPName": "Acc_Rpt_Automail_WeeklyVoidTickets",
+  "IsCheckEnoughData": false,
+  "DateRange": "Weekly",
+  "FromDate": "2020-01-01",
+  "ToDate": "2020-01-10",
+  "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LicenseeVoidTicket",
+  "Password": "L1cM@naDep",
+  "FunctionIdNodata": 90,
+  "TemplateExcelFile": "LicenseeVoidTicket/LicenseeVoidTicket.xlsx",
+  "SheetExcelTemplateName": ["Data"],
+  "CellAddressRender": [ "A2" ],
+  "StartExelRowIndex": "2",
+  "EmailTemplate": "LicenseeVoidTicket/LicenseeVoidTicket.cshtml",
+  "EmailSubject": "Licensee - Weekly Void Tickets Report {0}",
+  "MailId": "326",
+  "MailName": "Mail Weekly Template - UAT",
+  "FileName": "Licensee - Weekly Void Tickets Report",
+  "StartExcelColumnIndex": 1
+}

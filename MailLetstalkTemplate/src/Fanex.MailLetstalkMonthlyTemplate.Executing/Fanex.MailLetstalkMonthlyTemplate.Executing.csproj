@@ -231,6 +231,42 @@
     <Content Include="Templates\BetBuilder\BetBuilderMonthly.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\EsportsPerformancebySite\EsportsPerformancebySite.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Templates\EsportsPerformancebySite\EsportsPerformancebySite.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Templates\EsportsPerformancebySite\EsportsPerformancebySite.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\EsportsPerformancebySite\EsportsPerformancebySite.Local.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\EsportsPerformancebySite\EsportsPerformancebySite.PRO.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\EsportsPerformancebySite\EsportsPerformancebySite.UAT.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Templates\Sportbook-CreditLine\Sportbook-CreditLine.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Templates\Sportbook-CreditLine\Sportbook-CreditLine.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Sportbook-CreditLine\Sportbook-CreditLine.Local.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Sportbook-CreditLine\Sportbook-CreditLine.PRO.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Sportbook-CreditLine\Sportbook-CreditLine.UAT.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Sportbook-CreditLine\Sportbook-CreditLine.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.MailLetstalkTemplate.Business\Fanex.MailLetstalkTemplate.Business.csproj">

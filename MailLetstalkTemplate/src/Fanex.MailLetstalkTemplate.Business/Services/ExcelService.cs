@@ -58,7 +58,6 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
 
         private string Save()
         {
-            //var name = new FileInfo(AppConfigService.Config.TemplateExcelFile).Name.Replace(".xlsx", string.Empty);
             var date = dateRangeServiceProfier.Date(AppConfigService.Config.DateRange).ToDate;
             var fileName = $"{AppConfigService.Config.FileName}_{date:yyyy_MM_dd}.xlsx";
             var path = $@"{AppConfigService.Config.Path}\{date:yyyy}\{date:MM}";

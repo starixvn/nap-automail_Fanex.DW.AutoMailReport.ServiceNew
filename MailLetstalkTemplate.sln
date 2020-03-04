@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.MailLetstalkDailyTemp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.MailLetstalkMonthlyTemplate.Executing", "MailLetstalkTemplate\src\Fanex.MailLetstalkMonthlyTemplate.Executing\Fanex.MailLetstalkMonthlyTemplate.Executing.csproj", "{4851684A-DAF6-40D5-AA10-8C2B4E07F526}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.MailLetstalkWeeklyTemplate.Executing", "MailLetstalkTemplate\src\Fanex.MailLetstalkWeeklyTemplate.Executing\Fanex.MailLetstalkWeeklyTemplate.Executing.csproj", "{C1778AE6-8A64-44A4-A6E6-EC4AB3E0EF09}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{4851684A-DAF6-40D5-AA10-8C2B4E07F526}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4851684A-DAF6-40D5-AA10-8C2B4E07F526}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4851684A-DAF6-40D5-AA10-8C2B4E07F526}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1778AE6-8A64-44A4-A6E6-EC4AB3E0EF09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1778AE6-8A64-44A4-A6E6-EC4AB3E0EF09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1778AE6-8A64-44A4-A6E6-EC4AB3E0EF09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1778AE6-8A64-44A4-A6E6-EC4AB3E0EF09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,5 +45,6 @@ Global
 		{4AFEA0A1-4D1D-48B6-8FBF-BA282E90B13F} = {956EF5C9-BED5-47FB-A91E-A8553529C76E}
 		{303B0FD5-44E6-4D39-B9CF-E7A50F05DAD1} = {956EF5C9-BED5-47FB-A91E-A8553529C76E}
 		{4851684A-DAF6-40D5-AA10-8C2B4E07F526} = {956EF5C9-BED5-47FB-A91E-A8553529C76E}
+		{C1778AE6-8A64-44A4-A6E6-EC4AB3E0EF09} = {956EF5C9-BED5-47FB-A91E-A8553529C76E}
 	EndGlobalSection
 EndGlobal

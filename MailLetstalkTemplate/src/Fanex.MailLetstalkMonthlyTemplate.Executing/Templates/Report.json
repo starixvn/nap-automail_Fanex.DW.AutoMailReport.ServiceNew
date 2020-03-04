@@ -2,13 +2,21 @@
   {
     "ReportFile": "League/League.json",
     "IsActive": true,
-    "IsEmailEnabled": true,
-    "IsLetstalkEnabled": false
+    "IsEmailEnabled": true    
   },
   {
     "ReportFile": "BetBuilder/BetBuilder.json",
     "IsActive": true,
-    "IsEmailEnabled": true,
-    "IsLetstalkEnabled": false
+    "IsEmailEnabled": true
+  },
+  {
+    "ReportFile": "EsportsPerformancebySite/EsportsPerformancebySite.json",
+    "IsActive": true,
+    "IsEmailEnabled": true    
+  },
+  {
+    "ReportFile": "Sportbook-CreditLine/Sportbook-CreditLine.json",
+    "IsActive": false,
+    "IsEmailEnabled": true
   }
 ]
