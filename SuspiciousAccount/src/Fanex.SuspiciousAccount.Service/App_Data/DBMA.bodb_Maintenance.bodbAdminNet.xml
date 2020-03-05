@@ -1,0 +1,5 @@
+﻿<Functions>
+	<Function Name="Game Round - Limit">
+    <Setting Key="ServiceMonitoring_CheckIn" SpName="ServiceMonitoring_CheckIn" DbName="DBMA.bodb_Maintenance.bodbAdminNet" Timeout="0"></Setting>    
+  </Function>
+</Functions>

@@ -1,0 +1,5 @@
+<Functions>
+  <Function Name="SMA Turnover Automail">
+    <Setting Key="Acc_SuspiciousAccountLetstalk_Select" SpName="Acc_SuspiciousAccountLetstalk_Select" DbName="DBACC.bodb02.bodbAdminNet" TimeOut="0" />
+  </Function>
+</Functions>

@@ -1,4 +1,6 @@
-﻿using SimpleInjector;
+﻿using Fanex.SuspiciousAccount.Business.Services;
+using Fanex.SuspiciousAccount.Service;
+using SimpleInjector;
 
 namespace Topshelf.SimpleInjector.QuickStart.Content
 {
@@ -6,9 +8,13 @@ namespace Topshelf.SimpleInjector.QuickStart.Content
     {
         private static void Main()
         {
+            RegisterService.RegisterServices();
+
             Container container = new Container();
-            ConfigureContainer(container);
+            RegisterService.RegisterSimpleInjector(container);
             container.Verify();
+
+            
 
             HostFactory.Run(config =>
             {
@@ -20,15 +26,12 @@ namespace Topshelf.SimpleInjector.QuickStart.Content
                     s.WhenStopped((service, control) => service.Stop());
                 });
 
-                config.SetServiceName("My.Cool.Service");
-                config.SetDisplayName("My Cool Service");
-                config.SetDescription("What is my purpose?");
+                config.SetServiceName(AppConfigService.Config.ServiceName);
+                config.SetDisplayName(AppConfigService.Config.ServiceName);
+                config.SetDescription(AppConfigService.Config.ServiceName);
             });
         }
 
-        private static void ConfigureContainer(Container container)
-        {
-            container.Register<NotificationService>();
-        }
+       
     }
 }
