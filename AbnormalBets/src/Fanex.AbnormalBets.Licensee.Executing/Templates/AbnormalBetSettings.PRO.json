@@ -1,0 +1,54 @@
+﻿{
+  "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.99.99.51:801/60",
+  "CategorySentryLog": "NAP-Report-Service",
+  "IsManual": false,
+  "IsTest": false,
+  "IsIgnoredCheckMailSent": false,
+  "RptDate": "2019-11-17",  
+  "Path": "\\\\10.40.40.127\\Data.Web\\Fanex.Excel\\AbnormalBetDailyReport-Licensee",
+  "Password": "",
+   "Sites": [
+    {
+      "MailId": 292,
+      "MailName": "Abnormal Bet Daily Report - All",
+      "SiteName": "All",
+      "Subject": "[ABI] - Abnormal Licensee bet {0}"
+    },
+    {
+      "MailId": 293,
+      "MailName": "Abnormal Bet Daily Report - CN88",
+      "SiteName": "CN88",
+      "Subject": "[ABI] - CN88 {0} 每日会员删票报告"
+    },
+    {
+      "MailId": 294,
+      "MailName": "Abnormal Bet Daily Report - KeenOcean",
+      "SiteName": "KeenOcean",
+      "Subject": "[ABI] KeenOcean Abnormal Licensee bet {0}"
+    },
+    {
+      "MailId": 295,
+      "MailName": "Abnormal Bet Daily Report - Haifa",
+      "SiteName": "Haifa",
+      "Subject": "[ABI] Haifa Abnormal Licensee bet {0}"
+    },
+    {
+      "MailId": 310,
+      "MailName": "Abnormal Bet Daily Report - IBO",
+      "SiteName": "IBO",
+      "Subject": "[ABI] IBO Abnormal Licensee bet {0}"
+    },
+    {
+      "MailId": 311,
+      "MailName": "Abnormal Bet Daily Report - BoBBet",
+      "SiteName": "BoBBet",
+      "Subject": "[ABI] BoBBet Abnormal Licensee bet {0}"
+    },
+    {
+      "MailId": 312,
+      "MailName": "Abnormal Bet Daily Report - Tianbo",
+      "SiteName": "Tianbo",
+      "Subject": "[ABI] Tianbo Abnormal Licensee bet {0}"
+    }
+  ]  
+}

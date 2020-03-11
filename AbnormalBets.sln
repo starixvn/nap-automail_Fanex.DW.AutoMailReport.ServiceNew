@@ -9,11 +9,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{253B0CEF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.AbnormalBets.Business", "AbnormalBets\src\Fanex.AbnormalBets.Business\Fanex.AbnormalBets.Business.csproj", "{F84655B9-D4E0-42D0-9935-3FA98B5A3486}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.AbnormalBets.Executing", "AbnormalBets\src\Fanex.AbnormalBets.Executing\Fanex.AbnormalBets.Executing.csproj", "{07FDA9A5-E774-47D9-80AC-E4E141E026B8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.AbnormalBets.Business.Tests", "AbnormalBets\tests\Fanex.AbnormalBets.Business.Tests\Fanex.AbnormalBets.Business.Tests.csproj", "{EDE9EABE-F99A-4C30-9B88-63BF74580281}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.AbnomailBets.DailyCSD.Executing", "AbnormalBets\src\Fanex.AbnomailBets.DailyCSD.Executing\Fanex.AbnomailBets.DailyCSD.Executing.csproj", "{C0120497-CBCD-4538-B4F2-FCC3FE32FB43}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.AbnormalBets.Headline.Executing", "AbnormalBets\src\Fanex.AbnormalBets.Headline.Executing\Fanex.AbnormalBets.Headline.Executing.csproj", "{BA4AAF08-0EB8-4A5F-BFB7-0AAADAECCC1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.AbnormalBets.Licensee.Executing", "AbnormalBets\src\Fanex.AbnormalBets.Licensee.Executing\Fanex.AbnormalBets.Licensee.Executing.csproj", "{07FDA9A5-E774-47D9-80AC-E4E141E026B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.AbnormalBets.CSD.Executing", "AbnormalBets\src\Fanex.AbnomailBets.CSD.Executing\Fanex.AbnormalBets.CSD.Executing.csproj", "{C0120497-CBCD-4538-B4F2-FCC3FE32FB43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +27,18 @@ Global
 		{F84655B9-D4E0-42D0-9935-3FA98B5A3486}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F84655B9-D4E0-42D0-9935-3FA98B5A3486}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F84655B9-D4E0-42D0-9935-3FA98B5A3486}.Release|Any CPU.Build.0 = Release|Any CPU
-		{07FDA9A5-E774-47D9-80AC-E4E141E026B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{07FDA9A5-E774-47D9-80AC-E4E141E026B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{07FDA9A5-E774-47D9-80AC-E4E141E026B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{07FDA9A5-E774-47D9-80AC-E4E141E026B8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EDE9EABE-F99A-4C30-9B88-63BF74580281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EDE9EABE-F99A-4C30-9B88-63BF74580281}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDE9EABE-F99A-4C30-9B88-63BF74580281}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDE9EABE-F99A-4C30-9B88-63BF74580281}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA4AAF08-0EB8-4A5F-BFB7-0AAADAECCC1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA4AAF08-0EB8-4A5F-BFB7-0AAADAECCC1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA4AAF08-0EB8-4A5F-BFB7-0AAADAECCC1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA4AAF08-0EB8-4A5F-BFB7-0AAADAECCC1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07FDA9A5-E774-47D9-80AC-E4E141E026B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07FDA9A5-E774-47D9-80AC-E4E141E026B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07FDA9A5-E774-47D9-80AC-E4E141E026B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07FDA9A5-E774-47D9-80AC-E4E141E026B8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C0120497-CBCD-4538-B4F2-FCC3FE32FB43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C0120497-CBCD-4538-B4F2-FCC3FE32FB43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0120497-CBCD-4538-B4F2-FCC3FE32FB43}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -43,8 +49,9 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F84655B9-D4E0-42D0-9935-3FA98B5A3486} = {880D133E-5C40-475B-A198-2580874BF1D3}
-		{07FDA9A5-E774-47D9-80AC-E4E141E026B8} = {880D133E-5C40-475B-A198-2580874BF1D3}
 		{EDE9EABE-F99A-4C30-9B88-63BF74580281} = {253B0CEF-E386-46F9-B939-14BF305D586C}
+		{BA4AAF08-0EB8-4A5F-BFB7-0AAADAECCC1D} = {880D133E-5C40-475B-A198-2580874BF1D3}
+		{07FDA9A5-E774-47D9-80AC-E4E141E026B8} = {880D133E-5C40-475B-A198-2580874BF1D3}
 		{C0120497-CBCD-4538-B4F2-FCC3FE32FB43} = {880D133E-5C40-475B-A198-2580874BF1D3}
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Functions SiteId="25">
+  <Function Name="">
+    <Setting Key="Acc_Rpt_AbnormalBetAutoMail" SpName="Acc_Rpt_AbnormalBetAutoMail" DbName="DBACC.bodb02.bodbAdminNet" TimeOut="0" />    
+  </Function>
+</Functions>

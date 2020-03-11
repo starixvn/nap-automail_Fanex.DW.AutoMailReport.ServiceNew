@@ -1,0 +1,19 @@
+﻿{
+  "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.99.99.51:801/60",
+  "CategorySentryLog": "NAP-Report-Service",
+  "IsManual": false,
+  "IsTest": false,
+  "IsIgnoredCheckMailSent": false,
+  "RptDate": "2019-11-17",
+  "Path": "\\\\10.40.40.127\\Data.Web\\Fanex.Excel\\AbnormalBetDailyReport-Headline",
+  "Password": "",
+  "Groups": [
+    {
+      "MailId": 333,
+      "MailName": "Abnormal Bet Daily Report - Headline WINA",
+      "SiteName": "WINA",
+      "Subject": "[ABI] - WINA Abnormal {0}",
+      "GroupId": 583
+    }
+  ]
+}

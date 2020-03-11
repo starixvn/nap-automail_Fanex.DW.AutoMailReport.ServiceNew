@@ -1,4 +1,5 @@
-﻿using Fanex.AbnormalBets.Business.Models.DailyLicensee;
+﻿using Fanex.AbnormalBets.Business.Models.Headline;
+using Fanex.AbnormalBets.Business.Models.Licensee;
 using System;
 using System.Collections.Generic;
 
@@ -22,6 +23,8 @@ namespace Fanex.AbnormalBets.Business.Models
 
         public string Password { get; set; }
 
-        public List<SiteModel> Sites { get; set; } 
+        public List<SiteModel> Sites { get; set; }
+
+        public List<GroupModel> Groups { get; set; }
     }
 }
