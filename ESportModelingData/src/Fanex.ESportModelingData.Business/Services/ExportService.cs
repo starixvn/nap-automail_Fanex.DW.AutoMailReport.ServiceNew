@@ -10,21 +10,25 @@ namespace Fanex.ESportModelingData.Business.Services
     public interface ExportService
     {
         string Execute(DateTime dateStart, DateTime dateEnd, List<RawModelingDataModel> rawData);
+
+        void ExportCustInfo(DateTime dateStart, DateTime dateEnd, List<CustInfo> rawData);
     }
 
     public class ExportServiceImp : ExportService
     {
         private readonly ExportLevelFactory exportLevelFactory;
+        private readonly CsvService csvService;
 
-        public ExportServiceImp(ExportLevelFactory exportLevelFactory)
+        public ExportServiceImp(ExportLevelFactory exportLevelFactory, CsvService csvService)
         {
-            this.exportLevelFactory = exportLevelFactory;            
+            this.exportLevelFactory = exportLevelFactory;
+            this.csvService = csvService;
         }
 
         public string Execute(DateTime dateStart, DateTime dateEnd, List<RawModelingDataModel> rawData)
         {
             var parentFolder = $@"{dateEnd:yyyy}\{dateEnd:MM}";
-            var folderName = $@"{parentFolder}\E-Sports Weekly Modeling Data From {dateStart:dd-MM-yyyy} To {dateEnd:dd-MM-yyyy}";
+            var folderName = $@"{parentFolder}\E-Sports {AppConfigService.AppConfig.Period} Modeling Data From {dateStart:dd-MM-yyyy} To {dateEnd:dd-MM-yyyy}";
             var originalFilePath = AppConfigService.AppConfig.FilePath;
             var originalPath = AppConfigService.AppConfig.Path;
             AppConfigService.AppConfig.FilePath += $@"\{folderName}";
@@ -80,6 +84,16 @@ namespace Fanex.ESportModelingData.Business.Services
             {
                 Directory.Delete(path, true);
             }
+        }
+
+        public void ExportCustInfo(DateTime dateStart, DateTime dateEnd, List<CustInfo> rawData)
+        {
+            var parentFolder = $@"{dateEnd:yyyy}\{dateEnd:MM}";
+            var folderName = $@"{parentFolder}\E-Sports {AppConfigService.AppConfig.Period} Modeling Data From {dateStart:dd-MM-yyyy} To {dateEnd:dd-MM-yyyy}\E-Sports";
+            var path = $@"{AppConfigService.AppConfig.FilePath}\{folderName}";
+            Directory.CreateDirectory(path);
+            var fileName = $@"{path}\E-Sports - Customer Infomation.csv";
+            csvService.Execute(rawData, fileName);            
         }
     }
 }

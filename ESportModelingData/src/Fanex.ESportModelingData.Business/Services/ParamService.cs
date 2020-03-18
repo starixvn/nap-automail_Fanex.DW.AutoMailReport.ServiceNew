@@ -36,20 +36,10 @@ namespace Fanex.ESportModelingData.Business.Services
 
         private List<DateTimeModel> GetDatesFromHistory()
         {
-            var dates = new List<DateTimeModel>();            
-            var dateEnd = dateTimeService.DateEnd();
-
-            while (dateEnd <= AppConfigService.AppConfig.DateEnd)
+            var dates = new List<DateTimeModel>
             {
-                var dateStart = dateTimeService.DateStart();
-                dateEnd = dateTimeService.DateEnd();
-                if (dateStart >= AppConfigService.AppConfig.DateStart && dateEnd <= AppConfigService.AppConfig.DateEnd)
-                {
-                    dates.Add(new DateTimeModel { DateStart = dateTimeService.DateStart(), DateEnd = dateEnd });
-                }
-
-                AppConfigService.AppConfig.DateStart = dateEnd.AddDays(1);
-            }
+                new DateTimeModel { DateStart = AppConfigService.AppConfig.DateStart, DateEnd =  AppConfigService.AppConfig.DateEnd }
+            };
 
             return dates;
         }

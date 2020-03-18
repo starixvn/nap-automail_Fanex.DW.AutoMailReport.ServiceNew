@@ -21,5 +21,7 @@ namespace Fanex.ESportModelingData.Business.Models
         public string Password { get; set; }
 
         public string DownloadLink { get; set; }
+
+        public string Period { get; set; }
     }
 }

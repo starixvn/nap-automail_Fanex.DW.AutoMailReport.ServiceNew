@@ -133,9 +133,11 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Criterias\CustInfoCriteria.cs" />
     <Compile Include="Criterias\ESportModelingDataCriteria.native.cs" />
     <Compile Include="Models\BetCountModel.native.cs" />
     <Compile Include="Models\ConfigSettingModel.native.cs" />
+    <Compile Include="Models\CustInfo.native.cs" />
     <Compile Include="Models\DateTimeModel.native.cs" />
     <Compile Include="Models\ExecuteResultModel.cs" />
     <Compile Include="Models\RawModelingDataModel.native.cs" />

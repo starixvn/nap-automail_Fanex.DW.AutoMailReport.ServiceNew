@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Fanex.ESportModelingData.Business.Models;
+using Fanex.MailDelivery.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Fanex.ESportModelingData.Business.Models;
-using Fanex.MailDelivery.Core.Models;
 
 namespace Fanex.ESportModelingData.Business.Services
 {
@@ -67,11 +67,13 @@ namespace Fanex.ESportModelingData.Business.Services
             foreach (var date in dateList)
             {
                 var rawData = repositoryService.Query(date.DateStart, date.DateEnd);
+                var custInfo = repositoryService.QueryCustInfo(date.DateStart, date.DateEnd);
                 if (rawData.Count == 0)
                 {
                     continue;
                 }
 
+                exportService.ExportCustInfo(date.DateStart, date.DateEnd, custInfo);
                 var fileName = exportService.Execute(date.DateStart, date.DateEnd, rawData);
                 var shortName = new FileInfo(fileName).Name;
                 shortNames.Add(shortName);

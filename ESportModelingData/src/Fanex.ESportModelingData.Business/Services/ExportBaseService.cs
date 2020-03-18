@@ -55,7 +55,7 @@ namespace Fanex.ESportModelingData.Business.Services
 
         private void ExportRealIncome(string path, string name, string status, IGrouping<dynamic, RawModelingDataModel> statusGroups)
         {
-            var fileName = $@"{path}\{name} - Real Income - {status}.csv";
+            var fileName = $@"{path}\{name} - Real Win Loss - {status}.csv";
             var data = new List<RealIncomeModel>();
             statusGroups.ToList()
             .ForEach(m =>

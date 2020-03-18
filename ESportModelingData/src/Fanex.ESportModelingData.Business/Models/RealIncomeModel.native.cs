@@ -7,7 +7,7 @@ namespace Fanex.ESportModelingData.Business.Models
         [Name("Customer Name")]
         public string Customer { get; set; }
 
-        [Name("Real Income")]
+        [Name("Real Win Loss")]
         public decimal RealIncome { get; set; }
     }
 }
