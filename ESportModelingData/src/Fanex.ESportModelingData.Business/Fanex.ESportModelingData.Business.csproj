@@ -140,6 +140,7 @@
     <Compile Include="Models\CustInfo.native.cs" />
     <Compile Include="Models\DateTimeModel.native.cs" />
     <Compile Include="Models\ExecuteResultModel.cs" />
+    <Compile Include="Models\Period.cs" />
     <Compile Include="Models\RawModelingDataModel.native.cs" />
     <Compile Include="Models\RealIncomeModel.native.cs" />
     <Compile Include="Models\RealTurnoverMode.nativel.cs" />

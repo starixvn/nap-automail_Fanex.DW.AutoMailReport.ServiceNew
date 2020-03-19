@@ -1,5 +1,6 @@
 ﻿using Fanex.ESportModelingData.Business.Models;
 using Fanex.MailDelivery.Core.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -68,6 +69,7 @@ namespace Fanex.ESportModelingData.Business.Services
             {
                 var rawData = repositoryService.Query(date.DateStart, date.DateEnd);
                 var custInfo = repositoryService.QueryCustInfo(date.DateStart, date.DateEnd);
+
                 if (rawData.Count == 0)
                 {
                     continue;

@@ -1,4 +1,6 @@
-﻿namespace Fanex.ESportModelingData.Business.Models
+﻿using CsvHelper.Configuration.Attributes;
+
+namespace Fanex.ESportModelingData.Business.Models
 {
     public class CustInfo
     {
@@ -8,6 +10,7 @@
 
         public string Agent { get; set; }
 
+        [Name("Customer Name")]
         public string CustomerName { get; set; }
 
         public bool Root { get; set; }
