@@ -8,8 +8,6 @@ namespace Fanex.ESportModelingData.Business.Models
 
         public string CategorySentryLog { get; set; }
 
-        public bool IsManual { get; set; }
-
         public DateTime DateStart { get; set; }
 
         public DateTime DateEnd { get; set; }
@@ -21,5 +19,7 @@ namespace Fanex.ESportModelingData.Business.Models
         public string Password { get; set; }
 
         public string DownloadLink { get; set; }
+
+        public Period Period { get; set; }
     }
 }

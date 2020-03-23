@@ -1,4 +1,5 @@
-﻿using Fanex.Service.Core;
+﻿using Fanex.ESportModelingData.Business.Models;
+using Fanex.Service.Core;
 using System;
 
 namespace Fanex.ESportModelingData.Business.Services
@@ -14,7 +15,7 @@ namespace Fanex.ESportModelingData.Business.Services
     {
         public DateTime DateEnd()
         {
-            if(AppConfigService.AppConfig.IsManual)
+            if (AppConfigService.AppConfig.Period == Period.Manual)
             {
                 return AppConfigService.AppConfig.DateEnd;
             }
@@ -25,7 +26,7 @@ namespace Fanex.ESportModelingData.Business.Services
 
         public DateTime DateStart()
         {
-            if (AppConfigService.AppConfig.IsManual)
+            if (AppConfigService.AppConfig.Period == Period.Manual)
             {
                 return AppConfigService.AppConfig.DateStart;
             }
@@ -41,7 +42,7 @@ namespace Fanex.ESportModelingData.Business.Services
 
         private static DateTime Today()
         {
-            if (AppConfigService.AppConfig.IsManual)
+            if (AppConfigService.AppConfig.Period == Period.Manual)
             {
                 return AppConfigService.AppConfig.DateStart;
             }

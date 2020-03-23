@@ -1,8 +1,8 @@
-﻿using System;
-using Fanex.ESportModelingData.Business.Models;
+﻿using Fanex.ESportModelingData.Business.Models;
 using Fanex.ESportModelingData.Business.Services;
 using Fanex.Service.Core;
 using NUnit.Framework;
+using System;
 
 namespace Fanex.ESportModelingData.UnitTests.Services
 {
@@ -59,7 +59,7 @@ namespace Fanex.ESportModelingData.UnitTests.Services
         public void DateStart_IsManualTrue_ReturnRightValue()
         {
             // Arrange
-            AppConfigService.AppConfig = new ConfigSettingModel { IsManual = true, DateStart = new DateTime(2019, 06, 10) };
+            AppConfigService.AppConfig = new ConfigSettingModel { Period = Period.Manual, DateStart = new DateTime(2019, 06, 10) };
             var expected = new DateTime(2019, 06, 10);
 
             // Act
@@ -75,7 +75,7 @@ namespace Fanex.ESportModelingData.UnitTests.Services
         public void DateEnd_IsManualTrue_ReturnRightValue()
         {
             // Arrange
-            AppConfigService.AppConfig = new ConfigSettingModel { IsManual = true, DateStart = new DateTime(2019, 06, 10) };
+            AppConfigService.AppConfig = new ConfigSettingModel { Period = Period.Manual, DateStart = new DateTime(2019, 06, 10) };
             var expected = new DateTime(2019, 06, 16);
 
             // Act
@@ -92,7 +92,7 @@ namespace Fanex.ESportModelingData.UnitTests.Services
         {
             // Arrange
             SystemTime.Set(new DateTime(2017, 01, 01));
-            AppConfigService.AppConfig = new ConfigSettingModel { IsManual = true, DateStart = new DateTime(2017, 01, 01) };
+            AppConfigService.AppConfig = new ConfigSettingModel { Period = Period.Manual, DateStart = new DateTime(2017, 01, 01) };
             var expected = new DateTime(2017, 01, 02);
 
             // Act
@@ -110,7 +110,7 @@ namespace Fanex.ESportModelingData.UnitTests.Services
         {
             // Arrange
             SystemTime.Set(new DateTime(2017, 01, 01));
-            AppConfigService.AppConfig = new ConfigSettingModel { IsManual = true, DateStart = new DateTime(2017, 01, 01) };
+            AppConfigService.AppConfig = new ConfigSettingModel { Period = Period.Manual, DateStart = new DateTime(2017, 01, 01) };
             var expected = new DateTime(2017, 01, 08);
 
             // Act

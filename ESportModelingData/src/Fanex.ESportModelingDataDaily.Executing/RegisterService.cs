@@ -13,7 +13,7 @@ using Newtonsoft.Json;
 using SharpRaven;
 using SimpleInjector;
 
-namespace Fanex.ESportModelingData.Executing
+namespace Fanex.ESportModelingDataDaily.Executing
 {
     public static class RegisterService
     {

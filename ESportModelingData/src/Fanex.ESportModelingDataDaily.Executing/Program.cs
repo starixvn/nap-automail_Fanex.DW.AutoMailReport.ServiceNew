@@ -3,7 +3,7 @@ using Fanex.ESportModelingData.Business.Services;
 using Newtonsoft.Json;
 using SimpleInjector;
 
-namespace Fanex.ESportModelingData.Executing
+namespace Fanex.ESportModelingDataDaily.Executing
 {
     internal static class Program
     {

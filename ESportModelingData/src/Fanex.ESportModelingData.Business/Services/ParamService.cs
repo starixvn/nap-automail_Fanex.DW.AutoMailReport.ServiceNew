@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
-using Fanex.ESportModelingData.Business.Models;
+﻿using Fanex.ESportModelingData.Business.Models;
+using Fanex.Service.Core;
+using System;
+using System.Collections.Generic;
 
 namespace Fanex.ESportModelingData.Business.Services
 {
@@ -19,10 +21,17 @@ namespace Fanex.ESportModelingData.Business.Services
 
         public List<DateTimeModel> Dates()
         {
-            return AppConfigService.AppConfig.IsManual ? GetDatesFromHistory() : GetDatesFromCurrentTime();
+            var dates = new Dictionary<Period, List<DateTimeModel>>
+            {
+                { Period.Manual, GetDatesManually() },
+                { Period.Daily, GetDatesDaily() },
+                { Period.Weekly, GetDatesWeekly() },
+            };
+
+            return dates[AppConfigService.AppConfig.Period];
         }
 
-        private List<DateTimeModel> GetDatesFromCurrentTime()
+        private List<DateTimeModel> GetDatesWeekly()
         {
             return new List<DateTimeModel>
             {
@@ -34,24 +43,31 @@ namespace Fanex.ESportModelingData.Business.Services
             };
         }
 
-        private List<DateTimeModel> GetDatesFromHistory()
+        private List<DateTimeModel> GetDatesManually()
         {
-            var dates = new List<DateTimeModel>();            
-            var dateEnd = dateTimeService.DateEnd();
-
-            while (dateEnd <= AppConfigService.AppConfig.DateEnd)
+            var dates = new List<DateTimeModel>
             {
-                var dateStart = dateTimeService.DateStart();
-                dateEnd = dateTimeService.DateEnd();
-                if (dateStart >= AppConfigService.AppConfig.DateStart && dateEnd <= AppConfigService.AppConfig.DateEnd)
+                new DateTimeModel
                 {
-                    dates.Add(new DateTimeModel { DateStart = dateTimeService.DateStart(), DateEnd = dateEnd });
+                    DateStart = AppConfigService.AppConfig.DateStart,
+                    DateEnd = AppConfigService.AppConfig.DateEnd
                 }
-
-                AppConfigService.AppConfig.DateStart = dateEnd.AddDays(1);
-            }
+            };
 
             return dates;
+        }
+
+        private List<DateTimeModel> GetDatesDaily()
+        {
+            var yesterday = Convert.ToDateTime($"{SystemTime.Now.AddDays(-1):yyyy-MM-dd}");
+            return new List<DateTimeModel>
+            {
+                new DateTimeModel
+                {
+                    DateEnd = yesterday,
+                    DateStart = yesterday
+                }
+            };
         }
     }
 }

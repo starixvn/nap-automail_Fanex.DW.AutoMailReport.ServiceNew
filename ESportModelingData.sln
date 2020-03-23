@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{684C214C-C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.ESportModelingData.Business", "ESportModelingData\src\Fanex.ESportModelingData.Business\Fanex.ESportModelingData.Business.csproj", "{3250C591-09FB-4DA5-99CF-B01482E79B33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.ESportModelingData.Executing", "ESportModelingData\src\Fanex.ESportModelingData.Executing\Fanex.ESportModelingData.Executing.csproj", "{491061E8-F95A-4023-B01D-E611DFF44618}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.ESportModelingData.UnitTests", "ESportModelingData\test\Fanex.ESportModelingData.UnitTests\Fanex.ESportModelingData.UnitTests.csproj", "{CC9A0EDE-3E27-4126-87FB-3FB92C52D245}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{08E74A26-45B0-41B8-8C53-8BA73F3ECA7D}"
@@ -18,6 +16,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{
 		SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset = SonarQube\DW-AutoMail-ServiceNewCSharp.ruleset
 		SonarQube\SolutionBinding.sqconfig = SonarQube\SolutionBinding.sqconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.ESportModelingDataWeekly.Executing", "ESportModelingData\src\Fanex.ESportModelingDataWeekly.Executing\Fanex.ESportModelingDataWeekly.Executing.csproj", "{491061E8-F95A-4023-B01D-E611DFF44618}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.ESportModelingDataDaily.Executing", "ESportModelingData\src\Fanex.ESportModelingDataDaily.Executing\Fanex.ESportModelingDataDaily.Executing.csproj", "{684AC598-203E-446B-A2CB-03D455157AA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,21 +31,26 @@ Global
 		{3250C591-09FB-4DA5-99CF-B01482E79B33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3250C591-09FB-4DA5-99CF-B01482E79B33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3250C591-09FB-4DA5-99CF-B01482E79B33}.Release|Any CPU.Build.0 = Release|Any CPU
-		{491061E8-F95A-4023-B01D-E611DFF44618}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{491061E8-F95A-4023-B01D-E611DFF44618}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{491061E8-F95A-4023-B01D-E611DFF44618}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{491061E8-F95A-4023-B01D-E611DFF44618}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CC9A0EDE-3E27-4126-87FB-3FB92C52D245}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CC9A0EDE-3E27-4126-87FB-3FB92C52D245}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC9A0EDE-3E27-4126-87FB-3FB92C52D245}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC9A0EDE-3E27-4126-87FB-3FB92C52D245}.Release|Any CPU.Build.0 = Release|Any CPU
+		{491061E8-F95A-4023-B01D-E611DFF44618}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{491061E8-F95A-4023-B01D-E611DFF44618}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{491061E8-F95A-4023-B01D-E611DFF44618}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{491061E8-F95A-4023-B01D-E611DFF44618}.Release|Any CPU.Build.0 = Release|Any CPU
+		{684AC598-203E-446B-A2CB-03D455157AA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{684AC598-203E-446B-A2CB-03D455157AA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{684AC598-203E-446B-A2CB-03D455157AA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{684AC598-203E-446B-A2CB-03D455157AA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3250C591-09FB-4DA5-99CF-B01482E79B33} = {2E95839F-4361-479F-B39C-09CA58689470}
-		{491061E8-F95A-4023-B01D-E611DFF44618} = {2E95839F-4361-479F-B39C-09CA58689470}
 		{CC9A0EDE-3E27-4126-87FB-3FB92C52D245} = {684C214C-C3B4-44B8-9D6F-F8D70D700966}
+		{491061E8-F95A-4023-B01D-E611DFF44618} = {2E95839F-4361-479F-B39C-09CA58689470}
+		{684AC598-203E-446B-A2CB-03D455157AA3} = {2E95839F-4361-479F-B39C-09CA58689470}
 	EndGlobalSection
 EndGlobal

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using Fanex.ESportModelingData.Business.Models;
+﻿using Fanex.ESportModelingData.Business.Models;
 using Fanex.ESportModelingData.Business.Services;
 using Fanex.Service.Core;
 using NUnit.Framework;
+using System;
+using System.Collections.Generic;
 
 namespace Fanex.ESportModelingData.UnitTests.Services
 {
@@ -14,7 +14,7 @@ namespace Fanex.ESportModelingData.UnitTests.Services
         public void Dates_IsManualTrue_ReturnRightDateList()
         {
             // Arrange
-            AppConfigService.AppConfig.IsManual = true;
+            AppConfigService.AppConfig.Period = Period.Manual;
             AppConfigService.AppConfig.DateStart = new DateTime(2019, 06, 01);
             AppConfigService.AppConfig.DateEnd = new DateTime(2019, 06, 20);
             var dateTimeService = new DateTimeServiceImp();
@@ -37,7 +37,7 @@ namespace Fanex.ESportModelingData.UnitTests.Services
         {
             // Arrange
             SystemTime.Set(new DateTime(2019, 06, 01));
-            AppConfigService.AppConfig.IsManual = false;
+            AppConfigService.AppConfig.Period = Period.Weekly;
             AppConfigService.AppConfig.DateStart = new DateTime(2019, 06, 01);
             AppConfigService.AppConfig.DateEnd = new DateTime(2019, 06, 10);
             var dateTimeService = new DateTimeServiceImp();
