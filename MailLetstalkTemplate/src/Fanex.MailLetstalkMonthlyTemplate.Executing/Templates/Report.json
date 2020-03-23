@@ -16,7 +16,7 @@
   },
   {
     "ReportFile": "Sportbook-CreditLine/Sportbook-CreditLine.json",
-    "IsActive": false,
+    "IsActive": true,
     "IsEmailEnabled": true
   }
 ]

@@ -1,6 +1,7 @@
 ﻿{
   "SPName": "Acc_Rpt_Automail_EsportsMonthlySite",
   "IsCheckEnoughData": false,
+  "IsIgnoredCheckMailSent": false,
   "DateRange": "Monthly",
   "FromDate": "2020-01-01",
   "ToDate": "2020-01-31",
