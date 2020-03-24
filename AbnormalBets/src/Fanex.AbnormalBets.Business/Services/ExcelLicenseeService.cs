@@ -1,4 +1,4 @@
-﻿using Fanex.AbnormalBets.Business.Models.DailyLicensee;
+﻿using Fanex.AbnormalBets.Business.Models.Licensee;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
@@ -39,7 +39,7 @@ namespace Fanex.AbnormalBets.Business.Services
         {
             summaryTemplate = excelPackage.Workbook.Worksheets["Summary"];
             detailTemplate = excelPackage.Workbook.Worksheets["Detail"];
-            ipTemplate = excelPackage.Workbook.Worksheets["IP Summary"];            
+            ipTemplate = excelPackage.Workbook.Worksheets["IP Summary"];
         }
 
         private void GenSummary(List<SummaryBetDTOModel> bets)
@@ -55,58 +55,14 @@ namespace Fanex.AbnormalBets.Business.Services
 
         private void GenDetail(List<DetailBetDTOModel> data)
         {
-            var count = 1;
-            data.GroupBy(g => new { g.Sport, g.League, g.Match, g.KickOffTime, g.Bettype, g.Betteam, g.Reason, g.FinalScore, g.Home, g.Live })
-                .ToList()
-                .ForEach(row =>
-                {
-                    var sheetName = GetSheetName(row.Key.Home, count);
-                    var detail = detailTemplate;
-                    detail.Cells["B1"].Value = row.Key.Sport;
-                    detail.Cells["B2"].Value = row.Key.League;
-                    detail.Cells["B3"].Value = row.Key.Match;
-                    detail.Cells["B4"].Value = row.Key.KickOffTime;
-                    detail.Cells["B5"].Value = row.Key.Live;
-                    detail.Cells["B6"].Value = row.Key.Bettype;
-                    detail.Cells["B7"].Value = row.Key.Betteam;
-                    detail.Cells["B8"].Value = row.Key.Reason;
-                    detail.Cells["B9"].Value = row.Key.FinalScore;
+            var detail = excelPackage.Workbook.Worksheets["Detail"];
+            detail.Cells["A2"].LoadFromCollection(data, false);
 
-                    count++;
-                    var betDetails = new List<ShortTicketDetailModel>();
-                    row.ToList()
-                    .ForEach(bet =>
-                    {
-                        betDetails.Add(new ShortTicketDetailModel
-                        {
-                            Username = bet.Username,
-                            Odds = bet.Odds,
-                            CurrencyName = bet.CurrencyName,
-                            Stake = bet.Stake,
-                            Hdp = bet.Hdp,
-                            LiveHomeScore = bet.LiveHomeScore,
-                            LiveAwayScore = bet.LiveAwayScore,
-                            TransDate = bet.TransDate,
-                            TransId = bet.TransId,
-                            Ip = bet.Ip,
-                            Location = bet.Location
-                        });
-                    });
-
-                    var lastRowIndex = detail.Dimension.End.Row;
-                    if (lastRowIndex > 12)
-                    {
-                        detail.DeleteRow(13, lastRowIndex);
-                    }
-
-                    detail.Cells["B12"].LoadFromCollection(betDetails, false);
-                    for (int columnIndex = 2; columnIndex <= 12; columnIndex++)
-                    {
-                        detail.Cells[12, columnIndex, 11 + betDetails.Count, columnIndex].StyleID = detail.Cells[12, columnIndex].StyleID;
-                    }
-
-                    excelPackage.Workbook.Worksheets.Add(sheetName, detail);
-                });
+            for (int columnIndex = 1; columnIndex <= 22; columnIndex++)
+            {
+                detail.Cells[2, columnIndex, data.Count + 1, columnIndex].StyleID = detail.Cells[2, columnIndex].StyleID;
+                detail.Column(columnIndex).AutoFit(20);
+            }           
         }
 
         private void GetIPSummary(List<UserLocationModel> data)
@@ -120,17 +76,9 @@ namespace Fanex.AbnormalBets.Business.Services
             }
         }
 
-        private string GetSheetName(string home, int count)
-        {
-            var index = home.Length > 27 ? 27 : home.Length;
-            var sheetname = home.Substring(0, index);
-            return count > 1
-                ? $"{sheetname}({count})"
-                : sheetname;
-        }
-
         private string SaveExceFile(string site, DateTime rptDate)
         {
+            excelPackage.Workbook.Worksheets[1].Select();
             var siteName = site.ToLower() == "all" ? string.Empty : $"{site}_";
             var fileName = $"{siteName}Abnormal_Bet_Daily_Report_{rptDate:yyyyMMdd}.xlsx";
             var path = $@"{AppConfigService.AppConfig.Path}\{rptDate:yyyy}\{rptDate:MM}";
@@ -139,8 +87,7 @@ namespace Fanex.AbnormalBets.Business.Services
                 Directory.CreateDirectory(path);
             }
 
-            path = $@"{path}\{fileName}";
-            excelPackage.Workbook.Worksheets.Delete(detailTemplate);
+            path = $@"{path}\{fileName}";            
             excelPackage.SaveAs(new FileInfo(path), AppConfigService.AppConfig.Password);
             return path;
         }

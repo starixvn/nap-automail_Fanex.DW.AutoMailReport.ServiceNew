@@ -22,7 +22,7 @@ namespace Fanex.ESportModelingData.Business.Services
         {
             var mail = new Mail
             {
-                Subject = $"E-Sports Weekly Modeling Data From {dateStart:dd-MM-yyyy} To {dateEnd:dd-MM-yyyy}",
+                Subject = $"E-Sports {AppConfigService.AppConfig.Period} Modeling Data From {dateStart:dd-MM-yyyy} To {dateEnd:dd-MM-yyyy}",
                 Title = "ONEworks Auto Generated Report Administrator",
                 Body = mailContentService.GenerateMailContent(fileNames),
                 Attachments = new List<MailAttachment>()
