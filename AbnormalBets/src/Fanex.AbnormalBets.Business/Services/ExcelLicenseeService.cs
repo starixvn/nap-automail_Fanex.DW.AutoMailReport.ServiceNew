@@ -69,7 +69,7 @@ namespace Fanex.AbnormalBets.Business.Services
         {
             var rowIndex = 2;
             ipTemplate.Cells["A2"].LoadFromCollection(data, false);
-            for (var columnIndex = 1; columnIndex <= 5; columnIndex++)
+            for (var columnIndex = 1; columnIndex <= 6; columnIndex++)
             {
                 ipTemplate.Cells[rowIndex, columnIndex, data.Count + rowIndex - 1, columnIndex].StyleID = ipTemplate.Cells[rowIndex, columnIndex].StyleID;
                 ipTemplate.Column(columnIndex).AutoFit(20);

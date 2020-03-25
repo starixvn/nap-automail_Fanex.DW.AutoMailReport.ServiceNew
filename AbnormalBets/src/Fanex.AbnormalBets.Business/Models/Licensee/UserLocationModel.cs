@@ -4,6 +4,8 @@
     {
         public string Username { get; set; }
 
+        public string UserName2 { get; set; }
+
         public string IpLogin { get; set; }
 
         public string LastLogionLocation { get; set; }
