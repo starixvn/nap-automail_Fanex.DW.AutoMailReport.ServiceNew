@@ -126,6 +126,7 @@ namespace Fanex.AbnormalBets.Business.Services
                 locations.Add(new UserLocationModel
                 {
                     Username = location.Username,
+                    UserName2 = location.UserName2,
                     IpLogin = location.IpLogin,
                     LastLogionLocation = GetLocationFromIp(location.IpLogin),
                     TicketIps = location.TicketIps,
