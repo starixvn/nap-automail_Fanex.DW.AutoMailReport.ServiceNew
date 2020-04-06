@@ -3,7 +3,8 @@
   "CategorySentryLog": "NAP-Report-Service",
   "TargetName": "daily-house-wl",
   "Group": "Top-50-Licensee",
-  "IsCheckEnoughData": false,
+  "LicenseeVirtualGroup": "Top-50-Licensee-VSB-Performance",
+  "IsCheckEnoughData": true,
   "IsManual": false,
   "FromDate": "2019-12-01",
   "Todate": "2019-12-01",
@@ -76,6 +77,26 @@
       "Y": 200,
       "IsResize": true,
       "ResizeNewWidth": 1200
-    }
+    },
+    "VirtualSoccer_House": {
+      "FirstRow": 2,
+      "FirstColumn": 2,
+      "LastRow": 13,
+      "LastColumn": 9,
+      "CropWidth": 2910,
+      "CropHeight": 1250,
+      "X": 230,
+      "Y": 250
+    },
+    "VirtualSoccer_Licensee": {
+      "FirstRow": 2,
+      "FirstColumn": 2,
+      "LastRow": 55,
+      "LastColumn": 7,
+      "CropWidth": 2350,
+      "CropHeight": 5250,
+      "X": 200,
+      "Y": 220
+    }  
   }
 }

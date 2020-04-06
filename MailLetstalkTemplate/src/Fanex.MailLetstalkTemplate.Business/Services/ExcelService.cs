@@ -1,5 +1,6 @@
 ﻿using OfficeOpenXml;
 using System.Data;
+using System.Drawing;
 using System.IO;
 
 namespace Fanex.MailLetstalkTemplate.Business.Services
@@ -48,6 +49,16 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
                 for (int rowIndex = startRowIndex; rowIndex <= maxRowIndex; rowIndex++)
                 {
                     template.Row(rowIndex).Height = 18;
+                }
+
+                // format footer
+                for (int columnIndex = AppConfigService.Config.StartExcelColumnIndex; columnIndex <= dataTable.Columns.Count; columnIndex++)
+                {
+                    template.Cells[maxRowIndex, columnIndex, maxRowIndex, columnIndex].Style.Font.Bold = true;
+                    template.Cells[maxRowIndex, columnIndex, maxRowIndex, columnIndex].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                    template.Cells[maxRowIndex, columnIndex, maxRowIndex, columnIndex].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(83, 131, 213));
+                    template.Cells[maxRowIndex, 1, maxRowIndex, 2].Merge = true;
+                    template.Cells[maxRowIndex, 1, maxRowIndex, 2].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
                 }
 
                 index++;

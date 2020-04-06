@@ -1,9 +1,11 @@
-﻿using Fanex.Data.Repository;
+﻿using Fanex.Data;
+using Fanex.Data.Repository;
 using Fanex.Service.Core;
 using Fanex.TopLicensee.Service.Criterias;
 using Fanex.TopLicensee.Service.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 
 namespace Fanex.TopLicensee.Service.Services
@@ -17,6 +19,8 @@ namespace Fanex.TopLicensee.Service.Services
         List<LicenseeTOModel> QueryTopLicensee(int sportType);
 
         Tuple<List<TopLicenseeMarginModel>, List<TopLicenseeMarginModel>> QueryDailyTopLicenseeMargin(bool isDaily);
+
+        DataTable QueryVirtualSoccer(LeagueGroup leagueGroup, SportType sportType, string spName);
     }
 
     public class DataServiceImp : DataService
@@ -64,6 +68,28 @@ namespace Fanex.TopLicensee.Service.Services
             var result = repository.FetchMultiple<TopLicenseeMarginModel, TopLicenseeMarginModel>(criteria);
 
             return new Tuple<List<TopLicenseeMarginModel>, List<TopLicenseeMarginModel>>(result.Item1.ToList(), result.Item2.ToList());
+        }
+
+        public DataTable QueryVirtualSoccer(LeagueGroup leagueGroup, SportType sportType, string spName)
+        {
+            var param = new Dictionary<string, object>
+            {
+                { "FromDate", dateService.FromDate },
+                { "ToDate", dateService.ToDate},
+                { "LeagueGroup", (int)leagueGroup },
+                { "SportType",  (int)sportType}
+            };
+
+            var db = new ObjectDb(spName);
+            db.AssignParamValues(param);
+            var dataSet = db.ExecuteDataSet();
+            var datatable = new DataTable();
+            if (dataSet != null && dataSet.Tables.Count > 0)
+            {
+                datatable = dataSet.Tables[0];
+            }
+
+            return datatable;
         }
     }
 }
