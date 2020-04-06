@@ -3,11 +3,11 @@
   "CategorySentryLog": "NAP-Report-Service-UAT",
   "IsManual": false,
   "IsTest": false,
-  "IsIgnoredCheckMailSent": false,
-  "RptDate": "2019-11-17",  
+  "IsIgnoredCheckMailSent": true,
+  "RptDate": "2019-11-17",
   "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\AbnormalBetDailyReport-Licensee",
   "Password": "",
-   "Sites": [
+  "Sites": [
     {
       "MailId": 286,
       "MailName": "Abnormal Bet Daily Report - All - UAT",
@@ -49,6 +49,18 @@
       "MailName": "Abnormal Bet Daily Report - Tianbo - UAT",
       "SiteName": "Tianbo",
       "Subject": "[ABI]- 非正规投注玩家 - Tianbo Abnormal Licensee bet {0}"
+    },
+    {
+      "MailId": 309,
+      "MailName": "Abnormal Bet Daily Report - Tianbo - UAT",
+      "SiteName": "HONBET",
+      "Subject": "[ABI]- 非正规投注玩家 - HONBET Abnormal Licensee bet {0}"
+    },
+    {
+      "MailId": 309,
+      "MailName": "Abnormal Bet Daily Report - Tianbo - UAT",
+      "SiteName": "Newhonbet",
+      "Subject": "[ABI]- 非正规投注玩家 - Newhonbet Abnormal Licensee bet {0}"
     }
-  ]  
+  ]
 }
