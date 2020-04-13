@@ -16,6 +16,8 @@ namespace Fanex.TopLicensee.Service.Services
         private readonly DataService dataService;
         private readonly ExcelTop50Service excelService;
         private readonly ExcelTopLicenseeMarginService excelTopLicenseeMargin;
+        private readonly ExportVirtualSoccerHouse exportVirtualSoccerHouse;
+        private readonly ExportVirtualSoccerLicensee exportVirtualSoccerLicensee;
         private readonly ImageService imageService;
         private readonly MessageService messageService;
         private readonly MailService mailService;
@@ -25,6 +27,8 @@ namespace Fanex.TopLicensee.Service.Services
             DataService dataService,
             ExcelTop50Service excelService,
             ExcelTopLicenseeMarginService excelTopLicenseeMargin,
+            ExportVirtualSoccerHouse exportVirtualSoccerHouse,
+            ExportVirtualSoccerLicensee exportVirtualSoccerLicensee,
             MailService mailService,
             ImageService imageService,
             MessageService messageService)
@@ -33,6 +37,8 @@ namespace Fanex.TopLicensee.Service.Services
             this.dataService = dataService;
             this.excelService = excelService;
             this.excelTopLicenseeMargin = excelTopLicenseeMargin;
+            this.exportVirtualSoccerHouse = exportVirtualSoccerHouse;
+            this.exportVirtualSoccerLicensee = exportVirtualSoccerLicensee;
             this.mailService = mailService;
             this.imageService = imageService;
             this.messageService = messageService;
@@ -77,7 +83,7 @@ namespace Fanex.TopLicensee.Service.Services
             var imageSentFail = new List<string>();
             var result = SendMessage(imageSentFail);
             var message = string.Empty;
-            
+
             if (!result)
             {
                 message = $"Letsalk sent images Unsuccessfully.{Environment.NewLine} {string.Join(Environment.NewLine, imageSentFail)}";
@@ -89,10 +95,20 @@ namespace Fanex.TopLicensee.Service.Services
         private bool SendMessage(List<string> imageSentFail)
         {
             var imageBatches = new List<List<string>>();
+            var licenseeVirtualGroup = new List<List<string>>();
             var success = true;
 
             ExportImageTop50(imageBatches);
             ExportImageTopLicenseeMargin(imageBatches);
+
+            ExportVirtualSoccerHouse(imageBatches, LeagueGroup.VirtualLeague, SportType.VirtualFIFA, "Acc_Rpt_Letstalk_LeagueGroupSport_House");
+            ExportVirtualSoccerLicensee(imageBatches, licenseeVirtualGroup, LeagueGroup.VirtualLeague, SportType.VirtualFIFA, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");
+
+            ExportVirtualSoccerHouse(imageBatches, LeagueGroup.Esoccer, SportType.VirtualFIFA, "Acc_Rpt_Letstalk_LeagueGroupSport_House");
+            ExportVirtualSoccerLicensee(imageBatches, licenseeVirtualGroup, LeagueGroup.Esoccer, SportType.VirtualFIFA, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");
+
+            ExportVirtualSoccerHouse(imageBatches, LeagueGroup.VirtualLeague, SportType.VirtualNBA, "Acc_Rpt_Letstalk_LeagueGroupSport_House");
+            ExportVirtualSoccerLicensee(imageBatches, licenseeVirtualGroup, LeagueGroup.VirtualLeague, SportType.VirtualNBA, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");
 
             imageBatches.ForEach(files =>
             {
@@ -100,6 +116,16 @@ namespace Fanex.TopLicensee.Service.Services
                 if (!result)
                 {
                     success = result;
+                    imageSentFail.AddRange(files);
+                }
+            });
+
+            licenseeVirtualGroup.ForEach(files =>
+            {
+                var resultVirtualGroup = messageService.SendToLicenseeVirtualGroup(files);
+                if (!resultVirtualGroup)
+                {
+                    success = resultVirtualGroup;
                     imageSentFail.AddRange(files);
                 }
             });
@@ -146,6 +172,27 @@ namespace Fanex.TopLicensee.Service.Services
             AppConfigService.AppConfig.Image["TopLicenseeMargin"].ImageName = "TopLicenseeMargin_MTD";
             imageName = imageService.ExportImage(excelFile, "Template", AppConfigService.AppConfig.Image["TopLicenseeMargin"]);
             imageBatches.Add(new List<string> { imageName });
+        }
+
+        private void ExportVirtualSoccerHouse(List<List<string>> imageBatches, LeagueGroup leagueGroup, SportType sportType, string spName)
+        {
+            var dataTable = dataService.QueryVirtualSoccer(leagueGroup, sportType, spName);
+            var excelPath = exportVirtualSoccerHouse.Export(dataTable, leagueGroup, sportType);
+
+            AppConfigService.AppConfig.Image["VirtualSoccer_House"].ImageName = $"VS_House_{leagueGroup}_{sportType}";
+            var imageFile = imageService.ExportImage(excelPath, "Template", AppConfigService.AppConfig.Image["VirtualSoccer_House"]);
+            imageBatches.Add(new List<string> { imageFile });
+        }
+
+        private void ExportVirtualSoccerLicensee(List<List<string>> imageBatches, List<List<string>> licenseeVirtualGroup, LeagueGroup leagueGroup, SportType sportType, string spName)
+        {
+            var dataTable = dataService.QueryVirtualSoccer(leagueGroup, sportType, spName);
+            var excelPath = exportVirtualSoccerLicensee.Export(dataTable, leagueGroup, sportType);
+
+            AppConfigService.AppConfig.Image["VirtualSoccer_Licensee"].ImageName = $"VS_Licensee_{leagueGroup}_{sportType}";
+            var imageFile = imageService.ExportImage(excelPath, "Template", AppConfigService.AppConfig.Image["VirtualSoccer_Licensee"]);
+            imageBatches.Add(new List<string> { imageFile });
+            licenseeVirtualGroup.Add(new List<string> { imageFile });
         }
     }
 }

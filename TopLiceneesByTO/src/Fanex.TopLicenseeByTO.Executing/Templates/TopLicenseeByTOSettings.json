@@ -3,10 +3,11 @@
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
   "TargetName": "daily-house-wl",
   "Group": "Top-50-Licensee-QC",
+  "LicenseeVirtualGroup": "Top-50-Licensee-VSB-Performance-Test",
   "IsCheckEnoughData": false,
   "IsManual": true,
-  "FromDate": "2019-12-01",
-  "Todate": "2019-12-10",
+  "FromDate": "2020-01-01",
+  "Todate": "2020-01-31",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\TopLicenseeByTO",
   "Password": "",
   "FunctionIdNodata": 90,
@@ -76,6 +77,26 @@
       "Y": 200,
       "IsResize": true,
       "ResizeNewWidth": 1200
+    },
+    "VirtualSoccer_House": {
+      "FirstRow": 2,
+      "FirstColumn": 2,
+      "LastRow": 13,
+      "LastColumn": 9,
+      "CropWidth": 2460,
+      "CropHeight": 1050,
+      "X": 200,
+      "Y": 220
+    },
+    "VirtualSoccer_Licensee": {
+      "FirstRow": 2,
+      "FirstColumn": 2,
+      "LastRow": 55,
+      "LastColumn": 7,
+      "CropWidth": 1930,
+      "CropHeight": 4400,
+      "X": 200,
+      "Y": 220
     }
   }
 }

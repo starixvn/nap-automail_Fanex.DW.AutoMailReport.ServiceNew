@@ -13,6 +13,8 @@ namespace Fanex.TopLicensee.Service.Models
 
         public string Group { get; set; }
 
+        public string LicenseeVirtualGroup { get; set; }
+
         public bool IsCheckEnoughData { get; set; }
 
         public string Path { get; set; }

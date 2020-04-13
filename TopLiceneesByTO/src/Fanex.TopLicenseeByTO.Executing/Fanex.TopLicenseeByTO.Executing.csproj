@@ -218,6 +218,12 @@
     <Content Include="Templates\TopLicensee-ALL.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\TopLicensee-VirtualSoccer-House.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\TopLicensee-VirtualSoccer-Licensee.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.TopLicensee.Service\Fanex.TopLicensee.Service.csproj">
