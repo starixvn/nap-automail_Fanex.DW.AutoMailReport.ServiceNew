@@ -246,6 +246,24 @@
     <Content Include="Templates\BasketballPerformance\BasketballPerformance.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\SabaSoccerLetstalk\SabaSoccerLetstalk.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\SabaSoccerLetstalk\SabaSoccerLetstalk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\SabaSoccerLetstalk\SabaSoccerLetstalk.Local.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\SabaSoccerLetstalk\SabaSoccerLetstalk.PRO.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\SabaSoccerLetstalk\SabaSoccerLetstalk.UAT.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\SabaSoccerLetstalk\SabaSoccerLetstalk.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.MailLetstalkTemplate.Business\Fanex.MailLetstalkTemplate.Business.csproj">

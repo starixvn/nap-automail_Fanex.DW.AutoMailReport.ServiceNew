@@ -1,0 +1,26 @@
+﻿{
+  "SentryClientKey": "http://612764957dbb46ffa359103d8ffa08c6@10.99.99.51:801/59",
+  "CategorySentryLog": "NAP-Report-Service-UAT",  
+  "IsCheckEnoughData": false,
+  "IsManual": false,
+  "RptDate": "2020-04-22",  
+  "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\SabaSoccerLetstalk",  
+  "Password": "",
+  "FunctionIdNodata": 90,
+  "TargetName": "daily-monitoring",
+  "Group": "Saba-Soccer-Test",
+  "ImageSettings": {
+    "SabaSoccer": {
+      "FirstRow": 1,
+      "FirstColumn": 1,
+      "LastRow": 52,
+      "LastColumn": 10,
+      "CropWidth": 3500,
+      "CropHeight": 5100,
+      "ImageName": "SabaSoccer",
+      "X": 200,
+      "Y": 200,
+      "SheetName": "Data"
+    }
+  }
+}
