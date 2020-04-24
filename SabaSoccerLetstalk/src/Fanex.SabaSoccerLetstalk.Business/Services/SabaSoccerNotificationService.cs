@@ -17,17 +17,19 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
         private readonly Log log;
         private readonly DataService dataService;
         private readonly LetstalkClientService letstalkService;
-        private readonly ExcelService excelService;
+        private readonly SabaSoccerExcelService excelService;
         private readonly MessageService messageService;
         private readonly ImageService imageService;
+        private readonly FileService fileService;
 
         public SabaSoccerNotificationServiceImp(
-              Log log,
+            Log log,
             DataService dataService,
             LetstalkClientService letstalkService,
-            ExcelService excelService,
+            SabaSoccerExcelService excelService,
             MessageService messageService,
-            ImageService imageService)
+            ImageService imageService,
+            FileService fileService)
         {
             this.log = log;
             this.dataService = dataService;
@@ -35,6 +37,7 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             this.excelService = excelService;
             this.messageService = messageService;
             this.imageService = imageService;
+            this.fileService = fileService;
         }
 
         public JobMessage Execute()
@@ -73,7 +76,7 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             }
 
             var letstalkFails = new List<string>();
-            var data = dataService.QueryData();
+            var data = dataService.QueryDataSabaSoccer();
             var rowPerBatch = 50;
             var totalBatch = data.Count / rowPerBatch + ((data.Count % rowPerBatch) > 0 ? 1 : 0);
             var imageSentFail = new List<string>();
@@ -82,7 +85,7 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             for (var batchIndex = 0; batchIndex < totalBatch; batchIndex++)
             {
                 var rowsOfBatch = data.Skip(batchIndex * rowPerBatch).Take(rowPerBatch).ToList();
-                var excelPath = excelService.ExportExcel(rowsOfBatch, batchIndex, totalBatch);
+                var excelPath = excelService.ExportExcel(rowsOfBatch, batchIndex, totalBatch, false);
                 var imagePath = ExportImage(excelPath, batchIndex);
                 var status = SendImage(imagePath);
                 countRetry = 0;
@@ -98,10 +101,15 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
                 }
             }
 
+            var excelAllPath = excelService.ExportExcel(data, 0, 0, true);
+            SendImage(excelAllPath);
+
             if (imageSentFail.Count > 0)
             {
                 letstalkFails.Add($"{string.Join(Environment.NewLine, imageSentFail)} - Letstalk sent images Unsuccessfully.");
             }
+
+            fileService.MoveFiles(AppConfigService.Config.InternalPath, AppConfigService.Config.Path);
 
             return new ExecuteResultModel
             {

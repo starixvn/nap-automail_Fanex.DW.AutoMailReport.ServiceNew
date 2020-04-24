@@ -13,6 +13,8 @@ namespace Fanex.SabaSoccerLetstalk.Business.Models
 
         public string Path { get; set; }
 
+        public string InternalPath { get; set; }
+
         public string TargetName { get; set; }
 
         public string Group { get; set; }
@@ -25,6 +27,10 @@ namespace Fanex.SabaSoccerLetstalk.Business.Models
 
         public DateTime RptDate { get; set; }
 
+        public string TimeRange { get; set; }
+
         public Dictionary<string, ImageProperty> ImageSettings { get; set; } = new Dictionary<string, ImageProperty>();
+
+        public Dictionary<Sport, string> SabaSports { get; set; }
     }
 }

@@ -1,21 +1,27 @@
 ﻿{
-  "SPName": "Acc_Rpt_Automail_SoccerLivePerformance",
-  "IsCheckEnoughData": false,
-  "IsIgnoredCheckMailSent": false,
-  "DateRange": "Yesterday",
-  "FromDate": "2020-01-01",
-  "ToDate": "2020-01-10",
-  "Path": "\\\\10.40.40.127\\Data.Web\\Fanex.Excel\\Soccer - Live Performance",
-  "Password": "Star168",
+  "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.99.99.51:801/60",
+  "CategorySentryLog": "NAP-Report-Service",
+  "IsCheckEnoughData": true,
+  "IsManual": false,
+  "RptDate": "2020-04-22",
+  "Path": "\\\\10.40.40.127\\Data.Web\\Fanex.Excel\\SabaSoccerLetstalk",  
+  "InternalPath": "\\\\10.40.40.127\\Data.Web\\Fanex.Excel\\SabaSoccerLetstalk_InternalPath",  
+  "Password": "",
   "FunctionIdNodata": 90,
-  "TemplateExcelFile": "SoccerLivePerformance/SoccerLivePerformance.xlsx",
-  "SheetExcelTemplateName": ["Data"],
-  "CellAddressRender": [ "B5" ],
-  "StartExelRowIndex": "5",
-  "EmailTemplate": "SoccerLivePerformance/SoccerLivePerformance.cshtml",
-  "EmailSubject": "Soccer - Live Performance - Daily Report {0}",
-  "MailId": "322",
-  "MailName": "Soccer - Live Performance",
-  "FileName": "Soccer - Live Performance",
-  "StartExcelColumnIndex": 2
+  "TargetName": "daily-monitoring",
+  "Group": "Saba-Soccer",
+  "ImageSettings": {
+    "SabaSoccer": {
+      "FirstRow": 1,
+      "FirstColumn": 1,
+      "LastRow": 52,
+      "LastColumn": 10,
+      "CropWidth": 3500,
+      "CropHeight": 5100,
+      "ImageName": "SabaSoccer",
+      "X": 200,
+      "Y": 200,
+      "SheetName": "Data"
+    }
+  }
 }

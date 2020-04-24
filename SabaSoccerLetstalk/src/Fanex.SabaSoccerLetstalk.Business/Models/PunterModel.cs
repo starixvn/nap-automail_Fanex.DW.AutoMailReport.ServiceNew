@@ -21,5 +21,11 @@
         public decimal WinlossMTD { get; set; }
 
         public decimal MarginMTD { get; set; }
+
+        public string BreakColumn { get; } = string.Empty;
+
+        public int BetCount { get; set; } = 10;
+
+        public bool IsSetBGColor { get; set; }
     }
 }

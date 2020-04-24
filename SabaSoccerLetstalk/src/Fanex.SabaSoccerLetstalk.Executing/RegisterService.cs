@@ -41,9 +41,10 @@ namespace Fanex.SabaSoccerLetstalk.Executing
             container.Register<SabaSoccerNotificationService, SabaSoccerNotificationServiceImp>();
             container.Register(() => new ExcelPackage());
             container.Register<DateRangeService, DateRangeServiceImp>();
-            container.Register<ExcelService, ExcelServiceImp>();
+            container.Register<SabaSoccerExcelService, SabaSoccerExcelServiceImp>();
             container.Register<ImageService, ImageServiceImp>();
             container.Register<MessageService, MessageServiceImp>();
+            container.Register<FileService, FileServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
             container.Register<ApplicationSettingService, ApplicationSettingServiceImp>();

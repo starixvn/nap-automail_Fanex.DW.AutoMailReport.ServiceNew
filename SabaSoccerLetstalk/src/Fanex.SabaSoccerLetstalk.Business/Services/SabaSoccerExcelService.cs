@@ -1,28 +1,27 @@
 ﻿using Fanex.SabaSoccerLetstalk.Business.Models;
 using OfficeOpenXml;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
 
 namespace Fanex.SabaSoccerLetstalk.Business.Services
 {
-    public interface ExcelService
+    public interface SabaSoccerExcelService
     {
-        string ExportExcel(List<PunterModel> data, int batchIndex, int totalBatch);
+        string ExportExcel(List<PunterModel> data, int batchIndex, int totalBatch, bool isAllInfo);
     }
 
-    public class ExcelServiceImp : ExcelService
+    public class SabaSoccerExcelServiceImp : SabaSoccerExcelService
     {
         private ExcelPackage excelPackage;
         private readonly DateRangeService dateRangeService;
 
-        public ExcelServiceImp(ExcelPackage excelPackage, DateRangeService dateRangeService)
+        public SabaSoccerExcelServiceImp(ExcelPackage excelPackage, DateRangeService dateRangeService)
         {
             this.excelPackage = excelPackage;
             this.dateRangeService = dateRangeService;
         }
 
-        public string ExportExcel(List<PunterModel> data, int batchIndex, int totalBatch)
+        public string ExportExcel(List<PunterModel> data, int batchIndex, int totalBatch, bool isAllInfo)
         {
             UpdateRowIndex(data, batchIndex);
 
@@ -30,16 +29,20 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             var template = excelPackage.Workbook.Worksheets["Data"];
             template.Cells["A3"].LoadFromCollection(data, false);
 
-            RenderTitle(batchIndex, totalBatch, template);
+            RenderTitle(batchIndex, totalBatch, template, isAllInfo);
             RenderData(data, template);
 
-            return Save(batchIndex);
+            return Save(batchIndex, isAllInfo);
         }
 
-        private static void RenderTitle(int batchIndex, int totalBatch, ExcelWorksheet template)
+        private void RenderTitle(int batchIndex, int totalBatch, ExcelWorksheet template, bool isAllInfo)
         {
-            template.Cells["A1"].Value = $"Top Saba Soccer Punters - Page {batchIndex + 1} of {totalBatch}";
-            var rptDate = AppConfigService.Config.RptDate;
+            var title = isAllInfo
+                ? $"Top Saba Soccer Punters - All"
+                : $"Top Saba Soccer Punters - Page {batchIndex + 1} of {totalBatch}";
+
+            template.Cells["A1"].Value = title;
+            var rptDate = dateRangeService.RptDate;
             var date1 = rptDate.AddDays(-2);
             var date2 = rptDate;
             template.Cells["E1"].Value = $"{date1:yyyyMMdd} - {date2:yyyyMMdd}";
@@ -66,6 +69,9 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             {
                 template.Row(rowIndex).Height = 19.5;
             }
+
+            template.Column(12).Hidden = true;
+            template.Column(13).Hidden = true;
         }
 
         private static void UpdateRowIndex(List<PunterModel> data, int batchIndex)
@@ -79,11 +85,13 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             });
         }
 
-        private string Save(int batchIndex)
+        private string Save(int batchIndex, bool isAllInfo)
         {
             var date = dateRangeService.RptDate;
-            var fileName = $"SabaSoccerLetstalk_Batch_{batchIndex + 1}_{date:yyyyMMdd}.xlsx";
-            var path = $@"{AppConfigService.Config.Path}\{date:yyyy}\{date:MM}";
+            var fileName = isAllInfo
+                ? $"SabaSoccerLetstalk_All_{date:yyyyMMdd}.xlsx"
+                : $"SabaSoccerLetstalk_Batch_{batchIndex + 1}_{date:yyyyMMdd}.xlsx";
+            var path = $@"{AppConfigService.Config.InternalPath}\{date:yyyy}\{date:MM}";
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);

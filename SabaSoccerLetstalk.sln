@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.SabaSoccerLetstalk.Ex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.SabaSoccerLetstalk.Business", "SabaSoccerLetstalk\src\Fanex.SabaSoccerLetstalk.Business\Fanex.SabaSoccerLetstalk.Business.csproj", "{9BB9E7B2-C666-4991-8749-D8EE40A395B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.SabaSportPuntersLetstalkHourly.Executing", "SabaSoccerLetstalk\src\Fanex.SabaSoccerLetstalkHourly.Executing\Fanex.SabaSportPuntersLetstalkHourly.Executing.csproj", "{0A5DD31B-7DA4-40EE-8822-6E5BACE45D0D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{9BB9E7B2-C666-4991-8749-D8EE40A395B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BB9E7B2-C666-4991-8749-D8EE40A395B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BB9E7B2-C666-4991-8749-D8EE40A395B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A5DD31B-7DA4-40EE-8822-6E5BACE45D0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A5DD31B-7DA4-40EE-8822-6E5BACE45D0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A5DD31B-7DA4-40EE-8822-6E5BACE45D0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A5DD31B-7DA4-40EE-8822-6E5BACE45D0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,5 +36,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{249F0CA1-F2AE-488A-A9CB-45795E905C7F} = {DD7D2339-B73A-45A2-8471-C72BFEFDAEB1}
 		{9BB9E7B2-C666-4991-8749-D8EE40A395B7} = {DD7D2339-B73A-45A2-8471-C72BFEFDAEB1}
+		{0A5DD31B-7DA4-40EE-8822-6E5BACE45D0D} = {DD7D2339-B73A-45A2-8471-C72BFEFDAEB1}
 	EndGlobalSection
 EndGlobal

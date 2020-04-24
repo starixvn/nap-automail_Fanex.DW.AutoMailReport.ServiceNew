@@ -24,7 +24,7 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
         public string ExportImage(string excelPath, int batchIndex, string sheetNameNeedToExport, ImageProperty imageProperty)
         {
             var date = dateRangeService.RptDate;
-            var imageName = $@"{AppConfigService.Config.Path}\{date:yyyy}\{date:MM}";
+            var imageName = $@"{AppConfigService.Config.InternalPath}\{date:yyyy}\{date:MM}";
 
             if (!Directory.Exists(imageName))
             {
@@ -32,7 +32,7 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             }
 
             imageName = $@"{imageName}\{imageProperty.ImageName}_Batch_{batchIndex + 1}_On_{date:yyyyMMdd}.jpg";
-            var imageNameFinal = $@"{AppConfigService.Config.Path}\{date:yyyy}\{date:MM}\{imageProperty.ImageName}_Batch_{batchIndex + 1}_Final_On_{date:yyyyMMdd}.jpg";
+            var imageNameFinal = $@"{AppConfigService.Config.InternalPath}\{date:yyyy}\{date:MM}\{imageProperty.ImageName}_Batch_{batchIndex + 1}_Final_On_{date:yyyyMMdd}.jpg";
             var workbook = new Workbook();
             workbook.OpenPassword = AppConfigService.Config.Password;
             workbook.LoadFromFile(excelPath, ExcelVersion.Version2013);
