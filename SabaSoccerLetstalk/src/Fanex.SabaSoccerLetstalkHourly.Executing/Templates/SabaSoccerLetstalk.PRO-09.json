@@ -10,7 +10,7 @@
   "Password": "",
   "FunctionIdNodata": 90,
   "TargetName": "daily-monitoring",
-  "Group": "Saba-Soccer-Test",
+  "Group": "Saba-Sports-Risk-Monitoring",
   "SabaSports": {
     "Soccer": "Acc_Rpt_Letstalk_TodayPunterSoccerLeagueGroup",
     "Basketball": "Acc_Rpt_Letstalk_TodayPunterBasketballLeagueGroup"
