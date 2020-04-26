@@ -52,14 +52,14 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
                 }
 
                 // format footer
-                for (int columnIndex = AppConfigService.Config.StartExcelColumnIndex; columnIndex <= dataTable.Columns.Count; columnIndex++)
-                {
-                    template.Cells[maxRowIndex, columnIndex, maxRowIndex, columnIndex].Style.Font.Bold = true;
-                    template.Cells[maxRowIndex, columnIndex, maxRowIndex, columnIndex].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
-                    template.Cells[maxRowIndex, columnIndex, maxRowIndex, columnIndex].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(83, 131, 213));
-                    template.Cells[maxRowIndex, 1, maxRowIndex, 2].Merge = true;
-                    template.Cells[maxRowIndex, 1, maxRowIndex, 2].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
-                }
+                //for (int columnIndex = AppConfigService.Config.StartExcelColumnIndex; columnIndex <= dataTable.Columns.Count; columnIndex++)
+                //{
+                //    template.Cells[maxRowIndex, columnIndex, maxRowIndex, columnIndex].Style.Font.Bold = true;
+                //    template.Cells[maxRowIndex, columnIndex, maxRowIndex, columnIndex].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                //    template.Cells[maxRowIndex, columnIndex, maxRowIndex, columnIndex].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(83, 131, 213));
+                //    template.Cells[maxRowIndex, 1, maxRowIndex, 2].Merge = true;
+                //    template.Cells[maxRowIndex, 1, maxRowIndex, 2].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                //}
 
                 index++;
             }
