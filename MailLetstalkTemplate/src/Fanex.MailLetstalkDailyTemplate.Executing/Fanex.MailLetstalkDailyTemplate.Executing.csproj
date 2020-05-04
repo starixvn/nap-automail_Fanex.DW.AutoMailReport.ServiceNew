@@ -246,22 +246,13 @@
     <Content Include="Templates\BasketballPerformance\BasketballPerformance.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\SabaSoccerLetstalk\SabaSoccerLetstalk.cshtml">
+    <Content Include="Templates\Test\Test.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\SabaSoccerLetstalk\SabaSoccerLetstalk.json">
+    <Content Include="Templates\Test\Test.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\SabaSoccerLetstalk\SabaSoccerLetstalk.Local.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\SabaSoccerLetstalk\SabaSoccerLetstalk.PRO.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\SabaSoccerLetstalk\SabaSoccerLetstalk.UAT.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\SabaSoccerLetstalk\SabaSoccerLetstalk.xlsx">
+    <Content Include="Templates\Test\Test.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

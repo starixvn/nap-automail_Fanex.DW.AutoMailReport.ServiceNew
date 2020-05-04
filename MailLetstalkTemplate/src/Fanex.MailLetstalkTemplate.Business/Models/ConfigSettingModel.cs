@@ -48,5 +48,13 @@ namespace Fanex.MailLetstalkTemplate.Business.Models
         public string FileName { get; set; }
 
         public int StartExcelColumnIndex { get; set; } = 1;
+
+        public bool IsEnabledSectionTotal { get; set; }
+
+        public List<TotalSetting> TotalSettings { get; set; } = new List<TotalSetting>();
+
+        public bool IsEnabledSectionHeader { get; set; }
+
+        public List<TitleSetting> TitleSettings { get; set; } = new List<TitleSetting>();
     }
 }

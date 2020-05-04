@@ -1,7 +1,11 @@
-﻿using OfficeOpenXml;
+﻿using Fanex.Common;
+using Fanex.MailLetstalkTemplate.Business.Models;
+using OfficeOpenXml;
+using System;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 
 namespace Fanex.MailLetstalkTemplate.Business.Services
 {
@@ -27,23 +31,27 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
             var index = 0;
             foreach (DataTable dataTable in dataSet.Tables)
             {
+                var totalSetting = AppConfigService.Config.IsEnabledSectionTotal ? AppConfigService.Config.TotalSettings[index] : new TotalSetting();
+                if (AppConfigService.Config.IsEnabledSectionTotal)
+                {
+                    AssignTotalDataRow(dataTable, totalSetting);
+                }
+
                 var template = excelPackage.Workbook.Worksheets[AppConfigService.Config.SheetExcelTemplateName[index]];
                 template.Cells[AppConfigService.Config.CellAddressRender[index]].LoadFromDataTable(dataTable, false);
+
+                if (AppConfigService.Config.IsEnabledSectionHeader)
+                {
+                    FormatHeaderTitle(index, template);
+                }
 
                 var startRowIndex = AppConfigService.Config.StartExelRowIndex;
                 var maxRowIndex = dataTable.Rows.Count + startRowIndex - 1;
 
-                for (int columnIndex = AppConfigService.Config.StartExcelColumnIndex; columnIndex <= dataTable.Columns.Count; columnIndex++)
+                for (int columnIndex = AppConfigService.Config.StartExcelColumnIndex; columnIndex < dataTable.Columns.Count + AppConfigService.Config.StartExcelColumnIndex; columnIndex++)
                 {
-                    template.Cells
-                        [
-                        startRowIndex,
-                        columnIndex,
-                        maxRowIndex,
-                        columnIndex
-                        ].StyleID = template.Cells[startRowIndex, columnIndex].StyleID;
-
-                    template.Column(columnIndex).AutoFit(17, 50);
+                    template.Cells[startRowIndex, columnIndex, maxRowIndex, columnIndex].StyleID = template.Cells[startRowIndex, columnIndex].StyleID;
+                    template.Column(columnIndex).AutoFit(18, 50);
                 }
 
                 for (int rowIndex = startRowIndex; rowIndex <= maxRowIndex; rowIndex++)
@@ -51,20 +59,48 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
                     template.Row(rowIndex).Height = 18;
                 }
 
-                // format footer
-                //for (int columnIndex = AppConfigService.Config.StartExcelColumnIndex; columnIndex <= dataTable.Columns.Count; columnIndex++)
-                //{
-                //    template.Cells[maxRowIndex, columnIndex, maxRowIndex, columnIndex].Style.Font.Bold = true;
-                //    template.Cells[maxRowIndex, columnIndex, maxRowIndex, columnIndex].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
-                //    template.Cells[maxRowIndex, columnIndex, maxRowIndex, columnIndex].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(83, 131, 213));
-                //    template.Cells[maxRowIndex, 1, maxRowIndex, 2].Merge = true;
-                //    template.Cells[maxRowIndex, 1, maxRowIndex, 2].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
-                //}
+                if (AppConfigService.Config.IsEnabledSectionTotal)
+                {
+                    FormatSectionTotal(dataTable, totalSetting, template, maxRowIndex);
+                }
 
                 index++;
             }
 
             return Save();
+        }
+
+        private void FormatHeaderTitle(int index, ExcelWorksheet template)
+        {
+            var title = AppConfigService.Config.TitleSettings[index];
+            var date = dateRangeServiceProfier.Date(AppConfigService.Config.DateRange);
+            template.Cells[title.CellAddressRender].Value = $"{title.Title} Form {date.FromDate:dd MMM, yyyy} To {date.ToDate:dd MMM, yyyy}";
+            template.Cells["B3"].Value = $"Generated on {DateTime.Now:dd MMM, yyyy HH:mm tt}";
+        }
+
+        private static void FormatSectionTotal(DataTable dataTable, TotalSetting totalSetting, ExcelWorksheet template, int maxRowIndex)
+        {
+            for (int columnIndex = AppConfigService.Config.StartExcelColumnIndex; columnIndex < dataTable.Columns.Count + AppConfigService.Config.StartExcelColumnIndex; columnIndex++)
+            {
+                template.Cells[maxRowIndex, columnIndex, maxRowIndex, columnIndex].Style.Font.Bold = true;
+                template.Cells[maxRowIndex, columnIndex, maxRowIndex, columnIndex].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                template.Cells[maxRowIndex, columnIndex, maxRowIndex, columnIndex].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(235, 241, 222));
+            }
+
+            template.Cells[maxRowIndex, totalSetting.StartMergeColumnIndex, maxRowIndex, totalSetting.EndMergeColumnIndex].Merge = true;
+            template.Cells[maxRowIndex, totalSetting.StartMergeColumnIndex, maxRowIndex, totalSetting.EndMergeColumnIndex].Value = totalSetting.Label;
+            template.Cells[maxRowIndex, totalSetting.StartMergeColumnIndex, maxRowIndex, totalSetting.EndMergeColumnIndex].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+        }
+
+        private static void AssignTotalDataRow(DataTable dataTable, TotalSetting totalSetting)
+        {
+            DataRow drTotal = dataTable.NewRow();
+            foreach (var columnInex in totalSetting.SumColumnsIndex)
+            {
+                drTotal[columnInex] = dataTable.AsEnumerable().Sum(s => Converter.To<decimal>(s[columnInex]));
+            }
+
+            dataTable.Rows.Add(drTotal);
         }
 
         private string Save()

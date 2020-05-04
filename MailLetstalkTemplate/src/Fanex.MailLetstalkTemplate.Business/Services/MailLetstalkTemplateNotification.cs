@@ -92,9 +92,8 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
                     continue;
                 }
 
-                //var data = dataService.QueryData(config.SPName);
-                //var excelPath = excelService.ExportExcel(data);
-                var excelPath = "Templates/SabaSoccerLetstalk/SabaSoccerLetstalk.xlsx";
+                var data = dataService.QueryData(config.SPName);
+                var excelPath = excelService.ExportExcel(data);
 
                 if (report.IsEmailEnabled)
                 {
