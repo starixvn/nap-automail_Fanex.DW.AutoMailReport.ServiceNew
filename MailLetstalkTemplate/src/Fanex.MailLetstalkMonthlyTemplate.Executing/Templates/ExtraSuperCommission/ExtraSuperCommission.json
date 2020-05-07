@@ -11,11 +11,12 @@
   "SheetExcelTemplateName": [ "Extra Super Comm" ],
   "CellAddressRender": [ "B6" ],
   "StartExelRowIndex": "6",
+  "DateTimeFormat": "MMM_dd",
   "EmailTemplate": "ExtraSuperCommission/ExtraSuperCommission.cshtml",
   "EmailSubject": "Monthly Extra Super Commission Report {0}",
   "MailId": "327",
   "MailName": "Mail Template Testing",
-  "FileName": "Monthly_Extra_Super_Commission_Report",
+  "FileName": "Monthly_Extra_Super_Commission_Report_For",
   "StartExcelColumnIndex": 2,
   "IsEnabledSectionHeader": true,
   "TitleSettings": [
@@ -28,7 +29,6 @@
   "TotalSettings": [
     {
       "Label": "Total",
-      "LabelIndex": 1,
       "StartMergeColumnIndex": 2,
       "EndMergeColumnIndex": 3,
       "SumColumnsIndex": [ 2, 3, 4, 5, 6, 7 ]

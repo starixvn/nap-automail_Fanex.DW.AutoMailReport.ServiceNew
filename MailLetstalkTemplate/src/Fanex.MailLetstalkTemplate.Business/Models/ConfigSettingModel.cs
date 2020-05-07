@@ -56,5 +56,7 @@ namespace Fanex.MailLetstalkTemplate.Business.Models
         public bool IsEnabledSectionHeader { get; set; }
 
         public List<TitleSetting> TitleSettings { get; set; } = new List<TitleSetting>();
+
+        public string DateTimeFormat { get; set; } = "yyyy_MM_dd";
     }
 }

@@ -6,8 +6,6 @@ namespace Fanex.MailLetstalkTemplate.Business.Models
     {
         public List<int> SumColumnsIndex { get; set; }
 
-        public int LabelIndex { get; set; }
-
         public string Label { get; set; }
 
         public int StartMergeColumnIndex { get; set; }
