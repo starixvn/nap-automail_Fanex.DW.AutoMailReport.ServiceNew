@@ -72,11 +72,14 @@ namespace Fanex.TopLicensee.Service.Services
 
         public DataTable QueryVirtualSoccer(LeagueGroup leagueGroup, SportType sportType, string spName)
         {
+            var dicLeagueGroup = GetLeagueGroupParam();
+            var leagueGroupParam = dicLeagueGroup[sportType][leagueGroup];
+
             var param = new Dictionary<string, object>
             {
                 { "FromDate", dateService.FromDate },
                 { "ToDate", dateService.ToDate},
-                { "LeagueGroup", (int)leagueGroup },
+                { "LeagueGroup", leagueGroupParam },
                 { "SportType",  (int)sportType}
             };
 
@@ -90,6 +93,27 @@ namespace Fanex.TopLicensee.Service.Services
             }
 
             return datatable;
+        }
+
+        private static Dictionary<SportType, Dictionary<LeagueGroup, string>> GetLeagueGroupParam()
+        {
+            return new Dictionary<SportType, Dictionary<LeagueGroup, string>>
+            {
+                {
+                    SportType.VirtualFIFA, new Dictionary<LeagueGroup, string>
+                    {
+                        { LeagueGroup.Esoccer, "41" },
+                        { LeagueGroup.VirtualLeague, "42,74" },
+                    }
+                },
+                {
+                    SportType.VirtualNBA, new Dictionary<LeagueGroup, string>
+                    {
+                        { LeagueGroup.Esoccer, "41" },
+                        { LeagueGroup.VirtualLeague, "42" },
+                    }
+                }
+            };
         }
     }
 }
