@@ -84,10 +84,16 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             var letstalkFails = new List<string>();
             var date = dateService.Today;
             var sports = AppConfigService.Config.SabaSports;
+            var dictLeagueGroup = new Dictionary<Sport, string>
+            {
+                { Sport.Soccer, "42,74" },
+                { Sport.Basketball, "42" },
+            };
             foreach (var sabaSport in sports)
             {
                 var sport = sabaSport.Key;
-                var rawData = dataService.QueryDataSabaSoccerHourly(date, sabaSport.Value);
+                var leagueGroup = dictLeagueGroup[sport];
+                var rawData = dataService.QueryDataSabaSoccerHourly(date, sabaSport.Value, leagueGroup);
                 var data = refineService.LoadRefineData(sport, date, rawData);
                 refineService.StoreRawData(sport, date, rawData);
                 List<string> imageFails;
@@ -100,13 +106,13 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
                     imageFails = SendLetstalkImageNoData(sport, date);
                 }
 
-                imageFails.ForEach(image => 
+                imageFails.ForEach(image =>
                 {
-                    if(image.Length > 0)
+                    if (image.Length > 0)
                     {
                         letstalkFails.Add(image);
                     }
-                });                
+                });
             }
 
             return new ExecuteResultModel
@@ -129,7 +135,7 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
                 var rowsOfBatch = data.Skip(batchIndex * rowPerBatch).Take(rowPerBatch).ToList();
                 var excelPath = excelService.ExportExcelWithData(sport, date, rowsOfBatch, batchIndex, totalBatch, false);
                 var imagePath = ExportImage(sport, excelPath, batchIndex, "SabaSportPunters");
-                var status = SendToLetstalk(imagePath);                
+                var status = SendToLetstalk(imagePath);
                 countRetry = 0;
                 while (!status && countRetry < 10)
                 {
