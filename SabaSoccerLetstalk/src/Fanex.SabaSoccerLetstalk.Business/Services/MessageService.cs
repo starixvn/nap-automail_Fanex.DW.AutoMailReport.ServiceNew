@@ -6,12 +6,12 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
 {
     public interface MessageService
     {
-        LetstalkModel CreateLetstalkModel(string fileName);
+        LetstalkModel CreateLetstalkModel(string fileName, string letstalkGroup);
     }
 
     public class MessageServiceImp : MessageService
     {
-        public LetstalkModel CreateLetstalkModel(string fileName)
+        public LetstalkModel CreateLetstalkModel(string fileName, string letstalkGroup)
         {
             var letstalkAttachments = new List<LetstalkAttachment>();
             letstalkAttachments.Add(new LetstalkAttachment
@@ -23,7 +23,7 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             return new LetstalkModel
             {
                 TargetName = AppConfigService.Config.TargetName,
-                Group = AppConfigService.Config.Group,
+                Group = letstalkGroup,
                 LetstalkAttachments = letstalkAttachments,
                 Subject = string.Empty,
                 Content = string.Empty

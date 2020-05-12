@@ -11,7 +11,7 @@
   "SheetExcelTemplateName": [ "Extra Super Comm" ],
   "CellAddressRender": [ "B6" ],
   "StartExelRowIndex": "6",
-  "DateTimeFormat": "MMM_dd",
+  "DateTimeFormat": "MMM_yyyy",
   "EmailTemplate": "ExtraSuperCommission/ExtraSuperCommission.cshtml",
   "EmailSubject": "Monthly Extra Super Commission Report {0}",
   "MailId": "327",

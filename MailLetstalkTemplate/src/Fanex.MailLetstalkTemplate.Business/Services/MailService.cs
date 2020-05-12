@@ -44,9 +44,10 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
                 new MailAttachment(excelPath, FileExtension.MS_EXCEL)
             };
 
+            var format = AppConfigService.Config.DateTimeFormat;
             var mail = new Mail
             {
-                Subject = string.Format(AppConfigService.Config.EmailSubject, date.ToDate.ToString("yyyy/MM/dd")),
+                Subject = string.Format(AppConfigService.Config.EmailSubject, date.ToDate.ToString(format)),
                 Title = "ONEworks Auto Generated Report Administrator",
                 Body = ReadBody(excelPath, date.ToDate),
                 Attachments = attachments,

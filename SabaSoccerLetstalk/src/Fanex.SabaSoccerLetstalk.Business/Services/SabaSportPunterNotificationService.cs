@@ -84,26 +84,21 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             var letstalkFails = new List<string>();
             var date = dateService.Today;
             var sports = AppConfigService.Config.SabaSports;
-            var dictLeagueGroup = new Dictionary<Sport, string>
-            {
-                { Sport.Soccer, "42,74" },
-                { Sport.Basketball, "42" },
-            };
             foreach (var sabaSport in sports)
             {
                 var sport = sabaSport.Key;
-                var leagueGroup = dictLeagueGroup[sport];
-                var rawData = dataService.QueryDataSabaSoccerHourly(date, sabaSport.Value, leagueGroup);
+                var setting = sabaSport.Value;
+                var rawData = dataService.QueryDataSabaHourly(date, setting);
                 var data = refineService.LoadRefineData(sport, date, rawData);
                 refineService.StoreRawData(sport, date, rawData);
                 List<string> imageFails;
                 if (data.Count > 0)
                 {
-                    imageFails = SendLetstalkImageData(sport, date, data);
+                    imageFails = SendLetstalkImageData(sport, setting, date, data);
                 }
                 else
                 {
-                    imageFails = SendLetstalkImageNoData(sport, date);
+                    imageFails = SendLetstalkImageNoData(sport, setting, date);
                 }
 
                 imageFails.ForEach(image =>
@@ -122,7 +117,7 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             };
         }
 
-        private List<string> SendLetstalkImageData(Sport sport, DateTime date, List<PunterModel> data)
+        private List<string> SendLetstalkImageData(Sport sport, LetstalkTodayPunterSetting setting, DateTime date, List<PunterModel> data)
         {
             var letstalkFails = new List<string>();
             var rowPerBatch = 50;
@@ -133,13 +128,13 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             for (var batchIndex = 0; batchIndex < totalBatch; batchIndex++)
             {
                 var rowsOfBatch = data.Skip(batchIndex * rowPerBatch).Take(rowPerBatch).ToList();
-                var excelPath = excelService.ExportExcelWithData(sport, date, rowsOfBatch, batchIndex, totalBatch, false);
+                var excelPath = excelService.ExportExcelWithData(sport, setting.Exceltitle, date, rowsOfBatch, batchIndex, totalBatch, false);
                 var imagePath = ExportImage(sport, excelPath, batchIndex, "SabaSportPunters");
-                var status = SendToLetstalk(imagePath);
+                var status = SendToLetstalk(imagePath, setting.LetstalkGroup);
                 countRetry = 0;
                 while (!status && countRetry < 10)
                 {
-                    status = SendToLetstalk(imagePath);
+                    status = SendToLetstalk(imagePath, setting.LetstalkGroup);
                     countRetry++;
                 }
 
@@ -149,8 +144,8 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
                 }
             }
 
-            var excelAllPath = excelService.ExportExcelWithData(sport, date, data, 0, 1, true);
-            SendToLetstalk(excelAllPath);
+            var excelAllPath = excelService.ExportExcelWithData(sport, setting.Exceltitle, date, data, 0, 1, true);
+            SendToLetstalk(excelAllPath, setting.LetstalkGroup);
 
             if (imageSentFail.Count > 0)
             {
@@ -162,11 +157,11 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             return letstalkFails;
         }
 
-        private List<string> SendLetstalkImageNoData(Sport sport, DateTime date)
+        private List<string> SendLetstalkImageNoData(Sport sport, LetstalkTodayPunterSetting setting, DateTime date)
         {
-            var excelPath = excelService.ExportExcelWithNoData(sport, date);
+            var excelPath = excelService.ExportExcelWithNoData(sport, setting.Exceltitle, date);
             var imagePath = ExportImage(sport, excelPath, 0, "NoData");
-            var status = SendToLetstalk(imagePath);
+            var status = SendToLetstalk(imagePath, setting.LetstalkGroup);
 
             return new List<string> { status ? string.Empty : $"{imagePath} - Letstalk sent images Unsuccessfully." };
         }
@@ -180,9 +175,9 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             return imagePath;
         }
 
-        private bool SendToLetstalk(string filePath)
+        private bool SendToLetstalk(string filePath, string letstalkGroup)
         {
-            var letstalkModel = messageService.CreateLetstalkModel(filePath);
+            var letstalkModel = messageService.CreateLetstalkModel(filePath, letstalkGroup);
             var status = letstalkService.SendMessage(letstalkModel);
             return status;
         }
