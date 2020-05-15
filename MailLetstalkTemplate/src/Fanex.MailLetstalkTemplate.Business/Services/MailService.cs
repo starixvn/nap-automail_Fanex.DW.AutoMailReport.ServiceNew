@@ -44,7 +44,7 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
                 new MailAttachment(excelPath, FileExtension.MS_EXCEL)
             };
 
-            var format = AppConfigService.Config.DateTimeFormat;
+            var format = AppConfigService.Config.DateTimeSubjectFormat;
             var mail = new Mail
             {
                 Subject = string.Format(AppConfigService.Config.EmailSubject, date.ToDate.ToString(format)),

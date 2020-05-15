@@ -106,7 +106,7 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
         private string Save()
         {
             var date = dateRangeServiceProfier.Date(AppConfigService.Config.DateRange).ToDate;
-            var format = AppConfigService.Config.DateTimeFormat;
+            var format = AppConfigService.Config.DateTimeFileNameFormat;
             var fileName = $"{AppConfigService.Config.FileName}_{date.ToString(format)}.xlsx";
             var path = $@"{AppConfigService.Config.Path}\{date:yyyy}\{date:MM}";
             if (!Directory.Exists(path))

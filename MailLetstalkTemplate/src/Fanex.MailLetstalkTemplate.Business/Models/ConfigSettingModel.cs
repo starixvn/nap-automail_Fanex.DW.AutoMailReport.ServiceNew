@@ -57,6 +57,8 @@ namespace Fanex.MailLetstalkTemplate.Business.Models
 
         public List<TitleSetting> TitleSettings { get; set; } = new List<TitleSetting>();
 
-        public string DateTimeFormat { get; set; } = "yyyy_MM_dd";
+        public string DateTimeSubjectFormat { get; set; } = "yyyy/MM/dd";
+
+        public string DateTimeFileNameFormat { get; set; } = "yyyy_MM";
     }
 }
