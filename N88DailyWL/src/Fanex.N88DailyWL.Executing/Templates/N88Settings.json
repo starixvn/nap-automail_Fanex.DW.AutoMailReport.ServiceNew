@@ -15,21 +15,21 @@
     "FirstColumn": 2,
     "LastRow": 17,
     "LastColumn": 4,
-    "CropWidth": 1370,
-    "CropHeight": 1250,
+    "CropWidth": 935,
+    "CropHeight": 850,
     "ImageName": "N88DailyWL",
-    "X": 200,
-    "Y": 210
+    "X": 130,
+    "Y": 140
   },
   "Deposit": {
     "FirstRow": 3,
     "FirstColumn": 7,
     "LastRow": 6,
-    "LastColumn": 10,
-    "CropWidth": 1250,
-    "CropHeight": 350,
+    "LastColumn": 11,
+    "CropWidth": 990,
+    "CropHeight": 250,
     "ImageName": "FirstDeposit",
-    "X": 200,
-    "Y": 215
+    "X": 130,
+    "Y": 140
   }
 }

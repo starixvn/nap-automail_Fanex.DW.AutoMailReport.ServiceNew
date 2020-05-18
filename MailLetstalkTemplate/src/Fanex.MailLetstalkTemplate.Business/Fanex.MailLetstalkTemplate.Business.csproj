@@ -183,6 +183,7 @@
     <Compile Include="Models\ExecuteResultModel.cs" />
     <Compile Include="Models\ImageProperty.cs" />
     <Compile Include="Models\MailModel.cs" />
+    <Compile Include="Models\NoDataSetingModel.cs" />
     <Compile Include="Models\ReportModel.cs" />
     <Compile Include="Models\TitleSetting.cs" />
     <Compile Include="Models\TotalSetting.cs" />

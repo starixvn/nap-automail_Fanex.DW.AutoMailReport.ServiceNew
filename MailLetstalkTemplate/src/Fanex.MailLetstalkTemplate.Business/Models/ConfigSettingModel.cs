@@ -60,5 +60,8 @@ namespace Fanex.MailLetstalkTemplate.Business.Models
         public string DateTimeSubjectFormat { get; set; } = "yyyy/MM/dd";
 
         public string DateTimeFileNameFormat { get; set; } = "yyyy_MM";
+
+        public bool IsEnabledSectionNoData { get; set; }
+        public List<NoDataSetingModel> NoDataSettings { get; set; } = new List<NoDataSetingModel>();
     }
 }
