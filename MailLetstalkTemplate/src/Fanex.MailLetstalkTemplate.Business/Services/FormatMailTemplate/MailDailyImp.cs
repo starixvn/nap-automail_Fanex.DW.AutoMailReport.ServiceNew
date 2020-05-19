@@ -1,0 +1,31 @@
+﻿using System;
+
+namespace Fanex.MailLetstalkTemplate.Business.Services.FormatMailTemplate
+{
+    public class MailDailyImp : MailFormat
+    {
+        private readonly DateRangeServiceProfier dateRangeServiceProfier;
+        private DateRangeService date;
+
+        public MailDailyImp(DateRangeServiceProfier dateRangeServiceProfier)
+        {
+            this.dateRangeServiceProfier = dateRangeServiceProfier;
+            date = dateRangeServiceProfier.Date(AppConfigService.Config.DateRange);
+        }
+
+        public string Subject()
+        {
+            return $"{AppConfigService.Config.EmailSubject} - {DateTime.Now:yyyy/MM/dd}";
+        }
+
+        public string FileName()
+        {
+            return $"{AppConfigService.Config.FileName}_For_{date.ToDate:yyyy_MM_dd}";
+        }
+
+        public string Header()
+        {
+            return $"{AppConfigService.Config.Header} For {date.ToDate:dd MMM yyyy}";
+        }
+    }
+}

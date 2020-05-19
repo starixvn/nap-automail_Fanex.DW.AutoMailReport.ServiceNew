@@ -1,6 +1,5 @@
 ﻿{
   "SPName": "Acc_Rpt_Monthly_Bet_Builder",
-  "IsCheckEnoughData": false,
   "IsIgnoredCheckMailSent": false,
   "DateRange": "Monthly",
   "FromDate": "2020-01-01",
@@ -13,9 +12,9 @@
   "CellAddressRender": [ "A2" ],
   "StartExelRowIndex": "2",
   "EmailTemplate": "BetBuilder/BetBuilder.cshtml",
-  "EmailSubject": "[Bet Builder] - Monthly Report {0}",
+  "EmailSubject": "Automail Report - Monthly Bet Builder Report",
   "MailId": "272",
   "MailName": "Bet Builder Daily Report",
-  "FileName": "Bet Builder - Monthly Report",
+  "FileName": "Monthly_Bet_Builder_Report",
   "StartExcelColumnIndex": 1
 }

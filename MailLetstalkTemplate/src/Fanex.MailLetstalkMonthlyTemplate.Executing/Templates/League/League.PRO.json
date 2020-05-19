@@ -1,6 +1,5 @@
 ﻿{
   "SPName": "GET_SR_League",
-  "IsCheckEnoughData": false,
   "IsIgnoredCheckMailSent": false,
   "DateRange": "Monthly",
   "FromDate": "2020-01-01",
@@ -13,9 +12,9 @@
   "CellAddressRender": [ "A2" ],
   "StartExelRowIndex": "2",
   "EmailTemplate": "League/League.cshtml",
-  "EmailSubject": "[SR_League] - Monthly Report {0}",
+  "EmailSubject": "Automail Report - Monthly SR_League Match Report",
   "MailId": "315",
   "MailName": "SR League Match",
-  "FileName": "SR_League - Match - Monthly Report",
+  "FileName": "Monthly_SR_League_Match_Report",
   "StartExcelColumnIndex": 1
 }

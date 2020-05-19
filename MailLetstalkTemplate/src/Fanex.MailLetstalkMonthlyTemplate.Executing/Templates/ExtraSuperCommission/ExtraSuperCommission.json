@@ -1,6 +1,5 @@
 ﻿{
   "SPName": "Acc_Rpt_ExtraSuperComm",
-  "IsCheckEnoughData": false,
   "DateRange": "Manual",
   "FromDate": "2020-03-01",
   "ToDate": "2020-03-31",
@@ -11,24 +10,18 @@
   "SheetExcelTemplateName": [ "Extra Super Comm" ],
   "CellAddressRender": [ "B6" ],
   "StartExelRowIndex": "6",
-  "DateTimeSubjectFormat": "yyyy/MM",
-  "DateTimeFileNameFormat": "yyyy_MM",
   "EmailTemplate": "ExtraSuperCommission/ExtraSuperCommission.cshtml",
-  "EmailSubject": "Automail Report - Monthly Extra Super Commission Report - {0}",
+  "EmailSubject": "Automail Report - Monthly Extra Super Commission Report",
   "MailId": "327",
   "MailName": "Mail Template Testing",
-  "FileName": "Monthly_Extra_Super_Commission_Report_For",
+  "FileName": "Monthly_Extra_Super_Commission_Report",
   "StartExcelColumnIndex": 2,
   "IsEnabledSectionHeader": true,
-  "TitleSettings": [
-    {
-      "CellAddressRender": "B2",
-      "Title": "Monthly Extra Super Commission Report"
-    }
-  ],
+  "Header": "Monthly Extra Super Commission Report",
   "IsEnabledSectionTotal": true,
   "TotalSettings": [
     {
+      "IsEnabledSectionTotal": true,
       "Label": "Total",
       "StartMergeColumnIndex": 2,
       "EndMergeColumnIndex": 3,

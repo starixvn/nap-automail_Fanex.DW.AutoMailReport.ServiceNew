@@ -1,6 +1,7 @@
 ﻿using Fanex.MailDelivery.Client;
 using Fanex.MailDelivery.Core.Models;
 using Fanex.MailLetstalkTemplate.Business.Models;
+using Fanex.MailLetstalkTemplate.Business.Services.FormatMailTemplate;
 using RazorEngine;
 using RazorEngine.Templating;
 using System;
@@ -20,10 +21,12 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
     public class MailServiceImp : MailService
     {
         private readonly DateRangeServiceProfier dateRangeServiceProfier;
+        private readonly MailFormatProvider mailFormatProvider;
 
-        public MailServiceImp(DateRangeServiceProfier dateRangeServiceProfier)
+        public MailServiceImp(DateRangeServiceProfier dateRangeServiceProfier, MailFormatProvider mailFormatProvider)
         {
             this.dateRangeServiceProfier = dateRangeServiceProfier;
+            this.mailFormatProvider = mailFormatProvider;
         }
 
         public bool IsMailSent(List<MailModel> mails, string mail)
@@ -39,15 +42,15 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
         public void SendMail(string excelPath)
         {
             var date = dateRangeServiceProfier.Date(AppConfigService.Config.DateRange);
+            var mailFormat = mailFormatProvider.Format(AppConfigService.Config.DateRange);
             var attachments = new List<MailAttachment>
             {
                 new MailAttachment(excelPath, FileExtension.MS_EXCEL)
             };
 
-            var format = AppConfigService.Config.DateTimeSubjectFormat;
             var mail = new Mail
             {
-                Subject = string.Format(AppConfigService.Config.EmailSubject, date.ToDate.ToString(format)),
+                Subject = string.Format(mailFormat.Subject()),
                 Title = "ONEworks Auto Generated Report Administrator",
                 Body = ReadBody(excelPath, date.ToDate),
                 Attachments = attachments,

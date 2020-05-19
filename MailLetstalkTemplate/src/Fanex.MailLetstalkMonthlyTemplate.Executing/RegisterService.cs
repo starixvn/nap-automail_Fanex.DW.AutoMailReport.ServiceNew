@@ -6,6 +6,7 @@ using Fanex.Logging;
 using Fanex.Logging.Sentry.RavenClient;
 using Fanex.MailLetstalkTemplate.Business.Models;
 using Fanex.MailLetstalkTemplate.Business.Services;
+using Fanex.MailLetstalkTemplate.Business.Services.FormatMailTemplate;
 using Newtonsoft.Json;
 using OfficeOpenXml;
 using SharpRaven;
@@ -49,6 +50,7 @@ namespace Fanex.MailLetstalkTemplate.Executing
             container.Register<ImageService, ImageServiceImp>();
             container.Register<MailService, MailServiceImp>();
             container.Register<MessageService, MessageServiceImp>();
+            container.Register<MailFormatProvider, MailFormatProviderImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
             container.Register<ApplicationSettingService, ApplicationSettingServiceImp>();

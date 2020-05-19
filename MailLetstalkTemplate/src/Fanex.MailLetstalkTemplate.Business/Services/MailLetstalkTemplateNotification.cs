@@ -72,6 +72,16 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
 
         private ExecuteResultModel SendNotification()
         {
+            if (!dataService.IsDataAvailable())
+            {
+                var lastDate = dataService.LastDateDW();
+                return new ExecuteResultModel
+                {
+                    Success = false,
+                    Message = $"DataIsNotReady, Last Date from DW is {lastDate.LastDate:yyyy/MM/dd}"
+                };
+            }
+
             var letstalkFails = new List<string>();
             var reposts = AppConfigService
                 .Reports

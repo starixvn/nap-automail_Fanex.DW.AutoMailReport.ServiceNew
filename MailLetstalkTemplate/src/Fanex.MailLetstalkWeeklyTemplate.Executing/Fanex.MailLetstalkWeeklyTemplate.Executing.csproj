@@ -94,11 +94,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.MailDelivery.Client, Version=1.1.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Fanex.MailStation.2.0.0-rc4\lib\net461\Fanex.MailDelivery.Client.dll</HintPath>
+      <HintPath>..\..\..\packages\Fanex.MailStation.2.0.1\lib\net461\Fanex.MailDelivery.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.MailDelivery.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Fanex.MailStation.Core.1.0.0-beta5\lib\net461\Fanex.MailDelivery.Core.dll</HintPath>
+      <HintPath>..\..\..\packages\Fanex.MailStation.Core.1.0.1\lib\net461\Fanex.MailDelivery.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Service.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -175,6 +175,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <Content Include="App_Data\DBWH.bodb_dwrs.dwrs.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="App_Data\DBMMS.bodb_MMS.bodbAdminNet.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -221,6 +224,24 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\LicenseeVoidTicket\LicenseeVoidTicket.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\CN88PerformanceByPT\CN88PerformanceByPT.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\CN88PerformanceByPT\CN88PerformanceByPT.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\CN88PerformanceByPT\CN88PerformanceByPT.Local.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\CN88PerformanceByPT\CN88PerformanceByPT.PRO.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\CN88PerformanceByPT\CN88PerformanceByPT.UAT.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\CN88PerformanceByPT\CN88PerformanceByPT.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

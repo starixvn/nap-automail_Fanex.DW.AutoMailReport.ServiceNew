@@ -4,6 +4,8 @@ namespace Fanex.MailLetstalkTemplate.Business.Models
 {
     public class TotalSetting
     {
+        public bool IsEnabledSectionTotal { get; set; }
+
         public List<int> SumColumnsIndex { get; set; }
 
         public string Label { get; set; }

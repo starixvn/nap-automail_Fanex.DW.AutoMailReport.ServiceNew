@@ -4,6 +4,8 @@
     {
         public string SentryClientKey { get; set; }
 
-        public string CategorySentryLog { get; set; }        
+        public string CategorySentryLog { get; set; }
+
+        public bool IsCheckEnoughData { get; set; }
     }
 }

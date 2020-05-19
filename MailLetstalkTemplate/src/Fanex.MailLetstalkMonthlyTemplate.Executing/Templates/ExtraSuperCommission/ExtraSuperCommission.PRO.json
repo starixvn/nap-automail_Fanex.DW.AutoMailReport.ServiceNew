@@ -1,0 +1,40 @@
+﻿{
+  "SPName": "Acc_Rpt_ExtraSuperComm",
+  "DateRange": "Monthly",
+  "FromDate": "2020-03-01",
+  "ToDate": "2020-03-31",
+  "Path": "\\\\10.40.40.127\\Data.Web\\Fanex.Excel\\ExtraSuperCommission",
+  "Password": "ibc168",
+  "FunctionIdNodata": 90,
+  "TemplateExcelFile": "ExtraSuperCommission/ExtraSuperCommission.xlsx",
+  "SheetExcelTemplateName": [ "Extra Super Comm" ],
+  "CellAddressRender": [ "B6" ],
+  "StartExelRowIndex": "6",
+  "EmailTemplate": "ExtraSuperCommission/ExtraSuperCommission.cshtml",
+  "EmailSubject": "Automail Report - Monthly Extra Super Commission Report",
+  "MailId": "356",
+  "MailName": "Monthly Extra Super Commission Report",
+  "FileName": "Monthly_Extra_Super_Commission_Report",
+  "StartExcelColumnIndex": 2,
+  "IsEnabledSectionHeader": true,
+  "Header": "Monthly Extra Super Commission Report",
+  "IsEnabledSectionTotal": true,
+  "TotalSettings": [
+    {
+      "IsEnabledSectionTotal": true,
+      "Label": "Total",
+      "StartMergeColumnIndex": 2,
+      "EndMergeColumnIndex": 3,
+      "SumColumnsIndex": [ 2, 3, 4, 5, 6, 7 ]
+    }
+  ],
+  "IsEnabledSectionNoData": true,
+  "NoDataSettings": [
+    {
+      "StartRowIndex": 6,
+      "StartColumnIndex": 2,
+      "EndRowIndex": 6,
+      "EndColumnIndex": 9
+    }
+  ]
+}

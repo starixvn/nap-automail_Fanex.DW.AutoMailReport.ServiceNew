@@ -91,11 +91,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.MailDelivery.Client, Version=1.1.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Fanex.MailStation.2.0.0-rc4\lib\net461\Fanex.MailDelivery.Client.dll</HintPath>
+      <HintPath>..\..\..\packages\Fanex.MailStation.2.0.1\lib\net461\Fanex.MailDelivery.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.MailDelivery.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Fanex.MailStation.Core.1.0.0-beta5\lib\net461\Fanex.MailDelivery.Core.dll</HintPath>
+      <HintPath>..\..\..\packages\Fanex.MailStation.Core.1.0.1\lib\net461\Fanex.MailDelivery.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Service.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -185,7 +185,6 @@
     <Compile Include="Models\MailModel.cs" />
     <Compile Include="Models\NoDataSetingModel.cs" />
     <Compile Include="Models\ReportModel.cs" />
-    <Compile Include="Models\TitleSetting.cs" />
     <Compile Include="Models\TotalSetting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AppConfigService.cs" />
@@ -198,6 +197,11 @@
     <Compile Include="Services\DateRangeWeeklyServiceImp.cs" />
     <Compile Include="Services\DateRangeYesterdayServiceImp.cs" />
     <Compile Include="Services\ExcelService.cs" />
+    <Compile Include="Services\FormatMailTemplate\MailDailyImp.cs" />
+    <Compile Include="Services\FormatMailTemplate\MailFormat.cs" />
+    <Compile Include="Services\FormatMailTemplate\MailFormatProvider.cs" />
+    <Compile Include="Services\FormatMailTemplate\MailMonthlyImp.cs" />
+    <Compile Include="Services\FormatMailTemplate\MailWeeklyImp.cs" />
     <Compile Include="Services\ImageService.cs" />
     <Compile Include="Services\Log.cs" />
     <Compile Include="Services\MailLetstalkTemplateNotification.cs" />

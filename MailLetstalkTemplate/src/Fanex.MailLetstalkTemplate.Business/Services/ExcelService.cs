@@ -1,5 +1,6 @@
 ﻿using Fanex.Common;
 using Fanex.MailLetstalkTemplate.Business.Models;
+using Fanex.MailLetstalkTemplate.Business.Services.FormatMailTemplate;
 using OfficeOpenXml;
 using System;
 using System.Data;
@@ -18,15 +19,19 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
     {
         private ExcelPackage excelPackage;
         private readonly DateRangeServiceProfier dateRangeServiceProfier;
+        private readonly MailFormatProvider mailFormatProvider;
+        private MailFormat mailFormat;
 
-        public ExcelServiceImp(ExcelPackage excelPackage, DateRangeServiceProfier dateRangeServiceProfier)
+        public ExcelServiceImp(ExcelPackage excelPackage, DateRangeServiceProfier dateRangeServiceProfier, MailFormatProvider mailFormatProvider)
         {
             this.excelPackage = excelPackage;
             this.dateRangeServiceProfier = dateRangeServiceProfier;
+            this.mailFormatProvider = mailFormatProvider;
         }
 
         public string ExportExcel(DataSet dataSet)
         {
+            mailFormat = mailFormatProvider.Format(AppConfigService.Config.DateRange);
             excelPackage = new ExcelPackage(new FileInfo($"Templates/{AppConfigService.Config.TemplateExcelFile}"));
             var index = 0;
             foreach (DataTable dataTable in dataSet.Tables)
@@ -40,9 +45,9 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
                 template.Cells[AppConfigService.Config.CellAddressRender[index]].LoadFromDataTable(dataTable, false);
                 FormatHeaderTitle(index, template);
 
-                if (dataTable.Rows.Count == 0 && AppConfigService.Config.IsEnabledSectionNoData)
+                if (dataTable.Rows.Count == 0)
                 {
-                    FormatNoData(index, template);
+                    FormatNoData(index, template, dataTable.Columns.Count);
                 }
                 else
                 {
@@ -56,12 +61,11 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
             return Save();
         }
 
-        private static void FormatNoData(int index, ExcelWorksheet template)
+        private static void FormatNoData(int index, ExcelWorksheet template, int numberOfColumns)
         {
-            var noDataSetting = AppConfigService.Config.IsEnabledSectionNoData ? AppConfigService.Config.NoDataSettings[index] : new NoDataSetingModel();
             template.Cells[AppConfigService.Config.CellAddressRender[index]].Value = "There is no data";
-            template.Cells[noDataSetting.StartRowIndex, noDataSetting.StartColumnIndex, noDataSetting.EndRowIndex, noDataSetting.EndColumnIndex].Merge = true;
-            template.Cells[noDataSetting.StartRowIndex, noDataSetting.StartColumnIndex, noDataSetting.EndRowIndex, noDataSetting.EndColumnIndex].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+            template.Cells[AppConfigService.Config.StartExelRowIndex, AppConfigService.Config.StartExcelColumnIndex, AppConfigService.Config.StartExelRowIndex, numberOfColumns + 1].Merge = true;
+            template.Cells[AppConfigService.Config.StartExelRowIndex, AppConfigService.Config.StartExcelColumnIndex, AppConfigService.Config.StartExelRowIndex, numberOfColumns + 1].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
         }
 
         private static void FormatContentDataRow(DataTable dataTable, int startRowIndex, int maxRowIndex, ExcelWorksheet template)
@@ -82,16 +86,14 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
         {
             if (AppConfigService.Config.IsEnabledSectionHeader)
             {
-                var title = AppConfigService.Config.TitleSettings[index];
-                var date = dateRangeServiceProfier.Date(AppConfigService.Config.DateRange);
-                template.Cells[title.CellAddressRender].Value = $"{title.Title} Form {date.FromDate:dd MMM, yyyy} To {date.ToDate:dd MMM, yyyy}";
-                template.Cells["B3"].Value = $"Generated on {DateTime.Now:dd MMM, yyyy HH:mm tt}";
+                template.Cells["B2"].Value = mailFormat.Header();
+                template.Cells["B3"].Value = $"Generated on {DateTime.Now:dd MMM yyyy hh:mm:ss tt}";
             }
         }
 
         private static void FormatSectionTotal(DataTable dataTable, TotalSetting totalSetting, ExcelWorksheet template, int maxRowIndex)
         {
-            if (AppConfigService.Config.IsEnabledSectionTotal)
+            if (AppConfigService.Config.IsEnabledSectionTotal && totalSetting.IsEnabledSectionTotal && dataTable.Rows.Count > 0)
             {
                 for (int columnIndex = AppConfigService.Config.StartExcelColumnIndex; columnIndex < dataTable.Columns.Count + AppConfigService.Config.StartExcelColumnIndex; columnIndex++)
                 {
@@ -108,7 +110,7 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
 
         private static void AssignTotalDataRow(DataTable dataTable, TotalSetting totalSetting)
         {
-            if (AppConfigService.Config.IsEnabledSectionTotal && dataTable.Rows.Count > 0)
+            if (AppConfigService.Config.IsEnabledSectionTotal && totalSetting.IsEnabledSectionTotal && dataTable.Rows.Count > 0)
             {
                 DataRow drTotal = dataTable.NewRow();
                 foreach (var columnInex in totalSetting.SumColumnsIndex)
@@ -122,9 +124,13 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
 
         private string Save()
         {
+            if (excelPackage.Workbook.Worksheets.Count > 1)
+            {
+                excelPackage.Workbook.Worksheets[1].Select();
+            }
+
             var date = dateRangeServiceProfier.Date(AppConfigService.Config.DateRange).ToDate;
-            var format = AppConfigService.Config.DateTimeFileNameFormat;
-            var fileName = $"{AppConfigService.Config.FileName}_{date.ToString(format)}.xlsx";
+            var fileName = mailFormat.FileName() + ".xlsx";
             var path = $@"{AppConfigService.Config.Path}\{date:yyyy}\{date:MM}";
             if (!Directory.Exists(path))
             {

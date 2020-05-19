@@ -94,11 +94,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.MailDelivery.Client, Version=1.1.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Fanex.MailStation.2.0.0-rc4\lib\net461\Fanex.MailDelivery.Client.dll</HintPath>
+      <HintPath>..\..\..\packages\Fanex.MailStation.2.0.1\lib\net461\Fanex.MailDelivery.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.MailDelivery.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Fanex.MailStation.Core.1.0.0-beta5\lib\net461\Fanex.MailDelivery.Core.dll</HintPath>
+      <HintPath>..\..\..\packages\Fanex.MailStation.Core.1.0.1\lib\net461\Fanex.MailDelivery.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Service.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -187,12 +187,6 @@
     <Content Include="Templates\Report.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Basketball\Basketball.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\Basketball\Basketball.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Templates\Fanex.MailLetstalkDailyTemplate.Executing.Local.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -208,19 +202,7 @@
     <Content Include="Templates\BaseSetting.UAT.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Basketball\Basketball.Local.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\Basketball\Basketball.UAT.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\Basketball\Basketball.PRO.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Templates\Fanex.MailLetstalkDailyTemplate.Executing.PRO.exe.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\Basketball\Basketball.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\SoccerLivePerformance\SoccerLivePerformance.cshtml">
