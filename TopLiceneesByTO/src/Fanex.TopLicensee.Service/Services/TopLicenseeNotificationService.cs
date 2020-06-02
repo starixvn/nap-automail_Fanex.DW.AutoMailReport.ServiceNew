@@ -89,7 +89,7 @@ namespace Fanex.TopLicensee.Service.Services
                 message = $"Letsalk sent images Unsuccessfully.{Environment.NewLine} {string.Join(Environment.NewLine, imageSentFail)}";
             }
 
-            return new ExecuteResultModel { Success = result, Mail = null, Message = message };
+            return new ExecuteResultModel { Success = result, Mail = new Mail(), Message = message };
         }
 
         private bool SendMessage(List<string> imageSentFail)
