@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Fanex.ESportModelingData.Business.Models;
+﻿using Fanex.ESportModelingData.Business.Models;
 using Fanex.ESportModelingData.Business.Services;
 using Newtonsoft.Json;
 using NSubstitute;
 using NUnit.Framework;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace Fanex.ESportModelingData.UnitTests.Services
 {
@@ -16,7 +16,7 @@ namespace Fanex.ESportModelingData.UnitTests.Services
         public void ExporDimension_MethodExecute_ShouldBeCalled()
         {
             // Arrange
-            var csvService = Substitute.For<CsvService>();            
+            var csvService = Substitute.For<CsvService>();
             var text = File.ReadAllText("Templates/RawModelingDataModel.json");
             var status = JsonConvert.DeserializeObject<List<RawModelingDataModel>>(text);
 
@@ -31,9 +31,8 @@ namespace Fanex.ESportModelingData.UnitTests.Services
 
             // Assert
             csvService.Received().Execute(Arg.Any<List<BetCountModel>>(), Arg.Any<string>());
-            csvService.Received().Execute(Arg.Any<List<RealIncomeModel>>(), Arg.Any<string>());
-            csvService.Received().Execute(Arg.Any<List<RealTurnoverModel>>(), Arg.Any<string>());
-            csvService.Received().Execute(Arg.Any<List<VirtualWinLossModel>>(), Arg.Any<string>());
+            csvService.Received().Execute(Arg.Any<List<MemberTurnoverModel>>(), Arg.Any<string>());
+            csvService.Received().Execute(Arg.Any<List<MemberWinLossModel>>(), Arg.Any<string>());
             csvService.Received().Execute(Arg.Any<List<VirtualrateSettingModel>>(), Arg.Any<string>());
         }
 
@@ -49,7 +48,7 @@ namespace Fanex.ESportModelingData.UnitTests.Services
         public void Replace_Alway_ReturnRemoveSpecialCharactor(string input)
         {
             // Arrange
-            var csvService = Substitute.For<CsvService>();            
+            var csvService = Substitute.For<CsvService>();
             var expect = " ";
 
             // Act
@@ -57,7 +56,7 @@ namespace Fanex.ESportModelingData.UnitTests.Services
             var result = service.Replace(input);
 
             // Assert
-            Assert.That(result, Is.EqualTo(expect)); 
+            Assert.That(result, Is.EqualTo(expect));
         }
     }
 }

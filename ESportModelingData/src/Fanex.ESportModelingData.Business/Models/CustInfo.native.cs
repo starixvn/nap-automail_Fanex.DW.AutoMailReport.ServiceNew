@@ -14,5 +14,7 @@ namespace Fanex.ESportModelingData.Business.Models
         public string CustomerName { get; set; }
 
         public bool Root { get; set; }
+
+        public bool Blocked { get; set; }
     }
 }

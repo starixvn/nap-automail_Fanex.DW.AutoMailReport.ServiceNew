@@ -142,10 +142,9 @@
     <Compile Include="Models\ExecuteResultModel.cs" />
     <Compile Include="Models\Period.cs" />
     <Compile Include="Models\RawModelingDataModel.native.cs" />
-    <Compile Include="Models\RealIncomeModel.native.cs" />
-    <Compile Include="Models\RealTurnoverMode.nativel.cs" />
+    <Compile Include="Models\MemberTurnoverMode.nativel.cs" />
     <Compile Include="Models\VirtualrateSettingModel.native.cs" />
-    <Compile Include="Models\VirtualWinLossMode.nativel.cs" />
+    <Compile Include="Models\MemberWinLossMode.nativel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AppConfigService.native.cs" />
     <Compile Include="Services\CsvService.native.cs" />
