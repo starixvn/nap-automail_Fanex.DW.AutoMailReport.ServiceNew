@@ -61,42 +61,48 @@
       "FirstColumn": 2,
       "LastRow": 55,
       "LastColumn": 7,
-      "CropWidth": 1970,
-      "CropHeight": 4480,
-      "X": 200,
-      "Y": 250
+      "CropWidth": 1340,
+      "CropHeight": 2980,
+      "X": 130,
+      "Y": 170,
+      "IsResize": true,
+      "ResizeNewWidth": 700
     },
     "TopLicenseeMargin": {
       "FirstRow": 2,
       "FirstColumn": 2,
       "LastRow": 65,
       "LastColumn": 10,
-      "CropWidth": 2370,
-      "CropHeight": 5270,
-      "X": 200,
-      "Y": 200,
+      "CropWidth": 1630,
+      "CropHeight": 3590,
+      "X": 130,
+      "Y": 130,
       "IsResize": true,
-      "ResizeNewWidth": 1200
+      "ResizeNewWidth": 700
     },
     "VirtualSoccer_House": {
       "FirstRow": 2,
       "FirstColumn": 2,
       "LastRow": 13,
       "LastColumn": 9,
-      "CropWidth": 2460,
-      "CropHeight": 1050,
-      "X": 200,
-      "Y": 220
+      "CropWidth": 1670,
+      "CropHeight": 720,
+      "X": 130,
+      "Y": 140,
+      "IsResize": true,
+      "ResizeNewWidth": 700
     },
     "VirtualSoccer_Licensee": {
       "FirstRow": 2,
       "FirstColumn": 2,
       "LastRow": 55,
       "LastColumn": 7,
-      "CropWidth": 1930,
-      "CropHeight": 4400,
-      "X": 200,
-      "Y": 220
+      "CropWidth": 1320,
+      "CropHeight": 3000,
+      "X": 130,
+      "Y": 140,
+      "IsResize": true,
+      "ResizeNewWidth": 500
     }
   }
 }

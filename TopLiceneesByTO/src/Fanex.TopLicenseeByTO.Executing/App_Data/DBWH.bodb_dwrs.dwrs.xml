@@ -1,6 +1,6 @@
 ﻿<Functions>
-	<Function Name="Auto Mail - Score Box">
-    <Setting Key="BI_GetDWStatusByCube" SpName="BI_GetDWStatusByCube" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0"/>
+  <Function Name="Auto Mail - Score Box">
+    <Setting Key="BI_GetDWStatusByCube" SpName="BI_GetDWStatusByCube" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
     <Setting Key="Acc_Rpt_Letstalk_TopLicenseeByTO" SpName="Acc_Rpt_Letstalk_TopLicenseeByTO" DbName="DBWH.bodb_dwrs.dwrs" Timeout="0"></Setting>
     <Setting Key="Acc_Rpt_Letstalk_TopLicenseeMargin" SpName="Acc_Rpt_Letstalk_TopLicenseeMargin" DbName="DBWH.bodb_dwrs.dwrs" Timeout="0"></Setting>
     <Setting Key="Acc_Rpt_Letstalk_LeagueGroupSport_House" SpName="Acc_Rpt_Letstalk_LeagueGroupSport_House" DbName="DBWH.bodb_dwrs.dwrs" Timeout="0"></Setting>

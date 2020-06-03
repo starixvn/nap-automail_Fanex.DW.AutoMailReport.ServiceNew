@@ -21,5 +21,11 @@
         public int Y { get; set; }
 
         public string SheetName { get; set; }
+
+        public bool IsResize { get; set; }
+
+        public int ResizeNewWidth { get; set; }
+
+        public int ImageQuality { get; set; } = 100;
     }
 }

@@ -62,9 +62,11 @@
       "LastRow": 55,
       "LastColumn": 7,
       "CropWidth": 2350,
-      "CropHeight": 5290,
+      "CropHeight": 5260,
       "X": 220,
-      "Y": 300
+      "Y": 300,
+      "IsResize": true,
+      "ResizeNewWidth": 700
     },
     "TopLicenseeMargin": {
       "FirstRow": 2,
@@ -76,7 +78,7 @@
       "X": 200,
       "Y": 200,
       "IsResize": true,
-      "ResizeNewWidth": 1200
+      "ResizeNewWidth": 700
     },
     "VirtualSoccer_House": {
       "FirstRow": 2,
@@ -86,7 +88,9 @@
       "CropWidth": 2910,
       "CropHeight": 1250,
       "X": 230,
-      "Y": 250
+      "Y": 250,
+      "IsResize": true,
+      "ResizeNewWidth": 700
     },
     "VirtualSoccer_Licensee": {
       "FirstRow": 2,
@@ -96,7 +100,9 @@
       "CropWidth": 2350,
       "CropHeight": 5250,
       "X": 200,
-      "Y": 220
+      "Y": 220,
+      "IsResize": true,
+      "ResizeNewWidth": 500
     }
   }
 }

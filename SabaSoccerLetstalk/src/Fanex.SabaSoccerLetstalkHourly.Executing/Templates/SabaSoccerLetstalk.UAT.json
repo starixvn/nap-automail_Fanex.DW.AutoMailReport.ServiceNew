@@ -1,6 +1,6 @@
 ﻿{
   "SentryClientKey": "http://612764957dbb46ffa359103d8ffa08c6@10.99.99.51:801/59",
-  "CategorySentryLog": "NAP-Report-Service-UAT",  
+  "CategorySentryLog": "NAP-Report-Service-UAT",
   "IsCheckEnoughData": false,
   "IsManual": false,
   "RptDate": "2020-04-22",
@@ -21,12 +21,15 @@
       "FirstColumn": 1,
       "LastRow": 52,
       "LastColumn": 10,
-      "CropWidth": 3500,
+      "CropWidth": 3530,
       "CropHeight": 5100,
       "ImageName": "SabaSoccer",
       "X": 210,
       "Y": 200,
-      "SheetName": "Data"
+      "SheetName": "Data",
+      "IsResize": true,
+      "ResizeNewWidth": 800,
+      "ImageQuality": 100
     },
     "NoData": {
       "FirstRow": 1,
