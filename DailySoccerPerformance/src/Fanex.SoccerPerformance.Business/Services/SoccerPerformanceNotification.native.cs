@@ -23,8 +23,8 @@ namespace Fanex.SoccerPerformance.Business.Services
         public SoccerPerformanceNotificationImp(
             Log log,
             DateServiceProvider dateService,
-            DataService dataService, 
-            ExcelService excelService, 
+            DataService dataService,
+            ExcelService excelService,
             MessageService messageService,
             MailService mailService,
             LetstalkClientService letstalkService)
@@ -54,7 +54,7 @@ namespace Fanex.SoccerPerformance.Business.Services
             }
             finally
             {
-                jobMessage.Mail = result.Mail;
+                jobMessage.Mail = new Mail();
                 jobMessage.JobStatus = result.Success ? JobStatus.SuccessWithoutSendmail : JobStatus.DataIsNotReady;
                 jobMessage.TaskLog = new TaskLog
                 {
@@ -68,7 +68,7 @@ namespace Fanex.SoccerPerformance.Business.Services
 
         private ExecuteResultModel SendNotification()
         {
-            if(!dataService.IsDataAvailable())
+            if (!dataService.IsDataAvailable())
             {
                 var lastDate = dataService.QueryLastDate();
                 mailService.SendMailWhenDataIsNotReady(lastDate.LastDate);
@@ -85,7 +85,7 @@ namespace Fanex.SoccerPerformance.Business.Services
             var letstalkModel = messageService.CreateLetstalkModel(fileNames);
             var result = letstalkService.SendMessage(letstalkModel);
             var message = string.Empty;
-            if(!result)
+            if (!result)
             {
                 message = "Letstalk send images unsuccessfully.";
             }

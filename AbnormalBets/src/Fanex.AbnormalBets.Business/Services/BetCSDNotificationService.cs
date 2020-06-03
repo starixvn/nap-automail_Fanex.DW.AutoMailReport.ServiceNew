@@ -15,7 +15,7 @@ namespace Fanex.AbnormalBets.Business.Services
         private readonly RepositoryCSDService repositoryService;
         private readonly DateService dateService;
         private readonly TransformCSDService transformService;
-        private readonly ExcelCSDService excelService;        
+        private readonly ExcelCSDService excelService;
 
         public BetCSDNotificationServiceImp(
             Log log,
@@ -28,7 +28,7 @@ namespace Fanex.AbnormalBets.Business.Services
             this.repositoryService = repositoryService;
             this.dateService = dateService;
             this.transformService = transformService;
-            this.excelService = excelService;            
+            this.excelService = excelService;
         }
 
         public JobMessage Execute()
@@ -66,7 +66,7 @@ namespace Fanex.AbnormalBets.Business.Services
             var rawData = repositoryService.QueryBetTickets(date);
             var data = transformService.ExecuteDailyCSD(rawData);
             excelService.Execute(data, date);
-            return new ExecuteResultModel { Success = true, Mail = null };
+            return new ExecuteResultModel { Success = true };
         }
     }
 }

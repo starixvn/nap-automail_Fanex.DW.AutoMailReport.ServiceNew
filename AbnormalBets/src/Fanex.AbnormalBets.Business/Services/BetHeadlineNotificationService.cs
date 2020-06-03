@@ -82,7 +82,7 @@ namespace Fanex.AbnormalBets.Business.Services
                 mailService.SendMail(date, excelPath, isNoData, group.Subject, group.MailId);
             }
 
-            return new ExecuteResultModel { Success = true, Mail = new Mail { } };
+            return new ExecuteResultModel { Success = true };
         }
     }
 }
