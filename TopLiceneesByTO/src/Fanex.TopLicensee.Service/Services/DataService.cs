@@ -100,17 +100,17 @@ namespace Fanex.TopLicensee.Service.Services
             return new Dictionary<SportType, Dictionary<LeagueGroup, string>>
             {
                 {
-                    SportType.VirtualFIFA, new Dictionary<LeagueGroup, string>
+                    SportType.Soccer, new Dictionary<LeagueGroup, string>
                     {
                         { LeagueGroup.Esoccer, "41" },
-                        { LeagueGroup.VirtualLeague, "42,74" },
+                        { LeagueGroup.VL, "42,74" },
                     }
                 },
                 {
-                    SportType.VirtualNBA, new Dictionary<LeagueGroup, string>
+                    SportType.Basketball, new Dictionary<LeagueGroup, string>
                     {
                         { LeagueGroup.Esoccer, "41" },
-                        { LeagueGroup.VirtualLeague, "42" },
+                        { LeagueGroup.VL, "42" },
                     }
                 }
             };

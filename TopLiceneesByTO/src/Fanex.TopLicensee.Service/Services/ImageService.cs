@@ -34,7 +34,7 @@ namespace Fanex.TopLicensee.Service.Services
 
             imageName = $@"{imageName}\{imageProperty.ImageName}_On_{date:yyyyMMdd}.jpg";
             var imageNameFinal = $@"{AppConfigService.AppConfig.Path}\{date:yyyy}\{date:MM}\{imageProperty.ImageName}_Final_On_{date:yyyyMMdd}.jpg";
-            var imageNameResizeWidth = $@"{AppConfigService.AppConfig.Path}\{date:yyyy}\{date:MM}\{imageProperty.ImageName}_ResizeWidth_On_{date:yyyyMMdd}.jpg";
+            var imageNameResizeWidth = $@"{AppConfigService.AppConfig.Path}\{date:yyyy}\{date:MM}\{imageProperty.ImageName}_LQ_On_{date:yyyyMMdd}.jpg";
 
             var workbook = new Workbook();
             workbook.OpenPassword = AppConfigService.AppConfig.Password;

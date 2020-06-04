@@ -3,12 +3,12 @@
     public enum LeagueGroup
     {
         Esoccer = 41,
-        VirtualLeague = 42,
+        VL = 42,//Virtual league
     }
 
     public enum SportType
     {
-        VirtualFIFA = 1,
-        VirtualNBA = 2
+        Soccer = 1,
+        Basketball = 2
     }
 }
