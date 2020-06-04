@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.IO;
-using Fanex.Data;
+﻿using Fanex.Data;
 using Fanex.Data.OldConnectionStringProvider;
 using Fanex.Data.Repository;
 using Fanex.ESportModelingData.Business.Models;
@@ -12,6 +8,10 @@ using Fanex.Logging.Sentry.RavenClient;
 using Newtonsoft.Json;
 using SharpRaven;
 using SimpleInjector;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 
 namespace Fanex.ESportModelingDataWeekly.Executing
 {
@@ -29,7 +29,7 @@ namespace Fanex.ESportModelingDataWeekly.Executing
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
 
             var text = File.ReadAllText("Templates/ESportModelingDataSettings.json");
-            AppConfigService.AppConfig = JsonConvert.DeserializeObject<ConfigSettingModel>(text);            
+            AppConfigService.AppConfig = JsonConvert.DeserializeObject<ConfigSettingModel>(text);
         }
 
         public static void RegisterContainer(Container container)
@@ -37,7 +37,7 @@ namespace Fanex.ESportModelingDataWeekly.Executing
             container.Register<Log, LogImp>();
             container.Register<IDynamicRepository, DynamicRepository>();
             container.Register<RepositoryService, RepositoryServiceImp>();
-            container.Register<DateTimeService, DateTimeServiceImp>();
+            container.Register<DateTimeServiceProvider, DateTimeServiceProviderImp>();
             container.Register<ModelingDataNotificationService, ModelingDataNotificationServiceImp>();
             container.Register<ExportService, ExportServiceImp>();
             container.Register<CsvService, CsvServiceImp>();
@@ -45,7 +45,6 @@ namespace Fanex.ESportModelingDataWeekly.Executing
             container.Register<ExportLevelFactory, ExportLevelFactoryImp>();
             container.Register<MailContentService, MailContentServiceImp>();
             container.Register<MailService, MailServiceImp>();
-            container.Register<ParamService, ParamServiceImp>();
         }
 
         private static void SentryRegister()

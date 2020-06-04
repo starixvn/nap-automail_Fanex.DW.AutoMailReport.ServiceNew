@@ -1,7 +1,7 @@
-﻿using System;
-using Fanex.ESportModelingData.Business.Services;
+﻿using Fanex.ESportModelingData.Business.Services;
 using Newtonsoft.Json;
 using SimpleInjector;
+using System;
 
 namespace Fanex.ESportModelingDataDaily.Executing
 {

@@ -143,11 +143,20 @@
     <Compile Include="Models\Period.cs" />
     <Compile Include="Models\RawModelingDataModel.native.cs" />
     <Compile Include="Models\MemberTurnoverMode.nativel.cs" />
+    <Compile Include="Models\Sport.cs" />
     <Compile Include="Models\VirtualrateSettingModel.native.cs" />
     <Compile Include="Models\MemberWinLossMode.nativel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AppConfigService.native.cs" />
     <Compile Include="Services\CsvService.native.cs" />
+    <Compile Include="Services\DateRangeService.cs" />
+    <Compile Include="Services\DateTimeService.cs" />
+    <Compile Include="Services\DateTimeServiceDailyHistoryImp.cs" />
+    <Compile Include="Services\DateTimeServiceDailyImp.cs" />
+    <Compile Include="Services\DateTimeServiceManualImp.cs" />
+    <Compile Include="Services\DateTimeServiceProvider.cs" />
+    <Compile Include="Services\DateTimeServiceWeeklyHistoryImp.cs" />
+    <Compile Include="Services\DateTimeServiceWeeklyImp.cs" />
     <Compile Include="Services\ExportBaseService.cs" />
     <Compile Include="Services\ExportLevel1ServiceImp.cs" />
     <Compile Include="Services\ExportLevel2ServiceImp.cs" />
@@ -156,13 +165,18 @@
     <Compile Include="Services\ExportLevelFactory.cs" />
     <Compile Include="Services\ExportLevelService.cs" />
     <Compile Include="Services\ExportService.cs" />
+    <Compile Include="Services\GenerateTemplate.cs" />
+    <Compile Include="Services\GenerateTemplateDailyHistoryImp.cs" />
+    <Compile Include="Services\GenerateTemplateDailyImp.cs" />
+    <Compile Include="Services\GenerateTemplateProvider.cs" />
+    <Compile Include="Services\GenerateTemplateWeeklyHistoryImp.cs" />
+    <Compile Include="Services\GenerateTemplateWeeklymp.cs" />
     <Compile Include="Services\MailContentService.cs" />
     <Compile Include="Services\MailService.cs" />
-    <Compile Include="Services\ParamService.cs" />
     <Compile Include="Services\RepositoryService.cs" />
-    <Compile Include="Services\DateTimeService.cs" />
     <Compile Include="Services\Log.native.cs" />
     <Compile Include="Services\ModelingDataNotificationService.cs" />
+    <Compile Include="Services\GenerateName.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

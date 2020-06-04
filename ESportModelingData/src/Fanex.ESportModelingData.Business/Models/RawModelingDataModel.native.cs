@@ -18,8 +18,6 @@
 
         public int BetCount { get; set; }
 
-        //public decimal RealIncome { get; set; }
-
         public decimal MemberTurnover { get; set; }
 
         public decimal MemberWinLoss { get; set; }

@@ -4,6 +4,8 @@
     {
         Manual = 0,
         Daily = 1,
-        Weekly = 2
+        Weekly = 2,
+        DailyHistoricalData = 3,
+        WeeklyHistoricalData = 4,
     }
 }

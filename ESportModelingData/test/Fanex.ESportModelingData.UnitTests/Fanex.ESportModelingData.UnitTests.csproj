@@ -138,12 +138,9 @@
     <Compile Include="Services\ExportLevelServiceUnitTests.cs" />
     <Compile Include="Services\ExportServiceUnitTests.cs" />
     <Compile Include="Services\MailContentServiceUnitTests.cs" />
-    <Compile Include="Services\MailServiceUnitTests.cs" />
-    <Compile Include="Services\ParamServiceUnitTests.cs" />
     <Compile Include="Services\RepositoryServiceUnitTests.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\DateTimeServiceUnitTests.cs" />
     <Compile Include="Services\ExportBaseServiceUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>

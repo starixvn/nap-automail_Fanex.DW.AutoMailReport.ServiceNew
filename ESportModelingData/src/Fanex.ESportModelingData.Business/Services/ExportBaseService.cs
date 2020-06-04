@@ -30,9 +30,8 @@ namespace Fanex.ESportModelingData.Business.Services
             name = Replace(name);
 
             ExportBetCount(path, name, status, statusGroups);
-            //ExportRealIncome(path, name, status, statusGroups);
-            ExportRealTurnover(path, name, status, statusGroups);
-            ExportVirtualWinLoss(path, name, status, statusGroups);
+            ExportMemberTurnover(path, name, status, statusGroups);
+            ExportMemberWinLoss(path, name, status, statusGroups);
             ExportVirtualrateSetting(path, name, status, statusGroups);
         }
 
@@ -53,26 +52,9 @@ namespace Fanex.ESportModelingData.Business.Services
             csvService.Execute(data, fileName);
         }
 
-        //private void ExportRealIncome(string path, string name, string status, IGrouping<dynamic, RawModelingDataModel> statusGroups)
-        //{
-        //    var fileName = $@"{path}\{name} - Real Win Loss - {status}.csv";
-        //    var data = new List<RealIncomeModel_>();
-        //    statusGroups.ToList()
-        //    .ForEach(m =>
-        //    {
-        //        data.Add(new RealIncomeModel_
-        //        {
-        //            Customer = m.Customer,
-        //            //RealIncome = m.RealIncome
-        //        });
-        //    });
-
-        //    csvService.Execute(data, fileName);
-        //}
-
-        private void ExportRealTurnover(string path, string name, string status, IGrouping<dynamic, RawModelingDataModel> statusGroups)
+        private void ExportMemberTurnover(string path, string name, string status, IGrouping<dynamic, RawModelingDataModel> statusGroups)
         {
-            var fileName = $@"{path}\{name} - Real Turnover - {status}.csv";
+            var fileName = $@"{path}\{name} - Member Turnover - {status}.csv";
             var data = new List<MemberTurnoverModel>();
             statusGroups.ToList()
             .ForEach(m =>
@@ -87,9 +69,9 @@ namespace Fanex.ESportModelingData.Business.Services
             csvService.Execute(data, fileName);
         }
 
-        private void ExportVirtualWinLoss(string path, string name, string status, IGrouping<dynamic, RawModelingDataModel> statusGroups)
+        private void ExportMemberWinLoss(string path, string name, string status, IGrouping<dynamic, RawModelingDataModel> statusGroups)
         {
-            var fileName = $@"{path}\{name} - Virtual Win Loss - {status}.csv";
+            var fileName = $@"{path}\{name} - Member Win Loss - {status}.csv";
             var data = new List<MemberWinLossModel>();
             statusGroups.ToList()
             .ForEach(m =>

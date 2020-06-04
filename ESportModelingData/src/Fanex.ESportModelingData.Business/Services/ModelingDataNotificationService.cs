@@ -1,10 +1,8 @@
 ﻿using Fanex.ESportModelingData.Business.Models;
 using Fanex.MailDelivery.Core.Models;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace Fanex.ESportModelingData.Business.Services
 {
@@ -19,15 +17,20 @@ namespace Fanex.ESportModelingData.Business.Services
         private readonly RepositoryService repositoryService;
         private readonly ExportService exportService;
         private readonly MailService mailService;
-        private readonly ParamService paramService;
+        private readonly DateRangeService daterange;
 
-        public ModelingDataNotificationServiceImp(Log log, RepositoryService repositoryService, ExportService exportService, MailService mailService, ParamService paramService)
+        public ModelingDataNotificationServiceImp(
+            Log log,
+            RepositoryService repositoryService,
+            ExportService exportService,
+            MailService mailService,
+            DateRangeService daterange)
         {
             this.log = log;
             this.repositoryService = repositoryService;
             this.exportService = exportService;
             this.mailService = mailService;
-            this.paramService = paramService;
+            this.daterange = daterange;
         }
 
         public JobMessage Execute()
@@ -61,11 +64,10 @@ namespace Fanex.ESportModelingData.Business.Services
 
         private ExecuteResultModel SendNotification()
         {
-            var dateList = paramService.Dates();
-            var minDate = dateList.FirstOrDefault().DateStart;
-            var maxDate = dateList.LastOrDefault().DateEnd;
+            var dates = daterange.Dates(AppConfigService.AppConfig.Period);
             var shortNames = new List<string>();
-            foreach (var date in dateList)
+
+            foreach (var date in dates)
             {
                 var rawData = repositoryService.Query(date.DateStart, date.DateEnd);
                 var custInfo = repositoryService.QueryCustInfo(date.DateStart, date.DateEnd);
@@ -81,8 +83,7 @@ namespace Fanex.ESportModelingData.Business.Services
                 shortNames.Add(shortName);
             }
 
-            var mail = mailService.CreateMail(minDate, maxDate, shortNames);
-
+            var mail = mailService.CreateMail(shortNames);
             return new ExecuteResultModel { Success = true, Mail = mail };
         }
     }
