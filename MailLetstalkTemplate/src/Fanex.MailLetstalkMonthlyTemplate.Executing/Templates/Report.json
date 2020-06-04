@@ -1,8 +1,13 @@
 ﻿[
   {
+    "ReportFile": "ExtraSuperCommission/ExtraSuperCommission.json",
+    "IsActive": true,
+    "IsEmailEnabled": true
+  },
+  {
     "ReportFile": "League/League.json",
     "IsActive": true,
-    "IsEmailEnabled": true    
+    "IsEmailEnabled": true
   },
   {
     "ReportFile": "BetBuilder/BetBuilder.json",
@@ -12,7 +17,7 @@
   {
     "ReportFile": "EsportsPerformancebySite/EsportsPerformancebySite.json",
     "IsActive": true,
-    "IsEmailEnabled": true    
+    "IsEmailEnabled": true
   },
   {
     "ReportFile": "Sportbook-CreditLine/Sportbook-CreditLine.json",

@@ -128,7 +128,8 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
 
         private bool SendImage(string imagePath)
         {
-            var letstalkModel = messageService.CreateLetstalkModel(imagePath);
+            var letstalkGroup = AppConfigService.Config.Group;
+            var letstalkModel = messageService.CreateLetstalkModel(imagePath, letstalkGroup);
             var status = letstalkService.SendMessage(letstalkModel);
             return status;
         }

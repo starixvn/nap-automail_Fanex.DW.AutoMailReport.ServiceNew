@@ -1,6 +1,5 @@
 ﻿{
   "SPName": "Acc_Rpt_Automail_SportbookMonthlyCredit",
-  "IsCheckEnoughData": false,
   "DateRange": "Monthly",
   "FromDate": "2020-01-01",
   "ToDate": "2020-01-31",
@@ -12,9 +11,9 @@
   "CellAddressRender": [ "A4" ],
   "StartExelRowIndex": "4",
   "EmailTemplate": "Sportbook-CreditLine/Sportbook-CreditLine.cshtml",
-  "EmailSubject": "Sportbook - Monthly Credit Line Performance {0}",
+  "EmailSubject": "Automail Report - Monthly Sportbook Credit Line Performance Report",
   "MailId": "314",
   "MailName": "Mail Monthly Template - UAT",
-  "FileName": "Sportbook - Monthly Credit Line Performance",
+  "FileName": "Monthly_Sportbook_Credit_Line_Performance_Report",
   "StartExcelColumnIndex": 1
 }

@@ -31,6 +31,6 @@ namespace Fanex.SabaSoccerLetstalk.Business.Models
 
         public Dictionary<string, ImageProperty> ImageSettings { get; set; } = new Dictionary<string, ImageProperty>();
 
-        public Dictionary<Sport, string> SabaSports { get; set; }
+        public Dictionary<Sport, LetstalkTodayPunterSetting> SabaSports { get; set; }
     }
 }

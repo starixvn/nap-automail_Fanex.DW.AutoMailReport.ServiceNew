@@ -10,9 +10,9 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
 {
     public interface SabaSportPunterExcelService
     {
-        string ExportExcelWithData(Sport sport, DateTime date, List<PunterModel> data, int batchIndex, int totalBatch, bool isAllInfo);
+        string ExportExcelWithData(Sport sport, string exceltitle, DateTime date, List<PunterModel> data, int batchIndex, int totalBatch, bool isAllInfo);
 
-        string ExportExcelWithNoData(Sport sport, DateTime date);
+        string ExportExcelWithNoData(Sport sport, string exceltitle, DateTime date);
     }
 
     public class SabaSportPunterExcelServiceImp : SabaSportPunterExcelService
@@ -24,7 +24,7 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             this.excelPackage = excelPackage;
         }
 
-        public string ExportExcelWithData(Sport sport, DateTime date, List<PunterModel> data, int batchIndex, int totalBatch, bool isAllInfo)
+        public string ExportExcelWithData(Sport sport, string exceltitle, DateTime date, List<PunterModel> data, int batchIndex, int totalBatch, bool isAllInfo)
         {
             UpdateRowIndex(data, batchIndex);
 
@@ -33,7 +33,7 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             var startIndexRow = 3;
             template.Cells["A3"].LoadFromCollection(data, false);
 
-            RenderTitleWithData(sport, batchIndex, totalBatch, template, date);
+            RenderTitleWithData(exceltitle, batchIndex, totalBatch, template, date);
             RenderData(data, template);
             RenderHighLightBGColor(data, template, startIndexRow);
 
@@ -56,15 +56,15 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             }
         }
 
-        private static void RenderTitleWithData(Sport sport, int batchIndex, int totalBatch, ExcelWorksheet template, DateTime date)
+        private static void RenderTitleWithData(string exceltitle, int batchIndex, int totalBatch, ExcelWorksheet template, DateTime date)
         {
-            template.Cells["A1"].Value = $"Top Saba {sport} Punters - Page {batchIndex + 1} of {totalBatch}";
+            template.Cells["A1"].Value = $"{exceltitle} - Page {batchIndex + 1} of {totalBatch}";
             template.Cells["E1"].Value = $"{date:yyyyMMdd} - Time Range: {AppConfigService.Config.TimeRange}";
         }
 
-        private static void RenderTitleWithNoData(Sport sport, ExcelWorksheet template, DateTime date)
+        private static void RenderTitleWithNoData(string exceltitle, ExcelWorksheet template, DateTime date)
         {
-            template.Cells["A1"].Value = $"Top Saba {sport} Punters";
+            template.Cells["A1"].Value = $"{exceltitle}";
             template.Cells["E1"].Value = $"{date:yyyyMMdd} - Time Range: {AppConfigService.Config.TimeRange}";
         }
 
@@ -131,12 +131,12 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             return path;
         }
 
-        public string ExportExcelWithNoData(Sport sport, DateTime date)
+        public string ExportExcelWithNoData(Sport sport, string exceltitle, DateTime date)
         {
             excelPackage = new ExcelPackage(new FileInfo($"Templates/SabaSoccerLetstalk-NoData.xlsx"));
             var template = excelPackage.Workbook.Worksheets["Data"];
 
-            RenderTitleWithNoData(sport, template, date);
+            RenderTitleWithNoData(exceltitle, template, date);
 
             return Save(sport, date, 0);
         }

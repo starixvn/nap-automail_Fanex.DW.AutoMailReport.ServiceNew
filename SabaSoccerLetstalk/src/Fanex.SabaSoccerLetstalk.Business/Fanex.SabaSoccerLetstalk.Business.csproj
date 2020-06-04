@@ -167,6 +167,7 @@
     <Compile Include="Models\ConfigSettingModel.cs" />
     <Compile Include="Models\ExecuteResultModel.cs" />
     <Compile Include="Models\ImageProperty.cs" />
+    <Compile Include="Models\LetstalkTodayPunterSetting.cs" />
     <Compile Include="Models\PunterModel.cs" />
     <Compile Include="Models\Sport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

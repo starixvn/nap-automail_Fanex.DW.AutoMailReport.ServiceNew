@@ -2,6 +2,7 @@
 using Fanex.Data.Repository;
 using Fanex.MailLetstalkTemplate.Business.Criterias;
 using Fanex.MailLetstalkTemplate.Business.Models;
+using Fanex.Service.Core;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,6 +15,10 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
         DataSet QueryData(string spName);
 
         List<MailModel> QueryMail(DateTime rptDate);
+
+        LastDateModel LastDateDW();
+
+        bool IsDataAvailable();
     }
 
     public class DataServiceImp : DataService
@@ -39,13 +44,32 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
 
             db.AssignParamValues(param);
 
-            return db.ExecuteDataSet();            
+            return db.ExecuteDataSet();
         }
 
         public List<MailModel> QueryMail(DateTime rptDate)
         {
             var criteria = new CheckMailStatusCriteria { FromDate = rptDate, ToDate = rptDate };
             return repository.Fetch<MailModel>(criteria).ToList();
+        }
+
+        public bool IsDataAvailable()
+        {
+            var result = false;
+            if (!AppConfigService.BaseSetting.IsCheckEnoughData)
+            {
+                return true;
+            }
+
+            var lastDate = LastDateDW();
+            result = lastDate.LastDate >= Convert.ToDateTime(SystemTime.Now.AddDays(-1).ToShortDateString());
+
+            return result;
+        }
+
+        public LastDateModel LastDateDW()
+        {
+            return repository.Get<LastDateModel>(new GetDWStatusByCubeCriteria());
         }
     }
 }

@@ -81,14 +81,17 @@ namespace Fanex.N88DailyWL.Business.Services
             template.Cells["H4"].Value = n88Deposit.FirstDepositMember_MYR;
             template.Cells["I4"].Value = n88Deposit.FirstDepositMember_THB;
             template.Cells["J4"].Value = n88Deposit.FirstDepositMember_IDR;
+            template.Cells["K4"].Value = n88Deposit.FirstDepositMember_CNY;
 
             template.Cells["H5"].Value = n88Deposit.DepositMember_MYR;
             template.Cells["I5"].Value = n88Deposit.DepositMember_THB;
             template.Cells["J5"].Value = n88Deposit.DepositMember_IDR;
+            template.Cells["K5"].Value = n88Deposit.DepositMember_CNY;
 
             template.Cells["H6"].Value = n88Deposit.Deposit_MYR;
             template.Cells["I6"].Value = n88Deposit.Deposit_THB;
             template.Cells["J6"].Value = n88Deposit.Deposit_IDR;
+            template.Cells["K6"].Value = n88Deposit.Deposit_CNY;
         }
 
         private string SaveFile()

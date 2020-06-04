@@ -101,14 +101,14 @@ namespace Fanex.TopLicensee.Service.Services
             ExportImageTop50(imageBatches);
             ExportImageTopLicenseeMargin(imageBatches);
 
-            ExportVirtualSoccerHouse(imageBatches, LeagueGroup.VirtualLeague, SportType.VirtualFIFA, "Acc_Rpt_Letstalk_LeagueGroupSport_House");
-            ExportVirtualSoccerLicensee(imageBatches, licenseeVirtualGroup, LeagueGroup.VirtualLeague, SportType.VirtualFIFA, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");
+            ExportVirtualSoccerHouse(imageBatches, LeagueGroup.VL, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_House");
+            ExportVirtualSoccerLicensee(imageBatches, licenseeVirtualGroup, LeagueGroup.VL, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");
 
-            ExportVirtualSoccerHouse(imageBatches, LeagueGroup.Esoccer, SportType.VirtualFIFA, "Acc_Rpt_Letstalk_LeagueGroupSport_House");
-            ExportVirtualSoccerLicensee(imageBatches, licenseeVirtualGroup, LeagueGroup.Esoccer, SportType.VirtualFIFA, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");
+            ExportVirtualSoccerHouse(imageBatches, LeagueGroup.Esoccer, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_House");
+            ExportVirtualSoccerLicensee(imageBatches, licenseeVirtualGroup, LeagueGroup.Esoccer, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");
 
-            ExportVirtualSoccerHouse(imageBatches, LeagueGroup.VirtualLeague, SportType.VirtualNBA, "Acc_Rpt_Letstalk_LeagueGroupSport_House");
-            ExportVirtualSoccerLicensee(imageBatches, licenseeVirtualGroup, LeagueGroup.VirtualLeague, SportType.VirtualNBA, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");
+            ExportVirtualSoccerHouse(imageBatches, LeagueGroup.VL, SportType.Basketball, "Acc_Rpt_Letstalk_LeagueGroupSport_House");
+            ExportVirtualSoccerLicensee(imageBatches, licenseeVirtualGroup, LeagueGroup.VL, SportType.Basketball, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");
 
             imageBatches.ForEach(files =>
             {

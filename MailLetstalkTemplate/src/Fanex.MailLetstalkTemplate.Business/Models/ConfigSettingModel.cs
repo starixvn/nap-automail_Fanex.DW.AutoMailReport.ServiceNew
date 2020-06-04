@@ -7,8 +7,6 @@ namespace Fanex.MailLetstalkTemplate.Business.Models
     {
         public string SPName { get; set; }
 
-        public bool IsCheckEnoughData { get; set; }
-
         public bool IsIgnoredCheckMailSent { get; set; } = true;
 
         public string Path { get; set; }
@@ -48,5 +46,15 @@ namespace Fanex.MailLetstalkTemplate.Business.Models
         public string FileName { get; set; }
 
         public int StartExcelColumnIndex { get; set; } = 1;
+
+        public bool IsEnabledSectionTotal { get; set; }
+
+        public List<TotalSetting> TotalSettings { get; set; } = new List<TotalSetting>();
+
+        public bool IsEnabledSectionNoData { get; set; }
+        public List<NoDataSetingModel> NoDataSettings { get; set; } = new List<NoDataSetingModel>();
+
+        public bool IsEnabledSectionHeader { get; set; }
+        public string Header { get; set; }
     }
 }

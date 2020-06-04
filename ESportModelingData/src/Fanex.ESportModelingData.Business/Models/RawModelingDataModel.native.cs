@@ -18,11 +18,11 @@
 
         public int BetCount { get; set; }
 
-        public decimal RealIncome { get; set; }
+        //public decimal RealIncome { get; set; }
 
-        public decimal Turnover { get; set; }
+        public decimal MemberTurnover { get; set; }
 
-        public decimal VirtualWinLoss { get; set; }
+        public decimal MemberWinLoss { get; set; }
 
         public decimal VirtualrateSetting { get; set; }
     }

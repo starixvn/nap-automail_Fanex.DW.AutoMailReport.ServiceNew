@@ -2,12 +2,12 @@
 
 namespace Fanex.ESportModelingData.Business.Models
 {
-    public class RealTurnoverModel
+    public class MemberWinLossModel
     {
         [Name("Customer Name")]
         public string Customer { get; set; }
 
-        [Name("Real Turnover")]
-        public decimal RealTurnover { get; set; }
+        [Name("Member Win Loss")]
+        public decimal MemberWinLoss { get; set; }
     }
 }

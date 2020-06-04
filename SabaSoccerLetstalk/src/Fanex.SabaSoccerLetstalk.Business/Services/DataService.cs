@@ -12,7 +12,7 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
     {
         List<PunterModel> QueryDataSabaSoccer();
 
-        List<PunterModel> QueryDataSabaSoccerHourly(DateTime date, string spName, string leagueGroup);
+        List<PunterModel> QueryDataSabaHourly(DateTime date, LetstalkTodayPunterSetting setting);
 
         bool IsDataAvailable();
     }
@@ -48,9 +48,9 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             return result;
         }
 
-        public List<PunterModel> QueryDataSabaSoccerHourly(DateTime date, string spName, string leagueGroup)
+        public List<PunterModel> QueryDataSabaHourly(DateTime date, LetstalkTodayPunterSetting setting)
         {
-            var criteria = new PunterLeagueGroupSportHourlyCriteria { RptDate = date, SPName = spName, LeagueGroup = leagueGroup };
+            var criteria = new PunterLeagueGroupSportHourlyCriteria { RptDate = date, SPName = setting.SPName };
             return repository.Fetch<PunterModel>(criteria).ToList();
         }
     }

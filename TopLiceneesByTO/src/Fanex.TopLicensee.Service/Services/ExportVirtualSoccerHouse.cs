@@ -25,13 +25,13 @@ namespace Fanex.TopLicensee.Service.Services
         {
             var sport = new Dictionary<SportType, string>
             {
-                { SportType.VirtualFIFA, "Saba Soccer" },
-                { SportType.VirtualNBA, "Saba Basketball" },
+                { SportType.Soccer, "Saba Soccer" },
+                { SportType.Basketball, "Saba Basketball" },
             };
 
             var titleSport = new Dictionary<LeagueGroup, string>
             {
-                { LeagueGroup.VirtualLeague, sport[sportType] },
+                { LeagueGroup.VL, sport[sportType] },
                 { LeagueGroup.Esoccer, "ESOCCER " },                
             };
 

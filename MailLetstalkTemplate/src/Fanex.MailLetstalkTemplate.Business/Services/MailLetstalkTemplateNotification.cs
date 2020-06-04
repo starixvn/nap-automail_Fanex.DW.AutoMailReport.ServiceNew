@@ -72,6 +72,16 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
 
         private ExecuteResultModel SendNotification()
         {
+            if (!dataService.IsDataAvailable())
+            {
+                var lastDate = dataService.LastDateDW();
+                return new ExecuteResultModel
+                {
+                    Success = false,
+                    Message = $"DataIsNotReady, Last Date from DW is {lastDate.LastDate:yyyy/MM/dd}"
+                };
+            }
+
             var letstalkFails = new List<string>();
             var reposts = AppConfigService
                 .Reports
@@ -92,9 +102,8 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
                     continue;
                 }
 
-                //var data = dataService.QueryData(config.SPName);
-                //var excelPath = excelService.ExportExcel(data);
-                var excelPath = "Templates/SabaSoccerLetstalk/SabaSoccerLetstalk.xlsx";
+                var data = dataService.QueryData(config.SPName);
+                var excelPath = excelService.ExportExcel(data);
 
                 if (report.IsEmailEnabled)
                 {

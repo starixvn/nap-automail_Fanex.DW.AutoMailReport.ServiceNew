@@ -77,7 +77,7 @@ namespace Fanex.ESportDataMining.Business.Services
 
             exportService.CleanUpFiles();
 
-            return new ExecuteResultModel { Success = true, Mail = null };
+            return new ExecuteResultModel { Success = true, Mail = new Mail() };
         }
     }
 }

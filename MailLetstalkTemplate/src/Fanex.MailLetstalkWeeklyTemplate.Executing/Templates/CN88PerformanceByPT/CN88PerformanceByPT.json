@@ -1,0 +1,48 @@
+﻿{
+  "SPName": "NAP_DW_WeeklyCN88PerformanceByPT",
+  "DateRange": "Weekly",
+  "FromDate": "2020-01-01",
+  "ToDate": "2020-05-10",
+  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\CN88PerformanceByPT",
+  "Password": "",
+  "FunctionIdNodata": 90,
+  "TemplateExcelFile": "CN88PerformanceByPT/CN88PerformanceByPT.xlsx",
+  "SheetExcelTemplateName": [ "By PT", "By Match", "Data Details By Week", "Data Details By Period" ],
+  "CellAddressRender": [ "B8", "B8", "B8", "B8" ],
+  "StartExelRowIndex": "8",
+  "EmailTemplate": "CN88PerformanceByPT/CN88PerformanceByPT.cshtml",
+  "EmailSubject": "Automail Report - Weekly CN88 Performance Report",
+  "MailId": "327",
+  "MailName": "Mail Template Testing",
+  "FileName": "Weekly_CN88_Performance_Report",
+  "StartExcelColumnIndex": 2,
+  "IsEnabledSectionHeader": true,
+  "Header": "Weekly CN88 Performance Report",
+  "IsEnabledSectionTotal": true,
+  "TotalSettings": [
+    {
+      "IsEnabledSectionTotal": true,
+      "Label": "Total",
+      "StartMergeColumnIndex": 2,
+      "EndMergeColumnIndex": 7,
+      "SumColumnsIndex": [ 6, 7, 8, 9, 10, 11, 12 ]
+    },
+    {
+      "IsEnabledSectionTotal": true,
+      "Label": "Total",
+      "StartMergeColumnIndex": 2,
+      "EndMergeColumnIndex": 8,
+      "SumColumnsIndex": [ 7, 8, 9, 10, 11, 12, 13 ]
+    },
+    {
+      "IsEnabledSectionTotal": true,
+      "Label": "Total",
+      "StartMergeColumnIndex": 2,
+      "EndMergeColumnIndex": 11,
+      "SumColumnsIndex": [ 10, 11, 12, 13, 14, 15, 16 ]
+    },
+    {
+      "IsEnabledSectionTotal": false
+    }
+  ]
+}

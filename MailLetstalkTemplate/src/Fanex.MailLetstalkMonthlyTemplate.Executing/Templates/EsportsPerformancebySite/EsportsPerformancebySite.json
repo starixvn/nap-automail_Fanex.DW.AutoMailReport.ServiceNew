@@ -1,7 +1,6 @@
 ﻿{
   "SPName": "Acc_Rpt_Automail_EsportsMonthlySite",
-  "IsCheckEnoughData": false,
-  "DateRange": "Manual",
+  "DateRange": "Monthly",
   "FromDate": "2020-02-01",
   "ToDate": "2020-02-10",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\EsportsPerformancebySite",
@@ -12,9 +11,9 @@
   "CellAddressRender": [ "A2", "A2" ],
   "StartExelRowIndex": "2",
   "EmailTemplate": "EsportsPerformancebySite/EsportsPerformancebySite.cshtml",
-  "EmailSubject": "E-sports - Monthly Performance by Site {0}",
+  "EmailSubject": "Automail Report - Monthly E-sports Performance by Site",
   "MailId": "327",
   "MailName": "Mail Template Testing",
-  "FileName": "E-sports - Monthly Performance by Site",
+  "FileName": "Monthly_E-sports_Performance_by_Site",
   "StartExcelColumnIndex": 1
 }

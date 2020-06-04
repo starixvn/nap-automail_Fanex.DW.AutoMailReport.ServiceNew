@@ -56,7 +56,7 @@ namespace Fanex.N88DailyWL.Business.Services
             }
             finally
             {
-                jobMessage.Mail = result.Mail;
+                jobMessage.Mail = new Mail();
                 jobMessage.JobStatus = result.Success ? JobStatus.SuccessWithoutSendmail : JobStatus.DataIsNotReady;
                 jobMessage.TaskLog = new TaskLog
                 {
