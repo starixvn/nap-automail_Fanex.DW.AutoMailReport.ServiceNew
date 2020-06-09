@@ -100,7 +100,7 @@ namespace Fanex.ESportModelingData.Business.Services
         public void ExportCustInfo(DateTime dateStart, DateTime dateEnd, List<CustInfo> rawData)
         {
             var template = templateService.Execute(AppConfigService.AppConfig.Period, dateStart);
-            var folderName = template.ParentFolderPath(AppConfigService.AppConfig.Sport, AppConfigService.AppConfig.Period);
+            var folderName = template.CustInfoPath(AppConfigService.AppConfig.Sport, AppConfigService.AppConfig.Period);
 
             var path = $@"{AppConfigService.AppConfig.FilePath}\{folderName}";
             Directory.CreateDirectory(path);

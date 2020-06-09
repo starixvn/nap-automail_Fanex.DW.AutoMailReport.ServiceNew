@@ -47,6 +47,7 @@ namespace Fanex.SabaSportPuntersLetstalkHourly.Executing
             container.Register<SabaSportPunterRefineDataService, SabaSportPunterRefineDataServiceImp>();
             container.Register<FileService, FileServiceImp>();
             container.Register<SabaSportPunterExcelService, SabaSportPunterExcelServiceImp>();
+            container.Register<MailService, MailServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
             container.Register<ApplicationSettingService, ApplicationSettingServiceImp>();

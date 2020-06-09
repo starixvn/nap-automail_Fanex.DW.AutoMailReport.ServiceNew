@@ -21,6 +21,8 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
         private readonly MessageService messageService;
         private readonly ImageService imageService;
         private readonly FileService fileService;
+        private readonly MailService mailService;
+        private readonly DateRangeService dateRangeService;
 
         public SabaSoccerNotificationServiceImp(
             Log log,
@@ -29,7 +31,9 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             SabaSoccerExcelService excelService,
             MessageService messageService,
             ImageService imageService,
-            FileService fileService)
+            FileService fileService,
+            MailService mailService,
+            DateRangeService dateRangeService)
         {
             this.log = log;
             this.dataService = dataService;
@@ -38,6 +42,8 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             this.messageService = messageService;
             this.imageService = imageService;
             this.fileService = fileService;
+            this.mailService = mailService;
+            this.dateRangeService = dateRangeService;
         }
 
         public JobMessage Execute()
@@ -57,7 +63,7 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             finally
             {
                 jobMessage.Mail = result.Mail;
-                jobMessage.JobStatus = result.Success ? JobStatus.SuccessWithoutSendmail : JobStatus.DataIsNotReady;
+                jobMessage.JobStatus = result.Success ? JobStatus.Success : JobStatus.DataIsNotReady;
                 jobMessage.TaskLog = new TaskLog
                 {
                     LogTime = DateTime.Now,
@@ -103,6 +109,7 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
 
             var excelAllPath = excelService.ExportExcel(data, 0, 0, true);
             SendImage(excelAllPath);
+            var mail = mailService.CreateMail(excelAllPath, AppConfigService.Config.Exceltitle, AppConfigService.Config.Subject, dateRangeService.RptDate);
 
             if (imageSentFail.Count > 0)
             {
@@ -114,7 +121,8 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             return new ExecuteResultModel
             {
                 Success = letstalkFails.Count == 0,
-                Message = string.Join(Environment.NewLine, letstalkFails)
+                Message = string.Join(Environment.NewLine, letstalkFails),
+                Mail = mail
             };
         }
 

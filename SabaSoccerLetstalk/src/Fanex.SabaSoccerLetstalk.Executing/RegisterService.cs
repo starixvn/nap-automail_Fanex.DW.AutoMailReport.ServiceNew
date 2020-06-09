@@ -45,6 +45,7 @@ namespace Fanex.SabaSoccerLetstalk.Executing
             container.Register<ImageService, ImageServiceImp>();
             container.Register<MessageService, MessageServiceImp>();
             container.Register<FileService, FileServiceImp>();
+            container.Register<MailService, MailServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
             container.Register<ApplicationSettingService, ApplicationSettingServiceImp>();

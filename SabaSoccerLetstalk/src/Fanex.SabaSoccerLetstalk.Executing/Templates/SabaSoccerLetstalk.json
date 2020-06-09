@@ -10,6 +10,8 @@
   "FunctionIdNodata": 90,
   "TargetName": "daily-monitoring",
   "Group": "Saba-Soccer-Test",
+  "Subject": "DailyMonintoring",
+  "Exceltitle": "Top Saba Soccer Punters - All",
   "ImageSettings": {
     "SabaSoccer": {
       "FirstRow": 1,
