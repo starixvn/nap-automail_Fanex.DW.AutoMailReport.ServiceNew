@@ -8,6 +8,8 @@
 
         public string Game { get; set; }
 
+        public string MainBetType { get; set; }
+
         public string BetTypeGroup { get; set; }
 
         public string BetType { get; set; }
