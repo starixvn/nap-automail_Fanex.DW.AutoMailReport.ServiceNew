@@ -9,7 +9,7 @@ namespace Fanex.AbnormalBets.Business.Services
 {
     public interface ExcelLicenseeService
     {
-        string Execute(string site, DateTime rptDate, Tuple<List<SummaryBetDTOModel>, List<DetailBetDTOModel>, List<UserLocationModel>> data);
+        string Execute(string site, bool isHideAfterPTColumn, DateTime rptDate, Tuple<List<SummaryBetDTOModel>, List<DetailBetDTOModel>, List<UserLocationModel>> data);
     }
 
     public class ExcelLicenseeServiceImp : ExcelLicenseeService
@@ -24,12 +24,12 @@ namespace Fanex.AbnormalBets.Business.Services
             this.excelPackage = excelPackage;
         }
 
-        public string Execute(string site, DateTime rptDate, Tuple<List<SummaryBetDTOModel>, List<DetailBetDTOModel>, List<UserLocationModel>> data)
+        public string Execute(string site, bool isHideAfterPTColumn, DateTime rptDate, Tuple<List<SummaryBetDTOModel>, List<DetailBetDTOModel>, List<UserLocationModel>> data)
         {
             excelPackage = new ExcelPackage(new FileInfo(@"Templates/AbnormalBet.xlsx"));
             Init();
             GenSummary(data.Item1);
-            GenDetail(data.Item2);
+            GenDetail(data.Item2, isHideAfterPTColumn);
             GetIPSummary(data.Item3);
 
             return SaveExceFile(site, rptDate);
@@ -53,7 +53,7 @@ namespace Fanex.AbnormalBets.Business.Services
             }
         }
 
-        private void GenDetail(List<DetailBetDTOModel> data)
+        private void GenDetail(List<DetailBetDTOModel> data, bool isHideAfterPTColumn)
         {
             var detail = excelPackage.Workbook.Worksheets["Detail"];
             detail.Cells["A2"].LoadFromCollection(data, false);
@@ -62,7 +62,9 @@ namespace Fanex.AbnormalBets.Business.Services
             {
                 detail.Cells[2, columnIndex, data.Count + 1, columnIndex].StyleID = detail.Cells[2, columnIndex].StyleID;
                 detail.Column(columnIndex).AutoFit(20);
-            }           
+            }
+
+            detail.Column(6).Hidden = isHideAfterPTColumn;
         }
 
         private void GetIPSummary(List<UserLocationModel> data)
@@ -87,7 +89,7 @@ namespace Fanex.AbnormalBets.Business.Services
                 Directory.CreateDirectory(path);
             }
 
-            path = $@"{path}\{fileName}";            
+            path = $@"{path}\{fileName}";
             excelPackage.SaveAs(new FileInfo(path), AppConfigService.AppConfig.Password);
             return path;
         }

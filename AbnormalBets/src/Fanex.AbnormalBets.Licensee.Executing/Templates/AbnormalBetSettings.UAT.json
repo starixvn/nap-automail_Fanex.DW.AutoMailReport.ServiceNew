@@ -18,7 +18,8 @@
       "MailId": 287,
       "MailName": "Abnormal Bet Daily Report - CN88 - UAT",
       "SiteName": "CN88",
-      "Subject": "[ABI] - CN88 {0} 每日会员删票报告"
+      "Subject": "[ABI] - CN88 {0} 每日会员删票报告",
+      "IsHideAfterPTColumn": false
     },
     {
       "MailId": 288,

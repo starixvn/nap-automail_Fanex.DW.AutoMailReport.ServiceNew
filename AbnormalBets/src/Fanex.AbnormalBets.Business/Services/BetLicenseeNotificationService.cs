@@ -78,7 +78,7 @@ namespace Fanex.AbnormalBets.Business.Services
                 var rawData = repositoryService.QueryBetTickets(site.SiteName, date);
                 var isNoData = !rawData.Item1.Any();
                 var betData = transformService.ExecuteDailyLicensee(rawData);
-                var excelPath = isNoData ? string.Empty : excelService.Execute(site.SiteName, date, betData);
+                var excelPath = isNoData ? string.Empty : excelService.Execute(site.SiteName, site.IsHideAfterPTColumn, date, betData);
                 mailService.SendMail(date, excelPath, isNoData, site.Subject, site.MailId);
             }
 
