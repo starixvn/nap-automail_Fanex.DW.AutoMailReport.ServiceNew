@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.ESportModelingDataDai
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BasketballModelingDataDaily.Executing", "ESportModelingData\src\Fanex.BasketballModelingDataDaily.Executing\Fanex.BasketballModelingDataDaily.Executing.csproj", "{B8B22309-82C5-4515-BE63-C07C3217D9F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.BasketballModelingDataWeekly.Executing", "ESportModelingData\src\Fanex.BasketballModelingDataWeekly.Executing\Fanex.BasketballModelingDataWeekly.Executing.csproj", "{57351E12-EA41-452A-8D29-EC537EEA87D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{B8B22309-82C5-4515-BE63-C07C3217D9F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8B22309-82C5-4515-BE63-C07C3217D9F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8B22309-82C5-4515-BE63-C07C3217D9F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57351E12-EA41-452A-8D29-EC537EEA87D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57351E12-EA41-452A-8D29-EC537EEA87D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57351E12-EA41-452A-8D29-EC537EEA87D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57351E12-EA41-452A-8D29-EC537EEA87D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,5 +65,6 @@ Global
 		{491061E8-F95A-4023-B01D-E611DFF44618} = {2E95839F-4361-479F-B39C-09CA58689470}
 		{684AC598-203E-446B-A2CB-03D455157AA3} = {2E95839F-4361-479F-B39C-09CA58689470}
 		{B8B22309-82C5-4515-BE63-C07C3217D9F9} = {2E95839F-4361-479F-B39C-09CA58689470}
+		{57351E12-EA41-452A-8D29-EC537EEA87D8} = {2E95839F-4361-479F-B39C-09CA58689470}
 	EndGlobalSection
 EndGlobal

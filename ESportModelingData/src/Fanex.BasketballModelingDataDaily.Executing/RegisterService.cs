@@ -28,7 +28,7 @@ namespace Fanex.ESportModelingDataDaily.Executing
         {
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
 
-            var text = File.ReadAllText("Templates/ESportModelingDataSettings.json");
+            var text = File.ReadAllText("Templates/BasketballModelingDataSettings.json");
             AppConfigService.AppConfig = JsonConvert.DeserializeObject<ConfigSettingModel>(text);
         }
 

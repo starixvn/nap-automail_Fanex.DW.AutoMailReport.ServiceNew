@@ -1,5 +1,5 @@
-﻿using System;
-using Fanex.Data.Repository;
+﻿using Fanex.Data.Repository;
+using System;
 
 namespace Fanex.ESportModelingData.Business.Criterias
 {
@@ -9,7 +9,7 @@ namespace Fanex.ESportModelingData.Business.Criterias
 
         public DateTime DateEnd { get; set; }
 
-        public override string GetSettingKey() => "NAP_DW_Esport_ModelingDataWeekly";
+        public override string GetSettingKey() => "NAP_DW_ModelingDataWeekly";
 
         public override bool IsValid() => true;
     }

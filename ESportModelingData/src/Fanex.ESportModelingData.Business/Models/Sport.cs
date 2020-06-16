@@ -3,6 +3,6 @@
     public enum Sport
     {
         ESports = 0,
-        Baskketball = 1
+        Basketball = 1
     }
 }

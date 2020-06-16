@@ -30,7 +30,7 @@ namespace Fanex.ESportModelingData.Business.Services
         public string Subject(Sport sport, Period period)
         {
             var sportName = GenerateName.SportNames[sport];
-            return $"{sportName} {AppConfigService.AppConfig.Period} Modeling Data For {dateService.DateEnd:dd-MM-yyyy}";
+            return $"{sportName} {AppConfigService.AppConfig.Period} Modelling Data For {dateService.DateEnd:dd-MM-yyyy}";
         }
     }
 }

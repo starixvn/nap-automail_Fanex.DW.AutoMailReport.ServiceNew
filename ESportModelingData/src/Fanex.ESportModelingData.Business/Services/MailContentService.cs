@@ -1,8 +1,8 @@
-﻿using System;
+﻿using RazorEngine;
+using RazorEngine.Templating;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using RazorEngine;
-using RazorEngine.Templating;
 
 namespace Fanex.ESportModelingData.Business.Services
 {
@@ -22,9 +22,12 @@ namespace Fanex.ESportModelingData.Business.Services
                 names.Add(n);
             });
 
+            var templateName = fileNames.Count > 0
+                ? "Templates/NotificationEmail.cshtml"
+                : "Templates/NoData.cshtml";
             var downloadLink = AppConfigService.AppConfig.DownloadLink;
             var tuple = new Tuple<List<string>, string>(names, downloadLink);
-            var template = File.ReadAllText("Templates/NotificationEmail.cshtml");
+            var template = File.ReadAllText(templateName);
             var result = Engine.Razor.RunCompile(template, $"template{DateTime.Now.Ticks}", model: tuple);
 
             return result;

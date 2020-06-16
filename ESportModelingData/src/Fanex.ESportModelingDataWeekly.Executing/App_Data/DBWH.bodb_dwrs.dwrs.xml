@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Functions>
   <Function Name="Auto-mail">
-    <Setting Key="NAP_DW_Esport_ModelingDataWeekly" SpName="NAP_DW_Esport_ModelingDataWeekly" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
-    <Setting Key="NAP_DW_Esport_ModelingDataWeekly_CusInfo" SpName="NAP_DW_Esport_ModelingDataWeekly_CusInfo" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+    <Setting Key="NAP_DW_ModelingDataWeekly" SpName="NAP_DW_Esport_ModelingDataWeekly" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+    <Setting Key="NAP_DW_ModelingDataWeekly_CusInfo" SpName="NAP_DW_Esport_ModelingDataWeekly_CusInfo" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
   </Function>
 </Functions>

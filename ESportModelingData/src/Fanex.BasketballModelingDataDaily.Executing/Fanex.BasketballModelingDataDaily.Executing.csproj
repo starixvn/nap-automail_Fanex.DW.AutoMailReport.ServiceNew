@@ -134,28 +134,31 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <Content Include="Templates\ESportModelingDataSettings.json">
+    <Content Include="Templates\BasketballModelingDataSettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\NotificationEmail.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Fanex.ESportModelingDataDaily.Executing.Local.exe.config">
+    <Content Include="Templates\Fanex.BasketballModelingDataDaily.Executing.Local.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Fanex.ESportModelingDataDaily.Executing.UAT.exe.config">
+    <Content Include="Templates\Fanex.BasketballModelingDataDaily.Executing.UAT.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Fanex.ESportModelingDataDaily.Executing.PRO.exe.config">
+    <Content Include="Templates\Fanex.BasketballModelingDataDaily.Executing.PRO.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\ESportModelingDataSettings.UAT.json">
+    <Content Include="Templates\BasketballModelingDataSettings.UAT.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\ESportModelingDataSettings.PRO.json">
+    <Content Include="Templates\BasketballModelingDataSettings.PRO.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\ESportModelingDataSettings.Local.json">
+    <Content Include="Templates\BasketballModelingDataSettings.Local.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\NoData.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

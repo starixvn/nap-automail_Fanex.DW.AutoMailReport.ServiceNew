@@ -1,14 +1,14 @@
-﻿using System.IO;
+﻿using Fanex.ESportModelingData.Business.Models;
+using System.IO;
 using System.Linq;
-using Fanex.ESportModelingData.Business.Models;
 
 namespace Fanex.ESportModelingData.Business.Services
 {
-    public class ExportLevel4ServiceImp : ExportLevelService
+    public class ExportESportLevel4ServiceImp : ExportLevelService
     {
         private readonly ExportBaseService exportBaseService;
 
-        public ExportLevel4ServiceImp(ExportBaseService exportBaseService)
+        public ExportESportLevel4ServiceImp(ExportBaseService exportBaseService)
         {
             this.exportBaseService = exportBaseService;
         }

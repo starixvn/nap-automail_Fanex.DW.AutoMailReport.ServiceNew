@@ -12,7 +12,7 @@ namespace Fanex.ESportModelingData.Business.Services
                 return new Dictionary<Sport, string>
                 {
                     { Sport.ESports, "E-Sports" },
-                    { Sport.Baskketball, "Baskketball" },
+                    { Sport.Basketball, "Basketball" },
                 };
             }
         }

@@ -14,7 +14,7 @@ namespace Fanex.ESportModelingData.Business.Services
         public string CustInfoPath(Sport sport, Period period)
         {
             var sportName = GenerateName.SportNames[sport];
-            return $@"{ParentFolder()}\{sportName} {AppConfigService.AppConfig.Period} Modeling Data From {dateService.DateStart:dd-MM-yyyy} To {dateService.DateEnd:dd-MM-yyyy}\{sportName}";
+            return $@"{ParentFolder()}\{sportName} {AppConfigService.AppConfig.Period} Modelling Data From {dateService.DateStart:dd-MM-yyyy} To {dateService.DateEnd:dd-MM-yyyy}\{sportName}";
         }
 
         public string ParentFolder()
@@ -25,13 +25,13 @@ namespace Fanex.ESportModelingData.Business.Services
         public string ParentFolderPath(Sport sport, Period period)
         {
             var sportName = GenerateName.SportNames[sport];
-            return $@"{ParentFolder()}\{sportName} {AppConfigService.AppConfig.Period} Modeling Data From {dateService.DateStart:dd-MM-yyyy} To {dateService.DateEnd:dd-MM-yyyy}";
+            return $@"{ParentFolder()}\{sportName} {AppConfigService.AppConfig.Period} Modelling Data From {dateService.DateStart:dd-MM-yyyy} To {dateService.DateEnd:dd-MM-yyyy}";
         }
 
         public string Subject(Sport sport, Period period)
         {
             var sportName = GenerateName.SportNames[sport];
-            return $"{sportName} {AppConfigService.AppConfig.Period} Modeling Data From {dateService.DateStart:dd-MM-yyyy} To {dateService.DateEnd:dd-MM-yyyy}";
+            return $"{sportName} {AppConfigService.AppConfig.Period} Modelling Data From {dateService.DateStart:dd-MM-yyyy} To {dateService.DateEnd:dd-MM-yyyy}";
         }
     }
 }

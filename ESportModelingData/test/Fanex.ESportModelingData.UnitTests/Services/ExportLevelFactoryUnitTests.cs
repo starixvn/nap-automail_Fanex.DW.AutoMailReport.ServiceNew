@@ -12,11 +12,11 @@ namespace Fanex.ESportModelingData.UnitTests.Services
         {
             // Arrange
             var exportBaseService = Substitute.For<ExportBaseService>();
-            var expect = typeof(ExportLevel1ServiceImp);
+            var expect = typeof(ExportBasketballLevel1ServiceImp);
 
             // Act
             var service = new ExportLevelFactoryImp(exportBaseService);
-            var result = service.Execute()[1].GetType();
+            var result = service.ExecuteESports()[1].GetType();
 
             // Assert
             Assert.That(result, Is.EqualTo(expect));
@@ -27,11 +27,11 @@ namespace Fanex.ESportModelingData.UnitTests.Services
         {
             // Arrange
             var exportBaseService = Substitute.For<ExportBaseService>();
-            var expect = typeof(ExportLevel2ServiceImp);
+            var expect = typeof(ExportESportLevel2ServiceImp);
 
             // Act
             var service = new ExportLevelFactoryImp(exportBaseService);
-            var result = service.Execute()[2].GetType();
+            var result = service.ExecuteESports()[2].GetType();
 
             // Assert
             Assert.That(result, Is.EqualTo(expect));
@@ -42,11 +42,11 @@ namespace Fanex.ESportModelingData.UnitTests.Services
         {
             // Arrange
             var exportBaseService = Substitute.For<ExportBaseService>();
-            var expect = typeof(ExportLevel3ServiceImp);
+            var expect = typeof(ExportESportLevel3ServiceImp);
 
             // Act
             var service = new ExportLevelFactoryImp(exportBaseService);
-            var result = service.Execute()[3].GetType();
+            var result = service.ExecuteESports()[3].GetType();
 
             // Assert
             Assert.That(result, Is.EqualTo(expect));
@@ -57,11 +57,11 @@ namespace Fanex.ESportModelingData.UnitTests.Services
         {
             // Arrange
             var exportBaseService = Substitute.For<ExportBaseService>();
-            var expect = typeof(ExportLevel4ServiceImp);
+            var expect = typeof(ExportESportLevel4ServiceImp);
 
             // Act
             var service = new ExportLevelFactoryImp(exportBaseService);
-            var result = service.Execute()[4].GetType();
+            var result = service.ExecuteESports()[4].GetType();
 
             // Assert
             Assert.That(result, Is.EqualTo(expect));

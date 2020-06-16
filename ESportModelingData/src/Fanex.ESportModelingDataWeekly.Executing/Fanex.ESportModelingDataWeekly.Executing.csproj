@@ -158,6 +158,9 @@
     <Content Include="Templates\ESportModelingDataSettings.Local.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\NoData.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.ESportModelingData.Business\Fanex.ESportModelingData.Business.csproj">

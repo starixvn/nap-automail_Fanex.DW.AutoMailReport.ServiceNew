@@ -37,7 +37,6 @@ namespace Fanex.ESportModelingDataWeekly.Executing
             container.Register<Log, LogImp>();
             container.Register<IDynamicRepository, DynamicRepository>();
             container.Register<RepositoryService, RepositoryServiceImp>();
-            container.Register<DateTimeServiceProvider, DateTimeServiceProviderImp>();
             container.Register<ModelingDataNotificationService, ModelingDataNotificationServiceImp>();
             container.Register<ExportService, ExportServiceImp>();
             container.Register<CsvService, CsvServiceImp>();
@@ -45,6 +44,9 @@ namespace Fanex.ESportModelingDataWeekly.Executing
             container.Register<ExportLevelFactory, ExportLevelFactoryImp>();
             container.Register<MailContentService, MailContentServiceImp>();
             container.Register<MailService, MailServiceImp>();
+            container.Register<DateTimeServiceProvider, DateTimeServiceProviderImp>();
+            container.Register<DateRangeService, DateRangeServiceImp>();
+            container.Register<GenerateTemplateProvider, GenerateTemplateProviderImp>();
         }
 
         private static void SentryRegister()
