@@ -104,8 +104,8 @@ namespace Fanex.TopLicensee.Service.Services
             ExportVirtualSoccerHouse(imageBatches, LeagueGroup.VL, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_House");
             ExportVirtualSoccerLicensee(imageBatches, licenseeVirtualGroup, LeagueGroup.VL, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");
 
-            ExportVirtualSoccerHouse(imageBatches, LeagueGroup.Esoccer, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_House");
-            ExportVirtualSoccerLicensee(imageBatches, licenseeVirtualGroup, LeagueGroup.Esoccer, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");
+            //ExportVirtualSoccerHouse(imageBatches, LeagueGroup.Esoccer, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_House");
+            //ExportVirtualSoccerLicensee(imageBatches, licenseeVirtualGroup, LeagueGroup.Esoccer, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");
 
             ExportVirtualSoccerHouse(imageBatches, LeagueGroup.VL, SportType.Basketball, "Acc_Rpt_Letstalk_LeagueGroupSport_House");
             ExportVirtualSoccerLicensee(imageBatches, licenseeVirtualGroup, LeagueGroup.VL, SportType.Basketball, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");

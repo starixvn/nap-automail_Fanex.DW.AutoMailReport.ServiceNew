@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{881E7BB0-4623-4EE4-BC2A-16CFC4D18521}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.LicenseeFinanceCode.Executing", "LicenseeFinanceCode\src\Fanex.LicenseeFinanceCode.Executing\Fanex.LicenseeFinanceCode.Executing.csproj", "{089CBA7C-EA82-49AC-8BB3-CA93B13F589C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{089CBA7C-EA82-49AC-8BB3-CA93B13F589C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{089CBA7C-EA82-49AC-8BB3-CA93B13F589C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{089CBA7C-EA82-49AC-8BB3-CA93B13F589C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{089CBA7C-EA82-49AC-8BB3-CA93B13F589C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{089CBA7C-EA82-49AC-8BB3-CA93B13F589C} = {881E7BB0-4623-4EE4-BC2A-16CFC4D18521}
+	EndGlobalSection
+EndGlobal
