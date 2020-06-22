@@ -1,15 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Fanex.LicenseeFinanceCode.Business.Service;
+using Newtonsoft.Json;
+using SimpleInjector;
+using System;
 
 namespace Fanex.LicenseeFinanceCode.Executing
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
+            RegisterService.RegisterServices();
+            Container container = new Container();
+            RegisterService.RegisterContainer(container);
+            container.Verify(VerificationOption.VerifyOnly);
+
+            var service = container.GetInstance<NotificationService>();
+            var jobMessage = service.Execute();
+            var json = JsonConvert.SerializeObject(jobMessage);
+
+            Console.Write(json);
+            Environment.Exit(0);
         }
     }
 }

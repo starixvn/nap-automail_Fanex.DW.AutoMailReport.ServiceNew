@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{881E7BB0-462
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.LicenseeFinanceCode.Executing", "LicenseeFinanceCode\src\Fanex.LicenseeFinanceCode.Executing\Fanex.LicenseeFinanceCode.Executing.csproj", "{089CBA7C-EA82-49AC-8BB3-CA93B13F589C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.LicenseeFinanceCode.Business", "LicenseeFinanceCode\src\Fanex.LicenseeFinanceCode.Business\Fanex.LicenseeFinanceCode.Business.csproj", "{DADE5077-BBB8-4ECA-A2C4-77C5761C55C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,11 +19,16 @@ Global
 		{089CBA7C-EA82-49AC-8BB3-CA93B13F589C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{089CBA7C-EA82-49AC-8BB3-CA93B13F589C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{089CBA7C-EA82-49AC-8BB3-CA93B13F589C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DADE5077-BBB8-4ECA-A2C4-77C5761C55C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DADE5077-BBB8-4ECA-A2C4-77C5761C55C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DADE5077-BBB8-4ECA-A2C4-77C5761C55C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DADE5077-BBB8-4ECA-A2C4-77C5761C55C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{089CBA7C-EA82-49AC-8BB3-CA93B13F589C} = {881E7BB0-4623-4EE4-BC2A-16CFC4D18521}
+		{DADE5077-BBB8-4ECA-A2C4-77C5761C55C8} = {881E7BB0-4623-4EE4-BC2A-16CFC4D18521}
 	EndGlobalSection
 EndGlobal

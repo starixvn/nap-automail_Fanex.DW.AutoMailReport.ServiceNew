@@ -1,0 +1,35 @@
+﻿@using Fanex.LicenseeFinanceCode.Business.Model;
+
+@{
+    var rows = Model.Item1;
+
+}
+<div style="font-size:10pt; font-family:Tahoma, Arial, Verdana, Sans-Serif;">
+    <div>
+        Dear All, <br /><br />
+        Kindly proceed to update the codes for these licensees. <br /><br />
+
+        <table cellspacing="0" border="1" style="border-style: Solid; border-color:darkgrey
+            font-size: 10pt; font-family: Tahoma, Arial, Verdana, Sans-Serif;" rules="all">
+            <thead>
+                <tr style="height: 25px;background-color:#3C5EA5; font-weight: bold">
+                    <th style="width:30px;"><span style="color:white; font-family:Tahoma, Arial, Verdana, sans-serif; font-size:9pt">#</span></th>
+                    <th style="width:200px;"><span style="color:white; font-family:Tahoma, Arial, Verdana, sans-serif; font-size:9pt">Licensee</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (LicenseeTransferCodeModel row in rows)
+                {
+                    <tr style="height: 25px; font-size:9pt; font-family:Tahoma, Arial, Verdana, Sans-Serif">
+                        <td style="text-align:center;">@row.RowNumber</td>
+                        <td style="text-align:center;">@row.LicenseeName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br /><br />
+
+        Thanks and best regards, <br /><br />
+        Starix IT <br /><br />
+    </div>
+</div>
