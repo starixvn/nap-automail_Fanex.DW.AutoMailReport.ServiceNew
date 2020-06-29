@@ -45,7 +45,7 @@ namespace Fanex.ESportModelingData.Business.Services
 
             return new Dictionary<int, ExportLevelService>
             {
-                { Level1, new ExportBasketballLevel1ServiceImp(exportBaseService) },
+                { Level1, new ExportESportLevel1ServiceImp(exportBaseService) },
                 { Level2, new ExportESportLevel2ServiceImp(exportBaseService) },
                 { Level3, new ExportESportLevel3ServiceImp(exportBaseService) },
                 { Level4, new ExportESportLevel4ServiceImp(exportBaseService) }

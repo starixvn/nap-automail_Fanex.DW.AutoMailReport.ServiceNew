@@ -69,6 +69,7 @@ namespace Fanex.ESportModelingData.Business.Services
 
             foreach (var date in dates)
             {
+                AppConfigService.DateStart = date.DateStart;
                 var rawData = repositoryService.Query(date.DateStart, date.DateEnd);
                 var custInfo = repositoryService.QueryCustInfo(date.DateStart, date.DateEnd);
 

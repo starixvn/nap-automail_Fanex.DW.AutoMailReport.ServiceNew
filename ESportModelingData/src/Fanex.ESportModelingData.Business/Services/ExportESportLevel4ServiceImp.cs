@@ -27,12 +27,13 @@ namespace Fanex.ESportModelingData.Business.Services
                     .ToList()
                     .ForEach(bettype =>
                     {
-                        var sportName = exportBaseService.Replace(level.Key.Sport);
+                        var root = AppConfigService.DateStart.ToOADate();
+                        var sport = exportBaseService.Replace(level.Key.Sport);
                         var gameName = exportBaseService.Replace(game.Key.Game);
                         var bettypeGroupName = exportBaseService.Replace(bettypeGroup.Key.BetTypeGroup);
                         var bettypeName = exportBaseService.Replace(bettype.Key.BetType);
 
-                        var folder = $@"{sportName}\{gameName}\{bettypeGroupName}\{bettypeName}";
+                        var folder = $@"{root}\{sport}\{gameName}\{bettypeGroupName}\{bettypeName}";
                         var path = $@"{AppConfigService.AppConfig.FilePath}\{folder}";
                         Directory.CreateDirectory(path);
 

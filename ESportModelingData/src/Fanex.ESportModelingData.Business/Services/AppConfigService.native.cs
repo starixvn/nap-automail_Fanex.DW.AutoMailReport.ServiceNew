@@ -1,4 +1,5 @@
 ﻿using Fanex.ESportModelingData.Business.Models;
+using System;
 
 namespace Fanex.ESportModelingData.Business.Services
 {
@@ -8,5 +9,7 @@ namespace Fanex.ESportModelingData.Business.Services
         {
             get; set;
         }
+
+        public static DateTime DateStart { get; set; }
     }
 }

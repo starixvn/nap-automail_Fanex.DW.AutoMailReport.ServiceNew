@@ -19,7 +19,9 @@ namespace Fanex.ESportModelingData.Business.Services
             .ToList()
             .ForEach(game =>
             {
-                var folder = $@"{exportBaseService.Replace(level.Key.Sport)}\{exportBaseService.Replace(game.Key.Game)}";
+                var root = AppConfigService.DateStart.ToOADate();
+                var sport = exportBaseService.Replace(level.Key.Sport);
+                var folder = $@"{root}\{sport}\{exportBaseService.Replace(game.Key.Game)}";
                 var path = $@"{AppConfigService.AppConfig.FilePath}\{folder}";
                 Directory.CreateDirectory(path);
 
