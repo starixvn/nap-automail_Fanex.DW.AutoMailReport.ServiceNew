@@ -38,7 +38,7 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
         private void RenderTitle(int batchIndex, int totalBatch, ExcelWorksheet template, bool isAllInfo)
         {
             var title = isAllInfo
-                ? $"Top Saba Soccer Punters - All"
+                ? AppConfigService.Config.Exceltitle
                 : $"Top Saba Soccer Punters - Page {batchIndex + 1} of {totalBatch}";
 
             template.Cells["A1"].Value = title;
@@ -89,8 +89,8 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
         {
             var date = dateRangeService.RptDate;
             var fileName = isAllInfo
-                ? $"SabaSoccerLetstalk_All_{date:yyyyMMdd}.xlsx"
-                : $"SabaSoccerLetstalk_Batch_{batchIndex + 1}_{date:yyyyMMdd}.xlsx";
+                ? $"{AppConfigService.Config.Exceltitle}_{date:yyyyMMdd}.xlsx"
+                : $"{AppConfigService.Config.Exceltitle.Replace(" - All", string.Empty)}_Batch_{batchIndex + 1}_{date:yyyyMMdd}.xlsx";
             var path = $@"{AppConfigService.Config.InternalPath}\{date:yyyy}\{date:MM}";
             if (!Directory.Exists(path))
             {

@@ -32,7 +32,7 @@ namespace Fanex.ESportModelingData.UnitTests.Services
             exportBaseService.Replace(Arg.Any<string>()).Returns(" ");
 
             // Act
-            var level1Service = new ExportLevel1ServiceImp(exportBaseService);
+            var level1Service = new ExportBasketballLevel1ServiceImp(exportBaseService);
             status.GroupBy(g => new GroupModel { Level = g.Level, Sport = g.Sport })
             .ToList()
             .ForEach(level =>
@@ -54,7 +54,7 @@ namespace Fanex.ESportModelingData.UnitTests.Services
             exportBaseService.Replace(Arg.Any<string>()).Returns(" ");
 
             // Act
-            var level2Service = new ExportLevel2ServiceImp(exportBaseService);
+            var level2Service = new ExportESportLevel2ServiceImp(exportBaseService);
             status
                 .Where(l => l.Level == 2)
                 .GroupBy(g => new GroupModel { Level = g.Level, Sport = g.Sport })
@@ -78,7 +78,7 @@ namespace Fanex.ESportModelingData.UnitTests.Services
             exportBaseService.Replace(Arg.Any<string>()).Returns(" ");
 
             // Act
-            var level3Service = new ExportLevel3ServiceImp(exportBaseService);
+            var level3Service = new ExportESportLevel3ServiceImp(exportBaseService);
             status
                 .Where(l => l.Level == 3)
                 .GroupBy(g => new GroupModel { Level = g.Level, Sport = g.Sport })
@@ -102,7 +102,7 @@ namespace Fanex.ESportModelingData.UnitTests.Services
             exportBaseService.Replace(Arg.Any<string>()).Returns(" ");
 
             // Act
-            var level4Service = new ExportLevel4ServiceImp(exportBaseService);
+            var level4Service = new ExportESportLevel4ServiceImp(exportBaseService);
             status
                 .Where(l => l.Level == 4)
                 .GroupBy(g => new GroupModel { Level = g.Level, Sport = g.Sport })

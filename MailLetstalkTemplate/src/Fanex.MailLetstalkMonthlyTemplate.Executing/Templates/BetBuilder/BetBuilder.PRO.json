@@ -13,8 +13,8 @@
   "StartExelRowIndex": "2",
   "EmailTemplate": "BetBuilder/BetBuilder.cshtml",
   "EmailSubject": "Automail Report - Monthly Bet Builder Report",
-  "MailId": "272",
-  "MailName": "Bet Builder Daily Report",
+  "MailId": "359",
+  "MailName": "Bet Builder Monthly Report - Template",
   "FileName": "Monthly_Bet_Builder_Report",
   "StartExcelColumnIndex": 1
 }

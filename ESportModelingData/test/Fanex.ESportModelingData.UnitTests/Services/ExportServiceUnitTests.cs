@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using Fanex.Data.Repository;
+﻿using Fanex.Data.Repository;
 using Fanex.ESportModelingData.Business.Models;
 using Fanex.ESportModelingData.Business.Services;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using SimpleInjector;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Fanex.ESportModelingData.UnitTests.Services
 {
@@ -22,7 +22,6 @@ namespace Fanex.ESportModelingData.UnitTests.Services
             container.Register<Log, LogImp>();
             container.Register<IDynamicRepository, DynamicRepository>();
             container.Register<RepositoryService, RepositoryServiceImp>();
-            container.Register<DateTimeService, DateTimeServiceImp>();
             container.Register<ModelingDataNotificationService, ModelingDataNotificationServiceImp>();
             container.Register<ExportService, ExportServiceImp>();
             container.Register<CsvService, CsvServiceImp>();
@@ -30,7 +29,7 @@ namespace Fanex.ESportModelingData.UnitTests.Services
             container.Register<ExportLevelFactory, ExportLevelFactoryImp>();
             container.Register<MailContentService, MailContentServiceImp>();
             container.Register<MailService, MailServiceImp>();
-            container.Register<ParamService, ParamServiceImp>();
+
             container.Verify(VerificationOption.VerifyOnly);
         }
 

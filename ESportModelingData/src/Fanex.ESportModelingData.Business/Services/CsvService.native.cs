@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using CsvHelper;
+using System;
+using System.Collections.Generic;
 using System.IO;
-using CsvHelper;
 
 namespace Fanex.ESportModelingData.Business.Services
 {
@@ -13,12 +14,19 @@ namespace Fanex.ESportModelingData.Business.Services
     {
         public void Execute<T>(List<T> data, string path)
         {
-            using (var writer = new StreamWriter(path))
+            try
             {
-                using (var csv = new CsvWriter(writer))
+                using (var writer = new StreamWriter(path))
                 {
-                    csv.WriteRecords(data);
+                    using (var csv = new CsvWriter(writer))
+                    {
+                        csv.WriteRecords(data);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                var s = ex.Message;
             }
         }
     }

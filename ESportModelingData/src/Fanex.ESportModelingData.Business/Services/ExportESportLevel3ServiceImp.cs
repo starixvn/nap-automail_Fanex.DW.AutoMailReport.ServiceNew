@@ -1,14 +1,14 @@
-﻿using System.IO;
+﻿using Fanex.ESportModelingData.Business.Models;
+using System.IO;
 using System.Linq;
-using Fanex.ESportModelingData.Business.Models;
 
 namespace Fanex.ESportModelingData.Business.Services
 {
-    public class ExportLevel3ServiceImp : ExportLevelService
+    public class ExportESportLevel3ServiceImp : ExportLevelService
     {
         private readonly ExportBaseService exportBaseService;
 
-        public ExportLevel3ServiceImp(ExportBaseService exportBaseService)
+        public ExportESportLevel3ServiceImp(ExportBaseService exportBaseService)
         {
             this.exportBaseService = exportBaseService;
         }
@@ -23,7 +23,9 @@ namespace Fanex.ESportModelingData.Business.Services
                 .ToList()
                 .ForEach(bettypeGroup =>
                 {
-                    var folder = $@"{exportBaseService.Replace(level.Key.Sport)}\{exportBaseService.Replace(game.Key.Game)}\{exportBaseService.Replace(bettypeGroup.Key.BetTypeGroup)}";
+                    var root = AppConfigService.DateStart.ToOADate();
+                    var sport = exportBaseService.Replace(level.Key.Sport);
+                    var folder = $@"{root}\{sport}\{exportBaseService.Replace(game.Key.Game)}\{exportBaseService.Replace(bettypeGroup.Key.BetTypeGroup)}";
                     var path = $@"{AppConfigService.AppConfig.FilePath}\{folder}";
                     Directory.CreateDirectory(path);
 

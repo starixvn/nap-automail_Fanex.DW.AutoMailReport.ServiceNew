@@ -23,6 +23,7 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
         private readonly SabaSportPunterRefineDataService refineService;
         private readonly FileService fileService;
         private readonly DateRangeService dateService;
+        private readonly MailService mailService;
 
         public SabaSportPunterNotificationServiceImp(
             Log log,
@@ -33,7 +34,8 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             ImageService imageService,
             SabaSportPunterRefineDataService refineService,
             FileService fileService,
-            DateRangeService dateService)
+            DateRangeService dateService,
+            MailService mailService)
         {
             this.log = log;
             this.dataService = dataService;
@@ -44,6 +46,7 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             this.refineService = refineService;
             this.fileService = fileService;
             this.dateService = dateService;
+            this.mailService = mailService;
         }
 
         public JobMessage Execute()
@@ -62,7 +65,7 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             }
             finally
             {
-                jobMessage.Mail = result.Mail;
+                jobMessage.Mail = new Mail();
                 jobMessage.JobStatus = result.Success ? JobStatus.SuccessWithoutSendmail : JobStatus.DataIsNotReady;
                 jobMessage.TaskLog = new TaskLog
                 {
@@ -113,6 +116,7 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             return new ExecuteResultModel
             {
                 Success = letstalkFails.Count == 0,
+                Mail = new Mail(),
                 Message = string.Join(Environment.NewLine, letstalkFails)
             };
         }
@@ -128,7 +132,7 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             for (var batchIndex = 0; batchIndex < totalBatch; batchIndex++)
             {
                 var rowsOfBatch = data.Skip(batchIndex * rowPerBatch).Take(rowPerBatch).ToList();
-                var excelPath = excelService.ExportExcelWithData(sport, setting.Exceltitle, date, rowsOfBatch, batchIndex, totalBatch, false);
+                var excelPath = excelService.ExportExcelWithData(sport, setting.Exceltitle, date, rowsOfBatch, batchIndex, totalBatch, false, setting.Subject);
                 var imagePath = ExportImage(sport, excelPath, batchIndex, "SabaSportPunters");
                 var status = SendToLetstalk(imagePath, setting.LetstalkGroup);
                 countRetry = 0;
@@ -144,8 +148,9 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
                 }
             }
 
-            var excelAllPath = excelService.ExportExcelWithData(sport, setting.Exceltitle, date, data, 0, 1, true);
+            var excelAllPath = excelService.ExportExcelWithData(sport, setting.Exceltitle, date, data, 0, 1, true, setting.Subject);
             SendToLetstalk(excelAllPath, setting.LetstalkGroup);
+            SendToMail(sport, setting, excelAllPath, date);
 
             if (imageSentFail.Count > 0)
             {
@@ -157,12 +162,20 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             return letstalkFails;
         }
 
+        private void SendToMail(Sport sport, LetstalkTodayPunterSetting setting, string excelAllPath, DateTime date)
+        {
+            var subject = $"{setting.Subject} - {sport} - Time Range: {AppConfigService.Config.TimeRange}";
+            var mail = mailService.CreateMail(excelAllPath, setting.Exceltitle, subject, date);
+            mail.MailingListId = setting.MailFunctionId;
+            mailService.SendMail(mail);
+        }
+
         private List<string> SendLetstalkImageNoData(Sport sport, LetstalkTodayPunterSetting setting, DateTime date)
         {
-            var excelPath = excelService.ExportExcelWithNoData(sport, setting.Exceltitle, date);
+            var excelPath = excelService.ExportExcelWithNoData(sport, setting.Exceltitle, date, setting.Subject);
             var imagePath = ExportImage(sport, excelPath, 0, "NoData");
             var status = SendToLetstalk(imagePath, setting.LetstalkGroup);
-
+            SendToMail(sport, setting, excelPath, date);
             return new List<string> { status ? string.Empty : $"{imagePath} - Letstalk sent images Unsuccessfully." };
         }
 

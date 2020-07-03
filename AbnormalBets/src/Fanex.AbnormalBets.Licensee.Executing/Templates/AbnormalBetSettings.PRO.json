@@ -4,10 +4,10 @@
   "IsManual": false,
   "IsTest": false,
   "IsIgnoredCheckMailSent": false,
-  "RptDate": "2019-11-17",  
+  "RptDate": "2019-11-17",
   "Path": "\\\\10.40.40.127\\Data.Web\\Fanex.Excel\\AbnormalBetDailyReport-Licensee",
   "Password": "",
-   "Sites": [
+  "Sites": [
     {
       "MailId": 292,
       "MailName": "Abnormal Bet Daily Report - All",
@@ -18,7 +18,8 @@
       "MailId": 293,
       "MailName": "Abnormal Bet Daily Report - CN88",
       "SiteName": "CN88",
-      "Subject": "[ABI] - CN88 {0} 每日会员删票报告"
+      "Subject": "[ABI] - CN88 {0} 每日会员删票报告",
+      "IsHideAfterPTColumn": false
     },
     {
       "MailId": 294,
@@ -62,5 +63,5 @@
       "SiteName": "Newhonbet",
       "Subject": "[ABI] Newhonbet Abnormal Licensee bet {0}"
     }
-  ]  
+  ]
 }

@@ -14,19 +14,26 @@
     "Soccer": {
       "SPName": "Acc_Rpt_Letstalk_TodayPunterSoccerLeagueGroup",
       "Exceltitle": "Top Saba Soccer Punters",
-      "LetstalkGroup": "Saba-Soccer-Test"
+      "LetstalkGroup": "Saba-Soccer-Test",
+      "Subject": "Saba Sports - Risk Monitoring",
+      "MailFunctionId": 344
     },
     "Basketball": {
       "SPName": "Acc_Rpt_Letstalk_TodayPunterBasketballLeagueGroup",
       "Exceltitle": "Top Saba Basketball Punters",
-      "LetstalkGroup": "Saba-Soccer-Test"
+      "LetstalkGroup": "Saba-Soccer-Test",
+      "Subject": "Saba Sports - Risk Monitoring",
+      "MailFunctionId": 344
     },
     "League": {
       "SPName": "Acc_Rpt_Letstalk_TodayPunterByLeague",
       "Exceltitle": "Top Saba 5Mins Play Punters",
-      "LetstalkGroup": "Saba-Soccer-Test"
+      "LetstalkGroup": "Saba-Soccer-Test",
+      "Subject": "SABA 5 Minutes Monitoring",
+      "MailFunctionId": 344
     }
   },
+  "Subject": "Automail Report - Saba Sport Punters",
   "ImageSettings": {
     "SabaSportPunters": {
       "FirstRow": 1,

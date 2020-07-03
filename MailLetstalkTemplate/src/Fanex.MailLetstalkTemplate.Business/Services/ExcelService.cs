@@ -73,7 +73,6 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
             for (int columnIndex = AppConfigService.Config.StartExcelColumnIndex; columnIndex < dataTable.Columns.Count + AppConfigService.Config.StartExcelColumnIndex; columnIndex++)
             {
                 template.Cells[startRowIndex, columnIndex, maxRowIndex, columnIndex].StyleID = template.Cells[startRowIndex, columnIndex].StyleID;
-                template.Column(columnIndex).AutoFit(18, 50);
             }
 
             for (int rowIndex = startRowIndex; rowIndex <= maxRowIndex; rowIndex++)

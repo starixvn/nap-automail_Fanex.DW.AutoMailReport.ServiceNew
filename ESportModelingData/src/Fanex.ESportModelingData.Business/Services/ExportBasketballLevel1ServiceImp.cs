@@ -1,22 +1,23 @@
-﻿using System.IO;
+﻿using Fanex.ESportModelingData.Business.Models;
+using System.IO;
 using System.Linq;
-using Fanex.ESportModelingData.Business.Models;
 
 namespace Fanex.ESportModelingData.Business.Services
 {
-    public class ExportLevel1ServiceImp : ExportLevelService
+    public class ExportBasketballLevel1ServiceImp : ExportLevelService
     {
         private readonly ExportBaseService exportBaseService;
 
-        public ExportLevel1ServiceImp(ExportBaseService exportBaseService)
+        public ExportBasketballLevel1ServiceImp(ExportBaseService exportBaseService)
         {
             this.exportBaseService = exportBaseService;
         }
 
         public void Execute(IGrouping<dynamic, RawModelingDataModel> level)
         {
-            var folder = exportBaseService.Replace(level.Key.Sport);
-            var path = $@"{AppConfigService.AppConfig.FilePath}\{folder}";
+            var root = AppConfigService.DateStart.ToOADate();
+            var sport = exportBaseService.Replace(level.Key.Sport);
+            var path = $@"{AppConfigService.AppConfig.FilePath}\{root}\{sport}";
             Directory.CreateDirectory(path);
 
             level.GroupBy(s => new { s.Status })

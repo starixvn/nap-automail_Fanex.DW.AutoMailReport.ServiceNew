@@ -16,8 +16,12 @@
 
         public decimal MarginTennis { get; set; }
 
-        public decimal MarginOthersport { get; set; }
-
         public decimal MarginParlay { get; set; }
+
+        public decimal MarginSabaSoccer { get; set; }
+
+        public decimal MarginSabaBasketball { get; set; }
+
+        public decimal MarginOthersport { get; set; }
     }
 }

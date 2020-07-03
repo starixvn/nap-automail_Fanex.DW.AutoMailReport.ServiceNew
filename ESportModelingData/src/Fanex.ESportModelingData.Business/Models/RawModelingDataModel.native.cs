@@ -8,6 +8,8 @@
 
         public string Game { get; set; }
 
+        public string MainBetType { get; set; }
+
         public string BetTypeGroup { get; set; }
 
         public string BetType { get; set; }
@@ -17,8 +19,6 @@
         public string Customer { get; set; }
 
         public int BetCount { get; set; }
-
-        //public decimal RealIncome { get; set; }
 
         public decimal MemberTurnover { get; set; }
 

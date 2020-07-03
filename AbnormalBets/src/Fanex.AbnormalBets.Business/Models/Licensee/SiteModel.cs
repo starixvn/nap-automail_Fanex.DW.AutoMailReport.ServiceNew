@@ -8,6 +8,8 @@
 
         public string SiteName { get; set; }
 
-        public string Subject { get; set; }        
+        public string Subject { get; set; }
+
+        public bool IsHideAfterPTColumn { get; set; } = true;
     }
 }

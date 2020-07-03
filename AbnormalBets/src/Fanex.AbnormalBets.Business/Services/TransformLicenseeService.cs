@@ -91,7 +91,7 @@ namespace Fanex.AbnormalBets.Business.Services
                 {
                     Sport = $"{rrService.GetSportName(bet.SportType.ToString(), CodeEn)} {rrService.GetSportName(bet.SportType.ToString(), CodeCn)}",
                     League = $"{rrService.GetLeagueName(bet.LeagueId.ToString(), CodeEn)} {rrService.GetLeagueName(bet.LeagueId.ToString(), CodeCn)}",
-                    Match = $"{rrService.GetTeamName(bet.HomeId.ToString(), CodeEn)} -vs- {rrService.GetTeamName(bet.AwayId.ToString(), CodeEn)} {rrService.GetTeamName(bet.HomeId.ToString(), CodeCn)} -vs- {rrService.GetTeamName(bet.AwayId.ToString(), CodeCn)}",                    
+                    Match = $"{rrService.GetTeamName(bet.HomeId.ToString(), CodeEn)} -vs- {rrService.GetTeamName(bet.AwayId.ToString(), CodeEn)} {rrService.GetTeamName(bet.HomeId.ToString(), CodeCn)} -vs- {rrService.GetTeamName(bet.AwayId.ToString(), CodeCn)}",
                     KickOffTime = bet.KickOffTime.AddHours(12),
                     Live = bet.LiveIndicator ? "Live 现场" : "Non Live  非现场",
                     Bettype = $"{rrService.GetBetTypeName(bet.Bettype.ToString(), CodeEn)} {rrService.GetBetTypeName(bet.Bettype.ToString(), CodeCn)}",
@@ -103,6 +103,7 @@ namespace Fanex.AbnormalBets.Business.Services
                     Odds = bet.Odds,
                     CurrencyName = bet.CurrencyName,
                     Stake = bet.Stake,
+                    AfterPT = bet.AfterPT,
                     Hdp = bet.Hdp,
                     LiveHomeScore = bet.LiveHomeScore,
                     LiveAwayScore = bet.LiveAwayScore,

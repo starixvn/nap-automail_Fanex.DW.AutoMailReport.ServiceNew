@@ -9,7 +9,7 @@ namespace Fanex.ESportModelingData.Business.Criterias
 
         public DateTime DateEnd { get; set; }
 
-        public override string GetSettingKey() => "NAP_DW_Esport_ModelingDataWeekly_CusInfo";
+        public override string GetSettingKey() => "NAP_DW_ModelingDataWeekly_CusInfo";
 
         public override bool IsValid() => true;
     }

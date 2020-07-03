@@ -10,9 +10,9 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
 {
     public interface SabaSportPunterExcelService
     {
-        string ExportExcelWithData(Sport sport, string exceltitle, DateTime date, List<PunterModel> data, int batchIndex, int totalBatch, bool isAllInfo);
+        string ExportExcelWithData(Sport sport, string exceltitle, DateTime date, List<PunterModel> data, int batchIndex, int totalBatch, bool isAllInfo, string subject);
 
-        string ExportExcelWithNoData(Sport sport, string exceltitle, DateTime date);
+        string ExportExcelWithNoData(Sport sport, string exceltitle, DateTime date, string subject);
     }
 
     public class SabaSportPunterExcelServiceImp : SabaSportPunterExcelService
@@ -24,7 +24,7 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             this.excelPackage = excelPackage;
         }
 
-        public string ExportExcelWithData(Sport sport, string exceltitle, DateTime date, List<PunterModel> data, int batchIndex, int totalBatch, bool isAllInfo)
+        public string ExportExcelWithData(Sport sport, string exceltitle, DateTime date, List<PunterModel> data, int batchIndex, int totalBatch, bool isAllInfo, string subject)
         {
             UpdateRowIndex(data, batchIndex);
 
@@ -40,7 +40,7 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             template.Column(12).Hidden = true;
             template.Column(13).Hidden = true;
 
-            return isAllInfo ? Save(sport, date) : Save(sport, date, batchIndex);
+            return isAllInfo ? Save(sport, date, subject) : Save(sport, date, batchIndex);
         }
 
         private static void RenderHighLightBGColor(List<PunterModel> data, ExcelWorksheet template, int startIndexRow)
@@ -116,9 +116,9 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             return path;
         }
 
-        private string Save(Sport sport, DateTime date)
+        private string Save(Sport sport, DateTime date, string subject)
         {
-            var fileName = $"{sport}_Batch_{AppConfigService.Config.TimeRange}_{date:yyyyMMdd}.xlsx";
+            var fileName = $"{subject} - {sport}_{AppConfigService.Config.TimeRange}_{date:yyyyMMdd}.xlsx";
             var path = $@"{AppConfigService.Config.InternalPath}\{date:yyyy}\{date:MM}";
             if (!Directory.Exists(path))
             {
@@ -131,14 +131,14 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             return path;
         }
 
-        public string ExportExcelWithNoData(Sport sport, string exceltitle, DateTime date)
+        public string ExportExcelWithNoData(Sport sport, string exceltitle, DateTime date, string subject)
         {
             excelPackage = new ExcelPackage(new FileInfo($"Templates/SabaSoccerLetstalk-NoData.xlsx"));
             var template = excelPackage.Workbook.Worksheets["Data"];
 
             RenderTitleWithNoData(exceltitle, template, date);
 
-            return Save(sport, date, 0);
+            return Save(sport, date, subject);
         }
     }
 }

@@ -7,8 +7,8 @@
   "Password": "",
   "FunctionIdNodata": 90,
   "TemplateExcelFile": "CN88PerformanceByPT/CN88PerformanceByPT.xlsx",
-  "SheetExcelTemplateName": [ "By PT", "By Match", "Data Details By Week", "Data Details By Period" ],
-  "CellAddressRender": [ "B10", "B10", "B10", "B10" ],
+  "SheetExcelTemplateName": [ "By Match", "Data Details By Period" ],
+  "CellAddressRender": [ "B8", "B8" ],
   "StartExelRowIndex": "10",
   "EmailTemplate": "CN88PerformanceByPT/CN88PerformanceByPT.cshtml",
   "EmailSubject": "Automail Report - Weekly CN88 Performance Report",
@@ -42,25 +42,15 @@
       "IsEnabledSectionTotal": true,
       "Label": "Total",
       "StartMergeColumnIndex": 2,
-      "EndMergeColumnIndex": 7,
-      "SumColumnsIndex": [ 6, 7, 8, 9, 10, 11, 12 ]
-    },
-    {
-      "IsEnabledSectionTotal": true,
-      "Label": "Total",
-      "StartMergeColumnIndex": 2,
-      "EndMergeColumnIndex": 8,
-      "SumColumnsIndex": [ 7, 8, 9, 10, 11, 12, 13 ]
-    },
-    {
-      "IsEnabledSectionTotal": true,
-      "Label": "Total",
-      "StartMergeColumnIndex": 2,
       "EndMergeColumnIndex": 11,
       "SumColumnsIndex": [ 10, 11, 12, 13, 14, 15, 16 ]
     },
     {
-      "IsEnabledSectionTotal": false
+      "IsEnabledSectionTotal": true,
+      "Label": "Total",
+      "StartMergeColumnIndex": 2,
+      "EndMergeColumnIndex": 10,
+      "SumColumnsIndex": [ 9, 10, 11, 12, 13, 14, 15 ]
     }
   ]
 }

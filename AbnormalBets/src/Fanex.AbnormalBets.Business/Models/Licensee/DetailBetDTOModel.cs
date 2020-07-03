@@ -14,6 +14,8 @@ namespace Fanex.AbnormalBets.Business.Models.Licensee
 
         public decimal Stake { get; set; }
 
+        public decimal AfterPT { get; set; }
+
         public decimal Hdp { get; set; }
 
         public int? LiveHomeScore { get; set; }
