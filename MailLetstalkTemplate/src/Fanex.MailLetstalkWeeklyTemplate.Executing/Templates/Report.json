@@ -6,7 +6,7 @@
   },
   {
     "ReportFile": "LicenseeVoidTicket/LicenseeVoidTicket.json",
-    "IsActive": true,
+    "IsActive": false,
     "IsEmailEnabled": true
   }
 ]

@@ -9,41 +9,23 @@
   "TemplateExcelFile": "CN88PerformanceByPT/CN88PerformanceByPT.xlsx",
   "SheetExcelTemplateName": [ "By Match", "Data Details By Period" ],
   "CellAddressRender": [ "B8", "B8" ],
-  "StartExelRowIndex": "10",
+  "StartExelRowIndex": "8",
   "EmailTemplate": "CN88PerformanceByPT/CN88PerformanceByPT.cshtml",
   "EmailSubject": "Automail Report - Weekly CN88 Performance Report",
   "MailId": "327",
   "MailName": "Mail Template Testing",
   "FileName": "Weekly_CN88_Performance_Report",
-  "Header": "Weekly CN88 Performance Report",
   "StartExcelColumnIndex": 2,
   "IsEnabledSectionHeader": true,
-  "TitleSettings": [
-    {
-      "CellAddressRender": "B3",
-      "Title": "Period :"
-    },
-    {
-      "CellAddressRender": "B3",
-      "Title": "Period :"
-    },
-    {
-      "CellAddressRender": "B3",
-      "Title": "Period :"
-    },
-    {
-      "CellAddressRender": "B3",
-      "Title": "Period :"
-    }
-  ],
+  "Header": "Weekly CN88 Performance Report",
   "IsEnabledSectionTotal": true,
   "TotalSettings": [
     {
       "IsEnabledSectionTotal": true,
       "Label": "Total",
       "StartMergeColumnIndex": 2,
-      "EndMergeColumnIndex": 11,
-      "SumColumnsIndex": [ 10, 11, 12, 13, 14, 15, 16 ]
+      "EndMergeColumnIndex": 10,
+      "SumColumnsIndex": [ 9, 10, 11, 12, 13, 14, 15 ]
     },
     {
       "IsEnabledSectionTotal": true,

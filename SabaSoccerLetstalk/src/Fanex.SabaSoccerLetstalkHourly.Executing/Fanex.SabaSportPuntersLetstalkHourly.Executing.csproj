@@ -254,12 +254,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Fanex.SabaSoccerLetstalk.Business\Fanex.SabaSoccerLetstalk.Business.csproj">
-      <Project>{9bb9e7b2-c666-4991-8749-d8ee40a395b7}</Project>
-      <Name>Fanex.SabaSoccerLetstalk.Business</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
