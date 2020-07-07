@@ -1,9 +1,7 @@
-﻿namespace Fanex.SabaSoccerLetstalk.Business.Models
+﻿namespace Fanex.TopPunterCasino.Business.Models
 {
-    public class LetstalkTodayPunterSetting
+    public class TopPunterCasinoSetting
     {
-        public string SPName { get; set; }
-
         public string Exceltitle { get; set; }
 
         public string LetstalkGroup { get; set; } = "Saba-Soccer-Test";

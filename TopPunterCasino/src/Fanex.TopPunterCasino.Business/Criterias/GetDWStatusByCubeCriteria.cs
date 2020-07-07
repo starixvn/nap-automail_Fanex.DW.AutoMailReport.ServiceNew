@@ -1,6 +1,6 @@
 ﻿using Fanex.Data.Repository;
 
-namespace Fanex.SabaSoccerLetstalk.Business.Criterias
+namespace Fanex.TopPunterCasino.Business.Criterias
 {
     public class GetDWStatusByCubeCriteria : CriteriaBase
     {

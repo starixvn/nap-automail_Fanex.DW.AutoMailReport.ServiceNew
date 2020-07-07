@@ -2,7 +2,7 @@
 using Fanex.LetstalkService.Core.Services;
 using System.Collections.Generic;
 
-namespace Fanex.SabaSoccerLetstalk.Business.Services
+namespace Fanex.TopPunterCasino.Business.Services
 {
     public interface MessageService
     {

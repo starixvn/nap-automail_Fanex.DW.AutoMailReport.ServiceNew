@@ -2,7 +2,7 @@
 using Fanex.Service.Core;
 using System;
 
-namespace Fanex.SabaSoccerLetstalk.Business.Services
+namespace Fanex.TopPunterCasino.Business.Services
 {
     public interface DateRangeService
     {

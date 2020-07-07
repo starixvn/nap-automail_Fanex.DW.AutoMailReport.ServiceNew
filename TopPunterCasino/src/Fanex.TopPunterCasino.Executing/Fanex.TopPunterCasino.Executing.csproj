@@ -180,22 +180,22 @@
     <Content Include="App_Data\DBWH.bodb_dwrs.dwrs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\SabaSoccerLetstalk.cshtml">
+    <Content Include="Templates\TopPunterCasino.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\SabaSoccerLetstalk.json">
+    <Content Include="Templates\TopPunterCasino.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\SabaSoccerLetstalk.Local.json">
+    <Content Include="Templates\TopPunterCasino.Local.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\SabaSoccerLetstalk.PRO.json">
+    <Content Include="Templates\TopPunterCasino.PRO.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\SabaSoccerLetstalk.UAT.json">
+    <Content Include="Templates\TopPunterCasino.UAT.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\SabaSoccerLetstalk.xlsx">
+    <Content Include="Templates\TopPunterCasino.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\target.config">
@@ -206,6 +206,9 @@
     </Content>
     <None Include="Templates\Fanex.TopPunterCasino.Executing.Local.exe.config" />
     <Content Include="Templates\Fanex.TopPunterCasino.Executing.PRO.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\TopPunterCasino-NoData.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

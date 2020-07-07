@@ -1,4 +1,6 @@
-﻿namespace Fanex.SabaSoccerLetstalk.Business.Models
+﻿using Fanex.TopPunterCasino.Business.Models;
+
+namespace Fanex.TopPunterCasino.Business.Models
 {
     public class PunterModel
     {
@@ -22,10 +24,6 @@
 
         public decimal MarginMTD { get; set; }
 
-        public string BreakColumn { get; } = string.Empty;
-
-        public int BetCount { get; set; } = 10;
-
-        public bool IsSetBGColor { get; set; }
+        public CasinoType CasinoType { get; set; }
     }
 }

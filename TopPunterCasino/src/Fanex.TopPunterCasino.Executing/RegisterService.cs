@@ -4,8 +4,8 @@ using Fanex.LetstalkService.Client;
 using Fanex.LetstalkService.Core.Services;
 using Fanex.Logging;
 using Fanex.Logging.Sentry.RavenClient;
-using Fanex.SabaSoccerLetstalk.Business.Models;
-using Fanex.SabaSoccerLetstalk.Business.Services;
+using Fanex.TopPunterCasino.Business.Models;
+using Fanex.TopPunterCasino.Business.Services;
 using Newtonsoft.Json;
 using OfficeOpenXml;
 using SharpRaven;
@@ -29,7 +29,7 @@ namespace Fanex.TopPunterCasino.Executing
         private static void LoadConfig()
         {
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
-            var text = File.ReadAllText("Templates/SabaSoccerLetstalk.json");
+            var text = File.ReadAllText("Templates/TopPunterCasino.json");
             AppConfigService.Config = JsonConvert.DeserializeObject<ConfigSettingModel>(text);
         }
 
@@ -38,10 +38,10 @@ namespace Fanex.TopPunterCasino.Executing
             container.Register<Log, LogImp>();
             container.Register<IDynamicRepository, DynamicRepository>();
             container.Register<DataService, DataServiceImp>();
-            container.Register<SabaSoccerNotificationService, SabaSoccerNotificationServiceImp>();
+            container.Register<TopPunterCasinoNotificationService, TopPunterCasinoNotificationServiceImp>();
             container.Register(() => new ExcelPackage());
             container.Register<DateRangeService, DateRangeServiceImp>();
-            container.Register<SabaSoccerExcelService, SabaSoccerExcelServiceImp>();
+            container.Register<ExcelService, ExcelServiceImp>();
             container.Register<ImageService, ImageServiceImp>();
             container.Register<MessageService, MessageServiceImp>();
             container.Register<FileService, FileServiceImp>();

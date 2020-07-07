@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Fanex.SabaSoccerLetstalk.Business.Services
+namespace Fanex.TopPunterCasino.Business.Services
 {
     public interface FileService
     {

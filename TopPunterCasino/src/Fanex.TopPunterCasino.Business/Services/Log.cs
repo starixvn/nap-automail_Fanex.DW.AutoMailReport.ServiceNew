@@ -3,7 +3,7 @@ using Fanex.Logging.Extensions;
 using Fanex.Logging.Extensions.Database;
 using System;
 
-namespace Fanex.SabaSoccerLetstalk.Business.Services
+namespace Fanex.TopPunterCasino.Business.Services
 {
     public interface Log
     {

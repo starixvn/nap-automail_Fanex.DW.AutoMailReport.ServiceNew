@@ -1,6 +1,6 @@
-﻿using Fanex.SabaSoccerLetstalk.Business.Models;
+﻿using Fanex.TopPunterCasino.Business.Models;
 
-namespace Fanex.SabaSoccerLetstalk.Business.Services
+namespace Fanex.TopPunterCasino.Business.Services
 {
     public static class AppConfigService
     {

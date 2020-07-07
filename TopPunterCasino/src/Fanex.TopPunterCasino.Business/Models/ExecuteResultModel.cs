@@ -1,6 +1,6 @@
 ﻿using Fanex.MailDelivery.Core.Models;
 
-namespace Fanex.SabaSoccerLetstalk.Business.Models
+namespace Fanex.TopPunterCasino.Business.Models
 {
     public class ExecuteResultModel
     {

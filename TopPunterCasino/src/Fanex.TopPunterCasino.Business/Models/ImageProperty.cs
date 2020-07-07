@@ -1,4 +1,4 @@
-﻿namespace Fanex.SabaSoccerLetstalk.Business.Models
+﻿namespace Fanex.TopPunterCasino.Business.Models
 {
     public class ImageProperty
     {

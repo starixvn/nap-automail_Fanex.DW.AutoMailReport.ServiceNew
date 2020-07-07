@@ -1,18 +1,16 @@
 ﻿using Fanex.Data.Repository;
-using Fanex.SabaSoccerLetstalk.Business.Criterias;
-using Fanex.SabaSoccerLetstalk.Business.Models;
 using Fanex.Service.Core;
+using Fanex.TopPunterCasino.Business.Criterias;
+using Fanex.TopPunterCasino.Business.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Fanex.SabaSoccerLetstalk.Business.Services
+namespace Fanex.TopPunterCasino.Business.Services
 {
     public interface DataService
     {
-        List<PunterModel> QueryDataSabaSoccer();
-
-        List<PunterModel> QueryDataSabaHourly(DateTime date, LetstalkTodayPunterSetting setting);
+        List<PunterModel> QueryCasinoTopPunterData(int totalTurnover);
 
         bool IsDataAvailable();
     }
@@ -28,9 +26,14 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             this.repository = repository;
         }
 
-        public List<PunterModel> QueryDataSabaSoccer()
+        public List<PunterModel> QueryCasinoTopPunterData(int totalTurnover)
         {
-            var criteria = new PunterLeagueGroupSportCriteria { RptDate = dateRangeService.RptDate };
+            var criteria = new CasinoTopPunterCriteria
+            {
+                RptDate = dateRangeService.RptDate,
+                TotalTurnover = totalTurnover
+            };
+
             return repository.Fetch<PunterModel>(criteria).ToList();
         }
 
@@ -46,12 +49,6 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             result = lastDate.LastDate >= Convert.ToDateTime(SystemTime.Now.AddDays(-1).ToShortDateString());
 
             return result;
-        }
-
-        public List<PunterModel> QueryDataSabaHourly(DateTime date, LetstalkTodayPunterSetting setting)
-        {
-            var criteria = new PunterLeagueGroupSportHourlyCriteria { RptDate = date, SPName = setting.SPName };
-            return repository.Fetch<PunterModel>(criteria).ToList();
         }
     }
 }

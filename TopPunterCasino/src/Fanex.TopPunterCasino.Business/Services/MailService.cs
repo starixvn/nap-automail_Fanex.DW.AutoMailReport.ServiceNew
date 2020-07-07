@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Fanex.SabaSoccerLetstalk.Business.Services
+namespace Fanex.TopPunterCasino.Business.Services
 {
     public interface MailService
     {
@@ -43,7 +43,7 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
         private string Content(string fileName, string excelTitle, DateTime rptDate)
         {
             var tuple = new Tuple<string, string, DateTime>(new FileInfo(fileName).Name, excelTitle, rptDate);
-            var template = File.ReadAllText("Templates/SabaSoccerLetstalk.cshtml");
+            var template = File.ReadAllText("Templates/TopPunterCasino.cshtml");
             var result = Engine.Razor.RunCompile(template, $"template{DateTime.Now.Ticks}", model: tuple);
 
             return result;

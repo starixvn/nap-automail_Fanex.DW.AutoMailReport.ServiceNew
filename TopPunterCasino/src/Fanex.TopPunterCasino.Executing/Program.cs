@@ -1,4 +1,4 @@
-﻿using Fanex.SabaSoccerLetstalk.Business.Services;
+﻿using Fanex.TopPunterCasino.Business.Services;
 using Newtonsoft.Json;
 using SimpleInjector;
 using System;
@@ -14,7 +14,7 @@ namespace Fanex.TopPunterCasino.Executing
             RegisterService.RegisterContainer(container);
             container.Verify(VerificationOption.VerifyOnly);
 
-            var service = container.GetInstance<SabaSoccerNotificationService>();
+            var service = container.GetInstance<TopPunterCasinoNotificationService>();
             var jobMessage = service.Execute();
             var json = JsonConvert.SerializeObject(jobMessage);
 

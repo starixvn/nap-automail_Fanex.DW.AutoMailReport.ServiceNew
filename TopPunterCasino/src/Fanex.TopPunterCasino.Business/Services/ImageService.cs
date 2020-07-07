@@ -1,11 +1,11 @@
-﻿using Fanex.SabaSoccerLetstalk.Business.Models;
+﻿using Fanex.TopPunterCasino.Business.Models;
 using Spire.Xls;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 
-namespace Fanex.SabaSoccerLetstalk.Business.Services
+namespace Fanex.TopPunterCasino.Business.Services
 {
     public interface ImageService
     {

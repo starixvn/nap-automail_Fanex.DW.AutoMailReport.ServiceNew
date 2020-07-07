@@ -1,52 +1,56 @@
-﻿using Fanex.SabaSoccerLetstalk.Business.Models;
+﻿using Fanex.TopPunterCasino.Business.Models;
 using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Fanex.SabaSoccerLetstalk.Business.Services
+namespace Fanex.TopPunterCasino.Business.Services
 {
-    public interface SabaSoccerExcelService
+    public interface ExcelService
     {
-        string ExportExcel(List<PunterModel> data, int batchIndex, int totalBatch, bool isAllInfo);
+        string ExportExcel(List<PunterModel> data, int batchIndex, int totalBatch, bool isAllInfo, TopPunterCasinoSetting setting);
+
+        string ExportExcelWithNoData(TopPunterCasinoSetting setting);
     }
 
-    public class SabaSoccerExcelServiceImp : SabaSoccerExcelService
+    public class ExcelServiceImp : ExcelService
     {
         private ExcelPackage excelPackage;
         private readonly DateRangeService dateRangeService;
 
-        public SabaSoccerExcelServiceImp(ExcelPackage excelPackage, DateRangeService dateRangeService)
+        public ExcelServiceImp(ExcelPackage excelPackage, DateRangeService dateRangeService)
         {
             this.excelPackage = excelPackage;
             this.dateRangeService = dateRangeService;
         }
 
-        public string ExportExcel(List<PunterModel> data, int batchIndex, int totalBatch, bool isAllInfo)
+        public string ExportExcel(List<PunterModel> data, int batchIndex, int totalBatch, bool isAllInfo, TopPunterCasinoSetting setting)
         {
             UpdateRowIndex(data, batchIndex);
 
-            excelPackage = new ExcelPackage(new FileInfo($"Templates/SabaSoccerLetstalk.xlsx"));
+            excelPackage = new ExcelPackage(new FileInfo($"Templates/TopPunterCasino.xlsx"));
             var template = excelPackage.Workbook.Worksheets["Data"];
             template.Cells["A3"].LoadFromCollection(data, false);
+            template.Column(11).Hidden = true;
 
-            RenderTitle(batchIndex, totalBatch, template, isAllInfo);
+            RenderTitle(batchIndex, totalBatch, template, isAllInfo, setting);
             RenderData(data, template);
 
-            return Save(batchIndex, isAllInfo);
+            return Save(batchIndex, isAllInfo, setting);
         }
 
-        private void RenderTitle(int batchIndex, int totalBatch, ExcelWorksheet template, bool isAllInfo)
+        private void RenderTitle(int batchIndex, int totalBatch, ExcelWorksheet template, bool isAllInfo, TopPunterCasinoSetting setting)
         {
             var title = isAllInfo
-                ? AppConfigService.Config.Exceltitle
-                : $"Top Saba Soccer Punters - Page {batchIndex + 1} of {totalBatch}";
+                ? setting.Exceltitle
+                : $"{setting.Exceltitle} - Page {batchIndex + 1} of {totalBatch}";
 
             template.Cells["A1"].Value = title;
             var rptDate = dateRangeService.RptDate;
-            var date1 = rptDate.AddDays(-2);
+            var date1 = rptDate.AddDays(-5);
             var date2 = rptDate;
             template.Cells["E1"].Value = $"{date1:yyyyMMdd} - {date2:yyyyMMdd}";
-            template.Cells["H1"].Value = $"{date1:yyyyMM01} - {date2:yyyyMMdd}";
+            template.Cells["H1"].Value = "MTD";
         }
 
         private static void RenderData(List<PunterModel> data, ExcelWorksheet template)
@@ -85,12 +89,12 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             });
         }
 
-        private string Save(int batchIndex, bool isAllInfo)
+        private string Save(int batchIndex, bool isAllInfo, TopPunterCasinoSetting setting)
         {
             var date = dateRangeService.RptDate;
             var fileName = isAllInfo
-                ? $"{AppConfigService.Config.Exceltitle}_{date:yyyyMMdd}.xlsx"
-                : $"{AppConfigService.Config.Exceltitle.Replace(" - All", string.Empty)}_Batch_{batchIndex + 1}_{date:yyyyMMdd}.xlsx";
+                ? $"{setting.Exceltitle}_{date:yyyyMMdd}.xlsx"
+                : $"{setting.Exceltitle}_Batch_{batchIndex + 1}_{date:yyyyMMdd}.xlsx";
             var path = $@"{AppConfigService.Config.InternalPath}\{date:yyyy}\{date:MM}";
             if (!Directory.Exists(path))
             {
@@ -101,6 +105,26 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             excelPackage.SaveAs(new FileInfo(path), AppConfigService.Config.Password);
 
             return path;
+        }
+
+        public string ExportExcelWithNoData(TopPunterCasinoSetting setting)
+        {
+            excelPackage = new ExcelPackage(new FileInfo($"Templates/TopPunterCasino-NoData.xlsx"));
+            var template = excelPackage.Workbook.Worksheets["Data"];
+            var date = dateRangeService.RptDate;
+            RenderTitleWithNoData(setting.Exceltitle, template, date);
+            template.Column(11).Hidden = true;
+
+            return Save(0, true, setting);
+        }
+
+        private static void RenderTitleWithNoData(string exceltitle, ExcelWorksheet template, DateTime date)
+        {
+            var date1 = date.AddDays(-5);
+            var date2 = date;
+            template.Cells["A1"].Value = $"{exceltitle}";
+            template.Cells["E1"].Value = $"{date1:yyyyMMdd} - {date2:yyyyMMdd}";
+            template.Cells["H1"].Value = "MTD";
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Fanex.SabaSoccerLetstalk.Business.Models
+namespace Fanex.TopPunterCasino.Business.Models
 {
     public class ConfigSettingModel
     {
@@ -17,8 +17,6 @@ namespace Fanex.SabaSoccerLetstalk.Business.Models
 
         public string TargetName { get; set; }
 
-        public string Group { get; set; }
-
         public string Password { get; set; }
 
         public int FunctionIdNodata { get; set; }
@@ -31,10 +29,8 @@ namespace Fanex.SabaSoccerLetstalk.Business.Models
 
         public Dictionary<string, ImageProperty> ImageSettings { get; set; } = new Dictionary<string, ImageProperty>();
 
-        public Dictionary<Sport, LetstalkTodayPunterSetting> SabaSports { get; set; }
+        public Dictionary<CasinoType, TopPunterCasinoSetting> CasinoTypes { get; set; }
 
-        public string Subject { get; set; }
-
-        public string Exceltitle { get; set; }
+        public int TotalTurnover { get; set; } = 50000;
     }
 }
