@@ -1,7 +1,8 @@
-﻿using System;
-using Fanex.Logging;
+﻿using Fanex.Logging;
 using Fanex.Logging.Extensions;
 using Fanex.Logging.Extensions.Database;
+using System;
+using System.IO;
 
 namespace Fanex.ESportModelingData.Business.Services
 {
@@ -16,17 +17,20 @@ namespace Fanex.ESportModelingData.Business.Services
     {
         public void Log(string message)
         {
+            Directory.CreateDirectory(AppConfigService.AppConfig.FilePath);
+            File.AppendAllText($@"{AppConfigService.AppConfig.FilePath}\Log.txt", message);
             LogService.Info(message);
         }
 
         public void Log(Exception exception)
         {
+            Directory.CreateDirectory(AppConfigService.AppConfig.FilePath);
             var logMessage = new LogMessage(exception.Message)
                         .AddSection("Database Info", DatabaseInfoGetters.GetDbExceptionInfo(exception))
                         .AddSection("Server Info", CommonInfoGetters.GetServerInfo())
                         .AddSection("Exception Info", CommonInfoGetters.GetExceptionInfo(exception))
                         .ToString();
-
+            File.AppendAllText($@"{AppConfigService.AppConfig.FilePath}\ERROR.txt", logMessage);
             LogService.Error(logMessage);
         }
     }

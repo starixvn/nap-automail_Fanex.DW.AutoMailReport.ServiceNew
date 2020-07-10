@@ -14,12 +14,13 @@ namespace Fanex.ESportModelingData.Business.Services
         public string CustInfoPath(Sport sport, Period period)
         {
             var sportName = GenerateName.SportNames[sport];
-            return $@"{ParentFolder()}\{sportName}";
+            var root = dateService.DateStart.ToOADate();
+            return $@"{ParentFolder()}\{root}\{sportName}";
         }
 
         public string ParentFolder()
         {
-            return $@"Daily\{dateService.DateEnd.ToOADate()}";
+            return "Daily";
         }
 
         public string ParentFolderPath(Sport sport, Period period)

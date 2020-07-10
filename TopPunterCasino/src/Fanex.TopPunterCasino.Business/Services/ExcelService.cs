@@ -47,7 +47,7 @@ namespace Fanex.TopPunterCasino.Business.Services
 
             template.Cells["A1"].Value = title;
             var rptDate = dateRangeService.RptDate;
-            var date1 = rptDate.AddDays(-5);
+            var date1 = rptDate.AddDays(-4);
             var date2 = rptDate;
             template.Cells["E1"].Value = $"{date1:yyyyMMdd} - {date2:yyyyMMdd}";
             template.Cells["H1"].Value = "MTD";
@@ -120,7 +120,7 @@ namespace Fanex.TopPunterCasino.Business.Services
 
         private static void RenderTitleWithNoData(string exceltitle, ExcelWorksheet template, DateTime date)
         {
-            var date1 = date.AddDays(-5);
+            var date1 = date.AddDays(-4);
             var date2 = date;
             template.Cells["A1"].Value = $"{exceltitle}";
             template.Cells["E1"].Value = $"{date1:yyyyMMdd} - {date2:yyyyMMdd}";

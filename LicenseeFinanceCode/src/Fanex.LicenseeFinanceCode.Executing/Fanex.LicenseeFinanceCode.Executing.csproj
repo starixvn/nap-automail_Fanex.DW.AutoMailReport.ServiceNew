@@ -172,9 +172,15 @@
     <Content Include="Template\Settings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Template\Fanex.LicenseeFinanceCode.Executing.PRO.exe.config" />
-    <None Include="Template\Fanex.LicenseeFinanceCode.Executing.UAT.exe.config" />
-    <None Include="Template\Fanex.LicenseeFinanceCode.Executing.Local.exe.config" />
+    <Content Include="Template\Fanex.LicenseeFinanceCode.Executing.PRO.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Template\Fanex.LicenseeFinanceCode.Executing.UAT.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Template\Fanex.LicenseeFinanceCode.Executing.Local.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Template\Settings.Local.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

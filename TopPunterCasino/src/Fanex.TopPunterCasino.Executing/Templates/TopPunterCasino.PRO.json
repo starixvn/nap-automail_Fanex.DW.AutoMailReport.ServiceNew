@@ -15,13 +15,13 @@
       "Exceltitle": "RNG Casino",
       "LetstalkGroup": "Casino-Top-Punters",
       "Subject": "RNG Casino Top Punters - Risk Monitoring",
-      "MailFunctionId": 364
+      "MailFunctionId": 366
     },
     "LiveCasino": {
       "Exceltitle": "Live Casino",
       "LetstalkGroup": "Casino-Top-Punters",
       "Subject": "Live Casino Top Punters - Risk Monitoring",
-      "MailFunctionId": 364
+      "MailFunctionId": 366
     }
   },
   "ImageSettings": {
