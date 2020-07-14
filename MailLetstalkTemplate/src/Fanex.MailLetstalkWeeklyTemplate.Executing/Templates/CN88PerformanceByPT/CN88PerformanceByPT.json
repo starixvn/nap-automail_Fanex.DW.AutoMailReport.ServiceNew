@@ -1,8 +1,8 @@
 ﻿{
   "SPName": "NAP_DW_WeeklyCN88PerformanceByPT",
-  "DateRange": "Weekly",
-  "FromDate": "2020-01-01",
-  "ToDate": "2020-05-10",
+  "DateRange": "Manual",
+  "FromDate": "2020-06-01",
+  "ToDate": "2020-06-30",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\CN88PerformanceByPT",
   "Password": "",
   "FunctionIdNodata": 90,
@@ -24,8 +24,8 @@
       "IsEnabledSectionTotal": true,
       "Label": "Total",
       "StartMergeColumnIndex": 2,
-      "EndMergeColumnIndex": 11,
-      "SumColumnsIndex": [ 10, 11, 12, 13, 14, 15, 16 ]
+      "EndMergeColumnIndex": 10,
+      "SumColumnsIndex": [ 9, 10, 11, 12, 13, 14, 15 ]
     },
     {
       "IsEnabledSectionTotal": true,

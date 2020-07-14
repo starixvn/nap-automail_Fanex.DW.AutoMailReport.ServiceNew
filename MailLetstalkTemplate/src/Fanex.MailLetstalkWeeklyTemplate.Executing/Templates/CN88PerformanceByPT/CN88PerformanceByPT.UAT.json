@@ -24,8 +24,8 @@
       "IsEnabledSectionTotal": true,
       "Label": "Total",
       "StartMergeColumnIndex": 2,
-      "EndMergeColumnIndex": 11,
-      "SumColumnsIndex": [ 10, 11, 12, 13, 14, 15, 16 ]
+      "EndMergeColumnIndex": 10,
+      "SumColumnsIndex": [ 9, 10, 11, 12, 13, 14, 15 ]
     },
     {
       "IsEnabledSectionTotal": true,

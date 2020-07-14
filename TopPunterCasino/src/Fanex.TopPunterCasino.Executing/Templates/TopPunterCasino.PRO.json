@@ -1,0 +1,44 @@
+﻿{
+  "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.99.99.51:801/60",
+  "CategorySentryLog": "NAP-Report-Service",
+  "IsCheckEnoughData": true,
+  "IsManual": false,
+  "RptDate": "2020-04-22",
+  "Path": "\\\\10.40.40.127\\Data.Web\\Fanex.Excel\\TopPunterCasino",
+  "InternalPath": "\\\\10.40.40.127\\Data.Web\\Fanex.Excel\\TopPunterCasino_InternalPath",
+  "Password": "Star168",
+  "FunctionIdNodata": 90,
+  "TargetName": "daily-monitoring",
+  "TotalTurnover": 50000,
+  "CasinoTypes": {
+    "RNGCasino": {
+      "Exceltitle": "RNG Casino",
+      "LetstalkGroup": "Casino-Top-Punters",
+      "Subject": "RNG Casino Top Punters - Risk Monitoring",
+      "MailFunctionId": 366
+    },
+    "LiveCasino": {
+      "Exceltitle": "Live Casino",
+      "LetstalkGroup": "Casino-Top-Punters",
+      "Subject": "Live Casino Top Punters - Risk Monitoring",
+      "MailFunctionId": 366
+    }
+  },
+  "ImageSettings": {
+    "TopPunterCasino": {
+      "FirstRow": 1,
+      "FirstColumn": 1,
+      "LastRow": 52,
+      "LastColumn": 10,
+      "CropWidth": 3520,
+      "CropHeight": 5100,
+      "ImageName": "TopPunterCasino",
+      "X": 200,
+      "Y": 200,
+      "SheetName": "Data",
+      "IsResize": true,
+      "ResizeNewWidth": 800,
+      "ImageQuality": 100
+    }
+  }
+}
