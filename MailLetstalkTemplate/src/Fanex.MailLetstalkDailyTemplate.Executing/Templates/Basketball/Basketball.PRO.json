@@ -5,7 +5,7 @@
   "DateRange": "Yesterday",
   "FromDate": "2020-01-01",
   "ToDate": "2020-01-10",
-  "Path": "\\\\10.40.40.127\\Data.Web\\Fanex.Excel\\Basketball - Daily VR Performance",
+  "Path": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\Basketball - Daily VR Performance",
   "Password": "Star168",
   "FunctionIdNodata": 90,
   "TemplateExcelFile": "Basketball/Basketball.xlsx",

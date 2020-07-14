@@ -1,0 +1,95 @@
+﻿{
+  "SentryClientKey": "http://612764957dbb46ffa359103d8ffa08c6@10.99.99.51:801/59",
+  "CategorySentryLog": "NAP-Report-Service-UAT",
+  "TargetName": "daily-house-wl",
+  "LicenseeVirtualGroup": "Top-50-Licensee-VSB-Performance-Test",
+  "IsCheckEnoughData": false,
+  "IsManual": true,
+  "FromDate": "2020-07-01",
+  "Todate": "2020-07-14",
+  "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\TopLicenseePerformance",
+  "Password": "Star168",
+  "FunctionIdNodata": 224,
+  "Sports": {
+    "Batch2": [
+      {
+        "SportType": 1,
+        "SectionName": "SOCCER"
+      }
+    ],
+    "Batch3": [
+      {
+        "SportType": -2,
+        "SectionName": "PARLAY"
+      }
+    ],
+    "Batch4": [
+      {
+        "SportType": 2,
+        "SectionName": "BASKETBALL"
+      }
+    ],
+    "Batch5": [
+      {
+        "SportType": 43,
+        "SectionName": "E-SPORTS"
+      }
+    ],
+    "Batch6": [
+      {
+        "SportType": 5,
+        "SectionName": "TENNIS"
+      }
+    ],
+    "Batch7": [
+      {
+        "SportType": -3,
+        "SectionName": "OTHER SPORTS"
+      }
+    ],
+    "Batch1": [
+      {
+        "SportType": 0,
+        "SectionName": "All Sports"
+      }
+    ]
+  },
+  "Image": {
+    "Top50": {
+      "FirstRow": 2,
+      "FirstColumn": 2,
+      "LastRow": 55,
+      "LastColumn": 7,
+      "CropWidth": 2350,
+      "CropHeight": 5260,
+      "X": 220,
+      "Y": 300,
+      "IsResize": true,
+      "ResizeNewWidth": 700
+    },
+    "TopLicenseeMargin": {
+      "FirstRow": 2,
+      "FirstColumn": 2,
+      "LastRow": 65,
+      "LastColumn": 12,
+      "CropWidth": 3600,
+      "CropHeight": 5250,
+      "X": 200,
+      "Y": 200,
+      "IsResize": true,
+      "ResizeNewWidth": 700
+    },
+    "VirtualSoccer_Licensee": {
+      "FirstRow": 2,
+      "FirstColumn": 2,
+      "LastRow": 55,
+      "LastColumn": 7,
+      "CropWidth": 2350,
+      "CropHeight": 5250,
+      "X": 200,
+      "Y": 220,
+      "IsResize": true,
+      "ResizeNewWidth": 500
+    }
+  }
+}

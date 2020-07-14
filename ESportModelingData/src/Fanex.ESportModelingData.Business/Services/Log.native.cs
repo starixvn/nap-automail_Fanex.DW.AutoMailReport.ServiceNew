@@ -18,7 +18,7 @@ namespace Fanex.ESportModelingData.Business.Services
         public void Log(string message)
         {
             Directory.CreateDirectory(AppConfigService.AppConfig.FilePath);
-            File.AppendAllText($@"{AppConfigService.AppConfig.FilePath}\Log.txt", message);
+            File.WriteAllText($@"{AppConfigService.AppConfig.FilePath}\Log.txt", message);
             LogService.Info(message);
         }
 
@@ -30,7 +30,7 @@ namespace Fanex.ESportModelingData.Business.Services
                         .AddSection("Server Info", CommonInfoGetters.GetServerInfo())
                         .AddSection("Exception Info", CommonInfoGetters.GetExceptionInfo(exception))
                         .ToString();
-            File.AppendAllText($@"{AppConfigService.AppConfig.FilePath}\ERROR.txt", logMessage);
+            File.WriteAllText($@"{AppConfigService.AppConfig.FilePath}\ERROR.txt", logMessage);
             LogService.Error(logMessage);
         }
     }

@@ -12,6 +12,13 @@ namespace Fanex.ESportModelingData.Business.Services
 
     public class CsvServiceImp : CsvService
     {
+        private readonly Log log;
+
+        public CsvServiceImp(Log log)
+        {
+            this.log = log;
+        }
+
         public void Execute<T>(List<T> data, string path)
         {
             try
@@ -27,6 +34,7 @@ namespace Fanex.ESportModelingData.Business.Services
             catch (Exception ex)
             {
                 var s = ex.Message;
+                log.Log(ex);
             }
         }
     }
