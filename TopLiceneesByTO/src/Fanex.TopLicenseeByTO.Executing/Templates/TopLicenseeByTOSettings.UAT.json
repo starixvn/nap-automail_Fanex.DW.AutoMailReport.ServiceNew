@@ -3,7 +3,6 @@
   "CategorySentryLog": "NAP-Report-Service-UAT",
   "TargetName": "daily-house-wl",
   "Group": "Top-50-Licensee-QC",
-  "LicenseeVirtualGroup": "Top-50-Licensee-VSB-Performance-Test",
   "IsCheckEnoughData": false,
   "IsManual": false,
   "FromDate": "2019-12-01",

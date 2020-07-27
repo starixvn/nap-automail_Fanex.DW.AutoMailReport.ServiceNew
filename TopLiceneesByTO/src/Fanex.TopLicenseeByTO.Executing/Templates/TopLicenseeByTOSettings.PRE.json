@@ -3,7 +3,6 @@
   "CategorySentryLog": "NAP-Report-Service",
   "TargetName": "daily-house-wl",
   "Group": "Top-50-Licensee-ManagementTest",
-  "LicenseeVirtualGroup": "Top-50-Licensee-VSB-Performance-Test",
   "IsCheckEnoughData": true,
   "IsManual": false,
   "FromDate": "2019-12-01",
