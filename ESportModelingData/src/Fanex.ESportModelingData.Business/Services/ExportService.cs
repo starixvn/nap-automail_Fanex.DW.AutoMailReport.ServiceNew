@@ -69,7 +69,7 @@ namespace Fanex.ESportModelingData.Business.Services
                 { Period.Weekly, true } ,
                 { Period.Manual, true } ,
                 { Period.DailyHistoricalData, false } ,
-                { Period.WeeklyHistoricalData, false }
+                { Period.WeeklyHistoricalData, true }
             };
         }
 
@@ -120,6 +120,7 @@ namespace Fanex.ESportModelingData.Business.Services
             if (Directory.Exists(path))
             {
                 Directory.Delete(path, true);
+                System.Threading.Thread.Sleep(1000);
             }
         }
 

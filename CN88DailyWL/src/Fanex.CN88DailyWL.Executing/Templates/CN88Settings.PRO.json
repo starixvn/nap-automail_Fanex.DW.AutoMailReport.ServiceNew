@@ -3,7 +3,7 @@
   "CategorySentryLog": "NAP-Report-Service",
   "IsManual": false,
   "WinLostDate": "2019-07-22",
-  "FilePath": "\\\\10.40.40.127\\Data.Web\\Fanex.Excel\\CN88DailyWinLoss",
+  "FilePath": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\CN88DailyWinLoss",
   "TargetName": "CN88",
   "Group": "CN88-DailyWL-PRO",
   "EN": {

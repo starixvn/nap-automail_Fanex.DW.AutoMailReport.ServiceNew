@@ -6,7 +6,7 @@
   "IsCheckEnoughData": true,
   "FromDate": "2019-07-12",
   "ToDate": "2019-07-23",
-  "FilePath": "\\\\10.40.40.127\\Data.Web\\Fanex.Excel\\DailyScoreBoxWinLoss",
+  "FilePath": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\DailyScoreBoxWinLoss",
   "Password": "",
   "FunctionIdNodata": 190
 }

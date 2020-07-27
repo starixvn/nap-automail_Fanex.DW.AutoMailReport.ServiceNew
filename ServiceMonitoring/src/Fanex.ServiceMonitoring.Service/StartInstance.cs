@@ -15,10 +15,10 @@ namespace Fanex.ServiceMonitoring.Service
 
         public bool Start()
         {
-            var instanceService = new Thread(new ThreadStart(serviceMonitoring.Start));
+            // var instanceService = new Thread(new ThreadStart(serviceMonitoring.Start));
             var instanceMail = new Thread(new ThreadStart(mailMonitoring.Start));
 
-            instanceService.Start();
+            // instanceService.Start();
             instanceMail.Start();
 
             return true;
