@@ -44,7 +44,7 @@ namespace Fanex.TopLicensee.Service.Services
             }
 
             sheet.Cells["B4"].LoadFromCollection(data.Item1, false);
-            sheet.Cells["B15"].LoadFromCollection(data.Item2, false);
+            sheet.Cells["B16"].LoadFromCollection(data.Item2, false);
         }
 
         private void RefineData(Tuple<List<TopLicenseeMarginModel>, List<TopLicenseeMarginModel>> data)
@@ -74,7 +74,7 @@ namespace Fanex.TopLicensee.Service.Services
                 Directory.CreateDirectory(path);
             }
 
-            path = $@"{path}\{fileName}";            
+            path = $@"{path}\{fileName}";
             excelPackage.SaveAs(new FileInfo(path), AppConfigService.AppConfig.Password);
 
             return path;
