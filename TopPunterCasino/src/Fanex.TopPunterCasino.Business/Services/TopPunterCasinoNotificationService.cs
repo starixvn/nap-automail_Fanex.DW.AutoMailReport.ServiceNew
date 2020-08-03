@@ -23,6 +23,7 @@ namespace Fanex.TopPunterCasino.Business.Services
         private readonly FileService fileService;
         private readonly MailService mailService;
         private readonly DateRangeService dateRangeService;
+        private List<string> filesPath = new List<string>();
 
         public TopPunterCasinoNotificationServiceImp(
             Log log,
@@ -82,7 +83,7 @@ namespace Fanex.TopPunterCasino.Business.Services
             }
 
             var letstalkFails = new List<string>();
-            var rawData = dataService.QueryCasinoTopPunterData(AppConfigService.Config.TotalTurnover);
+            var rawData = dataService.QueryCasinoTopPunterData(AppConfigService.Config.TotalTurnover, AppConfigService.Config.NonSportProductIds);
             foreach (var casinoType in AppConfigService.Config.CasinoTypes)
             {
                 var data = rawData.Where(s => s.CasinoType == casinoType.Key).ToList();
@@ -97,6 +98,12 @@ namespace Fanex.TopPunterCasino.Business.Services
                         letstalkFails.Add(file);
                     }
                 });
+            }
+
+            if (!AppConfigService.Config.IsSentDirectly)
+            {
+                var letstalkGroup = AppConfigService.Config.CasinoTypes[CasinoType.RNGCasino].LetstalkGroup;
+                fileService.CopyFiles(filesPath, letstalkGroup);
             }
 
             return new ExecuteResultModel
@@ -177,7 +184,17 @@ namespace Fanex.TopPunterCasino.Business.Services
         {
             var letstalkGroup = group;
             var letstalkModel = messageService.CreateLetstalkModel(imagePath, letstalkGroup);
-            var status = letstalkService.SendMessage(letstalkModel);
+            var status = false;
+            filesPath.Add(imagePath);
+            if (AppConfigService.Config.IsSentDirectly)
+            {
+                status = letstalkService.SendMessage(letstalkModel);
+            }
+            else
+            {
+                status = true;
+            }
+
             return status;
         }
     }

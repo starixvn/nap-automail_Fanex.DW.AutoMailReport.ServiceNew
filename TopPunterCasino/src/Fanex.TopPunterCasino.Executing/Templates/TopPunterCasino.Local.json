@@ -9,7 +9,10 @@
   "Password": "",
   "FunctionIdNodata": 90,
   "TargetName": "daily-monitoring",
+  "IsSentDirectly": true,
+  "OneTimePath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\18-TopNonSportPunters",
   "TotalTurnover": 50000,
+  "NonSportProductIds": "8,28,40,50,5,27,3",
   "CasinoTypes": {
     "RNGCasino": {
       "Exceltitle": "RNG Casino",
@@ -22,6 +25,12 @@
       "LetstalkGroup": "Casino-Top-Punters-Test",
       "Subject": "Live Casino Top Punters - Risk Monitoring",
       "MailFunctionId": 354
+    },
+    "OtherNonSports": {
+      "Exceltitle": "Other Non-Sports",
+      "LetstalkGroup": "Casino-Top-Punters-Test",
+      "Subject": "Other Non-Sports Top Punters - Risk Monitoring",
+      "MailFunctionId": 354
     }
   },
   "ImageSettings": {
@@ -30,7 +39,7 @@
       "FirstColumn": 1,
       "LastRow": 52,
       "LastColumn": 10,
-      "CropWidth": 3520,
+      "CropWidth": 3530,
       "CropHeight": 5100,
       "ImageName": "TopPunterCasino",
       "X": 200,

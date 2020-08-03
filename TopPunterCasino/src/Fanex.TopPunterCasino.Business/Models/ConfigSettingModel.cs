@@ -32,5 +32,11 @@ namespace Fanex.TopPunterCasino.Business.Models
         public Dictionary<CasinoType, TopPunterCasinoSetting> CasinoTypes { get; set; }
 
         public int TotalTurnover { get; set; } = 50000;
+
+        public string NonSportProductIds { get; set; } = "8,28,40,50,5,27,3";
+
+        public bool IsSentDirectly { get; set; }
+
+        public string OneTimePath { get; set; }
     }
 }

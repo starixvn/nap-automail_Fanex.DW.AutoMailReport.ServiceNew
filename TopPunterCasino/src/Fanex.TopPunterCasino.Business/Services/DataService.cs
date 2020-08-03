@@ -10,7 +10,7 @@ namespace Fanex.TopPunterCasino.Business.Services
 {
     public interface DataService
     {
-        List<PunterModel> QueryCasinoTopPunterData(int totalTurnover);
+        List<PunterModel> QueryCasinoTopPunterData(int totalTurnover, string productIds);
 
         bool IsDataAvailable();
     }
@@ -26,15 +26,25 @@ namespace Fanex.TopPunterCasino.Business.Services
             this.repository = repository;
         }
 
-        public List<PunterModel> QueryCasinoTopPunterData(int totalTurnover)
+        public List<PunterModel> QueryCasinoTopPunterData(int totalTurnover, string productIds)
         {
-            var criteria = new CasinoTopPunterCriteria
+            var casinoCriteria = new CasinoTopPunterCriteria
             {
                 RptDate = dateRangeService.RptDate,
                 TotalTurnover = totalTurnover
             };
 
-            return repository.Fetch<PunterModel>(criteria).ToList();
+            var nonSportCriteria = new PunterNonSportCriteria
+            {
+                RptDate = dateRangeService.RptDate,
+                TotalTurnover = totalTurnover,
+                ProductIds = productIds
+            };
+
+            var casinoData = repository.Fetch<PunterModel>(casinoCriteria).ToList();
+            var nonSportData = repository.Fetch<PunterModel>(nonSportCriteria).ToList();
+
+            return casinoData.Concat(nonSportData).ToList();
         }
 
         public bool IsDataAvailable()
