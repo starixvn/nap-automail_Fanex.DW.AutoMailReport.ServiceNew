@@ -21,7 +21,7 @@
   "IsEnabledSectionTotal": true,
   "TotalSettings": [
     {
-      "IsEnabledSectionTotal": true,
+      "IsEnabledSectionTotal": false,
       "Label": "Total",
       "StartMergeColumnIndex": 2,
       "EndMergeColumnIndex": 3,
