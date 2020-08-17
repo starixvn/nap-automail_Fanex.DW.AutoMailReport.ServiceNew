@@ -1,0 +1,32 @@
+﻿{
+  "SentryClientKey": "https://ad29bef60cc04e78803c9030a33a2c06@sentry.nexdev.net/44",
+  "CategorySentryLog": "NAP-Report-Service-LOCAL",
+  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime",
+  "Folders": [
+    {
+      "FolderName": "1-DHWL-Monthly",
+      "IsActive": true,
+      "FolderMode": "Monthly"
+    },
+    {
+      "FolderName": "2-DHWL-Daily",
+      "IsActive": true,
+      "FolderMode": "Daily"
+    },
+    {
+      "FolderName": "3-DCWL",
+      "IsActive": true,
+      "FolderMode": "Daily"
+    },
+    {
+      "FolderName": "18-TopNonSportPunters",
+      "IsActive": true,
+      "FolderMode": "Daily"
+    },
+    {
+      "FolderName": "19-TopSportbookAgents",
+      "IsActive": true,
+      "FolderMode": "Daily"
+    }
+  ]
+}

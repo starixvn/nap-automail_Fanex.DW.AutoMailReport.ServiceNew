@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0C044BE8-5CBD-43C5-9A76-5985A28F5648}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.Letstalk.OneTime.Executing", "Fanex.Letstalk.OneTime\src\Fanex.Letstalk.OneTime.Executing\Fanex.Letstalk.OneTime.Executing.csproj", "{AE320912-9285-4B78-BD91-BD2C72368DD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.Letstalk.OneTime.Business", "Fanex.Letstalk.OneTime\src\Fanex.Letstalk.OneTime.Business\Fanex.Letstalk.OneTime.Business.csproj", "{054D0B2A-A582-4FA1-AB02-3BECED0BFF2C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE320912-9285-4B78-BD91-BD2C72368DD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE320912-9285-4B78-BD91-BD2C72368DD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE320912-9285-4B78-BD91-BD2C72368DD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE320912-9285-4B78-BD91-BD2C72368DD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{054D0B2A-A582-4FA1-AB02-3BECED0BFF2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{054D0B2A-A582-4FA1-AB02-3BECED0BFF2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{054D0B2A-A582-4FA1-AB02-3BECED0BFF2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{054D0B2A-A582-4FA1-AB02-3BECED0BFF2C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AE320912-9285-4B78-BD91-BD2C72368DD4} = {0C044BE8-5CBD-43C5-9A76-5985A28F5648}
+		{054D0B2A-A582-4FA1-AB02-3BECED0BFF2C} = {0C044BE8-5CBD-43C5-9A76-5985A28F5648}
+	EndGlobalSection
+EndGlobal

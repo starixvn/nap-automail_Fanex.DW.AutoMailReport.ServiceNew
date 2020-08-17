@@ -1,0 +1,37 @@
+﻿{
+  "SentryClientKey": "http://612764957dbb46ffa359103d8ffa08c6@10.99.99.51:801/59",
+  "CategorySentryLog": "NAP-Report-Service-UAT",
+  "IsCheckEnoughData": true,
+  "IsManual": false,
+  "RptDate": "2020-08-01",
+  "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\TopSportbookAgents",
+  "InternalPath": "E:\\TopSportbookAgents_InternalPath",
+  "IsSentDirectly": false,
+  "OneTimePath": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0500\\19-TopSportbookAgents",
+  "Password": "Star168",
+  "FunctionIdNodata": 90,
+  "TargetName": "daily-monitoring",
+  "WinLoss": 100000,
+  "TopSportbookAgentSettings": {
+    "Exceltitle": "Top Sportbook Agents",
+    "LetstalkGroup": "Top-Sportbook-Agents-Test",
+    "Subject": "Top Sportbook Agents - Risk Monitoring"
+  },
+  "ImageSettings": {
+    "TopSportbookAgents": {
+      "FirstRow": 1,
+      "FirstColumn": 1,
+      "LastRow": 52,
+      "LastColumn": 14,
+      "CropWidth": 4730,
+      "CropHeight": 5100,
+      "ImageName": "TopSportbookAgents",
+      "X": 200,
+      "Y": 200,
+      "SheetName": "Data",
+      "IsResize": true,
+      "ResizeNewWidth": 800,
+      "ImageQuality": 100
+    }
+  }
+}

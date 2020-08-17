@@ -2,6 +2,7 @@
 {
     public enum CasinoType
     {
+        OtherNonSports = 0,
         RNGCasino = 1,
         LiveCasino = 2,
     }

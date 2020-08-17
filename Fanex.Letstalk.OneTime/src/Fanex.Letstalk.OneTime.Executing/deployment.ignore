@@ -1,0 +1,12 @@
+\\*.local.exe.config
+\\*.uat-0500.exe.config
+\\*.uat-0600.exe.config
+\\*.pro-0500.exe.config
+\\*.pro-0600.exe.config
+\\*.local.json
+\\*.uat.json
+\\*.uat-0500.json
+\\*.uat-0600.json
+\\*.pro.json
+\\*.pro-0500.json
+\\*.pro-0600.json

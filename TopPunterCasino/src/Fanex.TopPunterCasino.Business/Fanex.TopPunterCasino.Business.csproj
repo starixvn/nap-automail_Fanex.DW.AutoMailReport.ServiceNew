@@ -163,9 +163,11 @@
   <ItemGroup>
     <Compile Include="Criterias\CasinoTopPunterCriteria.cs" />
     <Compile Include="Criterias\GetDWStatusByCubeCriteria.cs" />
+    <Compile Include="Criterias\PunterNonSportCriteria.cs" />
     <Compile Include="Models\ConfigSettingModel.cs" />
     <Compile Include="Models\ExecuteResultModel.cs" />
     <Compile Include="Models\ImageProperty.cs" />
+    <Compile Include="Models\LogInternalOneTimeModel.cs" />
     <Compile Include="Models\TopPunterCasinoSetting.cs" />
     <Compile Include="Models\PunterModel.cs" />
     <Compile Include="Models\CasinotType.cs" />

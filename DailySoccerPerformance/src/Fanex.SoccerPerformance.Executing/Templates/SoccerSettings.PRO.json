@@ -6,8 +6,8 @@
   "FunctionIdNodata": 190,
   "Yesterday": "2019-08-01",
   "StartDate": "2019-08-01",
-  "EndDate":  "2019-09-11",
-  "FilePath": "\\\\10.40.40.22\\e$\\Data.Web\\Fanex.Excel\\DailySoccerPerformance",
+  "EndDate": "2019-09-11",
+  "FilePath": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\DailySoccerPerformance",
   "TargetName": "daily-house-wl",
   "Group": "Soccer-Performance"
 }

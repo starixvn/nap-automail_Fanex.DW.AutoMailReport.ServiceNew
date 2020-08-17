@@ -1,0 +1,25 @@
+﻿using Fanex.Letstalk.OneTime.Business.Services;
+using Newtonsoft.Json;
+using SimpleInjector;
+using System;
+
+namespace Fanex.Letstalk.OneTime.Executing
+{
+    internal class Program
+    {
+        private static void Main()
+        {
+            RegisterService.RegisterServices();
+            Container container = new Container();
+            RegisterService.RegisterContainer(container);
+            container.Verify(VerificationOption.VerifyOnly);
+
+            var service = container.GetInstance<OneTimeNotificationService>();
+            var jobMessage = service.Execute();
+            var json = JsonConvert.SerializeObject(jobMessage);
+
+            Console.Write(json);
+            Environment.Exit(0);
+        }
+    }
+}

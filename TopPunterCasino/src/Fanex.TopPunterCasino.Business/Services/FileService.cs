@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Fanex.TopPunterCasino.Business.Models;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Fanex.TopPunterCasino.Business.Services
@@ -6,10 +9,19 @@ namespace Fanex.TopPunterCasino.Business.Services
     public interface FileService
     {
         void MoveFiles(string source, string destination);
+
+        void CopyFiles(List<string> fileNames, string letstalkGroup);
     }
 
     public class FileServiceImp : FileService
     {
+        private readonly DateRangeService dateRangeService;
+
+        public FileServiceImp(DateRangeService dateRangeService)
+        {
+            this.dateRangeService = dateRangeService;
+        }
+
         public void MoveFiles(string source, string destination)
         {
             DirectoryMove(source, destination, true);
@@ -85,6 +97,48 @@ namespace Fanex.TopPunterCasino.Business.Services
                     Directory.Delete(directory, false);
                 }
             }
+        }
+
+        private void LogOneTime(DateTime date, string letstalkGroup)
+        {
+            var fileInfo = new FileInfo(AppConfigService.Config.OneTimePath);
+            var path = fileInfo.DirectoryName;
+            var fileName = $@"{path}\OneTimeLog.json";
+            var logs = new List<LogInternalOneTimeModel>();
+            if (File.Exists(fileName))
+            {
+                var text = File.ReadAllText(fileName);
+                logs = JsonConvert.DeserializeObject<List<LogInternalOneTimeModel>>(text);
+            }
+
+            logs.Add(new LogInternalOneTimeModel
+            {
+                Date = $"{date:yyyyMMdd}",
+                FolderName = fileInfo.Name,
+                GenerateTime = $"{DateTime.Now:yyyy-MM-dd hh:mm:ss tt}",
+                TargetName = AppConfigService.Config.TargetName,
+                Group = letstalkGroup
+            });
+
+            var json = JsonConvert.SerializeObject(logs, Formatting.Indented);
+            File.WriteAllText(fileName, json);
+        }
+
+        public void CopyFiles(List<string> fileNames, string letstalkGroup)
+        {
+            var date = dateRangeService.RptDate;
+            var path = $@"{AppConfigService.Config.OneTimePath}\{date:yyyyMMdd}";
+            Directory.CreateDirectory(path);
+            var index = 1;
+            fileNames.ForEach(fileName =>
+            {
+                var sortName = $"{index}_{new FileInfo(fileName).Name}";
+                var destinationPath = $@"{path}\{sortName}";
+                File.Copy(fileName, destinationPath, true);
+                index++;
+            });
+
+            LogOneTime(date, letstalkGroup);
         }
     }
 }
