@@ -1,8 +1,8 @@
 ﻿{
   "SPName": "Acc_Rpt_ExtraSuperComm",
   "DateRange": "Manual",
-  "FromDate": "2020-03-01",
-  "ToDate": "2020-03-31",
+  "FromDate": "2020-04-01",
+  "ToDate": "2020-04-30",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\ExtraSuperCommission",
   "Password": "",
   "FunctionIdNodata": 90,
@@ -21,7 +21,7 @@
   "IsEnabledSectionTotal": true,
   "TotalSettings": [
     {
-      "IsEnabledSectionTotal": true,
+      "IsEnabledSectionTotal": false,
       "Label": "Total",
       "StartMergeColumnIndex": 2,
       "EndMergeColumnIndex": 3,
