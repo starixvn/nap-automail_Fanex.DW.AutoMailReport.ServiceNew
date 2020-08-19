@@ -47,6 +47,7 @@ namespace Fanex.TopLicenseeByTO.Executing
             container.Register<MessageService, MessageServiceImp>();
             container.Register<ExportVirtualSoccerHouse, ExportVirtualSoccerHouseImp>();
             container.Register<ExportVirtualSoccerLicensee, ExportVirtualSoccerLicenseeImp>();
+            container.Register<FileService, FileServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
             container.Register<ApplicationSettingService, ApplicationSettingServiceImp>();

@@ -5,27 +5,32 @@
   "Folders": [
     {
       "FolderName": "1-DHWL-Monthly",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Monthly"
     },
     {
       "FolderName": "2-DHWL-Daily",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily"
     },
     {
       "FolderName": "3-DCWL",
+      "IsActive": false,
+      "FolderMode": "Daily"
+    },
+    {
+      "FolderName": "12-TopLicenseeByTO",
       "IsActive": true,
       "FolderMode": "Daily"
     },
     {
       "FolderName": "18-TopNonSportPunters",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily"
     },
     {
       "FolderName": "19-TopSportbookAgents",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily"
     }
   ]
