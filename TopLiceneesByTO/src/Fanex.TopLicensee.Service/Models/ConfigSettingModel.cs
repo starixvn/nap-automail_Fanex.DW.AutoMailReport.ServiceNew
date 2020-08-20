@@ -32,5 +32,9 @@ namespace Fanex.TopLicensee.Service.Models
         public Dictionary<string, List<SectionModel>> Sports { get; set; } = new Dictionary<string, List<SectionModel>>();
 
         public Dictionary<string, ImageProperty> Image { get; set; } = new Dictionary<string, ImageProperty>();
+
+        public bool IsSentDirectly { get; set; }
+
+        public string InternalPath { get; set; }
     }
 }

@@ -87,8 +87,15 @@ namespace Fanex.Letstalk.OneTime.Business.Services
             foreach (var f in foldersReadyToSend)
             {
                 var fileNames = Directory.GetFiles(f.Key).ToList();
-                fileNames.ForEach(filename =>
+                foreach (var filename in fileNames)
                 {
+                    var fileInfo = new FileInfo(filename);
+                    var isInValidFile = fileInfo.Extension.Contains(".db");
+                    if (isInValidFile)
+                    {
+                        continue;
+                    }
+
                     var letstalkModel = CreateLetstalkModel(new List<string> { filename }, f.Value.TargetName, f.Value.Group);
                     var status = letstalkService.SendMessage(letstalkModel);
                     countRetry = 0;
@@ -103,7 +110,7 @@ namespace Fanex.Letstalk.OneTime.Business.Services
                         foldersNotReady.Insert(0, $"The files below can't be sent to users. Please have a check!!!");
                         foldersNotReady.Add(filename);
                     }
-                });
+                }
             }
 
             return foldersNotReady;

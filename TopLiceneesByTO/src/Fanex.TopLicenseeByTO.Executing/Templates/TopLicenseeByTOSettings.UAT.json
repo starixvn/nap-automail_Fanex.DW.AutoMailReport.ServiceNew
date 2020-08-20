@@ -8,6 +8,8 @@
   "FromDate": "2019-12-01",
   "Todate": "2019-12-01",
   "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\TopLicenseeByTO",
+  "IsSentDirectly": false,
+  "InternalPath": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0500\\12-TopLicenseeByTO",
   "Password": "Star168",
   "FunctionIdNodata": 224,
   "Sports": {

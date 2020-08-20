@@ -181,6 +181,7 @@
     <Compile Include="Models\ImageProperty.cs" />
     <Compile Include="Models\LeagueGroup.cs" />
     <Compile Include="Models\LicenseeTOModel.cs" />
+    <Compile Include="Models\LogInternalOneTimeModel.cs" />
     <Compile Include="Models\SectionModel.cs" />
     <Compile Include="Models\TopLicenseeMarginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -191,6 +192,7 @@
     <Compile Include="Services\ExcelTopLicenseeMarginService.cs" />
     <Compile Include="Services\ExportVirtualSoccerHouse.cs" />
     <Compile Include="Services\ExportVirtualSoccerLicensee.cs" />
+    <Compile Include="Services\FileService.cs" />
     <Compile Include="Services\ImageService.cs" />
     <Compile Include="Services\Log.cs" />
     <Compile Include="Services\MailService.cs" />

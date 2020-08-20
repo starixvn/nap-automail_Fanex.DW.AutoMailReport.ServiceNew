@@ -4,6 +4,11 @@
   "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0500",
   "Folders": [
     {
+      "FolderName": "12-TopLicenseeByTO",
+      "IsActive": true,
+      "FolderMode": "Daily"
+    },
+    {
       "FolderName": "18-TopNonSportPunters",
       "IsActive": true,
       "FolderMode": "Daily"
