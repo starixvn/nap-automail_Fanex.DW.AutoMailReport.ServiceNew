@@ -1,6 +1,8 @@
 ﻿using Fanex.Letstalk.OneTime.Business.Models;
 using Fanex.MailDelivery.Core.Models;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Fanex.Letstalk.OneTime.Business.Services
 {
@@ -13,11 +15,13 @@ namespace Fanex.Letstalk.OneTime.Business.Services
     {
         private readonly Log log;
         private readonly MessageService messageService;
+        private readonly DataService dataService;
 
-        public OneTimeNotificationServiceImp(Log log, MessageService messageService)
+        public OneTimeNotificationServiceImp(Log log, MessageService messageService, DataService dataService)
         {
             this.log = log;
             this.messageService = messageService;
+            this.dataService = dataService;
         }
 
         public JobMessage Execute()
@@ -50,12 +54,26 @@ namespace Fanex.Letstalk.OneTime.Business.Services
 
         private ExecuteResultModel SendNotification()
         {
-            var folderNotReady = messageService.SendMessage();
+            var message = new List<string>();
+            var mails = dataService.QueryMail(DateTime.Today);
+            var isMailSent = mails.FirstOrDefault(s => s.MailId == AppConfigService.AppConfig.MailId) != null;
+            bool sussess = false;
+            if (isMailSent && !AppConfigService.AppConfig.IsAllowResend)
+            {
+                message.Add($"{AppConfigService.AppConfig.MailName} has been sent. Please be careful !!!");
+                sussess = false;
+            }
+            else
+            {
+                message = messageService.SendMessage();
+                sussess = message.Count == 0;
+            }
+
             return new ExecuteResultModel
             {
-                Success = folderNotReady.Count == 0,
+                Success = sussess,
                 Mail = new Mail(),
-                Message = string.Join(Environment.NewLine, folderNotReady)
+                Message = string.Join(Environment.NewLine, message)
             };
         }
     }

@@ -53,8 +53,12 @@
       <HintPath>..\..\..\packages\EasyNetQ.3.7.1\lib\net46\EasyNetQ.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.Data, Version=4.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Fanex.Data.4.0.1\lib\net461\Fanex.Data.dll</HintPath>
+    <Reference Include="Fanex.Data, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Fanex.Data.3.0.0\lib\net461\Fanex.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fanex.Data.Repository, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Fanex.Data.Repository.3.0.0\lib\net461\Fanex.Data.Repository.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.LetstalkService.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -73,8 +77,8 @@
       <HintPath>..\..\..\packages\Fanex.Logging.Extensions.1.0.6\lib\net461\Fanex.Logging.Extensions.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.Logging.Extensions.Database, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Fanex.Logging.Extensions.Database.1.0.8\lib\net461\Fanex.Logging.Extensions.Database.dll</HintPath>
+    <Reference Include="Fanex.Logging.Extensions.Database, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Fanex.Logging.Extensions.Database.1.0.6\lib\net461\Fanex.Logging.Extensions.Database.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Logging.Sentry.RavenClient, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -157,6 +161,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="App_Data\DBMMS.bodb_MMS.bodbAdminNet.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="deployment.ignore">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -178,6 +185,7 @@
     </Content>
     <Content Include="Templates\Fanex.Letstalk.OneTime.Executing.PRO-0600.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Templates\Fanex.Letstalk.OneTime.Executing.UAT-0600.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
