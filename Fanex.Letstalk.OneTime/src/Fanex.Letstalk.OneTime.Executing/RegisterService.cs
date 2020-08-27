@@ -1,4 +1,6 @@
-﻿using Fanex.Letstalk.OneTime.Business.Models;
+﻿using Fanex.Data;
+using Fanex.Data.Repository;
+using Fanex.Letstalk.OneTime.Business.Models;
 using Fanex.Letstalk.OneTime.Business.Services;
 using Fanex.LetstalkService.Client;
 using Fanex.LetstalkService.Core.Services;
@@ -9,6 +11,7 @@ using SharpRaven;
 using SimpleInjector;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 
 namespace Fanex.Letstalk.OneTime.Executing
@@ -17,6 +20,7 @@ namespace Fanex.Letstalk.OneTime.Executing
     {
         public static void RegisterServices()
         {
+            ConfigureFanexData();
             LoadConfig();
             SentryRegister();
         }
@@ -34,6 +38,8 @@ namespace Fanex.Letstalk.OneTime.Executing
             container.Register<Log, LogImp>();
             container.Register<OneTimeNotificationService, OneTimeNotificationServiceImp>();
             container.Register<MessageService, MessageServiceImp>();
+            container.Register<DataService, DataServiceImp>();
+            container.Register<IDynamicRepository, DynamicRepository>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
             container.Register<ApplicationSettingService, ApplicationSettingServiceImp>();
@@ -53,6 +59,16 @@ namespace Fanex.Letstalk.OneTime.Executing
                {
                     sentry
                });
+        }
+
+        private static void ConfigureFanexData()
+        {
+            var storedProcedurePath = ConfigurationManager.AppSettings["StoredProcedurePath"];
+            DbSettingProviderManager
+                .StartNewSession()
+                .UseDefaultConnectionStringProvider()
+                .UseDefaultDbSettingProvider($@"~/{storedProcedurePath}")
+                .Run();
         }
     }
 }
