@@ -20,6 +20,16 @@
       "FolderName": "3-DCWL",
       "IsActive": true,
       "FolderMode": "Daily"
+    },
+    {
+      "FolderName": "13-N88-DailyWL-PRO",
+      "IsActive": true,
+      "FolderMode": "Daily"
+    },
+    {
+      "FolderName": "13-N88-DailyWL-Internal",
+      "IsActive": true,
+      "FolderMode": "Daily"
     }
   ]
 }

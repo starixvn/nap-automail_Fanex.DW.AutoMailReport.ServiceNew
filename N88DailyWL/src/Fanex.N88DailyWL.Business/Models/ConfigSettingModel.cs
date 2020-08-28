@@ -27,8 +27,12 @@ namespace Fanex.N88DailyWL.Business.Models
 
         public DateTime ToDate { get; set; }
 
-        public ImageProperty N88 { get; set; }
+        public ImageProperty Currency { get; set; }
 
-        public ImageProperty Deposit { get; set; }
+        public ImageProperty Product { get; set; }
+
+        public bool IsSentDirectly { get; set; }
+
+        public string InternalPath { get; set; }
     }
 }

@@ -1,19 +1,27 @@
 ﻿using Fanex.N88DailyWL.Business.Models;
 using OfficeOpenXml;
-using System;
+using OfficeOpenXml.Style;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Fanex.N88DailyWL.Business.Services
 {
     public interface ExcelService
     {
-        string ExportExcel(Tuple<N88DailyWLModel, N88DailyWLModel, DepositModel> data);
+        string ExportCurrency(List<N88CurrencyModel> data, bool isYesterday);
+
+        string ExportProduct(List<N88ProductModel> data, bool isYesterday);
     }
 
     public class ExcelServiceImp : ExcelService
     {
-        private readonly ExcelPackage excelPackage;
+        private ExcelPackage excelPackage;
         private readonly DateService dateService;
+        private ExcelWorksheet sheetCurrency;
+        private ExcelWorksheet sheetCurrencyTotal;
+        private ExcelWorksheet sheetProduct;
+        private ExcelWorksheet sheetProductTotal;
 
         public ExcelServiceImp(ExcelPackage excelPackage, DateService dateService)
         {
@@ -21,83 +29,60 @@ namespace Fanex.N88DailyWL.Business.Services
             this.dateService = dateService;
         }
 
-        public string ExportExcel(Tuple<N88DailyWLModel, N88DailyWLModel, DepositModel> data)
+        public string ExportCurrency(List<N88CurrencyModel> data, bool isYesterday)
         {
-            var n88Yesterday = data.Item1;
-            var n88MTD = data.Item2;
-            var n88Deposit = data.Item3;
-            var template = excelPackage.Workbook.Worksheets["Template"];
+            excelPackage = new ExcelPackage(new FileInfo("Templates/N88Template.xlsx"));
+            sheetCurrency = excelPackage.Workbook.Worksheets["Currency"];
+            sheetCurrencyTotal = excelPackage.Workbook.Worksheets["Currency-Total"];
 
-            AssignN88Yesterday(n88Yesterday, template);
-            AssignN88MTD(n88MTD, template);
-            AssignDeposit(n88Deposit, template);
+            if (data.Count > 0)
+            {
+                data.Add(new N88CurrencyModel
+                {
+                    Currency = "Grand Total",
+                    ActiveMembers = data.Sum(s => s.ActiveMembers),
+                    DepositMembers = data.Sum(s => s.DepositMembers),
+                    FirstDepositTrans = data.Sum(s => s.FirstDepositTrans),
+                    DepositTrans = data.Sum(s => s.DepositTrans)
+                });
 
-            return SaveFile();
+                RenderBody_Currency(data, isYesterday);
+            }
+            else
+            {
+                sheetCurrency.Cells[4, 2, 4, 6].Merge = true;
+                sheetCurrency.Cells[4, 2, 4, 6].Value = "There is no data.";
+                sheetCurrency.Cells[4, 2, 4, 6].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+            }
+
+            return SaveFile_Currency(isYesterday);
         }
 
-        private void AssignN88Yesterday(N88DailyWLModel n88Yesterday, ExcelWorksheet template)
+        private void RenderBody_Currency(List<N88CurrencyModel> data, bool isYesterday)
         {
-            template.Cells["C3"].Value = $"{dateService.ToDate:yyyyMMdd}";
-            template.Cells["C4"].Value = n88Yesterday.ActiveMember;
-            template.Cells["C5"].Value = n88Yesterday.DepositMember;
-            template.Cells["C6"].Value = n88Yesterday.BetCount;
-            template.Cells["C7"].Value = n88Yesterday.MemberTO;
-            template.Cells["C8"].Value = n88Yesterday.MemberWL;
+            sheetCurrency.Cells["B2"].Value = isYesterday ? $"{dateService.ToDate:yyyyMMdd}" : "MTD";
+            sheetCurrency.Cells["B4"].LoadFromCollection(data, false);
+            var maxRowIndex = 3 + data.Count;
+            for (int columnIndex = 2; columnIndex < 7; columnIndex++)
+            {
+                sheetCurrency.Cells[4, columnIndex, maxRowIndex, columnIndex].StyleID = sheetCurrency.Cells[4, columnIndex].StyleID;
+            }
 
-            template.Cells["C9"].Value = n88Yesterday.CompanyTO_Live;
-            template.Cells["C10"].Value = n88Yesterday.CompanyTO_NonLive;
-            template.Cells["C11"].Value = n88Yesterday.CompanyTO_Mix;
-            template.Cells["C12"].Value = n88Yesterday.CompanyTO;
-            template.Cells["C13"].Value = n88Yesterday.CompanyIncome_Live;
-            template.Cells["C14"].Value = n88Yesterday.CompanyIncome_NonLive;
-            template.Cells["C15"].Value = n88Yesterday.CompanyIncome_Mix;
-            template.Cells["C16"].Value = n88Yesterday.CompanyIncome;
-            template.Cells["C17"].Value = n88Yesterday.CompanyMargin;
+            for (int columnIndex = 2; columnIndex < 7; columnIndex++)
+            {
+                sheetCurrency.Cells[maxRowIndex, columnIndex, maxRowIndex, columnIndex].StyleID = sheetCurrencyTotal.Cells[2, columnIndex].StyleID;
+            }
         }
 
-        private void AssignN88MTD(N88DailyWLModel n88MTD, ExcelWorksheet template)
+        private string SaveFile_Currency(bool isYesterday)
         {
-            template.Cells["D4"].Value = n88MTD.ActiveMember;
-            template.Cells["D5"].Value = n88MTD.DepositMember;
-            template.Cells["D6"].Value = n88MTD.BetCount;
-            template.Cells["D7"].Value = n88MTD.MemberTO;
-            template.Cells["D8"].Value = n88MTD.MemberWL;
-
-            template.Cells["D9"].Value = n88MTD.CompanyTO_Live;
-            template.Cells["D10"].Value = n88MTD.CompanyTO_NonLive;
-            template.Cells["D11"].Value = n88MTD.CompanyTO_Mix;
-            template.Cells["D12"].Value = n88MTD.CompanyTO;
-            template.Cells["D13"].Value = n88MTD.CompanyIncome_Live;
-            template.Cells["D14"].Value = n88MTD.CompanyIncome_NonLive;
-            template.Cells["D15"].Value = n88MTD.CompanyIncome_Mix;
-            template.Cells["D16"].Value = n88MTD.CompanyIncome;
-            template.Cells["D17"].Value = n88MTD.CompanyMargin;
-        }
-
-        private void AssignDeposit(DepositModel n88Deposit, ExcelWorksheet template)
-        {
-            template.Cells["G3"].Value = $"{dateService.ToDate:yyyyMMdd}";
-
-            template.Cells["H4"].Value = n88Deposit.FirstDepositMember_MYR;
-            template.Cells["I4"].Value = n88Deposit.FirstDepositMember_THB;
-            template.Cells["J4"].Value = n88Deposit.FirstDepositMember_IDR;
-            template.Cells["K4"].Value = n88Deposit.FirstDepositMember_CNY;
-
-            template.Cells["H5"].Value = n88Deposit.DepositMember_MYR;
-            template.Cells["I5"].Value = n88Deposit.DepositMember_THB;
-            template.Cells["J5"].Value = n88Deposit.DepositMember_IDR;
-            template.Cells["K5"].Value = n88Deposit.DepositMember_CNY;
-
-            template.Cells["H6"].Value = n88Deposit.Deposit_MYR;
-            template.Cells["I6"].Value = n88Deposit.Deposit_THB;
-            template.Cells["J6"].Value = n88Deposit.Deposit_IDR;
-            template.Cells["K6"].Value = n88Deposit.Deposit_CNY;
-        }
-
-        private string SaveFile()
-        {
+            excelPackage.Workbook.Worksheets.Delete("Product");
+            excelPackage.Workbook.Worksheets.Delete("Currency-Total");
+            excelPackage.Workbook.Worksheets.Delete("Product-Total");
             var yesterday = dateService.ToDate;
-            var fileName = $"N88_DailyWL_For_{yesterday:yyyyMMdd}.xlsx";
+            var fileName = isYesterday
+                ? $"N88-Currency-{yesterday:yyyyMMdd}.xlsx"
+                : $"N88-Currency-MTD-{yesterday:yyyyMMdd}.xlsx";
             var path = $@"{AppConfigService.AppConfig.Path}\{yesterday:yyyy}\{yesterday:MM}";
             if (!Directory.Exists(path))
             {
@@ -108,6 +93,92 @@ namespace Fanex.N88DailyWL.Business.Services
             excelPackage.SaveAs(new FileInfo(path), AppConfigService.AppConfig.Password);
 
             return path;
+        }
+
+        private string SaveFile_Product(bool isYesterday)
+        {
+            excelPackage.Workbook.Worksheets.Delete("Currency");
+            excelPackage.Workbook.Worksheets.Delete("Currency-Total");
+            excelPackage.Workbook.Worksheets.Delete("Product-Total");
+            var yesterday = dateService.ToDate;
+            var fileName = isYesterday
+                ? $"N88-Product-{yesterday:yyyyMMdd}.xlsx"
+                : $"N88-Product-MTD-{yesterday:yyyyMMdd}.xlsx";
+            var path = $@"{AppConfigService.AppConfig.Path}\{yesterday:yyyy}\{yesterday:MM}";
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            path = $@"{path}\{fileName}";
+            excelPackage.SaveAs(new FileInfo(path), AppConfigService.AppConfig.Password);
+
+            return path;
+        }
+
+        public string ExportProduct(List<N88ProductModel> data, bool isYesterday)
+        {
+            excelPackage = new ExcelPackage(new FileInfo("Templates/N88Template.xlsx"));
+            sheetProduct = excelPackage.Workbook.Worksheets["Product"];
+            sheetProductTotal = excelPackage.Workbook.Worksheets["Product-Total"];
+
+            var coIncome = data.Sum(s => s.CoIncome);
+            var coTO = data.Sum(s => s.CoTurnover);
+            var coMargin = coTO == 0 ? 0 : coIncome / coTO;
+
+            data.Add(new N88ProductModel
+            {
+                Product = "Grand Total",
+                BetCount = data.Sum(s => s.BetCount),
+                Turnover = data.Sum(s => s.Turnover),
+                Winloss = data.Sum(s => s.Winloss),
+                CoTurnover = data.Sum(s => s.CoTurnover),
+                CoIncome = data.Sum(s => s.CoIncome),
+                CoMargin = coMargin
+            });
+
+            RenderBody_Product(data, isYesterday);
+            return SaveFile_Product(isYesterday);
+        }
+
+        private void RenderBody_Product(List<N88ProductModel> data, bool isYesterday)
+        {
+            sheetProduct.Cells["B2"].Value = isYesterday ? $"{dateService.ToDate:yyyyMMdd}" : "MTD";
+            sheetProduct.Cells["B4"].LoadFromCollection(data, false);
+            var maxRowIndex = 3 + data.Count;
+            for (int columnIndex = 2; columnIndex < 9; columnIndex++)
+            {
+                sheetProduct.Cells[4, columnIndex, maxRowIndex, columnIndex].StyleID = sheetProduct.Cells[4, columnIndex].StyleID;
+            }
+
+            for (int rowIndex = 4; rowIndex <= maxRowIndex; rowIndex++)
+            {
+                var isLiveText = sheetProduct.Cells[rowIndex, 2].Value.ToString().Contains("Live");
+                var isBold = !isLiveText;
+                var isRightAlign = isLiveText;
+                var isBlueBGColor = !isLiveText;
+                var isGrandTotalRow = sheetProduct.Cells[rowIndex, 2].Value.ToString().Contains("Grand");
+
+                sheetProduct.Row(rowIndex).Style.Font.Bold = isBold;
+                sheetProduct.Cells[rowIndex, 2].Style.HorizontalAlignment = isRightAlign ? ExcelHorizontalAlignment.Right : ExcelHorizontalAlignment.Left;
+                sheetProduct.Row(rowIndex).Height = 19.5;
+
+                if (isBlueBGColor)
+                {
+                    for (int columnIndex = 2; columnIndex < 9; columnIndex++)
+                    {
+                        sheetProduct.Cells[rowIndex, columnIndex, rowIndex, columnIndex].StyleID = sheetProductTotal.Cells[4, columnIndex].StyleID;
+                    }
+                }
+
+                if (isGrandTotalRow)
+                {
+                    for (int columnIndex = 2; columnIndex < 9; columnIndex++)
+                    {
+                        sheetProduct.Cells[maxRowIndex, columnIndex, maxRowIndex, columnIndex].StyleID = sheetProductTotal.Cells[2, columnIndex].StyleID;
+                    }
+                }
+            }
         }
     }
 }

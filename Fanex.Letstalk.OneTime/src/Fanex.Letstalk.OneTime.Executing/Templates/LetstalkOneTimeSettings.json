@@ -23,6 +23,16 @@
     },
     {
       "FolderName": "12-TopLicenseeByTO",
+      "IsActive": false,
+      "FolderMode": "Daily"
+    },
+    {
+      "FolderName": "13-N88-DailyWL-Test",
+      "IsActive": true,
+      "FolderMode": "Daily"
+    },
+    {
+      "FolderName": "13-N88-DailyWL-Internal-Test",
       "IsActive": true,
       "FolderMode": "Daily"
     },

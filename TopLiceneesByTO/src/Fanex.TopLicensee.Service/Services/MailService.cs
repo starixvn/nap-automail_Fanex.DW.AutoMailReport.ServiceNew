@@ -29,7 +29,7 @@ namespace Fanex.TopLicensee.Service.Services
                 var mail = new Mail
                 {
                     Title = "Auto Generated Report Administrator",
-                    Subject = $"[WARNING] - DATA IS NOT READY - Automail Report - Daily IBO Customer Statistics Report - {SystemTime.Now.AddDays(-1):yyyy/MM/dd}",
+                    Subject = $"[WARNING] - DATA IS NOT READY - Automail Report - Letstalk  - Top Licensees by TO - {SystemTime.Now.AddDays(-1):yyyy/MM/dd}",
                     Body = LoadBodyMailNoData(),
                     MailingListId = AppConfigService.AppConfig.FunctionIdNodata
                 };

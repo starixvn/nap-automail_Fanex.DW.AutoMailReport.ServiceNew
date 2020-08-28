@@ -1,4 +1,5 @@
 ﻿using Fanex.N88DailyWL.Business.Models;
+using Fanex.Service.Core;
 using Spire.Xls;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -45,6 +46,13 @@ namespace Fanex.N88DailyWL.Business.Services
 
             Crop(imageName, imageNameFinal, imageProperty.CropWidth, imageProperty.CropHeight, imageProperty.X, imageProperty.Y);
 
+            if (imageProperty.IsResize)
+            {
+                var imageNameResizeWidth = $@"{AppConfigService.AppConfig.Path}\{date:yyyy}\{date:MM}\{imageProperty.ImageName}_ResizeWidth_On_{date:yyyyMMdd}.jpg";
+                ResizeImage(imageNameFinal, imageNameResizeWidth, imageProperty.ResizeNewWidth, 0, imageProperty.ImageQuality);
+                return imageNameResizeWidth;
+            }
+
             return imageNameFinal;
         }
 
@@ -90,6 +98,56 @@ namespace Fanex.N88DailyWL.Business.Services
             g.DrawImage(mf, 0, 0);
             g.Dispose();
             return bmp;
+        }
+
+        private void ResizeImage(string org, string des, int finalWidth, int finalHeight, int imageQuality)
+        {
+            Bitmap newBMP;
+            Graphics graphicTemp;
+            Bitmap bmp = new Bitmap(org);
+
+            int iWidth;
+            int iHeight;
+            if ((finalHeight == 0) && (finalWidth != 0))
+            {
+                iWidth = finalWidth;
+                iHeight = (bmp.Size.Height * iWidth / bmp.Size.Width);
+            }
+            else if ((finalHeight != 0) && (finalWidth == 0))
+            {
+                iHeight = finalHeight;
+                iWidth = (bmp.Size.Width * iHeight / bmp.Size.Height);
+            }
+            else
+            {
+                iWidth = finalWidth;
+                iHeight = finalHeight;
+            }
+
+            newBMP = new Bitmap(iWidth, iHeight);
+            graphicTemp = Graphics.FromImage(newBMP);
+            graphicTemp.CompositingMode = CompositingMode.SourceOver;
+            graphicTemp.CompositingQuality = CompositingQuality.HighQuality;
+            graphicTemp.SmoothingMode = SmoothingMode.HighQuality;
+            graphicTemp.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            graphicTemp.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            graphicTemp.DrawImage(bmp, 0, 0, iWidth, iHeight);
+            graphicTemp.Dispose();
+            EncoderParameters encoderParams = new EncoderParameters();
+            EncoderParameter encoderParam = new EncoderParameter(Encoder.Quality, imageQuality);
+            encoderParams.Param[0] = encoderParam;
+            ImageCodecInfo[] arrayICI = ImageCodecInfo.GetImageEncoders();
+            for (int fwd = 0; fwd <= arrayICI.Length - 1; fwd++)
+            {
+                if (arrayICI[fwd].FormatDescription.Equals("JPEG"))
+                {
+                    newBMP.SetResolution(300, 300);
+                    newBMP.Save(des, arrayICI[fwd], encoderParams);
+                }
+            }
+
+            newBMP.Dispose();
+            bmp.Dispose();
         }
     }
 }

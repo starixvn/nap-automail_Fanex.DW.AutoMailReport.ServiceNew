@@ -8,28 +8,32 @@
   "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\N88DailyWL",
   "TargetName": "N88",
   "Group": [ "N88-DailyWL-Test", "N88-DailyWL-Internal-Test" ],
+  "IsSentDirectly": false,
+  "InternalPath": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0600\\13",
   "Password": "",
   "FunctionIdNodata": 90,
-  "N88": {
-    "FirstRow": 3,
+  "Currency": {
+    "FirstRow": 2,
     "FirstColumn": 2,
-    "LastRow": 17,
-    "LastColumn": 4,
-    "CropWidth": 1605,
-    "CropHeight": 1455,
-    "ImageName": "N88DailyWL",
+    "LastColumn": 6,
+    "CropWidth": 2500,
+    "HeightPerRow": 87,
     "X": 240,
-    "Y": 260
+    "Y": 260,
+    "IsResize": true,
+    "ResizeNewWidth": 700,
+    "ImageQuality": 100
   },
-  "Deposit": {
-    "FirstRow": 3,
-    "FirstColumn": 7,
-    "LastRow": 6,
-    "LastColumn": 11,
-    "CropWidth": 1700,
-    "CropHeight": 400,
-    "ImageName": "FirstDeposit",
+  "Product": {
+    "FirstRow": 2,
+    "FirstColumn": 2,
+    "LastColumn": 8,
+    "CropWidth": 2850,
+    "HeightPerRow": 93,
     "X": 240,
-    "Y": 260
+    "Y": 260,
+    "IsResize": true,
+    "ResizeNewWidth": 800,
+    "ImageQuality": 100
   }
 }
