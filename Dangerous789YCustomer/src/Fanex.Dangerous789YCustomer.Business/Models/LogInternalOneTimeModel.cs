@@ -1,0 +1,15 @@
+﻿namespace Fanex.Dangerous789YCustomer.Business.Models
+{
+    public class LogInternalOneTimeModel
+    {
+        public string FolderName { get; set; }
+
+        public string Date { get; set; }
+
+        public string GenerateTime { get; set; }
+
+        public string TargetName { get; set; }
+
+        public string Group { get; set; }
+    }
+}

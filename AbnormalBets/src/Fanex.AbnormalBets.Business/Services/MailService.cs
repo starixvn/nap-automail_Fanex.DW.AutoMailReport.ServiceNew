@@ -1,6 +1,7 @@
 ﻿using Fanex.AbnormalBets.Business.Models.Common;
 using Fanex.MailDelivery.Client;
 using Fanex.MailDelivery.Core.Models;
+using Newtonsoft.Json;
 using RazorEngine;
 using RazorEngine.Templating;
 using System;
@@ -19,6 +20,13 @@ namespace Fanex.AbnormalBets.Business.Services
 
     public class MailServiceImp : MailService
     {
+        private readonly Log log;
+
+        public MailServiceImp(Log log)
+        {
+            this.log = log;
+        }
+
         public bool IsMailSent(List<MailModel> mails, string mail)
         {
             if (AppConfigService.AppConfig.IsIgnoredCheckMailSent)
@@ -39,6 +47,10 @@ namespace Fanex.AbnormalBets.Business.Services
                 Attachments = isNoData ? new List<MailAttachment>() : new List<MailAttachment> { new MailAttachment(excelPath, FileExtension.MS_EXCEL) },
                 MailingListId = mailId
             };
+
+            var json = JsonConvert.SerializeObject(mail, Formatting.Indented);
+            File.WriteAllText($@"{AppConfigService.AppConfig.Path}\{mail.MailingListId}.txt", json);
+            log.Log(json);
 
             MailClientHandler.Start();
             MailClientHandler.SendFunctionMail(mail);
