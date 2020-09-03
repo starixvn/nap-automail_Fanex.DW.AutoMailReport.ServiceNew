@@ -122,18 +122,18 @@ namespace Fanex.N88DailyWL.Business.Services
             sheetProduct = excelPackage.Workbook.Worksheets["Product"];
             sheetProductTotal = excelPackage.Workbook.Worksheets["Product-Total"];
 
-            var coIncome = data.Sum(s => s.CoIncome);
-            var coTO = data.Sum(s => s.CoTurnover);
+            var coIncome = data.Where(s => !s.Product.Contains("Live")).Sum(s => s.CoIncome);
+            var coTO = data.Where(s => !s.Product.Contains("Live")).Sum(s => s.CoTurnover);
             var coMargin = coTO == 0 ? 0 : coIncome / coTO;
 
             data.Add(new N88ProductModel
             {
                 Product = "Grand Total",
-                BetCount = data.Sum(s => s.BetCount),
-                Turnover = data.Sum(s => s.Turnover),
-                Winloss = data.Sum(s => s.Winloss),
-                CoTurnover = data.Sum(s => s.CoTurnover),
-                CoIncome = data.Sum(s => s.CoIncome),
+                BetCount = data.Where(s => !s.Product.Contains("Live")).Sum(s => s.BetCount),
+                Turnover = data.Where(s => !s.Product.Contains("Live")).Sum(s => s.Turnover),
+                Winloss = data.Where(s => !s.Product.Contains("Live")).Sum(s => s.Winloss),
+                CoTurnover = data.Where(s => !s.Product.Contains("Live")).Sum(s => s.CoTurnover),
+                CoIncome = data.Where(s => !s.Product.Contains("Live")).Sum(s => s.CoIncome),
                 CoMargin = coMargin
             });
 

@@ -2,6 +2,7 @@
 using OfficeOpenXml;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Fanex.Dangerous789YCustomer.Business.Services
 {
@@ -63,6 +64,7 @@ namespace Fanex.Dangerous789YCustomer.Business.Services
                 if (i > 0)
                 {
                     row.AssociatedAccount = rootName;
+                    row.IsRootMember = false;
                 }
 
                 i++;
@@ -72,14 +74,30 @@ namespace Fanex.Dangerous789YCustomer.Business.Services
             var maxRowIndex = data.Count + startRowIndex - 1;
             var templateNote = excelPackage.Workbook.Worksheets["Note"];
 
+            var username = string.Empty;
+            var associatedAccount = string.Empty;
+            var rowCountGroup = 0;
+            var rowOddEven = 0;
+
             for (int rowIndex = startRowIndex; rowIndex <= maxRowIndex; rowIndex++)
             {
-                var rowOddEven = rowIndex % 2 == 1 ? 6 : 7;
-                template.Row(rowIndex).Height = 19.5;
+                var row = data[rowIndex - startRowIndex];
+                if (row.IsRootMember)
+                {
+                    rowOddEven = rowCountGroup % 2 == 0 ? 6 : 7;
+                    rowCountGroup++;
+                }
+                else
+                {
+                    rowOddEven = rowCountGroup % 2 == 0 ? 9 : 8;
+                }
+
                 for (int columnIndex = 1; columnIndex <= 13; columnIndex++)
                 {
                     template.Cells[rowIndex, columnIndex].StyleID = templateNote.Cells[rowOddEven, columnIndex].StyleID;
                 }
+
+                template.Row(rowIndex).Height = 19.5;
             }
 
             templateNote.Cells["B2:B3"].Copy(template.Cells[maxRowIndex + 1, 2]);
