@@ -13,6 +13,8 @@ namespace Fanex.Letstalk.OneTime.Business.Services
     public interface MessageService
     {
         List<string> SendMessage();
+
+        List<string> GetReportNameNotReady();
     }
 
     public class MessageServiceImp : MessageService
@@ -20,6 +22,7 @@ namespace Fanex.Letstalk.OneTime.Business.Services
         private readonly LetstalkClientService letstalkService;
         private List<string> foldersNotReady = new List<string>();
         private Dictionary<string, OneTimeModel> foldersReadyToSend = new Dictionary<string, OneTimeModel>();
+        private List<string> reportNameNotReady = new List<string>();
 
         public MessageServiceImp(LetstalkClientService letstalkService)
         {
@@ -29,14 +32,22 @@ namespace Fanex.Letstalk.OneTime.Business.Services
         private void RefineData()
         {
             var oneTimeLog = $@"{AppConfigService.AppConfig.Path}\OneTimeLog.json";
+            var subFolders = AppConfigService.AppConfig.Folders.Where(s => s.IsActive).ToList();
+
             if (!File.Exists(oneTimeLog))
             {
+                foldersNotReady.Add($"The file {oneTimeLog} can't be found.");
+                foreach (var f in subFolders)
+                {
+                    reportNameNotReady.Add(f.ReportName);
+                }
+
                 return;
             }
+
             var text = File.ReadAllText(oneTimeLog);
             var logs = JsonConvert.DeserializeObject<List<OneTimeModel>>(text);
 
-            var subFolders = AppConfigService.AppConfig.Folders.Where(s => s.IsActive).ToList();
             foreach (var f in subFolders)
             {
                 var logFolder = logs.LastOrDefault(s => s.FolderName == f.FolderName);
@@ -45,6 +56,7 @@ namespace Fanex.Letstalk.OneTime.Business.Services
                     if (f.FolderMode == FolderMode.Daily)
                     {
                         foldersNotReady.Add(f.FolderName);
+                        reportNameNotReady.Add(f.ReportName);
                     }
 
                     continue;
@@ -55,6 +67,7 @@ namespace Fanex.Letstalk.OneTime.Business.Services
                 if (subFiles.Count() == 0)
                 {
                     foldersNotReady.Add(f.FolderName);
+                    reportNameNotReady.Add(f.ReportName);
                     continue;
                 }
 
@@ -66,6 +79,11 @@ namespace Fanex.Letstalk.OneTime.Business.Services
                     if (diff > 10800)
                     {
                         foldersNotReady.Add($"{file} is invalid file. Be careful !!!, You maybe send the old file to users. Please have a check.");
+                        if (!reportNameNotReady.Contains(f.ReportName))
+                        {
+                            reportNameNotReady.Add(f.ReportName);
+                        }
+
                         continue;
                     }
                 }
@@ -136,6 +154,11 @@ namespace Fanex.Letstalk.OneTime.Business.Services
                 Subject = string.Empty,
                 Content = string.Empty
             };
+        }
+
+        public List<string> GetReportNameNotReady()
+        {
+            return reportNameNotReady;
         }
     }
 }

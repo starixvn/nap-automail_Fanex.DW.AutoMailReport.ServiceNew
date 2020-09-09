@@ -31,6 +31,10 @@ namespace Fanex.Dangerous789YCustomer.Business.Models
 
         public int Threshold { get; set; } = 30000;
 
+        public string FPSApi { get; set; }
+
+        public string Action { get; set; }
+
         public bool IsSentDirectly { get; set; }
 
         public string OneTimePath { get; set; }

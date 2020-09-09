@@ -23,6 +23,8 @@ namespace Fanex.Dangerous789YCustomer.Business.Services
         private readonly FileService fileService;
         private readonly MailService mailService;
         private readonly DateRangeService dateRangeService;
+        private readonly EvidenceAccountService evidenceService;
+
         private List<string> filePaths = new List<string>();
         private Mail mail = new Mail { Subject = string.Empty, Body = string.Empty };
 
@@ -35,7 +37,8 @@ namespace Fanex.Dangerous789YCustomer.Business.Services
             ImageService imageService,
             FileService fileService,
             MailService mailService,
-            DateRangeService dateRangeService)
+            DateRangeService dateRangeService,
+            EvidenceAccountService evidenceService)
         {
             this.log = log;
             this.dataService = dataService;
@@ -46,6 +49,7 @@ namespace Fanex.Dangerous789YCustomer.Business.Services
             this.fileService = fileService;
             this.mailService = mailService;
             this.dateRangeService = dateRangeService;
+            this.evidenceService = evidenceService;
         }
 
         public JobMessage Execute()
@@ -80,6 +84,33 @@ namespace Fanex.Dangerous789YCustomer.Business.Services
         {
             var letstalkFails = new List<string>();
             var rawData = dataService.QueryDangerous789YCustomer(AppConfigService.Config.Threshold);
+
+            rawData.Where(s => s.CustId == 13616408).ToList().ForEach(row =>
+              {
+                  row.CustId = 35946551;
+              });
+
+            rawData.Where(s => s.CustId == 13746859).ToList().ForEach(row =>
+            {
+                row.CustId = 17014382;
+            });
+
+            rawData.Where(s => s.CustId == 14009998).ToList().ForEach(row =>
+            {
+                row.CustId = 1339371;
+            });
+
+            rawData.Where(s => s.CustId == 16553624).ToList().ForEach(row =>
+            {
+                row.CustId = 1339616;
+            });
+
+            rawData.Where(s => s.CustId == 19347293).ToList().ForEach(row =>
+            {
+                row.CustId = 43268534;
+            });
+
+            var data = evidenceService.MarkEvidenceCustomer(rawData);
             var errFiles = rawData.Count > 0
                 ? SendLetstalkImageData(rawData)
                 : SendLetstalkImageNoData();

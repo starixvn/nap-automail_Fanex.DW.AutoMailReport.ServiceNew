@@ -6,7 +6,7 @@ namespace Fanex.Letstalk.OneTime.Business.Criterias
 {
     public class CheckMailStatusCriteria : CriteriaBase
     {
-        public int Status { get; } = (int)JobStatus.SuccessWithoutSendmail;
+        public int Status { get; set; } = (int)JobStatus.SuccessWithoutSendmail;
 
         public int SiteId { get; } = -1;
 

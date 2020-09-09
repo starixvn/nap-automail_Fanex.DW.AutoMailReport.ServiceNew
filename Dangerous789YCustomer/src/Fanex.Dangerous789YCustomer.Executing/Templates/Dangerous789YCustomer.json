@@ -3,7 +3,7 @@
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
   "IsCheckEnoughData": false,
   "IsManual": true,
-  "RptDate": "2020-08-11",
+  "RptDate": "2020-09-07",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\Dangerous789YCustomer",
   "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\Dangerous789YCustomer_Internal",
   "IsSentDirectly": false,
@@ -12,6 +12,8 @@
   "FunctionIdNodata": 90,
   "TargetName": "daily-monitoring",
   "Threshold": 1,
+  "FPSApi": "http://ha.nexdev.net:7723/",
+  "Action": "Api/Cts/GetFlaggedCustByLvlNEvi?custIdList={0}&associatedLevel={1}&eviIdList=41,43,44,45,46,48,52,54,55,56,58,77,78,79,81",
   "Dangerous789YCustomerettings": {
     "Exceltitle": "Dangerous 789y Customer Tracking",
     "LetstalkGroup": "Top-Sportbook-Agents-Test",

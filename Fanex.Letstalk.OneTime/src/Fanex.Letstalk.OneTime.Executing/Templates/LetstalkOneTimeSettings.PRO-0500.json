@@ -2,24 +2,38 @@
   "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.99.99.51:801/60",
   "CategorySentryLog": "NAP-Report-Service",
   "Path": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0500",
-  "MailId": 376,
-  "MailName": "Letstalk - OneTime - 0500",
-  "IsAllowResend": false,
+  "TargetName": "daily-house-wl",
+  "Group": "DWHL-UAT",
+  "MailSettings": {
+    "LetstalkOneTime": {
+      "MailId": 376,
+      "MailName": "Letstalk - OneTime - 0500",
+      "IsAllowResend": false
+    },
+    "CheckData": {
+      "MailId": 382,
+      "MailName": "Letstalk - OneTime - 0500 - CheckData",
+      "IsAllowResend": false
+    }
+  },
   "Folders": [
     {
       "FolderName": "12-TopLicenseeByTO",
       "IsActive": true,
-      "FolderMode": "Daily"
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Top Licensees by TO"
     },
     {
       "FolderName": "18-TopNonSportPunters",
       "IsActive": true,
-      "FolderMode": "Daily"
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Top Non-Sports Punters"
     },
     {
       "FolderName": "19-TopSportbookAgents",
       "IsActive": true,
-      "FolderMode": "Daily"
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Top Sportbook Agents"
     }
   ]
 }

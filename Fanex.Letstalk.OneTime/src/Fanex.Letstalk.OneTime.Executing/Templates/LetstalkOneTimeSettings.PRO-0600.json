@@ -2,34 +2,50 @@
   "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.99.99.51:801/60",
   "CategorySentryLog": "NAP-Report-Service",
   "Path": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0600",
-  "MailId": 377,
-  "MailName": "Letstalk - OneTime - 0600",
-  "IsAllowResend": false,
+  "TargetName": "daily-house-wl",
+  "Group": "DWHL-UAT",
+  "MailSettings": {
+    "LetstalkOneTime": {
+      "MailId": 377,
+      "MailName": "Letstalk - OneTime - 0600",
+      "IsAllowResend": false
+    },
+    "CheckData": {
+      "MailId": 383,
+      "MailName": "Letstalk - OneTime - 0600 - CheckData",
+      "IsAllowResend": false
+    }
+  },
   "Folders": [
     {
       "FolderName": "1-DHWL-Monthly",
       "IsActive": true,
-      "FolderMode": "Monthly"
+      "FolderMode": "Monthly",
+      "ReportName": "Letstalk - House Net Income Monthly Report"
     },
     {
       "FolderName": "2-DHWL-Daily",
       "IsActive": true,
-      "FolderMode": "Daily"
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - House Net Income Daily Report"
     },
     {
       "FolderName": "3-DCWL",
       "IsActive": true,
-      "FolderMode": "Daily"
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Daily Casino WinLoss - DCWL"
     },
     {
       "FolderName": "13-N88-DailyWL-PRO",
       "IsActive": true,
-      "FolderMode": "Daily"
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - N88 Daily Win Loss"
     },
     {
       "FolderName": "13-N88-DailyWL-Internal",
       "IsActive": true,
-      "FolderMode": "Daily"
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - N88 Daily Win Loss"
     }
   ]
 }

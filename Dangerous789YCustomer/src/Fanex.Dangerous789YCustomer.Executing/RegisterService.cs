@@ -47,6 +47,8 @@ namespace Fanex.Dangerous789YCustomer.Executing
             container.Register<FileService, FileServiceImp>();
             container.Register<MailService, MailServiceImp>();
             container.Register<DateTitleService, DateTitleServiceImp>();
+            container.Register<ClientApiService, ClientApiServiceImp>();
+            container.Register<EvidenceAccountService, EvidenceAccountServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
             container.Register<ApplicationSettingService, ApplicationSettingServiceImp>();

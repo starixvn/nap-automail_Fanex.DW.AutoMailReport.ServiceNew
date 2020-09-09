@@ -139,6 +139,7 @@
     <Compile Include="Criterias\CheckMailStatusCriteria.cs" />
     <Compile Include="Models\ConfigSettingModel.cs" />
     <Compile Include="Models\ExecuteResultModel.cs" />
+    <Compile Include="Models\FileService.cs" />
     <Compile Include="Models\FolderMode.cs" />
     <Compile Include="Models\FolderRegisterModel.cs" />
     <Compile Include="Models\MailModel.cs" />
@@ -147,6 +148,7 @@
     <Compile Include="Services\AppConfigService.cs" />
     <Compile Include="Services\DataService.cs" />
     <Compile Include="Services\Log.cs" />
+    <Compile Include="Services\MailService.cs" />
     <Compile Include="Services\MessageService.cs" />
     <Compile Include="Services\OneTimeNotificationService.cs" />
   </ItemGroup>

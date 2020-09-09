@@ -10,11 +10,11 @@ namespace Fanex.Letstalk.OneTime.Business.Models
 
         public string Path { get; set; }
 
-        public int MailId { get; set; }
+        public string TargetName { get; set; }
 
-        public string MailName { get; set; }
+        public string Group { get; set; }
 
-        public bool IsAllowResend { get; set; }
+        public Dictionary<string, MailModel> MailSettings { get; set; }
 
         public List<FolderRegisterModel> Folders { get; set; }
     }

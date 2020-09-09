@@ -2,49 +2,68 @@
   "SentryClientKey": "https://ad29bef60cc04e78803c9030a33a2c06@sentry.nexdev.net/44",
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime",
-  "MailId": 358,
-  "MailName": "Letstalk - OneTime",
-  "IsAllowResend": false,
+  "TargetName": "daily-house-wl",
+  "Group": "DWHL-UAT",
+  "MailSettings": {
+    "LetstalkOneTime": {
+      "MailId": 358,
+      "MailName": "Letstalk - OneTime",
+      "IsAllowResend": false
+    },
+    "CheckData": {
+      "MailId": 359,
+      "MailName": "Letstalk - OneTime - CheckData",
+      "IsAllowResend": true
+    }
+  },
   "Folders": [
     {
       "FolderName": "1-DHWL-Monthly",
-      "IsActive": false,
-      "FolderMode": "Monthly"
+      "IsActive": true,
+      "FolderMode": "Monthly",
+      "ReportName": "Letstalk - House Net Income Monthly Report"
     },
     {
       "FolderName": "2-DHWL-Daily",
-      "IsActive": false,
-      "FolderMode": "Daily"
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - House Net Income Daily Report"
     },
     {
       "FolderName": "3-DCWL",
-      "IsActive": false,
-      "FolderMode": "Daily"
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Daily Casino WinLoss - DCWL"
     },
     {
       "FolderName": "12-TopLicenseeByTO",
-      "IsActive": false,
-      "FolderMode": "Daily"
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Top Licensees by TO"
     },
     {
       "FolderName": "13-N88-DailyWL-Test",
       "IsActive": true,
-      "FolderMode": "Daily"
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - N88 Daily Win Loss"
     },
     {
       "FolderName": "13-N88-DailyWL-Internal-Test",
       "IsActive": true,
-      "FolderMode": "Daily"
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - N88 Daily Win Loss"
     },
     {
       "FolderName": "18-TopNonSportPunters",
-      "IsActive": false,
-      "FolderMode": "Daily"
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Top Non-Sports Punters"
     },
     {
       "FolderName": "19-TopSportbookAgents",
-      "IsActive": false,
-      "FolderMode": "Daily"
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Top Sportbook Agents"
     }
   ]
 }
