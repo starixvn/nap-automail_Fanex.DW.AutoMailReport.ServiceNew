@@ -52,23 +52,23 @@ namespace Fanex.Dangerous789YCustomer.Business.Services
 
         private void RenderData(List<PunterModel> data, ExcelWorksheet template)
         {
-            int i = 0;
-            string rootName = string.Empty;
-            foreach (var row in data)
-            {
-                if (i == 0 || i == 5)
-                {
-                    rootName = row.UserName;
-                    i = 0;
-                }
-                if (i > 0)
-                {
-                    row.AssociatedAccount = rootName;
-                    row.IsRootMember = false;
-                }
+            //int i = 0;
+            //string rootName = string.Empty;
+            //foreach (var row in data)
+            //{
+            //    if (i == 0 || i == 5)
+            //    {
+            //        rootName = row.UserName;
+            //        i = 0;
+            //    }
+            //    if (i > 0)
+            //    {
+            //        row.AssociatedAccount = rootName;
+            //        row.IsRootMember = false;
+            //    }
 
-                i++;
-            }
+            //    i++;
+            //}
 
             var startRowIndex = 5;
             var maxRowIndex = data.Count + startRowIndex - 1;
@@ -117,6 +117,10 @@ namespace Fanex.Dangerous789YCustomer.Business.Services
 
             path = $@"{path}\{fileName}";
             excelPackage.Workbook.Worksheets.Delete("Note");
+            excelPackage.Workbook.Worksheets["Data"].Column(15).Hidden = true;
+            excelPackage.Workbook.Worksheets["Data"].Column(16).Hidden = true;
+            excelPackage.Workbook.Worksheets["Data"].Column(17).Hidden = true;
+            excelPackage.Workbook.Worksheets["Data"].Column(18).Hidden = true;
             excelPackage.SaveAs(new FileInfo(path), AppConfigService.Config.Password);
 
             return path;

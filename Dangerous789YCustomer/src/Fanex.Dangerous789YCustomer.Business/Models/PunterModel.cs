@@ -66,5 +66,7 @@
         public bool IsRootMember { get; set; } = true;
 
         public string AssociatedAccount { get; set; }
+
+        public int Level0CustId { get; set; }
     }
 }

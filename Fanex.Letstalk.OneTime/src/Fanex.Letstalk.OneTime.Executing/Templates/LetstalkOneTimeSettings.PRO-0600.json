@@ -3,7 +3,7 @@
   "CategorySentryLog": "NAP-Report-Service",
   "Path": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0600",
   "TargetName": "daily-house-wl",
-  "Group": "DWHL-UAT",
+  "Group": "DHWL-PRE",
   "MailSettings": {
     "LetstalkOneTime": {
       "MailId": 377,
@@ -37,13 +37,13 @@
     },
     {
       "FolderName": "13-N88-DailyWL-PRO",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - N88 Daily Win Loss"
     },
     {
       "FolderName": "13-N88-DailyWL-Internal",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - N88 Daily Win Loss"
     }

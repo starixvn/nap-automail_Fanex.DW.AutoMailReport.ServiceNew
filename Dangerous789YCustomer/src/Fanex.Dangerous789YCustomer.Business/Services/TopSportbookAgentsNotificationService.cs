@@ -111,8 +111,8 @@ namespace Fanex.Dangerous789YCustomer.Business.Services
             });
 
             var data = evidenceService.MarkEvidenceCustomer(rawData);
-            var errFiles = rawData.Count > 0
-                ? SendLetstalkImageData(rawData)
+            var errFiles = data.Count > 0
+                ? SendLetstalkImageData(data)
                 : SendLetstalkImageNoData();
 
             errFiles.ForEach(file =>
