@@ -16,7 +16,7 @@
   "Action": "Api/Cts/GetFlaggedCustByLvlNEvi?custIdList={0}&associatedLevel={1}&eviIdList=41,43,44,45,46,48,52,54,55,56,58,77,78,79,81",
   "Dangerous789YCustomerettings": {
     "Exceltitle": "Dangerous 789y Customer Tracking",
-    "LetstalkGroup": "Top-Sportbook-Agents-Test",
+    "LetstalkGroup": "789-Cust-Tracking-Test",
     "Subject": "Dangerous 789y Customer Tracking - Risk Monitoring"
   },
   "ImageSettings": {
@@ -24,15 +24,15 @@
       "FirstRow": 2,
       "FirstColumn": 2,
       "LastColumn": 13,
-      "CropWidth": 4355,
-      "ImageName": "Dangerous789YCustomer",
+      "CropWidth": 4080,
+      "ImageName": "789Y",
       "X": 220,
       "Y": 220,
       "SheetName": "Data",
       "IsResize": true,
       "ResizeNewWidth": 1500,
       "ImageQuality": 100,
-      "HeightPerRow": 95
+      "HeightPerRow": 96
     }
   }
 }

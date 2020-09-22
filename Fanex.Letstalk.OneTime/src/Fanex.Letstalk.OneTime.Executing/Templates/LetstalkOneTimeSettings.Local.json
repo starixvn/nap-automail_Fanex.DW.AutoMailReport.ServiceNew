@@ -64,6 +64,12 @@
       "IsActive": true,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Top Sportbook Agents"
+    },
+    {
+      "FolderName": "20-TOAVGBetBenchmark",
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Turnover/AVG Bet Benchmark"
     }
   ]
 }

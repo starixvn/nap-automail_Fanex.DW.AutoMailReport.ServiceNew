@@ -6,8 +6,8 @@
   "RptDate": "2020-04-22",
   "Path": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\Dangerous789YCustomer",
   "InternalPath": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel.Internal\\Dangerous789YCustomer_InternalPath",
-  "IsSentDirectly": false,
-  "OneTimePath": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0500\\19-Dangerous789YCustomer",
+  "IsSentDirectly": true,
+  "OneTimePath": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0500\\21-Dangerous789YCustomer",
   "Password": "Star168",
   "FunctionIdNodata": 90,
   "TargetName": "daily-monitoring",
@@ -16,7 +16,7 @@
   "Action": "Api/Cts/GetFlaggedCustByLvlNEvi?custIdList={0}&associatedLevel={1}&eviIdList=41,43,44,45,46,48,52,54,55,56,58,76,77,78,80",
   "Dangerous789YCustomerettings": {
     "Exceltitle": "Dangerous 789y Customer Tracking",
-    "LetstalkGroup": "Top-Sportbook-Agents-Test",
+    "LetstalkGroup": "789-Cust-Tracking",
     "Subject": "Dangerous 789y Customer Tracking - Risk Monitoring"
   },
   "ImageSettings": {
@@ -24,15 +24,15 @@
       "FirstRow": 2,
       "FirstColumn": 2,
       "LastColumn": 13,
-      "CropWidth": 4355,
-      "ImageName": "Dangerous789YCustomer",
+      "CropWidth": 4080,
+      "ImageName": "789Y",
       "X": 220,
       "Y": 220,
       "SheetName": "Data",
       "IsResize": true,
       "ResizeNewWidth": 1500,
       "ImageQuality": 100,
-      "HeightPerRow": 95
+      "HeightPerRow": 96
     }
   }
 }

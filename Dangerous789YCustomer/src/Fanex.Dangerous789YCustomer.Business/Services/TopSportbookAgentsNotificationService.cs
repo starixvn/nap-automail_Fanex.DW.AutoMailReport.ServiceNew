@@ -84,32 +84,6 @@ namespace Fanex.Dangerous789YCustomer.Business.Services
         {
             var letstalkFails = new List<string>();
             var rawData = dataService.QueryDangerous789YCustomer(AppConfigService.Config.Threshold);
-
-            rawData.Where(s => s.CustId == 13616408).ToList().ForEach(row =>
-              {
-                  row.CustId = 35946551;
-              });
-
-            rawData.Where(s => s.CustId == 13746859).ToList().ForEach(row =>
-            {
-                row.CustId = 17014382;
-            });
-
-            rawData.Where(s => s.CustId == 14009998).ToList().ForEach(row =>
-            {
-                row.CustId = 1339371;
-            });
-
-            rawData.Where(s => s.CustId == 16553624).ToList().ForEach(row =>
-            {
-                row.CustId = 1339616;
-            });
-
-            rawData.Where(s => s.CustId == 19347293).ToList().ForEach(row =>
-            {
-                row.CustId = 43268534;
-            });
-
             var data = evidenceService.MarkEvidenceCustomer(rawData);
             var errFiles = data.Count > 0
                 ? SendLetstalkImageData(data)
