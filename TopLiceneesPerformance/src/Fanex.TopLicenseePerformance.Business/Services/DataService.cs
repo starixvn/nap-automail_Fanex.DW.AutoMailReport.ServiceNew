@@ -103,7 +103,7 @@ namespace Fanex.TopLicensee.Service.Services
                     SportType.Soccer, new Dictionary<LeagueGroup, string>
                     {
                         { LeagueGroup.Esoccer, "41" },
-                        { LeagueGroup.VL, "42,74" },
+                        { LeagueGroup.VL, "42,74,108" },
                     }
                 },
                 {

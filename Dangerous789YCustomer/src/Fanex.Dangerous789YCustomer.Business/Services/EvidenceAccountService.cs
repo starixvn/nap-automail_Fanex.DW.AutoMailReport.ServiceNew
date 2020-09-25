@@ -1,5 +1,7 @@
 ﻿using Fanex.Dangerous789YCustomer.Business.Models;
+using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Fanex.Dangerous789YCustomer.Business.Services
@@ -19,13 +21,13 @@ namespace Fanex.Dangerous789YCustomer.Business.Services
             this.api = api;
         }
 
-        private List<PunterModel> GetEvidenceCustomer(List<PunterModel> data, bool isRootMember)
+        private List<PunterModel> GetRootCustomer(List<PunterModel> data)
         {
             var punters = new List<PunterModel>();
             var evidenceCustomerFromApi = new List<EvidenceModel>();
             var rowPerBatch = RowPerBatch;
             var numberOfBatch = data.Count / rowPerBatch + ((data.Count % rowPerBatch) > 0 ? 1 : 0);
-            var associatedLevel = isRootMember ? "0" : "1";
+            var associatedLevel = "0";
             for (var batchIndex = 0; batchIndex < numberOfBatch; batchIndex++)
             {
                 var rowsOfBatch = data.Skip(batchIndex * rowPerBatch).Take(rowPerBatch).ToList();
@@ -33,19 +35,35 @@ namespace Fanex.Dangerous789YCustomer.Business.Services
                 var strCustIds = string.Join(",", custIds);
                 var action = string.Format(AppConfigService.Config.Action, strCustIds, associatedLevel);
                 var evidenceCustomer = api.GetEvidence(action);
-                var sortList = GetLastEvidence(evidenceCustomer);
-                evidenceCustomerFromApi.AddRange(sortList);
+                evidenceCustomerFromApi.AddRange(evidenceCustomer);
             }
 
             var evidenceCustomers = data.Where(s => evidenceCustomerFromApi.Select(e => e.CustId).Contains(s.CustId)).ToList();
             evidenceCustomers.ForEach(row =>
             {
                 var evidence = evidenceCustomerFromApi.FirstOrDefault(s => s.CustId == row.CustId);
-                var punter = Transform(isRootMember, row, evidence);
+                var punter = Transform(true, row, evidence);
                 punters.Add(punter);
             });
 
-            return punters;
+            return punters.OrderByDescending(s => s.Winloss1).ToList();
+        }
+
+        private List<PunterModel> GetAssociatedMembersCustomer(int custId, List<PunterModel> data)
+        {
+            var punters = new List<PunterModel>();
+            var associatedLevel = "1";
+            var action = string.Format(AppConfigService.Config.Action, custId, associatedLevel);
+            var evidenceCustomer = api.GetEvidence(action);
+            var evidenceCustomers = data.Where(s => evidenceCustomer.Select(e => e.CustId).Contains(s.CustId)).ToList();
+            evidenceCustomers.ForEach(row =>
+            {
+                var evidence = evidenceCustomer.FirstOrDefault(s => s.CustId == row.CustId);
+                var punter = Transform(false, row, evidence);
+                punters.Add(punter);
+            });
+
+            return punters.OrderByDescending(s => s.Winloss1).ToList();
         }
 
         private static PunterModel Transform(bool isRootMember, PunterModel row, EvidenceModel evidence)
@@ -67,28 +85,14 @@ namespace Fanex.Dangerous789YCustomer.Business.Services
             };
         }
 
-        private List<EvidenceModel> GetLastEvidence(List<EvidenceModel> evidenceCustomer)
-        {
-            var result = new List<EvidenceModel>();
-            evidenceCustomer.GroupBy(g => new { g.CustId })
-                .ToList()
-                .ForEach(row =>
-                {
-                    var customer = row.OrderByDescending(o => o.CreatedDate).FirstOrDefault();
-                    result.Add(customer);
-                });
-
-            return result;
-        }
-
         public List<PunterModel> MarkEvidenceCustomer(List<PunterModel> data)
         {
             var punters = new List<PunterModel>();
-            var rootMembers = GetEvidenceCustomer(data, true);
-            var associatedMembers = GetEvidenceCustomer(data, false);
+            var rootMembers = GetRootCustomer(data);
+
             rootMembers.ForEach(row =>
             {
-                var subAssociatedAccount = associatedMembers.Where(s => s.Level0CustId == row.Level0CustId).ToList();
+                var subAssociatedAccount = GetAssociatedMembersCustomer(row.CustId, data);
                 subAssociatedAccount.ForEach(sub =>
                 {
                     sub.AssociatedAccount = row.UserName;

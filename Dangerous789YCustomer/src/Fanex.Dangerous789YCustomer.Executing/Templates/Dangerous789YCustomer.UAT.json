@@ -3,7 +3,7 @@
   "CategorySentryLog": "NAP-Report-Service-UAT",
   "IsCheckEnoughData": true,
   "IsManual": false,
-  "RptDate": "2020-08-01",
+  "RptDate": "2020-09-28",
   "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\Dangerous789YCustomer",
   "InternalPath": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel.Internal\\Dangerous789YCustomer_InternalPath",
   "IsSentDirectly": true,

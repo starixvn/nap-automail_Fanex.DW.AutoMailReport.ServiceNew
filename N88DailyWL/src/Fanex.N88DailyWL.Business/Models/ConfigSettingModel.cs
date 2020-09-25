@@ -15,7 +15,7 @@ namespace Fanex.N88DailyWL.Business.Models
 
         public string TargetName { get; set; }
 
-        public List<string> Group { get; set; }
+        public List<LicenseeNameGroup> LicenseeNameGroups { get; set; }
 
         public string Password { get; set; }
 

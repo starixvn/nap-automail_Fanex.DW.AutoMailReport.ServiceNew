@@ -6,12 +6,12 @@ namespace Fanex.N88DailyWL.Business.Services
 {
     public interface MessageService
     {
-        List<LetstalkModel> CreateLetstalkModel(List<string> filenames);
+        List<LetstalkModel> CreateLetstalkModel(List<string> filenames, string group);
     }
 
     public class MessageServiceImp : MessageService
     {
-        public List<LetstalkModel> CreateLetstalkModel(List<string> filenames)
+        public List<LetstalkModel> CreateLetstalkModel(List<string> filenames, string group)
         {
             var letstalkAttachments = new List<LetstalkAttachment>();
             var models = new List<LetstalkModel>();
@@ -24,20 +24,14 @@ namespace Fanex.N88DailyWL.Business.Services
                 });
             }
 
-            AppConfigService
-                .AppConfig
-                .Group
-                .ForEach(group =>
-                {
-                    models.Add(new LetstalkModel
-                    {
-                        TargetName = AppConfigService.AppConfig.TargetName,
-                        Group = group,
-                        LetstalkAttachments = letstalkAttachments,
-                        Subject = string.Empty,
-                        Content = string.Empty
-                    });
-                });
+            models.Add(new LetstalkModel
+            {
+                TargetName = AppConfigService.AppConfig.TargetName,
+                Group = group,
+                LetstalkAttachments = letstalkAttachments,
+                Subject = string.Empty,
+                Content = string.Empty
+            });
 
             return models;
         }

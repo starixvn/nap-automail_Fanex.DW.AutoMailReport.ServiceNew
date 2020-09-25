@@ -15,5 +15,9 @@
         public decimal CoIncome { get; set; }
 
         public decimal CoMargin { get; set; }
+
+        public string BreakColumn { get; }
+
+        public string LicenseeName { get; set; }
     }
 }

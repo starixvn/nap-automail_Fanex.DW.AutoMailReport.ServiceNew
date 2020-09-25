@@ -3,12 +3,29 @@
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
   "IsCheckEnoughData": false,
   "IsManual": true,
-  "FromDate": "2020-01-01",
-  "ToDate": "2020-01-31",
+  "FromDate": "2020-09-01",
+  "ToDate": "2020-09-30",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\N88DailyWL",
   "TargetName": "N88",
-  "Group": [ "N88-DailyWL-Test", "N88-DailyWL-Internal-Test" ],
-  "IsSentDirectly": false,
+  "LicenseeNameGroups": [
+    {
+      "LicenseeName": "N88",
+      "Group": "N88-DailyWL-Test"
+    },
+    {
+      "LicenseeName": "N8B",
+      "Group": "N8B-DailyWL-Test"
+    },
+    {
+      "LicenseeName": "N8G",
+      "Group": "N8G-DailyWL-Test"
+    },
+    {
+      "LicenseeName": "All",
+      "Group": "N88-DailyWL-Internal-Test"
+    }
+  ],
+  "IsSentDirectly": true,
   "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\13",
   "Password": "",
   "FunctionIdNodata": 90,

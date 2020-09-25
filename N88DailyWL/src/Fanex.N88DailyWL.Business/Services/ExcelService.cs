@@ -9,9 +9,9 @@ namespace Fanex.N88DailyWL.Business.Services
 {
     public interface ExcelService
     {
-        string ExportCurrency(List<N88CurrencyModel> data, bool isYesterday);
+        string ExportCurrency(string licenseeName, List<N88CurrencyModel> data, bool isYesterday);
 
-        string ExportProduct(List<N88ProductModel> data, bool isYesterday);
+        string ExportProduct(string licenseeName, List<N88ProductModel> data, bool isYesterday);
     }
 
     public class ExcelServiceImp : ExcelService
@@ -29,7 +29,7 @@ namespace Fanex.N88DailyWL.Business.Services
             this.dateService = dateService;
         }
 
-        public string ExportCurrency(List<N88CurrencyModel> data, bool isYesterday)
+        public string ExportCurrency(string licenseeName, List<N88CurrencyModel> data, bool isYesterday)
         {
             excelPackage = new ExcelPackage(new FileInfo("Templates/N88Template.xlsx"));
             sheetCurrency = excelPackage.Workbook.Worksheets["Currency"];
@@ -46,21 +46,24 @@ namespace Fanex.N88DailyWL.Business.Services
                     DepositTrans = data.Sum(s => s.DepositTrans)
                 });
 
-                RenderBody_Currency(data, isYesterday);
+                RenderBody_Currency(licenseeName, data, isYesterday);
             }
             else
             {
+                var title = isYesterday ? $"{dateService.ToDate:yyyyMMdd}" : "MTD";
+                sheetCurrency.Cells["B2"].Value = title + $" - {licenseeName}";
                 sheetCurrency.Cells[4, 2, 4, 6].Merge = true;
                 sheetCurrency.Cells[4, 2, 4, 6].Value = "There is no data.";
                 sheetCurrency.Cells[4, 2, 4, 6].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
             }
 
-            return SaveFile_Currency(isYesterday);
+            return SaveFile_Currency(licenseeName, isYesterday);
         }
 
-        private void RenderBody_Currency(List<N88CurrencyModel> data, bool isYesterday)
+        private void RenderBody_Currency(string licenseeName, List<N88CurrencyModel> data, bool isYesterday)
         {
-            sheetCurrency.Cells["B2"].Value = isYesterday ? $"{dateService.ToDate:yyyyMMdd}" : "MTD";
+            var title = isYesterday ? $"{dateService.ToDate:yyyyMMdd}" : "MTD";
+            sheetCurrency.Cells["B2"].Value = title + $" - {licenseeName}";
             sheetCurrency.Cells["B4"].LoadFromCollection(data, false);
             var maxRowIndex = 3 + data.Count;
             for (int columnIndex = 2; columnIndex < 7; columnIndex++)
@@ -74,15 +77,15 @@ namespace Fanex.N88DailyWL.Business.Services
             }
         }
 
-        private string SaveFile_Currency(bool isYesterday)
+        private string SaveFile_Currency(string licenseeName, bool isYesterday)
         {
             excelPackage.Workbook.Worksheets.Delete("Product");
             excelPackage.Workbook.Worksheets.Delete("Currency-Total");
             excelPackage.Workbook.Worksheets.Delete("Product-Total");
             var yesterday = dateService.ToDate;
             var fileName = isYesterday
-                ? $"N88-Currency-{yesterday:yyyyMMdd}.xlsx"
-                : $"N88-Currency-MTD-{yesterday:yyyyMMdd}.xlsx";
+                ? $"{licenseeName}-Currency-{yesterday:yyyyMMdd}.xlsx"
+                : $"{licenseeName}-Currency-MTD-{yesterday:yyyyMMdd}.xlsx";
             var path = $@"{AppConfigService.AppConfig.Path}\{yesterday:yyyy}\{yesterday:MM}";
             if (!Directory.Exists(path))
             {
@@ -95,15 +98,15 @@ namespace Fanex.N88DailyWL.Business.Services
             return path;
         }
 
-        private string SaveFile_Product(bool isYesterday)
+        private string SaveFile_Product(string licenseeName, bool isYesterday)
         {
             excelPackage.Workbook.Worksheets.Delete("Currency");
             excelPackage.Workbook.Worksheets.Delete("Currency-Total");
             excelPackage.Workbook.Worksheets.Delete("Product-Total");
             var yesterday = dateService.ToDate;
             var fileName = isYesterday
-                ? $"N88-Product-{yesterday:yyyyMMdd}.xlsx"
-                : $"N88-Product-MTD-{yesterday:yyyyMMdd}.xlsx";
+                ? $"{licenseeName}-Product-{yesterday:yyyyMMdd}.xlsx"
+                : $"{licenseeName}-Product-MTD-{yesterday:yyyyMMdd}.xlsx";
             var path = $@"{AppConfigService.AppConfig.Path}\{yesterday:yyyy}\{yesterday:MM}";
             if (!Directory.Exists(path))
             {
@@ -116,7 +119,7 @@ namespace Fanex.N88DailyWL.Business.Services
             return path;
         }
 
-        public string ExportProduct(List<N88ProductModel> data, bool isYesterday)
+        public string ExportProduct(string licenseeName, List<N88ProductModel> data, bool isYesterday)
         {
             excelPackage = new ExcelPackage(new FileInfo("Templates/N88Template.xlsx"));
             sheetProduct = excelPackage.Workbook.Worksheets["Product"];
@@ -137,13 +140,14 @@ namespace Fanex.N88DailyWL.Business.Services
                 CoMargin = coMargin
             });
 
-            RenderBody_Product(data, isYesterday);
-            return SaveFile_Product(isYesterday);
+            RenderBody_Product(licenseeName, data, isYesterday);
+            return SaveFile_Product(licenseeName, isYesterday);
         }
 
-        private void RenderBody_Product(List<N88ProductModel> data, bool isYesterday)
+        private void RenderBody_Product(string licenseeName, List<N88ProductModel> data, bool isYesterday)
         {
-            sheetProduct.Cells["B2"].Value = isYesterday ? $"{dateService.ToDate:yyyyMMdd}" : "MTD";
+            var title = isYesterday ? $"{dateService.ToDate:yyyyMMdd}" : "MTD";
+            sheetProduct.Cells["B2"].Value = title + $" - {licenseeName}";
             sheetProduct.Cells["B4"].LoadFromCollection(data, false);
             var maxRowIndex = 3 + data.Count;
             for (int columnIndex = 2; columnIndex < 9; columnIndex++)

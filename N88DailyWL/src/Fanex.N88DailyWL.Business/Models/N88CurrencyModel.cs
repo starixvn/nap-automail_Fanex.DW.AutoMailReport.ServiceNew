@@ -11,5 +11,9 @@
         public int FirstDepositTrans { get; set; }
 
         public int DepositTrans { get; set; }
+
+        public string BreakColumn { get; }
+
+        public string LicenseeName { get; set; }
     }
 }
