@@ -1,19 +1,15 @@
 ﻿@{
-    var data = Model;    
-    DateTime lastDate = data.Item1;
+    var data = Model;
+    var dataIsReady = data.Item1;
 }
 <div>
     Dear DBA Teammate,<br /><br />
     The store procedures belong to <b> Letstalk  - Top Licensees by TO  on @DateTime.Today.AddDays(-1).ToString("yyyy/MM/dd") </b> have been returned not enough data to send email to users.<br />
-    Because the <b>LastDate from DW is @lastDate.ToString("yyyy/MM/dd")</b>  <br />  <br/>
+    Because the <b>DailyJob_CheckTasksStatus '17,44' returned DataIsReady = @dataIsReady</b></b>
     So can you please have a check.<br /><br />
     Regards.<br /><br />
-    
 
-    ---------------------------------------------------------------------- <br/>
-    If you are not the addressee you may not copy, forward, disclose or use any part of it. <br/>
-    This is an auto-generated email, please do not reply. <br/>
-
-
-
+    ---------------------------------------------------------------------- <br />
+    If you are not the addressee you may not copy, forward, disclose or use any part of it. <br />
+    This is an auto-generated email, please do not reply. <br />
 </div>

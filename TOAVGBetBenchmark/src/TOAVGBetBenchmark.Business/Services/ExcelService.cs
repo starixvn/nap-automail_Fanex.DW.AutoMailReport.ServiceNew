@@ -67,7 +67,7 @@ namespace Fanex.TOAVGBetBenchmark.Business.Services
                     rowOddEven = rowCountGroup % 2 == 0 ? 6 : 7;
                 }
 
-                for (int columnIndex = 1; columnIndex <= 8; columnIndex++)
+                for (int columnIndex = 1; columnIndex <= 9; columnIndex++)
                 {
                     template.Cells[rowIndex, columnIndex].StyleID = templateNote.Cells[rowOddEven, columnIndex].StyleID;
                 }

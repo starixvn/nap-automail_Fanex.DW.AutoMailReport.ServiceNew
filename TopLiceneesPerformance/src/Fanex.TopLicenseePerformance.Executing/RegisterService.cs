@@ -6,6 +6,7 @@ using Fanex.Logging;
 using Fanex.Logging.Sentry.RavenClient;
 using Fanex.TopLicensee.Service.Models;
 using Fanex.TopLicensee.Service.Services;
+using Fanex.TopLicenseePerformance.Business.Services;
 using Newtonsoft.Json;
 using SharpRaven;
 using SimpleInjector;
@@ -47,6 +48,7 @@ namespace Fanex.TopLicenseePerformance.Executing
             container.Register<MessageService, MessageServiceImp>();
             container.Register<ExportVirtualSoccerHouse, ExportVirtualSoccerHouseImp>();
             container.Register<ExportVirtualSoccerLicensee, ExportVirtualSoccerLicenseeImp>();
+            container.Register<FileService, FileServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
             container.Register<ApplicationSettingService, ApplicationSettingServiceImp>();

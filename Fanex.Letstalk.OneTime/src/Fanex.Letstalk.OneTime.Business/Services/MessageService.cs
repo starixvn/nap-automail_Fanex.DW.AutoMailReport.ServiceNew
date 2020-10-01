@@ -2,6 +2,7 @@
 using Fanex.LetstalkService.Client;
 using Fanex.LetstalkService.Core.Models;
 using Fanex.LetstalkService.Core.Services;
+using Fanex.MailDelivery.Core.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -23,10 +24,17 @@ namespace Fanex.Letstalk.OneTime.Business.Services
         private List<string> foldersNotReady = new List<string>();
         private Dictionary<string, OneTimeModel> foldersReadyToSend = new Dictionary<string, OneTimeModel>();
         private List<string> reportNameNotReady = new List<string>();
+        private readonly FileService fileService;
+        private readonly MailService mailService;
 
-        public MessageServiceImp(LetstalkClientService letstalkService)
+        public MessageServiceImp(
+            LetstalkClientService letstalkService,
+            FileService fileService,
+            MailService mailService)
         {
             this.letstalkService = letstalkService;
+            this.fileService = fileService;
+            this.mailService = mailService;
         }
 
         private void RefineData()
@@ -114,6 +122,16 @@ namespace Fanex.Letstalk.OneTime.Business.Services
                         continue;
                     }
 
+                    if (f.Value.MailId > 0)
+                    {
+                        SendMail(f.Value, filename);
+                    }
+
+                    if (string.IsNullOrEmpty(f.Value.Group))
+                    {
+                        continue;
+                    }
+
                     var letstalkModel = CreateLetstalkModel(new List<string> { filename }, f.Value.TargetName, f.Value.Group);
                     var status = letstalkService.SendMessage(letstalkModel);
                     countRetry = 0;
@@ -132,6 +150,24 @@ namespace Fanex.Letstalk.OneTime.Business.Services
             }
 
             return foldersNotReady;
+        }
+
+        private void SendMail(OneTimeModel model, string filename)
+        {
+            var attachments = new List<MailAttachment>
+            {
+                new MailAttachment(filename, FileExtension.MS_EXCEL)
+            };
+
+            var mail = new Mail
+            {
+                Subject = model.Subject,
+                Body = fileService.LoadMailTemplate(new List<string> { new FileInfo(filename).Name }),
+                Attachments = attachments,
+                MailingListId = model.MailId,
+            };
+
+            mailService.SendMail(mail);
         }
 
         private LetstalkModel CreateLetstalkModel(List<string> fileNames, string targetName, string letstalkGroup)

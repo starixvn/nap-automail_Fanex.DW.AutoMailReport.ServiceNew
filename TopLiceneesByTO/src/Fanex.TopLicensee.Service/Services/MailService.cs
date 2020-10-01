@@ -42,7 +42,7 @@ namespace Fanex.TopLicensee.Service.Services
 
         private string LoadBodyMailNoData()
         {
-            var tuple = new Tuple<DateTime>(dataService.QueryLastDate().LastDate);
+            var tuple = new Tuple<bool>(dataService.QueryDWStatus().DataIsReady);
             var template = File.ReadAllText("Templates/ContentWhenDataIsNotReady.cshtml");
             return Engine.Razor.RunCompile(template, $"template{DateTime.Now.Ticks}", model: tuple);
         }

@@ -1,8 +1,8 @@
 ﻿{
   "SentryClientKey": "https://ad29bef60cc04e78803c9030a33a2c06@sentry.nexdev.net/44",
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
-  "IsCheckEnoughData": false,
-  "IsManual": true,
+  "IsCheckEnoughData": true,
+  "IsManual": false,
   "RptDate": "2020-08-10",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\TopPunterCasino",
   "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\TopPunterCasino_Internal",

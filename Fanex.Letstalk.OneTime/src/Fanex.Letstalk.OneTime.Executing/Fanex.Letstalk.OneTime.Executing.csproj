@@ -208,6 +208,9 @@
     <Content Include="Templates\EmailTemplate.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\ContentWithAttachment.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.Letstalk.OneTime.Business\Fanex.Letstalk.OneTime.Business.csproj">

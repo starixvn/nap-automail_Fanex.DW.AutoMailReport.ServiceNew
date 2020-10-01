@@ -1,8 +1,8 @@
 ﻿using Fanex.Data;
 using Fanex.Data.Repository;
-using Fanex.Service.Core;
 using Fanex.TopLicensee.Service.Criterias;
 using Fanex.TopLicensee.Service.Models;
+using Fanex.TopLicenseePerformance.Business.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,7 +14,7 @@ namespace Fanex.TopLicensee.Service.Services
     {
         bool IsDataAvailable();
 
-        LastDateModel QueryLastDate();
+        TaskstatusModel QueryLastDate();
 
         List<LicenseeTOModel> QueryTopLicensee(int sportType);
 
@@ -41,12 +41,12 @@ namespace Fanex.TopLicensee.Service.Services
                 return true;
             }
 
-            return QueryLastDate().LastDate >= Convert.ToDateTime(SystemTime.Now.AddDays(-1).ToShortDateString());
+            return QueryLastDate().DataIsReady;
         }
 
-        public LastDateModel QueryLastDate()
+        public TaskstatusModel QueryLastDate()
         {
-            return repository.Get<LastDateModel>(new GetDWStatusByCubeCriteria());
+            return repository.Get<TaskstatusModel>(new GetDWStatusCriteria());
         }
 
         public List<LicenseeTOModel> QueryTopLicensee(int sportType)

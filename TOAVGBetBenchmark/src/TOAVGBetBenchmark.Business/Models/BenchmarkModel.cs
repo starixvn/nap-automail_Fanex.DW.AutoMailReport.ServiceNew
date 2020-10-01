@@ -4,6 +4,8 @@
     {
         public string AgentName { get; set; }
 
+        public string Currency { get; set; }
+
         public string Data { get; set; }
 
         public decimal Benchmark { get; set; }

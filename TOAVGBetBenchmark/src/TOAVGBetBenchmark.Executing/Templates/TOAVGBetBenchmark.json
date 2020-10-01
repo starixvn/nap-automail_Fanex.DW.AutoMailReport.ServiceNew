@@ -6,7 +6,7 @@
   "RptDate": "2020-09-02",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\TOAVGBetBenchmark",
   "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\TOAVGBetBenchmark_Internal",
-  "IsSentDirectly": false,
+  "IsSentDirectly": true,
   "OneTimePath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\20-TOAVGBetBenchmark",
   "Password": "",
   "FunctionIdNodata": 90,

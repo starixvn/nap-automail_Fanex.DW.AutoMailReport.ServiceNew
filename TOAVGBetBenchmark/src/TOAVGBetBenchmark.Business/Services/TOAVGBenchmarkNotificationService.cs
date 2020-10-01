@@ -108,32 +108,9 @@ namespace Fanex.TOAVGBetBenchmark.Business.Services
 
         private List<string> SendLetstalkImageData(List<BenchmarkModel> data)
         {
-            var rowPerBatch = 50;
-            var totalBatch = data.Count / rowPerBatch + ((data.Count % rowPerBatch) > 0 ? 1 : 0);
             var imageSentFail = new List<string>();
-            var countRetry = 0;
             var letstalkFails = new List<string>();
             var setting = AppConfigService.Config.TOAVGBetBenchmarkettings;
-
-            for (var batchIndex = 0; batchIndex < totalBatch; batchIndex++)
-            {
-                var rowsOfBatch = data.Skip(batchIndex * rowPerBatch).Take(rowPerBatch).ToList();
-                var excelPath = excelService.ExportExcel(rowsOfBatch, batchIndex, totalBatch, false, setting);
-                var rowCount = rowsOfBatch.Count;
-                var imagePath = ExportImage(setting, excelPath, batchIndex, rowCount);
-                var status = SendImage(imagePath, setting.LetstalkGroup);
-                countRetry = 0;
-                while (!status && countRetry < 10)
-                {
-                    status = SendImage(imagePath, setting.LetstalkGroup);
-                    countRetry++;
-                }
-
-                if (!status)
-                {
-                    imageSentFail.Add(imagePath);
-                }
-            }
 
             var excelAllPath = excelService.ExportExcel(data, 0, 0, true, setting);
             SendImage(excelAllPath, setting.LetstalkGroup);

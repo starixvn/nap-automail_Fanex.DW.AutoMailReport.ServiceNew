@@ -8,7 +8,7 @@
     "LetstalkOneTime": {
       "MailId": 358,
       "MailName": "Letstalk - OneTime",
-      "IsAllowResend": false
+      "IsAllowResend": true
     },
     "CheckData": {
       "MailId": 359,
@@ -25,7 +25,13 @@
     },
     {
       "FolderName": "2-DHWL-Daily",
-      "IsActive": false,
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - House Net Income Daily Report"
+    },
+    {
+      "FolderName": "2-DHWL-Excel-Daily",
+      "IsActive": true,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - House Net Income Daily Report"
     },
@@ -43,13 +49,13 @@
     },
     {
       "FolderName": "13-N88-DailyWL-Test",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - N88 Daily Win Loss"
     },
     {
       "FolderName": "13-N88-DailyWL-Internal-Test",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - N88 Daily Win Loss"
     },

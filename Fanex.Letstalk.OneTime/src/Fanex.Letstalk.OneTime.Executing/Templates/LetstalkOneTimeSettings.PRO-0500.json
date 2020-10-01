@@ -24,6 +24,12 @@
       "ReportName": "Letstalk - Top Licensees by TO"
     },
     {
+      "FolderName": "14-TopLicenseePerformance",
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Top Licensee Performance"
+    },
+    {
       "FolderName": "18-TopNonSportPunters",
       "IsActive": true,
       "FolderMode": "Daily",

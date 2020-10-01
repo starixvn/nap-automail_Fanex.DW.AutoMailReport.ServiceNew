@@ -30,44 +30,50 @@
       "ReportName": "Letstalk - House Net Income Daily Report"
     },
     {
-      "FolderName": "3-DCWL",
+      "FolderName": "2-DHWL-Excel-Daily",
       "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - House Net Income Daily Report"
+    },
+    {
+      "FolderName": "3-DCWL",
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Daily Casino WinLoss - DCWL"
     },
     {
       "FolderName": "12-TopLicenseeByTO",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Top Licensees by TO"
     },
     {
       "FolderName": "13-N88-DailyWL-Test",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - N88 Daily Win Loss"
     },
     {
       "FolderName": "13-N88-DailyWL-Internal-Test",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - N88 Daily Win Loss"
     },
     {
       "FolderName": "18-TopNonSportPunters",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Top Non-Sports Punters"
     },
     {
       "FolderName": "19-TopSportbookAgents",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Top Sportbook Agents"
     },
     {
       "FolderName": "20-TOAVGBetBenchmark",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Turnover/AVG Bet Benchmark"
     }
