@@ -91,12 +91,13 @@ namespace Fanex.N88DailyWL.Business.Services
 
             foreach (var group in groups)
             {
-                if (!group.LicenseeName.Equals("All"))
+                if (group.LicenseeName.Equals("All"))
                 {
-                    SendDataByLicensee(result, allImages, currencyYesterday, currencyMTD, productYesterday, productMTD, group);
+                    Send(result, group, allImages);
                 }
                 else
                 {
+                    SendDataByLicensee(result, allImages, currencyYesterday, currencyMTD, productYesterday, productMTD, group);
                 }
             }
 
@@ -124,16 +125,21 @@ namespace Fanex.N88DailyWL.Business.Services
             var excelProductYesterday = excelService.ExportProduct(group.LicenseeName, productYesterdayByLicensee, true);
             var excelProductMTD = excelService.ExportProduct(group.LicenseeName, productMTDByLicensee, false);
 
-            var imgCurrency = ExportImageCurrency(currencyYesterdayByLicensee, excelCurrencyYesterday, true);
-            var imgCurrencyMTD = ExportImageCurrency(currencyMTDByLicensee, excelCurrencyMTD, false);
-            var imgProduct = ExportImageProduct(productYesterdayByLicensee, excelProductYesterday, true);
-            var imgProductMTD = ExportImageProduct(productMTDByLicensee, excelProductMTD, false);
+            var imgCurrency = ExportImageCurrency(group.LicenseeName, currencyYesterdayByLicensee, excelCurrencyYesterday, true);
+            var imgCurrencyMTD = ExportImageCurrency(group.LicenseeName, currencyMTDByLicensee, excelCurrencyMTD, false);
+            var imgProduct = ExportImageProduct(group.LicenseeName, productYesterdayByLicensee, excelProductYesterday, true);
+            var imgProductMTD = ExportImageProduct(group.LicenseeName, productMTDByLicensee, excelProductMTD, false);
             var imgs = new List<string> { imgCurrency, imgCurrencyMTD, imgProduct, imgProductMTD };
+            allImages.AddRange(imgs);
+            Send(result, group, imgs);
+        }
 
+        private void Send(List<bool> result, LicenseeNameGroup group, List<string> imgs)
+        {
             if (AppConfigService.AppConfig.IsSentDirectly)
             {
-                result = SendImage(imgs, group.Group);
-                allImages.AddRange(imgs);
+                var f = SendImage(imgs, group.Group);
+                result.AddRange(f);
             }
             else
             {
@@ -143,35 +149,36 @@ namespace Fanex.N88DailyWL.Business.Services
 
         private List<bool> SendImage(List<string> imgs, string group)
         {
-            var letstalkModel = messageService.CreateLetstalkModel(imgs, group);
             var result = new List<bool>();
-            letstalkModel.ForEach(model =>
+            imgs.ForEach(img =>
             {
-                var status = letstalkService.SendMessage(model);
+                var letstalkModel = messageService.CreateLetstalkModel(img, group);
+                var status = letstalkService.SendMessage(letstalkModel);
                 result.Add(status);
             });
+
             return result;
         }
 
-        private string ExportImageCurrency(List<N88CurrencyModel> data, string excelCurrencyPath, bool isYesterday)
+        private string ExportImageCurrency(string licenseeName, List<N88CurrencyModel> data, string excelCurrencyPath, bool isYesterday)
         {
             var imageProperty = AppConfigService.AppConfig.Currency;
             var lastRow = imageProperty.FirstRow + data.Count + (data.Count > 0 ? 1 : 2);
             var height = lastRow * imageProperty.HeightPerRow;
             imageProperty.CropHeight = height;
             imageProperty.LastRow = lastRow;
-            imageProperty.ImageName = isYesterday ? "N88-Currency" : "N88-Currency-MTD";
+            imageProperty.ImageName = isYesterday ? $"{licenseeName}-Currency" : $"{licenseeName}-Currency-MTD";
             return imageService.ExportImage(excelCurrencyPath, "Currency", imageProperty);
         }
 
-        private string ExportImageProduct(List<N88ProductModel> data, string excelProductPath, bool isYesterday)
+        private string ExportImageProduct(string licenseeName, List<N88ProductModel> data, string excelProductPath, bool isYesterday)
         {
             var imageProperty = AppConfigService.AppConfig.Product;
             var lastRow = imageProperty.FirstRow + 1 + data.Count;
             var height = lastRow * imageProperty.HeightPerRow;
             imageProperty.CropHeight = height;
             imageProperty.LastRow = lastRow;
-            imageProperty.ImageName = isYesterday ? "N88-Product" : "N88-Product-MTD";
+            imageProperty.ImageName = isYesterday ? $"{licenseeName}-Product" : $"{licenseeName}-Product-MTD";
             return imageService.ExportImage(excelProductPath, "Product", imageProperty);
         }
     }

@@ -42,6 +42,24 @@
       "ReportName": "Letstalk - Daily Casino WinLoss - DCWL"
     },
     {
+      "FolderName": "5-DHWL-Soccer-Margin-Test",
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Daily Margin Chart - Soccer"
+    },
+    {
+      "FolderName": "5-DHWL-OS-Margin-Test",
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Daily Margin Chart - OS"
+    },
+    {
+      "FolderName": "5-DHWL-Non-Sport-Margin-Test",
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Daily Margin Chart - Non-Sport"
+    },
+    {
       "FolderName": "12-TopLicenseeByTO",
       "IsActive": false,
       "FolderMode": "Daily",

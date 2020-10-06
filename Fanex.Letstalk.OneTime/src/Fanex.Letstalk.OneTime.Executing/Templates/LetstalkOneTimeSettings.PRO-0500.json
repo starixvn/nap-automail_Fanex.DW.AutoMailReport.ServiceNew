@@ -8,7 +8,7 @@
     "LetstalkOneTime": {
       "MailId": 376,
       "MailName": "Letstalk - OneTime - 0500",
-      "IsAllowResend": false
+      "IsAllowResend": true
     },
     "CheckData": {
       "MailId": 382,
@@ -17,6 +17,24 @@
     }
   },
   "Folders": [
+    {
+      "FolderName": "5-DHWL-Soccer-Margin",
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Daily Margin Chart - Soccer"
+    },
+    {
+      "FolderName": "5-DHWL-OS-Margin",
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Daily Margin Chart - OS"
+    },
+    {
+      "FolderName": "5-DHWL-Non-Sport-Margin",
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Daily Margin Chart - Non-Sport"
+    },
     {
       "FolderName": "12-TopLicenseeByTO",
       "IsActive": true,

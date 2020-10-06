@@ -25,7 +25,7 @@
       "Group": "N88-DailyWL-Internal-Test"
     }
   ],
-  "IsSentDirectly": true,
+  "IsSentDirectly": false,
   "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\13",
   "Password": "",
   "FunctionIdNodata": 90,

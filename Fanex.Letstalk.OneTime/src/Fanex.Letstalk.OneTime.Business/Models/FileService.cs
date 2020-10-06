@@ -1,4 +1,6 @@
-﻿using RazorEngine;
+﻿using Fanex.Letstalk.OneTime.Business.Services;
+using Newtonsoft.Json;
+using RazorEngine;
 using RazorEngine.Templating;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,10 @@ namespace Fanex.Letstalk.OneTime.Business.Models
         string LoadMessage(bool isMail);
 
         string LoadMailTemplate(List<string> fileNames);
+
+        void WriteFolderSent(List<string> folders);
+
+        List<string> ReadFolderSent();
     }
 
     public class FileServiceImp : FileService
@@ -33,6 +39,31 @@ namespace Fanex.Letstalk.OneTime.Business.Models
             {
                 return File.ReadAllText("Templates/Message.txt");
             }
+        }
+
+        public List<string> ReadFolderSent()
+        {
+            var folders = new List<string>();
+            var fileName = "FolderReadySent.json";
+            var path = $@"{AppConfigService.AppConfig.Path}/{fileName}";
+            if (File.Exists(path))
+            {
+                var text = File.ReadAllText(path);
+                var oldFolders = JsonConvert.DeserializeObject<List<string>>(text);
+                folders.AddRange(oldFolders);
+            }
+
+            return folders;
+        }
+
+        public void WriteFolderSent(List<string> folders)
+        {
+            var fileName = "FolderReadySent.json";
+            var path = $@"{AppConfigService.AppConfig.Path}/{fileName}";
+            var oldFolders = ReadFolderSent();
+            folders.AddRange(oldFolders);
+            var json = JsonConvert.SerializeObject(folders, Formatting.Indented);
+            File.WriteAllText(path, json);
         }
     }
 }

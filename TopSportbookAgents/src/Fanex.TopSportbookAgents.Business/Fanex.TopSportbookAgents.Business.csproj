@@ -162,11 +162,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Criterias\Criteria.cs" />
-    <Compile Include="Criterias\GetDWStatusByCubeCriteria.cs" />
+    <Compile Include="Criterias\GetDWStatusCriteria.cs" />
     <Compile Include="Models\ConfigSettingModel.cs" />
     <Compile Include="Models\ExecuteResultModel.cs" />
     <Compile Include="Models\ImageProperty.cs" />
     <Compile Include="Models\LogInternalOneTimeModel.cs" />
+    <Compile Include="Models\TaskstatusModel.cs" />
     <Compile Include="Models\TopSportbookAgentSettings.cs" />
     <Compile Include="Models\PunterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

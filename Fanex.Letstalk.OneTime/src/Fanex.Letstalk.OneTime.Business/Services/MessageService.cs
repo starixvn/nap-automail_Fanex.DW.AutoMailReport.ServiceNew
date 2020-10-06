@@ -102,16 +102,24 @@ namespace Fanex.Letstalk.OneTime.Business.Services
 
         public List<string> SendMessage()
         {
-            var countRetry = 0;
             RefineData();
+
+            var countRetry = 0;
+            var foldersSentBefore = fileService.ReadFolderSent();
+            var foldersHaveSent = new List<string>();
+
             if (foldersNotReady.Count > 0)
             {
                 foldersNotReady.Insert(0, "Folders below are not ready to send to users. Please have a check!!!");
-                return foldersNotReady;
             }
 
             foreach (var f in foldersReadyToSend)
             {
+                if (foldersSentBefore.Contains(f.Value.FolderName))
+                {
+                    continue;
+                }
+
                 var fileNames = Directory.GetFiles(f.Key).ToList();
                 foreach (var filename in fileNames)
                 {
@@ -125,6 +133,10 @@ namespace Fanex.Letstalk.OneTime.Business.Services
                     if (f.Value.MailId > 0)
                     {
                         SendMail(f.Value, filename);
+                        if (!foldersHaveSent.Contains(f.Value.FolderName))
+                        {
+                            foldersHaveSent.Add(f.Value.FolderName);
+                        }
                     }
 
                     if (string.IsNullOrEmpty(f.Value.Group))
@@ -134,6 +146,11 @@ namespace Fanex.Letstalk.OneTime.Business.Services
 
                     var letstalkModel = CreateLetstalkModel(new List<string> { filename }, f.Value.TargetName, f.Value.Group);
                     var status = letstalkService.SendMessage(letstalkModel);
+                    if (status && !foldersHaveSent.Contains(f.Value.FolderName))
+                    {
+                        foldersHaveSent.Add(f.Value.FolderName);
+                    }
+
                     countRetry = 0;
                     while (!status && countRetry < 10)
                     {
@@ -148,6 +165,8 @@ namespace Fanex.Letstalk.OneTime.Business.Services
                     }
                 }
             }
+
+            fileService.WriteFolderSent(foldersHaveSent);
 
             return foldersNotReady;
         }
