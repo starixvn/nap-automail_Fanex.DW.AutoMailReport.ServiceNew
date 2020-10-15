@@ -1,5 +1,6 @@
 ﻿using Fanex.MailDelivery.Core.Models;
 using Fanex.TopLicensee.Service.Models;
+using Fanex.TopLicenseePerformance.Business.Services;
 using System;
 using System.Collections.Generic;
 
@@ -21,6 +22,7 @@ namespace Fanex.TopLicensee.Service.Services
         private readonly ImageService imageService;
         private readonly MessageService messageService;
         private readonly MailService mailService;
+        private readonly FileService fileService;
 
         public TopLicenseeNotificationServiceImp(
             Log log,
@@ -31,7 +33,8 @@ namespace Fanex.TopLicensee.Service.Services
             ExportVirtualSoccerLicensee exportVirtualSoccerLicensee,
             MailService mailService,
             ImageService imageService,
-            MessageService messageService)
+            MessageService messageService,
+            FileService fileService)
         {
             this.log = log;
             this.dataService = dataService;
@@ -42,6 +45,7 @@ namespace Fanex.TopLicensee.Service.Services
             this.mailService = mailService;
             this.imageService = imageService;
             this.messageService = messageService;
+            this.fileService = fileService;
         }
 
         public JobMessage Execute()
@@ -103,15 +107,31 @@ namespace Fanex.TopLicensee.Service.Services
             ExportImageTop50(imageBatches);
             ExportImageTopLicenseeMargin(imageBatches);
 
-            imageBatches.ForEach(files =>
+            if (AppConfigService.AppConfig.IsSentDirectly)
             {
-                var result = messageService.SendToLicenseeVirtualGroup(files);
-                if (!result)
+                imageBatches.ForEach(files =>
                 {
-                    success = result;
-                    imageSentFail.AddRange(files);
-                }
-            });
+                    var result = messageService.SendToLicenseeVirtualGroup(files);
+                    if (!result)
+                    {
+                        success = result;
+                        imageSentFail.AddRange(files);
+                    }
+                });
+            }
+            else
+            {
+                var images = new List<string>();
+                imageBatches.ForEach(files =>
+                {
+                    files.ForEach(file =>
+                    {
+                        images.Add(file);
+                    });
+                });
+
+                fileService.CopyFiles(images);
+            }
 
             return success;
         }

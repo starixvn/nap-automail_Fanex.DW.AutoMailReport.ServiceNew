@@ -160,6 +160,9 @@
     <Compile Include="RegisterService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Templates\Message.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="App.config" />
     <Content Include="App_Data\DBMMS.bodb_MMS.bodbAdminNet.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -200,6 +203,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\Fanex.Letstalk.OneTime.Executing.PRO-0500.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\EmailTemplate.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\ContentWithAttachment.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

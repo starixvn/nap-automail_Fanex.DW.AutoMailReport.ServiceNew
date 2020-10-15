@@ -19,5 +19,13 @@
         public int X { get; set; }
 
         public int Y { get; set; }
+
+        public bool IsResize { get; set; }
+
+        public int ResizeNewWidth { get; set; }
+
+        public int ImageQuality { get; set; } = 100;
+
+        public int HeightPerRow { get; set; }
     }
 }

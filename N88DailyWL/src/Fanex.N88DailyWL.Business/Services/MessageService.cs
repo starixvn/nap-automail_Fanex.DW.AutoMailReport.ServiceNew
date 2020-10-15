@@ -6,40 +6,29 @@ namespace Fanex.N88DailyWL.Business.Services
 {
     public interface MessageService
     {
-        List<LetstalkModel> CreateLetstalkModel(List<string> filenames);
+        LetstalkModel CreateLetstalkModel(string filename, string group);
     }
 
     public class MessageServiceImp : MessageService
     {
-        public List<LetstalkModel> CreateLetstalkModel(List<string> filenames)
+        public LetstalkModel CreateLetstalkModel(string filename, string group)
         {
-            var letstalkAttachments = new List<LetstalkAttachment>();
-            var models = new List<LetstalkModel>();
-            foreach (var filename in filenames)
+            var letstalkAttachment = new LetstalkAttachment
             {
-                letstalkAttachments.Add(new LetstalkAttachment
-                {
-                    FileName = filename,
-                    Bytes = FileBinaryService.ConvertFileToBinary(filename)
-                });
-            }
+                FileName = filename,
+                Bytes = FileBinaryService.ConvertFileToBinary(filename)
+            };
 
-            AppConfigService
-                .AppConfig
-                .Group
-                .ForEach(group =>
-                {
-                    models.Add(new LetstalkModel
-                    {
-                        TargetName = AppConfigService.AppConfig.TargetName,
-                        Group = group,
-                        LetstalkAttachments = letstalkAttachments,
-                        Subject = string.Empty,
-                        Content = string.Empty
-                    });
-                });
+            var model = new LetstalkModel
+            {
+                TargetName = AppConfigService.AppConfig.TargetName,
+                Group = group,
+                LetstalkAttachments = new List<LetstalkAttachment> { letstalkAttachment },
+                Subject = string.Empty,
+                Content = string.Empty
+            };
 
-            return models;
+            return model;
         }
     }
 }

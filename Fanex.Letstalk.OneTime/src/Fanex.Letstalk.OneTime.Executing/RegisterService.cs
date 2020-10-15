@@ -40,6 +40,8 @@ namespace Fanex.Letstalk.OneTime.Executing
             container.Register<MessageService, MessageServiceImp>();
             container.Register<DataService, DataServiceImp>();
             container.Register<IDynamicRepository, DynamicRepository>();
+            container.Register<MailService, MailServiceImp>();
+            container.Register<FileService, FileServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
             container.Register<ApplicationSettingService, ApplicationSettingServiceImp>();

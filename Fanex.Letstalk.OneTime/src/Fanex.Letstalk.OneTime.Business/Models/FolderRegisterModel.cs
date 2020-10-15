@@ -7,5 +7,7 @@
         public bool IsActive { get; set; }
 
         public FolderMode FolderMode { get; set; }
+
+        public string ReportName { get; set; }
     }
 }

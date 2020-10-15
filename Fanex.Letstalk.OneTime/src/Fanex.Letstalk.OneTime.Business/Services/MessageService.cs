@@ -2,6 +2,7 @@
 using Fanex.LetstalkService.Client;
 using Fanex.LetstalkService.Core.Models;
 using Fanex.LetstalkService.Core.Services;
+using Fanex.MailDelivery.Core.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace Fanex.Letstalk.OneTime.Business.Services
     public interface MessageService
     {
         List<string> SendMessage();
+
+        List<string> GetReportNameNotReady();
     }
 
     public class MessageServiceImp : MessageService
@@ -20,23 +23,39 @@ namespace Fanex.Letstalk.OneTime.Business.Services
         private readonly LetstalkClientService letstalkService;
         private List<string> foldersNotReady = new List<string>();
         private Dictionary<string, OneTimeModel> foldersReadyToSend = new Dictionary<string, OneTimeModel>();
+        private List<string> reportNameNotReady = new List<string>();
+        private readonly FileService fileService;
+        private readonly MailService mailService;
 
-        public MessageServiceImp(LetstalkClientService letstalkService)
+        public MessageServiceImp(
+            LetstalkClientService letstalkService,
+            FileService fileService,
+            MailService mailService)
         {
             this.letstalkService = letstalkService;
+            this.fileService = fileService;
+            this.mailService = mailService;
         }
 
         private void RefineData()
         {
             var oneTimeLog = $@"{AppConfigService.AppConfig.Path}\OneTimeLog.json";
+            var subFolders = AppConfigService.AppConfig.Folders.Where(s => s.IsActive).ToList();
+
             if (!File.Exists(oneTimeLog))
             {
+                foldersNotReady.Add($"The file {oneTimeLog} can't be found.");
+                foreach (var f in subFolders)
+                {
+                    reportNameNotReady.Add(f.ReportName);
+                }
+
                 return;
             }
+
             var text = File.ReadAllText(oneTimeLog);
             var logs = JsonConvert.DeserializeObject<List<OneTimeModel>>(text);
 
-            var subFolders = AppConfigService.AppConfig.Folders.Where(s => s.IsActive).ToList();
             foreach (var f in subFolders)
             {
                 var logFolder = logs.LastOrDefault(s => s.FolderName == f.FolderName);
@@ -45,6 +64,7 @@ namespace Fanex.Letstalk.OneTime.Business.Services
                     if (f.FolderMode == FolderMode.Daily)
                     {
                         foldersNotReady.Add(f.FolderName);
+                        reportNameNotReady.Add(f.ReportName);
                     }
 
                     continue;
@@ -55,6 +75,7 @@ namespace Fanex.Letstalk.OneTime.Business.Services
                 if (subFiles.Count() == 0)
                 {
                     foldersNotReady.Add(f.FolderName);
+                    reportNameNotReady.Add(f.ReportName);
                     continue;
                 }
 
@@ -66,6 +87,11 @@ namespace Fanex.Letstalk.OneTime.Business.Services
                     if (diff > 10800)
                     {
                         foldersNotReady.Add($"{file} is invalid file. Be careful !!!, You maybe send the old file to users. Please have a check.");
+                        if (!reportNameNotReady.Contains(f.ReportName))
+                        {
+                            reportNameNotReady.Add(f.ReportName);
+                        }
+
                         continue;
                     }
                 }
@@ -76,16 +102,24 @@ namespace Fanex.Letstalk.OneTime.Business.Services
 
         public List<string> SendMessage()
         {
-            var countRetry = 0;
             RefineData();
+
+            var countRetry = 0;
+            var foldersSentBefore = fileService.ReadFolderSent();
+            var foldersHaveSent = new List<string>();
+
             if (foldersNotReady.Count > 0)
             {
                 foldersNotReady.Insert(0, "Folders below are not ready to send to users. Please have a check!!!");
-                return foldersNotReady;
             }
 
             foreach (var f in foldersReadyToSend)
             {
+                if (foldersSentBefore.Contains(f.Value.FolderName))
+                {
+                    continue;
+                }
+
                 var fileNames = Directory.GetFiles(f.Key).ToList();
                 foreach (var filename in fileNames)
                 {
@@ -96,8 +130,27 @@ namespace Fanex.Letstalk.OneTime.Business.Services
                         continue;
                     }
 
+                    if (f.Value.MailId > 0)
+                    {
+                        SendMail(f.Value, filename);
+                        if (!foldersHaveSent.Contains(f.Value.FolderName))
+                        {
+                            foldersHaveSent.Add(f.Value.FolderName);
+                        }
+                    }
+
+                    if (string.IsNullOrEmpty(f.Value.Group))
+                    {
+                        continue;
+                    }
+
                     var letstalkModel = CreateLetstalkModel(new List<string> { filename }, f.Value.TargetName, f.Value.Group);
                     var status = letstalkService.SendMessage(letstalkModel);
+                    if (status && !foldersHaveSent.Contains(f.Value.FolderName))
+                    {
+                        foldersHaveSent.Add(f.Value.FolderName);
+                    }
+
                     countRetry = 0;
                     while (!status && countRetry < 10)
                     {
@@ -113,7 +166,27 @@ namespace Fanex.Letstalk.OneTime.Business.Services
                 }
             }
 
+            fileService.WriteFolderSent(foldersHaveSent);
+
             return foldersNotReady;
+        }
+
+        private void SendMail(OneTimeModel model, string filename)
+        {
+            var attachments = new List<MailAttachment>
+            {
+                new MailAttachment(filename, FileExtension.MS_EXCEL)
+            };
+
+            var mail = new Mail
+            {
+                Subject = model.Subject,
+                Body = fileService.LoadMailTemplate(new List<string> { new FileInfo(filename).Name }),
+                Attachments = attachments,
+                MailingListId = model.MailId,
+            };
+
+            mailService.SendMail(mail);
         }
 
         private LetstalkModel CreateLetstalkModel(List<string> fileNames, string targetName, string letstalkGroup)
@@ -136,6 +209,11 @@ namespace Fanex.Letstalk.OneTime.Business.Services
                 Subject = string.Empty,
                 Content = string.Empty
             };
+        }
+
+        public List<string> GetReportNameNotReady()
+        {
+            return reportNameNotReady;
         }
     }
 }

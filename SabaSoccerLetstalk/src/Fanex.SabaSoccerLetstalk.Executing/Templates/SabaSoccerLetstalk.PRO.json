@@ -5,7 +5,7 @@
   "IsManual": false,
   "RptDate": "2020-04-22",
   "Path": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\SabaSoccerLetstalk",
-  "InternalPath": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\SabaSoccerLetstalk_InternalPath",
+  "InternalPath": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel.Internal\\SabaSoccerLetstalk_InternalPath",
   "Password": "Star168",
   "FunctionIdNodata": 90,
   "TargetName": "daily-monitoring",

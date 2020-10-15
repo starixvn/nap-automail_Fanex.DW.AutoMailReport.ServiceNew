@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Functions>
+  <Function SiteId="25" SiteName="Auto Mail">
+    <Setting Key="Acc_Rpt_Letstalk_Benchmark" SpName="Acc_Rpt_Letstalk_Benchmark_xtest" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+  </Function>
+</Functions>

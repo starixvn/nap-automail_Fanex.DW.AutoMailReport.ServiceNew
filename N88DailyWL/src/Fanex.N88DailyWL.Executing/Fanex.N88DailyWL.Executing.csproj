@@ -149,6 +149,10 @@
     <Compile Include="RegisterService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\DBN88.bodb_N88.bodbAdminNet.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Templates\template-mail.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

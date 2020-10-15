@@ -1,6 +1,5 @@
 ﻿using Fanex.Data;
 using Fanex.Data.Repository;
-using Fanex.Service.Core;
 using Fanex.TopLicensee.Service.Criterias;
 using Fanex.TopLicensee.Service.Models;
 using System;
@@ -14,7 +13,7 @@ namespace Fanex.TopLicensee.Service.Services
     {
         bool IsDataAvailable();
 
-        LastDateModel QueryLastDate();
+        TaskstatusModel QueryDWStatus();
 
         List<LicenseeTOModel> QueryTopLicensee(int sportType);
 
@@ -41,12 +40,12 @@ namespace Fanex.TopLicensee.Service.Services
                 return true;
             }
 
-            return QueryLastDate().LastDate >= Convert.ToDateTime(SystemTime.Now.AddDays(-1).ToShortDateString());
+            return QueryDWStatus().DataIsReady;
         }
 
-        public LastDateModel QueryLastDate()
+        public TaskstatusModel QueryDWStatus()
         {
-            return repository.Get<LastDateModel>(new GetDWStatusByCubeCriteria());
+            return repository.Get<TaskstatusModel>(new GetDWStatusCriteria());
         }
 
         public List<LicenseeTOModel> QueryTopLicensee(int sportType)
@@ -103,7 +102,7 @@ namespace Fanex.TopLicensee.Service.Services
                     SportType.Soccer, new Dictionary<LeagueGroup, string>
                     {
                         { LeagueGroup.Esoccer, "41" },
-                        { LeagueGroup.VL, "42,74" },
+                        { LeagueGroup.VL, "42,74,108" },
                     }
                 },
                 {

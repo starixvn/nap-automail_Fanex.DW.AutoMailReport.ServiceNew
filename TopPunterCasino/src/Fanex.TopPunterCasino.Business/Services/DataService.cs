@@ -1,8 +1,6 @@
 ﻿using Fanex.Data.Repository;
-using Fanex.Service.Core;
 using Fanex.TopPunterCasino.Business.Criterias;
 using Fanex.TopPunterCasino.Business.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -55,8 +53,8 @@ namespace Fanex.TopPunterCasino.Business.Services
                 return true;
             }
 
-            var lastDate = repository.Get<LastDateModel>(new GetDWStatusByCubeCriteria());
-            result = lastDate.LastDate >= Convert.ToDateTime(SystemTime.Now.AddDays(-1).ToShortDateString());
+            var lastDate = repository.Get<TaskstatusModel>(new GetDWStatusCriteria());
+            result = lastDate.DataIsReady;
 
             return result;
         }

@@ -45,8 +45,8 @@ namespace Fanex.TopSportbookAgents.Business.Services
                 return true;
             }
 
-            var lastDate = repository.Get<LastDateModel>(new GetDWStatusByCubeCriteria());
-            result = lastDate.LastDate >= Convert.ToDateTime(SystemTime.Now.AddDays(-1).ToShortDateString());
+            var status = repository.Get<TaskstatusModel>(new GetDWStatusCriteria());
+            result = status.DataIsReady;
 
             return result;
         }

@@ -29,7 +29,7 @@ namespace Fanex.TopLicensee.Service.Services
                 var mail = new Mail
                 {
                     Title = "Auto Generated Report Administrator",
-                    Subject = $"[WARNING] - DATA IS NOT READY - Automail Report - Daily IBO Customer Statistics Report - {SystemTime.Now.AddDays(-1):yyyy/MM/dd}",
+                    Subject = $"[WARNING] - DATA IS NOT READY - Letstalk - Top Licensee Performance - {SystemTime.Now.AddDays(-1):yyyy/MM/dd}",
                     Body = LoadBodyMailNoData(),
                     MailingListId = AppConfigService.AppConfig.FunctionIdNodata
                 };
@@ -42,7 +42,7 @@ namespace Fanex.TopLicensee.Service.Services
 
         private string LoadBodyMailNoData()
         {
-            var tuple = new Tuple<DateTime>(dataService.QueryLastDate().LastDate);
+            var tuple = new Tuple<bool>(dataService.QueryLastDate().DataIsReady);
             var template = File.ReadAllText("Templates/ContentWhenDataIsNotReady.cshtml");
             return Engine.Razor.RunCompile(template, $"template{DateTime.Now.Ticks}", model: tuple);
         }

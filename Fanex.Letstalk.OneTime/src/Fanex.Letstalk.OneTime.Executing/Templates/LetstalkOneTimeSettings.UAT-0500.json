@@ -2,24 +2,62 @@
   "SentryClientKey": "http://612764957dbb46ffa359103d8ffa08c6@10.99.99.51:801/59",
   "CategorySentryLog": "NAP-Report-Service-UAT",
   "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0500",
-  "MailId": 374,
-  "MailName": "Letstalk - OneTime - 0500 - UAT",
-  "IsAllowResend": false,
+  "TargetName": "daily-house-wl",
+  "Group": "DWHL-UAT",
+  "MailSettings": {
+    "LetstalkOneTime": {
+      "MailId": 374,
+      "MailName": "Letstalk - OneTime - 0500 - UAT",
+      "IsAllowResend": true
+    },
+    "CheckData": {
+      "MailId": 380,
+      "MailName": "Letstalk - OneTime - 0500 - CheckData - UAT",
+      "IsAllowResend": false
+    }
+  },
   "Folders": [
+    {
+      "FolderName": "5-DHWL-Soccer-Margin-Test",
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Daily Margin Chart - Soccer"
+    },
+    {
+      "FolderName": "5-DHWL-OS-Margin-Test",
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Daily Margin Chart - OS"
+    },
+    {
+      "FolderName": "5-DHWL-Non-Sport-Margin-Test",
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Daily Margin Chart - Non-Sport"
+    },
     {
       "FolderName": "12-TopLicenseeByTO",
       "IsActive": true,
-      "FolderMode": "Daily"
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Top Licensees by TO"
     },
     {
       "FolderName": "18-TopNonSportPunters",
       "IsActive": true,
-      "FolderMode": "Daily"
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Top Non-Sports Punters"
     },
     {
       "FolderName": "19-TopSportbookAgents",
       "IsActive": true,
-      "FolderMode": "Daily"
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Top Sportbook Agents"
+    },
+    {
+      "FolderName": "20-TOAVGBetBenchmark",
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Turnover/AVG Bet Benchmark"
     }
   ]
 }

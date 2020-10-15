@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Fanex.ServiceMonitoring.Models;
+﻿using Fanex.ServiceMonitoring.Models;
 using Quartz;
 using Quartz.Spi;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Fanex.ServiceMonitoring.Services
 {
@@ -68,8 +68,14 @@ namespace Fanex.ServiceMonitoring.Services
                     var schedule = schedules.FirstOrDefault(m => m.MailId == missingMailId);
                     if (schedule != null)
                     {
+                        if (missingMailId == 246)
+                        {
+                            var s = 1;
+                        }
+
                         ITrigger trigger = TriggerBuilder.Create().WithCronSchedule(schedule.CronExpression).Build();
                         var listtriggerdate = TriggerUtils.ComputeFireTimesBetween((IOperableTrigger)trigger, null, new DateTimeOffset(fromDate), new DateTimeOffset(toDate));
+
                         foreach (var triggertime in listtriggerdate)
                         {
                             var status = triggertime.LocalDateTime.AddSeconds(5) > DateTime.Now ? (int)JobStatus.Waiting : (int)JobStatus.Missing;

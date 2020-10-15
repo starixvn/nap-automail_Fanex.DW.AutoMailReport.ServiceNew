@@ -82,7 +82,7 @@ namespace BetradarVirtualSportsDaily.UnitTests.Service
 
             // Act
             var service = new RepositoryServiceImp(dynamicRepository, appConfigService);
-            service.QueryLastDate();
+            service.QueryStatus();
 
             // Assert
             dynamicRepository.Received().Get<LastDateModel>(Arg.Any<DWStatusByCubeCriteria>());

@@ -1,4 +1,6 @@
 ﻿using Fanex.Letstalk.OneTime.Business.Models;
+using Fanex.LetstalkService.Client;
+using Fanex.LetstalkService.Core.Models;
 using Fanex.MailDelivery.Core.Models;
 using System;
 using System.Collections.Generic;
@@ -16,12 +18,24 @@ namespace Fanex.Letstalk.OneTime.Business.Services
         private readonly Log log;
         private readonly MessageService messageService;
         private readonly DataService dataService;
+        private readonly LetstalkClientService letstalkService;
+        private readonly MailService mailService;
+        private readonly FileService fileService;
 
-        public OneTimeNotificationServiceImp(Log log, MessageService messageService, DataService dataService)
+        public OneTimeNotificationServiceImp(
+            Log log,
+            MessageService messageService,
+            DataService dataService,
+            LetstalkClientService letstalkService,
+            MailService mailService,
+            FileService fileService)
         {
             this.log = log;
             this.messageService = messageService;
             this.dataService = dataService;
+            this.letstalkService = letstalkService;
+            this.mailService = mailService;
+            this.fileService = fileService;
         }
 
         public JobMessage Execute()
@@ -55,18 +69,23 @@ namespace Fanex.Letstalk.OneTime.Business.Services
         private ExecuteResultModel SendNotification()
         {
             var message = new List<string>();
-            var mails = dataService.QueryMail(DateTime.Today);
-            var isMailSent = mails.FirstOrDefault(s => s.MailId == AppConfigService.AppConfig.MailId) != null;
+            var mails = dataService.QueryMail(DateTime.Today, JobStatus.SuccessWithoutSendmail);
+            var mailSettings = AppConfigService.AppConfig.MailSettings["LetstalkOneTime"];
+            var isMailSent = mails.FirstOrDefault(s => s.MailId == mailSettings.MailId) != null;
             bool sussess = false;
-            if (isMailSent && !AppConfigService.AppConfig.IsAllowResend)
+            if (isMailSent && !mailSettings.IsAllowResend)
             {
-                message.Add($"{AppConfigService.AppConfig.MailName} has been sent. Please be careful !!!");
+                message.Add($"{mailSettings.MailName} has been sent. Please be careful !!!");
                 sussess = false;
             }
             else
             {
                 message = messageService.SendMessage();
                 sussess = message.Count == 0;
+                if (!sussess)
+                {
+                    SendLetstalkNoData();
+                }
             }
 
             return new ExecuteResultModel
@@ -75,6 +94,48 @@ namespace Fanex.Letstalk.OneTime.Business.Services
                 Mail = new Mail(),
                 Message = string.Join(Environment.NewLine, message)
             };
+        }
+
+        private void SendLetstalkNoData()
+        {
+            var mailSetting = AppConfigService.AppConfig.MailSettings["CheckData"];
+            var mails = dataService.QueryMail(DateTime.Today, JobStatus.Success);
+            var isMailSent = mails.FirstOrDefault(s => s.MailId == mailSetting.MailId) != null;
+            if (!isMailSent || mailSetting.IsAllowResend)
+            {
+                var content = LoadReportNameNotReady(false);
+                var letstalkModel = new LetstalkModel
+                {
+                    TargetName = AppConfigService.AppConfig.TargetName,
+                    Group = AppConfigService.AppConfig.Group,
+                    Subject = "Data Is Not Ready",
+                    Content = content,
+                };
+
+                letstalkService.SendMessage(letstalkModel);
+
+                content = LoadReportNameNotReady(true);
+                var mailModel = new Mail
+                {
+                    Title = "Auto Generated Report Administrator",
+                    Subject = "Automail Report - Data Is Not Ready",
+                    Body = content,
+                    MailingListId = mailSetting.MailId
+                };
+                mailService.SendMail(mailModel);
+            }
+        }
+
+        private string LoadReportNameNotReady(bool isMail)
+        {
+            var result = new List<string>();
+            var content = fileService.LoadMessage(isMail);
+            result.Add(content);
+            var reportnames = messageService.GetReportNameNotReady();
+            result.AddRange(reportnames);
+            var breakLine = isMail ? "<br/>" : Environment.NewLine;
+
+            return string.Join(breakLine + "- ", result);
         }
     }
 }

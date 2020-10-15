@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using BetradarVirtualSportsDaily.Business.Models;
+﻿using BetradarVirtualSportsDaily.Business.Models;
 using BetradarVirtualSportsDaily.Business.Repositories;
 using Fanex.Data.Repository;
 using Fanex.Service.Core;
+using System;
+using System.Collections.Generic;
 
 namespace BetradarVirtualSportsDaily.Business.Services
 {
@@ -30,7 +30,7 @@ namespace BetradarVirtualSportsDaily.Business.Services
                 return true;
             }
 
-            var result = QueryLastDate() >= Convert.ToDateTime(SystemTime.Now.AddDays(-1).ToShortDateString());
+            var result = QueryStatus();
 
             return result;
         }
@@ -40,9 +40,14 @@ namespace BetradarVirtualSportsDaily.Business.Services
             return dynamicRepository.FetchMultiple<GrossWinningDaily, GrossWinningDaily>(new DailyCriteria { Date = date });
         }
 
+        public bool QueryStatus()
+        {
+            return dynamicRepository.Get<TaskstatusModel>(new DWStatusByCubeCriteria()).DataIsReady;
+        }
+
         public DateTime QueryLastDate()
         {
-            return dynamicRepository.Get<LastDateModel>(new DWStatusByCubeCriteria()).LastDate;
+            return DateTime.Today;
         }
     }
 }
