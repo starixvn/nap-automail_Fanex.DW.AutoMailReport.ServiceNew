@@ -79,6 +79,11 @@ namespace Fanex.TOAVGBetBenchmark.Business.Services
 
         private ExecuteResultModel SendNotification()
         {
+            if (!dataService.IsDataAvailable())
+            {
+                return new ExecuteResultModel { Success = false, Message = "DataIsNotReady" };
+            }
+
             var letstalkFails = new List<string>();
             var rawData = dataService.QueryTOAVGBetBenchmark();
             var errFiles = rawData.Count > 0
