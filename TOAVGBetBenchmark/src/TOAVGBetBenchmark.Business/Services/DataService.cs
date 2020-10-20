@@ -1,6 +1,7 @@
 ﻿using Fanex.Data.Repository;
 using Fanex.TOAVGBetBenchmark.Business.Criterias;
 using Fanex.TOAVGBetBenchmark.Business.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,6 +10,8 @@ namespace Fanex.TOAVGBetBenchmark.Business.Services
     public interface DataService
     {
         List<BenchmarkModel> QueryTOAVGBetBenchmark();
+
+        bool IsDataAvailable();
     }
 
     public class DataServiceImp : DataService
@@ -30,6 +33,20 @@ namespace Fanex.TOAVGBetBenchmark.Business.Services
             };
 
             return repository.Fetch<BenchmarkModel>(criteria).ToList();
+        }
+
+        public bool IsDataAvailable()
+        {
+            var result = false;
+            if (AppConfigService.Config.IsManual || !AppConfigService.Config.IsCheckEnoughData)
+            {
+                return true;
+            }
+
+            var status = repository.Get<TaskstatusModel>(new GetDWStatusCriteria());
+            result = status.DataIsReady;
+
+            return result;
         }
     }
 }
