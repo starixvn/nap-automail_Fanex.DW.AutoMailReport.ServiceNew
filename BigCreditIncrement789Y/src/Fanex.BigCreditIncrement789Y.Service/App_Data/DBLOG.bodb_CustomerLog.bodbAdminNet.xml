@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Functions>
+  <Function SiteId="25" SiteName="Auto Mail">
+    <Setting Key="Acc_Rpt_BigCreditIncrement" SpName="Acc_Rpt_BigCreditIncrement" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" TimeOut="0" />
+  </Function>
+</Functions>

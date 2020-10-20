@@ -1,0 +1,35 @@
+﻿{
+  "SentryClientKey": "https://ad29bef60cc04e78803c9030a33a2c06@sentry.nexdev.net/44",
+  "CategorySentryLog": "NAP-Report-Service-LOCAL",
+  "IsTest": true,
+  "IsManual": true,
+  "FromDate": "2020-09-01",
+  "ToDate": "2020-10-21",
+  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\BigCreditIncrement789Y",
+  "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\BigCreditIncrement789Y_Internal",
+  "Password": "",
+  "MailId": 366,
+  "TargetName": "daily-monitoring",
+  "CronSchedule": "0/15 * * * * ?",
+  "BigCreditIncrement789YSettings": {
+    "Exceltitle": "Credit Increment Notification",
+    "LetstalkGroup": "789-Credit-Increment-Test",
+    "Subject": "Credit Increment Notification - Risk Monitoring"
+  },
+  "ImageSettings": {
+    "BigCreditIncrement789YSettings": {
+      "FirstRow": 2,
+      "FirstColumn": 2,
+      "LastColumn": 8,
+      "CropWidth": 1615,
+      "ImageName": "789Y",
+      "X": 135,
+      "Y": 160,
+      "SheetName": "Data",
+      "IsResize": true,
+      "ResizeNewWidth": 900,
+      "ImageQuality": 100,
+      "HeightPerRow": 55
+    }
+  }
+}

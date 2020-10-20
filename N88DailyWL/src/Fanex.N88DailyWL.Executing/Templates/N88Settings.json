@@ -6,6 +6,7 @@
   "FromDate": "2020-09-01",
   "ToDate": "2020-09-30",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\N88DailyWL",
+  "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\13",
   "TargetName": "N88",
   "LicenseeNameGroups": [
     {
@@ -26,7 +27,6 @@
     }
   ],
   "IsSentDirectly": false,
-  "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\13",
   "Password": "",
   "FunctionIdNodata": 90,
   "Currency": {
