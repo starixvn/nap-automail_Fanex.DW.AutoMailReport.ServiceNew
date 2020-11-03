@@ -1,6 +1,6 @@
 ﻿{
   "SPName": "NAP_DW_WeeklyCN88PerformanceByPT",
-  "DateRange": "Manual",
+  "DateRange": "Weekly",
   "FromDate": "2020-06-01",
   "ToDate": "2020-06-30",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\CN88PerformanceByPT",

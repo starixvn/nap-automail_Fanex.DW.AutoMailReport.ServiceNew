@@ -3,7 +3,7 @@
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
   "TargetName": "daily-house-wl",
   "Group": "Top-50-Licensee-QC",
-  "IsCheckEnoughData": true,
+  "IsCheckEnoughData": false,
   "IsManual": false,
   "FromDate": "2020-09-01",
   "Todate": "2020-09-26",

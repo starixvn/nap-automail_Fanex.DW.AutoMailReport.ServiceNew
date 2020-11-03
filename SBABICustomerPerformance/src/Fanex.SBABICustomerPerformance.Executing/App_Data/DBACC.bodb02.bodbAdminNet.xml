@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Functions>
+  <Function SiteId="25" SiteName="Auto Mail">
+    <Setting Key="Acc_Rpt_Daily_Top_Winning" SpName="Acc_Rpt_Daily_Top_Winning_xtest" DbName="DBACC.bodb02.bodbAdminNet" TimeOut="0" />
+  </Function>
+</Functions>

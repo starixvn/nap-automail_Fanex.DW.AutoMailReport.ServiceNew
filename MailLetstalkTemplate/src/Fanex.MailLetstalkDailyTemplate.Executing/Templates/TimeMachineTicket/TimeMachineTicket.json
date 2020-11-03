@@ -1,0 +1,19 @@
+﻿{
+  "SPName": "Acc_Rpt_TimeMachineTicket",
+  "DateRange": "Yesterday",
+  "FromDate": "2020-02-01",
+  "ToDate": "2020-02-10",
+  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\TimeMachineTicket",
+  "Password": "",
+  "FunctionIdNodata": 90,
+  "TemplateExcelFile": "TimeMachineTicket/TimeMachineTicket.xlsx",
+  "SheetExcelTemplateName": [ "Data" ],
+  "CellAddressRender": [ "A2" ],
+  "StartExelRowIndex": "2",
+  "EmailTemplate": "TimeMachineTicket/TimeMachineTicket.cshtml",
+  "EmailSubject": "Automail Report - Daily Time Machine Ticket",
+  "MailId": "327",
+  "MailName": "Mail Template Testing",
+  "FileName": "Daily_Time_Machine_Ticket",
+  "StartExcelColumnIndex": 1
+}

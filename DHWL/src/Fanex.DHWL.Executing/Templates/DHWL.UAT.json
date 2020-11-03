@@ -1,0 +1,35 @@
+﻿{
+  "SentryClientKey": "http://612764957dbb46ffa359103d8ffa08c6@10.99.99.51:801/59",
+  "CategorySentryLog": "NAP-Report-Service-UAT",
+  "IsTest": true,
+  "IsManual": false,
+  "FromDate": "2020-10-20",
+  "ToDate": "2020-10-21",
+  "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\DHWL",
+  "InternalPath": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel.Internal\\DHWL_InternalPath",
+  "Password": "Star168",
+  "MailId": 392,
+  "TargetName": "daily-monitoring",
+  "CronSchedule": "0 0 0/1 * * ?",
+  "DHWLSettings": {
+    "Exceltitle": "Credit Increment Notification",
+    "LetstalkGroup": "789-Credit-Increment-Test",
+    "Subject": "Credit Increment Notification - Risk Monitoring"
+  },
+  "ImageSettings": {
+    "DHWLSettings": {
+      "FirstRow": 2,
+      "FirstColumn": 2,
+      "LastColumn": 8,
+      "CropWidth": 2820,
+      "ImageName": "789Y",
+      "X": 230,
+      "Y": 270,
+      "SheetName": "Data",
+      "IsResize": true,
+      "ResizeNewWidth": 900,
+      "ImageQuality": 100,
+      "HeightPerRow": 97
+    }
+  }
+}

@@ -1,0 +1,30 @@
+﻿{
+  "SentryClientKey": "https://ad29bef60cc04e78803c9030a33a2c06@sentry.nexdev.net/44",
+  "CategorySentryLog": "NAP-Report-Service-LOCAL",
+  "IsCheckEnoughData": false,
+  "ReportType": "Manual",
+  "FromDate": "2020-09-01",
+  "ToDate": "2020-09-30",
+  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\NEW-DHWL",
+  "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\NEW-DHWL-Internal",
+  "Password": "",
+  "MailId": 366,
+  "TargetName": "daily-house-wl",
+  "LetstalkGroup": "DWHL-UAT",
+  "ImageSettings": {
+    "DHWLSettings": {
+      "FirstRow": 2,
+      "FirstColumn": 2,
+      "LastColumn": 8,
+      "CropWidth": 1615,
+      "ImageName": "789Y",
+      "X": 135,
+      "Y": 160,
+      "SheetName": "Data",
+      "IsResize": true,
+      "ResizeNewWidth": 900,
+      "ImageQuality": 100,
+      "HeightPerRow": 55
+    }
+  }
+}

@@ -116,7 +116,7 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
                     var sentLetstalkSuccess = SendImage(imagePaths);
                     if (!sentLetstalkSuccess)
                     {
-                        letstalkFails.Add($"{report.ReportFile} - Letsalk sent images Unsuccessfully.");
+                        letstalkFails.Add($"{report.ReportFile} - Letstalk sent images Unsuccessfully.");
                     }
                 }
             }

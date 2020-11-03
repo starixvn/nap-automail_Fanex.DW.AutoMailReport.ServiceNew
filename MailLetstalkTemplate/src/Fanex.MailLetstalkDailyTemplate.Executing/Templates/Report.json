@@ -8,5 +8,10 @@
     "ReportFile": "BasketballPerformance/BasketballPerformance.json",
     "IsActive": true,
     "IsEmailEnabled": true
+  },
+  {
+    "ReportFile": "TimeMachineTicket/TimeMachineTicket.json",
+    "IsActive": true,
+    "IsEmailEnabled": true
   }
 ]
