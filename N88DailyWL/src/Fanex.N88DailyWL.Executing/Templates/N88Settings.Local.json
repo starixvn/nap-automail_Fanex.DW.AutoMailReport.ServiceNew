@@ -6,10 +6,27 @@
   "FromDate": "2020-07-01",
   "ToDate": "2020-07-31",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\N88DailyWL",
-  "TargetName": "N88",
-  "Group": [ "N88-DailyWL-Test", "N88-DailyWL-Internal-Test" ],
-  "IsSentDirectly": false,
   "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\13-N88-DailyWinLoss",
+  "TargetName": "N88",
+  "LicenseeNameGroups": [
+    {
+      "LicenseeName": "N88",
+      "Group": "N88-DailyWL-Test"
+    },
+    {
+      "LicenseeName": "N8B",
+      "Group": "N8B-DailyWL-Test"
+    },
+    {
+      "LicenseeName": "N8G",
+      "Group": "N8G-DailyWL-Test"
+    },
+    {
+      "LicenseeName": "All",
+      "Group": "N88-DailyWL-Internal-Test"
+    }
+  ],
+  "IsSentDirectly": true,
   "Password": "",
   "FunctionIdNodata": 90,
   "Currency": {
