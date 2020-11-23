@@ -10,23 +10,30 @@ namespace Fanex.DHWL.Business.Services
 {
     public interface ImageService
     {
-        string ExportImage(string excelPath, int batchIndex, string sheetNameNeedToExport, ImageProperty imageProperty);
+        string ExportImage(string excelPath, string sheetNameNeedToExport, ImageProperty imageProperty);
     }
 
     public class ImageServiceImp : ImageService
     {
-        public string ExportImage(string excelPath, int batchIndex, string sheetNameNeedToExport, ImageProperty imageProperty)
+        private readonly DateTimeServiceProvider dateTimeService;
+
+        public ImageServiceImp(DateTimeServiceProvider dateTimeService)
         {
-            var date = DateTime.Now;
-            var imageName = $@"{AppConfigService.Config.InternalPath}\{date:yyyy}\{date:MM}\{date:dd}";
+            this.dateTimeService = dateTimeService;
+        }
+
+        public string ExportImage(string excelPath, string sheetNameNeedToExport, ImageProperty imageProperty)
+        {
+            var date = dateTimeService.DateTime.ToDate;
+            var imageName = $@"{AppConfigService.Config.Path}\{date:yyyy}\{date:MM}";
 
             if (!Directory.Exists(imageName))
             {
                 Directory.CreateDirectory(imageName);
             }
 
-            imageName = $@"{imageName}\{imageProperty.ImageName}_Batch_{batchIndex + 1}_On_{date:yyyyMMdd HH00}.jpg";
-            var imageNameFinal = $@"{AppConfigService.Config.InternalPath}\{date:yyyy}\{date:MM}\{date:dd}\{imageProperty.ImageName}_Batch_{batchIndex + 1}_Final_On_{date:yyyyMMdd}.jpg";
+            imageName = $@"{imageName}\{imageProperty.ImageName}_On_{date:yyyyMMdd}.jpg";
+            var imageNameFinal = $@"{AppConfigService.Config.Path}\{date:yyyy}\{date:MM}\{imageProperty.ImageName}_Final_On_{date:yyyyMMdd}.jpg";
             var workbook = new Workbook();
             workbook.OpenPassword = AppConfigService.Config.Password;
             workbook.LoadFromFile(excelPath, ExcelVersion.Version2013);
@@ -41,7 +48,7 @@ namespace Fanex.DHWL.Business.Services
 
             if (imageProperty.IsResize)
             {
-                var imageNameResizeWidth = $@"{AppConfigService.Config.InternalPath}\{date:yyyy}\{date:MM}\{date:dd}\{imageProperty.ImageName}_Resize_{batchIndex + 1}_On_{date:yyyyMMdd HH00}.jpg";
+                var imageNameResizeWidth = $@"{AppConfigService.Config.Path}\{date:yyyy}\{date:MM}\{imageProperty.ImageName}_Resize_On_{date:yyyyMMdd}.jpg";
                 ResizeImage(imageNameFinal, imageNameResizeWidth, imageProperty.ResizeNewWidth, 0, imageProperty.ImageQuality);
                 return imageNameResizeWidth;
             }

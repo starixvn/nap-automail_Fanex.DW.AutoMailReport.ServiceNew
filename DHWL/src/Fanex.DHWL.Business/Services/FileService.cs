@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Fanex.DHWL.Business.Models;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Fanex.DHWL.Business.Services
@@ -6,10 +9,19 @@ namespace Fanex.DHWL.Business.Services
     public interface FileService
     {
         void MoveFiles(string source, string destination);
+
+        void CopyFiles(LetstalkGroup letstalkGroup, List<string> fileNames);
     }
 
     public class FileServiceImp : FileService
     {
+        private readonly DateTimeServiceProvider dateTimeService;
+
+        public FileServiceImp(DateTimeServiceProvider dateTimeService)
+        {
+            this.dateTimeService = dateTimeService;
+        }
+
         public void MoveFiles(string source, string destination)
         {
             DirectoryMove(source, destination, true);
@@ -85,6 +97,50 @@ namespace Fanex.DHWL.Business.Services
                     Directory.Delete(directory, false);
                 }
             }
+        }
+
+        private void LogOneTime(LetstalkGroup letstalkGroup, DateTime date)
+        {
+            var fileInfo = new FileInfo(letstalkGroup.InternalPath);
+            var path = fileInfo.DirectoryName;
+            var fileName = $@"{path}\OneTimeLog.json";
+            var logs = new List<LogInternalOneTimeModel>();
+            if (File.Exists(fileName))
+            {
+                var text = File.ReadAllText(fileName);
+                logs = JsonConvert.DeserializeObject<List<LogInternalOneTimeModel>>(text);
+            }
+
+            logs.Add(new LogInternalOneTimeModel
+            {
+                Date = $"{date:yyyyMMdd}",
+                FolderName = fileInfo.Name,
+                GenerateTime = $"{DateTime.Now:yyyy-MM-dd hh:mm:ss tt}",
+                TargetName = AppConfigService.Config.TargetName,
+                Group = letstalkGroup.Group,
+                MailId = letstalkGroup.MailId,
+                Subject = letstalkGroup.MailId > 0 ? $"Automail Report - House Net Income - {date.AddDays(1):yyyy/MM/dd}" : string.Empty
+            });
+
+            var json = JsonConvert.SerializeObject(logs, Formatting.Indented);
+            File.WriteAllText(fileName, json);
+        }
+
+        public void CopyFiles(LetstalkGroup letstalkGroup, List<string> fileNames)
+        {
+            var date = dateTimeService.DateTime.ToDate;
+            var path = $@"{letstalkGroup.InternalPath}\{date:yyyyMMdd}";
+            Directory.CreateDirectory(path);
+            var index = 1;
+            fileNames.ForEach(fileName =>
+            {
+                var sortName = $"{index}_{new FileInfo(fileName).Name}";
+                var destinationPath = $@"{path}\{sortName}";
+                File.Copy(fileName, destinationPath, true);
+                index++;
+            });
+
+            LogOneTime(letstalkGroup, date);
         }
     }
 }

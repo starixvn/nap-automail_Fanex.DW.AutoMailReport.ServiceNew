@@ -1,5 +1,4 @@
-﻿using Fanex.MailDelivery.Client;
-using Fanex.MailDelivery.Core.Models;
+﻿using Fanex.MailDelivery.Core.Models;
 using RazorEngine;
 using RazorEngine.Templating;
 using System;
@@ -10,12 +9,19 @@ namespace Fanex.DHWL.Business.Services
 {
     public interface MailService
     {
-        void SendMail(string fileName, string excelTitle, string subject, DateTime rptDate);
+        Mail SendMail(string fileName);
     }
 
     public class MailServiceImp : MailService
     {
-        public void SendMail(string fileName, string excelTitle, string subject, DateTime rptDate)
+        private readonly DateTimeServiceProvider dateTimeService;
+
+        public MailServiceImp(DateTimeServiceProvider dateTimeService)
+        {
+            this.dateTimeService = dateTimeService;
+        }
+
+        public Mail SendMail(string fileName)
         {
             var attachments = new List<MailAttachment>
             {
@@ -25,20 +31,17 @@ namespace Fanex.DHWL.Business.Services
             var mail = new Mail
             {
                 Title = "ONEworks Auto Generated Report Administrator",
-                Subject = $"{subject} At {rptDate:yyyy/MM/dd HH:00}",
-                Body = Content(fileName, excelTitle, rptDate),
-                Attachments = attachments,
-                MailingListId = AppConfigService.Config.MailId,
+                Subject = $"Automail Report - House Net Income - {dateTimeService.DateTime.ToDate:yyyy/MM/dd}",
+                Body = Content(fileName),
+                Attachments = attachments
             };
 
-            MailClientHandler.Start();
-            MailClientHandler.SendFunctionMail(mail);
-            MailClientHandler.Stop();
+            return mail;
         }
 
-        private string Content(string fileName, string excelTitle, DateTime rptDate)
+        private string Content(string fileName)
         {
-            var tuple = new Tuple<string, string, DateTime>(new FileInfo(fileName).Name, excelTitle, rptDate);
+            var tuple = new Tuple<string>(new FileInfo(fileName).Name);
             var template = File.ReadAllText("Templates/DHWL.cshtml");
             var result = Engine.Razor.RunCompile(template, $"template{DateTime.Now.Ticks}", model: tuple);
 

@@ -12,6 +12,10 @@ namespace Fanex.N88DailyWL.Business.Services
         Tuple<List<N88CurrencyModel>, List<N88ProductModel>> QueryN88DataYesterday();
 
         Tuple<List<N88CurrencyModel>, List<N88ProductModel>> QueryN88DataMTD();
+
+        bool IsDataAvailable();
+
+        TaskstatusModel QueryDWStatus();
     }
 
     public class DataServiceImp : DataService
@@ -53,6 +57,21 @@ namespace Fanex.N88DailyWL.Business.Services
                 data.Item1.ToList(),
                 dataSB
             );
+        }
+
+        public bool IsDataAvailable()
+        {
+            if (AppConfigService.AppConfig.IsManual || !AppConfigService.AppConfig.IsCheckEnoughData)
+            {
+                return true;
+            }
+
+            return QueryDWStatus().DataIsReady;
+        }
+
+        public TaskstatusModel QueryDWStatus()
+        {
+            return repository.Get<TaskstatusModel>(new GetDWStatusCriteria());
         }
     }
 }

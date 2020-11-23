@@ -2,6 +2,8 @@
 using Fanex.Data.Repository;
 using Fanex.DHWL.Business.Models;
 using Fanex.DHWL.Business.Services;
+using Fanex.DHWL.Business.Services.DHWLLetstalk;
+using Fanex.DHWL.Business.Services.Margin;
 using Fanex.LetstalkService.Client;
 using Fanex.LetstalkService.Core.Services;
 using Fanex.Logging;
@@ -34,6 +36,9 @@ namespace Fanex.Dangerous789YCustomer.Service
 
             text = File.ReadAllText("Templates/ChartAreasPosition.json");
             AppConfigService.Config.AreasPosition = JsonConvert.DeserializeObject<Dictionary<int, ChartAreasPosition>>(text);
+
+            text = File.ReadAllText("Templates/ImageSetting.json");
+            AppConfigService.Config.ImageSettings = JsonConvert.DeserializeObject<Dictionary<string, ImageProperty>>(text);
         }
 
         public static void RegisterContainer(Container container)
@@ -59,7 +64,11 @@ namespace Fanex.Dangerous789YCustomer.Service
             container.Register<ChartExport, ChartExportImp>();
             container.Register<FormatService, FormatServiceImp>();
             container.Register<DataMarginService, DataMarginServiceImp>();
-            container.Register<ExcelMargin, ExcelMarginImp>();
+            container.Register<ExcelMarginService, ExcelMarginServiceImp>();
+            container.Register<DataDHWLService, DataDHWLServiceImp>();
+            container.Register<ExcelDHWLService, ExcelDHWLServiceImp>();
+            container.Register<ImageDHWLService, ImageDHWLServiceImp>();
+            container.Register<ImageMarginService, ImageMarginServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
             container.Register<ApplicationSettingService, ApplicationSettingServiceImp>();

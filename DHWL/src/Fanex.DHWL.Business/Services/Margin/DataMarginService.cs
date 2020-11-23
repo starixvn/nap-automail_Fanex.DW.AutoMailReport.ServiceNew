@@ -83,7 +83,8 @@ namespace Fanex.DHWL.Business.Services
                 .GroupBy(g => new
                 {
                     ProductShortName = g[ColumnName.ProductShortName].ToString(),
-                    ProductGroup = g[ColumnName.ProductGroup].ToString()
+                    ProductGroup = g[ColumnName.ProductGroup].ToString(),
+                    OrderByProduct = Converter.To<int>(g[ColumnName.OrderByProduct])
                 })
                 .ToList()
                 .ForEach(product =>
@@ -92,6 +93,7 @@ namespace Fanex.DHWL.Business.Services
                     {
                         ProductShortName = product.Key.ProductShortName,
                         ProductGroup = product.Key.ProductGroup,
+                        OrderByProduct = product.Key.OrderByProduct,
 
                         Seven89YTO = product.Where(s => s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) && s[ColumnName.SiteGroup].Equals(Site.Seven89Y))
                         .Sum(s => Converter.To<decimal>(s[mtdColumnIndex])),

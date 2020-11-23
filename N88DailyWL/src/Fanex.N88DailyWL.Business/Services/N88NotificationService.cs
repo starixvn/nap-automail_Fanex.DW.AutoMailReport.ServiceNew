@@ -73,7 +73,7 @@ namespace Fanex.N88DailyWL.Business.Services
 
         private ExecuteResultModel SendNotification()
         {
-            if (!dateService.IsDataAvailable())
+            if (!dataService.IsDataAvailable())
             {
                 return new ExecuteResultModel { Success = false, Message = "DataIsNotReady" };
             }

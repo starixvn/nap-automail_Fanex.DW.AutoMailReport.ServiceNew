@@ -42,16 +42,28 @@
       "ReportName": "Letstalk - Daily Casino WinLoss - DCWL"
     },
     {
-      "FolderName": "13-N88-DailyWL-PRO",
-      "IsActive": false,
+      "FolderName": "13-N88-DailyWL",
+      "IsActive": true,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - N88 Daily Win Loss"
     },
     {
-      "FolderName": "13-N88-DailyWL-Internal",
-      "IsActive": false,
+      "FolderName": "13-N8B-DailyWL",
+      "IsActive": true,
       "FolderMode": "Daily",
-      "ReportName": "Letstalk - N88 Daily Win Loss"
+      "ReportName": "Letstalk - N8B Daily Win Loss"
+    },
+    {
+      "FolderName": "13-N8G-DailyWL",
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - N8G Daily Win Loss"
+    },
+    {
+      "FolderName": "13-N88-DailyWL-Internal",
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - N88 Internal Daily Win Loss (All Images)"
     }
   ]
 }

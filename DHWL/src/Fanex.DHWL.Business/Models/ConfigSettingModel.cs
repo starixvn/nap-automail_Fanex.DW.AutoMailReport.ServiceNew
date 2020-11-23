@@ -13,15 +13,11 @@ namespace Fanex.DHWL.Business.Models
 
         public string Path { get; set; }
 
-        public string InternalPath { get; set; }
-
         public string TargetName { get; set; }
 
         public string LetstalkGroup { get; set; }
 
         public string Password { get; set; }
-
-        public int MailId { get; set; }
 
         public ReportType ReportType { get; set; }
 
@@ -29,8 +25,12 @@ namespace Fanex.DHWL.Business.Models
 
         public DateTime ToDate { get; set; }
 
+        public string ProductList { get; set; }
+
         public Dictionary<string, ImageProperty> ImageSettings { get; set; } = new Dictionary<string, ImageProperty>();
 
         public Dictionary<int, ChartAreasPosition> AreasPosition { get; set; } = new Dictionary<int, ChartAreasPosition>();
+
+        public Dictionary<string, LetstalkGroup> LetstalkGroups { get; set; } = new Dictionary<string, LetstalkGroup>();
     }
 }

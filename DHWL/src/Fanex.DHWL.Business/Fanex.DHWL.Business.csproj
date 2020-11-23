@@ -184,7 +184,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Criterias\Criteria.cs" />
     <Compile Include="Criterias\GetDWStatusCriteria.cs" />
     <Compile Include="Models\ChartAreasPosition.cs" />
     <Compile Include="Models\ColumnName.cs" />
@@ -193,6 +192,8 @@
     <Compile Include="Models\ExecuteResultModel.cs" />
     <Compile Include="Models\ImageProperty.cs" />
     <Compile Include="Models\InnerPlotPosition.cs" />
+    <Compile Include="Models\LetstalkGroup.cs" />
+    <Compile Include="Models\LogInternalOneTimeModel.cs" />
     <Compile Include="Models\MarginModel.cs" />
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\ReportType.cs" />
@@ -206,6 +207,8 @@
     <Compile Include="Services\Chart\ChartExport.cs" />
     <Compile Include="Services\Chart\ChartService.cs" />
     <Compile Include="Services\DHWLLetstalk\DataDHWLService.cs" />
+    <Compile Include="Services\DHWLLetstalk\ExcelDHWLService.cs" />
+    <Compile Include="Services\DHWLLetstalk\ImageDHWLService.cs" />
     <Compile Include="Services\HouseNetIncome\DataHouseIncomeService.cs" />
     <Compile Include="Services\HouseNetIncome\DataLastMonthService.cs" />
     <Compile Include="Services\Margin\DataMarginService.cs" />
@@ -216,7 +219,7 @@
     <Compile Include="Services\DateTimeDailyServiceImp.cs" />
     <Compile Include="Services\DateTimeServiceManualImp.cs" />
     <Compile Include="Services\DateTimeServiceProvider.cs" />
-    <Compile Include="Services\Margin\ExcelMargin.cs" />
+    <Compile Include="Services\Margin\ExcelMarginService.cs" />
     <Compile Include="Services\HouseNetIncome\ExcelDailyService.cs" />
     <Compile Include="Services\FormatService.cs" />
     <Compile Include="Services\MailService.cs" />
@@ -224,6 +227,7 @@
     <Compile Include="Services\FileService.cs" />
     <Compile Include="Services\ImageService.cs" />
     <Compile Include="Services\Log.cs" />
+    <Compile Include="Services\Margin\ImageMarginService.cs" />
     <Compile Include="Services\MessageService.cs" />
     <Compile Include="Services\DHWLNotificationService.cs" />
   </ItemGroup>

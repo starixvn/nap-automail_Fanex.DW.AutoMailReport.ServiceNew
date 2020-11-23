@@ -69,6 +69,7 @@ namespace Fanex.DHWL.Business.Services
             {
                 db.SetParameterValue("fromdate", fromDate);
                 db.SetParameterValue("todate", toDate);
+                db.SetParameterValue("productlist", AppConfigService.Config.ProductList);
                 var dataset = db.ExecuteDataSet();
                 if (dataset != null && dataset.Tables.Count > 0)
                 {
@@ -93,7 +94,20 @@ namespace Fanex.DHWL.Business.Services
         {
             var fromDate = dateService.DateTime.FromDate;
             var toDate = dateService.DateTime.ToDate;
-            return QueryRawData(fromDate, toDate, "Acc_Rpt_HouseNetIncome_CN88");
+            var datatable = new DataTable();
+
+            using (ObjectDb db = new ObjectDb("Acc_Rpt_HouseNetIncome_CN88", 0))
+            {
+                db.SetParameterValue("fromdate", fromDate);
+                db.SetParameterValue("todate", toDate);
+                var dataset = db.ExecuteDataSet();
+                if (dataset != null && dataset.Tables.Count > 0)
+                {
+                    datatable = dataset.Tables[0];
+                }
+            }
+
+            return datatable;
         }
     }
 }

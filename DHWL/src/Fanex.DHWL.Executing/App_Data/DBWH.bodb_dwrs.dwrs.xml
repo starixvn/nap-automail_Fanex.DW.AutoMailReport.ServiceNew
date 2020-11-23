@@ -2,7 +2,8 @@
 <Functions>
   <Function SiteId="25" SiteName="Auto Mail">
     <Setting Key="DailyJob_CheckTasksStatus" SpName="DailyJob_CheckTasksStatus" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
-    <Setting Key="Acc_Rpt_HouseNetIncome_Credit" SpName="HNIRestructure_JustForTest" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+    <Setting Key="Acc_Rpt_HouseNetIncome_Credit" SpName="Acc_Rpt_HouseNetIncome_Credit" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+    <!--HNIRestructure_JustForTest-->
     <Setting Key="Acc_Rpt_HouseNetIncome_CN88" SpName="Acc_Rpt_HouseNetIncome_CN88" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
   </Function>
 </Functions>

@@ -29,5 +29,7 @@
         public int ImageQuality { get; set; } = 100;
 
         public int HeightPerRow { get; set; }
+
+        public int AdjustHeight { get; set; }
     }
 }

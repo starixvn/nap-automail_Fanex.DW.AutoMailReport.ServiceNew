@@ -9,7 +9,7 @@ namespace Fanex.DHWL.Business.Services
 {
     public interface ExcelDailyService
     {
-        string Export(DataTable dailyData, DataTable lastMonthData);
+        string Export(DataTable dailyRawData);
     }
 
     public class ExcelDailyServiceImp : ExcelDailyService
@@ -17,21 +17,31 @@ namespace Fanex.DHWL.Business.Services
         private ExcelPackage excelPackage;
         private readonly DateTimeServiceProvider dateService;
         private readonly DateTimeService lastMonth;
+        private readonly DataHouseIncomeService dataHouseIncomeService;
+        private readonly DataService dataService;
+        private readonly DataLastMonthService dataLastMonthService;
 
         private const int StartRowIndex = 7;
 
         public ExcelDailyServiceImp(
             ExcelPackage excelPackage,
             DateTimeServiceProvider dateService,
-            DateTimeService lastMonth)
+            DateTimeService lastMonth,
+            DataHouseIncomeService dataHouseIncomeService,
+            DataService dataService,
+            DataLastMonthService dataLastMonthService)
         {
             this.excelPackage = excelPackage;
             this.dateService = dateService;
             this.lastMonth = lastMonth;
+            this.dataHouseIncomeService = dataHouseIncomeService;
+            this.dataService = dataService;
+            this.dataLastMonthService = dataLastMonthService;
         }
 
-        public string Export(DataTable dailyData, DataTable lastMonthData)
+        public string Export(DataTable dailyRawData)
         {
+            var dataForExcel = dataHouseIncomeService.CalTotalByProductForExcel(dailyRawData);
             excelPackage = new ExcelPackage(new FileInfo($"Templates/DHWL-For-eMail.xlsx"));
             var dailyTemplate = excelPackage.Workbook.Worksheets["House Income"];
             var lastMonthTemplate = excelPackage.Workbook.Worksheets["Last-Month"];
@@ -40,13 +50,20 @@ namespace Fanex.DHWL.Business.Services
             excelPackage.Workbook.Worksheets["House Income"].Select();
 
             RenderDailyTitle(dailyTemplate);
-            RenderDailyData(dailyData, dailyTemplate);
-            FormatDailyData(dailyData, dailyTemplate, formatTpl);
+            RenderDailyData(dataForExcel, dailyTemplate);
+            FormatDailyData(dataForExcel, dailyTemplate, formatTpl);
 
             RenderLastMonthTitle(lastMonthTemplate);
-            RenderLastMonthData(lastMonthData, lastMonthTemplate, formatTpl);
+            var lastMonthRawData = ProcessLastMonth();
+            RenderLastMonthData(lastMonthRawData, lastMonthTemplate, formatTpl);
 
             return Save();
+        }
+
+        private DataTable ProcessLastMonth()
+        {
+            var lastMonthRawData = dataService.QueryLastMonthData();
+            return dataLastMonthService.CalcData(lastMonthRawData);
         }
 
         private void RenderDailyData(DataTable dataTable, ExcelWorksheet template)
