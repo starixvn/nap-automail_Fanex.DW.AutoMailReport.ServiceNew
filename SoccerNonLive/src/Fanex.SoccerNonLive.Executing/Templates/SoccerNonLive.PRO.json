@@ -1,0 +1,10 @@
+﻿{
+  "SentryClientKey": "http://612764957dbb46ffa359103d8ffa08c6@10.99.99.51:801/59",
+  "CategorySentryLog": "NAP-Report-Service",
+  "ReportType": "Daily",
+  "IsCheckEnoughData": true,
+  "FromDate": "2020-10-20",
+  "ToDate": "2020-10-21",
+  "Path": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\SoccerNonLive",
+  "Password": "Star168"
+}

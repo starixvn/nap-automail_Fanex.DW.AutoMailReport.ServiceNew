@@ -1,0 +1,10 @@
+﻿{
+  "SentryClientKey": "https://ad29bef60cc04e78803c9030a33a2c06@sentry.nexdev.net/44",
+  "CategorySentryLog": "NAP-Report-Service-LOCAL",
+  "IsCheckEnoughData": false,
+  "ReportType": "Manual",
+  "FromDate": "2020-01-30",
+  "ToDate": "2020-11-30",
+  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\SoccerNonLive",
+  "Password": ""
+}
