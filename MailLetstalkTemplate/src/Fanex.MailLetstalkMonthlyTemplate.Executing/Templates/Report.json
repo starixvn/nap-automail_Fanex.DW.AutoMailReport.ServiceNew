@@ -23,10 +23,5 @@
     "ReportFile": "Sportbook-CreditLine/Sportbook-CreditLine.json",
     "IsActive": true,
     "IsEmailEnabled": true
-  },
-  {
-    "ReportFile": "PhoneBettingTicket/PhoneBettingTicket.json",
-    "IsActive": true,
-    "IsEmailEnabled": true
   }
 ]

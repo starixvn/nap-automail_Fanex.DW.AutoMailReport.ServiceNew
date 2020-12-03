@@ -253,6 +253,9 @@
     <Content Include="Templates\EsportsPerformancebySite\EsportsPerformancebySite.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\BaseSetting.PRO1.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Templates\EsportsPerformancebySite\EsportsPerformancebySite.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -277,6 +280,9 @@
     <Content Include="Templates\ExtraSuperCommission\ExtraSuperCommission.PRO.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\Fanex.MailLetstalkMonthlyTemplate.Executing.PRO1.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Templates\PhoneBettingTicket\PhoneBettingTicket.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -286,13 +292,16 @@
     <Content Include="Templates\PhoneBettingTicket\PhoneBettingTicket.Local.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\PhoneBettingTicket\PhoneBettingTicket.PRO.json">
+    <Content Include="Templates\PhoneBettingTicket\PhoneBettingTicket.PRO1.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\PhoneBettingTicket\PhoneBettingTicket.UAT.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\PhoneBettingTicket\PhoneBettingTicket.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Report.PRO1.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Templates\Sportbook-CreditLine\Sportbook-CreditLine.cshtml">
