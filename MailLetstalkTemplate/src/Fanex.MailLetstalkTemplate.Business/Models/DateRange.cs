@@ -6,6 +6,7 @@
         Daily,
         Weekly,
         Monthly,
+        Monthly2,
         Yesterday,
         Manual
     }

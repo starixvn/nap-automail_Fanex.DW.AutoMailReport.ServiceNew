@@ -30,5 +30,14 @@ namespace Fanex.DHWL.Business.Models
             PaytoMuayThai,
             PaytoSupplier
         };
+
+        public static List<string> RoyaltyFees = new List<string>
+        {
+            PaytoMuayThai,
+            PaytoSupplier,
+            PaytoMetricGaming,
+            PaytoBetGenius,
+            CurrencyPlay
+        };
     }
 }

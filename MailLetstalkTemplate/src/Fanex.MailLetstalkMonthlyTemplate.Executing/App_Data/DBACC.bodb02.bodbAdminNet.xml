@@ -2,5 +2,6 @@
 <Functions>
   <Function SiteId="25" SiteName="Auto Mail">
     <Setting Key="Acc_Rpt_Automail_PhoneBettingTicket" SpName="Acc_Rpt_Automail_PhoneBettingTicket" DbName="DBACC.bodb02.bodbAdminNet" TimeOut="0" />
+    <Setting Key="Acc_Rpt_Automail_AverageRate" SpName="Acc_Rpt_Automail_AverageRate" DbName="DBACC.bodb02.bodbAdminNet" TimeOut="0" />
   </Function>
 </Functions>

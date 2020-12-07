@@ -27,6 +27,7 @@ namespace Fanex.MailLetstalkTemplate.Business.Services.FormatMailTemplate
                     { DateRange.Daily, new MailWeeklyImp(dateRangeServiceProfier) },
                     { DateRange.Weekly, new MailWeeklyImp(dateRangeServiceProfier) },
                     { DateRange.Monthly, new MailMonthlyImp(dateRangeServiceProfier) },
+                    { DateRange.Monthly2, new MailMonthly2ndImp(dateRangeServiceProfier) },
                     { DateRange.Yesterday, new MailDailyImp(dateRangeServiceProfier) },
                     { DateRange.Manual, new MailWeeklyImp(dateRangeServiceProfier) }
                 };

@@ -8,6 +8,8 @@ namespace Fanex.DHWL.Business.Services
         DataTable Clone(DataTable source);
 
         DataTable CloneWithoutIgnoreFigureRows(DataTable source);
+
+        DataTable CloneRoyaltyFees(DataTable source);
     }
 
     public class BaseDataTableImp : BaseDataTable
@@ -18,6 +20,20 @@ namespace Fanex.DHWL.Business.Services
             foreach (DataRow row in source.Rows)
             {
                 result.ImportRow(row);
+            }
+
+            return result;
+        }
+
+        public DataTable CloneRoyaltyFees(DataTable source)
+        {
+            var result = source.Clone();
+            foreach (DataRow row in source.Rows)
+            {
+                if (RowFigureName.RoyaltyFees.Contains(row["Figure"].ToString()))
+                {
+                    result.ImportRow(row);
+                }
             }
 
             return result;

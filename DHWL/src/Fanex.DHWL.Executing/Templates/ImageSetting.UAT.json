@@ -18,9 +18,8 @@
   "Margin": {
     "FirstRow": 1,
     "FirstColumn": 2,
-    "LastRow": 53,
     "LastColumn": 15,
-    "CropWidth": 3900,
+    "CropWidth": 4200,
     "ImageName": "DHWL-Margin",
     "SheetName": "Margin",
     "X": 230,
@@ -28,7 +27,7 @@
     "IsResize": true,
     "ResizeNewWidth": 1000,
     "ImageQuality": 100,
-    "HeightPerRow": 90,
-    "AdjustHeight": 40
+    "HeightPerRow": 92,
+    "AdjustHeight": 0
   }
 }

@@ -191,6 +191,7 @@
     <Compile Include="Services\DataService.cs" />
     <Compile Include="Services\DateRangeDailyServiceImp.cs" />
     <Compile Include="Services\DateRangeManualServiceImp.cs" />
+    <Compile Include="Services\DateRangeMonthlyService2ndImp.cs" />
     <Compile Include="Services\DateRangeMonthlyServiceImp.cs" />
     <Compile Include="Services\DateRangeService.cs" />
     <Compile Include="Services\DateRangeServiceProfier.cs" />
@@ -200,6 +201,7 @@
     <Compile Include="Services\FormatMailTemplate\MailDailyImp.cs" />
     <Compile Include="Services\FormatMailTemplate\MailFormat.cs" />
     <Compile Include="Services\FormatMailTemplate\MailFormatProvider.cs" />
+    <Compile Include="Services\FormatMailTemplate\MailMonthly2ndImp.cs" />
     <Compile Include="Services\FormatMailTemplate\MailMonthlyImp.cs" />
     <Compile Include="Services\FormatMailTemplate\MailWeeklyImp.cs" />
     <Compile Include="Services\ImageService.cs" />

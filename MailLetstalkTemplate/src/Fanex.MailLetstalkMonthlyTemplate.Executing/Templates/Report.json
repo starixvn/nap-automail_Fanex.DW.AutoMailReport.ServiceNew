@@ -1,26 +1,36 @@
 ﻿[
   {
     "ReportFile": "ExtraSuperCommission/ExtraSuperCommission.json",
-    "IsActive": true,
+    "IsActive": false,
     "IsEmailEnabled": true
   },
   {
     "ReportFile": "League/League.json",
-    "IsActive": true,
+    "IsActive": false,
     "IsEmailEnabled": true
   },
   {
     "ReportFile": "BetBuilder/BetBuilder.json",
-    "IsActive": true,
+    "IsActive": false,
     "IsEmailEnabled": true
   },
   {
     "ReportFile": "EsportsPerformancebySite/EsportsPerformancebySite.json",
-    "IsActive": true,
+    "IsActive": false,
     "IsEmailEnabled": true
   },
   {
     "ReportFile": "Sportbook-CreditLine/Sportbook-CreditLine.json",
+    "IsActive": false,
+    "IsEmailEnabled": true
+  },
+  {
+    "ReportFile": "PhoneBettingTicket/PhoneBettingTicket.json",
+    "IsActive": false,
+    "IsEmailEnabled": true
+  },
+  {
+    "ReportFile": "AverageRate/AverageRate.json",
     "IsActive": true,
     "IsEmailEnabled": true
   }

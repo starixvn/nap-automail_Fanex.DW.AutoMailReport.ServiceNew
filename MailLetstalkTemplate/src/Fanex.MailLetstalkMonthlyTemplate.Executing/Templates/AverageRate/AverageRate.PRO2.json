@@ -1,0 +1,20 @@
+﻿{
+  "SPName": "Acc_Rpt_Automail_AverageRate",
+  "IsIgnoredCheckMailSent": false,
+  "DateRange": "Monthly2",
+  "FromDate": "2020-01-01",
+  "ToDate": "2020-01-31",
+  "Path": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\AverageRate",
+  "Password": "",
+  "FunctionIdNodata": 224,
+  "TemplateExcelFile": "AverageRate/AverageRate.xlsx",
+  "SheetExcelTemplateName": [ "Data" ],
+  "CellAddressRender": [ "A2" ],
+  "StartExelRowIndex": "2",
+  "EmailTemplate": "AverageRate/AverageRate.cshtml",
+  "EmailSubject": "Automail Report - Oanda Average rate report for",
+  "MailId": "401",
+  "MailName": "Monthly Oanda Average Rate Report",
+  "FileName": "Average_Rate",
+  "StartExcelColumnIndex": 1
+}

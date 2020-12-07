@@ -3,6 +3,7 @@ using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 
@@ -113,11 +114,34 @@ namespace Fanex.DHWL.Business.Services
                     }
                 });
 
-            template.Cells[endIndexGroup, 2, endIndexGroup, 3].StyleID = formatTpl.Cells["B4"].StyleID;
-            template.Cells[endIndexGroup, 3, endIndexGroup, 14].StyleID = formatTpl.Cells["C4"].StyleID;
-            template.Cells[endIndexGroup, 15, endIndexGroup, 15].StyleID = formatTpl.Cells["B4"].StyleID;
-            formatTpl.Cells["B5:B7"].Copy(template.Cells[endIndexGroup + 1, 2]);
-            LastRowIndex = endIndexGroup;
+            template.Cells[endIndexGroup - 2, 2, endIndexGroup - 2, 3].StyleID = formatTpl.Cells["B4"].StyleID;
+            template.Cells[endIndexGroup - 2, 3, endIndexGroup - 2, 14].StyleID = formatTpl.Cells["C4"].StyleID;
+            template.Cells[endIndexGroup - 2, 15, endIndexGroup - 2, 15].StyleID = formatTpl.Cells["B4"].StyleID;
+
+            int tplRowIndex = 4;
+            var columnsClearText = new List<int> { 3, 5, 6, 8, 9, 11, 12, 14 };
+            for (int rowIndex = endIndexGroup - 2; rowIndex <= endIndexGroup; rowIndex++)
+            {
+                for (int columnIndex = 2; columnIndex <= 15; columnIndex++)
+                {
+                    template.Cells[rowIndex, columnIndex].StyleID = formatTpl.Cells[tplRowIndex, columnIndex].StyleID;
+                    if (columnsClearText.Contains(columnIndex) && tplRowIndex > 4)
+                    {
+                        template.Cells[rowIndex, columnIndex].Value = "";
+                    }
+                }
+                if (tplRowIndex == 5)
+                {
+                    template.Row(rowIndex).Height = 27.6;
+                    template.Cells[rowIndex, 2].Style.WrapText = true;
+                    template.Cells[rowIndex, 15].Style.WrapText = true;
+                }
+
+                tplRowIndex++;
+            }
+
+            formatTpl.Cells["B7:B9"].Copy(template.Cells[endIndexGroup + 1, 2]);
+            LastRowIndex = endIndexGroup + 3;
         }
 
         private string Save(bool isDaily)

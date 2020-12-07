@@ -2,7 +2,9 @@
 \\*.uat.exe.config
 \\*.pro.exe.config
 \\*.pro1.exe.config
+\\*.pro2.exe.config
 \\*.local.json
 \\*.uat.json
 \\*.pro.json
 \\*.pro1.json
+\\*.pro2.json
