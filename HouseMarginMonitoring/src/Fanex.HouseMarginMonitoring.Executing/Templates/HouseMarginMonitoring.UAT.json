@@ -1,0 +1,36 @@
+﻿{
+  "SentryClientKey": "http://612764957dbb46ffa359103d8ffa08c6@10.99.99.51:801/59",
+  "CategorySentryLog": "NAP-Report-Service-UAT",
+  "IsManual": false,
+  "FromDate": "2020-10-20",
+  "ToDate": "2020-10-21",
+  "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\HouseMarginMonitoring",
+  "InternalPath": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel.Internal\\HouseMarginMonitoring_InternalPath",
+  "Password": "Star168",
+  "WLThreshold": 999999,
+  "MarginThreshold": 100,
+  "MailId": 404,
+  "TargetName": "daily-monitoring",
+  "CronSchedule": "0 0 0/1 * * ?",
+  "HouseMarginMonitoringSettings": {
+    "Exceltitle": "House Margin Monitoring",
+    "LetstalkGroup": "House-Margin-Monitoring-Test",
+    "Subject": "House Margin Monitoring - Risk Monitoring"
+  },
+  "ImageSettings": {
+    "HouseMarginMonitoringSettings": {
+      "FirstRow": 2,
+      "FirstColumn": 2,
+      "LastColumn": 6,
+      "CropWidth": 2040,
+      "ImageName": "HouseMargin",
+      "X": 235,
+      "Y": 245,
+      "SheetName": "Data",
+      "IsResize": false,
+      "ResizeNewWidth": 900,
+      "ImageQuality": 100,
+      "HeightPerRow": 86
+    }
+  }
+}
