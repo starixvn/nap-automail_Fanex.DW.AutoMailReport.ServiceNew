@@ -117,10 +117,9 @@ namespace Fanex.TopLicensee.Service.Services
             {
                 imageBatches.ForEach(files =>
                 {
-                    var result = messageService.Send(files);
-                    if (!result)
+                    success = messageService.Send(files);
+                    if (!success)
                     {
-                        success = result;
                         imageSentFail.AddRange(files);
                     }
                 });

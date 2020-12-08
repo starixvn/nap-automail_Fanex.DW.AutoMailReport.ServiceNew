@@ -48,10 +48,22 @@
       "ReportName": "Letstalk - N88 Daily Win Loss"
     },
     {
+      "FolderName": "13-N8B-DailyWL-Test",
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - N8B Daily Win Loss"
+    },
+    {
+      "FolderName": "13-N8G-DailyWL-Test",
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - N8G Daily Win Loss"
+    },
+    {
       "FolderName": "13-N88-DailyWL-Internal-Test",
       "IsActive": true,
       "FolderMode": "Daily",
-      "ReportName": "Letstalk - N88 Daily Win Loss"
+      "ReportName": "Letstalk - N88 Internal Daily Win Loss (All Images)"
     }
   ]
 }

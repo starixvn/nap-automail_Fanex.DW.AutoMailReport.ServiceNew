@@ -8,8 +8,6 @@ namespace Fanex.N88DailyWL.Business.Services
 {
     public interface DateService
     {
-        bool IsDataAvailable();        
-
         DateTime FromDate { get; }
 
         DateTime ToDate { get; }
@@ -52,19 +50,9 @@ namespace Fanex.N88DailyWL.Business.Services
             }
         }
 
-        public bool IsDataAvailable()
-        {
-            if (AppConfigService.AppConfig.IsManual || !AppConfigService.AppConfig.IsCheckEnoughData)
-            {
-                return true;
-            }
-
-            return QueryLastDate().LastDate >= Convert.ToDateTime(SystemTime.Now.AddDays(-1).ToShortDateString());
-        }
-
         private LastDateModel QueryLastDate()
         {
-            return repository.Get<LastDateModel>(new GetDWStatusByCubeCriteria());
+            return repository.Get<LastDateModel>(new GetDWStatusCriteria());
         }
     }
 }

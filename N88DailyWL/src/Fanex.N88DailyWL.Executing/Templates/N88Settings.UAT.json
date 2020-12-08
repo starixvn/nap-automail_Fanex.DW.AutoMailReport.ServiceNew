@@ -26,7 +26,7 @@
       "Group": "N88-DailyWL-Internal-Test"
     }
   ],
-  "IsSentDirectly": true,
+  "IsSentDirectly": false,
   "Password": "",
   "FunctionIdNodata": 90,
   "Currency": {

@@ -1,0 +1,20 @@
+﻿{
+  "SPName": "Acc_Rpt_TimeMachineTicket",
+  "IsIgnoredCheckMailSent": false,
+  "DateRange": "Yesterday",
+  "FromDate": "2020-01-01",
+  "ToDate": "2020-01-10",
+  "Path": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\TimeMachineTicket",
+  "Password": "Star168",
+  "FunctionIdNodata": 90,
+  "TemplateExcelFile": "TimeMachineTicket/TimeMachineTicket.xlsx",
+  "SheetExcelTemplateName": [ "Data" ],
+  "CellAddressRender": [ "A2" ],
+  "StartExelRowIndex": "2",
+  "EmailTemplate": "TimeMachineTicket/TimeMachineTicket.cshtml",
+  "EmailSubject": "Automail Report - Daily Time Machine Ticket",
+  "MailId": "395",
+  "MailName": "Time Machine Ticket",
+  "FileName": "Daily_Time_Machine_Ticket",
+  "StartExcelColumnIndex": 1
+}

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Functions>
   <Function SiteId="25" SiteName="Auto Mail">
-    <Setting Key="BI_GetDWStatusByCube" SpName="BI_GetDWStatusByCube" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
-    <Setting Key="Acc_Rpt_Letstalk_N88_Sportbook" SpName="Acc_Rpt_Letstalk_N88_Sportbook_xtest" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+    <Setting Key="DailyJob_CheckTasksStatus" SpName="DailyJob_CheckTasksStatus" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+    <Setting Key="Acc_Rpt_Letstalk_N88_Sportbook" SpName="Acc_Rpt_Letstalk_N88_Sportbook" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
   </Function>
 </Functions>

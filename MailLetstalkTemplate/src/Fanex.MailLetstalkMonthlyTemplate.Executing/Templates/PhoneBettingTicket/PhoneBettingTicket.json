@@ -1,0 +1,19 @@
+﻿{
+  "SPName": "Acc_Rpt_Automail_PhoneBettingTicket",
+  "DateRange": "Monthly",
+  "FromDate": "2020-02-01",
+  "ToDate": "2020-02-10",
+  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\PhoneBettingTicket",
+  "Password": "",
+  "FunctionIdNodata": 90,
+  "TemplateExcelFile": "PhoneBettingTicket/PhoneBettingTicket.xlsx",
+  "SheetExcelTemplateName": [ "Data" ],
+  "CellAddressRender": [ "A2" ],
+  "StartExelRowIndex": "2",
+  "EmailTemplate": "PhoneBettingTicket/PhoneBettingTicket.cshtml",
+  "EmailSubject": "Automail Report - Monthly Phone Betting Ticket Report",
+  "MailId": "327",
+  "MailName": "Mail Template Testing",
+  "FileName": "Monthly_Phone_Betting_Ticket_Report",
+  "StartExcelColumnIndex": 1
+}
