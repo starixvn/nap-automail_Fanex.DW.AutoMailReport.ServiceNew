@@ -1,0 +1,21 @@
+﻿{
+  "SPName": "Acc_Rpt_Automail_Currency",
+  "IsIgnoredCheckMailSent": false,
+  "DateRange": "Monthly",
+  "FromDate": "2020-01-01",
+  "ToDate": "2020-01-31",
+  "Path": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\Adhoc_OtherSports",
+  "Password": "Star168",
+  "FunctionIdNodata": 224,
+  "TemplateExcelFile": "INR-Currency/INR-Currency.xlsx",
+  "SheetExcelTemplateName": [ "Data" ],
+  "CellAddressRender": [ "A2" ],
+  "StartExelRowIndex": "2",
+  "EmailTemplate": "INR-Currency/INR-Currency.cshtml",
+  "EmailSubject": "Automail Report - Monthly Data Request - INR Currency",
+  "MailId": "407",
+  "MailName": "Monthly Data Request - INR Currency",
+  "FileName": "INR-Currency",
+  "StartExcelColumnIndex": 1,
+  "IsAllowAttachment": false
+}

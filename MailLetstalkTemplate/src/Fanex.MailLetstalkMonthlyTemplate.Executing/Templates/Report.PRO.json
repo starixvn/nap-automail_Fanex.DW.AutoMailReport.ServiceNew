@@ -23,5 +23,10 @@
     "ReportFile": "Sportbook-CreditLine/Sportbook-CreditLine.json",
     "IsActive": true,
     "IsEmailEnabled": true
+  },
+  {
+    "ReportFile": "INR-Currency/INR-Currency.json",
+    "IsActive": true,
+    "IsEmailEnabled": true
   }
 ]

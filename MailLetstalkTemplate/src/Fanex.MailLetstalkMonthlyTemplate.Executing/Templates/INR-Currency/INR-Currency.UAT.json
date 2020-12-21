@@ -1,0 +1,20 @@
+﻿{
+  "SPName": "Acc_Rpt_Automail_Currency",
+  "DateRange": "Monthly",
+  "FromDate": "2020-01-01",
+  "ToDate": "2020-01-31",
+  "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\INR-Currency",
+  "Password": "",
+  "FunctionIdNodata": 224,
+  "TemplateExcelFile": "INR-Currency/INR-Currency.xlsx",
+  "SheetExcelTemplateName": [ "Data" ],
+  "CellAddressRender": [ "A2" ],
+  "StartExelRowIndex": "2",
+  "EmailTemplate": "INR-Currency/INR-Currency.cshtml",
+  "EmailSubject": "Automail Report - Monthly Data Request - INR Currency",
+  "MailId": "314",
+  "MailName": "Mail Monthly Template - UAT",
+  "FileName": "INR-Currency",
+  "StartExcelColumnIndex": 1,
+  "IsAllowAttachment": false
+}

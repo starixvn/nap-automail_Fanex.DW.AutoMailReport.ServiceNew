@@ -55,6 +55,8 @@ namespace Fanex.MailLetstalkTemplate.Business.Models
         public List<NoDataSetingModel> NoDataSettings { get; set; } = new List<NoDataSetingModel>();
 
         public bool IsEnabledSectionHeader { get; set; }
+
+        public bool IsAllowAttachment { get; set; } = true;
         public string Header { get; set; }
     }
 }

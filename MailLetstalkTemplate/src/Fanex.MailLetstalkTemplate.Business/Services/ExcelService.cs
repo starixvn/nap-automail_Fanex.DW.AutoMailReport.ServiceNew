@@ -64,8 +64,8 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
         private static void FormatNoData(int index, ExcelWorksheet template, int numberOfColumns)
         {
             template.Cells[AppConfigService.Config.CellAddressRender[index]].Value = "There is no data";
-            template.Cells[AppConfigService.Config.StartExelRowIndex, AppConfigService.Config.StartExcelColumnIndex, AppConfigService.Config.StartExelRowIndex, numberOfColumns + 1].Merge = true;
-            template.Cells[AppConfigService.Config.StartExelRowIndex, AppConfigService.Config.StartExcelColumnIndex, AppConfigService.Config.StartExelRowIndex, numberOfColumns + 1].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+            template.Cells[AppConfigService.Config.StartExelRowIndex, AppConfigService.Config.StartExcelColumnIndex, AppConfigService.Config.StartExelRowIndex, numberOfColumns].Merge = true;
+            template.Cells[AppConfigService.Config.StartExelRowIndex, AppConfigService.Config.StartExcelColumnIndex, AppConfigService.Config.StartExelRowIndex, numberOfColumns].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
         }
 
         private static void FormatContentDataRow(DataTable dataTable, int startRowIndex, int maxRowIndex, ExcelWorksheet template)
