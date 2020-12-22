@@ -7,12 +7,12 @@ using System.Linq;
 
 namespace Fanex.DHWL.Business.Services
 {
-    public interface ExcelDailyService
+    public interface DailyExcelService
     {
         string Export(DataTable dailyRawData);
     }
 
-    public class ExcelDailyServiceImp : ExcelDailyService
+    public class DailyExcelServiceImp : DailyExcelService
     {
         private ExcelPackage excelPackage;
         private readonly DateTimeServiceProvider dateService;
@@ -23,7 +23,7 @@ namespace Fanex.DHWL.Business.Services
 
         private const int StartRowIndex = 7;
 
-        public ExcelDailyServiceImp(
+        public DailyExcelServiceImp(
             ExcelPackage excelPackage,
             DateTimeServiceProvider dateService,
             DateTimeService lastMonth,

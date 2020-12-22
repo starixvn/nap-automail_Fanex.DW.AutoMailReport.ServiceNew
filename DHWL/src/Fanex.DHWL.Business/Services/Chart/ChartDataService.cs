@@ -38,7 +38,7 @@ namespace Fanex.DHWL.Business.Services
             var result = new Dictionary<int, double>();
             for (var columnIndex = 10; columnIndex < rawDataAllProducts.Columns.Count; columnIndex++)
             {
-                var grandTotal = rawDataAllProducts.AsEnumerable().Sum(s => Convert.ToDouble(s[columnIndex]));
+                var grandTotal = rawDataAllProducts.AsEnumerable().Sum(s => Converter.To<double>(s[columnIndex]));
                 var date = Converter.To<int>(rawDataAllProducts.Columns[columnIndex].ColumnName);
                 result.Add(date, grandTotal);
             }

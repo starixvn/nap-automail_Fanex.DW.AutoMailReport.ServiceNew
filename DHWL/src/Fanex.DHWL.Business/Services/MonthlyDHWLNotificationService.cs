@@ -1,6 +1,5 @@
 ﻿using Fanex.DHWL.Business.Models;
-using Fanex.DHWL.Business.Services.DHWLLetstalk;
-using Fanex.DHWL.Business.Services.Margin;
+using Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk;
 using Fanex.LetstalkService.Client;
 using Fanex.MailDelivery.Core.Models;
 using System;
@@ -10,60 +9,45 @@ using System.Linq;
 
 namespace Fanex.DHWL.Business.Services
 {
-    public interface DHWLNotificationService
+    public interface MonthlyDHWLNotificationService
     {
         JobMessage Execute();
     }
 
-    public class DHWLNotificationServiceImp : DHWLNotificationService
+    public class MonthlyDHWLNotificationServiceImp : MonthlyDHWLNotificationService
     {
         private readonly Log log;
         private readonly DataService dataService;
         private readonly LetstalkClientService letstalkService;
         private readonly ExcelRawService excelRawService;
-        private readonly ExcelDailyService excelDailyService;
         private readonly MessageService messageService;
         private readonly FileService fileService;
-        private readonly MailService mailService;
         private readonly BaseDataTable baseDataTable;
-        private readonly DataHouseIncomeService dataHouseIncomeService;
-        private readonly ChartExport chartExport;
-        private readonly ImageDHWLService imageDHWLService;
-        private readonly ImageMarginService imageMarginService;
+        private readonly MonthlyImageDHWLService imageDHWLService;
 
         private List<string> filePaths = new List<string>();
         private Mail mail = new Mail { Subject = string.Empty, Body = string.Empty };
 
-        public DHWLNotificationServiceImp(
+        public MonthlyDHWLNotificationServiceImp(
             Log log,
             DataService dataService,
             LetstalkClientService letstalkService,
             ExcelRawService excelRawService,
-            ExcelDailyService excelDailyService,
             MessageService messageService,
             FileService fileService,
-            MailService mailService,
             BaseDataTable baseDataTable,
-            DataHouseIncomeService dataHouseIncomeService,
             DataLastMonthService dataLastMonthService,
-            ChartExport chartExport,
-            ImageDHWLService imageDHWLService,
-            ImageMarginService imageMarginService
+            MonthlyImageDHWLService imageDHWLService
             )
         {
             this.log = log;
             this.dataService = dataService;
             this.letstalkService = letstalkService;
             this.excelRawService = excelRawService;
-            this.excelDailyService = excelDailyService;
             this.messageService = messageService;
             this.fileService = fileService;
-            this.mailService = mailService;
             this.baseDataTable = baseDataTable;
-            this.dataHouseIncomeService = dataHouseIncomeService;
-            this.chartExport = chartExport;
             this.imageDHWLService = imageDHWLService;
-            this.imageMarginService = imageMarginService;
         }
 
         public JobMessage Execute()
@@ -96,49 +80,33 @@ namespace Fanex.DHWL.Business.Services
 
         private ExecuteResultModel SendNotification()
         {
-            var dailyRawData = dataService.QueryDailyData();
-            var cloneData = baseDataTable.Clone(dailyRawData);
+            var monthlyRawData = dataService.QueryDHWLData();
+            var cloneData = baseDataTable.Clone(monthlyRawData);
 
-            excelRawService.Export(dailyRawData);
-            var excelPath = excelDailyService.Export(cloneData);
-
-            var imageDHWLPath = imageDHWLService.Export(dailyRawData);
-            var imageMarginPath = imageMarginService.Export(dailyRawData, true);
-            var imageMarginMTDPath = imageMarginService.Export(dailyRawData, false);
-            var chartPath = chartExport.Export(dailyRawData);
+            excelRawService.Export(monthlyRawData, false);
+            var imageDHWLPath = imageDHWLService.Export(monthlyRawData);
             var images = new List<string>
             {
                 imageDHWLPath,
-                imageMarginPath,
-                imageMarginMTDPath,
-                chartPath
             };
 
-            CopyFiles(excelPath, images);
+            CopyFiles(images);
             var status = messageService.SendMessage(images, AppConfigService.Config.LetstalkGroup);
             var errFile = status.Where(s => !s.Value).Select(s => s.Key).ToList();
-            var mail = mailService.SendMail(excelPath);
 
             return new ExecuteResultModel
             {
-                Mail = mail,
+                Mail = new Mail(),
                 Message = string.Join(Environment.NewLine, errFile),
                 Success = errFile.Count == 0
             };
         }
 
-        private void CopyFiles(string dhwlExcelPath, List<string> images)
+        private void CopyFiles(List<string> images)
         {
             foreach (var group in AppConfigService.Config.LetstalkGroups)
             {
-                if (group.Key.Contains("Excel"))
-                {
-                    fileService.CopyFiles(group.Value, new List<string> { dhwlExcelPath });
-                }
-                else
-                {
-                    fileService.CopyFiles(group.Value, images);
-                }
+                fileService.CopyFiles(group.Value, images);
             }
         }
     }

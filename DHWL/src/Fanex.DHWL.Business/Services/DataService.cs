@@ -13,7 +13,7 @@ namespace Fanex.DHWL.Business.Services
 
         bool IsDataAvailable();
 
-        DataTable QueryDailyData();
+        DataTable QueryDHWLData();
 
         DataTable QueryLastMonthData();
 
@@ -25,15 +25,18 @@ namespace Fanex.DHWL.Business.Services
         private readonly IDynamicRepository repository;
         private readonly DateTimeServiceProvider dateService;
         private readonly DateTimeService lastMonth;
+        private readonly BaseDataTable baseDataTable;
 
         public DataServiceImp(
             IDynamicRepository repository,
             DateTimeServiceProvider dateService,
-            DateTimeService lastMonth)
+            DateTimeService lastMonth,
+            BaseDataTable baseDataTable)
         {
             this.repository = repository;
             this.dateService = dateService;
             this.lastMonth = lastMonth;
+            this.baseDataTable = baseDataTable;
         }
 
         public TaskstatusModel QueryDWStatus()
@@ -54,37 +57,34 @@ namespace Fanex.DHWL.Business.Services
             return result;
         }
 
-        public DataTable QueryDailyData()
+        public DataTable QueryDHWLData()
         {
             var fromDate = dateService.DateTime.FromDate;
             var toDate = dateService.DateTime.ToDate;
-            return QueryRawData(fromDate, toDate, "Acc_Rpt_HouseNetIncome_Credit");
+            return QueryRawData(fromDate, toDate, "Acc_Rpt_HouseNetIncome");
         }
 
         private DataTable QueryRawData(DateTime fromDate, DateTime toDate, string spName)
         {
-            var datatable = new DataTable();
+            var dataTable = new DataTable();
 
             using (ObjectDb db = new ObjectDb(spName, 0))
             {
                 db.SetParameterValue("fromdate", fromDate);
                 db.SetParameterValue("todate", toDate);
                 db.SetParameterValue("productlist", AppConfigService.Config.ProductList);
-                var dataset = db.ExecuteDataSet();
-                if (dataset != null && dataset.Tables.Count > 0)
-                {
-                    datatable = dataset.Tables[0];
-                }
+                var dataSet = db.ExecuteDataSet();
+                dataTable = baseDataTable.CombineAllInOneTable(dataSet);
             }
 
-            return datatable;
+            return dataTable;
         }
 
         public DataTable QueryLastMonthData()
         {
             var fromDate = lastMonth.FromDate;
             var toDate = lastMonth.ToDate;
-            return QueryRawData(fromDate, toDate, "Acc_Rpt_HouseNetIncome_Credit")
+            return QueryRawData(fromDate, toDate, "Acc_Rpt_HouseNetIncome")
                 .AsEnumerable()
                 .Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver))
                 .CopyToDataTable();

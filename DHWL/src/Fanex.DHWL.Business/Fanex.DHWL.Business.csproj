@@ -206,9 +206,13 @@
     <Compile Include="Services\Chart\ChartDataService.cs" />
     <Compile Include="Services\Chart\ChartExport.cs" />
     <Compile Include="Services\Chart\ChartService.cs" />
-    <Compile Include="Services\DHWLLetstalk\DataDHWLService.cs" />
-    <Compile Include="Services\DHWLLetstalk\ExcelDHWLService.cs" />
-    <Compile Include="Services\DHWLLetstalk\ImageDHWLService.cs" />
+    <Compile Include="Services\MonthlyDHWLNotificationService.cs" />
+    <Compile Include="Services\MonthlyDHWLLetstalk\MonthlyDataDHWLService.cs" />
+    <Compile Include="Services\MonthlyDHWLLetstalk\MonthlyExcelDHWLService.cs" />
+    <Compile Include="Services\MonthlyDHWLLetstalk\MonthlyImageDHWLService.cs" />
+    <Compile Include="Services\DailyDHWLLetstalk\DailyDataDHWLService.cs" />
+    <Compile Include="Services\DailyDHWLLetstalk\DailyExcelDHWLService.cs" />
+    <Compile Include="Services\DailyDHWLLetstalk\DailyImageDHWLService.cs" />
     <Compile Include="Services\HouseNetIncome\DataHouseIncomeService.cs" />
     <Compile Include="Services\HouseNetIncome\DataLastMonthService.cs" />
     <Compile Include="Services\Margin\DataMarginService.cs" />
@@ -220,7 +224,7 @@
     <Compile Include="Services\DateTimeServiceManualImp.cs" />
     <Compile Include="Services\DateTimeServiceProvider.cs" />
     <Compile Include="Services\Margin\ExcelMarginService.cs" />
-    <Compile Include="Services\HouseNetIncome\ExcelDailyService.cs" />
+    <Compile Include="Services\HouseNetIncome\DailyExcelService.cs" />
     <Compile Include="Services\FormatService.cs" />
     <Compile Include="Services\MailService.cs" />
     <Compile Include="Services\HouseNetIncome\ExcelRawService.cs" />
@@ -229,7 +233,7 @@
     <Compile Include="Services\Log.cs" />
     <Compile Include="Services\Margin\ImageMarginService.cs" />
     <Compile Include="Services\MessageService.cs" />
-    <Compile Include="Services\DHWLNotificationService.cs" />
+    <Compile Include="Services\DailyDHWLNotificationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

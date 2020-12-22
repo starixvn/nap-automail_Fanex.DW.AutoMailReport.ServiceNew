@@ -1,23 +1,22 @@
 ﻿using Fanex.DHWL.Business.Models;
 using OfficeOpenXml;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
 
-namespace Fanex.DHWL.Business.Services.DHWLLetstalk
+namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
 {
-    public interface ExcelDHWLService
+    public interface DailyExcelDHWLService
     {
         string Export(DataTable dailyRawData);
 
         int LastRowIndex { get; set; }
     }
 
-    public class ExcelDHWLServiceImp : ExcelDHWLService
+    public class DailyExcelDHWLServiceImp : DailyExcelDHWLService
     {
-        private readonly DataDHWLService dataDHWLService;
+        private readonly DailyDataDHWLService dataDHWLService;
         private ExcelPackage excelPackage;
         private readonly DateTimeServiceProvider dateService;
         private const int StartRowIndex = 2;
@@ -27,8 +26,8 @@ namespace Fanex.DHWL.Business.Services.DHWLLetstalk
             get; set;
         }
 
-        public ExcelDHWLServiceImp(
-            DataDHWLService dataDHWLService,
+        public DailyExcelDHWLServiceImp(
+            DailyDataDHWLService dataDHWLService,
             DateTimeServiceProvider dateService)
         {
             this.dataDHWLService = dataDHWLService;

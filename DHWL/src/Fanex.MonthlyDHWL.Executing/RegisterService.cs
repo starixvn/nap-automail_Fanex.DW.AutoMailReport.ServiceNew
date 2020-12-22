@@ -2,8 +2,8 @@
 using Fanex.Data.Repository;
 using Fanex.DHWL.Business.Models;
 using Fanex.DHWL.Business.Services;
-using Fanex.DHWL.Business.Services.DHWLLetstalk;
 using Fanex.DHWL.Business.Services.Margin;
+using Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk;
 using Fanex.LetstalkService.Client;
 using Fanex.LetstalkService.Core.Services;
 using Fanex.Logging;
@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 
-namespace Fanex.Dangerous789YCustomer.Service
+namespace Fanex.MonthlyDHWL.Executing
 {
     public static class RegisterService
     {
@@ -47,10 +47,10 @@ namespace Fanex.Dangerous789YCustomer.Service
             container.Register<IDynamicRepository, DynamicRepository>();
             container.Register<BaseDataTable, BaseDataTableImp>();
             container.Register<DataService, DataServiceImp>();
-            container.Register<DHWLNotificationService, DHWLNotificationServiceImp>();
+            container.Register<MonthlyDHWLNotificationService, MonthlyDHWLNotificationServiceImp>();
             container.Register(() => new ExcelPackage());
             container.Register<ExcelRawService, ExcelRawServiceImp>();
-            container.Register<ExcelDailyService, ExcelDailyServiceImp>();
+            container.Register<DailyExcelService, DailyExcelServiceImp>();
             container.Register<ImageService, ImageServiceImp>();
             container.Register<MessageService, MessageServiceImp>();
             container.Register<FileService, FileServiceImp>();
@@ -65,9 +65,9 @@ namespace Fanex.Dangerous789YCustomer.Service
             container.Register<FormatService, FormatServiceImp>();
             container.Register<DataMarginService, DataMarginServiceImp>();
             container.Register<ExcelMarginService, ExcelMarginServiceImp>();
-            container.Register<DataDHWLService, DataDHWLServiceImp>();
-            container.Register<ExcelDHWLService, ExcelDHWLServiceImp>();
-            container.Register<ImageDHWLService, ImageDHWLServiceImp>();
+            container.Register<MonthlyDataDHWLService, MonthlyDataDHWLServiceImp>();
+            container.Register<MonthlyExcelDHWLService, MonthlyExcelDHWLServiceImp>();
+            container.Register<MonthlyImageDHWLService, MonthlyImageDHWLServiceImp>();
             container.Register<ImageMarginService, ImageMarginServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();

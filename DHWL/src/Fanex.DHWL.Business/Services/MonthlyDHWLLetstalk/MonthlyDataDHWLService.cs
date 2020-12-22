@@ -4,28 +4,28 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
-namespace Fanex.DHWL.Business.Services.DHWLLetstalk
+namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
 {
-    public interface DataDHWLService
+    public interface MonthlyDataDHWLService
     {
-        List<DHWLModel> CalTotalByProduct(DataTable dailyRawData);
+        List<DHWLModel> CalTotalByProduct(DataTable monthlyRawData);
     }
 
-    public class DataDHWLServiceImp : DataDHWLService
+    public class MonthlyDataDHWLServiceImp : MonthlyDataDHWLService
     {
         private readonly DataService dataService;
 
-        public DataDHWLServiceImp(DataService dataService)
+        public MonthlyDataDHWLServiceImp(DataService dataService)
         {
             this.dataService = dataService;
         }
 
-        public List<DHWLModel> CalTotalByProduct(DataTable dailyRawData)
+        public List<DHWLModel> CalTotalByProduct(DataTable monthlyRawData)
         {
             var result = new List<DHWLModel>();
-            var yesterdayColumnIndex = dailyRawData.Columns.Count - 1;
+            var yesterdayColumnIndex = monthlyRawData.Columns.Count - 1;
             var mtdColumnIndex = 9;
-            dailyRawData.AsEnumerable()
+            monthlyRawData.AsEnumerable()
                 .Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver))
                 .GroupBy(g => new
                 {

@@ -1,28 +1,28 @@
 ﻿using System.Data;
 
-namespace Fanex.DHWL.Business.Services.DHWLLetstalk
+namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
 {
-    public interface ImageDHWLService
+    public interface MonthlyImageDHWLService
     {
-        string Export(DataTable dailyRawData);
+        string Export(DataTable monthlyRawData);
     }
 
-    public class ImageDHWLServiceImp : ImageDHWLService
+    public class MonthlyImageDHWLServiceImp : MonthlyImageDHWLService
     {
-        private readonly ExcelDHWLService excelDHWLService;
+        private readonly MonthlyExcelDHWLService excelDHWLService;
         private readonly ImageService imageService;
 
-        public ImageDHWLServiceImp(
-            ExcelDHWLService excelDHWLService,
+        public MonthlyImageDHWLServiceImp(
+            MonthlyExcelDHWLService excelDHWLService,
             ImageService imageService)
         {
             this.excelDHWLService = excelDHWLService;
             this.imageService = imageService;
         }
 
-        public string Export(DataTable dailyRawData)
+        public string Export(DataTable monthlyRawData)
         {
-            var excelPath = excelDHWLService.Export(dailyRawData);
+            var excelPath = excelDHWLService.Export(monthlyRawData);
             var lastRow = excelDHWLService.LastRowIndex;
             var image = AppConfigService.Config.ImageSettings["DHWL"];
             image.LastRow = lastRow;

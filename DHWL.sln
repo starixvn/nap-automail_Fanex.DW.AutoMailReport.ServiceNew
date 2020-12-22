@@ -5,9 +5,11 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DD7D2339-B73A-45A2-8471-C72BFEFDAEB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.DHWL.Executing", "DHWL\src\Fanex.DHWL.Executing\Fanex.DHWL.Executing.csproj", "{CBA4B685-F922-4662-BD83-5E381C8DC920}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.DHWL.Business", "DHWL\src\Fanex.DHWL.Business\Fanex.DHWL.Business.csproj", "{9BB9E7B2-C666-4991-8749-D8EE40A395B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.MonthlyDHWL.Executing", "DHWL\src\Fanex.MonthlyDHWL.Executing\Fanex.MonthlyDHWL.Executing.csproj", "{4FDA85FC-4DBD-4167-A5EE-8FF9E2033209}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.DailyDHWL.Executing", "DHWL\src\Fanex.DailyDHWL.Executing\Fanex.DailyDHWL.Executing.csproj", "{CBA4B685-F922-4662-BD83-5E381C8DC920}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,20 +17,25 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CBA4B685-F922-4662-BD83-5E381C8DC920}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CBA4B685-F922-4662-BD83-5E381C8DC920}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CBA4B685-F922-4662-BD83-5E381C8DC920}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CBA4B685-F922-4662-BD83-5E381C8DC920}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9BB9E7B2-C666-4991-8749-D8EE40A395B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9BB9E7B2-C666-4991-8749-D8EE40A395B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BB9E7B2-C666-4991-8749-D8EE40A395B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BB9E7B2-C666-4991-8749-D8EE40A395B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FDA85FC-4DBD-4167-A5EE-8FF9E2033209}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FDA85FC-4DBD-4167-A5EE-8FF9E2033209}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FDA85FC-4DBD-4167-A5EE-8FF9E2033209}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FDA85FC-4DBD-4167-A5EE-8FF9E2033209}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBA4B685-F922-4662-BD83-5E381C8DC920}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBA4B685-F922-4662-BD83-5E381C8DC920}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBA4B685-F922-4662-BD83-5E381C8DC920}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBA4B685-F922-4662-BD83-5E381C8DC920}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{CBA4B685-F922-4662-BD83-5E381C8DC920} = {DD7D2339-B73A-45A2-8471-C72BFEFDAEB1}
 		{9BB9E7B2-C666-4991-8749-D8EE40A395B7} = {DD7D2339-B73A-45A2-8471-C72BFEFDAEB1}
+		{4FDA85FC-4DBD-4167-A5EE-8FF9E2033209} = {DD7D2339-B73A-45A2-8471-C72BFEFDAEB1}
+		{CBA4B685-F922-4662-BD83-5E381C8DC920} = {DD7D2339-B73A-45A2-8471-C72BFEFDAEB1}
 	EndGlobalSection
 EndGlobal
