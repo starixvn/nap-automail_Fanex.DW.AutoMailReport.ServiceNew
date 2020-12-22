@@ -259,6 +259,24 @@
     <Content Include="Templates\BaseSetting.PRO2.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\INR-Currency\INR-Currency.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\INR-Currency\INR-Currency.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\INR-Currency\INR-Currency.Local.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\INR-Currency\INR-Currency.PRO.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\INR-Currency\INR-Currency.UAT.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\INR-Currency\INR-Currency.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Templates\EsportsPerformancebySite\EsportsPerformancebySite.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

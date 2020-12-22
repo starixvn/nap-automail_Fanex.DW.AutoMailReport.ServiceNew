@@ -48,6 +48,8 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
                 new MailAttachment(excelPath, FileExtension.MS_EXCEL)
             };
 
+            attachments = AppConfigService.Config.IsAllowAttachment ? attachments : new List<MailAttachment>();
+
             var mail = new Mail
             {
                 Subject = string.Format(mailFormat.Subject()),

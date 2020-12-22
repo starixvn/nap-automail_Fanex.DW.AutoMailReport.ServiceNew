@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Functions>
+  <Function SiteId="25" SiteName="Auto Mail">
+    <Setting Key="Acc_Rpt_Letstalk_HouseMarginMonitor" SpName="Acc_Rpt_Letstalk_HouseMarginMonitor" DbName="DBACC.bodb02.bodbAdminNet" TimeOut="0" />
+  </Function>
+</Functions>
