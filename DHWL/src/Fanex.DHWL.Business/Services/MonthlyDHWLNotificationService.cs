@@ -67,7 +67,7 @@ namespace Fanex.DHWL.Business.Services
             finally
             {
                 jobMessage.Mail = result.Mail;
-                jobMessage.JobStatus = result.Success ? JobStatus.Success : JobStatus.DataIsNotReady;
+                jobMessage.JobStatus = result.Success ? JobStatus.SuccessWithoutSendmail : JobStatus.DataIsNotReady;
                 jobMessage.TaskLog = new TaskLog
                 {
                     LogTime = DateTime.Now,

@@ -12,13 +12,13 @@
     "ResizeNewWidth": 300,
     "ImageQuality": 100,
     "HeightPerRow": 52,
-    "AdjustHeight": 0
+    "AdjustHeight": 40
   },
   "Margin": {
     "FirstRow": 1,
     "FirstColumn": 2,
     "LastColumn": 15,
-    "CropWidth": 2400,
+    "CropWidth": 2410,
     "ImageName": "DHWL-Margin",
     "SheetName": "Margin",
     "X": 130,
@@ -27,6 +27,6 @@
     "ResizeNewWidth": 1000,
     "ImageQuality": 100,
     "HeightPerRow": 52,
-    "AdjustHeight": 55
+    "AdjustHeight": 20
   }
 }

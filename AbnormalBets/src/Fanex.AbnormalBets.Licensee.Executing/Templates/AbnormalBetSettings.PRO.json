@@ -15,13 +15,6 @@
       "Subject": "[ABI] - Abnormal Licensee bet {0}"
     },
     {
-      "MailId": 293,
-      "MailName": "Abnormal Bet Daily Report - CN88",
-      "SiteName": "CN88",
-      "Subject": "[ABI] - CN88 {0} 每日会员删票报告",
-      "IsHideAfterPTColumn": false
-    },
-    {
       "MailId": 294,
       "MailName": "Abnormal Bet Daily Report - KeenOcean",
       "SiteName": "KeenOcean",

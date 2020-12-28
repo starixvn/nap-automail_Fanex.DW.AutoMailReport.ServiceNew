@@ -1,7 +1,7 @@
 ﻿[
   {
     "ReportFile": "CN88PerformanceByPT/CN88PerformanceByPT.json",
-    "IsActive": true,
+    "IsActive": false,
     "IsEmailEnabled": true
   },
   {

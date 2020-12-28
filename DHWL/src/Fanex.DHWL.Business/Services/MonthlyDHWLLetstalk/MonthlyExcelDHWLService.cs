@@ -50,7 +50,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             return Save();
         }
 
-        private void RenderData(List<DHWLModel> data, ExcelWorksheet template)
+        private void RenderData(List<MonthlyDHWLModel> data, ExcelWorksheet template)
         {
             template.Cells["B2"].LoadFromCollection(data, false);
 
@@ -63,7 +63,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
 
             for (int columnIndex = 2; columnIndex <= 7; columnIndex++)
             {
-                if (columnIndex == 5)
+                if (columnIndex == 4)
                 {
                     continue;
                 }
@@ -72,16 +72,16 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             }
         }
 
-        private void FormatData(List<DHWLModel> data, ExcelWorksheet template, ExcelWorksheet formatTpl)
+        private void FormatData(List<MonthlyDHWLModel> data, ExcelWorksheet template, ExcelWorksheet formatTpl)
         {
             var starIndexGroup = StartRowIndex;
             var endIndexGroup = starIndexGroup;
             var isStart = false;
-            var skipInsertBreakRow = new List<string> { "Total" };
+            var skipInsertBreakRow = new List<string> { "Total", "Adjustment", "Net Income" };
             var productGroups = data.GroupBy(g => new { ProductGroup = g.ProductGroup }).Select(p => p.Key.ProductGroup).ToList();
             if (productGroups.Count > 1)
             {
-                var beforeLastestGroup = productGroups[productGroups.Count - 2];
+                var beforeLastestGroup = productGroups[productGroups.Count - 4];
                 skipInsertBreakRow.Add(beforeLastestGroup);
             }
 
@@ -110,9 +110,9 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
                     }
                 });
 
-            endIndexGroup = endIndexGroup - 4;
-            LastRowIndex = endIndexGroup + 5;
-            for (var columnIndex = 2; columnIndex <= 4; columnIndex++)
+            endIndexGroup = endIndexGroup - 2;
+            LastRowIndex = endIndexGroup + 3;
+            for (var columnIndex = 2; columnIndex <= 3; columnIndex++)
             {
                 var rowTplIndex = 4;
                 for (var rowInex = endIndexGroup; rowInex <= endIndexGroup + 5; rowInex++)
@@ -121,12 +121,16 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
                     rowTplIndex++;
                 }
             }
+
+            formatTpl.Cells["B7"].Copy(template.Cells[endIndexGroup + 3, 2]);
+            template.Cells[endIndexGroup + 3, 2, endIndexGroup + 3, 3].Merge = true;
+            template.Row(endIndexGroup + 3).Height = 73.5;
         }
 
         private string Save()
         {
             var date = dateService.DateTime.ToDate;
-            var fileName = $"DHWL-Monthly-{date:yyyy_MM_dd}.xlsx";
+            var fileName = $"Monthly-DHWL-{date:yyyy_MM_dd}.xlsx";
 
             var path = $@"{AppConfigService.Config.Path}\{date:yyyy}\{date:MM}";
             if (!Directory.Exists(path))
@@ -143,7 +147,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
         private void RenderTitle(ExcelWorksheet template)
         {
             var todate = dateService.DateTime.ToDate;
-            template.Cells["C1"].Value = $"{todate:dd-MMM-yyyy}";
+            template.Cells["C1"].Value = $"{todate:MMM yyyy}";
         }
     }
 }

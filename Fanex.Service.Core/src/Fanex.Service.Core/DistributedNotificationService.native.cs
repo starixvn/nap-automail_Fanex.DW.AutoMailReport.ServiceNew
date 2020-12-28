@@ -1,5 +1,5 @@
-﻿using System;
-using Fanex.MailDelivery.Core.Models;
+﻿using Fanex.MailDelivery.Core.Models;
+using System;
 
 namespace Fanex.Service.Core
 {

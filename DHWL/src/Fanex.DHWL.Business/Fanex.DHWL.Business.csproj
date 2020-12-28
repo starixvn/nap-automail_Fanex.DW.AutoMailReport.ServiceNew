@@ -188,7 +188,8 @@
     <Compile Include="Models\ChartAreasPosition.cs" />
     <Compile Include="Models\ColumnName.cs" />
     <Compile Include="Models\ConfigSettingModel.cs" />
-    <Compile Include="Models\DHWLModel.cs" />
+    <Compile Include="Models\MonthlyDHWLModel.cs" />
+    <Compile Include="Models\DailyDHWLModel.cs" />
     <Compile Include="Models\ExecuteResultModel.cs" />
     <Compile Include="Models\ImageProperty.cs" />
     <Compile Include="Models\InnerPlotPosition.cs" />

@@ -63,7 +63,10 @@ namespace Fanex.DHWL.Business.Services
                 var table = dataSet.Tables[index];
                 foreach (DataRow row in table.Rows)
                 {
-                    result.ImportRow(row);
+                    if (!row[ColumnName.SiteGroup].Equals("CN88"))
+                    {
+                        result.ImportRow(row);
+                    }
                 }
             }
 

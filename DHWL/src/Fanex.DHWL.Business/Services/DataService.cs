@@ -16,8 +16,6 @@ namespace Fanex.DHWL.Business.Services
         DataTable QueryDHWLData();
 
         DataTable QueryLastMonthData();
-
-        DataTable QueryCN88();
     }
 
     public class DataServiceImp : DataService
@@ -88,26 +86,6 @@ namespace Fanex.DHWL.Business.Services
                 .AsEnumerable()
                 .Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver))
                 .CopyToDataTable();
-        }
-
-        public DataTable QueryCN88()
-        {
-            var fromDate = dateService.DateTime.FromDate;
-            var toDate = dateService.DateTime.ToDate;
-            var datatable = new DataTable();
-
-            using (ObjectDb db = new ObjectDb("Acc_Rpt_HouseNetIncome_CN88", 0))
-            {
-                db.SetParameterValue("fromdate", fromDate);
-                db.SetParameterValue("todate", toDate);
-                var dataset = db.ExecuteDataSet();
-                if (dataset != null && dataset.Tables.Count > 0)
-                {
-                    datatable = dataset.Tables[0];
-                }
-            }
-
-            return datatable;
         }
     }
 }

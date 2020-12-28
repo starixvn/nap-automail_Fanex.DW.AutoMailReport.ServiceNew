@@ -1,14 +1,14 @@
 ﻿namespace Fanex.DHWL.Business.Models
 {
-    public class DHWLModel
+    public class MonthlyDHWLModel
     {
         public string ProductShortName { get; set; }
-
-        public decimal WinLossYesterday { get; set; }
 
         public decimal WinLossMTD { get; set; }
 
         public string BreakColumn { get; }
+
+        public decimal WinLossMonthly { get; set; }
 
         public string ProductGroup { get; set; }
 

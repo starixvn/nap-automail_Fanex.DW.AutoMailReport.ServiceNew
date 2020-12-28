@@ -115,7 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataSourceService.cs" />
-    <Compile Include="DistributedNotificationService.cs" />
+    <Compile Include="DistributedNotificationService.native.cs" />
     <Compile Include="ExecuteResult.generated.cs" />
     <Compile Include="LastDateModel.generated.cs" />
     <Compile Include="LogService.cs" />

@@ -50,7 +50,7 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
             return Save();
         }
 
-        private void RenderData(List<DHWLModel> data, ExcelWorksheet template)
+        private void RenderData(List<DailyDHWLModel> data, ExcelWorksheet template)
         {
             template.Cells["B2"].LoadFromCollection(data, false);
 
@@ -72,7 +72,7 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
             }
         }
 
-        private void FormatData(List<DHWLModel> data, ExcelWorksheet template, ExcelWorksheet formatTpl)
+        private void FormatData(List<DailyDHWLModel> data, ExcelWorksheet template, ExcelWorksheet formatTpl)
         {
             var starIndexGroup = StartRowIndex;
             var endIndexGroup = starIndexGroup;
@@ -110,8 +110,7 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
                     }
                 });
 
-            endIndexGroup = endIndexGroup - 4;
-            LastRowIndex = endIndexGroup + 5;
+            LastRowIndex = endIndexGroup;
             for (var columnIndex = 2; columnIndex <= 4; columnIndex++)
             {
                 var rowTplIndex = 4;
@@ -126,7 +125,7 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
         private string Save()
         {
             var date = dateService.DateTime.ToDate;
-            var fileName = $"DHWL-Daily-{date:yyyy_MM_dd}.xlsx";
+            var fileName = $"Daily-DHWL-{date:yyyy_MM_dd}.xlsx";
 
             var path = $@"{AppConfigService.Config.Path}\{date:yyyy}\{date:MM}";
             if (!Directory.Exists(path))
