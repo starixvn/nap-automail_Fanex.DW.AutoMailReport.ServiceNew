@@ -1,4 +1,6 @@
-﻿using System.Data;
+﻿using Fanex.DHWL.Business.Models;
+using System.Data;
+using System.Linq;
 
 namespace Fanex.DHWL.Business.Services
 {
@@ -22,10 +24,10 @@ namespace Fanex.DHWL.Business.Services
 
         public string Export(DataTable rawDataAllProducts)
         {
-            var sbfigure = calculatorService.CalculateSportsbookTotalForDaily(rawDataAllProducts);
-            var totalFigure = calculatorService.CalculateGrandTotalForDaily(rawDataAllProducts);
-            var cn88Figure = calculatorService.CalculateCN88(rawDataAllProducts);
-            var chartPath = chartService.ExportDailyChart(sbfigure, totalFigure, cn88Figure);
+            var result = rawDataAllProducts.AsEnumerable().Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver)).CopyToDataTable();
+            var sbfigure = calculatorService.CalculateSportsbookTotalForDaily(result);
+            var totalFigure = calculatorService.CalculateGrandTotalForDaily(result);
+            var chartPath = chartService.ExportDailyChart(sbfigure, totalFigure);
 
             return chartPath;
         }

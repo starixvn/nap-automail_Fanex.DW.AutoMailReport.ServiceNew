@@ -7,7 +7,7 @@ namespace Fanex.DHWL.Business.Services
 {
     public interface ExcelRawService
     {
-        string Export(DataTable dataTable);
+        string Export(DataTable dataTable, bool isDaily);
     }
 
     public class ExcelRawServiceImp : ExcelRawService
@@ -23,7 +23,7 @@ namespace Fanex.DHWL.Business.Services
             this.dateService = dateService;
         }
 
-        public string Export(DataTable dataTable)
+        public string Export(DataTable dataTable, bool isDaily)
         {
             excelPackage = new ExcelPackage(new FileInfo($"Templates/DHWL-RawData.xlsx"));
             var template = excelPackage.Workbook.Worksheets["DHWL-RawData"];
@@ -32,7 +32,7 @@ namespace Fanex.DHWL.Business.Services
             RenderTitle(template);
             RenderData(dataTable, template);
 
-            return Save();
+            return Save(isDaily);
         }
 
         private void RenderData(DataTable dataTable, ExcelWorksheet template)
@@ -59,10 +59,12 @@ namespace Fanex.DHWL.Business.Services
             }
         }
 
-        private string Save()
+        private string Save(bool isDaily)
         {
             var date = dateService.DateTime.ToDate;
-            var fileName = $"RAW House Income {date:yyyyMMdd}.xlsx";
+            var fileName = isDaily
+                ? $"Daily - RAW House Income {date:yyyyMMdd}.xlsx"
+                : $"Monthly - RAW House Income {date:yyyyMMdd}.xlsx";
 
             var path = $@"{AppConfigService.Config.Path}\{date:yyyy}\{date:MM}";
             if (!Directory.Exists(path))

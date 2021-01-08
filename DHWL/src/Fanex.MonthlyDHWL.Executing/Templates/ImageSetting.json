@@ -1,0 +1,17 @@
+﻿{
+  "DHWL": {
+    "FirstRow": 1,
+    "FirstColumn": 2,
+    "LastColumn": 3,
+    "CropWidth": 625,
+    "ImageName": "Monthly-House-Net-Income",
+    "SheetName": "Letstalk",
+    "X": 130,
+    "Y": 130,
+    "IsResize": false,
+    "ResizeNewWidth": 300,
+    "ImageQuality": 100,
+    "HeightPerRow": 53,
+    "AdjustHeight": 100
+  }
+}

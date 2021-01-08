@@ -10,6 +10,8 @@ namespace Fanex.DHWL.Business.Services
         DataTable CloneWithoutIgnoreFigureRows(DataTable source);
 
         DataTable CloneRoyaltyFees(DataTable source);
+
+        DataTable CombineAllInOneTable(DataSet dataSet);
     }
 
     public class BaseDataTableImp : BaseDataTable
@@ -47,6 +49,24 @@ namespace Fanex.DHWL.Business.Services
                 if (!RowFigureName.IgnoreFigureRows.Contains(row["Figure"].ToString()))
                 {
                     result.ImportRow(row);
+                }
+            }
+
+            return result;
+        }
+
+        public DataTable CombineAllInOneTable(DataSet dataSet)
+        {
+            var result = dataSet.Tables.Count > 0 ? dataSet.Tables[0].Clone() : new DataTable();
+            for (int index = 0; index < dataSet.Tables.Count; index++)
+            {
+                var table = dataSet.Tables[index];
+                foreach (DataRow row in table.Rows)
+                {
+                    if (!row[ColumnName.SiteGroup].Equals("CN88"))
+                    {
+                        result.ImportRow(row);
+                    }
                 }
             }
 

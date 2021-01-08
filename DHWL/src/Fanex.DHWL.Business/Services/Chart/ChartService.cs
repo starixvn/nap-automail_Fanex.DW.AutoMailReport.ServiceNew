@@ -10,7 +10,7 @@ namespace Fanex.DHWL.Business.Services
 {
     public interface ChartService
     {
-        string ExportDailyChart(Dictionary<int, double> sbfigure, Dictionary<int, double> totalfigure, Dictionary<int, double> cn88figure);
+        string ExportDailyChart(Dictionary<int, double> sbfigure, Dictionary<int, double> totalfigure);
     }
 
     public class ChartServiceImp : ChartService
@@ -24,23 +24,21 @@ namespace Fanex.DHWL.Business.Services
             this.dateTimeService = dateTimeService;
         }
 
-        public string ExportDailyChart(Dictionary<int, double> sbfigure, Dictionary<int, double> totalfigure, Dictionary<int, double> cn88figure)
+        public string ExportDailyChart(Dictionary<int, double> sbfigure, Dictionary<int, double> totalfigure)
         {
             var font = new Font("Tahoma", 14);
             var sportbookChart = "Sportsbook";
             var otherProductsChart = "OtherProduct";
             var totalChart = "Total";
-            var totalChartWithoutCN88 = "TotalWithoutCN88";
 
             Chart chart = new Chart();
 
-            ConfigurateChartAreas(totalfigure, cn88figure, font, chart);
+            ConfigurateChartAreas(totalfigure, font, chart);
             ConfigurateChartLegends(font, chart);
             ConfigurationSportbookChart(font, sportbookChart, chart);
             ConfigurationOtherProductsChart(font, otherProductsChart, chart);
             ConfiguationTotalChart(font, totalChart, chart);
-            ConfiguationTotalWithoutCN88Chart(font, totalChartWithoutCN88, chart);
-            AssignDataToCharts(sbfigure, totalfigure, cn88figure, sportbookChart, otherProductsChart, totalChart, totalChartWithoutCN88, chart);
+            AssignDataToCharts(sbfigure, totalfigure, sportbookChart, otherProductsChart, totalChart, chart);
 
             return SaveChartToImage(chart);
         }
@@ -58,11 +56,9 @@ namespace Fanex.DHWL.Business.Services
         private void AssignDataToCharts(
             Dictionary<int, double> sbfigure,
             Dictionary<int, double> totalFigure,
-            Dictionary<int, double> cn88figure,
             string sportbookChart,
             string otherProductsChart,
             string totalChart,
-            string totalChartWithoutCN88,
             Chart chart)
         {
             foreach (var month in sbfigure)
@@ -78,10 +74,6 @@ namespace Fanex.DHWL.Business.Services
                 var total = month.Value / milions;
                 var totalCutOffValue = Truncate(total, 1);
                 chart.Series[totalChart].Points.AddXY(month.Key, totalCutOffValue);
-
-                var totalWithoutCN88 = (totalFigure[month.Key] - cn88figure[month.Key]) / milions;
-                var totalWithoutCN88CutOffValue = Truncate(totalWithoutCN88, 1);
-                chart.Series[totalChartWithoutCN88].Points.AddXY(month.Key, totalWithoutCN88CutOffValue);
             }
         }
 
@@ -106,23 +98,6 @@ namespace Fanex.DHWL.Business.Services
 
             chart.Series[totalChart].MarkerStyle = MarkerStyle.Triangle;
             chart.Series[totalChart].MarkerSize = 15;
-        }
-
-        private static void ConfiguationTotalWithoutCN88Chart(Font font, string totalWithoutCN88Chart, Chart chart)
-        {
-            chart.Series.Add(totalWithoutCN88Chart);
-            chart.Series[totalWithoutCN88Chart].LegendText = "Total (w/o C8)";
-            chart.Series[totalWithoutCN88Chart].ChartType = SeriesChartType.Line;
-            chart.Series[totalWithoutCN88Chart].Color = Color.FromArgb(255, 66, 14);
-            chart.Series[totalWithoutCN88Chart].IsVisibleInLegend = true;
-            chart.Series[totalWithoutCN88Chart].IsValueShownAsLabel = true;
-            chart.Series[totalWithoutCN88Chart].LabelFormat = "#,##0.#m";
-            chart.Series[totalWithoutCN88Chart].LabelForeColor = Color.FromArgb(138, 27, 27);
-            chart.Series[totalWithoutCN88Chart].BorderWidth = 3;
-            chart.Series[totalWithoutCN88Chart].Font = font;
-
-            chart.Series[totalWithoutCN88Chart].MarkerStyle = MarkerStyle.Diamond;
-            chart.Series[totalWithoutCN88Chart].MarkerSize = 15;
         }
 
         private static void ConfigurationOtherProductsChart(Font font, string otherProductsChart, Chart chart)
@@ -164,7 +139,7 @@ namespace Fanex.DHWL.Business.Services
             chart.Legends[0].Alignment = StringAlignment.Center;
         }
 
-        private void ConfigurateChartAreas(Dictionary<int, double> totalFigure, Dictionary<int, double> cn88figure, Font font, Chart chart)
+        private void ConfigurateChartAreas(Dictionary<int, double> totalFigure, Font font, Chart chart)
         {
             var numberofDays = totalFigure.Count;
             var width = (numberofDays * 1920 / 31) + 50;
@@ -174,7 +149,7 @@ namespace Fanex.DHWL.Business.Services
             var minList = new List<double>();
             totalFigure.ToList().ForEach(m =>
             {
-                minList.Add(totalFigure[m.Key] - cn88figure[m.Key]);
+                minList.Add(totalFigure[m.Key]);
             });
 
             var minValue = minList.Min(s => s) / milions - 1;
