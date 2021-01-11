@@ -23,9 +23,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
         public List<MonthlyDHWLModel> CalTotalByProduct(DataTable monthlyRawData)
         {
             var result = new List<MonthlyDHWLModel>();
-            var yesterdayColumnIndex = monthlyRawData.Columns.Count - 1;
-            var monthlyColumnIndex = 8;
-            var mtdColumnIndex = 9;
+
             monthlyRawData.AsEnumerable()
                 .Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver))
                 .GroupBy(g => new
@@ -43,8 +41,8 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
                         ProductGroup = product.Key.ProductGroup,
                         OrderByProduct = product.Key.OrderByProduct,
 
-                        WinLossMonthly = product.Sum(s => Converter.To<decimal>(s[monthlyColumnIndex])),
-                        WinLossMTD = product.Sum(s => Converter.To<decimal>(s[mtdColumnIndex]))
+                        WinLossMonthly = product.Sum(s => Converter.To<decimal>(s[ColumnName.Monthly])),
+                        WinLossMTD = product.Sum(s => Converter.To<decimal>(s[ColumnName.MTD]))
                     };
 
                     result.Add(row);

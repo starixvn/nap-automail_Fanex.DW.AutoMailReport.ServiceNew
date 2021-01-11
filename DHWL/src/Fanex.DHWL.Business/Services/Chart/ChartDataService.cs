@@ -12,31 +12,14 @@ namespace Fanex.DHWL.Business.Services
         Dictionary<int, double> CalculateSportsbookTotalForDaily(DataTable rawDataAllProducts);
 
         Dictionary<int, double> CalculateGrandTotalForDaily(DataTable rawDataAllProducts);
-
-        Dictionary<int, double> CalculateCN88(DataTable rawDataAllProducts);
     }
 
     public class ChartDataServiceImp : ChartDataService
     {
-        public Dictionary<int, double> CalculateCN88(DataTable rawDataAllProducts)
-        {
-            var result = new Dictionary<int, double>();
-            for (var columnIndex = 10; columnIndex < rawDataAllProducts.Columns.Count; columnIndex++)
-            {
-                var total = rawDataAllProducts.AsEnumerable()
-                    .Where(s => s[ColumnName.SiteGroup].ToString() == "CN88")
-                    .Sum(s => Converter.To<double>(s[columnIndex]));
-                var date = Converter.To<int>(rawDataAllProducts.Columns[columnIndex].ColumnName);
-                result.Add(date, total);
-            }
-
-            return result;
-        }
-
         public Dictionary<int, double> CalculateGrandTotalForDaily(DataTable rawDataAllProducts)
         {
             var result = new Dictionary<int, double>();
-            for (var columnIndex = 10; columnIndex < rawDataAllProducts.Columns.Count; columnIndex++)
+            for (var columnIndex = 11; columnIndex < rawDataAllProducts.Columns.Count; columnIndex++)
             {
                 var grandTotal = rawDataAllProducts.AsEnumerable().Sum(s => Converter.To<double>(s[columnIndex]));
                 var date = Converter.To<int>(rawDataAllProducts.Columns[columnIndex].ColumnName);
@@ -49,7 +32,7 @@ namespace Fanex.DHWL.Business.Services
         public Dictionary<int, double> CalculateSportsbookTotalForDaily(DataTable rawDataAllProducts)
         {
             var result = new Dictionary<int, double>();
-            for (var columnIndex = 10; columnIndex < rawDataAllProducts.Columns.Count; columnIndex++)
+            for (var columnIndex = 11; columnIndex < rawDataAllProducts.Columns.Count; columnIndex++)
             {
                 var total = rawDataAllProducts.AsEnumerable()
                     .Where(s => s[ColumnName.ProductName].ToString().Equals("Sportsbook"))
