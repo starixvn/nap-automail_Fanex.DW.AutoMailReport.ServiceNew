@@ -24,6 +24,7 @@ namespace Fanex.DHWL.Business.Services
         private readonly FileService fileService;
         private readonly BaseDataTable baseDataTable;
         private readonly MonthlyImageDHWLService imageDHWLService;
+        private readonly DateTimeServiceProvider dateTimeServiceProvider;
 
         private List<string> filePaths = new List<string>();
         private Mail mail = new Mail { Subject = string.Empty, Body = string.Empty };
@@ -37,7 +38,8 @@ namespace Fanex.DHWL.Business.Services
             FileService fileService,
             BaseDataTable baseDataTable,
             DataLastMonthService dataLastMonthService,
-            MonthlyImageDHWLService imageDHWLService
+            MonthlyImageDHWLService imageDHWLService,
+            DateTimeServiceProvider dateTimeServiceProvider
             )
         {
             this.log = log;
@@ -48,6 +50,7 @@ namespace Fanex.DHWL.Business.Services
             this.fileService = fileService;
             this.baseDataTable = baseDataTable;
             this.imageDHWLService = imageDHWLService;
+            this.dateTimeServiceProvider = dateTimeServiceProvider;
         }
 
         public JobMessage Execute()
@@ -82,8 +85,10 @@ namespace Fanex.DHWL.Business.Services
         {
             var monthlyRawData = dataService.QueryDHWLData();
             var cloneData = baseDataTable.Clone(monthlyRawData);
+            var fromdate = dateTimeServiceProvider.DateTime.FromDate;
+            var todate = dateTimeServiceProvider.DateTime.ToDate;
 
-            excelRawService.Export(monthlyRawData, false);
+            excelRawService.Export(monthlyRawData, false, fromdate, todate);
             var imageDHWLPath = imageDHWLService.Export(monthlyRawData);
             var images = new List<string>
             {

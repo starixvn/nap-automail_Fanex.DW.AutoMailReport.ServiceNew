@@ -252,6 +252,9 @@
     <Content Include="Templates\Fanex.MonthlyDHWL.Executing.PRE.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\DHWL.PRE.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.DHWL.Business\Fanex.DHWL.Business.csproj">

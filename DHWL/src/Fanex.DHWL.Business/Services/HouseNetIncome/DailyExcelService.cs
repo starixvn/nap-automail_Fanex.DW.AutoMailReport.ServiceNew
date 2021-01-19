@@ -20,6 +20,7 @@ namespace Fanex.DHWL.Business.Services
         private readonly DataHouseIncomeService dataHouseIncomeService;
         private readonly DataService dataService;
         private readonly DataLastMonthService dataLastMonthService;
+        private readonly ExcelRawService excelRawService;
 
         private const int StartRowIndex = 7;
 
@@ -29,7 +30,8 @@ namespace Fanex.DHWL.Business.Services
             DateTimeService lastMonth,
             DataHouseIncomeService dataHouseIncomeService,
             DataService dataService,
-            DataLastMonthService dataLastMonthService)
+            DataLastMonthService dataLastMonthService,
+            ExcelRawService excelRawService)
         {
             this.excelPackage = excelPackage;
             this.dateService = dateService;
@@ -37,6 +39,7 @@ namespace Fanex.DHWL.Business.Services
             this.dataHouseIncomeService = dataHouseIncomeService;
             this.dataService = dataService;
             this.dataLastMonthService = dataLastMonthService;
+            this.excelRawService = excelRawService;
         }
 
         public string Export(DataTable dailyRawData)
@@ -63,6 +66,7 @@ namespace Fanex.DHWL.Business.Services
         private DataTable ProcessLastMonth()
         {
             var lastMonthRawData = dataService.QueryLastMonthData();
+            excelRawService.Export(lastMonthRawData, false, lastMonth.FromDate, lastMonth.ToDate);
             return dataLastMonthService.CalcData(lastMonthRawData);
         }
 

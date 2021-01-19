@@ -27,6 +27,7 @@ namespace Fanex.DHWL.Business.Services
             {
                 ColumnName.IsDeposit,
                 ColumnName.SiteGroup,
+                ColumnName.ProductCategory,
                 ColumnName.ProductGroup,
                 ColumnName.ProductShortName,
                 ColumnName.Monthly

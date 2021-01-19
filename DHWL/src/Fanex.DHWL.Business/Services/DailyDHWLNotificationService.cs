@@ -30,6 +30,7 @@ namespace Fanex.DHWL.Business.Services
         private readonly ChartExport chartExport;
         private readonly DailyImageDHWLService imageDHWLService;
         private readonly ImageMarginService imageMarginService;
+        private readonly DateTimeServiceProvider dateTimeServiceProvider;
 
         private List<string> filePaths = new List<string>();
         private Mail mail = new Mail { Subject = string.Empty, Body = string.Empty };
@@ -48,8 +49,8 @@ namespace Fanex.DHWL.Business.Services
             DataLastMonthService dataLastMonthService,
             ChartExport chartExport,
             DailyImageDHWLService imageDHWLService,
-            ImageMarginService imageMarginService
-            )
+            ImageMarginService imageMarginService,
+            DateTimeServiceProvider dateTimeServiceProvider)
         {
             this.log = log;
             this.dataService = dataService;
@@ -64,6 +65,7 @@ namespace Fanex.DHWL.Business.Services
             this.chartExport = chartExport;
             this.imageDHWLService = imageDHWLService;
             this.imageMarginService = imageMarginService;
+            this.dateTimeServiceProvider = dateTimeServiceProvider;
         }
 
         public JobMessage Execute()
@@ -98,8 +100,10 @@ namespace Fanex.DHWL.Business.Services
         {
             var dailyRawData = dataService.QueryDHWLData();
             var cloneData = baseDataTable.Clone(dailyRawData);
+            var fromdate = dateTimeServiceProvider.DateTime.FromDate;
+            var todate = dateTimeServiceProvider.DateTime.ToDate;
 
-            excelRawService.Export(dailyRawData, true);
+            excelRawService.Export(dailyRawData, true, fromdate, todate);
             var excelPath = excelDailyService.Export(cloneData);
 
             var imageDHWLPath = imageDHWLService.Export(dailyRawData);

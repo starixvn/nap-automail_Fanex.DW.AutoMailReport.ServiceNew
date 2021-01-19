@@ -24,7 +24,7 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
         {
             var result = new List<DailyDHWLModel>();
             var yesterdayColumnIndex = dailyRawData.Columns.Count - 1;
-            var mtdColumnIndex = 9;
+
             dailyRawData.AsEnumerable()
                 .Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver))
                 .GroupBy(g => new
@@ -43,7 +43,7 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
                         OrderByProduct = product.Key.OrderByProduct,
 
                         WinLossYesterday = product.Sum(s => Converter.To<decimal>(s[yesterdayColumnIndex])),
-                        WinLossMTD = product.Sum(s => Converter.To<decimal>(s[mtdColumnIndex]))
+                        WinLossMTD = product.Sum(s => Converter.To<decimal>(s[ColumnName.MTD]))
                     };
 
                     result.Add(row);
