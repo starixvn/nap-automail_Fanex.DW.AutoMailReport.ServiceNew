@@ -252,6 +252,9 @@
     <Content Include="Templates\ProductSettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\ProductSettings.PRE.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.MarginChart.Business\Fanex.MarginChart.Business.csproj">

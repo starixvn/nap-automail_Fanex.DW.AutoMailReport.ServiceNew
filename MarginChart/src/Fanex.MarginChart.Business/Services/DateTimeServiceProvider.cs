@@ -17,8 +17,7 @@ namespace Fanex.MarginChart.Business.Services
                 return new Dictionary<ReportType, DateTimeService>
                 {
                     { ReportType.Manual, new DateTimeServiceManualImp()},
-                    { ReportType.Daily, new DateTimeDailyServiceImp()},
-                    { ReportType.Monthly, new DateTimeMonthlyServiceImp()}
+                    { ReportType.Daily, new DateTimeDailyServiceImp()}
                 };
             }
         }

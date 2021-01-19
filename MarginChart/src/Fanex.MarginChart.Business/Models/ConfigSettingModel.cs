@@ -13,9 +13,11 @@ namespace Fanex.MarginChart.Business.Models
 
         public string Path { get; set; }
 
+        public string InternalPath { get; set; }
+
         public string TargetName { get; set; }
 
-        public string LetstalkGroup { get; set; }
+        public bool IsSentDirectly { get; set; }
 
         public string Password { get; set; }
 
@@ -30,8 +32,6 @@ namespace Fanex.MarginChart.Business.Models
         public Dictionary<string, ImageProperty> ImageSettings { get; set; } = new Dictionary<string, ImageProperty>();
 
         public Dictionary<int, ChartAreasPosition> AreasPosition { get; set; } = new Dictionary<int, ChartAreasPosition>();
-
-        public Dictionary<string, LetstalkGroup> LetstalkGroups { get; set; } = new Dictionary<string, LetstalkGroup>();
 
         public List<ProductGroup> ProductGroups { get; set; } = new List<ProductGroup>();
     }

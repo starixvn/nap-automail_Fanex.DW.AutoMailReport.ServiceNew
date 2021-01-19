@@ -3,8 +3,6 @@
     public enum ReportType
     {
         Daily = 0,
-        Monthly = 1,
-        Manual = 2,
-        LastMonth = 3
+        Manual = 1,
     }
 }

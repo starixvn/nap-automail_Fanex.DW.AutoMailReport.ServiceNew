@@ -17,7 +17,5 @@
         public int ConvertValue { get; set; }
 
         public bool IsChartAttachment { get; set; }
-
-        public string GroupName { get; set; }
     }
 }

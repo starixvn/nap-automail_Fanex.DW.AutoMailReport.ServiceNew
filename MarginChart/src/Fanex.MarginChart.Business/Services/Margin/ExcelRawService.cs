@@ -3,7 +3,7 @@ using System;
 using System.Data;
 using System.IO;
 
-namespace Fanex.MarginChart.Business.Services
+namespace Fanex.MarginChart.Business.Services.Margin
 {
     public interface ExcelRawService
     {

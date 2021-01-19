@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
-namespace Fanex.MarginChart.Business.Services
+namespace Fanex.MarginChart.Business.Services.Margin
 {
     public interface DataMarginService
     {
@@ -57,7 +57,7 @@ namespace Fanex.MarginChart.Business.Services
                 && s[ColumnName.Figure].Equals(RowFigureName.HouseTurnOver)
                 && Converter.To<bool>(s[ColumnName.IsDeposit]) == Converter.To<bool>(dataType)).CopyToDataTable();
 
-            for (var columnIndex = 11; columnIndex < dataSource.Columns.Count; columnIndex++)
+            for (var columnIndex = ColumnIndex.StartDateColumnIndex; columnIndex < dataSource.Columns.Count; columnIndex++)
             {
                 var to = dataSource.AsEnumerable()
                     .Where(s => s[ColumnName.Figure].Equals(RowFigureName.HouseTurnOver))
@@ -79,7 +79,7 @@ namespace Fanex.MarginChart.Business.Services
                 && !s[ColumnName.Figure].Equals(RowFigureName.HouseTurnOver)
                 && Converter.To<bool>(s[ColumnName.IsDeposit]) == Converter.To<bool>(dataType)).CopyToDataTable();
 
-            for (var columnIndex = 11; columnIndex < dataSource.Columns.Count; columnIndex++)
+            for (var columnIndex = ColumnIndex.StartDateColumnIndex; columnIndex < dataSource.Columns.Count; columnIndex++)
             {
                 var winloss = dataSource.AsEnumerable()
                     .Where(s => !s[ColumnName.Figure].Equals(RowFigureName.HouseTurnOver))

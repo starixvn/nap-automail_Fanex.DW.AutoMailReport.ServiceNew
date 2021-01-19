@@ -28,7 +28,9 @@ namespace Fanex.MarginChart.Business.Models
             PaytoBetGenius,
             PaytoMetricGaming,
             PaytoMuayThai,
-            PaytoSupplier
+            PaytoSupplier,
+            ContributionAmount,
+            JackpotPrize
         };
 
         public static List<string> RoyaltyFees = new List<string>
