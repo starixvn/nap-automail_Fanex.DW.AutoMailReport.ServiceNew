@@ -30,7 +30,8 @@ namespace Fanex.DHWL.Business.Services
                 ColumnName.ProductCategory,
                 ColumnName.ProductGroup,
                 ColumnName.ProductShortName,
-                ColumnName.Monthly
+                ColumnName.Monthly,
+                ColumnName.SubFigure
             };
 
             columns.ForEach(column =>

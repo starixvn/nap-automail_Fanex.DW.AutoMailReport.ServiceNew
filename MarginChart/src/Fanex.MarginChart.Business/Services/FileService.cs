@@ -10,7 +10,7 @@ namespace Fanex.MarginChart.Business.Services
     {
         void MoveFiles(string source, string destination);
 
-        void CopyFiles(LetstalkGroup letstalkGroup, List<string> fileNames);
+        void CopyFiles(string letstalkGroup, List<string> fileNames);
     }
 
     public class FileServiceImp : FileService
@@ -99,9 +99,9 @@ namespace Fanex.MarginChart.Business.Services
             }
         }
 
-        private void LogOneTime(LetstalkGroup letstalkGroup, DateTime date)
+        private void LogOneTime(string letstalkGroup, DateTime date)
         {
-            var fileInfo = new FileInfo(letstalkGroup.InternalPath);
+            var fileInfo = new FileInfo($"{AppConfigService.Config.InternalPath}-{letstalkGroup}");
             var path = fileInfo.DirectoryName;
             var fileName = $@"{path}\OneTimeLog.json";
             var logs = new List<LogInternalOneTimeModel>();
@@ -117,19 +117,17 @@ namespace Fanex.MarginChart.Business.Services
                 FolderName = fileInfo.Name,
                 GenerateTime = $"{DateTime.Now:yyyy-MM-dd hh:mm:ss tt}",
                 TargetName = AppConfigService.Config.TargetName,
-                Group = letstalkGroup.Group,
-                MailId = letstalkGroup.MailId,
-                Subject = letstalkGroup.MailId > 0 ? $"Automail Report - House Net Income - {date.AddDays(1):yyyy/MM/dd}" : string.Empty
+                Group = letstalkGroup
             });
 
             var json = JsonConvert.SerializeObject(logs, Formatting.Indented);
             File.WriteAllText(fileName, json);
         }
 
-        public void CopyFiles(LetstalkGroup letstalkGroup, List<string> fileNames)
+        public void CopyFiles(string letstalkGroup, List<string> fileNames)
         {
             var date = dateTimeService.DateTime.ToDate;
-            var path = $@"{letstalkGroup.InternalPath}\{date:yyyyMMdd}";
+            var path = $@"{AppConfigService.Config.InternalPath}-{letstalkGroup}\{date:yyyyMMdd}";
             Directory.CreateDirectory(path);
             var index = 1;
             fileNames.ForEach(fileName =>

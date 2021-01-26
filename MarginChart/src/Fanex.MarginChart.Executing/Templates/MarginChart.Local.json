@@ -3,23 +3,12 @@
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
   "IsCheckEnoughData": false,
   "ReportType": "Manual",
-  "FromDate": "2020-12-01",
-  "ToDate": "2020-12-02",
-  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\NEW-DHWL",
+  "FromDate": "2021-01-01",
+  "ToDate": "2021-01-12",
+  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\NEW-MarginChart",
+  "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\5",
   "Password": "",
   "TargetName": "daily-house-wl",
-  "LetstalkGroup": "DWHL-UAT",
-  "ProductList": "All",
-  "LetstalkGroups": {
-    "Image": {
-      "Group": "DWHL-UAT",
-      "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\2-DHWL-Daily",
-      "MailId": 0
-    },
-    "Excel": {
-      "Group": "",
-      "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\2-DHWL-Excel-Daily",
-      "MailId": 364
-    }
-  }
+  "IsSentDirectly": true,
+  "ProductList": "All"
 }

@@ -14,26 +14,21 @@ namespace Fanex.MarginChart.Business.Services
         bool IsDataAvailable();
 
         DataTable QueryMarginChartData();
-
-        DataTable QueryLastMonthData();
     }
 
     public class DataServiceImp : DataService
     {
         private readonly IDynamicRepository repository;
         private readonly DateTimeServiceProvider dateService;
-        private readonly DateTimeService lastMonth;
         private readonly BaseDataTable baseDataTable;
 
         public DataServiceImp(
             IDynamicRepository repository,
             DateTimeServiceProvider dateService,
-            DateTimeService lastMonth,
             BaseDataTable baseDataTable)
         {
             this.repository = repository;
             this.dateService = dateService;
-            this.lastMonth = lastMonth;
             this.baseDataTable = baseDataTable;
         }
 
@@ -44,15 +39,12 @@ namespace Fanex.MarginChart.Business.Services
 
         public bool IsDataAvailable()
         {
-            var result = false;
             if (AppConfigService.Config.ReportType == ReportType.Manual || !AppConfigService.Config.IsCheckEnoughData)
             {
                 return true;
             }
 
-            result = QueryDWStatus().DataIsReady;
-
-            return result;
+            return QueryDWStatus().DataIsReady;
         }
 
         public DataTable QueryMarginChartData()
@@ -76,16 +68,6 @@ namespace Fanex.MarginChart.Business.Services
             }
 
             return dataTable;
-        }
-
-        public DataTable QueryLastMonthData()
-        {
-            var fromDate = lastMonth.FromDate;
-            var toDate = lastMonth.ToDate;
-            return QueryRawData(fromDate, toDate, "Acc_Rpt_HouseNetIncome")
-                .AsEnumerable()
-                .Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver))
-                .CopyToDataTable();
         }
     }
 }

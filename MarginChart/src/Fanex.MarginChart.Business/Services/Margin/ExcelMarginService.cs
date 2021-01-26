@@ -3,7 +3,7 @@ using OfficeOpenXml;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Fanex.MarginChart.Business.Services
+namespace Fanex.MarginChart.Business.Services.Margin
 {
     public interface ExcelMarginService
     {

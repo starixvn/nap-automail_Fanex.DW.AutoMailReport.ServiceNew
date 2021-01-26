@@ -13,13 +13,6 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
 
     public class MonthlyDataDHWLServiceImp : MonthlyDataDHWLService
     {
-        private readonly DataService dataService;
-
-        public MonthlyDataDHWLServiceImp(DataService dataService)
-        {
-            this.dataService = dataService;
-        }
-
         public List<MonthlyDHWLModel> CalTotalByProduct(DataTable monthlyRawData)
         {
             var result = new List<MonthlyDHWLModel>();

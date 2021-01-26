@@ -11,6 +11,7 @@
         public const string ProductName = "ProductName";
         public const string ProductShortName = "ProductShortName";
         public const string Figure = "Figure";
+        public const string SubFigure = "SubFigure";
 
         public const string Monthly = "Monthly";
         public const string MTD = "MTD";

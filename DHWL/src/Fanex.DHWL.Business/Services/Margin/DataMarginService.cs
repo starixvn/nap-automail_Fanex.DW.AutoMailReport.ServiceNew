@@ -41,7 +41,7 @@ namespace Fanex.DHWL.Business.Services
             var data = baseDataTable.CloneWithoutIgnoreFigureRows(source);
             var royalFeesData = baseDataTable.CloneRoyaltyFees(source);
             var result = new List<MarginModel>();
-            var mtdColumnIndex = 10;
+            var mtdColumnIndex = ColumnIndex.MTDColumnIndex;
             CalcData(data, mtdColumnIndex, result);
             var royalFeesResult = CalcRoyalFeesData(royalFeesData, mtdColumnIndex);
             CalcGrandTotal(result, royalFeesResult);

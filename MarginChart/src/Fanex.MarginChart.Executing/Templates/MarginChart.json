@@ -6,14 +6,9 @@
   "FromDate": "2021-01-01",
   "ToDate": "2021-01-12",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\NEW-MarginChart",
+  "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\5",
   "Password": "",
   "TargetName": "daily-house-wl",
-  "LetstalkGroup": "DWHL-UAT",
-  "ProductList": "All",
-  "LetstalkGroups": {
-    "Image": {
-      "Group": "DWHL-UAT",
-      "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\3-MarginChart-Daily"
-    }
-  }
+  "IsSentDirectly": true,
+  "ProductList": "All"
 }

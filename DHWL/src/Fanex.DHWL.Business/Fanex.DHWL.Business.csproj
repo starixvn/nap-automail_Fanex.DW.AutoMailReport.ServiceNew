@@ -186,6 +186,7 @@
   <ItemGroup>
     <Compile Include="Criterias\GetDWStatusCriteria.cs" />
     <Compile Include="Models\ChartAreasPosition.cs" />
+    <Compile Include="Models\ColumnIndex.cs" />
     <Compile Include="Models\ColumnName.cs" />
     <Compile Include="Models\ConfigSettingModel.cs" />
     <Compile Include="Models\MonthlyDHWLModel.cs" />

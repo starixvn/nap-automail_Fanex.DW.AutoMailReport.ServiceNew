@@ -1,7 +1,5 @@
-﻿using Fanex.LetstalkService.Client;
-using Fanex.MailDelivery.Core.Models;
+﻿using Fanex.MailDelivery.Core.Models;
 using Fanex.MarginChart.Business.Models;
-using Fanex.MarginChart.Business.Services.DailyDHWLLetstalk;
 using Fanex.MarginChart.Business.Services.Margin;
 using System;
 using System.Collections.Generic;
@@ -19,36 +17,23 @@ namespace Fanex.MarginChart.Business.Services
     {
         private readonly Log log;
         private readonly DataService dataService;
-        private readonly LetstalkClientService letstalkService;
         private readonly ExcelRawService excelRawService;
         private readonly MessageService messageService;
         private readonly FileService fileService;
-        private readonly MailService mailService;
         private readonly BaseDataTable baseDataTable;
-        private readonly DataHouseIncomeService dataHouseIncomeService;
-        private readonly ChartExport chartExport;
-        private readonly DailyImageDHWLService imageDHWLService;
         private readonly ImageMarginService imageMarginService;
         private readonly DateTimeServiceProvider dateTimeServiceProvider;
         private readonly DataMarginService dataMarginService;
         private readonly ExcelMarginService excelMarginService;
         private readonly ChartService chartService;
 
-        private List<string> filePaths = new List<string>();
-
         public DailyMarginChartNotificationServiceImp(
             Log log,
             DataService dataService,
-            LetstalkClientService letstalkService,
             ExcelRawService excelRawService,
             MessageService messageService,
             FileService fileService,
-            MailService mailService,
             BaseDataTable baseDataTable,
-            DataHouseIncomeService dataHouseIncomeService,
-            DataLastMonthService dataLastMonthService,
-            ChartExport chartExport,
-            DailyImageDHWLService imageDHWLService,
             ImageMarginService imageMarginService,
             DateTimeServiceProvider dateTimeServiceProvider,
             DataMarginService dataMarginService,
@@ -57,15 +42,10 @@ namespace Fanex.MarginChart.Business.Services
         {
             this.log = log;
             this.dataService = dataService;
-            this.letstalkService = letstalkService;
             this.excelRawService = excelRawService;
             this.messageService = messageService;
             this.fileService = fileService;
-            this.mailService = mailService;
             this.baseDataTable = baseDataTable;
-            this.dataHouseIncomeService = dataHouseIncomeService;
-            this.chartExport = chartExport;
-            this.imageDHWLService = imageDHWLService;
             this.imageMarginService = imageMarginService;
             this.dateTimeServiceProvider = dateTimeServiceProvider;
             this.dataMarginService = dataMarginService;
@@ -109,25 +89,31 @@ namespace Fanex.MarginChart.Business.Services
             var todate = dateTimeServiceProvider.DateTime.ToDate;
             var products = AppConfigService.Config.ProductGroups;
             var yesterdayColumnIndex = source.Columns.Count - 1;
-            var mtdColumnIndex = 10;
+            var mtdColumnIndex = ColumnIndex.MTDColumnIndex;
+            var statusSendImage = new Dictionary<string, bool>();
 
             excelRawService.Export(dailyRawData, true, fromdate, todate);
 
             products.ForEach(product =>
             {
+                var images = new List<string>();
                 var category = product.ProductCategory;
 
                 var margins = ExportMargin(source, yesterdayColumnIndex, mtdColumnIndex, category);
                 var charts = ExportChart(product, source, category);
+                images.AddRange(margins);
+                images.AddRange(charts);
+
+                var status = CopyFiles(product.LetstalkGroup, images);
+                status
+                .ToList()
+                .ForEach(s =>
+                {
+                    statusSendImage.Add(s.Key, s.Value);
+                });
             });
 
-            var images = new List<string>
-            {
-            };
-
-            //CopyFiles(excelPath, images);
-            var status = messageService.SendMessage(images, AppConfigService.Config.LetstalkGroup);
-            var errFile = status.Where(s => !s.Value).Select(s => s.Key).ToList();
+            var errFile = statusSendImage.Where(s => !s.Value).Select(s => s.Key).ToList();
 
             return new ExecuteResultModel
             {
@@ -175,12 +161,16 @@ namespace Fanex.MarginChart.Business.Services
             };
         }
 
-        private void CopyFiles(List<string> images)
+        private Dictionary<string, bool> CopyFiles(string letstalkGroup, List<string> images)
         {
-            foreach (var group in AppConfigService.Config.LetstalkGroups)
+            var result = new Dictionary<string, bool>();
+            fileService.CopyFiles(letstalkGroup, images);
+            if (AppConfigService.Config.IsSentDirectly)
             {
-                fileService.CopyFiles(group.Value, images);
+                result = messageService.SendMessage(images, letstalkGroup);
             }
+
+            return result;
         }
     }
 }
