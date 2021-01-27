@@ -44,13 +44,12 @@ namespace Fanex.DHWL.Business.Services
 
         public bool IsDataAvailable()
         {
-            var result = false;
             if (AppConfigService.Config.ReportType == ReportType.Manual || !AppConfigService.Config.IsCheckEnoughData)
             {
                 return true;
             }
 
-            result = QueryDWStatus().DataIsReady;
+            var result = QueryDWStatus().DataIsReady;
 
             return result;
         }

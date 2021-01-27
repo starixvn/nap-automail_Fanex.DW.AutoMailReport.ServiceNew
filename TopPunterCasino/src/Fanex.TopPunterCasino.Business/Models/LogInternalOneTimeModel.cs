@@ -11,5 +11,9 @@
         public string TargetName { get; set; }
 
         public string Group { get; set; }
+
+        public int MailId { get; set; }
+
+        public string Subject { get; set; }
     }
 }

@@ -18,7 +18,6 @@ namespace Fanex.DHWL.Business.Services
     {
         private readonly Log log;
         private readonly DataService dataService;
-        private readonly LetstalkClientService letstalkService;
         private readonly ExcelRawService excelRawService;
         private readonly MessageService messageService;
         private readonly FileService fileService;
@@ -26,25 +25,19 @@ namespace Fanex.DHWL.Business.Services
         private readonly MonthlyImageDHWLService imageDHWLService;
         private readonly DateTimeServiceProvider dateTimeServiceProvider;
 
-        private List<string> filePaths = new List<string>();
-        private Mail mail = new Mail { Subject = string.Empty, Body = string.Empty };
-
         public MonthlyDHWLNotificationServiceImp(
             Log log,
             DataService dataService,
-            LetstalkClientService letstalkService,
             ExcelRawService excelRawService,
             MessageService messageService,
             FileService fileService,
             BaseDataTable baseDataTable,
-            DataLastMonthService dataLastMonthService,
             MonthlyImageDHWLService imageDHWLService,
             DateTimeServiceProvider dateTimeServiceProvider
             )
         {
             this.log = log;
             this.dataService = dataService;
-            this.letstalkService = letstalkService;
             this.excelRawService = excelRawService;
             this.messageService = messageService;
             this.fileService = fileService;
@@ -89,11 +82,7 @@ namespace Fanex.DHWL.Business.Services
             var todate = dateTimeServiceProvider.DateTime.ToDate;
 
             excelRawService.Export(monthlyRawData, false, fromdate, todate);
-            var imageDHWLPath = imageDHWLService.Export(monthlyRawData);
-            var images = new List<string>
-            {
-                imageDHWLPath,
-            };
+            var images = imageDHWLService.Export(monthlyRawData);
 
             CopyFiles(images);
             var status = messageService.SendMessage(images, AppConfigService.Config.LetstalkGroup);

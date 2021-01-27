@@ -1,10 +1,11 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
 
 namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
 {
     public interface MonthlyImageDHWLService
     {
-        string Export(DataTable monthlyRawData);
+        List<string> Export(DataTable monthlyRawData);
     }
 
     public class MonthlyImageDHWLServiceImp : MonthlyImageDHWLService
@@ -20,7 +21,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             this.imageService = imageService;
         }
 
-        public string Export(DataTable monthlyRawData)
+        public List<string> Export(DataTable monthlyRawData)
         {
             var excelPath = excelDHWLService.Export(monthlyRawData);
             var lastRow = excelDHWLService.LastRowIndex;
@@ -29,7 +30,17 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             image.CropHeight = lastRow * image.HeightPerRow + image.AdjustHeight;
             var imagePath = imageService.ExportImage(excelPath, image.SheetName, image);
 
-            return imagePath;
+            lastRow = excelDHWLService.LastAdjustmentRowIndex;
+            image = AppConfigService.Config.ImageSettings["Adjustment"];
+            image.LastRow = lastRow;
+            image.CropHeight = lastRow * image.HeightPerRow + image.AdjustHeight;
+            var imageAdjustmentPath = imageService.ExportImage(excelPath, image.SheetName, image);
+
+            return new List<string>
+            {
+                imagePath ,
+                imageAdjustmentPath
+            };
         }
     }
 }

@@ -11,7 +11,22 @@
     "IsResize": false,
     "ResizeNewWidth": 300,
     "ImageQuality": 100,
-    "HeightPerRow": 53,
-    "AdjustHeight": 100
+    "HeightPerRow": 52,
+    "AdjustHeight": 10
+  },
+  "Adjustment": {
+    "FirstRow": 1,
+    "FirstColumn": 9,
+    "LastColumn": 11,
+    "CropWidth": 950,
+    "ImageName": "Adjustment",
+    "SheetName": "Letstalk",
+    "X": 130,
+    "Y": 130,
+    "IsResize": true,
+    "ResizeNewWidth": 500,
+    "ImageQuality": 100,
+    "HeightPerRow": 52,
+    "AdjustHeight": 60
   }
 }

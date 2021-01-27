@@ -5,7 +5,7 @@
   "ReportType": "Daily",
   "FromDate": "2020-12-01",
   "ToDate": "2020-12-02",
-  "Path": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\DHWL-PRE",
+  "Path": "\\\\10.99.99.70\\Data.Web\\Fanex.Excel\\DHWL-PRE",
   "Password": "Star168",
   "TargetName": "daily-house-wl",
   "LetstalkGroup": "DHWL-PRE",
@@ -13,12 +13,12 @@
   "LetstalkGroups": {
     "Image": {
       "Group": "DWHL-PRO",
-      "InternalPath": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0600\\2-DHWL-Daily",
+      "InternalPath": "\\\\10.99.99.70\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0500\\2-DHWL-Daily",
       "MailId": 0
     },
     "Excel": {
       "Group": "",
-      "InternalPath": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0600\\2-DHWL-Excel-Daily",
+      "InternalPath": "\\\\10.99.99.70\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0500\\2-DHWL-Excel-Daily",
       "MailId": 391
     }
   }

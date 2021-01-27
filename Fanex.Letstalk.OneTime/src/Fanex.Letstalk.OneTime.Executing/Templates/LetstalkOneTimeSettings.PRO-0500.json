@@ -1,7 +1,7 @@
 ﻿{
   "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.99.99.51:801/60",
   "CategorySentryLog": "NAP-Report-Service",
-  "Path": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0500",
+  "Path": "\\\\10.99.99.70\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0500",
   "TargetName": "daily-house-wl",
   "Group": "DHWL-PRE",
   "MailSettings": {
@@ -17,6 +17,24 @@
     }
   },
   "Folders": [
+    {
+      "FolderName": "1-DHWL-Monthly",
+      "IsActive": true,
+      "FolderMode": "Monthly",
+      "ReportName": "Letstalk - House Net Income Monthly Report"
+    },
+    {
+      "FolderName": "2-DHWL-Daily",
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - House Net Income Daily Report (Images) "
+    },
+    {
+      "FolderName": "2-DHWL-Excel-Daily",
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - House Net Income Daily Report (Excel)"
+    },
     {
       "FolderName": "5-DHWL-Soccer-Margin",
       "IsActive": true,
