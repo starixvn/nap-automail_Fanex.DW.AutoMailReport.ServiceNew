@@ -36,6 +36,11 @@
   },
   {
     "ReportFile": "INR-Currency/INR-Currency.json",
+    "IsActive": false,
+    "IsEmailEnabled": true
+  },
+  {
+    "ReportFile": "ActiveSupers/ActiveSupers.json",
     "IsActive": true,
     "IsEmailEnabled": true
   }

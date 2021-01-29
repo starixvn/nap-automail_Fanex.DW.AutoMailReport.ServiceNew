@@ -1,0 +1,20 @@
+﻿{
+  "SPName": "GET_SR_League",
+  "IsIgnoredCheckMailSent": false,
+  "DateRange": "Monthly",
+  "FromDate": "2020-01-01",
+  "ToDate": "2020-01-31",
+  "Path": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\League",
+  "Password": "Star168",
+  "FunctionIdNodata": 224,
+  "TemplateExcelFile": "League/League.xlsx",
+  "SheetExcelTemplateName": [ "Monthly" ],
+  "CellAddressRender": [ "A2" ],
+  "StartExelRowIndex": "2",
+  "EmailTemplate": "League/League.cshtml",
+  "EmailSubject": "Automail Report - Monthly SR_League Match Report",
+  "MailId": "315",
+  "MailName": "SR League Match",
+  "FileName": "Monthly_SR_League_Match_Report",
+  "StartExcelColumnIndex": 1
+}

@@ -1,0 +1,19 @@
+﻿{
+  "SPName": "GET_SR_League",
+  "DateRange": "Monthly",
+  "FromDate": "2020-01-01",
+  "ToDate": "2020-01-31",
+  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\League",
+  "Password": "",
+  "FunctionIdNodata": 90,
+  "TemplateExcelFile": "League/League.xlsx",
+  "SheetExcelTemplateName": [ "Monthly" ],
+  "CellAddressRender": [ "A2" ],
+  "StartExelRowIndex": "2",
+  "EmailTemplate": "League/League.cshtml",
+  "EmailSubject": "Automail Report - Monthly SR_League Match Report",
+  "MailId": "327",
+  "MailName": "Mail Template Testing",
+  "FileName": "Monthly_SR_League_Match_Report",
+  "StartExcelColumnIndex": 1
+}

@@ -6,5 +6,6 @@
     <Setting Key="Acc_Rpt_Automail_SportbookMonthlyCredit" SpName="Acc_Rpt_Automail_SportbookMonthlyCredit" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
     <Setting Key="Acc_Rpt_Automail_EsportsMonthlySite" SpName="Acc_Rpt_Automail_EsportsMonthlySite" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
     <Setting Key="Acc_Rpt_Automail_Currency" SpName="Acc_Rpt_Automail_Currency" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+    <Setting Key="Acc_Rpt_Automail_ActiveSuper" SpName="Acc_Rpt_Automail_ActiveSuper" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
   </Function>
 </Functions>
