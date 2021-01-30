@@ -32,5 +32,7 @@ namespace Fanex.DHWL.Business.Models
         public Dictionary<int, ChartAreasPosition> AreasPosition { get; set; } = new Dictionary<int, ChartAreasPosition>();
 
         public Dictionary<string, LetstalkGroup> LetstalkGroups { get; set; } = new Dictionary<string, LetstalkGroup>();
+
+        public bool IsAttachAdjument { get; set; }
     }
 }

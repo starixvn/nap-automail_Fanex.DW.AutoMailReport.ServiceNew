@@ -8,7 +8,7 @@
     "LetstalkOneTime": {
       "MailId": 377,
       "MailName": "Letstalk - OneTime - 0600",
-      "IsAllowResend": true
+      "IsAllowResend": false
     },
     "CheckData": {
       "MailId": 383,

@@ -24,7 +24,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
         private readonly DateTimeServiceProvider dateService;
         private readonly AdjustmentDataService adjustmentService;
 
-        private const int StartRowIndex = 2;
+        private const int StartRowIndex = 3;
 
         public int LastRowIndex
         {
@@ -65,7 +65,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
 
         private void RenderData(List<MonthlyDHWLModel> data, ExcelWorksheet template)
         {
-            template.Cells["B2"].LoadFromCollection(data, false);
+            template.Cells["B3"].LoadFromCollection(data, false);
 
             var maxRowIndex = data.Count + StartRowIndex - 1;
 
@@ -170,7 +170,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
         private void RenderTitle(ExcelWorksheet template)
         {
             var todate = dateService.DateTime.ToDate;
-            template.Cells["C1"].Value = $"{todate:MMM yyyy}";
+            template.Cells["B1"].Value = $"Monthly House Net Income - {todate:MMM yyyy}";
         }
     }
 }
