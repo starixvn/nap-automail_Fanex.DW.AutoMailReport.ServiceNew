@@ -1,4 +1,5 @@
 ﻿using Fanex.DHWL.Business.Models;
+using Fanex.DHWL.Business.Services.Adjustment;
 using OfficeOpenXml;
 using System.Collections.Generic;
 using System.Data;
@@ -12,6 +13,8 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
         string Export(DataTable monthlyRawData);
 
         int LastRowIndex { get; set; }
+
+        int LastAdjustmentRowIndex { get; set; }
     }
 
     public class MonthlyExcelDHWLServiceImp : MonthlyExcelDHWLService
@@ -19,19 +22,28 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
         private readonly MonthlyDataDHWLService dataDHWLService;
         private ExcelPackage excelPackage;
         private readonly DateTimeServiceProvider dateService;
-        private const int StartRowIndex = 2;
+        private readonly AdjustmentDataService adjustmentService;
+
+        private const int StartRowIndex = 3;
 
         public int LastRowIndex
         {
             get; set;
         }
 
+        public int LastAdjustmentRowIndex
+        {
+            get; set;
+        }
+
         public MonthlyExcelDHWLServiceImp(
             MonthlyDataDHWLService dataDHWLService,
-            DateTimeServiceProvider dateService)
+            DateTimeServiceProvider dateService,
+            AdjustmentDataService adjustmentService)
         {
             this.dataDHWLService = dataDHWLService;
             this.dateService = dateService;
+            this.adjustmentService = adjustmentService;
         }
 
         public string Export(DataTable monthlyRawData)
@@ -46,13 +58,14 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             RenderTitle(dailyTemplate);
             RenderData(dataDHWL, dailyTemplate);
             FormatData(dataDHWL, dailyTemplate, formatTpl);
+            RenderAdjustment(monthlyRawData, dailyTemplate);
 
             return Save();
         }
 
         private void RenderData(List<MonthlyDHWLModel> data, ExcelWorksheet template)
         {
-            template.Cells["B2"].LoadFromCollection(data, false);
+            template.Cells["B3"].LoadFromCollection(data, false);
 
             var maxRowIndex = data.Count + StartRowIndex - 1;
 
@@ -105,7 +118,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
                         template.InsertRow(endIndexGroup + 1, 1);
                         starIndexGroup++;
                         endIndexGroup++;
-                        template.Cells[endIndexGroup, 2, endIndexGroup, 4].StyleID = formatTpl.Cells["B2"].StyleID;
+                        template.Cells[endIndexGroup, 2, endIndexGroup, 3].StyleID = formatTpl.Cells["B2"].StyleID;
                         template.Row(endIndexGroup).Height = 5;
                     }
                 });
@@ -122,9 +135,19 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
                 }
             }
 
-            formatTpl.Cells["B7"].Copy(template.Cells[endIndexGroup + 3, 2]);
-            template.Cells[endIndexGroup + 3, 2, endIndexGroup + 3, 3].Merge = true;
-            template.Row(endIndexGroup + 3).Height = 73.5;
+            template.Column(5).Hidden = true;
+            template.Column(6).Hidden = true;
+            template.Column(7).Hidden = true;
+        }
+
+        private void RenderAdjustment(DataTable monthlyRawData, ExcelWorksheet template)
+        {
+            var todate = dateService.DateTime.ToDate;
+            var dataAjustment = adjustmentService.CalcData(monthlyRawData);
+            template.Cells["I1"].Value = $"Explanation for Adjustment - {todate:MMM yyyy}";
+            template.Cells["I3"].LoadFromCollection(dataAjustment, false);
+
+            LastAdjustmentRowIndex = dataAjustment.Count + 2;
         }
 
         private string Save()
@@ -147,7 +170,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
         private void RenderTitle(ExcelWorksheet template)
         {
             var todate = dateService.DateTime.ToDate;
-            template.Cells["C1"].Value = $"{todate:MMM yyyy}";
+            template.Cells["B1"].Value = $"Monthly House Net Income - {todate:MMM yyyy}";
         }
     }
 }

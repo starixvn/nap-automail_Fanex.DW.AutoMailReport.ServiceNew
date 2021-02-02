@@ -211,6 +211,12 @@
     <Content Include="Templates\ContentWithAttachment.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\LetstalkOneTimeSettings.PRO-0505.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Fanex.Letstalk.OneTime.Executing.PRO-0505.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.Letstalk.OneTime.Business\Fanex.Letstalk.OneTime.Business.csproj">

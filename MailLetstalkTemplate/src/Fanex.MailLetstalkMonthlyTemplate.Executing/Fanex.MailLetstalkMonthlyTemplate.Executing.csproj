@@ -352,6 +352,24 @@
     <Content Include="Templates\Report.PRO.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\ActiveSupers\ActiveSupers.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\ActiveSupers\ActiveSupers.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\ActiveSupers\ActiveSupers.Local.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\ActiveSupers\ActiveSupers.PRO.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\ActiveSupers\ActiveSupers.UAT.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\ActiveSupers\ActiveSupers.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Templates\Sportbook-CreditLine\Sportbook-CreditLine.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

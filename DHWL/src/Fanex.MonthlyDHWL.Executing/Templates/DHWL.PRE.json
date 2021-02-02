@@ -4,16 +4,17 @@
   "ReportType": "Monthly",
   "FromDate": "2020-12-01",
   "ToDate": "2020-12-31",
-  "Path": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\DHWL-PRE",
-  "InternalPath": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\DHWL-PRE_InternalPath",
+  "Path": "\\\\10.99.99.70\\Data.Web\\Fanex.Excel\\DHWL-PRE",
+  "InternalPath": "\\\\10.99.99.70\\Data.Web\\Fanex.Excel\\DHWL-PRE_InternalPath",
   "Password": "Star168",
   "TargetName": "daily-house-wl",
   "LetstalkGroup": "DHWL-PRE",
   "ProductList": "All",
+  "IsAttachAdjument": false,
   "LetstalkGroups": {
     "Image": {
       "Group": "DWHL-PRO",
-      "InternalPath": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0600\\1-DHWL-Monthly"
+      "InternalPath": "\\\\10.99.99.70\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0505\\1-DHWL-Monthly"
     }
   }
 }

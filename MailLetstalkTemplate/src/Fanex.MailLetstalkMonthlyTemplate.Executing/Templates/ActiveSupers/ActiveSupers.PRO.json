@@ -1,0 +1,20 @@
+﻿{
+  "SPName": "Acc_Rpt_Automail_ActiveSuper",
+  "IsIgnoredCheckMailSent": false,
+  "DateRange": "Monthly",
+  "FromDate": "2020-01-01",
+  "ToDate": "2020-01-31",
+  "Path": "\\\\10.99.99.70\\Data.Web\\Fanex.Excel\\ActiveSupers",
+  "Password": "Star168",
+  "FunctionIdNodata": 224,
+  "TemplateExcelFile": "ActiveSupers/ActiveSupers.xlsx",
+  "SheetExcelTemplateName": [ "SB_Credit_ActiveSupers", "SB_Deposit_ActiveSupers", "SB_Total_ActiveSupers", "ALL_Credit_ActiveSupers", "ALL_Deposit_ActiveSupers", "ALL_Total_ActiveSupers" ],
+  "CellAddressRender": [ "B3", "B3", "B3", "B3", "B3", "B3" ],
+  "StartExelRowIndex": "3",
+  "EmailTemplate": "ActiveSupers/ActiveSupers.cshtml",
+  "EmailSubject": "Automail Report - Monthly Active Supers for OPS",
+  "MailId": "414",
+  "MailName": "Monthly Active Supers",
+  "FileName": "Active_Supers",
+  "StartExcelColumnIndex": 2
+}

@@ -3,7 +3,7 @@
   "DateRange": "Monthly",
   "FromDate": "2020-03-01",
   "ToDate": "2020-03-31",
-  "Path": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\ExtraSuperCommission",
+  "Path": "\\\\10.99.99.70\\Data.Web\\Fanex.Excel\\ExtraSuperCommission",
   "Password": "ibc168",
   "FunctionIdNodata": 90,
   "TemplateExcelFile": "ExtraSuperCommission/ExtraSuperCommission.xlsx",

@@ -185,6 +185,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Criterias\GetDWStatusCriteria.cs" />
+    <Compile Include="Models\AdjustmentModel.cs" />
     <Compile Include="Models\ChartAreasPosition.cs" />
     <Compile Include="Models\ColumnIndex.cs" />
     <Compile Include="Models\ColumnName.cs" />
@@ -203,6 +204,7 @@
     <Compile Include="Models\Site.cs" />
     <Compile Include="Models\TaskstatusModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Adjustment\AdjustmentDataService.cs" />
     <Compile Include="Services\AppConfigService.cs" />
     <Compile Include="Services\BaseDataTable.cs" />
     <Compile Include="Services\Chart\ChartDataService.cs" />

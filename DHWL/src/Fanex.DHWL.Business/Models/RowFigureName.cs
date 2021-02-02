@@ -18,6 +18,10 @@ namespace Fanex.DHWL.Business.Models
         public const string RebateDiscount = "Rebate & Discount";
         public const string CurrencyPlay = "Currency Play";
         public const string LicensingMinimumFee = "Licensing Minimum Fee";
+        public const string LicenseeHouseIncome = "Licensee House Income";
+
+        public const string Discount = "Discount";
+        public const string Rebate = "Rebate";
 
         public static List<string> IgnoreFigureRows = new List<string>
         {
