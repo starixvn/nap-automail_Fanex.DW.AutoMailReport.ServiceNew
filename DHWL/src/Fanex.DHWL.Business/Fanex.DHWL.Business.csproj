@@ -185,11 +185,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Criterias\GetDWStatusCriteria.cs" />
+    <Compile Include="Criterias\LiccenseeCheckDataReadyCriteria.cs" />
     <Compile Include="Models\AdjustmentModel.cs" />
     <Compile Include="Models\ChartAreasPosition.cs" />
     <Compile Include="Models\ColumnIndex.cs" />
     <Compile Include="Models\ColumnName.cs" />
     <Compile Include="Models\ConfigSettingModel.cs" />
+    <Compile Include="Models\LicenseeCheckDataReady.cs" />
     <Compile Include="Models\MonthlyDHWLModel.cs" />
     <Compile Include="Models\DailyDHWLModel.cs" />
     <Compile Include="Models\ExecuteResultModel.cs" />
@@ -238,6 +240,7 @@
     <Compile Include="Services\Margin\ImageMarginService.cs" />
     <Compile Include="Services\MessageService.cs" />
     <Compile Include="Services\DailyDHWLNotificationService.cs" />
+    <Compile Include="Services\MonthlyReconciliation\MonthlyReconciliationExcelService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

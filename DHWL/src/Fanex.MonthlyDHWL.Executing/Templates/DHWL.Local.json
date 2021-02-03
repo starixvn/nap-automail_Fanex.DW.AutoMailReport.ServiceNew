@@ -6,10 +6,11 @@
   "FromDate": "2020-09-01",
   "ToDate": "2020-09-30",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\NEW-DHWL",
-  "Password": "",
+  "Password": "Star168",
   "TargetName": "daily-house-wl",
   "LetstalkGroup": "DWHL-UAT",
   "ProductList": "All",
+  "IsAttachAdjument": true,
   "LetstalkGroups": {
     "Image": {
       "Group": "DWHL-UAT",

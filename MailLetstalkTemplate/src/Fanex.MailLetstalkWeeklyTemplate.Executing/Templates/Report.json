@@ -1,10 +1,5 @@
 ﻿[
   {
-    "ReportFile": "CN88PerformanceByPT/CN88PerformanceByPT.json",
-    "IsActive": false,
-    "IsEmailEnabled": true
-  },
-  {
     "ReportFile": "LicenseeVoidTicket/LicenseeVoidTicket.json",
     "IsActive": false,
     "IsEmailEnabled": true

@@ -10,7 +10,7 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
         {
             get
             {
-                var date = SystemTime.Now.AddDays(-1);
+                var date = SystemTime.Now;
                 if (date.Day == 31 && date.Month == 12)
                 {
                     return Converter.To<DateTime>($"{date:yyyy-MM-01}");
@@ -24,7 +24,7 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
         {
             get
             {
-                var date = SystemTime.Now.AddDays(-1);
+                var date = SystemTime.Now;
                 if (date.Day == 31 && date.Month == 12)
                 {
                     return Converter.To<DateTime>($"{date:yyyy-MM-dd}");

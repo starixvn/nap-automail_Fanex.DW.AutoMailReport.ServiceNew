@@ -195,6 +195,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Criterias\GetDWStatusCriteria.cs" />
+    <Compile Include="Criterias\TopLeagueGroupSportLicenseePerfCriteria.cs" />
     <Compile Include="Criterias\TopLicenseeByTOCriteria.cs" />
     <Compile Include="Criterias\TopLicenseeMarginCriteria.cs" />
     <Compile Include="Models\ConfigSettingModel.cs" />
@@ -205,6 +206,7 @@
     <Compile Include="Models\LogInternalOneTimeModel.cs" />
     <Compile Include="Models\SectionModel.cs" />
     <Compile Include="Models\TaskstatusModel.cs" />
+    <Compile Include="Models\TopLeagueGroupSportLicenseePerfModel.cs" />
     <Compile Include="Models\TopLicenseeMarginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AppConfigService.cs" />

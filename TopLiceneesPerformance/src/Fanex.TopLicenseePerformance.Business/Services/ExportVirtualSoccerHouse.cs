@@ -32,7 +32,7 @@ namespace Fanex.TopLicensee.Service.Services
             var titleSport = new Dictionary<LeagueGroup, string>
             {
                 { LeagueGroup.VL, sport[sportType] },
-                { LeagueGroup.Esoccer, "ESOCCER " },                
+                { LeagueGroup.Esoccer, "ESOCCER " },
             };
 
             excelPackage = new ExcelPackage(new FileInfo("Templates/TopLicensee-VirtualSoccer-House.xlsx"));
@@ -40,6 +40,14 @@ namespace Fanex.TopLicensee.Service.Services
             template.Cells["B2"].Value = titleSport[leagueGroup];
             template.Cells["D2"].Value = $"{dateService.ToDate:yyyyMMdd}";
             template.Cells["C4"].LoadFromDataTable(dataTable, false);
+
+            var maxRowIndex = dataTable.Rows.Count + 4;
+            var startColIndex = 2;
+
+            var value = template.Cells[maxRowIndex, startColIndex + 1].Value;
+            template.Cells[maxRowIndex, startColIndex, maxRowIndex, startColIndex + 2].Merge = true;
+            template.Cells[maxRowIndex, startColIndex, maxRowIndex, startColIndex + 2].Value = value;
+            template.Cells[maxRowIndex, startColIndex, maxRowIndex, startColIndex + 2].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
 
             return SaveCreatedFile(leagueGroup, sportType);
         }

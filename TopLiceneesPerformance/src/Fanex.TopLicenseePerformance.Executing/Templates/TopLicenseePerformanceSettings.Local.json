@@ -4,11 +4,11 @@
   "TargetName": "daily-house-wl",
   "LicenseeVirtualGroup": "Top-50-Licensee-VSB-Performance-Test",
   "IsCheckEnoughData": false,
-  "IsManual": false,
-  "FromDate": "2019-12-01",
-  "Todate": "2019-12-10",
+  "IsManual": true,
+  "FromDate": "2020-01-01",
+  "Todate": "2020-01-31",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\TopLicenseePerformance",
-  "IsSentDirectly": false,
+  "IsSentDirectly": true,
   "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\14-TopLicenseePerformance",
   "Password": "",
   "FunctionIdNodata": 90,
@@ -61,37 +61,40 @@
       "FirstRow": 2,
       "FirstColumn": 2,
       "LastRow": 55,
-      "LastColumn": 7,
-      "CropWidth": 2350,
-      "CropHeight": 5260,
+      "LastColumn": 8,
+      "CropWidth": 2930,
       "X": 220,
       "Y": 300,
       "IsResize": true,
-      "ResizeNewWidth": 700
+      "ResizeNewWidth": 1200,
+      "HeightPerRow": 96,
+      "AdjustHeight": 0
     },
     "TopLicenseeMargin": {
       "FirstRow": 2,
       "FirstColumn": 2,
       "LastRow": 65,
-      "LastColumn": 12,
-      "CropWidth": 3600,
-      "CropHeight": 5250,
+      "LastColumn": 13,
+      "CropWidth": 4100,
       "X": 200,
       "Y": 200,
       "IsResize": true,
-      "ResizeNewWidth": 700
+      "ResizeNewWidth": 1500,
+      "HeightPerRow": 97,
+      "AdjustHeight": 30
     },
     "VirtualSoccer_Licensee": {
       "FirstRow": 2,
       "FirstColumn": 2,
       "LastRow": 55,
-      "LastColumn": 7,
-      "CropWidth": 2350,
-      "CropHeight": 5250,
+      "LastColumn": 8,
+      "CropWidth": 2800,
       "X": 200,
       "Y": 220,
       "IsResize": true,
-      "ResizeNewWidth": 500
+      "ResizeNewWidth": 1250,
+      "HeightPerRow": 96,
+      "AdjustHeight": 0
     }
   }
 }
