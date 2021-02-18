@@ -101,8 +101,8 @@ namespace Fanex.TopLicensee.Service.Services
             var imageBatches = new List<List<string>>();
             var success = true;
 
-            ExportVirtualSoccerLicensee(imageBatches, LeagueGroup.VL, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_LicenseePerf");
-            ExportVirtualSoccerLicensee(imageBatches, LeagueGroup.VL, SportType.Basketball, "Acc_Rpt_Letstalk_LeagueGroupSport_LicenseePerf");
+            ExportVirtualSoccerLicensee(imageBatches, LeagueGroup.VL, SportType.Soccer);
+            ExportVirtualSoccerLicensee(imageBatches, LeagueGroup.VL, SportType.Basketball);
 
             ExportImageTop50(imageBatches);
             ExportImageTopLicenseeMargin(imageBatches);
@@ -153,8 +153,13 @@ namespace Fanex.TopLicensee.Service.Services
 
                 batch.Value.ForEach(sport =>
                 {
-                    AppConfigService.AppConfig.Image["Top50"].ImageName = sport.SectionName.Replace(" ", string.Empty);
-                    var imageFile = imageService.ExportImage(excelFile, sport.SectionName, AppConfigService.AppConfig.Image["Top50"]);
+                    var image = AppConfigService.AppConfig.Image["Top50"];
+                    var lastRow = excelService.LastRowIndex;
+                    image.ImageName = sport.SectionName.Replace(" ", string.Empty);
+                    image.LastRow = lastRow;
+                    image.CropHeight = lastRow * image.HeightPerRow + image.AdjustHeight;
+
+                    var imageFile = imageService.ExportImage(excelFile, sport.SectionName, image);
                     imageFiles.Add(imageFile);
                 });
 
@@ -166,24 +171,39 @@ namespace Fanex.TopLicensee.Service.Services
         {
             var data = dataService.QueryDailyTopLicenseeMargin(true);
             var excelFile = excelTopLicenseeMargin.Export("Daily", data);
-            AppConfigService.AppConfig.Image["TopLicenseeMargin"].ImageName = "TopLicenseeMargin_Daily";
-            var imageName = imageService.ExportImage(excelFile, "Template", AppConfigService.AppConfig.Image["TopLicenseeMargin"]);
+            var image = AppConfigService.AppConfig.Image["TopLicenseeMargin"];
+            image.ImageName = "TopLicenseeMargin_Daily";
+            var lastRow = excelTopLicenseeMargin.LastRowIndex;
+            image.LastRow = lastRow;
+            image.CropHeight = lastRow * image.HeightPerRow + image.AdjustHeight;
+
+            var imageName = imageService.ExportImage(excelFile, "Template", image);
             imageBatches.Add(new List<string> { imageName });
 
             data = dataService.QueryDailyTopLicenseeMargin(false);
             excelFile = excelTopLicenseeMargin.Export("MTD", data);
-            AppConfigService.AppConfig.Image["TopLicenseeMargin"].ImageName = "TopLicenseeMargin_MTD";
-            imageName = imageService.ExportImage(excelFile, "Template", AppConfigService.AppConfig.Image["TopLicenseeMargin"]);
+            image = AppConfigService.AppConfig.Image["TopLicenseeMargin"];
+            image.ImageName = "TopLicenseeMargin_MTD";
+            lastRow = excelTopLicenseeMargin.LastRowIndex;
+            image.LastRow = lastRow;
+            image.CropHeight = lastRow * image.HeightPerRow + image.AdjustHeight;
+
+            imageName = imageService.ExportImage(excelFile, "Template", image);
             imageBatches.Add(new List<string> { imageName });
         }
 
-        private void ExportVirtualSoccerLicensee(List<List<string>> imageBatches, LeagueGroup leagueGroup, SportType sportType, string spName)
+        private void ExportVirtualSoccerLicensee(List<List<string>> imageBatches, LeagueGroup leagueGroup, SportType sportType)
         {
-            var dataTable = dataService.QueryVirtualSoccer(leagueGroup, sportType, spName);
-            var excelPath = exportVirtualSoccerLicensee.Export(dataTable, leagueGroup, sportType);
+            var data = dataService.QueryVirtualSoccer(leagueGroup, sportType);
+            var excelPath = exportVirtualSoccerLicensee.Export(data, leagueGroup, sportType);
 
-            AppConfigService.AppConfig.Image["VirtualSoccer_Licensee"].ImageName = $"VS_Licensee_{leagueGroup}_{sportType}";
-            var imageFile = imageService.ExportImage(excelPath, "Template", AppConfigService.AppConfig.Image["VirtualSoccer_Licensee"]);
+            var image = AppConfigService.AppConfig.Image["VirtualSoccer_Licensee"];
+            image.ImageName = $"VS_Licensee_{leagueGroup}_{sportType}";
+            var lastRow = exportVirtualSoccerLicensee.LastRowIndex;
+            image.LastRow = lastRow;
+            image.CropHeight = lastRow * image.HeightPerRow + image.AdjustHeight;
+
+            var imageFile = imageService.ExportImage(excelPath, "Template", image);
             imageBatches.Add(new List<string> { imageFile });
         }
     }

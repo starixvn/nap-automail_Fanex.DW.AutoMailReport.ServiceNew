@@ -5,6 +5,7 @@ using Fanex.DHWL.Business.Services;
 using Fanex.DHWL.Business.Services.Adjustment;
 using Fanex.DHWL.Business.Services.Margin;
 using Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk;
+using Fanex.DHWL.Business.Services.MonthlyReconciliation;
 using Fanex.LetstalkService.Client;
 using Fanex.LetstalkService.Core.Services;
 using Fanex.Logging;
@@ -71,6 +72,7 @@ namespace Fanex.MonthlyDHWL.Executing
             container.Register<MonthlyImageDHWLService, MonthlyImageDHWLServiceImp>();
             container.Register<ImageMarginService, ImageMarginServiceImp>();
             container.Register<AdjustmentDataService, AdjustmentDataServiceImp>();
+            container.Register<MonthlyReconciliationExcelService, MonthlyReconciliationExcelServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
             container.Register<ApplicationSettingService, ApplicationSettingServiceImp>();

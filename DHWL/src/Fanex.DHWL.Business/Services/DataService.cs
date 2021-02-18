@@ -16,6 +16,8 @@ namespace Fanex.DHWL.Business.Services
         DataTable QueryDHWLData();
 
         DataTable QueryLastMonthData();
+
+        DataTable QueryReconciliation();
     }
 
     public class DataServiceImp : DataService
@@ -42,6 +44,11 @@ namespace Fanex.DHWL.Business.Services
             return repository.Get<TaskstatusModel>(new GetDWStatusCriteria());
         }
 
+        private bool CheckLicenseeDataIsReady()
+        {
+            return repository.Get<LicenseeCheckDataReady>(new LiccenseeCheckDataReadyCriteria()).IsDataYesterdayReady;
+        }
+
         public bool IsDataAvailable()
         {
             if (AppConfigService.Config.ReportType == ReportType.Manual || !AppConfigService.Config.IsCheckEnoughData)
@@ -49,7 +56,8 @@ namespace Fanex.DHWL.Business.Services
                 return true;
             }
 
-            var result = QueryDWStatus().DataIsReady;
+            var checkLicenseeDataIsReady = CheckLicenseeDataIsReady();
+            var result = QueryDWStatus().DataIsReady && checkLicenseeDataIsReady;
 
             return result;
         }
@@ -85,6 +93,28 @@ namespace Fanex.DHWL.Business.Services
                 .AsEnumerable()
                 .Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver))
                 .CopyToDataTable();
+        }
+
+        public DataTable QueryReconciliation()
+        {
+            var fromDate = dateService.DateTime.FromDate;
+            var toDate = dateService.DateTime.ToDate;
+
+            var dataTable = new DataTable();
+
+            using (ObjectDb db = new ObjectDb("Acc_Rpt_HouseNetIncome_Reconciliation", 0))
+            {
+                db.SetParameterValue("fromdate", fromDate);
+                db.SetParameterValue("todate", toDate);
+
+                var dataSet = db.ExecuteDataSet();
+                if (dataSet != null && dataSet.Tables.Count > 0)
+                {
+                    dataTable = dataSet.Tables[0];
+                }
+            }
+
+            return dataTable;
         }
     }
 }

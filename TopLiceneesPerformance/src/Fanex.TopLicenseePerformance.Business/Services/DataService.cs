@@ -2,6 +2,7 @@
 using Fanex.Data.Repository;
 using Fanex.TopLicensee.Service.Criterias;
 using Fanex.TopLicensee.Service.Models;
+using Fanex.TopLicenseePerformance.Business.Criterias;
 using Fanex.TopLicenseePerformance.Business.Models;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace Fanex.TopLicensee.Service.Services
 
         Tuple<List<TopLicenseeMarginModel>, List<TopLicenseeMarginModel>> QueryDailyTopLicenseeMargin(bool isDaily);
 
-        DataTable QueryVirtualSoccer(LeagueGroup leagueGroup, SportType sportType, string spName);
+        List<TopLeagueGroupSportLicenseePerfModel> QueryVirtualSoccer(LeagueGroup leagueGroup, SportType sportType);
     }
 
     public class DataServiceImp : DataService
@@ -70,29 +71,20 @@ namespace Fanex.TopLicensee.Service.Services
             return new Tuple<List<TopLicenseeMarginModel>, List<TopLicenseeMarginModel>>(result.Item1.ToList(), result.Item2.ToList());
         }
 
-        public DataTable QueryVirtualSoccer(LeagueGroup leagueGroup, SportType sportType, string spName)
+        public List<TopLeagueGroupSportLicenseePerfModel> QueryVirtualSoccer(LeagueGroup leagueGroup, SportType sportType)
         {
             var dicLeagueGroup = GetLeagueGroupParam();
             var leagueGroupParam = dicLeagueGroup[sportType][leagueGroup];
 
-            var param = new Dictionary<string, object>
+            var criteria = new TopLeagueGroupSportLicenseePerfCriteria
             {
-                { "FromDate", dateService.FromDate },
-                { "ToDate", dateService.ToDate},
-                { "LeagueGroup", leagueGroupParam },
-                { "SportType",  (int)sportType}
+                FromDate = dateService.FromDate,
+                ToDate = dateService.ToDate,
+                LeagueGroup = leagueGroupParam,
+                SportType = (int)sportType
             };
 
-            var db = new ObjectDb(spName);
-            db.AssignParamValues(param);
-            var dataSet = db.ExecuteDataSet();
-            var datatable = new DataTable();
-            if (dataSet != null && dataSet.Tables.Count > 0)
-            {
-                datatable = dataSet.Tables[0];
-            }
-
-            return datatable;
+            return repository.Fetch<TopLeagueGroupSportLicenseePerfModel>(criteria).ToList();
         }
 
         private static Dictionary<SportType, Dictionary<LeagueGroup, string>> GetLeagueGroupParam()

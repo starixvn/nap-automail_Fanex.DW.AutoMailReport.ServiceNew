@@ -19,34 +19,30 @@ namespace Fanex.DHWL.Business.Services
     {
         private readonly Log log;
         private readonly DataService dataService;
-        private readonly LetstalkClientService letstalkService;
+
         private readonly ExcelRawService excelRawService;
+
         private readonly DailyExcelService excelDailyService;
         private readonly MessageService messageService;
         private readonly FileService fileService;
         private readonly MailService mailService;
         private readonly BaseDataTable baseDataTable;
-        private readonly DataHouseIncomeService dataHouseIncomeService;
+
         private readonly ChartExport chartExport;
+
         private readonly DailyImageDHWLService imageDHWLService;
         private readonly ImageMarginService imageMarginService;
         private readonly DateTimeServiceProvider dateTimeServiceProvider;
 
-        private List<string> filePaths = new List<string>();
-        private Mail mail = new Mail { Subject = string.Empty, Body = string.Empty };
-
         public DailyDHWLNotificationServiceImp(
             Log log,
             DataService dataService,
-            LetstalkClientService letstalkService,
             ExcelRawService excelRawService,
             DailyExcelService excelDailyService,
             MessageService messageService,
             FileService fileService,
             MailService mailService,
             BaseDataTable baseDataTable,
-            DataHouseIncomeService dataHouseIncomeService,
-            DataLastMonthService dataLastMonthService,
             ChartExport chartExport,
             DailyImageDHWLService imageDHWLService,
             ImageMarginService imageMarginService,
@@ -54,14 +50,12 @@ namespace Fanex.DHWL.Business.Services
         {
             this.log = log;
             this.dataService = dataService;
-            this.letstalkService = letstalkService;
             this.excelRawService = excelRawService;
             this.excelDailyService = excelDailyService;
             this.messageService = messageService;
             this.fileService = fileService;
             this.mailService = mailService;
             this.baseDataTable = baseDataTable;
-            this.dataHouseIncomeService = dataHouseIncomeService;
             this.chartExport = chartExport;
             this.imageDHWLService = imageDHWLService;
             this.imageMarginService = imageMarginService;
@@ -121,7 +115,8 @@ namespace Fanex.DHWL.Business.Services
             CopyFiles(excelPath, images);
             var status = messageService.SendMessage(images, AppConfigService.Config.LetstalkGroup);
             var errFile = status.Where(s => !s.Value).Select(s => s.Key).ToList();
-            var mail = mailService.SendMail(excelPath);
+            var subject = $"Automail Report - House Net Income - {todate:yyyy/MM/dd}";
+            var mail = mailService.SendMail(excelPath, subject);
 
             return new ExecuteResultModel
             {

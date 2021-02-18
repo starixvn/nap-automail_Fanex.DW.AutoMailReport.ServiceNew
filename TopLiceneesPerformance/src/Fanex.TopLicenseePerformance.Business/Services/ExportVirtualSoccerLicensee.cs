@@ -1,14 +1,18 @@
 ﻿using Fanex.TopLicensee.Service.Models;
+using Fanex.TopLicenseePerformance.Business.Models;
 using OfficeOpenXml;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Linq;
 
 namespace Fanex.TopLicensee.Service.Services
 {
     public interface ExportVirtualSoccerLicensee
     {
-        string Export(DataTable dataTable, LeagueGroup leagueGroup, SportType sportType);
+        string Export(List<TopLeagueGroupSportLicenseePerfModel> data, LeagueGroup leagueGroup, SportType sportType);
+
+        int LastRowIndex { get; set; }
     }
 
     public class ExportVirtualSoccerLicenseeImp : ExportVirtualSoccerLicensee
@@ -21,7 +25,9 @@ namespace Fanex.TopLicensee.Service.Services
             this.dateService = dateService;
         }
 
-        public string Export(DataTable dataTable, LeagueGroup leagueGroup, SportType sportType)
+        public int LastRowIndex { get; set; }
+
+        public string Export(List<TopLeagueGroupSportLicenseePerfModel> data, LeagueGroup leagueGroup, SportType sportType)
         {
             var sport = new Dictionary<SportType, string>
             {
@@ -38,8 +44,38 @@ namespace Fanex.TopLicensee.Service.Services
             excelPackage = new ExcelPackage(new FileInfo("Templates/TopLicensee-VirtualSoccer-Licensee.xlsx"));
             var template = excelPackage.Workbook.Worksheets["Template"];
             template.Cells["B2"].Value = titleSport[leagueGroup];
-            template.Cells["D2"].Value = $"{dateService.ToDate:yyyyMMdd}";
-            template.Cells["C4"].LoadFromDataTable(dataTable, false);
+            template.Cells["E2"].Value = $"{dateService.ToDate:yyyyMMdd}";
+            template.Cells["B4"].LoadFromCollection(data, false);
+
+            var currentIndex = 4;
+            var index = 1;
+            var cnt = 0;
+            data.GroupBy(g => new { g.LicGroup })
+                .ToList()
+                .ForEach(group =>
+                {
+                    cnt = group.Count();
+                    template.Cells[currentIndex, 2, currentIndex + cnt - 1, 2].Merge = true;
+                    template.Cells[currentIndex, 2, currentIndex + cnt - 1, 2].Value = index;
+                    template.Cells[currentIndex, 3, currentIndex + cnt - 1, 3].Merge = true;
+
+                    for (var columnIndex = 5; columnIndex <= 8; columnIndex++)
+                    {
+                        template.Cells[currentIndex, columnIndex, currentIndex + cnt - 1, columnIndex].Merge = true;
+                    }
+
+                    currentIndex += cnt;
+                    index++;
+                });
+
+            LastRowIndex = currentIndex - cnt;
+            var maxRowIndex = LastRowIndex;
+            var startColIndex = 2;
+
+            var value = template.Cells[maxRowIndex, startColIndex + 1].Value;
+            template.Cells[maxRowIndex, startColIndex, maxRowIndex, startColIndex + 2].Merge = true;
+            template.Cells[maxRowIndex, startColIndex, maxRowIndex, startColIndex + 2].Value = value;
+            template.Cells[maxRowIndex, startColIndex, maxRowIndex, startColIndex + 2].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
 
             return SaveCreatedFile(leagueGroup, sportType);
         }

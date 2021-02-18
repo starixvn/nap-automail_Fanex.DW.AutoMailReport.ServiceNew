@@ -22,5 +22,9 @@
 
         public bool IsResize { get; set; }
         public int ResizeNewWidth { get; set; }
+
+        public int HeightPerRow { get; set; }
+
+        public int AdjustHeight { get; set; }
     }
 }

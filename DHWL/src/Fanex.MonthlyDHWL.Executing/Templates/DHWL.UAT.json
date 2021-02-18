@@ -10,7 +10,7 @@
   "TargetName": "daily-house-wl",
   "LetstalkGroup": "DWHL-UAT",
   "ProductList": "All",
-  "IsAttachAdjument": false,
+  "IsAttachAdjument": true,
   "LetstalkGroups": {
     "Image": {
       "Group": "DWHL-UAT",

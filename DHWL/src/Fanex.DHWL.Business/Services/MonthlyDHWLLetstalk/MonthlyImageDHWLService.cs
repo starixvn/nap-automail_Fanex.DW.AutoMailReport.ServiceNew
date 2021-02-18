@@ -5,13 +5,20 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
 {
     public interface MonthlyImageDHWLService
     {
-        List<string> Export(DataTable monthlyRawData);
+        List<string> Export(DataTable monthlyRawData, DataTable dataReconciliation);
+
+        string FileName { get; set; }
     }
 
     public class MonthlyImageDHWLServiceImp : MonthlyImageDHWLService
     {
         private readonly MonthlyExcelDHWLService excelDHWLService;
         private readonly ImageService imageService;
+
+        public string FileName
+        {
+            get; set;
+        }
 
         public MonthlyImageDHWLServiceImp(
             MonthlyExcelDHWLService excelDHWLService,
@@ -21,9 +28,10 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             this.imageService = imageService;
         }
 
-        public List<string> Export(DataTable monthlyRawData)
+        public List<string> Export(DataTable monthlyRawData, DataTable dataReconciliation)
         {
-            var excelPath = excelDHWLService.Export(monthlyRawData);
+            var excelPath = excelDHWLService.Export(monthlyRawData, dataReconciliation);
+            FileName = excelPath;
             var imageDHWLMonthly = ExportDHWLMonthly(excelPath);
             var imageAdjustmentMonthly = ExportAdjustmentMonthly(excelPath);
 

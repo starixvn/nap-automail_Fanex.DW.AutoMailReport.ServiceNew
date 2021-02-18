@@ -4,7 +4,7 @@
   "TargetName": "daily-house-wl",
   "Group": "Top-50-Licensee-QC",
   "IsCheckEnoughData": false,
-  "IsManual": false,
+  "IsManual": true,
   "FromDate": "2020-09-01",
   "Todate": "2020-09-26",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\TopLicenseeByTO",

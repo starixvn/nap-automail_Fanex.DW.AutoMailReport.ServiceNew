@@ -9,19 +9,12 @@ namespace Fanex.DHWL.Business.Services
 {
     public interface MailService
     {
-        Mail SendMail(string fileName);
+        Mail SendMail(string fileName, string subject);
     }
 
     public class MailServiceImp : MailService
     {
-        private readonly DateTimeServiceProvider dateTimeService;
-
-        public MailServiceImp(DateTimeServiceProvider dateTimeService)
-        {
-            this.dateTimeService = dateTimeService;
-        }
-
-        public Mail SendMail(string fileName)
+        public Mail SendMail(string fileName, string subject)
         {
             var attachments = new List<MailAttachment>
             {
@@ -31,7 +24,7 @@ namespace Fanex.DHWL.Business.Services
             var mail = new Mail
             {
                 Title = "ONEworks Auto Generated Report Administrator",
-                Subject = $"Automail Report - House Net Income - {dateTimeService.DateTime.ToDate:yyyy/MM/dd}",
+                Subject = subject,
                 Body = Content(fileName),
                 Attachments = attachments
             };

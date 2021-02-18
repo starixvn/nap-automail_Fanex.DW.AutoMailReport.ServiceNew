@@ -10,7 +10,7 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
         {
             get
             {
-                var date = SystemTime.Now.AddDays(-1);
+                var date = SystemTime.Now;
                 return Converter.To<DateTime>($"{date.AddMonths(-1):yyyy-MM-02}");
             }
         }
@@ -19,7 +19,7 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
         {
             get
             {
-                var date = SystemTime.Now.AddDays(-1);
+                var date = SystemTime.Now;
                 return Converter.To<DateTime>($"{date:yyyy-MM-01}");
             }
         }

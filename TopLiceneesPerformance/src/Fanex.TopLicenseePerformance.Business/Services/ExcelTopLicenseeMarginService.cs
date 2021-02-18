@@ -3,12 +3,15 @@ using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Fanex.TopLicensee.Service.Services
 {
     public interface ExcelTopLicenseeMarginService
     {
         string Export(string type, Tuple<List<TopLicenseeMarginModel>, List<TopLicenseeMarginModel>> data);
+
+        int LastRowIndex { get; set; }
     }
 
     public class ExcelTopLicenseeMarginServiceImp : ExcelTopLicenseeMarginService
@@ -21,11 +24,11 @@ namespace Fanex.TopLicensee.Service.Services
             this.dateService = dateService;
         }
 
+        public int LastRowIndex { get; set; }
+
         public string Export(string type, Tuple<List<TopLicenseeMarginModel>, List<TopLicenseeMarginModel>> data)
         {
-            RefineData(data);
             ExportContent(type, data);
-
             return SaveCreatedFile(type);
         }
 
@@ -43,25 +46,28 @@ namespace Fanex.TopLicensee.Service.Services
                 sheet.Cells["B2"].Value = $"MTD - MARGIN";
             }
 
-            //sheet.Cells["B4"].LoadFromCollection(data.Item1, false);
             sheet.Cells["B4"].LoadFromCollection(data.Item2, false);
-        }
+            LastRowIndex = data.Item2.Count + 3;
 
-        private void RefineData(Tuple<List<TopLicenseeMarginModel>, List<TopLicenseeMarginModel>> data)
-        {
-            int count = 1;
-            data.Item1.ForEach(d =>
-            {
-                d.Order = count;
-                count++;
-            });
+            var currentIndex = 4;
+            var index = 1;
+            data.Item2.GroupBy(g => new { g.LicenseeGroup })
+                .ToList()
+                .ForEach(group =>
+                {
+                    var cnt = group.Count();
+                    sheet.Cells[currentIndex, 2, currentIndex + cnt - 1, 2].Merge = true;
+                    sheet.Cells[currentIndex, 2, currentIndex + cnt - 1, 2].Value = index;
+                    sheet.Cells[currentIndex, 3, currentIndex + cnt - 1, 3].Merge = true;
 
-            count = 1;
-            data.Item2.ForEach(d =>
-            {
-                d.Order = count;
-                count++;
-            });
+                    for (var columnIndex = 5; columnIndex <= 13; columnIndex++)
+                    {
+                        sheet.Cells[currentIndex, columnIndex, currentIndex + cnt - 1, columnIndex].Merge = true;
+                    }
+
+                    currentIndex += cnt;
+                    index++;
+                });
         }
 
         private string SaveCreatedFile(string type)

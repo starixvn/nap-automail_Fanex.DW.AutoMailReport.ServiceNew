@@ -7,6 +7,8 @@ namespace Fanex.LicenseeFinanceCode.Business.Criteria
     {
         public string LicenseeIDs { get; } = "All";
 
+        public bool ForEmail { get; } = true;
+
         public int StatusIds { get; } = 3;
 
         public DateTime MoveBetsDay { get; set; }
