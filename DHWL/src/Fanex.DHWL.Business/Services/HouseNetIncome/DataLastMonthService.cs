@@ -18,10 +18,20 @@ namespace Fanex.DHWL.Business.Services
             productData.Columns.Add(ColumnName.ProductName, typeof(string));
             productData.Columns.Add(ColumnName.MTD, typeof(decimal));
 
+            source.AsEnumerable()
+                .Where(s => s[ColumnName.ProductGroup].Equals(ProductGroup.Sportsbook))
+                .ToList()
+                .ForEach(row =>
+                {
+                    row[ColumnName.OrderByProduct] = 1;
+                });
+
             source.AsEnumerable().GroupBy(product => new
             {
-                ProductName = product[ColumnName.ProductName]
+                ProductName = product[ColumnName.ProductName],
+                OrderByProduct = Converter.To<int>(product[ColumnName.OrderByProduct])
             })
+            .OrderBy(o => o.Key.OrderByProduct)
             .ToList()
             .ForEach(product =>
             {

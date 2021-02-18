@@ -33,7 +33,7 @@ namespace Fanex.DHWL.Business.Services
             }
 
             imageName = $@"{imageName}\{imageProperty.ImageName}_On_{date:yyyyMMdd}.jpg";
-            var imageNameFinal = $@"{AppConfigService.Config.Path}\{date:yyyy}\{date:MM}\{imageProperty.ImageName}_Final_On_{date:yyyyMMdd}.jpg";
+            var imageNameFinal = $@"{AppConfigService.Config.Path}\{date:yyyy}\{date:MM}\{imageProperty.ImageName}_F_{date:yyyyMMdd}.jpg";
             var workbook = new Workbook();
             workbook.OpenPassword = AppConfigService.Config.Password;
             workbook.LoadFromFile(excelPath, ExcelVersion.Version2013);
@@ -48,7 +48,7 @@ namespace Fanex.DHWL.Business.Services
 
             if (imageProperty.IsResize)
             {
-                var imageNameResizeWidth = $@"{AppConfigService.Config.Path}\{date:yyyy}\{date:MM}\{imageProperty.ImageName}_Resize_On_{date:yyyyMMdd}.jpg";
+                var imageNameResizeWidth = $@"{AppConfigService.Config.Path}\{date:yyyy}\{date:MM}\{imageProperty.ImageName}_R_{date:yyyyMMdd}.jpg";
                 ResizeImage(imageNameFinal, imageNameResizeWidth, imageProperty.ResizeNewWidth, 0, imageProperty.ImageQuality);
                 return imageNameResizeWidth;
             }

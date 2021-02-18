@@ -143,7 +143,6 @@ namespace Fanex.TopPunterCasino.Business.Services
 
             var excelAllPath = excelService.ExportExcel(data, 0, 0, true, setting);
             SendImage(excelAllPath, setting.LetstalkGroup);
-            SendMail(setting, excelAllPath);
 
             if (imageSentFail.Count > 0)
             {
@@ -155,19 +154,11 @@ namespace Fanex.TopPunterCasino.Business.Services
             return imageSentFail;
         }
 
-        private void SendMail(TopPunterCasinoSetting setting, string excelAllPath)
-        {
-            var mail = mailService.CreateMail(excelAllPath, setting.Exceltitle, setting.Subject, dateRangeService.RptDate);
-            mail.MailingListId = setting.MailFunctionId;
-            mailService.SendMail(mail);
-        }
-
         private List<string> SendLetstalkImageNoData(TopPunterCasinoSetting setting)
         {
             var excelPath = excelService.ExportExcelWithNoData(setting);
             var imagePath = ExportImage(setting, excelPath, 0);
             var status = SendImage(imagePath, setting.LetstalkGroup);
-            SendMail(setting, excelPath);
             return new List<string> { status ? string.Empty : $"{imagePath} - Letstalk sent images Unsuccessfully." };
         }
 

@@ -4,7 +4,7 @@
   "DateRange": "Weekly",
   "FromDate": "2020-01-01",
   "ToDate": "2020-05-10",
-  "Path": "\\\\10.99.99.70\\Data.Web\\Fanex.Excel\\CN88PerformanceByPT",
+  "Path": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\CN88PerformanceByPT",
   "Password": "Star168",
   "FunctionIdNodata": 90,
   "TemplateExcelFile": "CN88PerformanceByPT/CN88PerformanceByPT.xlsx",
