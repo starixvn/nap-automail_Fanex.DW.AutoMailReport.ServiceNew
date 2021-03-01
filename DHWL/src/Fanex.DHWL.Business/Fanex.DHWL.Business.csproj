@@ -201,6 +201,7 @@
     <Compile Include="Models\LogInternalOneTimeModel.cs" />
     <Compile Include="Models\MarginModel.cs" />
     <Compile Include="Models\Position.cs" />
+    <Compile Include="Models\ProductGroup.cs" />
     <Compile Include="Models\ReportType.cs" />
     <Compile Include="Models\RowFigureName.cs" />
     <Compile Include="Models\Site.cs" />
