@@ -1,0 +1,19 @@
+﻿{
+  "SPName": "Acc_Rpt_Automail_DeletedBet",
+  "DateRange": "Monthly",
+  "FromDate": "2020-01-01",
+  "ToDate": "2020-01-31",
+  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\DeletedBet",
+  "Password": "",
+  "FunctionIdNodata": 90,
+  "TemplateExcelFile": "DeletedBet/DeletedBet.xlsx",
+  "SheetExcelTemplateName": [ "Data" ],
+  "CellAddressRender": [ "A2" ],
+  "StartExelRowIndex": "2",
+  "EmailTemplate": "DeletedBet/DeletedBet.cshtml",
+  "EmailSubject": "Automail Report - Monthly Deleted Bet for OPS",
+  "MailId": "327",
+  "MailName": "Mail Template Testing",
+  "FileName": "Deleted_Bet",
+  "StartExcelColumnIndex": 1
+}

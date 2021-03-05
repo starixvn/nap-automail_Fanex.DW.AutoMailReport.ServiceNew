@@ -52,6 +52,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="BettypeWith3rdProducts.BusinessSubstitute.ruleset" />
     <None Include="packages.config" />
   </ItemGroup>

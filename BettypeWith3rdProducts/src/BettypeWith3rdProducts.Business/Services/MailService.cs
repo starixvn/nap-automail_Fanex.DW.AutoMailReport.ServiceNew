@@ -1,4 +1,5 @@
-﻿using Fanex.MailDelivery.Core.Models;
+﻿using Fanex.MailDelivery.Client;
+using Fanex.MailDelivery.Core.Models;
 using Fanex.Service.Core;
 
 namespace BettypeWith3rdProducts.Business.Services
@@ -29,7 +30,9 @@ namespace BettypeWith3rdProducts.Business.Services
             if (appConfig.FunctionIdWithoutAttachment > 0)
             {
                 var mail = mailContentBuilder.ReadContentWithoutAttachment(fileName);
-                mailStationService.Send(mail);
+                MailClientHandler.Start();
+                MailClientHandler.SendFunctionMail(mail);
+                MailClientHandler.Stop();
             }
 
             return mailContentBuilder.ReadContentWithAttachment(fileName);
@@ -40,7 +43,9 @@ namespace BettypeWith3rdProducts.Business.Services
             if (appConfig.FunctionIdNodata > 0)
             {
                 var mail = mailContentBuilder.ReadContentWhenDataIsNotReady();
-                mailStationService.Send(mail);
+                MailClientHandler.Start();
+                MailClientHandler.SendFunctionMail(mail);
+                MailClientHandler.Stop();
             }
         }
     }

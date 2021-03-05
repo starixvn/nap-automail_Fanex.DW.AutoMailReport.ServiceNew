@@ -1,0 +1,19 @@
+﻿{
+  "SPName": "Acc_Rpt_Automail_DeletedBet",
+  "DateRange": "Monthly",
+  "FromDate": "2020-01-01",
+  "ToDate": "2020-01-31",
+  "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\DeletedBet",
+  "Password": "Star168",
+  "FunctionIdNodata": 224,
+  "TemplateExcelFile": "DeletedBet/DeletedBet.xlsx",
+  "SheetExcelTemplateName": [ "Data" ],
+  "CellAddressRender": [ "A2" ],
+  "StartExelRowIndex": "2",
+  "EmailTemplate": "DeletedBet/DeletedBet.cshtml",
+  "EmailSubject": "Automail Report - Monthly Deleted Bet for OPS",
+  "MailId": "314",
+  "MailName": "Mail Monthly Template - UAT",
+  "FileName": "Deleted_Bet",
+  "StartExcelColumnIndex": 1
+}
