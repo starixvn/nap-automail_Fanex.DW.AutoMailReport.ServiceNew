@@ -33,5 +33,10 @@
     "ReportFile": "ActiveSupers/ActiveSupers.json",
     "IsActive": true,
     "IsEmailEnabled": true
+  },
+  {
+    "ReportFile": "DeletedBet/DeletedBet.json",
+    "IsActive": true,
+    "IsEmailEnabled": true
   }
 ]
