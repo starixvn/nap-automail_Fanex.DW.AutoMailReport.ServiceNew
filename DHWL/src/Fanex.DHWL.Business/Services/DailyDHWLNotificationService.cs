@@ -92,6 +92,15 @@ namespace Fanex.DHWL.Business.Services
 
         private ExecuteResultModel SendNotification()
         {
+            if (!dataService.IsDataAvailable())
+            {
+                return new ExecuteResultModel
+                {
+                    Mail = new Mail(),
+                    Message = "DataIsNotReady",
+                    Success = false
+                };
+            }
             var dailyRawData = dataService.QueryDHWLData();
             var cloneData = baseDataTable.Clone(dailyRawData);
             var fromdate = dateTimeServiceProvider.DateTime.FromDate;

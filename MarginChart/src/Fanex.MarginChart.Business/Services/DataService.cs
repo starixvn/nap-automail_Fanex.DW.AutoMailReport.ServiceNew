@@ -44,7 +44,15 @@ namespace Fanex.MarginChart.Business.Services
                 return true;
             }
 
-            return QueryDWStatus().DataIsReady;
+            var checkLicenseeDataIsReady = CheckLicenseeDataIsReady();
+            var result = QueryDWStatus().DataIsReady && checkLicenseeDataIsReady;
+
+            return result;
+        }
+
+        private bool CheckLicenseeDataIsReady()
+        {
+            return repository.Get<LicenseeCheckDataReady>(new LiccenseeCheckDataReadyCriteria()).IsDataYesterdayReady;
         }
 
         public DataTable QueryMarginChartData()

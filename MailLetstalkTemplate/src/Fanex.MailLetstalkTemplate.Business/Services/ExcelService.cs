@@ -22,7 +22,10 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
         private readonly MailFormatProvider mailFormatProvider;
         private MailFormat mailFormat;
 
-        public ExcelServiceImp(ExcelPackage excelPackage, DateRangeServiceProfier dateRangeServiceProfier, MailFormatProvider mailFormatProvider)
+        public ExcelServiceImp(
+            ExcelPackage excelPackage,
+            DateRangeServiceProfier dateRangeServiceProfier,
+            MailFormatProvider mailFormatProvider)
         {
             this.excelPackage = excelPackage;
             this.dateRangeServiceProfier = dateRangeServiceProfier;

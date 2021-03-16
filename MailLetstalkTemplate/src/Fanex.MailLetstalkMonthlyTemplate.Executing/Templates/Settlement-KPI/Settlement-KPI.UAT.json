@@ -1,0 +1,19 @@
+﻿{
+  "SPName": "NAP_Set_PerformanceReportSel",
+  "DateRange": "Monthly",
+  "FromDate": "2020-01-01",
+  "ToDate": "2020-01-10",
+  "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\Settlement-KPI",
+  "Password": "Star168",
+  "FunctionIdNodata": 90,
+  "TemplateExcelFile": "Settlement-KPI/Settlement-KPI.xlsx",
+  "SheetExcelTemplateName": [ "Soccer", "Other Sports" ],
+  "CellAddressRender": [ "A2", "A2" ],
+  "StartExelRowIndex": "2",
+  "EmailTemplate": "Settlement-KPI/Settlement-KPI.cshtml",
+  "EmailSubject": "Automail Report - Monthly Settlement KPI Report",
+  "MailId": "314",
+  "MailName": "Mail Monthly Template - UAT",
+  "FileName": "Monthly_Settlement_KPI_Report",
+  "StartExcelColumnIndex": 1
+}

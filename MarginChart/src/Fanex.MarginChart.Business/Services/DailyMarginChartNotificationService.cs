@@ -83,6 +83,16 @@ namespace Fanex.MarginChart.Business.Services
 
         private ExecuteResultModel SendNotification()
         {
+            if (!dataService.IsDataAvailable())
+            {
+                return new ExecuteResultModel
+                {
+                    Mail = new Mail(),
+                    Message = "DataIsNotReady",
+                    Success = false
+                };
+            }
+
             var dailyRawData = dataService.QueryMarginChartData();
             var source = baseDataTable.CloneWithoutIgnoreFigureRows(dailyRawData);
             var fromdate = dateTimeServiceProvider.DateTime.FromDate;

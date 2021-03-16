@@ -265,6 +265,24 @@
     <Content Include="Templates\N88-SB-Member-Performance\N88-SB-Member-Performance.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\Settlement-KPI\Settlement-KPI.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Settlement-KPI\Settlement-KPI.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Settlement-KPI\Settlement-KPI.Local.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Settlement-KPI\Settlement-KPI.PRO.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Settlement-KPI\Settlement-KPI.UAT.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Settlement-KPI\Settlement-KPI.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.MailLetstalkTemplate.Business\Fanex.MailLetstalkTemplate.Business.csproj">
