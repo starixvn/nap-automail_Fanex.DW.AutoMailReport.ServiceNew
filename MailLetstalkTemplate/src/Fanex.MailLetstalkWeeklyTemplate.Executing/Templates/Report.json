@@ -6,6 +6,11 @@
   },
   {
     "ReportFile": "N88-SB-Member-Performance/N88-SB-Member-Performance.json",
+    "IsActive": false,
+    "IsEmailEnabled": true
+  },
+  {
+    "ReportFile": "Settlement-KPI/Settlement-KPI.json",
     "IsActive": true,
     "IsEmailEnabled": true
   }

@@ -185,6 +185,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Criterias\GetDWStatusCriteria.cs" />
+    <Compile Include="Criterias\LiccenseeCheckDataReadyCriteria.cs" />
     <Compile Include="Models\ChartAreasPosition.cs" />
     <Compile Include="Models\ColumnIndex.cs" />
     <Compile Include="Models\ColumnName.cs" />
@@ -193,6 +194,7 @@
     <Compile Include="Models\ExecuteResultModel.cs" />
     <Compile Include="Models\ImageProperty.cs" />
     <Compile Include="Models\InnerPlotPosition.cs" />
+    <Compile Include="Models\LicenseeCheckDataReady.cs" />
     <Compile Include="Models\LogInternalOneTimeModel.cs" />
     <Compile Include="Models\MarginModel.cs" />
     <Compile Include="Models\Position.cs" />

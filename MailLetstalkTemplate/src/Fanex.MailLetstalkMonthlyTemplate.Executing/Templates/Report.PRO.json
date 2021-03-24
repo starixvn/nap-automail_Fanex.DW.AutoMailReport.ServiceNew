@@ -38,5 +38,10 @@
     "ReportFile": "DeletedBet/DeletedBet.json",
     "IsActive": true,
     "IsEmailEnabled": true
+  },
+  {
+    "ReportFile": "Settlement-KPI/Settlement-KPI.json",
+    "IsActive": true,
+    "IsEmailEnabled": true
   }
 ]

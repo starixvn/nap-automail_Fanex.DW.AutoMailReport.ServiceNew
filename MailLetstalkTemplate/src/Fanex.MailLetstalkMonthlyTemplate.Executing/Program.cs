@@ -9,6 +9,9 @@ namespace Fanex.MailLetstalkTemplate.Executing
     {
         private static void Main()
         {
+            var s = new DateRangeMonthlyServiceImp();
+            var w = new DateRangeDailyServiceImp();
+
             RegisterService.RegisterServices();
             Container container = new Container();
             RegisterService.RegisterContainer(container);
