@@ -4,7 +4,7 @@ namespace Fanex.TOAVGBetBenchmark.Business.Criterias
 {
     public class GetDWStatusCriteria : CriteriaBase
     {
-        public string TaskIDList => "60";
+        public string TaskIDList => "58";
 
         public override string GetSettingKey()
         {

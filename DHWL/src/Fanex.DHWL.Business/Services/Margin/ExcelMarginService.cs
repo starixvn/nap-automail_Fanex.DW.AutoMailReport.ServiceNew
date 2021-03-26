@@ -165,8 +165,6 @@ namespace Fanex.DHWL.Business.Services
 
         private void RenderTitle(ExcelWorksheet template, bool isDaily)
         {
-            var now = DateTime.Now;
-            var fromdate = dateService.DateTime.FromDate;
             var todate = dateService.DateTime.ToDate;
             var isEndOfMonth = todate.AddDays(1).Day == 1;
             var title = $"MTD ({todate:dd-MMM})";
