@@ -169,7 +169,7 @@ namespace Fanex.DHWL.Business.Services
             var fromdate = dateService.DateTime.FromDate;
             var todate = dateService.DateTime.ToDate;
             var isEndOfMonth = todate.AddDays(1).Day == 1;
-            var title = "MTD";
+            var title = $"MTD ({todate:dd-MMM})";
             if (isDaily)
             {
                 title = $"{todate:dd-MMM}";
