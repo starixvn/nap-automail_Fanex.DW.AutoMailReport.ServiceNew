@@ -50,18 +50,6 @@
       "MailName": "Abnormal Bet Daily Report - Tianbo - UAT",
       "SiteName": "Tianbo",
       "Subject": "[ABI]- 非正规投注玩家 - Tianbo Abnormal Licensee bet {0}"
-    },
-    {
-      "MailId": 309,
-      "MailName": "Abnormal Bet Daily Report - Tianbo - UAT",
-      "SiteName": "HONBET",
-      "Subject": "[ABI]- 非正规投注玩家 - HONBET Abnormal Licensee bet {0}"
-    },
-    {
-      "MailId": 309,
-      "MailName": "Abnormal Bet Daily Report - Tianbo - UAT",
-      "SiteName": "Newhonbet",
-      "Subject": "[ABI]- 非正规投注玩家 - Newhonbet Abnormal Licensee bet {0}"
     }
   ]
 }

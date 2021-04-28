@@ -1,6 +1,6 @@
 ﻿{
   "SPName": "Acc_Rpt_TimeMachineTicket",
-  "DateRange": "Manual",
+  "DateRange": "Yesterday",
   "FromDate": "2020-01-01",
   "ToDate": "2021-02-10",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\TimeMachineTicket",
