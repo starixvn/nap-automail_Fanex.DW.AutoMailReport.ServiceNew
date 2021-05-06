@@ -1,0 +1,17 @@
+﻿[
+  {
+    "ReportFile": "SoccerLivePerformance/SoccerLivePerformance.json",
+    "IsActive": false,
+    "IsEmailEnabled": true
+  },
+  {
+    "ReportFile": "BasketballPerformance/BasketballPerformance.json",
+    "IsActive": false,
+    "IsEmailEnabled": true
+  },
+  {
+    "ReportFile": "TimeMachineTicket/TimeMachineTicket.json",
+    "IsActive": true,
+    "IsEmailEnabled": true
+  }
+]
