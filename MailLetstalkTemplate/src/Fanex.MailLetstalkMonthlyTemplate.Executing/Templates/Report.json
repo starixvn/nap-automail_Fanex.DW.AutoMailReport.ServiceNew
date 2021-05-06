@@ -36,7 +36,7 @@
   },
   {
     "ReportFile": "INR-Currency/INR-Currency.json",
-    "IsActive": false,
+    "IsActive": true,
     "IsEmailEnabled": true
   },
   {
@@ -51,7 +51,7 @@
   },
   {
     "ReportFile": "Settlement-KPI/Settlement-KPI.json",
-    "IsActive": true,
+    "IsActive": false,
     "IsEmailEnabled": true
   }
 ]

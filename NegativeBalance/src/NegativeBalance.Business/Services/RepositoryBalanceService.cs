@@ -35,7 +35,8 @@ namespace NegativeBalance.Business.Services
             {
                 return new List<Site>
                 {
-                    new Site { IsAvailable = true, LicenseeName = "spondemo", ToList = "testing@starixsoft.com" }
+                    new Site { IsAvailable = true, LicenseeName = "spondemo", ToList = "testing@starixvn.com" },
+                    new Site { IsAvailable = true, LicenseeName = "Athena000", ToList = "testing@starixvn.com" }
                 };
             }
 

@@ -2,8 +2,8 @@
   "IntervalInSecond": 15,
   "IsTest": false,
   "IsSendMailFromConfig": false,
-  "MailTo": "robert.tran@starixsoft.com",
-  "MailCc": "qa@starixsoft.com",
+  "MailTo": "robert.tran@starixvn.com",
+  "MailCc": "qa@starixvn.com",
   "MailBcc": "",
   "Subject": "[{0}] - 出現負數會員 | Negative Balance List ({1})",
   "Title": "沙巴体育通知 | Saba Sports Notice"
