@@ -11,7 +11,7 @@
   },
   {
     "ReportFile": "TimeMachineTicket/TimeMachineTicket.json",
-    "IsActive": false,
+    "IsActive": true,
     "IsEmailEnabled": true
   }
 ]
