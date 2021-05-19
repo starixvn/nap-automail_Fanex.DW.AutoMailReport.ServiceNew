@@ -4,7 +4,7 @@ namespace Fanex.DHWL.Business.Criterias
 {
     public class GetDWStatusCriteria : CriteriaBase
     {
-        public string TaskIDList => "17";
+        public string TaskIDList => "17,44";
 
         public override string GetSettingKey()
         {

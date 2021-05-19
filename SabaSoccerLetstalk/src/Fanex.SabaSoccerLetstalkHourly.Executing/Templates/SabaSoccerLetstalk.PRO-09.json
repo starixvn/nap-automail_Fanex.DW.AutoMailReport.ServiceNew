@@ -16,21 +16,21 @@
       "Exceltitle": "Top Saba Soccer Punters",
       "LetstalkGroup": "Saba-Sports-Risk-Monitoring",
       "Subject": "Saba Sports - Risk Monitoring",
-      "MailFunctionId": 358
+      "MailFunctionId": 0
     },
     "Basketball": {
       "SPName": "Acc_Rpt_Letstalk_TodayPunterBasketballLeagueGroup",
       "Exceltitle": "Top Saba Basketball Punters",
       "LetstalkGroup": "Saba-Sports-Risk-Monitoring",
       "Subject": "Saba Sports - Risk Monitoring",
-      "MailFunctionId": 358
+      "MailFunctionId": 0
     },
     "League": {
       "SPName": "Acc_Rpt_Letstalk_TodayPunterByLeague",
       "Exceltitle": "Top Saba 5Mins Play Punters",
       "LetstalkGroup": "Saba-5-Minutes-Monitoring",
       "Subject": "SABA 5 Minutes Monitoring",
-      "MailFunctionId": 358
+      "MailFunctionId": 0
     }
   },
   "ImageSettings": {

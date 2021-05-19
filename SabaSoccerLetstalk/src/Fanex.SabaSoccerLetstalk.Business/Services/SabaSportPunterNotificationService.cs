@@ -167,7 +167,10 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
             var subject = $"{setting.Subject} - {sport} - Time Range: {AppConfigService.Config.TimeRange}";
             var mail = mailService.CreateMail(excelAllPath, setting.Exceltitle, subject, date);
             mail.MailingListId = setting.MailFunctionId;
-            mailService.SendMail(mail);
+            if (setting.MailFunctionId > 0)
+            {
+                mailService.SendMail(mail);
+            }
         }
 
         private List<string> SendLetstalkImageNoData(Sport sport, LetstalkTodayPunterSetting setting, DateTime date)
