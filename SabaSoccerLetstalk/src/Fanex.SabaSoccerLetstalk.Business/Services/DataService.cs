@@ -1,7 +1,6 @@
 ﻿using Fanex.Data.Repository;
 using Fanex.SabaSoccerLetstalk.Business.Criterias;
 using Fanex.SabaSoccerLetstalk.Business.Models;
-using Fanex.Service.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,16 +35,17 @@ namespace Fanex.SabaSoccerLetstalk.Business.Services
 
         public bool IsDataAvailable()
         {
-            var result = false;
             if (AppConfigService.Config.IsManual || !AppConfigService.Config.IsCheckEnoughData)
             {
                 return true;
             }
 
-            var lastDate = repository.Get<LastDateModel>(new GetDWStatusByCubeCriteria());
-            result = lastDate.LastDate >= Convert.ToDateTime(SystemTime.Now.AddDays(-1).ToShortDateString());
+            return QueryDWStatus().DataIsReady;
+        }
 
-            return result;
+        private TaskstatusModel QueryDWStatus()
+        {
+            return repository.Get<TaskstatusModel>(new GetDWStatusCriteria());
         }
 
         public List<PunterModel> QueryDataSabaHourly(DateTime date, LetstalkTodayPunterSetting setting)
