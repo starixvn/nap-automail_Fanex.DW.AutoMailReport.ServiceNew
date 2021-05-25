@@ -60,7 +60,7 @@ namespace Fanex.TopLicensee.Service.Services
                     sheet.Cells[currentIndex, 2, currentIndex + cnt - 1, 2].Value = index;
                     sheet.Cells[currentIndex, 3, currentIndex + cnt - 1, 3].Merge = true;
 
-                    for (var columnIndex = 5; columnIndex <= 13; columnIndex++)
+                    for (var columnIndex = 5; columnIndex <= 14; columnIndex++)
                     {
                         sheet.Cells[currentIndex, columnIndex, currentIndex + cnt - 1, columnIndex].Merge = true;
                     }

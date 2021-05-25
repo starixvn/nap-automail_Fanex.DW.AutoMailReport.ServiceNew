@@ -1,8 +1,8 @@
 ﻿<Functions>
   <Function Name="Auto Mail - Score Box">
     <Setting Key="DailyJob_CheckTasksStatus" SpName="DailyJob_CheckTasksStatus" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
-    <Setting Key="Acc_Rpt_Letstalk_TopLicenseePerfByTO" SpName="Acc_Rpt_Letstalk_TopLicenseePerfByTO" DbName="DBWH.bodb_dwrs.dwrs" Timeout="0"></Setting>
-    <Setting Key="Acc_Rpt_Letstalk_TopLicenseePerfMargin" SpName="Acc_Rpt_Letstalk_TopLicenseePerfMargin" DbName="DBWH.bodb_dwrs.dwrs" Timeout="0"></Setting>
+    <Setting Key="Acc_Rpt_Letstalk_TopLicenseePerfByTO" SpName="Acc_Rpt_Letstalk_TopLicenseePerfByTO_xtest" DbName="DBWH.bodb_dwrs.dwrs" Timeout="0"></Setting>
+    <Setting Key="Acc_Rpt_Letstalk_TopLicenseePerfMargin" SpName="Acc_Rpt_Letstalk_TopLicenseePerfMargin_xtest" DbName="DBWH.bodb_dwrs.dwrs" Timeout="0"></Setting>
     <Setting Key="Acc_Rpt_Letstalk_LeagueGroupSport_LicenseePerf" SpName="Acc_Rpt_Letstalk_LeagueGroupSport_LicenseePerf" DbName="DBWH.bodb_dwrs.dwrs" Timeout="0"></Setting>
   </Function>
 </Functions>

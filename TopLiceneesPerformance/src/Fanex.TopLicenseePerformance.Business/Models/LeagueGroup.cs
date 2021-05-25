@@ -3,7 +3,8 @@
     public enum LeagueGroup
     {
         Esoccer = 41,
-        VL = 42,//Virtual league
+        VL = 42,//Virtual league,
+        SabaSoccerPinGoal = 113
     }
 
     public enum SportType

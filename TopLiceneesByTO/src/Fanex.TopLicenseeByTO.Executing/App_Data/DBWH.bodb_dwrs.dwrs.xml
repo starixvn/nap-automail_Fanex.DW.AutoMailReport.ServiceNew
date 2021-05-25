@@ -2,7 +2,7 @@
   <Function Name="Auto Mail - Score Box">
     <Setting Key="DailyJob_CheckTasksStatus" SpName="DailyJob_CheckTasksStatus" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
     <Setting Key="Acc_Rpt_Letstalk_TopLicenseeByTO" SpName="Acc_Rpt_Letstalk_TopLicenseeByTO" DbName="DBWH.bodb_dwrs.dwrs" Timeout="0"></Setting>
-    <Setting Key="Acc_Rpt_Letstalk_TopLicenseeMargin" SpName="Acc_Rpt_Letstalk_TopLicenseeMargin" DbName="DBWH.bodb_dwrs.dwrs" Timeout="0"></Setting>
+    <Setting Key="Acc_Rpt_Letstalk_TopLicenseeMargin" SpName="Acc_Rpt_Letstalk_TopLicenseeMargin_xtest" DbName="DBWH.bodb_dwrs.dwrs" Timeout="0"></Setting>
     <Setting Key="Acc_Rpt_Letstalk_LeagueGroupSport_House" SpName="Acc_Rpt_Letstalk_LeagueGroupSport_House" DbName="DBWH.bodb_dwrs.dwrs" Timeout="0"></Setting>
     <Setting Key="Acc_Rpt_Letstalk_LeagueGroupSport_Licensee	" SpName="Acc_Rpt_Letstalk_LeagueGroupSport_Licensee" DbName="DBWH.bodb_dwrs.dwrs" Timeout="0"></Setting>
   </Function>

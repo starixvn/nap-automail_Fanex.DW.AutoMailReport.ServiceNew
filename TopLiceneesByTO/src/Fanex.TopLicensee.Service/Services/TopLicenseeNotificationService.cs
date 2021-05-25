@@ -104,13 +104,12 @@ namespace Fanex.TopLicensee.Service.Services
             ExportImageTopLicenseeMargin(imageBatches);
 
             ExportVirtualSoccerHouse(imageBatches, LeagueGroup.VL, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_House");
-            ExportVirtualSoccerLicensee(imageBatches, LeagueGroup.VL, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");
-
-            //// stop sending Esoccer
-            //ExportVirtualSoccerHouse(imageBatches, LeagueGroup.Esoccer, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_House");
-            //ExportVirtualSoccerLicensee(imageBatches, licenseeVirtualGroup, LeagueGroup.Esoccer, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");
-
+            ExportVirtualSoccerHouse(imageBatches, LeagueGroup.SabaSoccerPinGoal, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_House");
             ExportVirtualSoccerHouse(imageBatches, LeagueGroup.VL, SportType.Basketball, "Acc_Rpt_Letstalk_LeagueGroupSport_House");
+
+            ExportVirtualSoccerLicensee(imageBatches, LeagueGroup.VL, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");
+            ExportVirtualSoccerLicensee(imageBatches, LeagueGroup.SabaSoccerPinGoal, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");
+
             ExportVirtualSoccerLicensee(imageBatches, LeagueGroup.VL, SportType.Basketball, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");
 
             if (AppConfigService.AppConfig.IsSentDirectly)
