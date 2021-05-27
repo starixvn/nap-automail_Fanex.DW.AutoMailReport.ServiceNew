@@ -1,6 +1,6 @@
 ﻿{
   "SPName": "NAP_Set_PerformanceReportSel",
-  "DateRange": "Weekly",
+  "DateRange": "Monthly",
   "FromDate": "2020-01-01",
   "ToDate": "2020-01-10",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\Settlement-KPI",
