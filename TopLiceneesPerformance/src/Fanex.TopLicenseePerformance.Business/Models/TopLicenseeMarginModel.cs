@@ -22,6 +22,8 @@
 
         public decimal MarginSabaSoccer_Group { get; set; }
 
+        public decimal MarginSabaSoccerPinGoal_Group { get; set; }
+
         public decimal MarginSabaBasketball_Group { get; set; }
 
         public decimal MarginOthersport_Group { get; set; }
@@ -41,6 +43,8 @@
         public decimal MarginParlay { get; set; }
 
         public decimal MarginSabaSoccer { get; set; }
+
+        public decimal MarginSabaSoccerPinGoal { get; set; }
 
         public decimal MarginSabaBasketball { get; set; }
 

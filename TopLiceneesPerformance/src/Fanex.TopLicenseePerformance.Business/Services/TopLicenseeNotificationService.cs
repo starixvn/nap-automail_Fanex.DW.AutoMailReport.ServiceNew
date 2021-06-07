@@ -102,9 +102,11 @@ namespace Fanex.TopLicensee.Service.Services
             var success = true;
 
             ExportVirtualSoccerLicensee(imageBatches, LeagueGroup.VL, SportType.Soccer);
+            ExportVirtualSoccerLicensee(imageBatches, LeagueGroup.SabaSoccerPinGoal, SportType.Soccer);
             ExportVirtualSoccerLicensee(imageBatches, LeagueGroup.VL, SportType.Basketball);
 
             ExportImageTop50(imageBatches);
+
             ExportImageTopLicenseeMargin(imageBatches);
 
             if (AppConfigService.AppConfig.IsSentDirectly)

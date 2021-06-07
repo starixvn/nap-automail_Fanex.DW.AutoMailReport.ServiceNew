@@ -1,8 +1,8 @@
 ﻿{
   "SPName": "Acc_Rpt_N88_SB_Member_Performance_Daily",
-  "DateRange": "Yesterday",
-  "FromDate": "2020-01-01",
-  "ToDate": "2020-01-10",
+  "DateRange": "Manual",
+  "FromDate": "2021-05-01",
+  "ToDate": "2021-05-31",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\N88-SB-Member-Performance",
   "Password": "",
   "FunctionIdNodata": 90,

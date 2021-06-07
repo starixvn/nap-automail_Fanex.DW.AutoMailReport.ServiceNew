@@ -1,0 +1,40 @@
+﻿@using Fanex.CWLGamePayoutAlert.Business.Models;
+@{
+    DateTime dateTime = Model.Item1;
+    List<PayoutModel> rows = Model.Item2;
+}
+<div>
+    Dear all,<br />
+
+    Please be notified that these following products have triggered our payout limit alter system. <br><br />
+    <b>
+        Date: @dateTime.ToString("MM/dd/yyyy HH:00") - @dateTime.ToString("HH:59") (GMT+8)
+    </b>
+    <table border="1"
+           id="display" style="border-style:Solid;border-collapse:collapse;
+            font-size:10pt; font-family:Tahoma, Arial, Verdana, Sans-Serif;">
+        <thead>
+            <tr style="height: 25px;background-color:#3C5EA5; color: #FFFFFF; font-weight: bold;">
+                <td style="text-align:center; width:120px;">Product</td>
+                <td style="text-align:center; width:250px;">Game Type</td>
+                <td style="text-align:center; width:120px;">Bet Count</td>
+                <td style="text-align:center; width:120px;">Total Bets</td>
+                <td style="text-align:center; width:120px;">Total Wins</td>
+                <td style="text-align:center; width:120px;">Game Income</td>
+                <td style="text-align:center; width:120px;">Game Payout</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="height: 25px; font-size:9pt; font-family:Tahoma, Arial, Verdana, Sans-Serif">
+                <td style="text-align:center;" colspan="7">There is no data</td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+
+    Kindly check/monitor yourself and carry out timely actions accordingly. <br /><br />
+
+    Regards, <br /><br />
+
+    This is auto mail. Please do not reply<br /><br />
+</div>

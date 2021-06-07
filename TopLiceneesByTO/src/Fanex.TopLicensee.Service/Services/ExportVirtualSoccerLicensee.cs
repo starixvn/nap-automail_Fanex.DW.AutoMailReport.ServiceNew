@@ -33,6 +33,7 @@ namespace Fanex.TopLicensee.Service.Services
             {
                 { LeagueGroup.VL, sport[sportType] },
                 { LeagueGroup.Esoccer, "ESOCCER " },
+                { LeagueGroup.SabaSoccerPinGoal, "Saba Soc PGoal " },
             };
 
             excelPackage = new ExcelPackage(new FileInfo("Templates/TopLicensee-VirtualSoccer-Licensee.xlsx"));

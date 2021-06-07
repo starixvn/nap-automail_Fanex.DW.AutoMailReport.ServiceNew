@@ -96,6 +96,7 @@ namespace Fanex.TopLicensee.Service.Services
                     {
                         { LeagueGroup.Esoccer, "41" },
                         { LeagueGroup.VL, "42,74,108" },
+                        { LeagueGroup.SabaSoccerPinGoal, "113" },
                     }
                 },
                 {

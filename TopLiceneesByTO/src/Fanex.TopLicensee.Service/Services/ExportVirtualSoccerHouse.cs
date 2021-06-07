@@ -32,7 +32,8 @@ namespace Fanex.TopLicensee.Service.Services
             var titleSport = new Dictionary<LeagueGroup, string>
             {
                 { LeagueGroup.VL, sport[sportType] },
-                { LeagueGroup.Esoccer, "ESOCCER " },                
+                { LeagueGroup.Esoccer, "ESOCCER " },
+                { LeagueGroup.SabaSoccerPinGoal, "Saba Soc PGoal " },
             };
 
             excelPackage = new ExcelPackage(new FileInfo("Templates/TopLicensee-VirtualSoccer-House.xlsx"));
