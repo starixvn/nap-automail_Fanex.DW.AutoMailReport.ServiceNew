@@ -102,22 +102,35 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
                     continue;
                 }
 
-                var data = dataService.QueryData(config.SPName);
-                var excelPath = excelService.ExportExcel(data);
-
-                if (report.IsEmailEnabled)
+                var jsonData = "Data Not Begin Yet";
+                var jsonExcelPath = "Excel Not Begin Yet";
+                try
                 {
-                    mailService.SendMail(excelPath);
-                }
+                    var data = dataService.QueryData(config.SPName);
+                    var excelPath = excelService.ExportExcel(data);
+                    jsonData = JsonConvert.SerializeObject(data, Formatting.Indented);
+                    jsonExcelPath = JsonConvert.SerializeObject(excelPath, Formatting.Indented);
 
-                if (report.IsLetstalkEnabled)
-                {
-                    var imagePaths = ExportImage(config, excelPath);
-                    var sentLetstalkSuccess = SendImage(imagePaths);
-                    if (!sentLetstalkSuccess)
+                    if (report.IsEmailEnabled)
                     {
-                        letstalkFails.Add($"{report.ReportFile} - Letstalk sent images Unsuccessfully.");
+                        mailService.SendMail(excelPath);
                     }
+
+                    if (report.IsLetstalkEnabled)
+                    {
+                        var imagePaths = ExportImage(config, excelPath);
+                        var sentLetstalkSuccess = SendImage(imagePaths);
+                        if (!sentLetstalkSuccess)
+                        {
+                            letstalkFails.Add($"{report.ReportFile} - Letstalk sent images Unsuccessfully.");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    var err = $"Report: {report.ReportFile}, err: {ex.Message}, data: {jsonData}, excel: {jsonExcelPath}";
+                    letstalkFails.Add(err);
+                    log.Log(err);
                 }
             }
 
