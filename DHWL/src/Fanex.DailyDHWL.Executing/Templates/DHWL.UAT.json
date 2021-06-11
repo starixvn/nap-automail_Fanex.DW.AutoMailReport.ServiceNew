@@ -3,8 +3,8 @@
   "CategorySentryLog": "NAP-Report-Service-UAT",
   "IsCheckEnoughData": false,
   "ReportType": "Manual",
-  "FromDate": "2020-12-01",
-  "ToDate": "2020-12-02",
+  "FromDate": "2021-06-01",
+  "ToDate": "2021-06-21",
   "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\NEW-DHWL",
   "Password": "Star168",
   "TargetName": "daily-house-wl",
@@ -20,6 +20,11 @@
       "Group": "",
       "InternalPath": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0600\\2-NEW-DHWL-Excel-Daily",
       "MailId": 390
+    },
+    "LicenseePerformance": {
+      "Group": "DWHL-UAT",
+      "InternalPath": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0600\\2-LicenseePerformance-Daily",
+      "MailId": 0
     }
   }
 }

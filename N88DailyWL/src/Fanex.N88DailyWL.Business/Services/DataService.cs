@@ -23,6 +23,13 @@ namespace Fanex.N88DailyWL.Business.Services
         private readonly IDynamicRepository repository;
         private readonly DateService dateService;
 
+        private readonly List<string> productIgnore = new List<string>
+        {
+            "Live",
+            "Non-Live",
+            "Mixed Live & Non-Live"
+        };
+
         public DataServiceImp(IDynamicRepository repository, DateService dateService)
         {
             this.repository = repository;
@@ -40,7 +47,7 @@ namespace Fanex.N88DailyWL.Business.Services
             return new Tuple<List<N88CurrencyModel>, List<N88ProductModel>>
             (
                 data.Item1.ToList(),
-                dataSB
+                dataSB.Where(s => !productIgnore.Contains(s.Product)).ToList()
             );
         }
 
@@ -55,7 +62,7 @@ namespace Fanex.N88DailyWL.Business.Services
             return new Tuple<List<N88CurrencyModel>, List<N88ProductModel>>
             (
                 data.Item1.ToList(),
-                dataSB
+                dataSB.Where(s => !productIgnore.Contains(s.Product)).ToList()
             );
         }
 

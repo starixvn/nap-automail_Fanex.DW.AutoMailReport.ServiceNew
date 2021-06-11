@@ -1,0 +1,25 @@
+﻿{
+  "SentryClientKey": "https://ad29bef60cc04e78803c9030a33a2c06@sentry.nexdev.net/44",
+  "CategorySentryLog": "NAP-Report-Service-LOCAL",
+  "CronSchedule": "0/59 * * * * ?",
+  "FTPConfig": {
+    "Host": "10.18.200.131",
+    "UserName": "olympus",
+    "Password": "Pro_olympus_@1234aa",
+    "Port": 2121
+  },
+  "Paths": [
+    {
+      "Source": "/nap/mail-web-api-test/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/NEW-DHWL"
+    },
+    {
+      "Source": "/nap/ba-daily-wl-service/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/BADailyWinLoss"
+    },
+    {
+      "Source": "/nap/mail-abnormal-bets-service/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/AbnormalBetDailyReport-Licensee"
+    }
+  ]
+}

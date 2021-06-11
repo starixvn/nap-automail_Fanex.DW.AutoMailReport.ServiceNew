@@ -157,7 +157,7 @@ namespace Fanex.N88DailyWL.Business.Services
 
             for (int rowIndex = 4; rowIndex <= maxRowIndex; rowIndex++)
             {
-                var isLiveText = sheetProduct.Cells[rowIndex, 2].Value.ToString().Contains("Live");
+                var isLiveText = false;
                 var isBold = !isLiveText;
                 var isRightAlign = isLiveText;
                 var isBlueBGColor = !isLiveText;

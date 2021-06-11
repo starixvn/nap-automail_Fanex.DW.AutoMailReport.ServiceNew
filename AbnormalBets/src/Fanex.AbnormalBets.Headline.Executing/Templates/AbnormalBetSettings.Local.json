@@ -1,7 +1,7 @@
 ﻿{
   "SentryClientKey": "https://ad29bef60cc04e78803c9030a33a2c06@sentry.nexdev.net/44",
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
-  "IsManual": true,
+  "IsManual": false,
   "IsTest": false,
   "IsIgnoredCheckMailSent": true,
   "RptDate": "2020-03-18",

@@ -3,8 +3,8 @@
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
   "IsCheckEnoughData": false,
   "ReportType": "Manual",
-  "FromDate": "2020-12-01",
-  "ToDate": "2020-12-02",
+  "FromDate": "2021-06-01",
+  "ToDate": "2021-06-15",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\NEW-DHWL",
   "Password": "",
   "TargetName": "daily-house-wl",
@@ -20,6 +20,11 @@
       "Group": "",
       "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\2-DHWL-Excel-Daily",
       "MailId": 364
+    },
+    "LicenseePerformance": {
+      "Group": "DWHL-UAT",
+      "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\2-LicenseePerformance-Daily",
+      "MailId": 0
     }
   }
 }

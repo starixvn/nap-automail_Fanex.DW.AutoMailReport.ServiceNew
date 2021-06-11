@@ -20,6 +20,11 @@
       "Group": "",
       "InternalPath": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0505\\2-DHWL-Excel-Daily",
       "MailId": 391
+    },
+    "LicenseePerformance": {
+      "Group": "Top-50-Licensee-VSB-Performance",
+      "InternalPath": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0505\\2-LicenseePerformance-Daily",
+      "MailId": 0
     }
   }
 }

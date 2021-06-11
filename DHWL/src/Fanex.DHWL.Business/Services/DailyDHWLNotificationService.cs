@@ -1,5 +1,6 @@
 ﻿using Fanex.DHWL.Business.Models;
 using Fanex.DHWL.Business.Services.DailyDHWLLetstalk;
+using Fanex.DHWL.Business.Services.LicenseePerformance;
 using Fanex.DHWL.Business.Services.Margin;
 using Fanex.LetstalkService.Client;
 using Fanex.MailDelivery.Core.Models;
@@ -33,6 +34,7 @@ namespace Fanex.DHWL.Business.Services
         private readonly DailyImageDHWLService imageDHWLService;
         private readonly ImageMarginService imageMarginService;
         private readonly DateTimeServiceProvider dateTimeServiceProvider;
+        private readonly LicenseePerformanceService licenseePerformance;
 
         public DailyDHWLNotificationServiceImp(
             Log log,
@@ -46,7 +48,8 @@ namespace Fanex.DHWL.Business.Services
             ChartExport chartExport,
             DailyImageDHWLService imageDHWLService,
             ImageMarginService imageMarginService,
-            DateTimeServiceProvider dateTimeServiceProvider)
+            DateTimeServiceProvider dateTimeServiceProvider,
+            LicenseePerformanceService licenseePerformance)
         {
             this.log = log;
             this.dataService = dataService;
@@ -60,6 +63,7 @@ namespace Fanex.DHWL.Business.Services
             this.imageDHWLService = imageDHWLService;
             this.imageMarginService = imageMarginService;
             this.dateTimeServiceProvider = dateTimeServiceProvider;
+            this.licenseePerformance = licenseePerformance;
         }
 
         public JobMessage Execute()
@@ -102,6 +106,7 @@ namespace Fanex.DHWL.Business.Services
                 };
             }
             var dailyRawData = dataService.QueryDHWLData();
+            var licPerfRawData = dataService.QueryLicPerfData();
             var cloneData = baseDataTable.Clone(dailyRawData);
             var fromdate = dateTimeServiceProvider.DateTime.FromDate;
             var todate = dateTimeServiceProvider.DateTime.ToDate;
@@ -123,7 +128,10 @@ namespace Fanex.DHWL.Business.Services
 
             CopyFiles(excelPath, images);
             var status = messageService.SendMessage(images, AppConfigService.Config.LetstalkGroup);
-            var errFile = status.Where(s => !s.Value).Select(s => s.Key).ToList();
+            var status_LicPerf = licenseePerformance.Execute(licPerfRawData);
+            var result = status.Concat(status_LicPerf);
+
+            var errFile = result.Where(s => !s.Value).Select(s => s.Key).ToList();
             var subject = $"Automail Report - House Net Income - {todate:yyyy/MM/dd}";
             var mail = mailService.SendMail(excelPath, subject);
 
@@ -137,7 +145,8 @@ namespace Fanex.DHWL.Business.Services
 
         private void CopyFiles(string dhwlExcelPath, List<string> images)
         {
-            foreach (var group in AppConfigService.Config.LetstalkGroups)
+            var groups = AppConfigService.Config.LetstalkGroups.Where(s => !s.Key.Equals("LicenseePerformance"));
+            foreach (var group in groups)
             {
                 if (group.Key.Contains("Excel"))
                 {
