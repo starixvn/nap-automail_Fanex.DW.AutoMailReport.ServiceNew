@@ -20,6 +20,9 @@ namespace Fanex.DHWL.Business.Models
         public const string LicensingMinimumFee = "Licensing Minimum Fee";
         public const string LicenseeHouseIncome = "Licensee House Income";
 
+        public const string LicenseeTurnover = "Licensee Turnover";
+        public const string LicenseeWinloss = "Licensee Winloss";
+
         public const string Discount = "Discount";
         public const string Rebate = "Rebate";
 

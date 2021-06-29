@@ -2,9 +2,9 @@
   "SentryClientKey": "https://ad29bef60cc04e78803c9030a33a2c06@sentry.nexdev.net/44",
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
   "IsCheckEnoughData": false,
-  "IsManual": false,
-  "FromDate": "2020-09-01",
-  "ToDate": "2020-09-30",
+  "IsManual": true,
+  "FromDate": "2021-01-01",
+  "ToDate": "2021-05-31",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\N88DailyWL",
   "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\13",
   "TargetName": "N88",
@@ -26,7 +26,7 @@
       "Group": "N88-DailyWL-Internal-Test"
     }
   ],
-  "IsSentDirectly": false,
+  "IsSentDirectly": true,
   "Password": "",
   "FunctionIdNodata": 90,
   "Currency": {

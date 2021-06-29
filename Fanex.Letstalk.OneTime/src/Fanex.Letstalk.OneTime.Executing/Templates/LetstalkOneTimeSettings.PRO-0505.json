@@ -34,6 +34,12 @@
       "IsActive": true,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - House Net Income Daily Report (Excel)"
+    },
+    {
+      "FolderName": "2-LicenseePerformance-Daily",
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Licensee Performance Daily Report (Image)"
     }
   ]
 }

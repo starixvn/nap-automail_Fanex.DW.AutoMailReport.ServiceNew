@@ -15,6 +15,8 @@ namespace Fanex.DHWL.Business.Services
 
         DataTable QueryDHWLData();
 
+        DataTable QueryLicPerfData();
+
         DataTable QueryLastMonthData();
 
         DataTable QueryReconciliation();
@@ -66,10 +68,17 @@ namespace Fanex.DHWL.Business.Services
         {
             var fromDate = dateService.DateTime.FromDate;
             var toDate = dateService.DateTime.ToDate;
-            return QueryRawData(fromDate, toDate, "Acc_Rpt_HouseNetIncome");
+            return QueryRawData(fromDate, toDate, "Acc_Rpt_HouseNetIncome", false);
         }
 
-        private DataTable QueryRawData(DateTime fromDate, DateTime toDate, string spName)
+        public DataTable QueryLicPerfData()
+        {
+            var fromDate = dateService.DateTime.FromDate;
+            var toDate = dateService.DateTime.ToDate;
+            return QueryRawData(fromDate, toDate, "Acc_Rpt_HouseNetIncome", true);
+        }
+
+        private DataTable QueryRawData(DateTime fromDate, DateTime toDate, string spName, bool isLicPerf)
         {
             var dataTable = new DataTable();
 
@@ -78,6 +87,12 @@ namespace Fanex.DHWL.Business.Services
                 db.SetParameterValue("fromdate", fromDate);
                 db.SetParameterValue("todate", toDate);
                 db.SetParameterValue("productlist", AppConfigService.Config.ProductList);
+                db.SetParameterValue("islicperf", isLicPerf);
+                if (isLicPerf)
+                {
+                    db.SetParameterValue("basecurrencyname", "CNY");
+                }
+
                 var dataSet = db.ExecuteDataSet();
                 dataTable = baseDataTable.CombineAllInOneTable(dataSet);
             }
@@ -89,7 +104,7 @@ namespace Fanex.DHWL.Business.Services
         {
             var fromDate = lastMonth.FromDate;
             var toDate = lastMonth.ToDate;
-            return QueryRawData(fromDate, toDate, "Acc_Rpt_HouseNetIncome")
+            return QueryRawData(fromDate, toDate, "Acc_Rpt_HouseNetIncome", false)
                 .AsEnumerable()
                 .Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver))
                 .CopyToDataTable();

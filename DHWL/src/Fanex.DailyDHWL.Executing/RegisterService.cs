@@ -3,6 +3,7 @@ using Fanex.Data.Repository;
 using Fanex.DHWL.Business.Models;
 using Fanex.DHWL.Business.Services;
 using Fanex.DHWL.Business.Services.DailyDHWLLetstalk;
+using Fanex.DHWL.Business.Services.LicenseePerformance;
 using Fanex.DHWL.Business.Services.Margin;
 using Fanex.LetstalkService.Client;
 using Fanex.LetstalkService.Core.Services;
@@ -69,6 +70,10 @@ namespace Fanex.DailyDHWL.Executing
             container.Register<DailyExcelDHWLService, DailyExcelDHWLServiceImp>();
             container.Register<DailyImageDHWLService, DailyImageDHWLServiceImp>();
             container.Register<ImageMarginService, ImageMarginServiceImp>();
+            container.Register<LicenseePerformanceDataService, LicenseePerformanceDataServiceImp>();
+            container.Register<LicenseePerformanceExcelService, LicenseePerformanceExcelServiceImp>();
+            container.Register<LicenseePerformanceService, LicenseePerformanceServiceImp>();
+            container.Register<LicenseePerformanceImageService, LicenseePerformanceImageServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
             container.Register<ApplicationSettingService, ApplicationSettingServiceImp>();

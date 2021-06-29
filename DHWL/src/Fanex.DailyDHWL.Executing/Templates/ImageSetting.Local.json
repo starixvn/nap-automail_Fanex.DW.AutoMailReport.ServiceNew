@@ -29,5 +29,20 @@
     "ImageQuality": 100,
     "HeightPerRow": 90,
     "AdjustHeight": 130
+  },
+  "LicenseePerformance": {
+    "FirstRow": 2,
+    "FirstColumn": 2,
+    "LastColumn": 9,
+    "CropWidth": 2500,
+    "ImageName": "Lic-Perf",
+    "SheetName": "Margin",
+    "X": 230,
+    "Y": 250,
+    "IsResize": false,
+    "ResizeNewWidth": 1400,
+    "ImageQuality": 100,
+    "HeightPerRow": 90,
+    "AdjustHeight": 30
   }
 }

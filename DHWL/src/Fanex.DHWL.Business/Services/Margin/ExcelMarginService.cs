@@ -1,9 +1,7 @@
 ﻿using Fanex.DHWL.Business.Models;
 using OfficeOpenXml;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 
@@ -20,7 +18,6 @@ namespace Fanex.DHWL.Business.Services
     {
         private ExcelPackage excelPackage;
         private readonly DateTimeServiceProvider dateService;
-        private readonly DateTimeService lastMonth;
         private readonly DataMarginService dataMarginService;
 
         private const int StartRowIndex = 3;
@@ -38,7 +35,6 @@ namespace Fanex.DHWL.Business.Services
         {
             this.excelPackage = excelPackage;
             this.dateService = dateService;
-            this.lastMonth = lastMonth;
             this.dataMarginService = dataMarginService;
         }
 
