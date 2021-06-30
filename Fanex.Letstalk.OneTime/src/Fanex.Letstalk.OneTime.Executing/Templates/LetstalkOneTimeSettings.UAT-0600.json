@@ -4,6 +4,8 @@
   "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0600",
   "TargetName": "daily-house-wl",
   "Group": "DWHL-UAT",
+  "IsManual": false,
+  "Date": "2021-06-28",
   "MailSettings": {
     "LetstalkOneTime": {
       "MailId": 375,

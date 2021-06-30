@@ -41,7 +41,7 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
                         TOMTD = product.Where(s => s[ColumnName.SubFigure].Equals(RowFigureName.LicenseeTurnover)).Sum(s => Converter.To<decimal>(s[ColumnName.MTD])),
                         WLMTD = product.Where(s => s[ColumnName.SubFigure].Equals(RowFigureName.LicenseeWinloss)).Sum(s => Converter.To<decimal>(s[ColumnName.MTD])),
 
-                        LicenseeFee = product.Where(s => s[ColumnName.SubFigure].Equals(RowFigureName.LicenseeHouseIncome)).Sum(s => Converter.To<decimal>(s[ColumnName.MTD])),
+                        LicenseeFee = product.Where(s => s[ColumnName.SubFigure].Equals(RowFigureName.LicenseeHouseIncome)).Sum(s => Converter.To<decimal>(s[ColumnName.Monthly])),
                     };
 
                     result.Add(row);
@@ -49,7 +49,7 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
 
             var royaltyFees = licPerfRawData.AsEnumerable()
                 .Where(s => Converter.To<bool>(s[ColumnName.IsDeposit]) && RowFigureName.RoyaltyFees.Contains(s[ColumnName.SubFigure]))
-                .Sum(s => Converter.To<decimal>(s[ColumnName.MTD]));
+                .Sum(s => Converter.To<decimal>(s[ColumnName.Monthly]));
 
             CalcTotal(result, royaltyFees);
 

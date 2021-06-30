@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Fanex.DHWL.Business.Models;
+using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 
 namespace Fanex.DHWL.Business.Services.LicenseePerformance
 {
@@ -26,11 +28,21 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
 
         public Dictionary<string, bool> Execute(DataTable licPerfRawData)
         {
-            var imagePath = imageService.Export(licPerfRawData);
             var letstalkGroup = AppConfigService.Config.LetstalkGroups["LicenseePerformance"];
-            fileService.CopyFiles(letstalkGroup, new List<string> { imagePath });
+            var sbRawData = licPerfRawData.AsEnumerable()
+                .Where(s => s[ColumnName.ProductGroup].Equals(ProductGroup.Sportsbook))
+                .CopyToDataTable();
 
-            return messageService.SendMessage(new List<string> { imagePath }, AppConfigService.Config.LetstalkGroup);
+            var osRawData = licPerfRawData.AsEnumerable()
+                .Where(s => !s[ColumnName.ProductGroup].Equals(ProductGroup.Sportsbook))
+                .CopyToDataTable();
+
+            var imagePath = imageService.Export(sbRawData, "SB-LicPef");
+            var imagePath3rd = imageService.Export(osRawData, "3rd-LicPef");
+
+            fileService.CopyFiles(letstalkGroup, new List<string> { imagePath, imagePath3rd });
+
+            return messageService.SendMessage(new List<string> { imagePath, imagePath3rd }, AppConfigService.Config.LetstalkGroupLicPerf);
         }
     }
 }

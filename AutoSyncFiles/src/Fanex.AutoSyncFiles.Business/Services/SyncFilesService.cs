@@ -1,5 +1,4 @@
-﻿using Fanex.MailDelivery.Client;
-using Fanex.MailDelivery.Core.Models;
+﻿using Fanex.MailDelivery.Core.Models;
 using FluentFTP;
 using System;
 using System.Collections.Generic;
@@ -16,6 +15,12 @@ namespace Fanex.AutoSyncFiles.Business.Services
     public class SyncFilesServiceImp : SyncFilesService
     {
         private readonly Log log;
+
+        private FtpClient ftpClient = new FtpClient(AppConfigService.AppConfig.FTPConfig.Host)
+        {
+            Credentials = new NetworkCredential(AppConfigService.AppConfig.FTPConfig.UserName, AppConfigService.AppConfig.FTPConfig.Password),
+            Port = AppConfigService.AppConfig.FTPConfig.Port
+        };
 
         public SyncFilesServiceImp(Log log)
         {
@@ -40,35 +45,7 @@ namespace Fanex.AutoSyncFiles.Business.Services
                 }
 
                 AppConfigService.IsProcessing = true;
-
-                var ftpClient = new FtpClient(AppConfigService.AppConfig.FTPConfig.Host);
-                ftpClient.Credentials = new NetworkCredential(AppConfigService.AppConfig.FTPConfig.UserName, AppConfigService.AppConfig.FTPConfig.Password);
-                ftpClient.Port = AppConfigService.AppConfig.FTPConfig.Port;
-                ftpClient.Connect();
-
-                foreach (var path in AppConfigService.AppConfig.Paths)
-                {
-                    Directory.CreateDirectory(path.Destination);
-                    var result = ftpClient.DownloadDirectory(path.Destination, path.Source, FtpFolderSyncMode.Update);
-                    result.ForEach(file =>
-                    {
-                        if (file.Type == FtpFileSystemObjectType.File)
-                        {
-                            var files = ftpClient.GetListing(file.RemotePath);
-                            foreach (FtpListItem item in files)
-                            {
-                                downloadedFiles.Add(item.FullName);
-                                var hours = DateTime.Now.Subtract(item.RawModified).TotalHours;
-                                if (hours > 12)
-                                {
-                                    ftpClient.DeleteFile(item.FullName);
-                                }
-                            }
-                        }
-                    });
-                }
-
-                ftpClient.Disconnect();
+                FTPDownloadFiles(downloadedFiles);
                 jobStatus = JobStatus.Success;
             }
             catch (Exception e)
@@ -79,6 +56,11 @@ namespace Fanex.AutoSyncFiles.Business.Services
             }
             finally
             {
+                if (ftpClient != null)
+                {
+                    ftpClient.Disconnect();
+                }
+
                 AppConfigService.IsProcessing = false;
                 jobMessage.JobStatus = jobStatus;
                 jobMessage.Mail = new Mail
@@ -89,6 +71,30 @@ namespace Fanex.AutoSyncFiles.Business.Services
             }
 
             return jobMessage;
+        }
+
+        private void FTPDownloadFiles(List<string> downloadedFiles)
+        {
+            ftpClient.Connect();
+            ftpClient.ConnectTimeout = 3600;
+            var utcNow = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now);
+
+            foreach (var path in AppConfigService.AppConfig.Paths)
+            {
+                Directory.CreateDirectory(path.Destination);
+                var result = ftpClient.DownloadDirectory(path.Destination, path.Source, FtpFolderSyncMode.Update);
+                result.ForEach(file =>
+                {
+                    if (file.Type == FtpFileSystemObjectType.File)
+                    {
+                        var files = ftpClient.GetListing(file.RemotePath);
+                        foreach (FtpListItem item in files)
+                        {
+                            downloadedFiles.Add(item.FullName);
+                        }
+                    }
+                });
+            }
         }
     }
 }

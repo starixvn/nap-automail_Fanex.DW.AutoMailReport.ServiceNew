@@ -14,6 +14,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
     {
         private readonly MonthlyExcelDHWLService excelDHWLService;
         private readonly ImageService imageService;
+        private readonly MergeProductDataService mergeProductDataService;
 
         public string FileName
         {
@@ -22,14 +23,17 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
 
         public MonthlyImageDHWLServiceImp(
             MonthlyExcelDHWLService excelDHWLService,
-            ImageService imageService)
+            ImageService imageService,
+            MergeProductDataService mergeProductDataService)
         {
             this.excelDHWLService = excelDHWLService;
             this.imageService = imageService;
+            this.mergeProductDataService = mergeProductDataService;
         }
 
         public List<string> Export(DataTable monthlyRawData, DataTable dataReconciliation)
         {
+            mergeProductDataService.MergeSabaCIntoVGaming(monthlyRawData);
             var excelPath = excelDHWLService.Export(monthlyRawData, dataReconciliation);
             FileName = excelPath;
             var imageDHWLMonthly = ExportDHWLMonthly(excelPath);

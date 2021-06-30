@@ -108,13 +108,14 @@ namespace Fanex.DHWL.Business.Services
             var dailyRawData = dataService.QueryDHWLData();
             var licPerfRawData = dataService.QueryLicPerfData();
             var cloneData = baseDataTable.Clone(dailyRawData);
+            var cloneDataDHWL = baseDataTable.Clone(dailyRawData);
             var fromdate = dateTimeServiceProvider.DateTime.FromDate;
             var todate = dateTimeServiceProvider.DateTime.ToDate;
 
             excelRawService.Export(dailyRawData, true, fromdate, todate);
             var excelPath = excelDailyService.Export(cloneData);
 
-            var imageDHWLPath = imageDHWLService.Export(dailyRawData);
+            var imageDHWLPath = imageDHWLService.Export(cloneDataDHWL);
             var imageMarginPath = imageMarginService.Export(dailyRawData, true);
             var imageMarginMTDPath = imageMarginService.Export(dailyRawData, false);
             var chartPath = chartExport.Export(dailyRawData);

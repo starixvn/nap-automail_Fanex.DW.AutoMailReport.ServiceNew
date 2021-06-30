@@ -10,16 +10,8 @@
   },
   "Paths": [
     {
-      "Source": "/nap/mail-web-api-test/excel/LOCAL",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/NEW-DHWL"
-    },
-    {
-      "Source": "/nap/ba-daily-wl-service/excel/LOCAL",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/BADailyWinLoss"
-    },
-    {
-      "Source": "/nap/mail-abnormal-bets-service/excel/LOCAL",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/AbnormalBetDailyReport-Licensee"
+      "Source": "/nap/os-lic-pef-service/excel/LOCAL/InternalOneTime/12-OSLicPerfByTO",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/InternalOneTime/12-OSLicPerfByTO"
     }
   ]
 }

@@ -43,6 +43,6 @@
     "ResizeNewWidth": 1000,
     "ImageQuality": 100,
     "HeightPerRow": 90,
-    "AdjustHeight": 30
+    "AdjustHeight": 50
   }
 }

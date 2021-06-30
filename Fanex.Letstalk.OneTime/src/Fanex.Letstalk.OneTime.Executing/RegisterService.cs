@@ -42,6 +42,7 @@ namespace Fanex.Letstalk.OneTime.Executing
             container.Register<IDynamicRepository, DynamicRepository>();
             container.Register<MailService, MailServiceImp>();
             container.Register<FileService, FileServiceImp>();
+            container.Register<DateService, DateServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
             container.Register<ApplicationSettingService, ApplicationSettingServiceImp>();

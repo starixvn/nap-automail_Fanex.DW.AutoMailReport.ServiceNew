@@ -73,6 +73,7 @@ namespace Fanex.MonthlyDHWL.Executing
             container.Register<ImageMarginService, ImageMarginServiceImp>();
             container.Register<AdjustmentDataService, AdjustmentDataServiceImp>();
             container.Register<MonthlyReconciliationExcelService, MonthlyReconciliationExcelServiceImp>();
+            container.Register<MergeProductDataService, MergeProductDataServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
             container.Register<ApplicationSettingService, ApplicationSettingServiceImp>();

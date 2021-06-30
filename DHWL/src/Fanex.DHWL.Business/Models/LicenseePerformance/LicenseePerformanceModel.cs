@@ -29,16 +29,11 @@ namespace Fanex.DHWL.Business.Models.LicenseeDHWLLetstalk
             }
         }
 
-        public string StrMargin
+        public decimal StrMargin
         {
             get
             {
-                if (Margin < 0)
-                {
-                    return $"({format.CutNumberOff(-Margin * 100)}%)";
-                }
-
-                return $"{format.CutNumberOff(Margin * 100)}%";
+                return Margin;
             }
         }
 
@@ -63,16 +58,11 @@ namespace Fanex.DHWL.Business.Models.LicenseeDHWLLetstalk
             }
         }
 
-        public string StrMarginMTD
+        public decimal StrMarginMTD
         {
             get
             {
-                if (MarginMTD < 0)
-                {
-                    return $"({format.CutNumberOff(-MarginMTD * 100)}%)";
-                }
-
-                return $"{format.CutNumberOff(MarginMTD * 100)}%";
+                return MarginMTD;
             }
         }
 

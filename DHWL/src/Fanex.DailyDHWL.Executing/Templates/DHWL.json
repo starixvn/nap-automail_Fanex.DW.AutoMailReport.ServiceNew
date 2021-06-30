@@ -3,12 +3,13 @@
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
   "IsCheckEnoughData": false,
   "ReportType": "Manual",
-  "FromDate": "2021-05-01",
-  "ToDate": "2021-05-31",
+  "FromDate": "2021-06-01",
+  "ToDate": "2021-06-15",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\NEW-DHWL",
   "Password": "",
   "TargetName": "daily-house-wl",
   "LetstalkGroup": "DWHL-UAT",
+  "LetstalkGroupLicPerf": "DWHL-UAT",
   "ProductList": "All",
   "LetstalkGroups": {
     "Image": {

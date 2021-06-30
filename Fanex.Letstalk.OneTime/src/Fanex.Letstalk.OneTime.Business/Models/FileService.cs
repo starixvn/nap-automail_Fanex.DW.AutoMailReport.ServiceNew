@@ -5,6 +5,7 @@ using RazorEngine.Templating;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Fanex.Letstalk.OneTime.Business.Models
 {
@@ -21,6 +22,13 @@ namespace Fanex.Letstalk.OneTime.Business.Models
 
     public class FileServiceImp : FileService
     {
+        private readonly DataService dataService;
+
+        public FileServiceImp(DataService dataService)
+        {
+            this.dataService = dataService;
+        }
+
         public string LoadMailTemplate(List<string> fileNames)
         {
             var templatePath = @"Templates\ContentWithAttachment.cshtml";
@@ -43,15 +51,9 @@ namespace Fanex.Letstalk.OneTime.Business.Models
 
         public List<string> ReadFolderSent()
         {
-            var folders = new List<string>();
-            var fileName = "FolderReadySent.json";
-            var path = $@"{AppConfigService.AppConfig.Path}/{fileName}";
-            if (File.Exists(path))
-            {
-                var text = File.ReadAllText(path);
-                var oldFolders = JsonConvert.DeserializeObject<List<string>>(text);
-                folders.AddRange(oldFolders);
-            }
+            var folders = dataService.ReadFolderSent()
+                .Select(s => s.FolderName)
+                .ToList();
 
             return folders;
         }
@@ -64,6 +66,8 @@ namespace Fanex.Letstalk.OneTime.Business.Models
             folders.AddRange(oldFolders);
             var json = JsonConvert.SerializeObject(folders, Formatting.Indented);
             File.WriteAllText(path, json);
+
+            dataService.WriteFolderSent(folders);
         }
     }
 }

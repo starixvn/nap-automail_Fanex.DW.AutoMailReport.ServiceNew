@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using Fanex.DHWL.Business.Models;
+using System.Data;
 
 namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
 {
@@ -11,17 +12,22 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
     {
         private readonly DailyExcelDHWLService excelDHWLService;
         private readonly ImageService imageService;
+        private readonly MergeProductDataService mergeProductDataService;
 
         public DailyImageDHWLServiceImp(
             DailyExcelDHWLService excelDHWLService,
-            ImageService imageService)
+            ImageService imageService,
+            MergeProductDataService mergeProductDataService)
         {
             this.excelDHWLService = excelDHWLService;
             this.imageService = imageService;
+            this.mergeProductDataService = mergeProductDataService;
         }
 
         public string Export(DataTable dailyRawData)
         {
+            mergeProductDataService.MergeSabaCIntoVGaming(dailyRawData);
+
             var excelPath = excelDHWLService.Export(dailyRawData);
             var lastRow = excelDHWLService.LastRowIndex;
             var image = AppConfigService.Config.ImageSettings["DHWL"];

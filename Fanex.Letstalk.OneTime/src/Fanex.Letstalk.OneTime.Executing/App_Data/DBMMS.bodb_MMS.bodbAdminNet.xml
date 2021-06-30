@@ -2,5 +2,7 @@
 <Functions SiteId="66" SiteName="mSite">
   <Function Name="MailDeliver">
     <Setting Key="Mail_Report_GetMailTaskList" SpName="Mail_Report_GetMailTaskList" DbName="DBMMS.bodb_MMS.bodbAdminNet" />
+    <Setting Key="Acc_Rpt_LetstalkPreRunLog_Select" SpName="Acc_Rpt_LetstalkPreRunLog_Select" DbName="DBMMS.bodb_MMS.bodbAdminNet" />
+    <Setting Key="Acc_Rpt_LetstalkPreRunLog_Update" SpName="Acc_Rpt_LetstalkPreRunLog_Update" DbName="DBMMS.bodb_MMS.bodbAdminNet" />
   </Function>
 </Functions>

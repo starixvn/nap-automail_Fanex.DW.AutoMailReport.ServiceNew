@@ -9,7 +9,7 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
 {
     public interface LicenseePerformanceExcelService
     {
-        string Export(DataTable licPerfRawData);
+        string Export(DataTable licPerfRawData, string imageName);
 
         int LastRowIndex { get; set; }
     }
@@ -38,7 +38,7 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
             this.dataService = dataService;
         }
 
-        public string Export(DataTable licPerfRawData)
+        public string Export(DataTable licPerfRawData, string imageName)
         {
             var data = dataService.CalTotalByProduct(licPerfRawData);
 
@@ -47,11 +47,11 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
             var formatTpl = excelPackage.Workbook.Worksheets["Format"];
             excelPackage.Workbook.Worksheets.Delete(formatTpl);
 
-            RenderTitle(dailyTemplate);
+            RenderTitle(dailyTemplate, imageName);
             RenderData(data, dailyTemplate);
             FormatData(data, dailyTemplate, formatTpl);
 
-            return Save();
+            return Save(imageName);
         }
 
         private void RenderData(List<LicenseePerformanceModel> data, ExcelWorksheet template)
@@ -134,10 +134,10 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
             LastRowIndex = endIndexGroup;
         }
 
-        private string Save()
+        private string Save(string imageName)
         {
             var date = dateService.DateTime.ToDate;
-            var fileName = $"Licensee-Performance-{date:yyyy_MM_dd}.xlsx";
+            var fileName = $"{imageName}-{date:yyyy_MM_dd}.xlsx";
 
             var path = $@"{AppConfigService.Config.Path}\{date:yyyy}\{date:MM}";
             if (!Directory.Exists(path))
@@ -151,13 +151,17 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
             return path;
         }
 
-        private void RenderTitle(ExcelWorksheet template)
+        private void RenderTitle(ExcelWorksheet template, string imageName)
         {
             var todate = dateService.DateTime.ToDate;
             var isEndOfMonth = todate.AddDays(1).Day == 1;
             var title = $"{todate:dd-MMM-yy}";
+            var header = imageName.Equals("SB-LicPef")
+                ? "Sportsbook Licensee Performance (RMB)"
+                : "3rd Product Licensee Performance (RMB)";
 
             template.Cells["C3"].Value = title;
+            template.Cells["B2"].Value = header;
 
             title = $"MTD ({todate:dd-MMM})";
             if (isEndOfMonth)

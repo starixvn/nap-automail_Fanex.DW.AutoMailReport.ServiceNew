@@ -9,6 +9,7 @@
   "Password": "Star168",
   "TargetName": "daily-house-wl",
   "LetstalkGroup": "DWHL-UAT",
+  "LetstalkGroupLicPerf": "DWHL-UAT",
   "ProductList": "All",
   "LetstalkGroups": {
     "Image": {

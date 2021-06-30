@@ -17,6 +17,8 @@ namespace Fanex.DHWL.Business.Models
 
         public string LetstalkGroup { get; set; }
 
+        public string LetstalkGroupLicPerf { get; set; }
+
         public string Password { get; set; }
 
         public ReportType ReportType { get; set; }

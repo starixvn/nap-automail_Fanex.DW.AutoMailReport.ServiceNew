@@ -12,7 +12,7 @@
     "ResizeNewWidth": 1300,
     "ImageQuality": 100,
     "HeightPerRow": 52,
-    "AdjustHeight": 10
+    "AdjustHeight": 40
   },
   "Adjustment": {
     "FirstRow": 1,
