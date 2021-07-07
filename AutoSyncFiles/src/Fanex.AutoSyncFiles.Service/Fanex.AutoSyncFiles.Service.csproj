@@ -236,6 +236,9 @@
     <Content Include="Templates\SyncFiles.UAT.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\SyncFiles.PRO.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.AutoSyncFiles.Business\Fanex.AutoSyncFiles.Business.csproj">

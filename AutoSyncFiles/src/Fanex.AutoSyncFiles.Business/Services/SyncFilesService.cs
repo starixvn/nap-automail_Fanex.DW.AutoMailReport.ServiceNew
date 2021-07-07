@@ -83,6 +83,9 @@ namespace Fanex.AutoSyncFiles.Business.Services
             {
                 Directory.CreateDirectory(path.Destination);
                 var result = ftpClient.DownloadDirectory(path.Destination, path.Source, FtpFolderSyncMode.Update);
+
+                log.Log($"path.Source: {path.Source}, count: {result.Count}");
+
                 result.ForEach(file =>
                 {
                     if (file.Type == FtpFileSystemObjectType.File)
