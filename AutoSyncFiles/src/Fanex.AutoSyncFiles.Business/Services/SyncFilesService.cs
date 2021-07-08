@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Linq;
 
 namespace Fanex.AutoSyncFiles.Business.Services
 {
@@ -45,6 +46,7 @@ namespace Fanex.AutoSyncFiles.Business.Services
                 }
 
                 AppConfigService.IsProcessing = true;
+
                 FTPDownloadFiles(downloadedFiles);
                 jobStatus = JobStatus.Success;
             }
@@ -83,8 +85,6 @@ namespace Fanex.AutoSyncFiles.Business.Services
             {
                 Directory.CreateDirectory(path.Destination);
                 var result = ftpClient.DownloadDirectory(path.Destination, path.Source, FtpFolderSyncMode.Update);
-
-                log.Log($"path.Source: {path.Source}, count: {result.Count}");
 
                 result.ForEach(file =>
                 {
