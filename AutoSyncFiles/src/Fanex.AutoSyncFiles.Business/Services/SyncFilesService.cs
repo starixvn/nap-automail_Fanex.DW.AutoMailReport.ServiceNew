@@ -17,11 +17,19 @@ namespace Fanex.AutoSyncFiles.Business.Services
     {
         private readonly Log log;
 
-        private FtpClient ftpClient = new FtpClient(AppConfigService.AppConfig.FTPConfig.Host)
+        private readonly FtpClient ftpClient = new FtpClient(AppConfigService.AppConfig.FTPConfig.Host)
         {
             Credentials = new NetworkCredential(AppConfigService.AppConfig.FTPConfig.UserName, AppConfigService.AppConfig.FTPConfig.Password),
             Port = AppConfigService.AppConfig.FTPConfig.Port
         };
+
+        private readonly List<string> messages = new List<string>
+        {
+            "Unable to read data from the transport connection",
+            "Timed out trying to read data from the socket stream!"
+        };
+
+        private bool isIgnoredLog = false;
 
         public SyncFilesServiceImp(Log log)
         {
@@ -45,6 +53,7 @@ namespace Fanex.AutoSyncFiles.Business.Services
                     return jobMessage;
                 }
 
+                isIgnoredLog = false;
                 AppConfigService.IsProcessing = true;
 
                 FTPDownloadFiles(downloadedFiles);
@@ -53,7 +62,19 @@ namespace Fanex.AutoSyncFiles.Business.Services
             catch (Exception e)
             {
                 jobStatus = JobStatus.JobFailed;
-                log.Log(e);
+                messages.ForEach(message =>
+                {
+                    if (e.Message.Contains(message))
+                    {
+                        isIgnoredLog = true;
+                    }
+                });
+
+                if (!isIgnoredLog)
+                {
+                    log.Log(e);
+                }
+
                 downloadedFiles.Add(e.Message);
             }
             finally
@@ -77,6 +98,7 @@ namespace Fanex.AutoSyncFiles.Business.Services
 
         private void FTPDownloadFiles(List<string> downloadedFiles)
         {
+            ServicePointManager.Expect100Continue = false;
             ftpClient.Connect();
             ftpClient.ConnectTimeout = 3600;
             var utcNow = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now);

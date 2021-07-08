@@ -1,4 +1,4 @@
-﻿using Fanex.DHWL.Business.Models;
+﻿using Fanex.DHWL.Business.Services.LicenseePerformance;
 using System.Data;
 
 namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
@@ -26,7 +26,7 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
 
         public string Export(DataTable dailyRawData)
         {
-            mergeProductDataService.MergeSabaCIntoVGaming(dailyRawData);
+            mergeProductDataService.MergeVGamingIntoSabaC(dailyRawData);
 
             var excelPath = excelDHWLService.Export(dailyRawData);
             var lastRow = excelDHWLService.LastRowIndex;

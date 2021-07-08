@@ -1,5 +1,6 @@
 ﻿using Fanex.MailDeliver.MailClient.API;
 using Fanex.MailDeliver.Model;
+using Newtonsoft.Json;
 
 namespace NegativeBalance.Business.Services
 {

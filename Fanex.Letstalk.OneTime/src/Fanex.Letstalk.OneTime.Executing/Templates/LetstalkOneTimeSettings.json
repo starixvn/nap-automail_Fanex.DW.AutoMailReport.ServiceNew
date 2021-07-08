@@ -4,8 +4,6 @@
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime",
   "TargetName": "daily-house-wl",
   "Group": "DWHL-UAT",
-  "IsManual": false,
-  "Date": "2021-06-28",
   "MailSettings": {
     "LetstalkOneTime": {
       "MailId": 358,
@@ -33,7 +31,7 @@
     },
     {
       "FolderName": "2-DHWL-Excel-Daily",
-      "IsActive": false,
+      "IsActive": true,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - House Net Income Daily Report (Excel)"
     },
@@ -45,73 +43,67 @@
     },
     {
       "FolderName": "5-DHWL-Soccer-Margin-Test",
-      "IsActive": false,
+      "IsActive": true,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Daily Margin Chart - Soccer"
     },
     {
       "FolderName": "5-DHWL-OS-Margin-Test",
-      "IsActive": false,
+      "IsActive": true,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Daily Margin Chart - OS"
     },
     {
       "FolderName": "5-DHWL-Non-Sport-Margin-Test",
-      "IsActive": false,
+      "IsActive": true,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Daily Margin Chart - Non-Sport"
     },
     {
       "FolderName": "12-TopLicenseeByTO",
-      "IsActive": false,
+      "IsActive": true,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Top Licensees by TO"
     },
     {
-      "FolderName": "12-OSLicPerfByTO",
-      "IsActive": true,
-      "FolderMode": "Daily",
-      "ReportName": "Letstalk - OS - Top Licensee Performance"
-    },
-    {
       "FolderName": "13-N88-DailyWL-Test",
-      "IsActive": false,
+      "IsActive": true,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - N88 Daily Win Loss"
     },
     {
       "FolderName": "13-N8B-DailyWL-Test",
-      "IsActive": false,
+      "IsActive": true,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - N8B Daily Win Loss"
     },
     {
       "FolderName": "13-N8G-DailyWL-Test",
-      "IsActive": false,
+      "IsActive": true,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - N8G Daily Win Loss"
     },
     {
       "FolderName": "13-N88-DailyWL-Internal-Test",
-      "IsActive": false,
+      "IsActive": true,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - N88 Internal Daily Win Loss (All Images)"
     },
     {
       "FolderName": "18-TopNonSportPunters",
-      "IsActive": false,
+      "IsActive": true,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Top Non-Sports Punters"
     },
     {
       "FolderName": "19-TopSportbookAgents",
-      "IsActive": false,
+      "IsActive": true,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Top Sportbook Agents"
     },
     {
       "FolderName": "20-TOAVGBetBenchmark",
-      "IsActive": false,
+      "IsActive": true,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Turnover/AVG Bet Benchmark"
     }

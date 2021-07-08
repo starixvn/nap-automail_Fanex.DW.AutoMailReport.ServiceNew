@@ -11,11 +11,35 @@
   "Paths": [
     {
       "Source": "/nap/os-lic-pef-service/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/OSLicPerfByTO"
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/12-OSLicPerfByTO-PROD"
     },
     {
-      "Source": "/nap/os-lic-pef-service/excel/PROD/InternalOneTime/12-OSLicPerfByTO",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/12-OSLicPerfByTO"
+      "Source": "/nap/os-lic-pef-service/excel/PROD/InternalOneTime/12-OSLicPerfByTO-PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/12-OSLicPerfByTO-PROD"
+    },
+    {
+      "Source": "/nap/sb-lic-perf/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/27-SBLicPerfByTO-PROD"
+    },
+    {
+      "Source": "/nap/sb-lic-perf/excel/PROD/InternalOneTime/27-SBLicPerfByTO-PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/27-SBLicPerfByTO-PROD"
+    },
+    {
+      "Source": "/nap/mail-abnormal-bets-service/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/AB Daily Report-PROD"
+    },
+    {
+      "Source": "/nap/ta-perf/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/TA-Perf-PROD"
+    },
+    {
+      "Source": "/nap/ba-daily-wl-service/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/BA-Daily-WL-PROD"
+    },
+    {
+      "Source": "/nap/top-licensee-by-to-service/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/Fanex.Excel/Top-Lic-By-TO-PROD"
     }
   ]
 }

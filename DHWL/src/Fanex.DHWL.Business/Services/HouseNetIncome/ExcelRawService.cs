@@ -7,7 +7,7 @@ namespace Fanex.DHWL.Business.Services
 {
     public interface ExcelRawService
     {
-        string Export(DataTable dataTable, bool isDaily, DateTime fromdate, DateTime todate);
+        string Export(DataTable dataTable, string fileName, DateTime fromdate, DateTime todate);
     }
 
     public class ExcelRawServiceImp : ExcelRawService
@@ -23,7 +23,7 @@ namespace Fanex.DHWL.Business.Services
             this.dateService = dateService;
         }
 
-        public string Export(DataTable dataTable, bool isDaily, DateTime fromdate, DateTime todate)
+        public string Export(DataTable dataTable, string fileName, DateTime fromdate, DateTime todate)
         {
             excelPackage = new ExcelPackage(new FileInfo($"Templates/DHWL-RawData.xlsx"));
             var template = excelPackage.Workbook.Worksheets["DHWL-RawData"];
@@ -32,7 +32,7 @@ namespace Fanex.DHWL.Business.Services
             RenderTitle(template, fromdate, todate);
             RenderData(dataTable, template);
 
-            return Save(isDaily);
+            return Save(fileName);
         }
 
         private void RenderData(DataTable dataTable, ExcelWorksheet template)
@@ -59,12 +59,10 @@ namespace Fanex.DHWL.Business.Services
             }
         }
 
-        private string Save(bool isDaily)
+        private string Save(string fileName)
         {
             var date = dateService.DateTime.ToDate;
-            var fileName = isDaily
-                ? $"Daily - RAW House Income {date:yyyyMMdd}.xlsx"
-                : $"Monthly - RAW House Income {date:yyyyMMdd}.xlsx";
+            var filename = $"{fileName} - RAW House Income - {date:yyyyMMdd}.xlsx";
 
             var path = $@"{AppConfigService.Config.Path}\{date:yyyy}\{date:MM}";
             if (!Directory.Exists(path))
@@ -72,7 +70,7 @@ namespace Fanex.DHWL.Business.Services
                 Directory.CreateDirectory(path);
             }
 
-            path = $@"{path}\{fileName}";
+            path = $@"{path}\{filename}";
             excelPackage.SaveAs(new FileInfo(path), AppConfigService.Config.Password);
 
             return path;

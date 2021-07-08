@@ -15,20 +15,25 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
         private readonly LicenseePerformanceImageService imageService;
         private readonly MessageService messageService;
         private readonly FileService fileService;
+        private readonly MergeProductDataService mergeProductDataService;
 
         public LicenseePerformanceServiceImp(
             LicenseePerformanceImageService imageService,
             MessageService messageService,
-            FileService fileService)
+            FileService fileService,
+            MergeProductDataService mergeProductDataService)
         {
             this.imageService = imageService;
             this.messageService = messageService;
             this.fileService = fileService;
+            this.mergeProductDataService = mergeProductDataService;
         }
 
         public Dictionary<string, bool> Execute(DataTable licPerfRawData)
         {
             var letstalkGroup = AppConfigService.Config.LetstalkGroups["LicenseePerformance"];
+            mergeProductDataService.MoveSabaProIntoSportsbook(licPerfRawData);
+
             var sbRawData = licPerfRawData.AsEnumerable()
                 .Where(s => s[ColumnName.ProductGroup].Equals(ProductGroup.Sportsbook))
                 .CopyToDataTable();

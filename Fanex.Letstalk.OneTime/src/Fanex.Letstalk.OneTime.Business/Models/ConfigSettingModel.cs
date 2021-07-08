@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Fanex.Letstalk.OneTime.Business.Models
 {
@@ -14,10 +13,6 @@ namespace Fanex.Letstalk.OneTime.Business.Models
         public string TargetName { get; set; }
 
         public string Group { get; set; }
-
-        public bool IsManual { get; set; }
-
-        public DateTime Date { get; set; }
 
         public Dictionary<string, MailModel> MailSettings { get; set; }
 

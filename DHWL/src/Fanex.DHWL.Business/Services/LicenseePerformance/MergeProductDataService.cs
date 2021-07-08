@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
-namespace Fanex.DHWL.Business.Services
+namespace Fanex.DHWL.Business.Services.LicenseePerformance
 {
     public interface MergeProductDataService
     {
-        void MergeSabaCIntoVGaming(DataTable dataTable);
+        void MergeVGamingIntoSabaC(DataTable dataTable);
+
+        void MoveSabaProIntoSportsbook(DataTable dataTable);
     }
 
     public class MergeProductDataServiceImp : MergeProductDataService
@@ -19,7 +21,7 @@ namespace Fanex.DHWL.Business.Services
             "Vgaming-JP"
         };
 
-        public void MergeSabaCIntoVGaming(DataTable dataTable)
+        public void MergeVGamingIntoSabaC(DataTable dataTable)
         {
             dataTable.AsEnumerable()
                 .Where(s => s[ColumnName.ProductGroup].Equals(ProductGroup.RNGCasino) && productShortNames.Contains(s[ColumnName.ProductShortName]))
@@ -46,6 +48,19 @@ namespace Fanex.DHWL.Business.Services
                         row[ColumnName.ProductName] = "Saba.club Jackpot Pool";
                         row[ColumnName.OrderByProduct] = 202;
                     }
+                });
+        }
+
+        public void MoveSabaProIntoSportsbook(DataTable dataTable)
+        {
+            dataTable.AsEnumerable()
+                .Where(s => s[ColumnName.ProductShortName].Equals("SabaPro"))
+                .ToList()
+                .ForEach(row =>
+                {
+                    row[ColumnName.ProductGroup] = "Sportsbook";
+                    row[ColumnName.ProductCategory] = "Soccer";
+                    row[ColumnName.ProductName] = "Sportsbook";
                 });
         }
     }

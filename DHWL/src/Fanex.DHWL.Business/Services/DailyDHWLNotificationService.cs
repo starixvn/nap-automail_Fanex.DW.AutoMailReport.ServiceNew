@@ -112,7 +112,7 @@ namespace Fanex.DHWL.Business.Services
             var fromdate = dateTimeServiceProvider.DateTime.FromDate;
             var todate = dateTimeServiceProvider.DateTime.ToDate;
 
-            excelRawService.Export(dailyRawData, true, fromdate, todate);
+            excelRawService.Export(dailyRawData, "Daily", fromdate, todate);
             var excelPath = excelDailyService.Export(cloneData);
 
             var imageDHWLPath = imageDHWLService.Export(cloneDataDHWL);
@@ -131,6 +131,7 @@ namespace Fanex.DHWL.Business.Services
             var status = messageService.SendMessage(images, AppConfigService.Config.LetstalkGroup);
             var status_LicPerf = licenseePerformance.Execute(licPerfRawData);
             var result = status.Concat(status_LicPerf);
+            excelRawService.Export(licPerfRawData, "LicPerf", fromdate, todate);
 
             var errFile = result.Where(s => !s.Value).Select(s => s.Key).ToList();
             var subject = $"Automail Report - House Net Income - {todate:yyyy/MM/dd}";

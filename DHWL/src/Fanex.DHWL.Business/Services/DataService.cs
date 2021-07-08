@@ -90,7 +90,8 @@ namespace Fanex.DHWL.Business.Services
                 db.SetParameterValue("islicperf", isLicPerf);
                 if (isLicPerf)
                 {
-                    db.SetParameterValue("basecurrencyname", "CNY");
+                 //   db.SetParameterValue("basecurrencyname", "CNY");
+                   db.SetParameterValue("basecurrencyname", "MYR");
                 }
 
                 var dataSet = db.ExecuteDataSet();

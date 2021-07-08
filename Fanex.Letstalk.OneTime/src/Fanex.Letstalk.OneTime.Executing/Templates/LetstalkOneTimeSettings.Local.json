@@ -4,8 +4,6 @@
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime",
   "TargetName": "daily-house-wl",
   "Group": "DWHL-UAT",
-  "IsManual": false,
-  "Date": "2021-06-28",
   "MailSettings": {
     "LetstalkOneTime": {
       "MailId": 358,

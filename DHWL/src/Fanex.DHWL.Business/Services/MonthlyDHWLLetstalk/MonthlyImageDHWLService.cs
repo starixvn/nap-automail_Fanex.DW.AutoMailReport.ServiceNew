@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Fanex.DHWL.Business.Services.LicenseePerformance;
+using System.Collections.Generic;
 using System.Data;
 
 namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
@@ -33,7 +34,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
 
         public List<string> Export(DataTable monthlyRawData, DataTable dataReconciliation)
         {
-            mergeProductDataService.MergeSabaCIntoVGaming(monthlyRawData);
+            mergeProductDataService.MergeVGamingIntoSabaC(monthlyRawData);
             var excelPath = excelDHWLService.Export(monthlyRawData, dataReconciliation);
             FileName = excelPath;
             var imageDHWLMonthly = ExportDHWLMonthly(excelPath);

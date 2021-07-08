@@ -11,11 +11,35 @@
   "Paths": [
     {
       "Source": "/nap/os-lic-pef-service/excel/UAT",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/OSLicPerfByTO"
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/12-OSLicPerfByTO-UAT"
     },
     {
-      "Source": "/nap/os-lic-pef-service/excel/UAT/InternalOneTime/12-OSLicPerfByTO",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/12-OSLicPerfByTO"
+      "Source": "/nap/os-lic-pef-service/excel/UAT/InternalOneTime/12-OSLicPerfByTO-UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/12-OSLicPerfByTO-UAT"
+    },
+    {
+      "Source": "/nap/sb-lic-perf/excel/UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/27-SBLicPerfByTO-UAT"
+    },
+    {
+      "Source": "/nap/sb-lic-perf/excel/UAT/InternalOneTime/27-SBLicPerfByTO-UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/27-SBLicPerfByTO-UAT"
+    },
+    {
+      "Source": "/nap/mail-abnormal-bets-service/excel/UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/AB Daily Report-UAT"
+    },
+    {
+      "Source": "/nap/ta-perf/excel/UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/TA-Perf-UAT"
+    },
+    {
+      "Source": "/nap/ba-daily-wl-service/excel/UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/BA-Daily-WL-UAT"
+    },
+    {
+      "Source": "/nap/top-licensee-by-to-service/excel/UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/Top-Lic-By-TO-UAT"
     }
   ]
 }

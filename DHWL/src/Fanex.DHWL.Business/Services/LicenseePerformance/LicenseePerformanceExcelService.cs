@@ -48,13 +48,13 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
             excelPackage.Workbook.Worksheets.Delete(formatTpl);
 
             RenderTitle(dailyTemplate, imageName);
-            RenderData(data, dailyTemplate);
-            FormatData(data, dailyTemplate, formatTpl);
+            RenderData(data, dailyTemplate, imageName, formatTpl);
+            FormatData(data, dailyTemplate, imageName, formatTpl);
 
             return Save(imageName);
         }
 
-        private void RenderData(List<LicenseePerformanceModel> data, ExcelWorksheet template)
+        private void RenderData(List<LicenseePerformanceModel> data, ExcelWorksheet template, string imageName, ExcelWorksheet formatTpl)
         {
             template.Cells["B5"].LoadFromCollection(data, false);
 
@@ -69,9 +69,14 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
             {
                 template.Cells[StartRowIndex, columnIndex, maxRowIndex, columnIndex].StyleID = template.Cells[StartRowIndex, columnIndex].StyleID;
             }
+
+            if (imageName.Equals("SB-LicPef"))
+            {
+                formatTpl.Cells["B8:B9"].Copy(template.Cells[maxRowIndex + 1, 2]);
+            }
         }
 
-        private void FormatData(List<LicenseePerformanceModel> data, ExcelWorksheet template, ExcelWorksheet formatTpl)
+        private void FormatData(List<LicenseePerformanceModel> data, ExcelWorksheet template, string imageName, ExcelWorksheet formatTpl)
         {
             var starIndexGroup = StartRowIndex;
             var endIndexGroup = starIndexGroup;
@@ -130,7 +135,11 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
                 tplRowIndex++;
             }
 
-            formatTpl.Cells["B7:B8"].Copy(template.Cells[endIndexGroup + 1, 2]);
+            if (imageName.Equals("SB-LicPef"))
+            {
+                endIndexGroup += 2;
+            }
+
             LastRowIndex = endIndexGroup;
         }
 
