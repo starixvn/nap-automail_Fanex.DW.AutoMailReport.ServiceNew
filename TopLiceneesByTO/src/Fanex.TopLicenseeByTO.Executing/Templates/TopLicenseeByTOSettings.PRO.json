@@ -3,6 +3,7 @@
   "CategorySentryLog": "NAP-Report-Service",
   "TargetName": "daily-house-wl",
   "Group": "Top-50-Licensee",
+  "GroupLicBySport": "NotiGroup4",
   "IsCheckEnoughData": true,
   "IsManual": false,
   "FromDate": "2019-12-01",
@@ -10,6 +11,7 @@
   "Path": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\TopLicenseeByTO",
   "IsSentDirectly": false,
   "InternalPath": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0500\\12-TopLicenseeByTO",
+  "InternalPathLicBySport": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0500\\12-TopLicenseeByTO-LicBySport",
   "Password": "Star168",
   "FunctionIdNodata": 190,
   "Sports": {

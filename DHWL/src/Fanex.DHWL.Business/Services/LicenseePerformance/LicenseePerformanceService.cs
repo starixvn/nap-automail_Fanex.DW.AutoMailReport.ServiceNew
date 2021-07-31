@@ -47,7 +47,19 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
 
             fileService.CopyFiles(letstalkGroup, new List<string> { imagePath, imagePath3rd });
 
-            return messageService.SendMessage(new List<string> { imagePath, imagePath3rd }, AppConfigService.Config.LetstalkGroupLicPerf);
+            var groupLicPerf = AppConfigService.Config.LetstalkGroupLicPerf;
+            if (string.IsNullOrEmpty(groupLicPerf))
+            {
+                return new Dictionary<string, bool>
+                {
+                    { imagePath, true },
+                    { imagePath3rd, true },
+                };
+            }
+            else
+            {
+                return messageService.SendMessage(new List<string> { imagePath, imagePath3rd }, AppConfigService.Config.LetstalkGroupLicPerf);
+            }
         }
     }
 }
