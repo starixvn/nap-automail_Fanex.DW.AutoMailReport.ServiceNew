@@ -8,7 +8,7 @@ namespace Fanex.TopLicensee.Service.Services
 {
     public interface FileService
     {
-        void CopyFiles(List<string> fileNames);
+        void CopyFiles(bool isLicBySport, List<string> fileNames);
     }
 
     public class FileServiceImp : FileService
@@ -20,9 +20,11 @@ namespace Fanex.TopLicensee.Service.Services
             this.dateService = dateService;
         }
 
-        private void LogOneTime(DateTime date)
+        private void LogOneTime(bool isLicBySport, DateTime date)
         {
-            var fileInfo = new FileInfo(AppConfigService.AppConfig.InternalPath);
+            var fileInfo = isLicBySport
+                ? new FileInfo(AppConfigService.AppConfig.InternalPathLicBySport)
+                : new FileInfo(AppConfigService.AppConfig.InternalPath);
             var path = fileInfo.DirectoryName;
             var fileName = $@"{path}\OneTimeLog.json";
             var logs = new List<LogInternalOneTimeModel>();
@@ -38,17 +40,19 @@ namespace Fanex.TopLicensee.Service.Services
                 FolderName = fileInfo.Name,
                 GenerateTime = $"{DateTime.Now:yyyy-MM-dd hh:mm:ss tt}",
                 TargetName = AppConfigService.AppConfig.TargetName,
-                Group = AppConfigService.AppConfig.Group
+                Group = isLicBySport ? AppConfigService.AppConfig.GroupLicBySport : AppConfigService.AppConfig.Group
             });
 
             var json = JsonConvert.SerializeObject(logs, Formatting.Indented);
             File.WriteAllText(fileName, json);
         }
 
-        public void CopyFiles(List<string> fileNames)
+        public void CopyFiles(bool isLicBySport, List<string> fileNames)
         {
             var date = dateService.ToDate;
-            var path = $@"{AppConfigService.AppConfig.InternalPath}\{date:yyyyMMdd}";
+            var path = isLicBySport
+                ? $@"{AppConfigService.AppConfig.InternalPathLicBySport}\{date:yyyyMMdd}"
+                : $@"{AppConfigService.AppConfig.InternalPath}\{date:yyyyMMdd}";
             Directory.CreateDirectory(path);
             var index = 1;
             fileNames.ForEach(fileName =>
@@ -59,7 +63,7 @@ namespace Fanex.TopLicensee.Service.Services
                 index++;
             });
 
-            LogOneTime(date);
+            LogOneTime(isLicBySport, date);
         }
     }
 }

@@ -1,11 +1,45 @@
 ﻿{
   "SentryClientKey": "http://612764957dbb46ffa359103d8ffa08c6@10.99.99.51:801/59",
   "CategorySentryLog": "NAP-Report-Service-UAT",
-  "IsManual": false,
-  "MailId": 422,
-  "NoDataMailId": 423,
-  "FromGMT8Time": "2021-06-03 09:47:15.033",
-  "TimeInterval": 1,
-  "TLV": 1,
-  "MWinLV": 1
+  "CronSchedule": "0/59 * * * * ?",
+  "FTPConfig": {
+    "Host": "10.2.189.41",
+    "UserName": "olympus",
+    "Password": "Pro_olympus_@1234aa",
+    "Port": 2121
+  },
+  "Paths": [
+    {
+      "Source": "/nap/os-lic-pef-service/excel/UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/12-OSLicPerfByTO-UAT"
+    },
+    {
+      "Source": "/nap/os-lic-pef-service/excel/UAT/InternalOneTime/12-OSLicPerfByTO-UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/12-OSLicPerfByTO-UAT"
+    },
+    {
+      "Source": "/nap/sb-lic-perf/excel/UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/27-SBLicPerfByTO-UAT"
+    },
+    {
+      "Source": "/nap/sb-lic-perf/excel/UAT/InternalOneTime/27-SBLicPerfByTO-UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/27-SBLicPerfByTO-UAT"
+    },
+    {
+      "Source": "/nap/mail-abnormal-bets-service/excel/UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/AB Daily Report-UAT"
+    },
+    {
+      "Source": "/nap/ta-perf/excel/UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/TA-Perf-UAT"
+    },
+    {
+      "Source": "/nap/ba-daily-wl-service/excel/UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/BA-Daily-WL-UAT"
+    },
+    {
+      "Source": "/nap/top-licensee-by-to-service/excel/UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/Top-Lic-By-TO-UAT"
+    }
+  ]
 }

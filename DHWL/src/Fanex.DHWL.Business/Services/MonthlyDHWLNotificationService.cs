@@ -89,7 +89,7 @@ namespace Fanex.DHWL.Business.Services
             var fromdate = dateTimeServiceProvider.DateTime.FromDate;
             var todate = dateTimeServiceProvider.DateTime.ToDate;
 
-            excelRawService.Export(monthlyRawData, false, fromdate, todate);
+            excelRawService.Export(monthlyRawData, "Monthly", fromdate, todate);
             var images = imageDHWLService.Export(monthlyRawData, dataReconciliation);
 
             CopyFiles(images);

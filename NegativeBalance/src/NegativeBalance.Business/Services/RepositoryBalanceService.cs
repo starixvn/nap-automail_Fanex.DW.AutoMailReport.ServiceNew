@@ -4,6 +4,7 @@ using System.Linq;
 using Fanex.Data.Repository;
 using NegativeBalance.Business.Models;
 using NegativeBalance.Business.Repositories;
+using Newtonsoft.Json;
 
 namespace NegativeBalance.Business.Services
 {

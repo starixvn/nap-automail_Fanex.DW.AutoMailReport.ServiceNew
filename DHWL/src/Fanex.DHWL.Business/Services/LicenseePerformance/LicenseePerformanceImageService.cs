@@ -4,7 +4,7 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
 {
     public interface LicenseePerformanceImageService
     {
-        string Export(DataTable licPerfRawData);
+        string Export(DataTable licPerfRawData, string imageName);
     }
 
     public class LicenseePerformanceImageServiceImp : LicenseePerformanceImageService
@@ -20,14 +20,14 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
             this.imageService = imageService;
         }
 
-        public string Export(DataTable licPerfRawData)
+        public string Export(DataTable licPerfRawData, string imageName)
         {
-            var excelPath = excelService.Export(licPerfRawData);
+            var excelPath = excelService.Export(licPerfRawData, imageName);
             var lastRow = excelService.LastRowIndex;
             var image = AppConfigService.Config.ImageSettings["LicenseePerformance"];
             image.LastRow = lastRow;
             image.CropHeight = lastRow * image.HeightPerRow + image.AdjustHeight;
-            image.ImageName = "Lic-Perf";
+            image.ImageName = imageName;
             var imagePath = imageService.ExportImage(excelPath, image.SheetName, image);
 
             return imagePath;

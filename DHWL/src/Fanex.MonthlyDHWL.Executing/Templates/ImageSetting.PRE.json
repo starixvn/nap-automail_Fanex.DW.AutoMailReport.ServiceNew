@@ -13,7 +13,7 @@
     "ResizeNewWidth": 500,
     "ImageQuality": 100,
     "HeightPerRow": 90,
-    "AdjustHeight": 30
+    "AdjustHeight": 60
   },
   "Adjustment": {
     "FirstRow": 1,
@@ -28,6 +28,6 @@
     "ResizeNewWidth": 800,
     "ImageQuality": 100,
     "HeightPerRow": 95,
-    "AdjustHeight": 60
+    "AdjustHeight": 70
   }
 }

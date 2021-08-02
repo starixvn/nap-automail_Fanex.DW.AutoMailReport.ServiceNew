@@ -7,7 +7,7 @@ namespace Fanex.TopLicensee.Service.Services
 {
     public interface MessageService
     {
-        bool Send(List<string> files);
+        bool Send(bool isLicBySport, List<string> files);
     }
 
     public class MessageServiceImp : MessageService
@@ -19,24 +19,24 @@ namespace Fanex.TopLicensee.Service.Services
             this.letstalkService = letstalkService;
         }
 
-        public bool Send(List<string> files)
+        public bool Send(bool isLicBySport, List<string> files)
         {
             var messsageSubject = string.Empty;
             var messageContent = string.Empty;
             var letstalkAttachments = CreateAttachments(files);
-            var letstalkModel = CreateLetstalkMessageModel(messsageSubject, messageContent, letstalkAttachments);
+            var letstalkModel = CreateLetstalkMessageModel(isLicBySport, messsageSubject, messageContent, letstalkAttachments);
             var result = letstalkService.SendMessage(letstalkModel);
             return result;
         }
 
-        private LetstalkModel CreateLetstalkMessageModel(string subject, string content, List<LetstalkAttachment> letstalkAttachments)
+        private LetstalkModel CreateLetstalkMessageModel(bool isLicBySport, string subject, string content, List<LetstalkAttachment> letstalkAttachments)
         {
             return new LetstalkModel
             {
                 TargetName = AppConfigService.AppConfig.TargetName,
                 Subject = subject,
                 Content = content,
-                Group = AppConfigService.AppConfig.Group,
+                Group = isLicBySport ? AppConfigService.AppConfig.GroupLicBySport : AppConfigService.AppConfig.Group,
                 LetstalkAttachments = letstalkAttachments ?? new List<LetstalkAttachment>()
             };
         }

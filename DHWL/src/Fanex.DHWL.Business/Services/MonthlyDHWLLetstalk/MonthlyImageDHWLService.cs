@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Fanex.DHWL.Business.Services.LicenseePerformance;
+using System.Collections.Generic;
 using System.Data;
 
 namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
@@ -14,6 +15,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
     {
         private readonly MonthlyExcelDHWLService excelDHWLService;
         private readonly ImageService imageService;
+        private readonly MergeProductDataService mergeProductDataService;
 
         public string FileName
         {
@@ -22,14 +24,17 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
 
         public MonthlyImageDHWLServiceImp(
             MonthlyExcelDHWLService excelDHWLService,
-            ImageService imageService)
+            ImageService imageService,
+            MergeProductDataService mergeProductDataService)
         {
             this.excelDHWLService = excelDHWLService;
             this.imageService = imageService;
+            this.mergeProductDataService = mergeProductDataService;
         }
 
         public List<string> Export(DataTable monthlyRawData, DataTable dataReconciliation)
         {
+            mergeProductDataService.MergeVGamingIntoSabaC(monthlyRawData);
             var excelPath = excelDHWLService.Export(monthlyRawData, dataReconciliation);
             FileName = excelPath;
             var imageDHWLMonthly = ExportDHWLMonthly(excelPath);

@@ -66,7 +66,7 @@ namespace Fanex.DHWL.Business.Services
         private DataTable ProcessLastMonth()
         {
             var lastMonthRawData = dataService.QueryLastMonthData();
-            excelRawService.Export(lastMonthRawData, false, lastMonth.FromDate, lastMonth.ToDate);
+            excelRawService.Export(lastMonthRawData, "Monthly", lastMonth.FromDate, lastMonth.ToDate);
             return dataLastMonthService.CalcData(lastMonthRawData);
         }
 

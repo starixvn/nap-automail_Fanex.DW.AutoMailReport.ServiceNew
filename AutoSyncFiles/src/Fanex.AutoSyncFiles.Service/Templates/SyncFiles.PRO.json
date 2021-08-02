@@ -1,0 +1,45 @@
+﻿{
+  "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.99.99.51:801/60",
+  "CategorySentryLog": "NAP-Report-Service",
+  "CronSchedule": "0/59 * * * * ?",
+  "FTPConfig": {
+    "Host": "10.2.27.8",
+    "UserName": "olympus",
+    "Password": "Pro_olympus_@1234aa",
+    "Port": 2121
+  },
+  "Paths": [
+    {
+      "Source": "/nap/os-lic-pef-service/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/12-OSLicPerfByTO-PROD"
+    },
+    {
+      "Source": "/nap/os-lic-pef-service/excel/PROD/InternalOneTime/12-OSLicPerfByTO-PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/12-OSLicPerfByTO-PROD"
+    },
+    {
+      "Source": "/nap/sb-lic-perf/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/27-SBLicPerfByTO-PROD"
+    },
+    {
+      "Source": "/nap/sb-lic-perf/excel/PROD/InternalOneTime/27-SBLicPerfByTO-PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/27-SBLicPerfByTO-PROD"
+    },
+    {
+      "Source": "/nap/mail-abnormal-bets-service/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/AB Daily Report-PROD"
+    },
+    {
+      "Source": "/nap/ta-perf/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/TA-Perf-PROD"
+    },
+    {
+      "Source": "/nap/ba-daily-wl-service/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/BA-Daily-WL-PROD"
+    },
+    {
+      "Source": "/nap/top-licensee-by-to-service/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/Fanex.Excel/Top-Lic-By-TO-PROD"
+    }
+  ]
+}

@@ -9,7 +9,7 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
 {
     public interface LicenseePerformanceExcelService
     {
-        string Export(DataTable licPerfRawData);
+        string Export(DataTable licPerfRawData, string imageName);
 
         int LastRowIndex { get; set; }
     }
@@ -38,7 +38,7 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
             this.dataService = dataService;
         }
 
-        public string Export(DataTable licPerfRawData)
+        public string Export(DataTable licPerfRawData, string imageName)
         {
             var data = dataService.CalTotalByProduct(licPerfRawData);
 
@@ -47,14 +47,14 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
             var formatTpl = excelPackage.Workbook.Worksheets["Format"];
             excelPackage.Workbook.Worksheets.Delete(formatTpl);
 
-            RenderTitle(dailyTemplate);
-            RenderData(data, dailyTemplate);
-            FormatData(data, dailyTemplate, formatTpl);
+            RenderTitle(dailyTemplate, imageName);
+            RenderData(data, dailyTemplate, imageName, formatTpl);
+            FormatData(data, dailyTemplate, imageName, formatTpl);
 
-            return Save();
+            return Save(imageName);
         }
 
-        private void RenderData(List<LicenseePerformanceModel> data, ExcelWorksheet template)
+        private void RenderData(List<LicenseePerformanceModel> data, ExcelWorksheet template, string imageName, ExcelWorksheet formatTpl)
         {
             template.Cells["B5"].LoadFromCollection(data, false);
 
@@ -69,9 +69,14 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
             {
                 template.Cells[StartRowIndex, columnIndex, maxRowIndex, columnIndex].StyleID = template.Cells[StartRowIndex, columnIndex].StyleID;
             }
+
+            if (imageName.Equals("SB-LicPef"))
+            {
+                formatTpl.Cells["B8:B9"].Copy(template.Cells[maxRowIndex + 1, 2]);
+            }
         }
 
-        private void FormatData(List<LicenseePerformanceModel> data, ExcelWorksheet template, ExcelWorksheet formatTpl)
+        private void FormatData(List<LicenseePerformanceModel> data, ExcelWorksheet template, string imageName, ExcelWorksheet formatTpl)
         {
             var starIndexGroup = StartRowIndex;
             var endIndexGroup = starIndexGroup;
@@ -130,14 +135,18 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
                 tplRowIndex++;
             }
 
-            formatTpl.Cells["B7:B8"].Copy(template.Cells[endIndexGroup + 1, 2]);
+            if (imageName.Equals("SB-LicPef"))
+            {
+                endIndexGroup += 2;
+            }
+
             LastRowIndex = endIndexGroup;
         }
 
-        private string Save()
+        private string Save(string imageName)
         {
             var date = dateService.DateTime.ToDate;
-            var fileName = $"Licensee-Performance-{date:yyyy_MM_dd}.xlsx";
+            var fileName = $"{imageName}-{date:yyyy_MM_dd}.xlsx";
 
             var path = $@"{AppConfigService.Config.Path}\{date:yyyy}\{date:MM}";
             if (!Directory.Exists(path))
@@ -151,13 +160,17 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
             return path;
         }
 
-        private void RenderTitle(ExcelWorksheet template)
+        private void RenderTitle(ExcelWorksheet template, string imageName)
         {
             var todate = dateService.DateTime.ToDate;
             var isEndOfMonth = todate.AddDays(1).Day == 1;
             var title = $"{todate:dd-MMM-yy}";
+            var header = imageName.Equals("SB-LicPef")
+                ? "Sportsbook Licensee Performance (RMB)"
+                : "3rd Product Licensee Performance (RMB)";
 
             template.Cells["C3"].Value = title;
+            template.Cells["B2"].Value = header;
 
             title = $"MTD ({todate:dd-MMM})";
             if (isEndOfMonth)

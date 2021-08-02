@@ -13,6 +13,8 @@ namespace Fanex.TopLicensee.Service.Models
 
         public string Group { get; set; }
 
+        public string GroupLicBySport { get; set; }
+
         public bool IsCheckEnoughData { get; set; }
 
         public string Path { get; set; }
@@ -36,5 +38,6 @@ namespace Fanex.TopLicensee.Service.Models
         public bool IsSentDirectly { get; set; }
 
         public string InternalPath { get; set; }
+        public string InternalPathLicBySport { get; set; }
     }
 }

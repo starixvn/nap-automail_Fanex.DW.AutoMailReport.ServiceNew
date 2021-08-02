@@ -98,25 +98,34 @@ namespace Fanex.TopLicensee.Service.Services
         private bool SendMessage(List<string> imageSentFail)
         {
             var imageBatches = new List<List<string>>();
+            var imageGroupLicBySport = new List<List<string>>();
             var success = false;
 
-            ExportImageTop50(imageBatches);
+            ExportImageTop50(imageBatches, imageGroupLicBySport);
             ExportImageTopLicenseeMargin(imageBatches);
 
             ExportVirtualSoccerHouse(imageBatches, LeagueGroup.VL, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_House");
-            // ExportVirtualSoccerHouse(imageBatches, LeagueGroup.SabaSoccerPinGoal, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_House");
+
             ExportVirtualSoccerHouse(imageBatches, LeagueGroup.VL, SportType.Basketball, "Acc_Rpt_Letstalk_LeagueGroupSport_House");
 
-            ExportVirtualSoccerLicensee(imageBatches, LeagueGroup.VL, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");
-            // ExportVirtualSoccerLicensee(imageBatches, LeagueGroup.SabaSoccerPinGoal, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");
+            ExportVirtualSoccerLicensee(imageBatches, imageGroupLicBySport, LeagueGroup.VL, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");
 
-            ExportVirtualSoccerLicensee(imageBatches, LeagueGroup.VL, SportType.Basketball, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");
+            ExportVirtualSoccerLicensee(imageBatches, imageGroupLicBySport, LeagueGroup.VL, SportType.Basketball, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");
 
             if (AppConfigService.AppConfig.IsSentDirectly)
             {
                 imageBatches.ForEach(files =>
                 {
-                    success = messageService.Send(files);
+                    success = messageService.Send(false, files);
+                    if (!success)
+                    {
+                        imageSentFail.AddRange(files);
+                    }
+                });
+
+                imageGroupLicBySport.ForEach(files =>
+                {
+                    success = messageService.Send(true, files);
                     if (!success)
                     {
                         imageSentFail.AddRange(files);
@@ -131,14 +140,22 @@ namespace Fanex.TopLicensee.Service.Services
                     files.AddRange(f);
                 });
 
-                fileService.CopyFiles(files);
+                fileService.CopyFiles(false, files);
+
+                var filesLicBySport = new List<string>();
+                imageGroupLicBySport.ForEach(f =>
+                {
+                    filesLicBySport.AddRange(f);
+                });
+
+                fileService.CopyFiles(true, filesLicBySport);
                 success = true;
             }
 
             return success;
         }
 
-        private void ExportImageTop50(List<List<string>> imageBatches)
+        private void ExportImageTop50(List<List<string>> imageBatches, List<List<string>> imageGroupLicBySport)
         {
             var batches = AppConfigService.AppConfig.Sports;
             foreach (var batch in batches)
@@ -161,6 +178,7 @@ namespace Fanex.TopLicensee.Service.Services
                 });
 
                 imageBatches.Add(imageFiles);
+                imageGroupLicBySport.Add(imageFiles);
             }
         }
 
@@ -189,7 +207,7 @@ namespace Fanex.TopLicensee.Service.Services
             imageBatches.Add(new List<string> { imageFile });
         }
 
-        private void ExportVirtualSoccerLicensee(List<List<string>> imageBatches, LeagueGroup leagueGroup, SportType sportType, string spName)
+        private void ExportVirtualSoccerLicensee(List<List<string>> imageBatches, List<List<string>> imageGroupLicBySport, LeagueGroup leagueGroup, SportType sportType, string spName)
         {
             var dataTable = dataService.QueryVirtualSoccer(leagueGroup, sportType, spName);
             var excelPath = exportVirtualSoccerLicensee.Export(dataTable, leagueGroup, sportType);
@@ -197,6 +215,7 @@ namespace Fanex.TopLicensee.Service.Services
             AppConfigService.AppConfig.Image["VirtualSoccer_Licensee"].ImageName = $"VS_Licensee_{leagueGroup}_{sportType}";
             var imageFile = imageService.ExportImage(excelPath, "Template", AppConfigService.AppConfig.Image["VirtualSoccer_Licensee"]);
             imageBatches.Add(new List<string> { imageFile });
+            imageGroupLicBySport.Add(new List<string> { imageFile });
         }
     }
 }
