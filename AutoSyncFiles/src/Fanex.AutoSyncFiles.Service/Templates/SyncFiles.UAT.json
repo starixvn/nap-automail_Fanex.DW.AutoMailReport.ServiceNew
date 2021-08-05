@@ -40,6 +40,14 @@
     {
       "Source": "/nap/top-licensee-by-to-service/excel/UAT",
       "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/Top-Lic-By-TO-UAT"
+    },
+    {
+      "Source": "/nap/top-licensee-by-to-service/excel/UAT/InternalOneTime/12-TopLicByTO-LicBySport-UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/12-TopLicByTO-LicBySport-UAT"
+    },
+    {
+      "Source": "/nap/top-licensee-by-to-service/excel/UAT/InternalOneTime/12-TopLicByTO-UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/12-TopLicByTO-UAT"
     }
   ]
 }

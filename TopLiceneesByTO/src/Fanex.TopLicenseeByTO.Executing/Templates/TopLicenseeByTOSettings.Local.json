@@ -3,7 +3,7 @@
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
   "TargetName": "daily-house-wl",
   "Group": "Top-50-Licensee-QC",
-  "GroupLicBySport": "DWHL-UAT",
+  "GroupLicBySport": "Top-Lic-Reports-By-Sport-Test",
   "IsCheckEnoughData": false,
   "IsManual": true,
   "FromDate": "2021-05-01",

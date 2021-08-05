@@ -26,6 +26,7 @@ namespace Fanex.AutoSyncFiles.Business.Services
         private readonly List<string> messages = new List<string>
         {
             "Unable to read data from the transport connection",
+            "Unable to write data to the transport connection:",
             "Timed out trying to read data from the socket stream!"
         };
 
