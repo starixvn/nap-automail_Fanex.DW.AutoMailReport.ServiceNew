@@ -2,6 +2,7 @@
 using Fanex.DHWL.Business.Services.Adjustment;
 using Fanex.DHWL.Business.Services.MonthlyReconciliation;
 using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -25,6 +26,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
         private readonly DateTimeServiceProvider dateService;
         private readonly AdjustmentDataService adjustmentService;
         private readonly MonthlyReconciliationExcelService reconciliation;
+        private readonly ExcelMarginService excelMarginService;
 
         private const int StartRowIndex = 3;
 
@@ -42,12 +44,14 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             MonthlyDataDHWLService dataDHWLService,
             DateTimeServiceProvider dateService,
             AdjustmentDataService adjustmentService,
-            MonthlyReconciliationExcelService reconciliation)
+            MonthlyReconciliationExcelService reconciliation,
+            ExcelMarginService excelMarginService)
         {
             this.dataDHWLService = dataDHWLService;
             this.dateService = dateService;
             this.adjustmentService = adjustmentService;
             this.reconciliation = reconciliation;
+            this.excelMarginService = excelMarginService;
         }
 
         public string Export(DataTable monthlyRawData, DataTable dataReconciliation)
@@ -57,6 +61,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             excelPackage = new ExcelPackage(new FileInfo($"Templates/DHWL-Letstalk.xlsx"));
             var template = excelPackage.Workbook.Worksheets["Letstalk"];
             var formatTpl = excelPackage.Workbook.Worksheets["Format"];
+            var marginSheet = excelPackage.Workbook.Worksheets.Add("Monthly Margin");
             excelPackage.Workbook.Worksheets.Delete(formatTpl);
 
             RenderTitle(template);
@@ -64,8 +69,34 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             FormatData(dataDHWL, template, formatTpl);
             RenderAdjustment(monthlyRawData, template);
             RenderReconciliation(dataReconciliation);
+            RenderMTDMargin(monthlyRawData, marginSheet);
 
             return Save();
+        }
+
+        private void RenderMTDMargin(DataTable monthlyRawData, ExcelWorksheet marginSheet)
+        {
+            var mtdMarginExcelPath = excelMarginService.Export(monthlyRawData, false);
+            var excelPackageMargin = new ExcelPackage(new FileInfo(mtdMarginExcelPath), AppConfigService.Config.Password);
+            var mtdMarginSheet = excelPackageMargin.Workbook.Worksheets["Margin"];
+
+            mtdMarginSheet.Cells[1, 2, excelMarginService.LastRowIndex, 15].Copy(marginSheet.Cells["A5"]);
+            marginSheet.View.ShowGridLines = false;
+            marginSheet.Cells["A2"].Value = $"Monthly Margin Report For {dateService.DateTime.ToDate: MMM yyyy}";
+            marginSheet.Cells["A2"].Style.Font.Bold = true;
+            marginSheet.Cells["A2"].Style.Font.Size = 14;
+
+            marginSheet.Cells["A3"].Value = $"Generated on {DateTime.Now:dd MMM yyyy hh:mm:ss tt}";
+
+            for (int rowIndex = 1; rowIndex <= excelMarginService.LastRowIndex; rowIndex++)
+            {
+                marginSheet.Row(rowIndex + 4).Height = mtdMarginSheet.Row(rowIndex).Height;
+            }
+
+            for (int colIndex = 1; colIndex <= 15; colIndex++)
+            {
+                marginSheet.Column(colIndex).Width = mtdMarginSheet.Column(colIndex + 1).Width;
+            }
         }
 
         private void RenderData(List<MonthlyDHWLModel> data, ExcelWorksheet template)

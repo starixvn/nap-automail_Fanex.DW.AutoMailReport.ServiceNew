@@ -1,6 +1,5 @@
 ﻿using Fanex.DHWL.Business.Models;
 using Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk;
-using Fanex.LetstalkService.Client;
 using Fanex.MailDelivery.Core.Models;
 using System;
 using System.Collections.Generic;
@@ -35,8 +34,7 @@ namespace Fanex.DHWL.Business.Services
             FileService fileService,
             BaseDataTable baseDataTable,
             MonthlyImageDHWLService imageDHWLService,
-            DateTimeServiceProvider dateTimeServiceProvider
-            )
+            DateTimeServiceProvider dateTimeServiceProvider)
         {
             this.log = log;
             this.dataService = dataService;
