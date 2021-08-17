@@ -99,60 +99,67 @@ namespace Fanex.TopLicensee.Service.Services
         {
             var imageBatches = new List<List<string>>();
             var imageGroupLicBySport = new List<List<string>>();
-            var success = false;
 
             ExportImageTop50(imageBatches, imageGroupLicBySport);
             ExportImageTopLicenseeMargin(imageBatches);
 
             ExportVirtualSoccerHouse(imageBatches, LeagueGroup.VL, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_House");
-
             ExportVirtualSoccerHouse(imageBatches, LeagueGroup.VL, SportType.Basketball, "Acc_Rpt_Letstalk_LeagueGroupSport_House");
 
             ExportVirtualSoccerLicensee(imageBatches, imageGroupLicBySport, LeagueGroup.VL, SportType.Soccer, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");
-
             ExportVirtualSoccerLicensee(imageBatches, imageGroupLicBySport, LeagueGroup.VL, SportType.Basketball, "Acc_Rpt_Letstalk_LeagueGroupSport_Licensee");
 
             if (AppConfigService.AppConfig.IsSentDirectly)
             {
-                imageBatches.ForEach(files =>
-                {
-                    success = messageService.Send(false, files);
-                    if (!success)
-                    {
-                        imageSentFail.AddRange(files);
-                    }
-                });
-
-                imageGroupLicBySport.ForEach(files =>
-                {
-                    success = messageService.Send(true, files);
-                    if (!success)
-                    {
-                        imageSentFail.AddRange(files);
-                    }
-                });
+                Send(imageSentFail, imageBatches, imageGroupLicBySport);
             }
             else
             {
-                var files = new List<string>();
-                imageBatches.ForEach(f =>
-                {
-                    files.AddRange(f);
-                });
-
-                fileService.CopyFiles(false, files);
-
-                var filesLicBySport = new List<string>();
-                imageGroupLicBySport.ForEach(f =>
-                {
-                    filesLicBySport.AddRange(f);
-                });
-
-                fileService.CopyFiles(true, filesLicBySport);
-                success = true;
+                CopyFile(imageBatches, imageGroupLicBySport);
             }
 
-            return success;
+            return imageSentFail.Count == 0;
+        }
+
+        private void Send(List<string> imageSentFail, List<List<string>> imageBatches, List<List<string>> imageGroupLicBySport)
+        {
+            var success = false;
+            imageBatches.ForEach(files =>
+            {
+                success = messageService.Send(false, files);
+                if (!success)
+                {
+                    imageSentFail.AddRange(files);
+                }
+            });
+
+            imageGroupLicBySport.ForEach(files =>
+            {
+                success = messageService.Send(true, files);
+                if (!success)
+                {
+                    imageSentFail.AddRange(files);
+                }
+            });
+        }
+
+        private void CopyFile(List<List<string>> imageBatches, List<List<string>> imageGroupLicBySport)
+        {
+            var files = new List<string>();
+            imageBatches.ForEach(f =>
+            {
+                files.AddRange(f);
+            });
+
+            fileService.CopyFiles(false, files);
+
+            var filesLicBySport = new List<string>();
+            imageGroupLicBySport.ForEach(f =>
+            {
+                filesLicBySport.AddRange(f);
+            });
+
+            fileService.CopyFiles(true, filesLicBySport);
         }
 
         private void ExportImageTop50(List<List<string>> imageBatches, List<List<string>> imageGroupLicBySport)
