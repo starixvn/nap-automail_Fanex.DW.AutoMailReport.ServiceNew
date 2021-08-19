@@ -50,12 +50,9 @@ namespace Fanex.MarginChart.Business.Services.Margin
         public Dictionary<int, double> CalcTurnoverForChart(string category, DataTable data, DataType dataType)
         {
             var result = new Dictionary<int, double>();
-            var dataSource = dataType == DataType.All
-                ? data.AsEnumerable().Where(s => s[ColumnName.ProductCategory].Equals(category)
-                && s[ColumnName.Figure].Equals(RowFigureName.HouseTurnOver)).CopyToDataTable()
-                : data.AsEnumerable().Where(s => s[ColumnName.ProductCategory].Equals(category)
-                && s[ColumnName.Figure].Equals(RowFigureName.HouseTurnOver)
-                && Converter.To<bool>(s[ColumnName.IsDeposit]) == Converter.To<bool>(dataType)).CopyToDataTable();
+            var dataSource = data.Rows.Count > 0
+                ? RefineCalcTO(category, data, dataType)
+                : data;
 
             for (var columnIndex = ColumnIndex.StartDateColumnIndex; columnIndex < dataSource.Columns.Count; columnIndex++)
             {
@@ -69,15 +66,22 @@ namespace Fanex.MarginChart.Business.Services.Margin
             return result;
         }
 
+        private static DataTable RefineCalcTO(string category, DataTable data, DataType dataType)
+        {
+            return (dataType == DataType.All
+                            ? data.AsEnumerable().Where(s => s[ColumnName.ProductCategory].Equals(category)
+                            && s[ColumnName.Figure].Equals(RowFigureName.HouseTurnOver)).CopyToDataTable()
+                            : data.AsEnumerable().Where(s => s[ColumnName.ProductCategory].Equals(category)
+                            && s[ColumnName.Figure].Equals(RowFigureName.HouseTurnOver)
+                            && Converter.To<bool>(s[ColumnName.IsDeposit]) == Converter.To<bool>(dataType)).CopyToDataTable());
+        }
+
         public Dictionary<int, double> CalcWinLossForChart(string category, DataTable data, DataType dataType)
         {
             var result = new Dictionary<int, double>();
-            var dataSource = dataType == DataType.All
-                ? data.AsEnumerable().Where(s => s[ColumnName.ProductCategory].Equals(category)
-                && !s[ColumnName.Figure].Equals(RowFigureName.HouseTurnOver)).CopyToDataTable()
-                : data.AsEnumerable().Where(s => s[ColumnName.ProductCategory].Equals(category)
-                && !s[ColumnName.Figure].Equals(RowFigureName.HouseTurnOver)
-                && Converter.To<bool>(s[ColumnName.IsDeposit]) == Converter.To<bool>(dataType)).CopyToDataTable();
+            var dataSource = data.Rows.Count > 0
+                ? RefineWinLoss(category, data, dataType)
+                : data;
 
             for (var columnIndex = ColumnIndex.StartDateColumnIndex; columnIndex < dataSource.Columns.Count; columnIndex++)
             {
@@ -89,6 +93,16 @@ namespace Fanex.MarginChart.Business.Services.Margin
             }
 
             return result;
+        }
+
+        private static DataTable RefineWinLoss(string category, DataTable data, DataType dataType)
+        {
+            return (dataType == DataType.All
+                            ? data.AsEnumerable().Where(s => s[ColumnName.ProductCategory].Equals(category)
+                            && !s[ColumnName.Figure].Equals(RowFigureName.HouseTurnOver)).CopyToDataTable()
+                            : data.AsEnumerable().Where(s => s[ColumnName.ProductCategory].Equals(category)
+                            && !s[ColumnName.Figure].Equals(RowFigureName.HouseTurnOver)
+                            && Converter.To<bool>(s[ColumnName.IsDeposit]) == Converter.To<bool>(dataType)).CopyToDataTable());
         }
     }
 }

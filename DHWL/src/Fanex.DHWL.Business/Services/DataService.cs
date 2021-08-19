@@ -58,8 +58,7 @@ namespace Fanex.DHWL.Business.Services
                 return true;
             }
 
-            var checkLicenseeDataIsReady = CheckLicenseeDataIsReady();
-            var result = QueryDWStatus().DataIsReady && checkLicenseeDataIsReady;
+            var result = QueryDWStatus().DataIsReady;
 
             return result;
         }
@@ -86,12 +85,17 @@ namespace Fanex.DHWL.Business.Services
             {
                 db.SetParameterValue("fromdate", fromDate);
                 db.SetParameterValue("todate", toDate);
-                db.SetParameterValue("productlist", AppConfigService.Config.ProductList);
                 db.SetParameterValue("islicperf", isLicPerf);
                 if (isLicPerf)
                 {
-                    //db.SetParameterValue("basecurrencyname", "CNY"); // PRO
+                    //  db.SetParameterValue("basecurrencyname", "CNY"); // PRO
                     db.SetParameterValue("basecurrencyname", "MYR"); // Testing
+                    db.SetParameterValue("deposittype", 1);
+                }
+                else
+                {
+                    db.SetParameterValue("basecurrencyname", "MYR");
+                    db.SetParameterValue("deposittype", 2);
                 }
 
                 var dataSet = db.ExecuteDataSet();
@@ -105,10 +109,17 @@ namespace Fanex.DHWL.Business.Services
         {
             var fromDate = lastMonth.FromDate;
             var toDate = lastMonth.ToDate;
-            return QueryRawData(fromDate, toDate, "Acc_Rpt_HouseNetIncome", false)
-                .AsEnumerable()
-                .Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver))
-                .CopyToDataTable();
+            var data = QueryRawData(fromDate, toDate, "Acc_Rpt_HouseNetIncome", false);
+            if (data.Rows.Count == 0)
+            {
+                return data;
+            }
+
+            var result = data.AsEnumerable()
+            .Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver))
+            .CopyToDataTable();
+
+            return result;
         }
 
         public DataTable QueryReconciliation()

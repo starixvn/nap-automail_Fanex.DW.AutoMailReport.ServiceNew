@@ -34,13 +34,13 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
             var letstalkGroup = AppConfigService.Config.LetstalkGroups["LicenseePerformance"];
             mergeProductDataService.MoveSabaProIntoSportsbook(licPerfRawData);
 
-            var sbRawData = licPerfRawData.AsEnumerable()
-                .Where(s => s[ColumnName.ProductGroup].Equals(ProductGroup.Sportsbook))
-                .CopyToDataTable();
+            var sbRawData = licPerfRawData.Rows.Count > 0
+                ? licPerfRawData.AsEnumerable().Where(s => s[ColumnName.ProductGroup].Equals(ProductGroup.Sportsbook)).CopyToDataTable()
+                : licPerfRawData;
 
-            var osRawData = licPerfRawData.AsEnumerable()
-                .Where(s => !s[ColumnName.ProductGroup].Equals(ProductGroup.Sportsbook))
-                .CopyToDataTable();
+            var osRawData = licPerfRawData.Rows.Count > 0
+                ? licPerfRawData.AsEnumerable()
+                .Where(s => !s[ColumnName.ProductGroup].Equals(ProductGroup.Sportsbook)).CopyToDataTable() : licPerfRawData;
 
             var imagePath = imageService.Export(sbRawData, "SB-LicPef");
             var imagePath3rd = imageService.Export(osRawData, "3rd-LicPef");
