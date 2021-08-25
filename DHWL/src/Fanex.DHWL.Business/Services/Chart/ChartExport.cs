@@ -26,7 +26,9 @@ namespace Fanex.DHWL.Business.Services
 
         public string Export(DataTable rawDataAllProducts)
         {
-            var result = rawDataAllProducts.AsEnumerable().Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver)).CopyToDataTable();
+            var result = rawDataAllProducts.Rows.Count > 0
+                ? rawDataAllProducts.AsEnumerable().Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver)).CopyToDataTable()
+                : rawDataAllProducts;
             var sbfigure = calculatorService.CalculateSportsbookTotalForDaily(result);
             var totalFigure = calculatorService.CalculateGrandTotalForDaily(result);
 

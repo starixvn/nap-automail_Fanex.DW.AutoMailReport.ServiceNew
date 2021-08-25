@@ -19,7 +19,7 @@
   "Folders": [
     {
       "FolderName": "3-DCWL",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Daily Casino WinLoss - DCWL"
     },

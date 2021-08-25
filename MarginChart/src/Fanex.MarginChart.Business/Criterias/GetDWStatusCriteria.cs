@@ -4,7 +4,7 @@ namespace Fanex.MarginChart.Business.Criterias
 {
     public class GetDWStatusCriteria : CriteriaBase
     {
-        public string TaskIDList => "17";
+        public string TaskIDList => "77";
 
         public override string GetSettingKey()
         {

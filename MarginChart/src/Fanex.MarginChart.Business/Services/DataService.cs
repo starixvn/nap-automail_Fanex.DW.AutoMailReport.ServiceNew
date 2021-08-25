@@ -44,8 +44,7 @@ namespace Fanex.MarginChart.Business.Services
                 return true;
             }
 
-            var checkLicenseeDataIsReady = CheckLicenseeDataIsReady();
-            var result = QueryDWStatus().DataIsReady && checkLicenseeDataIsReady;
+            var result = QueryDWStatus().DataIsReady;
 
             return result;
         }
@@ -70,7 +69,10 @@ namespace Fanex.MarginChart.Business.Services
             {
                 db.SetParameterValue("fromdate", fromDate);
                 db.SetParameterValue("todate", toDate);
-                db.SetParameterValue("productlist", AppConfigService.Config.ProductList);
+                db.SetParameterValue("islicperf", false);
+                db.SetParameterValue("basecurrencyname", "MYR");
+                db.SetParameterValue("deposittype", 2);
+
                 var dataSet = db.ExecuteDataSet();
                 dataTable = baseDataTable.CombineAllInOneTable(dataSet);
             }
