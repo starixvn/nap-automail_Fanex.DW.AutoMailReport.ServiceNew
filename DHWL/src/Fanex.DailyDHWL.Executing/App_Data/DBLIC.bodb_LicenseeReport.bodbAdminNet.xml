@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Functions SiteId="25" SiteName="Auto Mail">
   <Function Name="House Net Income Daily Report">
-    <Setting Key="Task_rptBetting_CheckDataReady" SpName="Task_rptBetting_CheckDataReady" DbName="DBLIC.bodb_LicenseeReport.bodbAdminNet" TimeOut="0" />
+    <Setting Key="Task_rptBetting_CheckDataReady" SpName="Task_rptBettingByProduct_CheckDataReady" DbName="DBLIC.bodb_LicenseeReport.bodbAdminNet" TimeOut="0" />
   </Function>
 </Functions>
