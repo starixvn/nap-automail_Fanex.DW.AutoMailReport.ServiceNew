@@ -48,6 +48,10 @@
     {
       "Source": "/nap/dcwl/Excel/InternalOneTime/3-DCWL-PROD",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/LetstalkOneTime/InternalOneTime-0600/3-DCWL-PROD"
+    },
+    {
+      "Source": "/nap/lic-perf-rmb/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/24-LicPerf-RMB-PROD"
     }
   ]
 }

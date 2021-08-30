@@ -48,6 +48,10 @@
     {
       "Source": "/nap/top-licensee-by-to-service/excel/UAT/InternalOneTime/12-TopLicByTO-UAT",
       "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/12-TopLicByTO-UAT"
+    },
+    {
+      "Source": "/nap/lic-perf-rmb/excel/UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/24-LicPerf-RMB"
     }
   ]
 }
