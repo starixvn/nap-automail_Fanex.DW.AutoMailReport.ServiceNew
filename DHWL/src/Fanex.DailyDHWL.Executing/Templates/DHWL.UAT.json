@@ -9,7 +9,6 @@
   "Password": "Star168",
   "TargetName": "daily-house-wl",
   "LetstalkGroup": "DWHL-UAT",
-  "LetstalkGroupLicPerf": "DWHL-UAT",
   "ProductList": "All",
   "LetstalkGroups": {
     "Image": {
@@ -21,11 +20,6 @@
       "Group": "",
       "InternalPath": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0600\\2-NEW-DHWL-Excel-Daily",
       "MailId": 390
-    },
-    "LicenseePerformance": {
-      "Group": "DWHL-UAT",
-      "InternalPath": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0600\\2-LicenseePerformance-Daily",
-      "MailId": 0
     }
   }
 }

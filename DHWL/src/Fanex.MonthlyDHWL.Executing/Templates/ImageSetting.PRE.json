@@ -5,15 +5,15 @@
     "LastRow": 54,
     "LastColumn": 4,
     "CropWidth": 1130,
-    "ImageName": "Monthly-DHWL",
+    "ImageName": "Monthly-Monthly",
     "SheetName": "Letstalk",
     "X": 230,
-    "Y": 240,
+    "Y": 280,
     "IsResize": false,
     "ResizeNewWidth": 500,
     "ImageQuality": 100,
     "HeightPerRow": 90,
-    "AdjustHeight": 60
+    "AdjustHeight": 10
   },
   "Adjustment": {
     "FirstRow": 1,
@@ -23,11 +23,11 @@
     "ImageName": "Adj",
     "SheetName": "Letstalk",
     "X": 230,
-    "Y": 240,
+    "Y": 280,
     "IsResize": true,
     "ResizeNewWidth": 800,
     "ImageQuality": 100,
     "HeightPerRow": 95,
-    "AdjustHeight": 70
+    "AdjustHeight": 0
   }
 }

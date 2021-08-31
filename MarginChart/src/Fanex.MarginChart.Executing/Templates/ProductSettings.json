@@ -8,7 +8,8 @@
     "AxisXIntervalTurnover": 100,
     "AxisY2IntervalMargin": 0.01,
     "ConvertValue": 1000000,
-    "IsChartAttachment": true
+    "IsChartAttachment": true,
+    "ReportID": "ReportID #05"
   },
   {
     "LetstalkGroup": "DHWL-OS-Margin-Test",
@@ -19,7 +20,8 @@
     "AxisXIntervalTurnover": 5,
     "AxisY2IntervalMargin": 0.01,
     "ConvertValue": 1000000,
-    "IsChartAttachment": true
+    "IsChartAttachment": true,
+    "ReportID": "ReportID #06"
   },
   {
     "LetstalkGroup": "DHWL-Non-Sport-Margin-Test",
@@ -30,6 +32,7 @@
     "AxisXIntervalTurnover": 5,
     "AxisY2IntervalMargin": 0.01,
     "ConvertValue": 1000000,
-    "IsChartAttachment": true
+    "IsChartAttachment": true,
+    "ReportID": "ReportID #07"
   }
 ]

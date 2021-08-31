@@ -108,8 +108,9 @@ namespace Fanex.MarginChart.Business.Services
             {
                 var images = new List<string>();
                 var category = product.ProductCategory;
+                var reportId = product.ReportID;
 
-                var margins = ExportMargin(source, yesterdayColumnIndex, mtdColumnIndex, category);
+                var margins = ExportMargin(source, yesterdayColumnIndex, mtdColumnIndex, category, reportId);
                 var charts = ExportChart(product, source, category);
                 images.AddRange(margins);
                 images.AddRange(charts);
@@ -133,12 +134,12 @@ namespace Fanex.MarginChart.Business.Services
             };
         }
 
-        private List<string> ExportMargin(DataTable source, int yesterdayColumnIndex, int mtdColumnIndex, string category)
+        private List<string> ExportMargin(DataTable source, int yesterdayColumnIndex, int mtdColumnIndex, string category, string reportId)
         {
             var dailyData = dataMarginService.CalcDataByCategory(source, category, yesterdayColumnIndex);
             var mtdData = dataMarginService.CalcDataByCategory(source, category, mtdColumnIndex);
-            var excelDaily = excelMarginService.Export(dailyData, true, category);
-            var excelMtd = excelMarginService.Export(mtdData, false, category);
+            var excelDaily = excelMarginService.Export(dailyData, true, category, reportId);
+            var excelMtd = excelMarginService.Export(mtdData, false, category, reportId);
             var imgDaily = imageMarginService.Export(excelDaily, true, category, excelMarginService.LastRowIndex);
             var imgMTD = imageMarginService.Export(excelMtd, false, category, excelMarginService.LastRowIndex);
 

@@ -36,12 +36,6 @@
       "ReportName": "Letstalk - House Net Income Daily Report (Excel)"
     },
     {
-      "FolderName": "3-DCWL",
-      "IsActive": true,
-      "FolderMode": "Daily",
-      "ReportName": "Letstalk - Daily Casino WinLoss - DCWL"
-    },
-    {
       "FolderName": "13-N88-DailyWL-Test",
       "IsActive": true,
       "FolderMode": "Daily",

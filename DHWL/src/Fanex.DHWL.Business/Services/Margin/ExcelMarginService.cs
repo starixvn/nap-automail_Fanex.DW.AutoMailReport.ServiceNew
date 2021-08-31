@@ -20,7 +20,7 @@ namespace Fanex.DHWL.Business.Services
         private readonly DateTimeServiceProvider dateService;
         private readonly DataMarginService dataMarginService;
 
-        private const int StartRowIndex = 3;
+        private const int StartRowIndex = 4;
 
         public int LastRowIndex
         {
@@ -57,7 +57,7 @@ namespace Fanex.DHWL.Business.Services
 
         private void RenderData(List<MarginModel> data, ExcelWorksheet template)
         {
-            template.Cells["B3"].LoadFromCollection(data, false);
+            template.Cells["B4"].LoadFromCollection(data, false);
 
             var maxRowIndex = data.Count + StartRowIndex - 1;
 
@@ -173,8 +173,8 @@ namespace Fanex.DHWL.Business.Services
                 title = $"{todate:MMM-yyyy}";
             }
 
-            template.Cells["B1"].Value = title;
-            template.Cells["O1"].Value = title;
+            template.Cells["B2"].Value = title;
+            template.Cells["O2"].Value = title;
         }
     }
 }

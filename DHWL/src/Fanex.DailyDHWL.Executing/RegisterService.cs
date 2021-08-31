@@ -70,10 +70,6 @@ namespace Fanex.DailyDHWL.Executing
             container.Register<DailyExcelDHWLService, DailyExcelDHWLServiceImp>();
             container.Register<DailyImageDHWLService, DailyImageDHWLServiceImp>();
             container.Register<ImageMarginService, ImageMarginServiceImp>();
-            container.Register<LicenseePerformanceDataService, LicenseePerformanceDataServiceImp>();
-            container.Register<LicenseePerformanceExcelService, LicenseePerformanceExcelServiceImp>();
-            container.Register<LicenseePerformanceService, LicenseePerformanceServiceImp>();
-            container.Register<LicenseePerformanceImageService, LicenseePerformanceImageServiceImp>();
             container.Register<MergeProductDataService, MergeProductDataServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
