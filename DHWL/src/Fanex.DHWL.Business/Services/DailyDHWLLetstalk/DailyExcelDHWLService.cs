@@ -19,7 +19,7 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
         private readonly DailyDataDHWLService dataDHWLService;
         private ExcelPackage excelPackage;
         private readonly DateTimeServiceProvider dateService;
-        private const int StartRowIndex = 2;
+        private const int StartRowIndex = 4;
 
         public int LastRowIndex
         {
@@ -52,7 +52,7 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
 
         private void RenderData(List<DailyDHWLModel> data, ExcelWorksheet template)
         {
-            template.Cells["B2"].LoadFromCollection(data, false);
+            template.Cells["B4"].LoadFromCollection(data, false);
 
             var maxRowIndex = data.Count + StartRowIndex - 1;
 
@@ -142,7 +142,7 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
         private void RenderTitle(ExcelWorksheet template)
         {
             var todate = dateService.DateTime.ToDate;
-            template.Cells["C1"].Value = $"{todate:dd-MMM-yyyy}";
+            template.Cells["C3"].Value = $"{todate:dd-MMM-yyyy}";
         }
     }
 }

@@ -28,7 +28,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
         private readonly MonthlyReconciliationExcelService reconciliation;
         private readonly ExcelMarginService excelMarginService;
 
-        private const int StartRowIndex = 3;
+        private const int StartRowIndex = 4;
 
         public int LastRowIndex
         {
@@ -101,7 +101,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
 
         private void RenderData(List<MonthlyDHWLModel> data, ExcelWorksheet template)
         {
-            template.Cells["B3"].LoadFromCollection(data, false);
+            template.Cells["B4"].LoadFromCollection(data, false);
 
             var maxRowIndex = data.Count + StartRowIndex - 1;
 
@@ -180,10 +180,10 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
         {
             var todate = dateService.DateTime.ToDate;
             var dataAjustment = adjustmentService.CalcData(monthlyRawData);
-            template.Cells["I1"].Value = $"Explanation for Adjustment - {todate:MMM yyyy}";
-            template.Cells["I3"].LoadFromCollection(dataAjustment, false);
+            template.Cells["I2"].Value = $"Explanation for Adjustment - {todate:MMM yyyy}";
+            template.Cells["I4"].LoadFromCollection(dataAjustment, false);
 
-            LastAdjustmentRowIndex = dataAjustment.Count + 2;
+            LastAdjustmentRowIndex = dataAjustment.Count + 3;
         }
 
         private string Save()
@@ -206,7 +206,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
         private void RenderTitle(ExcelWorksheet template)
         {
             var todate = dateService.DateTime.ToDate;
-            template.Cells["B1"].Value = $"Monthly House Net Income - {todate:MMM yyyy}";
+            template.Cells["B2"].Value = $"Monthly House Net Income - {todate:MMM yyyy}";
         }
 
         private void RenderReconciliation(DataTable dataConciliation)

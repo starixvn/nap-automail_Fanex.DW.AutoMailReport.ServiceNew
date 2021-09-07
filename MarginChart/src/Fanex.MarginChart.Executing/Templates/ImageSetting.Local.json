@@ -7,11 +7,11 @@
     "ImageName": "Margin",
     "SheetName": "Margin",
     "X": 235,
-    "Y": 330,
+    "Y": 305,
     "IsResize": false,
     "ResizeNewWidth": 500,
     "ImageQuality": 100,
     "HeightPerRow": 85,
-    "AdjustHeight": 0
+    "AdjustHeight": 15
   }
 }

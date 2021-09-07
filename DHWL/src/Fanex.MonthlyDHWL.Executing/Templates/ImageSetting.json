@@ -7,12 +7,12 @@
     "ImageName": "Monthly-House-Net-Income",
     "SheetName": "Letstalk",
     "X": 130,
-    "Y": 130,
+    "Y": 160,
     "IsResize": true,
     "ResizeNewWidth": 1300,
     "ImageQuality": 100,
     "HeightPerRow": 52,
-    "AdjustHeight": 40
+    "AdjustHeight": -20
   },
   "Adjustment": {
     "FirstRow": 1,
@@ -22,11 +22,11 @@
     "ImageName": "Adjustment",
     "SheetName": "Letstalk",
     "X": 130,
-    "Y": 130,
+    "Y": 160,
     "IsResize": false,
     "ResizeNewWidth": 500,
     "ImageQuality": 100,
     "HeightPerRow": 52,
-    "AdjustHeight": 60
+    "AdjustHeight": 20
   }
 }

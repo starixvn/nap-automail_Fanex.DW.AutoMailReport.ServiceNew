@@ -5,29 +5,29 @@
     "LastRow": 54,
     "LastColumn": 4,
     "CropWidth": 1130,
-    "ImageName": "Monthly-House-Net-Income",
+    "ImageName": "Monthly-Monthly",
     "SheetName": "Letstalk",
     "X": 230,
-    "Y": 240,
+    "Y": 280,
     "IsResize": false,
     "ResizeNewWidth": 500,
     "ImageQuality": 100,
     "HeightPerRow": 90,
-    "AdjustHeight": 30
+    "AdjustHeight": 10
   },
   "Adjustment": {
     "FirstRow": 1,
     "FirstColumn": 9,
     "LastColumn": 11,
     "CropWidth": 1660,
-    "ImageName": "Adjustment",
+    "ImageName": "Adj",
     "SheetName": "Letstalk",
     "X": 230,
-    "Y": 240,
+    "Y": 280,
     "IsResize": true,
     "ResizeNewWidth": 800,
     "ImageQuality": 100,
     "HeightPerRow": 95,
-    "AdjustHeight": 60
+    "AdjustHeight": 0
   }
 }

@@ -214,10 +214,6 @@
     <Compile Include="Services\Chart\ChartDataService.cs" />
     <Compile Include="Services\Chart\ChartExport.cs" />
     <Compile Include="Services\Chart\ChartService.cs" />
-    <Compile Include="Services\LicenseePerformance\LicenseePerformanceExcelService.cs" />
-    <Compile Include="Services\LicenseePerformance\LicenseePerformanceDataService.cs" />
-    <Compile Include="Services\LicenseePerformance\LicenseePerformanceImageService.cs" />
-    <Compile Include="Services\LicenseePerformance\LicenseePerformanceService.cs" />
     <Compile Include="Services\LicenseePerformance\MergeProductDataService.cs" />
     <Compile Include="Services\MonthlyDHWLNotificationService.cs" />
     <Compile Include="Services\MonthlyDHWLLetstalk\MonthlyDataDHWLService.cs" />

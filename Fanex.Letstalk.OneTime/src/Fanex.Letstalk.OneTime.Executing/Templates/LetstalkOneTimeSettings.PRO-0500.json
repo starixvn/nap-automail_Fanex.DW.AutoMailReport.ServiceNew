@@ -37,13 +37,13 @@
     },
     {
       "FolderName": "12-TopLicenseeByTO",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Top Licensees by TO"
     },
     {
       "FolderName": "12-TopLicenseeByTO-LicBySport",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Top licensees reports by sports"
     },
