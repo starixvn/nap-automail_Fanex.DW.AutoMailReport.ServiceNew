@@ -11,6 +11,7 @@
   "LetstalkGroup": "DHWL-PRE",
   "ProductList": "All",
   "IsAttachAdjument": true,
+  "DataMode": 1,
   "LetstalkGroups": {
     "Image": {
       "Group": "DWHL-PRO",

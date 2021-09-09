@@ -10,5 +10,6 @@
   "Password": "",
   "TargetName": "daily-house-wl",
   "IsSentDirectly": true,
-  "ProductList": "All"
+  "ProductList": "All",
+  "DataMode": 1
 }

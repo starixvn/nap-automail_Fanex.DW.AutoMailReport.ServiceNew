@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Functions>
+  <Function SiteId="25" SiteName="Auto Mail">
+    <Setting Key="Task_CheckOANDASettingsReadiness" SpName="Task_CheckOANDASettingsReadiness" DbName="DBWH.bodb_Account.dwrs" TimeOut="0" />
+    <Setting Key="Task_CheckHNIResultDatasetReadiness" SpName="Task_CheckHNIResultDatasetReadiness" DbName="DBWH.bodb_Account.dwrs" TimeOut="0" />
+  </Function>
+</Functions>

@@ -51,7 +51,15 @@
     },
     {
       "Source": "/nap/lic-perf-rmb/excel/UAT",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/24-LicPerf-RMB"
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/24-LicPerf-RMB-UAT"
+    },
+    {
+      "Source": "/nap/soccer-perf/excel/UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/11-Soccer-Perf-UAT"
+    },
+    {
+      "Source": "/nap/n88-daily-wl/excel/UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/13-N88-Daily-WL"
     }
   ]
 }

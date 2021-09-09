@@ -52,6 +52,14 @@
     {
       "Source": "/nap/lic-perf-rmb/excel/PROD",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/24-LicPerf-RMB-PROD"
+    },
+    {
+      "Source": "/nap/soccer-perf/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/11-Soccer-Perf-PROD"
+    },
+    {
+      "Source": "/nap/n88-daily-wl/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/13-N88-Daily-WL"
     }
   ]
 }

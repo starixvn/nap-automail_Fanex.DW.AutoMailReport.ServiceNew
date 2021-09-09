@@ -36,5 +36,9 @@ namespace Fanex.DHWL.Business.Models
         public Dictionary<string, LetstalkGroup> LetstalkGroups { get; set; } = new Dictionary<string, LetstalkGroup>();
 
         public bool IsAttachAdjument { get; set; }
+
+        public int DataMode { get; set; } = 1;
+
+        public decimal PerformanceThreshold { get; set; } = 200000;
     }
 }
