@@ -10,6 +10,8 @@
   "TargetName": "daily-house-wl",
   "LetstalkGroup": "DHWL-PRE",
   "ProductList": "All",
+  "DataMode": 1,
+  "PerformanceThreshold": 200000,
   "LetstalkGroups": {
     "Image": {
       "Group": "DWHL-PRO",

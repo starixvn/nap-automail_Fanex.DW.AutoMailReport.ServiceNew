@@ -34,5 +34,7 @@ namespace Fanex.MarginChart.Business.Models
         public Dictionary<int, ChartAreasPosition> AreasPosition { get; set; } = new Dictionary<int, ChartAreasPosition>();
 
         public List<ProductGroup> ProductGroups { get; set; } = new List<ProductGroup>();
+
+        public int DataMode { get; set; } = 1;
     }
 }

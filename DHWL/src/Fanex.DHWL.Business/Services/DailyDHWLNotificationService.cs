@@ -91,17 +91,18 @@ namespace Fanex.DHWL.Business.Services
 
         private ExecuteResultModel SendNotification()
         {
-            if (!dataService.IsDataAvailable())
+            var checkData = dataService.CheckDataAvailable();
+            if (checkData.Count > 0)
             {
                 return new ExecuteResultModel
                 {
                     Mail = new Mail(),
-                    Message = "DataIsNotReady, TaskID = 77",
+                    Message = string.Join(",", checkData),
                     Success = false
                 };
             }
+
             var dailyRawData = dataService.QueryDHWLData();
-            var licPerfRawData = dataService.QueryLicPerfData();
             var cloneData = baseDataTable.Clone(dailyRawData);
             var cloneDataDHWL = baseDataTable.Clone(dailyRawData);
             var fromdate = dateTimeServiceProvider.DateTime.FromDate;
@@ -124,7 +125,6 @@ namespace Fanex.DHWL.Business.Services
 
             CopyFiles(excelPath, images);
             var status = messageService.SendMessage(images, AppConfigService.Config.LetstalkGroup);
-            excelRawService.Export(licPerfRawData, "LicPerf", fromdate, todate);
 
             var errFile = status.Where(s => !s.Value).Select(s => s.Key).ToList();
             var subject = $"Automail Report - House Net Income - {todate:yyyy/MM/dd}";

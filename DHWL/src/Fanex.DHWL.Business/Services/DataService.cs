@@ -3,6 +3,7 @@ using Fanex.Data.Repository;
 using Fanex.DHWL.Business.Criterias;
 using Fanex.DHWL.Business.Models;
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace Fanex.DHWL.Business.Services
@@ -11,11 +12,9 @@ namespace Fanex.DHWL.Business.Services
     {
         TaskstatusModel QueryDWStatus();
 
-        bool IsDataAvailable();
+        List<string> CheckDataAvailable();
 
         DataTable QueryDHWLData();
-
-        DataTable QueryLicPerfData();
 
         DataTable QueryLastMonthData();
 
@@ -51,14 +50,56 @@ namespace Fanex.DHWL.Business.Services
             return repository.Get<LicenseeCheckDataReady>(new LiccenseeCheckDataReadyCriteria()).IsDataYesterdayReady;
         }
 
-        public bool IsDataAvailable()
+        public List<string> CheckDataAvailable()
         {
+            var result = new List<string>();
             if (AppConfigService.Config.ReportType == ReportType.Manual || !AppConfigService.Config.IsCheckEnoughData)
             {
-                return true;
+                return result;
             }
 
-            var result = QueryDWStatus().DataIsReady;
+            var dataReady = QueryDWStatus().DataIsReady;
+            if (!dataReady)
+            {
+                result.Add("DataIsNotReady, TaskId = 77");
+            }
+
+            var oandaReady = OandaReady();
+            if (!oandaReady)
+            {
+                result.Add("OANDA Service has a problem, some rates are not imported successfully.");
+            }
+
+            var hniResultReady = HNIResultReady();
+            if (!hniResultReady)
+            {
+                result.Add("The data is not correct (data is not ready & ABS(MTD of Yesterday – [MTD of Today – Yesterday Data]) > 200K RM)");
+            }
+
+            return result;
+        }
+
+        private bool OandaReady()
+        {
+            var result = false;
+            using (ObjectDb db = new ObjectDb("Task_CheckOANDASettingsReadiness", 0))
+            {
+                var dataset = db.ExecuteDataSet();
+                result = Convert.ToInt32(dataset.Tables[0].Rows[0][0]) == 1;
+            }
+
+            return result;
+        }
+
+        private bool HNIResultReady()
+        {
+            var result = false;
+            using (ObjectDb db = new ObjectDb("Task_CheckHNIResultDatasetReadiness", 0))
+            {
+                db.SetParameterValue("performancethreshold", AppConfigService.Config.PerformanceThreshold);
+                var dataset = db.ExecuteDataSet();
+                result = Convert.ToInt32(dataset.Tables[0].Rows[0][0]) == 1;
+            }
 
             return result;
         }
@@ -70,13 +111,6 @@ namespace Fanex.DHWL.Business.Services
             return QueryRawData(fromDate, toDate, "Acc_Rpt_HouseNetIncome", false);
         }
 
-        public DataTable QueryLicPerfData()
-        {
-            var fromDate = dateService.DateTime.FromDate;
-            var toDate = dateService.DateTime.ToDate;
-            return QueryRawData(fromDate, toDate, "Acc_Rpt_HouseNetIncome", true);
-        }
-
         private DataTable QueryRawData(DateTime fromDate, DateTime toDate, string spName, bool isLicPerf)
         {
             var dataTable = new DataTable();
@@ -86,17 +120,10 @@ namespace Fanex.DHWL.Business.Services
                 db.SetParameterValue("fromdate", fromDate);
                 db.SetParameterValue("todate", toDate);
                 db.SetParameterValue("islicperf", isLicPerf);
-                if (isLicPerf)
-                {
-                    db.SetParameterValue("basecurrencyname", "CNY"); // PRO
-                    //db.SetParameterValue("basecurrencyname", "MYR"); // Testing
-                    db.SetParameterValue("deposittype", 1);
-                }
-                else
-                {
-                    db.SetParameterValue("basecurrencyname", "MYR");
-                    db.SetParameterValue("deposittype", 2);
-                }
+
+                db.SetParameterValue("basecurrencyname", "MYR");
+                db.SetParameterValue("deposittype", 2);
+                db.SetParameterValue("datamode", AppConfigService.Config.DataMode);
 
                 var dataSet = db.ExecuteDataSet();
                 dataTable = baseDataTable.CombineAllInOneTable(dataSet);
