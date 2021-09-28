@@ -73,7 +73,7 @@ namespace Fanex.DHWL.Business.Services
             var hniResultReady = HNIResultReady();
             if (!hniResultReady)
             {
-                result.Add("The data is not correct (data is not ready & ABS(MTD of Yesterday – [MTD of Today – Yesterday Data]) > 200K RM)");
+                result.Add("The data is not correct (data is not ready & ABS(MTD of Yesterday – [MTD of Today – Yesterday Data]) > 300K RM)");
             }
 
             return result;
