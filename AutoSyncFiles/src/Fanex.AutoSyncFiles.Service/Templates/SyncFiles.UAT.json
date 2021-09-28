@@ -60,6 +60,10 @@
     {
       "Source": "/nap/n88-daily-wl/excel/UAT",
       "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/13-N88-Daily-WL"
+    },
+    {
+      "Source": "/nap/lic-perf/excel/UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/14-Lic-Perf"
     }
   ]
 }

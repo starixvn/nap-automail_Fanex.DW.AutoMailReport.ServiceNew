@@ -40,6 +40,10 @@
     {
       "Source": "/nap/n88-daily-wl/excel/LOCAL",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/13-N88-Daily-WL"
+    },
+    {
+      "Source": "/nap/lic-perf/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/14-Lic-Perf"
     }
 
   ]

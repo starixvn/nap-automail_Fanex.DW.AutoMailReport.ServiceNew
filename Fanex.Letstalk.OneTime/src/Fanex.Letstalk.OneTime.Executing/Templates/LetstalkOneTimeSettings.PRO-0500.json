@@ -49,7 +49,7 @@
     },
     {
       "FolderName": "14-TopLicenseePerformance",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Top Licensee Performance"
     },
