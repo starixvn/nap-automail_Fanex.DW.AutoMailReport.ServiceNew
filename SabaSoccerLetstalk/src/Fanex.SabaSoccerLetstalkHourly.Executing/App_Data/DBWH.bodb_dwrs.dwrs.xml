@@ -2,11 +2,11 @@
 <Functions>
   <Function SiteId="25" SiteName="Auto Mail">
     <Setting Key="BI_GetDWStatusByCube" SpName="BI_GetDWStatusByCube" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
-    <Setting Key="Acc_Rpt_Letstalk_TodayPunterSoccerLeagueGroup" SpName="Acc_Rpt_Letstalk_TodayPunterSoccerLeagueGroup" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0">
+    <Setting Key="Acc_Rpt_Letstalk_TodayPunterSoccerLeagueGroup" SpName="Acc_Rpt_Letstalk_TodayPunterSoccerLeagueGroup_xtest" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0">
     </Setting>
-    <Setting Key="Acc_Rpt_Letstalk_TodayPunterBasketballLeagueGroup" SpName="Acc_Rpt_Letstalk_TodayPunterBasketballLeagueGroup" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0">
+    <Setting Key="Acc_Rpt_Letstalk_TodayPunterBasketballLeagueGroup" SpName="Acc_Rpt_Letstalk_TodayPunterBasketballLeagueGroup_xtest" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0">
     </Setting>
-    <Setting Key="Acc_Rpt_Letstalk_TodayPunterByLeague" SpName="Acc_Rpt_Letstalk_TodayPunterByLeague" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0">
+    <Setting Key="Acc_Rpt_Letstalk_TodayPunterByLeague" SpName="Acc_Rpt_Letstalk_TodayPunterByLeague_xtest" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0">
       <Parameters>
         <Parameter Name="LeagueID" Value="90088" />
       </Parameters>

@@ -12,7 +12,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
 {
     public interface MonthlyExcelDHWLService
     {
-        string Export(DataTable monthlyRawData, DataTable dataReconciliation);
+        string Export(DataTable monthlyRawData, DataTable dataReconciliation, DataTable dataBA);
 
         int LastRowIndex { get; set; }
 
@@ -26,6 +26,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
         private readonly DateTimeServiceProvider dateService;
         private readonly AdjustmentDataService adjustmentService;
         private readonly MonthlyReconciliationExcelService reconciliation;
+        private readonly MonthlyBAExcelService monthlyBAExcelService;
         private readonly ExcelMarginService excelMarginService;
 
         private const int StartRowIndex = 4;
@@ -45,16 +46,18 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             DateTimeServiceProvider dateService,
             AdjustmentDataService adjustmentService,
             MonthlyReconciliationExcelService reconciliation,
+            MonthlyBAExcelService monthlyBAExcelService,
             ExcelMarginService excelMarginService)
         {
             this.dataDHWLService = dataDHWLService;
             this.dateService = dateService;
             this.adjustmentService = adjustmentService;
+            this.monthlyBAExcelService = monthlyBAExcelService;
             this.reconciliation = reconciliation;
             this.excelMarginService = excelMarginService;
         }
 
-        public string Export(DataTable monthlyRawData, DataTable dataReconciliation)
+        public string Export(DataTable monthlyRawData, DataTable dataReconciliation, DataTable dataBA)
         {
             var dataDHWL = dataDHWLService.CalTotalByProduct(monthlyRawData);
 
@@ -69,6 +72,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             FormatData(dataDHWL, template, formatTpl);
             RenderAdjustment(monthlyRawData, template);
             RenderReconciliation(dataReconciliation);
+            RenderBA(dataBA);
             RenderMTDMargin(monthlyRawData, marginSheet);
 
             return Save();
@@ -128,7 +132,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             var isStart = false;
             var skipInsertBreakRow = new List<string> { "Total", "Adjustment", "Net Income" };
             var productGroups = data.GroupBy(g => new { ProductGroup = g.ProductGroup }).Select(p => p.Key.ProductGroup).ToList();
-            if (productGroups.Count > 1)
+            if (productGroups.Count > 4)
             {
                 var beforeLastestGroup = productGroups[productGroups.Count - 4];
                 skipInsertBreakRow.Add(beforeLastestGroup);
@@ -214,6 +218,13 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             var tplReconciliation = excelPackage.Workbook.Worksheets["Rebate & Discount"];
             var date = dateService.DateTime.ToDate;
             reconciliation.RenderReconciliation(tplReconciliation, dataConciliation, date);
+        }
+
+        private void RenderBA(DataTable dataBA)
+        {
+            var tplBA = excelPackage.Workbook.Worksheets["BA"];
+            var date = dateService.DateTime.ToDate;
+            monthlyBAExcelService.RenderBA(tplBA, dataBA, date);
         }
     }
 }

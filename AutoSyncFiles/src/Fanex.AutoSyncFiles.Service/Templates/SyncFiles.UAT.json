@@ -30,6 +30,10 @@
       "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/AB Daily Report-UAT"
     },
     {
+      "Source": "/nap/mail-abnormal-bets-service/excel/UAT/AbnormalBetDailyReport_CSD",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/AbnormalBetDailyReport_CSD"
+    },
+    {
       "Source": "/nap/ta-perf/excel/UAT",
       "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/TA-Perf-UAT"
     },
@@ -64,6 +68,34 @@
     {
       "Source": "/nap/lic-perf/excel/UAT",
       "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/14-Lic-Perf"
+    },
+    {
+      "Source": "/nap/saba-soccer/excel/UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/15-Saba-Soccer-Punter"
+    },
+    {
+      "Source": "/nap/saba-soccer/excel/UAT/Hourly",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/16-SabaSportPunter-Hourly"
+    },
+    {
+      "Source": "/nap/non-sport-punter/excel/UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/18-TopNonSportPunter"
+    },
+    {
+      "Source": "/nap/top-sb-agent/excel/UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/19-TopSportbookAgents"
+    },
+    {
+      "Source": "/nap/oanda/excel/UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/OANDA"
+    },
+    {
+      "Source": "/nap/to-avg-bet-benchmark/excel/UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/20-TOAVGBetBenchmark"
+    },
+    {
+      "Source": "/nap/bet-credit-increment-789y/excel/UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/22-BigCreditIncrement789Y"
     }
   ]
 }
