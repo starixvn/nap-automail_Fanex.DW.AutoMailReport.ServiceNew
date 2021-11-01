@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using Fanex.DHWL.Business.Services.LicenseePerformance;
+using System.Data;
 
 namespace Fanex.DHWL.Business.Services.Margin
 {
@@ -11,17 +12,22 @@ namespace Fanex.DHWL.Business.Services.Margin
     {
         private readonly ExcelMarginService excelMarginService;
         private readonly ImageService imageService;
+        private readonly MergeProductDataService mergeProductDataService;
 
         public ImageMarginServiceImp(
             ExcelMarginService excelMarginService,
-            ImageService imageService)
+            ImageService imageService,
+            MergeProductDataService mergeProductDataService)
         {
             this.excelMarginService = excelMarginService;
             this.imageService = imageService;
+            this.mergeProductDataService = mergeProductDataService;
         }
 
         public string Export(DataTable dailyRawData, bool isDaily)
         {
+            mergeProductDataService.MergeVGamingIntoSabaC(dailyRawData);
+
             var excelPath = excelMarginService.Export(dailyRawData, isDaily);
             var lastRow = excelMarginService.LastRowIndex;
             var image = AppConfigService.Config.ImageSettings["Margin"];
