@@ -58,5 +58,9 @@ namespace Fanex.MailLetstalkTemplate.Business.Models
 
         public bool IsAllowAttachment { get; set; } = true;
         public string Header { get; set; }
+
+        public bool IsCSVExport { get; set; }
+
+        public int ThresholdToCSV { get; set; }
     }
 }

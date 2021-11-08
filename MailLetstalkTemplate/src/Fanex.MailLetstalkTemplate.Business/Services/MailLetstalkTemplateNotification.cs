@@ -23,6 +23,7 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
         private readonly MailService mailService;
         private readonly MessageService messageService;
         private readonly ImageService imageService;
+        private readonly CsvService csvService;
 
         public MailLetstalkTemplateNotificationImp(
               Log log,
@@ -31,7 +32,8 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
             ExcelService excelService,
             MailService mailService,
             MessageService messageService,
-            ImageService imageService)
+            ImageService imageService,
+            CsvService csvService)
         {
             this.log = log;
             this.dataService = dataService;
@@ -40,6 +42,7 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
             this.mailService = mailService;
             this.messageService = messageService;
             this.imageService = imageService;
+            this.csvService = csvService;
         }
 
         public JobMessage Execute()
@@ -104,21 +107,24 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
 
                 var jsonData = "Data Not Begin Yet";
                 var jsonExcelPath = "Excel Not Begin Yet";
+                var filePath = string.Empty;
                 try
                 {
                     var data = dataService.QueryData(config.SPName);
-                    var excelPath = excelService.ExportExcel(data);
+                    var dataTable = data.Tables[0];
+                    filePath = excelService.ExportExcel(data);
+
                     jsonData = JsonConvert.SerializeObject(data, Formatting.Indented);
-                    jsonExcelPath = JsonConvert.SerializeObject(excelPath, Formatting.Indented);
+                    jsonExcelPath = JsonConvert.SerializeObject(filePath, Formatting.Indented);
 
                     if (report.IsEmailEnabled)
                     {
-                        mailService.SendMail(excelPath);
+                        mailService.SendMail(filePath);
                     }
 
                     if (report.IsLetstalkEnabled)
                     {
-                        var imagePaths = ExportImage(config, excelPath);
+                        var imagePaths = ExportImage(config, filePath);
                         var sentLetstalkSuccess = SendImage(imagePaths);
                         if (!sentLetstalkSuccess)
                         {

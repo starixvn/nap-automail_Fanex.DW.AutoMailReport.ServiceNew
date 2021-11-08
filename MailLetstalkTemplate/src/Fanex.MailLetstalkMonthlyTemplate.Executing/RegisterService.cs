@@ -51,6 +51,7 @@ namespace Fanex.MailLetstalkTemplate.Executing
             container.Register<MailService, MailServiceImp>();
             container.Register<MessageService, MessageServiceImp>();
             container.Register<MailFormatProvider, MailFormatProviderImp>();
+            container.Register<CsvService, CsvServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
             container.Register<ApplicationSettingService, ApplicationSettingServiceImp>();
