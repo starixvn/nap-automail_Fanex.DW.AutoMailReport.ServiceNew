@@ -39,23 +39,44 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
             var index = 0;
             foreach (DataTable dataTable in dataSet.Tables)
             {
-                var totalSetting = AppConfigService.Config.IsEnabledSectionTotal ? AppConfigService.Config.TotalSettings[index] : new TotalSetting();
-                var template = excelPackage.Workbook.Worksheets[AppConfigService.Config.SheetExcelTemplateName[index]];
-                var startRowIndex = AppConfigService.Config.StartExelRowIndex;
-                AssignTotalDataRow(dataTable, totalSetting);
-
-                var maxRowIndex = dataTable.Rows.Count + startRowIndex - 1;
-                template.Cells[AppConfigService.Config.CellAddressRender[index]].LoadFromDataTable(dataTable, false);
-                FormatHeaderTitle(index, template);
-
-                if (dataTable.Rows.Count == 0)
+                var rowPerBatch = 500000;
+                var totalBatch = dataTable.Rows.Count / rowPerBatch + ((dataTable.Rows.Count % rowPerBatch) > 0 ? 1 : 0);
+                var sheetName = AppConfigService.Config.SheetExcelTemplateName[index];
+                var temlate = excelPackage.Workbook.Worksheets[sheetName];
+                excelPackage.Workbook.Worksheets.Delete(sheetName);
+                for (var batchIndex = 0; batchIndex < totalBatch; batchIndex++)
                 {
-                    FormatNoData(index, template, dataTable.Columns.Count);
-                }
-                else
-                {
-                    FormatContentDataRow(dataTable, startRowIndex, maxRowIndex, template);
-                    FormatSectionTotal(dataTable, totalSetting, template, maxRowIndex);
+                    var rowsOfBatch = dataTable.AsEnumerable().Skip(batchIndex * rowPerBatch).Take(rowPerBatch).ToList();
+                    var subTable = rowsOfBatch.CopyToDataTable();
+                    var totalSetting = AppConfigService.Config.IsEnabledSectionTotal ? AppConfigService.Config.TotalSettings[index] : new TotalSetting();
+                    var newSheet = excelPackage.Workbook.Worksheets.Add($"{sheetName}-{batchIndex + 1}");
+                    newSheet.View.ShowGridLines = false;
+                    var startRowIndex = AppConfigService.Config.StartExelRowIndex;
+                    newSheet.View.FreezePanes(startRowIndex, 3);
+                    for (int row = 1; row < startRowIndex; row++)
+                    {
+                        for (int column = 1; column <= temlate.Dimension.Columns; column++)
+                        {
+                            temlate.Cells[row, column].Copy(newSheet.Cells[row, column]);
+                            newSheet.Column(column).Width = temlate.Column(column).Width;
+                        }
+                    }
+
+                    AssignTotalDataRow(subTable, totalSetting);
+
+                    var maxRowIndex = subTable.Rows.Count + startRowIndex - 1;
+                    newSheet.Cells[AppConfigService.Config.CellAddressRender[index]].LoadFromDataTable(subTable, false);
+                    FormatHeaderTitle(index, newSheet);
+
+                    if (subTable.Rows.Count == 0)
+                    {
+                        FormatNoData(index, newSheet, subTable.Columns.Count);
+                    }
+                    else
+                    {
+                        FormatContentDataRow(subTable, startRowIndex, maxRowIndex, newSheet, temlate);
+                        FormatSectionTotal(subTable, totalSetting, newSheet, maxRowIndex);
+                    }
                 }
 
                 index++;
@@ -71,16 +92,16 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
             template.Cells[AppConfigService.Config.StartExelRowIndex, AppConfigService.Config.StartExcelColumnIndex, AppConfigService.Config.StartExelRowIndex, numberOfColumns].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
         }
 
-        private static void FormatContentDataRow(DataTable dataTable, int startRowIndex, int maxRowIndex, ExcelWorksheet template)
+        private static void FormatContentDataRow(DataTable dataTable, int startRowIndex, int maxRowIndex, ExcelWorksheet newSheet, ExcelWorksheet template)
         {
             for (int columnIndex = AppConfigService.Config.StartExcelColumnIndex; columnIndex < dataTable.Columns.Count + AppConfigService.Config.StartExcelColumnIndex; columnIndex++)
             {
-                template.Cells[startRowIndex, columnIndex, maxRowIndex, columnIndex].StyleID = template.Cells[startRowIndex, columnIndex].StyleID;
+                newSheet.Cells[startRowIndex, columnIndex, maxRowIndex, columnIndex].StyleID = template.Cells[startRowIndex, columnIndex].StyleID;
             }
 
             for (int rowIndex = startRowIndex; rowIndex <= maxRowIndex; rowIndex++)
             {
-                template.Row(rowIndex).Height = 18;
+                newSheet.Row(rowIndex).Height = 18;
             }
         }
 
@@ -141,6 +162,7 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
 
             path = $@"{path}\{fileName}";
             excelPackage.SaveAs(new FileInfo(path), AppConfigService.Config.Password);
+            excelPackage.Dispose();
 
             return path;
         }

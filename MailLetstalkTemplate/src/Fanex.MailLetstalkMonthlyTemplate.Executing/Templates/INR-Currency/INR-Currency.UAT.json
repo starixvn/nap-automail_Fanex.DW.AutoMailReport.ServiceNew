@@ -16,5 +16,7 @@
   "MailName": "Mail Monthly Template - UAT",
   "FileName": "INR-Currency",
   "StartExcelColumnIndex": 1,
-  "IsAllowAttachment": false
+  "IsAllowAttachment": false,
+  "IsCSVExport": true,
+  "ThresholdToCSV": 1000000
 }

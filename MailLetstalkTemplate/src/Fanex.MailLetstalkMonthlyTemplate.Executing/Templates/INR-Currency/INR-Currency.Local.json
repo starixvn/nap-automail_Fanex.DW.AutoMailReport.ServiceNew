@@ -16,5 +16,7 @@
   "MailName": "Mail Template Testing",
   "FileName": "INR-Currency",
   "StartExcelColumnIndex": 1,
-  "IsAllowAttachment": false
+  "IsAllowAttachment": false,
+  "IsCSVExport": true,
+  "ThresholdToCSV": 10000
 }
