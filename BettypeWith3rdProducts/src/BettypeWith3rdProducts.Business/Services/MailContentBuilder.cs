@@ -1,14 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using Fanex.MailDelivery.Core.Models;
+using System;
+using System.Collections.Generic;
 using System.IO;
-using Fanex.MailDelivery.Core.Models;
-using Fanex.Service.Core;
 
 namespace BettypeWith3rdProducts.Business.Services
 {
     public interface MailContentBuilder
     {
-        Mail ReadContentWhenDataIsNotReady();
-
         Mail ReadContentWithAttachment(string fileName);
 
         Mail ReadContentWithoutAttachment(string fileName);
@@ -25,20 +23,6 @@ namespace BettypeWith3rdProducts.Business.Services
             this.fileService = fileService;
         }
 
-        public Mail ReadContentWhenDataIsNotReady()
-        {
-            var mail = new Mail
-            {
-                Subject = $"{appConfig.Subject} - {SystemTime.Now:yyyy/MM/dd}",
-                Title = appConfig.Title,
-                Body = fileService.ReadContentWhenDataIsNotReady(),
-                Attachments = new List<MailAttachment>(),
-                MailingListId = appConfig.FunctionIdNodata
-            };
-
-            return mail;
-        }
-
         public Mail ReadContentWithAttachment(string fileName)
         {
             var shortFileNames = new FileInfo(fileName).Name;
@@ -49,7 +33,7 @@ namespace BettypeWith3rdProducts.Business.Services
 
             var mail = new Mail
             {
-                Subject = $"{appConfig.Subject} - {SystemTime.Now:yyyy/MM/dd}",
+                Subject = $"{appConfig.Subject} - {DateTime.Now:yyyy/MM/dd}",
                 Title = appConfig.Title,
                 Body = fileService.ReadContentWhenDataIsAvailable(shortFileNames, "ContentWithAttachment.cshtml"),
                 Attachments = attachments,
@@ -63,7 +47,7 @@ namespace BettypeWith3rdProducts.Business.Services
             var shortFileNames = new FileInfo(fileName).Name;
             var mail = new Mail
             {
-                Subject = $"{appConfig.Subject} - {SystemTime.Now:yyyy/MM/dd}",
+                Subject = $"{appConfig.Subject} - {DateTime.Now:yyyy/MM/dd}",
                 Title = appConfig.Title,
                 Body = fileService.ReadContentWhenDataIsAvailable(shortFileNames, "ContentWithoutAttachment.cshtml"),
                 Attachments = new List<MailAttachment>(),

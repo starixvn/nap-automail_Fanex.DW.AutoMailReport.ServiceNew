@@ -1,6 +1,5 @@
-﻿using System;
-using Fanex.Common;
-using Fanex.Service.Core;
+﻿using Fanex.Common;
+using System;
 
 namespace FastMarketWeeklyPerformance.Business.Services
 {
@@ -10,7 +9,7 @@ namespace FastMarketWeeklyPerformance.Business.Services
         {
             get
             {
-                var date = SystemTime.Now.AddDays(-7);
+                var date = DateTime.Now.AddDays(-7);
                 return Converter.To<DateTime>($"{date:yyyy-MM-dd}");
             }
         }
@@ -19,7 +18,7 @@ namespace FastMarketWeeklyPerformance.Business.Services
         {
             get
             {
-                var date = SystemTime.Now.AddDays(-1);
+                var date = DateTime.Now.AddDays(-1);
                 return Converter.To<DateTime>($"{date:yyyy-MM-dd}");
             }
         }

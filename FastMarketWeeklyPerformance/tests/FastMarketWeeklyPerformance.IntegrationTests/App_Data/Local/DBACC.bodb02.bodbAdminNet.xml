@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Functions>
-  <Function Name="FastMarketByWeekly">
-    <Setting Key="Acc_Rpt_Automail_FastMarketByWeekly" SpName="Acc_Rpt_Automail_FastMarketByWeekly" DbName="DBACC.bodb02.bodbAdminNet" TimeOut="0" />
-  </Function>
-</Functions>  

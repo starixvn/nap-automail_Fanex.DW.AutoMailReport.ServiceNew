@@ -1,9 +1,8 @@
-﻿using System.IO;
-using EventMarketOffer.Business.Services;
+﻿using EventMarketOffer.Business.Services;
 using Fanex.Data.Repository;
-using Fanex.Service.Core;
 using OfficeOpenXml;
 using SimpleInjector;
+using System.IO;
 
 namespace EventMarketOffer.Executing
 {
@@ -15,16 +14,12 @@ namespace EventMarketOffer.Executing
             container.Register<AppConfigurationService, AppConfigurationServiceImp>();
             container.Register<DateService, DateServiceImp>();
             container.Register<ExcelService, ExcelServiceImp>();
-            container.Register<LogService, LogServiceImp>();
             container.Register<FileService, FileServiceImp>();
-            container.Register<DistributedNotificationService, DistributedNotificationServiceImp>();
             container.Register<IDynamicRepository, DynamicRepository>();
-            container.Register<MailStationService, MailStationServiceImp>();
             container.Register<MailService, MailServiceImp>();
-            container.Register<DataSourceService, DataSourceServiceImp>();
-
-            container.Register<RepositoryService, DataServiceImp>();
             container.Register<DataService, DataServiceImp>();
+            container.Register<Log, LogImp>();
+            container.Register<NotificationService, NotificationServiceImp>();
         }
     }
 }

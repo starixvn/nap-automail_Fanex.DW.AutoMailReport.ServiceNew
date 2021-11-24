@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "416476e4-8e31-422c-8e97-ff303d818840": {
+      "ProjectGuid": "416476e4-8e31-422c-8e97-ff303d818840",
+      "DisplayName": "EventMarketOffer.Executing",
+      "ColorIndex": 0
+    },
+    "0ad77f2f-35bd-4d2c-9db4-ac4139c32e32": {
+      "ProjectGuid": "0ad77f2f-35bd-4d2c-9db4-ac4139c32e32",
+      "DisplayName": "EventMarketOffer.DatabaseTests",
+      "ColorIndex": 1
+    },
+    "01605f78-346e-4e20-8862-98a67a6b46b9": {
+      "ProjectGuid": "01605f78-346e-4e20-8862-98a67a6b46b9",
+      "DisplayName": "EventMarketOffer.IntegrationTests",
+      "ColorIndex": 2
+    },
+    "3989146e-38ef-4d10-ba12-a8570d98d028": {
+      "ProjectGuid": "3989146e-38ef-4d10-ba12-a8570d98d028",
+      "DisplayName": "EventMarketOffer.Business",
+      "ColorIndex": 3
+    },
+    "a39db7da-9757-4900-bcda-47d1414b598f": {
+      "ProjectGuid": "a39db7da-9757-4900-bcda-47d1414b598f",
+      "DisplayName": "src",
+      "ColorIndex": 4
+    },
+    "6c383526-7825-4c26-9967-cc4f405e8888": {
+      "ProjectGuid": "6c383526-7825-4c26-9967-cc4f405e8888",
+      "DisplayName": "EventMarketOffer.UnitTests",
+      "ColorIndex": 5
+    }
+  },
+  "NextColorIndex": 6
+}

@@ -1,9 +1,8 @@
-﻿using System.IO;
-using BetradarVirtualSportsDaily.Business.Services;
+﻿using BetradarVirtualSportsDaily.Business.Services;
 using Fanex.Data.Repository;
-using Fanex.Service.Core;
 using OfficeOpenXml;
 using SimpleInjector;
+using System.IO;
 
 namespace BetradarVirtualSports.Executing
 {
@@ -17,12 +16,10 @@ namespace BetradarVirtualSports.Executing
             container.Register<DateService, DateServiceImp>();
             container.Register<ExcelService, ExcelServiceImp>();
             container.Register<FileService, FileServiceImp>();
-            container.Register<DataService, RepositoryServiceImp>();
-            container.Register<RepositoryService, RepositoryServiceImp>();
-            container.Register<MailStationService, MailStationServiceImp>();
-            container.Register<MailService, MailDailyService>();
-            container.Register<DistributedNotificationService, DistributedNotificationServiceImp>();
-            container.Register<LogService, LogServiceImp>();            
+            container.Register<NotificationService, NotificationServiceImp>();
+            container.Register<DataService, DataServiceImp>();
+            container.Register<MailService, MailServiceImp>();
+            container.Register<Log, LogImp>();
         }
     }
 }

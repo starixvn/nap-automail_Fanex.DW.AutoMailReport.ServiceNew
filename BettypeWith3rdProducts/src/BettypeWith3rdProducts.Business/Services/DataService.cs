@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using BettypeWith3rdProducts.Business.Models;
+using BettypeWith3rdProducts.Business.Repositories;
+using Fanex.Data.Repository;
+using System.Collections.Generic;
 using System.Data;
-using Fanex.Service.Core;
 
 namespace BettypeWith3rdProducts.Business.Services
 {
@@ -15,13 +17,16 @@ namespace BettypeWith3rdProducts.Business.Services
     {
         private readonly ApplicationConfigurationService appConfig;
         private readonly SportSplitterService sportSplitterService;
-        private readonly RepositoryService repositoryService;
+        private readonly IDynamicRepository repository;
 
-        public DataServiceImp(ApplicationConfigurationService appConfig, SportSplitterService sportSplitterService, RepositoryService repositoryService)
+        public DataServiceImp(
+            ApplicationConfigurationService appConfig,
+            SportSplitterService sportSplitterService,
+            IDynamicRepository repository)
         {
             this.appConfig = appConfig;
             this.sportSplitterService = sportSplitterService;
-            this.repositoryService = repositoryService;
+            this.repository = repository;
         }
 
         public Dictionary<string, Dictionary<string, List<DataTable>>> Execute()
@@ -38,7 +43,17 @@ namespace BettypeWith3rdProducts.Business.Services
 
         public bool IsDataAvailable()
         {
-            return repositoryService.IsDataAvailable();
+            if (appConfig.IsManual || !appConfig.IsCheckEnoughData)
+            {
+                return true;
+            }
+
+            return QueryDWStatus().DataIsReady;
+        }
+
+        private TaskstatusModel QueryDWStatus()
+        {
+            return repository.Get<TaskstatusModel>(new GetDWStatusCriteria());
         }
     }
 }

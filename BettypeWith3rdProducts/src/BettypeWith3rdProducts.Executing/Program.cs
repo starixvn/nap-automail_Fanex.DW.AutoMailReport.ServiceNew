@@ -1,7 +1,7 @@
-﻿using System;
-using Fanex.Service.Core;
+﻿using BettypeWith3rdProducts.Business.Services;
 using Newtonsoft.Json;
 using SimpleInjector;
+using System;
 
 namespace BettypeWith3rdProducts.Executing
 {
@@ -9,13 +9,13 @@ namespace BettypeWith3rdProducts.Executing
     {
         public static void Main()
         {
-            FanexDataRegisterService.ConfigureFanexData();
+            RegisterService.RegisterServices();
 
             Container container = new Container();
             SimpleInjectorService.Register(container);
             container.Verify(VerificationOption.VerifyOnly);
 
-            var service = container.GetInstance<DistributedNotificationService>();
+            var service = container.GetInstance<NotificationService>();
             var result = service.Execute();
             var json = JsonConvert.SerializeObject(result, Formatting.Indented);
 
