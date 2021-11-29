@@ -6,7 +6,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
 {
     public interface MonthlyImageDHWLService
     {
-        List<string> Export(DataTable monthlyRawData, DataTable dataReconciliation);
+        List<string> Export(DataTable monthlyRawData, DataTable dataReconciliation, DataTable dataBA);
 
         string FileName { get; set; }
     }
@@ -32,10 +32,10 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             this.mergeProductDataService = mergeProductDataService;
         }
 
-        public List<string> Export(DataTable monthlyRawData, DataTable dataReconciliation)
+        public List<string> Export(DataTable monthlyRawData, DataTable dataReconciliation, DataTable dataBA)
         {
             mergeProductDataService.MergeVGamingIntoSabaC(monthlyRawData);
-            var excelPath = excelDHWLService.Export(monthlyRawData, dataReconciliation);
+            var excelPath = excelDHWLService.Export(monthlyRawData, dataReconciliation, dataBA);
             FileName = excelPath;
             var imageDHWLMonthly = ExportDHWLMonthly(excelPath);
             var imageAdjustmentMonthly = ExportAdjustmentMonthly(excelPath);

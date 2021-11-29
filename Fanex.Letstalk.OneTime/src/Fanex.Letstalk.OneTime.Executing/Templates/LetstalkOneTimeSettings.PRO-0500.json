@@ -55,19 +55,19 @@
     },
     {
       "FolderName": "18-TopNonSportPunters",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Top Non-Sports Punters"
     },
     {
       "FolderName": "19-TopSportbookAgents",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Top Sportbook Agents"
     },
     {
       "FolderName": "20-TOAVGBetBenchmark",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Turnover/AVG Bet Benchmark"
     }

@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Fanex.Common;
+using OfficeOpenXml;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
-using Fanex.Common;
-using Fanex.Service.Core;
-using OfficeOpenXml;
 
 namespace BettypeWith3rdProducts.Business.Services
 {
@@ -136,7 +136,7 @@ namespace BettypeWith3rdProducts.Business.Services
                 .Replace("{0}", $"{date.DateStart:MM/dd/yyyy}")
                 .Replace("{1}", $"{date.DateEnd:MM/dd/yyyy}");
             excelWorksheet.Cells["B3"].Value = excelWorksheet.Cells["B3"].Value.ToString()
-                .Replace("{0}", $"{SystemTime.Now}");
+                .Replace("{0}", $"{DateTime.Now}");
             excelPackage.Workbook.Worksheets.Delete($"{sheetName} Temp");
         }
 
@@ -149,11 +149,11 @@ namespace BettypeWith3rdProducts.Business.Services
 
         public string Save()
         {
-            var folder = $@"{SystemTime.Now:yyyy}\{SystemTime.Now:MM}";
+            var folder = $@"{DateTime.Now:yyyy}\{DateTime.Now:MM}";
             var root = $@"{appConfig.ExportDataDirectory}\{folder}";
             Directory.CreateDirectory(root);
 
-            var fileName = $@"{root}\Bettype_With_3rd_Products_Monthly_Winloss_For_{SystemTime.Now:yyyy_MM_dd}.xlsx";
+            var fileName = $@"{root}\Bettype_With_3rd_Products_Monthly_Winloss_For_{DateTime.Now:yyyy_MM_dd}.xlsx";
             excelPackage.SaveAs(new FileInfo(fileName), appConfig.ExcelPasswordProtected);
 
             return fileName;

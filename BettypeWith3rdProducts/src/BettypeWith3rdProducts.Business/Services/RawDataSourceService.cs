@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Data;
-using BettypeWith3rdProducts.Business.Models;
+﻿using BettypeWith3rdProducts.Business.Models;
 using BettypeWith3rdProducts.Business.Repositories;
-using Fanex.Service.Core;
+using Fanex.Data;
+using Fanex.Data.Repository;
+using System.Collections.Generic;
+using System.Data;
 
 namespace BettypeWith3rdProducts.Business.Services
 {
@@ -13,13 +14,13 @@ namespace BettypeWith3rdProducts.Business.Services
 
     public class RawDataSourceServiceImp : RawDataSourceService
     {
-        private readonly DataSourceService dataSourceService;
         private readonly DateRangeService dateRangeService;
+        private readonly IDynamicRepository dynamicRepository;
 
-        public RawDataSourceServiceImp(DateRangeService dateRangeService, DataSourceService dataSourceService)
+        public RawDataSourceServiceImp(DateRangeService dateRangeService, IDynamicRepository dynamicRepository)
         {
             this.dateRangeService = dateRangeService;
-            this.dataSourceService = dataSourceService;
+            this.dynamicRepository = dynamicRepository;
         }
 
         public Dictionary<string, DataTable> QueryDataSouce(SourceMapping sourceMapping)
@@ -33,7 +34,7 @@ namespace BettypeWith3rdProducts.Business.Services
                 StoreProcedure = sourceMapping.StoreProcedure
             };
 
-            var dataset = dataSourceService.QueryMultiple(criteria);
+            var dataset = QueryData(criteria);
             var index = 0;
             string key = string.Empty;
             foreach (DataTable dataTable in dataset.Tables)
@@ -53,6 +54,21 @@ namespace BettypeWith3rdProducts.Business.Services
             }
 
             return rawDataSource;
+        }
+
+        private DataSet QueryData(BettypeProductCriteria criteria)
+        {
+            var ds = new DataSet();
+            using (ObjectDb db = new ObjectDb(criteria.GetSettingKey(), 0))
+            {
+                db.SetParameterValue("datestart", criteria.DateStart);
+                db.SetParameterValue("dateend", criteria.DateEnd);
+                db.SetParameterValue("statisticid", criteria.StatisticId);
+
+                ds = db.ExecuteDataSet();
+            }
+
+            return ds;
         }
     }
 }

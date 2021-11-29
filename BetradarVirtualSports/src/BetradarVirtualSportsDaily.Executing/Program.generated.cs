@@ -1,7 +1,8 @@
-﻿using System;
-using Fanex.Service.Core;
+﻿using BetradarVirtualSportsDaily.Business.Services;
+using BetradarVirtualSportsDaily.Executing;
 using Newtonsoft.Json;
 using SimpleInjector;
+using System;
 
 namespace BetradarVirtualSports.Executing
 {
@@ -9,13 +10,12 @@ namespace BetradarVirtualSports.Executing
     {
         public static void Main()
         {
-            FanexDataRegisterService.ConfigureFanexData();
-
             Container container = new Container();
+            RegisterService.RegisterServices();
             DailySimpleInjectorService.Register(container);
             container.Verify(VerificationOption.VerifyOnly);
 
-            var service = container.GetInstance<DistributedNotificationService>();
+            var service = container.GetInstance<NotificationService>();
             var result = service.Execute();
             var json = JsonConvert.SerializeObject(result, Formatting.Indented);
 

@@ -1,35 +1,22 @@
-﻿using System;
-using System.IO;
-using Fanex.Service.Core;
-using RazorEngine;
+﻿using RazorEngine;
 using RazorEngine.Templating;
+using System;
+using System.IO;
 
 namespace BettypeWith3rdProducts.Business.Services
 {
     public interface FileService
     {
-        string ReadContentWhenDataIsNotReady();
-
         string ReadContentWhenDataIsAvailable(string excelFileName, string templateFile);
     }
 
     public class FileServiceImp : FileService
     {
-        private readonly RepositoryService repositoryService;
         private readonly ApplicationConfigurationService appConfig;
 
-        public FileServiceImp(RepositoryService repositoryService, ApplicationConfigurationService appConfig)
+        public FileServiceImp(ApplicationConfigurationService appConfig)
         {
-            this.repositoryService = repositoryService;
             this.appConfig = appConfig;
-        }
-
-        public string ReadContentWhenDataIsNotReady()
-        {
-            const string TemplatePath = @"Templates\ContentWhenDataIsNotReady.cshtml";
-            var emailTemplate = File.ReadAllText(TemplatePath);
-            var lastDate = repositoryService.QueryLastDate();
-            return Engine.Razor.RunCompile(emailTemplate, TemplatePath, lastDate.GetType(), lastDate);
         }
 
         public string ReadContentWhenDataIsAvailable(string excelFileName, string templateFile)

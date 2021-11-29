@@ -1,6 +1,5 @@
-﻿using System;
-using Fanex.Common;
-using Fanex.Service.Core;
+﻿using Fanex.Common;
+using System;
 
 namespace BetradarVirtualSportsMonthly.Business.Services
 {
@@ -13,7 +12,7 @@ namespace BetradarVirtualSportsMonthly.Business.Services
         {
             get
             {
-                var date = SystemTime.Now.AddDays(-1);
+                var date = DateTime.Now.AddDays(-1);
                 if (date.Day == MaxDay && date.Month == MaxMonth)
                 {
                     return Converter.To<DateTime>($"{date:yyyy-MM-01}");
@@ -27,7 +26,7 @@ namespace BetradarVirtualSportsMonthly.Business.Services
         {
             get
             {
-                var date = SystemTime.Now.AddDays(-1);
+                var date = DateTime.Now.AddDays(-1);
                 if (date.Day == MaxDay && date.Month == MaxMonth)
                 {
                     return Converter.To<DateTime>($"{date:yyyy-MM-dd}");

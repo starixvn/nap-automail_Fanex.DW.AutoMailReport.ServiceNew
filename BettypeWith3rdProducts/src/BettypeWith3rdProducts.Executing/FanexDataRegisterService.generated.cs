@@ -15,7 +15,7 @@ namespace BettypeWith3rdProducts.Executing
             DbSettingProviderManager
                 .StartNewSession()
                 .Use(new OldConnectionStringProvider())
-                .UseDefaultDbSettingProvider($@"~/{storedProcedurePath}", enableWatching: true)
+                .UseDefaultDbSettingProvider($@"~/{storedProcedurePath}")
                 .Run();
         }
     }

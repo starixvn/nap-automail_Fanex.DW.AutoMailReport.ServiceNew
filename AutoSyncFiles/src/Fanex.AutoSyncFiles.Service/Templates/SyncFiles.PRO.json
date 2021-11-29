@@ -30,6 +30,10 @@
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/AB Daily Report-PROD"
     },
     {
+      "Source": "/nap/mail-abnormal-bets-service/excel/PROD/AbnormalBetDailyReport_CSD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/AbnormalBetDailyReport_CSD"
+    },
+    {
       "Source": "/nap/ta-perf/excel/PROD",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/TA-Perf-PROD"
     },
@@ -64,6 +68,34 @@
     {
       "Source": "/nap/lic-perf/excel/PROD",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/14-Lic-Perf"
+    },
+    {
+      "Source": "/nap/saba-soccer/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/15-Saba-Soccer-Punter"
+    },
+    {
+      "Source": "/nap/saba-soccer/excel/UAT/Hourly",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/16-SabaSportPunter-Hourly"
+    },
+    {
+      "Source": "/nap/non-sport-punter/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/18-TopNonSportPunter"
+    },
+    {
+      "Source": "/nap/top-sb-agent/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/19-TopSportbookAgents"
+    },
+    {
+      "Source": "/nap/oanda/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/OANDA"
+    },
+    {
+      "Source": "/nap/to-avg-bet-benchmark/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/20-TOAVGBetBenchmark"
+    },
+    {
+      "Source": "/nap/bet-credit-increment-789y/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/22-BigCreditIncrement789Y"
     }
   ]
 }

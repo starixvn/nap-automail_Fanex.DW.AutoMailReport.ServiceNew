@@ -1,11 +1,8 @@
-﻿using System.Configuration;
-using System.IO;
-using BettypeWith3rdProducts.Business.Services;
-using BettypeWith3rdProducts.BusinessSubstitute;
+﻿using BettypeWith3rdProducts.Business.Services;
 using Fanex.Data.Repository;
-using Fanex.Service.Core;
 using OfficeOpenXml;
 using SimpleInjector;
+using System.IO;
 
 namespace BettypeWith3rdProducts.Executing
 {
@@ -15,30 +12,23 @@ namespace BettypeWith3rdProducts.Executing
         {
             container.Register<IDynamicRepository, DynamicRepository>();
             container.Register(() => new ExcelPackage(new FileInfo(@"Templates\Template.xlsx")));
-            container.Register<DateRangeService, DateRangeServiceImp>();            
+            container.Register<DateRangeService, DateRangeServiceImp>();
             container.Register<ApplicationConfigurationService, ApplicationConfigurationServiceImp>();
-            container.Register<RepositoryService, RepositoryServiceImp>();
-            container.Register<RepositoryBettypeProductService, RepositoryServiceImp>();
-            container.Register<DataSourceService, DataSourceServiceImp>();
+
             container.Register<SportSplitterService, SportSplitterServiceImp>();
             container.Register<ExcelService, ExcelServiceImp>();
             container.Register<ExcelHeaderService, ExcelHeaderServiceImp>();
             container.Register<FileService, FileServiceImp>();
-            container.Register<MailStationService, MailStationServiceImp>();
+
             container.Register<MailContentBuilder, MailContentBuilderImp>();
             container.Register<MailService, MailServiceImp>();
-            container.Register<DistributedNotificationService, DistributedNotificationServiceImp>();
-            container.Register<LogService, LogServiceImp>();
+
             container.Register<RawDataSourceService, RawDataSourceServiceImp>();
 
-            if (ConfigurationManager.AppSettings["IsFakeData"] == "true")
-            {
-                container.Register<DataService, DataServiceSubstitute>();
-            }
-            else
-            {
-                container.Register<DataService, DataServiceImp>();
-            }
+            container.Register<DataService, DataServiceImp>();
+            container.Register<NotificationService, NotificationServiceImp>();
+            container.Register<RepositoryBettypeProductService, RepositoryServiceImp>();
+            container.Register<Log, LogImp>();
         }
     }
 }

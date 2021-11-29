@@ -9,7 +9,7 @@
   "Password": "",
   "FunctionIdNodata": 90,
   "TargetName": "daily-monitoring",
-  "IsSentDirectly": false,
+  "IsSentDirectly": true,
   "OneTimePath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\18-TopNonSportPunters",
   "TotalTurnover": 50000,
   "NonSportProductIds": "8,28,40,50,5,27,3",

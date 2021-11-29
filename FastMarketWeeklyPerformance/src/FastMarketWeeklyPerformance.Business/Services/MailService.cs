@@ -1,28 +1,34 @@
-﻿using System.Collections.Generic;
-using Fanex.MailDelivery.Core.Models;
-using Fanex.Service.Core;
+﻿using Fanex.MailDelivery.Core.Models;
 using FastMarketWeeklyPerformance.Business.Models;
+using System;
+using System.Collections.Generic;
 
 namespace FastMarketWeeklyPerformance.Business.Services
 {
+    public interface MailService
+    {
+        Mail CreateMail();
+    }
+
     public class MailServiceImp : MailService
     {
         private readonly FileService fileService;
         private readonly ExcelService excelService;
-        private readonly MailStationService mailStationService;
 
         private readonly AppConfig appConfig;
 
-        public MailServiceImp(FileService fileService, ExcelService excelService, ApplicationConfigurationService appConfigService, MailStationService mailStationService)
+        public MailServiceImp(
+            FileService fileService,
+            ExcelService excelService,
+            ApplicationConfigurationService appConfigService)
         {
             this.fileService = fileService;
             this.excelService = excelService;
-            this.mailStationService = mailStationService;
 
             appConfig = appConfigService.Configurations;
         }
 
-        public Mail Execute()
+        public Mail CreateMail()
         {
             var fileName = excelService.Export().Save();
             var attachments = new List<MailAttachment>
@@ -32,30 +38,13 @@ namespace FastMarketWeeklyPerformance.Business.Services
 
             var mail = new Mail
             {
-                Subject = $"{appConfig.Subject} - {SystemTime.Now:yyyy/MM/dd}",
+                Subject = $"{appConfig.Subject} - {DateTime.Now:yyyy/MM/dd}",
                 Title = appConfig.Title,
                 Body = fileService.ReadContentWhenDataIsAvailable(),
                 Attachments = attachments,
             };
 
             return mail;
-        }
-
-        public void SendMailWhenDataIsNotReady()
-        {
-            var mail = new Mail
-            {
-                Subject = $"{appConfig.Subject} - {SystemTime.Now:yyyy/MM/dd}",
-                Title = appConfig.Title,
-                Body = fileService.ReadContentWhenDataIsNotReady(),
-                Attachments = new List<MailAttachment>(),
-                MailingListId = appConfig.FunctionIdNodata
-            };
-
-            if (appConfig.FunctionIdNodata > 0)
-            {
-                mailStationService.Send(mail);
-            }
         }
     }
 }

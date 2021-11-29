@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "82b059de-9ed6-45b8-8c90-5aef354e6e6e": {
+      "ProjectGuid": "82b059de-9ed6-45b8-8c90-5aef354e6e6e",
+      "DisplayName": "BettypeWith3rdProducts.Business",
+      "ColorIndex": 0
+    },
+    "34524cf7-305e-4b3e-9c8e-298735dfbe79": {
+      "ProjectGuid": "34524cf7-305e-4b3e-9c8e-298735dfbe79",
+      "DisplayName": "BettypeWith3rdProducts.Executing",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "7bfbfece-6821-4bfe-a9c3-38fd9381a38d": {
+      "ProjectGuid": "7bfbfece-6821-4bfe-a9c3-38fd9381a38d",
+      "DisplayName": "src",
+      "ColorIndex": 2
+    },
+    "dea7727a-fcd9-4b8f-b1db-55d7a9839b6e": {
+      "ProjectGuid": "dea7727a-fcd9-4b8f-b1db-55d7a9839b6e",
+      "DisplayName": "BettypeWith3rdProducts.DatabaseTests",
+      "ColorIndex": 3
+    },
+    "9d4d0535-0cef-43d3-baba-a087e4fe835f": {
+      "ProjectGuid": "9d4d0535-0cef-43d3-baba-a087e4fe835f",
+      "DisplayName": "BettypeWith3rdProducts.UnitTests",
+      "ColorIndex": 4
+    },
+    "e888dc19-ff8f-4b41-90d9-5465293cf043": {
+      "ProjectGuid": "e888dc19-ff8f-4b41-90d9-5465293cf043",
+      "DisplayName": "BettypeWith3rdProducts.IntegrationTests",
+      "ColorIndex": 5
+    }
+  },
+  "NextColorIndex": 6
+}

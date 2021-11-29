@@ -18,7 +18,7 @@ namespace Fanex.DHWL.Business.Services
 
         DataTable QueryLastMonthData();
 
-        DataTable QueryReconciliation();
+        DataSet QueryReconciliation();
     }
 
     public class DataServiceImp : DataService
@@ -149,26 +149,20 @@ namespace Fanex.DHWL.Business.Services
             return result;
         }
 
-        public DataTable QueryReconciliation()
+        public DataSet QueryReconciliation()
         {
             var fromDate = dateService.DateTime.FromDate;
             var toDate = dateService.DateTime.ToDate;
-
-            var dataTable = new DataTable();
-
+            var result = new DataSet();
             using (ObjectDb db = new ObjectDb("Acc_Rpt_HouseNetIncome_Reconciliation", 0))
             {
                 db.SetParameterValue("fromdate", fromDate);
                 db.SetParameterValue("todate", toDate);
 
-                var dataSet = db.ExecuteDataSet();
-                if (dataSet != null && dataSet.Tables.Count > 0)
-                {
-                    dataTable = dataSet.Tables[0];
-                }
+                result = db.ExecuteDataSet();
             }
 
-            return dataTable;
+            return result;
         }
     }
 }

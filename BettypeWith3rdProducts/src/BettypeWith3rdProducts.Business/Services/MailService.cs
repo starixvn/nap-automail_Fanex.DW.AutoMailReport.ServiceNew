@@ -1,29 +1,30 @@
 ﻿using Fanex.MailDelivery.Client;
 using Fanex.MailDelivery.Core.Models;
-using Fanex.Service.Core;
 
 namespace BettypeWith3rdProducts.Business.Services
 {
+    public interface MailService
+    {
+        Mail CreateMail();
+    }
+
     public class MailServiceImp : MailService
     {
         private readonly ExcelService excelService;
         private readonly MailContentBuilder mailContentBuilder;
-        private readonly MailStationService mailStationService;
         private readonly ApplicationConfigurationService appConfig;
 
         public MailServiceImp(
             ExcelService excelService,
             MailContentBuilder mailContentBuilder,
-            MailStationService mailStationService,
             ApplicationConfigurationService appConfig)
         {
             this.excelService = excelService;
             this.mailContentBuilder = mailContentBuilder;
-            this.mailStationService = mailStationService;
             this.appConfig = appConfig;
         }
 
-        public Mail Execute()
+        public Mail CreateMail()
         {
             excelService.Execute();
             var fileName = excelService.Save();
@@ -36,17 +37,6 @@ namespace BettypeWith3rdProducts.Business.Services
             }
 
             return mailContentBuilder.ReadContentWithAttachment(fileName);
-        }
-
-        public void SendMailWhenDataIsNotReady()
-        {
-            if (appConfig.FunctionIdNodata > 0)
-            {
-                var mail = mailContentBuilder.ReadContentWhenDataIsNotReady();
-                MailClientHandler.Start();
-                MailClientHandler.SendFunctionMail(mail);
-                MailClientHandler.Stop();
-            }
         }
     }
 }

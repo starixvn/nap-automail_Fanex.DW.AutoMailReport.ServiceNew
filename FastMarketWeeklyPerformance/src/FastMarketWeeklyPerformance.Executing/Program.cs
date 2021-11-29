@@ -1,7 +1,7 @@
-﻿using System;
-using Fanex.Service.Core;
+﻿using FastMarketWeeklyPerformance.Business.Services;
 using Newtonsoft.Json;
 using SimpleInjector;
+using System;
 
 namespace FastMarketWeeklyPerformance.Executing
 {
@@ -9,19 +9,17 @@ namespace FastMarketWeeklyPerformance.Executing
     {
         public static void Main()
         {
-            FanexDataRegisterService.ConfigureFanexData();
+            RegisterService.RegisterServices();
 
             Container container = new Container();
             SimpleInjectorService.Register(container);
             container.Verify(VerificationOption.VerifyOnly);
 
-            var service = container.GetInstance<DistributedNotificationService>();
+            var service = container.GetInstance<NotificationService>();
             var result = service.Execute();
 
             var json = JsonConvert.SerializeObject(result, Formatting.Indented);
-#pragma warning disable S2228 // Console logging should not be used
             Console.WriteLine(json);
-#pragma warning restore S2228 // Console logging should not be used
             Environment.Exit(0);
         }
     }

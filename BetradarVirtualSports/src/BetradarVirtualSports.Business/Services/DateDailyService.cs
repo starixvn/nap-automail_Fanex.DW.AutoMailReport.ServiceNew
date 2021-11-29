@@ -1,5 +1,4 @@
 ﻿using System;
-using Fanex.Service.Core;
 
 namespace BetradarVirtualSportsDaily.Business.Services
 {
@@ -9,7 +8,7 @@ namespace BetradarVirtualSportsDaily.Business.Services
         {
             get
             {
-                var date = $"{SystemTime.Now.AddDays(-1):yyyy/MM/dd}";
+                var date = $"{DateTime.Now.AddDays(-1):yyyy/MM/dd}";
                 return Convert.ToDateTime(date);
             }
         }

@@ -1,8 +1,6 @@
-﻿using System;
-using System.IO;
-using Fanex.Service.Core;
-using RazorEngine;
+﻿using RazorEngine;
 using RazorEngine.Templating;
+using System.IO;
 
 namespace BetradarVirtualSportsDaily.Business.Services
 {
@@ -16,12 +14,10 @@ namespace BetradarVirtualSportsDaily.Business.Services
     public class FileServiceImp : FileService
     {
         private readonly DateService dateService;
-        private readonly RepositoryService repositoryService;
 
-        public FileServiceImp(DateService dateService, RepositoryService repositoryService)
+        public FileServiceImp(DateService dateService)
         {
             this.dateService = dateService;
-            this.repositoryService = repositoryService;
         }
 
         public string ReadContentWhenDataIsAvailable()
@@ -35,12 +31,13 @@ namespace BetradarVirtualSportsDaily.Business.Services
 
         public string ReadContentWhenDataIsNotReady()
         {
-            var templatePath = $@"Templates\ContentWhenDataIsNotReady.cshtml";
-            var emailTemplate = File.ReadAllText(templatePath);
-            var lastDate = repositoryService.QueryLastDate();
-            var yesterday = SystemTime.Now.AddDays(-1);
-            var dates = new Tuple<DateTime, DateTime>(lastDate, yesterday);
-            return Engine.Razor.RunCompile(emailTemplate, templatePath, dates.GetType(), dates);
+            //var templatePath = $@"Templates\ContentWhenDataIsNotReady.cshtml";
+            //var emailTemplate = File.ReadAllText(templatePath);
+            //var lastDate = repositoryService.QueryLastDate();
+            //var yesterday = SystemTime.Now.AddDays(-1);
+            //var dates = new Tuple<DateTime, DateTime>(lastDate, yesterday);
+            //return Engine.Razor.RunCompile(emailTemplate, templatePath, dates.GetType(), dates);
+            return string.Empty;
         }
     }
 }

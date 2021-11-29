@@ -1,6 +1,5 @@
-﻿using System;
-using Fanex.Common;
-using Fanex.Service.Core;
+﻿using Fanex.Common;
+using System;
 
 namespace EventMarketOffer.Business.Services
 {
@@ -10,7 +9,7 @@ namespace EventMarketOffer.Business.Services
         {
             get
             {
-                return Converter.To<DateTime>($"{SystemTime.Now:MMM-01-yyyy}").AddDays(-1);
+                return Converter.To<DateTime>($"{DateTime.Now:MMM-01-yyyy}").AddDays(-1);
             }
         }
 

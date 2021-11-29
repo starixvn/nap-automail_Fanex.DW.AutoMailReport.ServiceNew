@@ -1,8 +1,6 @@
-﻿using System;
+﻿using EventMarketOffer.Business.Repositories;
+using Fanex.Data;
 using System.Data;
-using EventMarketOffer.Business.Repositories;
-using Fanex.Data.Repository;
-using Fanex.Service.Core;
 
 namespace EventMarketOffer.Business.Services
 {
@@ -11,30 +9,34 @@ namespace EventMarketOffer.Business.Services
         DataTable Query();
     }
 
-    public class DataServiceImp : DataService, RepositoryService
+    public class DataServiceImp : DataService
     {
         private readonly DateService dateService;
-        private readonly DataSourceService dataSourceService;
-        private readonly IDynamicRepository dynamicRepository;
         private readonly AppConfigurationService appConfig;
 
-        public DataServiceImp(DateService dateService, DataSourceService dataSourceService, IDynamicRepository dynamicRepository, AppConfigurationService appConfig)
+        public DataServiceImp(DateService dateService,
+                              AppConfigurationService appConfig)
         {
             this.dateService = dateService;
-            this.dataSourceService = dataSourceService;
-            this.dynamicRepository = dynamicRepository;
             this.appConfig = appConfig;
         }
 
         public DataTable Query()
         {
             var criteria = new CriteriaEventMartketOffer { DateStart = dateService.DateStart, DateEnd = dateService.DateEnd };
-            return dataSourceService.Query(criteria);
-        }
+            DataTable dataTable = new DataTable();
+            using (ObjectDb db = new ObjectDb(criteria.GetSettingKey(), 0))
+            {
+                db.SetParameterValue("datestart", criteria.DateStart);
+                db.SetParameterValue("dateend", criteria.DateEnd);
+                var dataset = db.ExecuteDataSet();
+                if (dataset.Tables.Count > 0)
+                {
+                    dataTable = dataset.Tables[0];
+                }
+            }
 
-        public DateTime QueryLastDate()
-        {
-            return dynamicRepository.Get<LastDateModel>(new DWStatusByCubeCriteria()).LastDate;
+            return dataTable;
         }
 
         public bool IsDataAvailable()
@@ -44,9 +46,7 @@ namespace EventMarketOffer.Business.Services
                 return true;
             }
 
-            var result = QueryLastDate() >= Convert.ToDateTime(SystemTime.Now.AddDays(-1).ToShortDateString());
-
-            return result;
+            return true;
         }
     }
 }
