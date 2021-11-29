@@ -7,11 +7,11 @@ namespace Topshelf.SimpleInjector.QuickStart.Content
     {
         public static void Main()
         {
+            RegisterService.RegisterServices();
+
             Container container = new Container();
             NegativeBalanceInjector.Register(container);
             container.Verify(VerificationOption.VerifyOnly);
-            FanexDataRegisterService.ConfigureFanexData();
-            NegativeBalanceRemotingRefService.Register();
 
             HostFactory.Run(config =>
             {

@@ -9,7 +9,7 @@ namespace Topshelf.SimpleInjector.QuickStart.Content
     public class NegativeBalanceService : IDisposable
     {
         private readonly IUMControlAdapter umcontrolAdapter;
-        private readonly LogService logService;
+        private readonly Log log;
         private readonly ApplicationConfigurationService appConfigService;
         private readonly BalanceNotificationService notificationService;
 
@@ -18,12 +18,12 @@ namespace Topshelf.SimpleInjector.QuickStart.Content
 
         public NegativeBalanceService(
             IUMControlAdapter umcontrolAdapter,
-            LogService logService,
+            Log log,
             ApplicationConfigurationService appConfigService,
             BalanceNotificationService notificationService)
         {
             this.umcontrolAdapter = umcontrolAdapter;
-            this.logService = logService;
+            this.log = log;
             this.appConfigService = appConfigService;
             this.notificationService = notificationService;
             Register();
@@ -76,7 +76,7 @@ namespace Topshelf.SimpleInjector.QuickStart.Content
             catch (Exception ex)
             {
                 isOnProcessing = false;
-                logService.Log(ex);
+                log.Log(ex);
             }
         }
 

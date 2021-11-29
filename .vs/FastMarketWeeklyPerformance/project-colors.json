@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "9e437748-3e22-490a-a5a1-08050e007b20": {
+      "ProjectGuid": "9e437748-3e22-490a-a5a1-08050e007b20",
+      "DisplayName": "FastMarketWeeklyPerformance.Executing",
+      "ColorIndex": 0
+    },
+    "271d8a23-702f-4345-9fbc-6a5af02aa842": {
+      "ProjectGuid": "271d8a23-702f-4345-9fbc-6a5af02aa842",
+      "DisplayName": "src",
+      "ColorIndex": 1
+    },
+    "f7c77e26-d498-4f9d-80c1-1d0f1fea7b2a": {
+      "ProjectGuid": "f7c77e26-d498-4f9d-80c1-1d0f1fea7b2a",
+      "DisplayName": "FastMarketWeeklyPerformance.Business",
+      "ColorIndex": 2
+    },
+    "e4309bc6-6284-4aab-b18e-19e947041bd0": {
+      "ProjectGuid": "e4309bc6-6284-4aab-b18e-19e947041bd0",
+      "DisplayName": "FastMarketWeeklyPerformance.UnitTests",
+      "ColorIndex": 3
+    },
+    "500e9aa1-1b78-4ddf-94b3-cb886a27e269": {
+      "ProjectGuid": "500e9aa1-1b78-4ddf-94b3-cb886a27e269",
+      "DisplayName": "FastMarketWeeklyPerformance.IntegrationTests",
+      "ColorIndex": 4
+    }
+  },
+  "NextColorIndex": 5
+}
