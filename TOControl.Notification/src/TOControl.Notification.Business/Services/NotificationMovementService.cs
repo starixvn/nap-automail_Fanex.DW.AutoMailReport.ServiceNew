@@ -14,13 +14,13 @@ namespace TOControl.Notification.Business.Services
     public class NotificationMovementServiceImp : NotificationMovementService
     {
         private readonly MailMovementService mailMovementService;
-        private readonly LogService logService;
+        private readonly Log log;
         private readonly DataService dataService;
 
-        public NotificationMovementServiceImp(MailMovementService mailMovementService, LogService logService, DataService dataService)
+        public NotificationMovementServiceImp(MailMovementService mailMovementService, Log log, DataService dataService)
         {
             this.mailMovementService = mailMovementService;
-            this.logService = logService;
+            this.log = log;
             this.dataService = dataService;
         }
 
@@ -37,7 +37,7 @@ namespace TOControl.Notification.Business.Services
             {
                 result.Success = false;
                 result.Message = exception.Message;
-                logService.Log(exception);
+                log.Log(exception);
             }
             finally
             {
@@ -50,7 +50,7 @@ namespace TOControl.Notification.Business.Services
                     TaskLog = new TaskLog
                     {
                         LogTime = SystemTime.Now,
-                        Message = result.Message                        
+                        Message = result.Message
                     }
                 };
             }

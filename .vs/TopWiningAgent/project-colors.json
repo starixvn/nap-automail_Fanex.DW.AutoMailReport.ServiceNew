@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "ac105e9c-3969-4e83-9179-ded62ab38a5e": {
+      "ProjectGuid": "ac105e9c-3969-4e83-9179-ded62ab38a5e",
+      "DisplayName": "TopWinningAgent.Executing",
+      "ColorIndex": 0
+    },
+    "0af06c98-8edd-4f08-bfed-83b4dc65feaa": {
+      "ProjectGuid": "0af06c98-8edd-4f08-bfed-83b4dc65feaa",
+      "DisplayName": "TopWinningAgent.Business",
+      "ColorIndex": 1
+    },
+    "bea56ea0-d9ae-4b51-8d7b-115afa76a51a": {
+      "ProjectGuid": "bea56ea0-d9ae-4b51-8d7b-115afa76a51a",
+      "DisplayName": "src",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

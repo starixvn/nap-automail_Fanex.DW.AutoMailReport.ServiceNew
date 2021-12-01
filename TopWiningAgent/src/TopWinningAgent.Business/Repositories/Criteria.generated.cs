@@ -1,11 +1,11 @@
-﻿using System;
-using Fanex.Data.Repository;
+﻿using Fanex.Data.Repository;
+using System;
 
 namespace TopWinningAgent.Business.Repositories
 {
     public class Criteria : CriteriaBase
     {
-        public DateTime ? DateServiceRun { get; set; }
+        public DateTime? DateServiceRun { get; set; }
 
         public override string GetSettingKey() => "Acc_Rpt_Automail_TopWinningAgent_Weekly";
 

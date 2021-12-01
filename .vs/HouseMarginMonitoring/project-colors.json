@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "cba4b685-f922-4662-bd83-5e381c8dc920": {
+      "ProjectGuid": "cba4b685-f922-4662-bd83-5e381c8dc920",
+      "DisplayName": "Fanex.HouseMarginMonitoring.Executing",
+      "ColorIndex": 0
+    },
+    "9bb9e7b2-c666-4991-8749-d8ee40a395b7": {
+      "ProjectGuid": "9bb9e7b2-c666-4991-8749-d8ee40a395b7",
+      "DisplayName": "Fanex.HouseMarginMonitoring.Business",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

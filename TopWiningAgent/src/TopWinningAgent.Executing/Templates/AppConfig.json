@@ -1,10 +1,10 @@
 ﻿{
-  "ExportDataDirectory": "\\\\10.70.70.242\\www\\Olympus\\Fanex.Excel\\TopWinningAgent",
+  "ExportDataDirectory": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\TopWinningAgent",
   "ExcelPasswordProtected": "",
   "Subject": "Automail Report - Weekly Top Winning Agent from",
   "Title": "Auto Generated Report Administrator",
   "IsCheckEnoughData": false,
   "FunctionIdNodata": 90,
-  "IsManual": false,
+  "IsManual": true,
   "DateServiceRun": "2018-04-26"
 }

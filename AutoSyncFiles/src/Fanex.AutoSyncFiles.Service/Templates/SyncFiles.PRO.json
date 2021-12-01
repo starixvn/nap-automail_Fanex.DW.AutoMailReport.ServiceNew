@@ -94,8 +94,12 @@
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/20-TOAVGBetBenchmark"
     },
     {
-      "Source": "/nap/bet-credit-increment-789y/excel/PROD",
+      "Source": "/nap/big-credit/excel/PROD",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/22-BigCreditIncrement789Y"
+    },
+    {
+      "Source": "/nap/house-margin-monitoring/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/23-House-Margin-Monitoring"
     }
   ]
 }

@@ -94,8 +94,12 @@
       "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/20-TOAVGBetBenchmark"
     },
     {
-      "Source": "/nap/bet-credit-increment-789y/excel/UAT",
+      "Source": "/nap/big-credit/excel/UAT",
       "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/22-BigCreditIncrement789Y"
+    },
+    {
+      "Source": "/nap/house-margin-monitoring/excel/UAT",
+      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/23-House-Margin-Monitoring"
     }
   ]
 }

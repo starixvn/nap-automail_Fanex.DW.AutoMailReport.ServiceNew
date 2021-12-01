@@ -1,27 +1,22 @@
-﻿using System;
-using System.IO;
-using Fanex.Service.Core;
-using RazorEngine;
+﻿using RazorEngine;
 using RazorEngine.Templating;
+using System;
+using System.IO;
 
 namespace TopWinningAgent.Business.Services
 {
     public interface FileService
     {
         string ReadContent();
-
-        string ReadContentWhenDataIsNotReady();
     }
 
     public class FileServiceImp : FileService
     {
         private readonly DateRangeService dateRangeService;
-        private readonly RepositoryService repositoryService;
 
-        public FileServiceImp(DateRangeService dateRangeService, RepositoryService repositoryService)
+        public FileServiceImp(DateRangeService dateRangeService)
         {
             this.dateRangeService = dateRangeService;
-            this.repositoryService = repositoryService;
         }
 
         public string ReadContent()
@@ -32,14 +27,6 @@ namespace TopWinningAgent.Business.Services
             var todate = $"{dateRangeService.ToDate():MMM dd, yyyy}";
             var tuple = new Tuple<string, string>(fromdate, todate);
             return Engine.Razor.RunCompile(emailTemplate, templatePath, tuple.GetType(), tuple);
-        }
-
-        public string ReadContentWhenDataIsNotReady()
-        {
-            var templatePath = @"Templates\ContentWhenDataIsNotReady.cshtml";
-            var emailTemplate = File.ReadAllText(templatePath);
-            var lastDate = repositoryService.QueryLastDate();
-            return Engine.Razor.RunCompile(emailTemplate, templatePath, lastDate.GetType(), lastDate);
         }
     }
 }
