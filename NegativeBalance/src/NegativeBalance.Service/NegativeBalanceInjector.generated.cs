@@ -24,6 +24,7 @@ namespace NegativeBalance.Service
             container.Register<RecipientService, RecipientServiceImp>();
             container.Register<BalanceNotificationService, BalanceNotificationServiceImp>();
             container.Register<IRemotingRefService, RemotingRefService>();
+            container.Register<Log, LogImp>();
         }
     }
 }
