@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "cba4b685-f922-4662-bd83-5e381c8dc920": {
+      "ProjectGuid": "cba4b685-f922-4662-bd83-5e381c8dc920",
+      "DisplayName": "Fanex.MarginChart.Executing",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

@@ -19,7 +19,7 @@ namespace Fanex.MarginChart.Business.Models
         public const string CurrencyPlay = "Currency Play";
         public const string LicensingMinimumFee = "Licensing Minimum Fee";
 
-        public static List<string> IgnoreFigureRows = new List<string>
+        private readonly List<string> ignoreFigureRows = new List<string>
         {
             PaytoSupplier,
             RebateDiscount,
@@ -33,7 +33,15 @@ namespace Fanex.MarginChart.Business.Models
             JackpotPrize
         };
 
-        public static List<string> RoyaltyFees = new List<string>
+        public List<string> IgnoreFigureRows
+        {
+            get
+            {
+                return ignoreFigureRows;
+            }
+        }
+
+        private readonly List<string> royaltyFees = new List<string>
         {
             PaytoMuayThai,
             PaytoSupplier,
@@ -41,5 +49,13 @@ namespace Fanex.MarginChart.Business.Models
             PaytoBetGenius,
             CurrencyPlay
         };
+
+        public List<string> RoyaltyFees
+        {
+            get
+            {
+                return royaltyFees;
+            }
+        }
     }
 }
