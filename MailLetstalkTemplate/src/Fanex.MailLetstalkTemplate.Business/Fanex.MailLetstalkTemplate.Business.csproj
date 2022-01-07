@@ -218,6 +218,7 @@
     <Compile Include="Services\DateRangeMonthlyServiceImp.cs" />
     <Compile Include="Services\DateRangeService.cs" />
     <Compile Include="Services\DateRangeServiceProfier.cs" />
+    <Compile Include="Services\DateRangeWeekly2ServiceImp.cs" />
     <Compile Include="Services\DateRangeWeeklyServiceImp.cs" />
     <Compile Include="Services\DateRangeYesterdayServiceImp.cs" />
     <Compile Include="Services\ExcelService.cs" />
