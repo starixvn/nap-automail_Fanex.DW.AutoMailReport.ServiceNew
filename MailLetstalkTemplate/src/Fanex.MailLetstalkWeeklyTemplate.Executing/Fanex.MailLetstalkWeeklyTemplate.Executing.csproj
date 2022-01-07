@@ -283,6 +283,24 @@
     <Content Include="Templates\Settlement-KPI\Settlement-KPI.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\LicenseePerformance\LicenseePerformance.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\LicenseePerformance\LicenseePerformance.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\LicenseePerformance\LicenseePerformance.Local.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\LicenseePerformance\LicenseePerformance.PRO.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\LicenseePerformance\LicenseePerformance.UAT.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\LicenseePerformance\LicenseePerformance.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.MailLetstalkTemplate.Business\Fanex.MailLetstalkTemplate.Business.csproj">

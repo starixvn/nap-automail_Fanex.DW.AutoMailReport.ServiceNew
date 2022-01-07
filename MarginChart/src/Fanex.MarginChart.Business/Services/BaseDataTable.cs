@@ -1,5 +1,6 @@
 ﻿using Fanex.MarginChart.Business.Models;
 using System.Data;
+using System.Linq;
 
 namespace Fanex.MarginChart.Business.Services
 {
@@ -16,6 +17,8 @@ namespace Fanex.MarginChart.Business.Services
 
     public class BaseDataTableImp : BaseDataTable
     {
+        private readonly RowFigureName rowFigureName = new RowFigureName();
+
         public DataTable Clone(DataTable source)
         {
             var result = source.Clone();
@@ -30,13 +33,14 @@ namespace Fanex.MarginChart.Business.Services
         public DataTable CloneRoyaltyFees(DataTable source)
         {
             var result = source.Clone();
-            foreach (DataRow row in source.Rows)
+            var subSource = source
+                .AsEnumerable()
+                .Where(s => rowFigureName.RoyaltyFees.Contains(s["Figure"]))
+                .ToList();
+            subSource.ForEach(row =>
             {
-                if (RowFigureName.RoyaltyFees.Contains(row["Figure"].ToString()))
-                {
-                    result.ImportRow(row);
-                }
-            }
+                result.ImportRow(row);
+            });
 
             return result;
         }
@@ -44,13 +48,14 @@ namespace Fanex.MarginChart.Business.Services
         public DataTable CloneWithoutIgnoreFigureRows(DataTable source)
         {
             var result = source.Clone();
-            foreach (DataRow row in source.Rows)
+            var subSource = source
+                .AsEnumerable()
+                .Where(s => !rowFigureName.IgnoreFigureRows.Contains(s["Figure"]))
+                .ToList();
+            subSource.ForEach(row =>
             {
-                if (!RowFigureName.IgnoreFigureRows.Contains(row["Figure"].ToString()))
-                {
-                    result.ImportRow(row);
-                }
-            }
+                result.ImportRow(row);
+            });
 
             return result;
         }

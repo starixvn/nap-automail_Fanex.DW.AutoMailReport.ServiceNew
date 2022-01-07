@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "4fda85fc-4dbd-4167-a5ee-8ff9e2033209": {
+      "ProjectGuid": "4fda85fc-4dbd-4167-a5ee-8ff9e2033209",
+      "DisplayName": "Fanex.MonthlyDHWL.Executing",
+      "ColorIndex": 0
+    },
+    "9bb9e7b2-c666-4991-8749-d8ee40a395b7": {
+      "ProjectGuid": "9bb9e7b2-c666-4991-8749-d8ee40a395b7",
+      "DisplayName": "Fanex.DHWL.Business",
+      "ColorIndex": 1
+    },
+    "cba4b685-f922-4662-bd83-5e381c8dc920": {
+      "ProjectGuid": "cba4b685-f922-4662-bd83-5e381c8dc920",
+      "DisplayName": "Fanex.DailyDHWL.Executing",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

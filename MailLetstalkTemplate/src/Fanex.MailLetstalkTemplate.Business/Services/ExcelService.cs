@@ -43,7 +43,12 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
                 var totalBatch = dataTable.Rows.Count / rowPerBatch + ((dataTable.Rows.Count % rowPerBatch) > 0 ? 1 : 0);
                 var sheetName = AppConfigService.Config.SheetExcelTemplateName[index];
                 var temlate = excelPackage.Workbook.Worksheets[sheetName];
-                excelPackage.Workbook.Worksheets.Delete(sheetName);
+
+                if (dataTable.Rows.Count > 0)
+                {
+                    excelPackage.Workbook.Worksheets.Delete(sheetName);
+                }
+
                 for (var batchIndex = 0; batchIndex < totalBatch; batchIndex++)
                 {
                     var rowsOfBatch = dataTable.AsEnumerable().Skip(batchIndex * rowPerBatch).Take(rowPerBatch).ToList();

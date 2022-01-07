@@ -1,8 +1,6 @@
-﻿using System;
+﻿using OfficeOpenXml;
+using System;
 using System.IO;
-using Fanex.Service.Core;
-using OfficeOpenXml;
-using TopWinningAgent.Business.Repositories;
 
 namespace TopWinningAgent.Business.Services
 {
@@ -15,14 +13,18 @@ namespace TopWinningAgent.Business.Services
 
     public class ExcelServiceImp : ExcelService
     {
-        private readonly DataSourceService dataSourceService;
+        private readonly DataService dataService;
         private readonly DateRangeService dateRangeService;
         private readonly ApplicationConfigurationService appConfigService;
         private readonly ExcelPackage excelPackage;
 
-        public ExcelServiceImp(DataSourceService dataSourceService, DateRangeService dateRangeService, ApplicationConfigurationService appConfigService, ExcelPackage excelPackage)
+        public ExcelServiceImp(
+            DataService dataService,
+            DateRangeService dateRangeService,
+            ApplicationConfigurationService appConfigService,
+            ExcelPackage excelPackage)
         {
-            this.dataSourceService = dataSourceService;
+            this.dataService = dataService;
             this.dateRangeService = dateRangeService;
             this.appConfigService = appConfigService;
             this.excelPackage = excelPackage;
@@ -36,7 +38,7 @@ namespace TopWinningAgent.Business.Services
                 dateServiceRun = appConfigService.Configurations.DateServiceRun;
             }
 
-            var dataSource = dataSourceService.Query(new Criteria { DateServiceRun = dateServiceRun });
+            var dataSource = dataService.QueryData(dateServiceRun);
             var rowCount = dataSource.Rows.Count;
             var columnCount = dataSource.Columns.Count;
             var excelWorksheet = excelPackage.Workbook.Worksheets["TOP WINNING AGENT"];
@@ -89,7 +91,7 @@ namespace TopWinningAgent.Business.Services
         public string Save()
         {
             var fileName = $"Weekly_Top_Winning_Agent_From_{dateRangeService.FromDate(1):yyyyMMdd}_To_{dateRangeService.ToDate():yyyyMMdd}.xlsx";
-            var path = $@"{appConfigService.Configurations.ExportDataDirectory}\{SystemTime.Now:yyyy}\{SystemTime.Now:MM}";
+            var path = $@"{appConfigService.Configurations.ExportDataDirectory}\{DateTime.Now:yyyy}\{DateTime.Now:MM}";
             Directory.CreateDirectory(path);
             var fullPath = $@"{path}\{fileName}";
             excelPackage.SaveAs(new FileInfo(fullPath), appConfigService.Configurations.ExcelPasswordProtected);

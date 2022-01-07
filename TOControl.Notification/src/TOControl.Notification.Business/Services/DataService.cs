@@ -124,7 +124,7 @@ namespace TOControl.Notification.Business.Services
                 {
                     InvalidIds.Add(rawData.Id, movement.Currency);
                 }
-            });            
+            });
 
             var testCurrency = result.Where(s => s.Currency == 20).ToList();
             var realCurrency = result.Where(s => s.Currency != 20).ToList();

@@ -9,7 +9,7 @@ namespace Fanex.UpdateExchangeRate.Executing
     {
         public static void Main()
         {
-            FanexDataRegisterService.ConfigureFanexData();
+            RegisterService.RegisterServices();
 
             Container container = new Container();
             SimpleInjectorService.Register(container);

@@ -1,0 +1,20 @@
+﻿{
+  "SPName": "Acc_Rpt_Weekly_Licensee_Performance",
+  "IsIgnoredCheckMailSent": false,
+  "DateRange": "Weekly2",
+  "FromDate": "2020-01-01",
+  "ToDate": "2020-05-10",
+  "Path": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\LicenseePerformance",
+  "Password": "Star168",
+  "FunctionIdNodata": 90,
+  "TemplateExcelFile": "LicenseePerformance/LicenseePerformance.xlsx",
+  "SheetExcelTemplateName": [ "Data" ],
+  "CellAddressRender": [ "A2" ],
+  "StartExelRowIndex": "2",
+  "EmailTemplate": "LicenseePerformance/LicenseePerformance.cshtml",
+  "EmailSubject": "Automail Report - Weekly licensees performance by currency",
+  "MailId": "485",
+  "MailName": "Mail Template - Weekly licensees performance by currency",
+  "FileName": "Licensees performance by currency_No DRAW",
+  "StartExcelColumnIndex": 1
+}

@@ -5,6 +5,7 @@
         None,
         Daily,
         Weekly,
+        Weekly2,
         Monthly,
         Monthly2,
         Yesterday,

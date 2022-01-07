@@ -14,7 +14,7 @@ namespace UpdateExchangeRate.UnitTests.Services
     public class NotificationServiceUnitTests
     {
         private Fanex.UpdateExchangeRate.Business.Services.MailService mailService;
-        private LogService logService;
+        private Log log;
         private DataService dataService;
 
         [SetUp]
@@ -22,7 +22,7 @@ namespace UpdateExchangeRate.UnitTests.Services
         {
             Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory);
             mailService = Substitute.For<Fanex.UpdateExchangeRate.Business.Services.MailService>();
-            logService = Substitute.For<LogService>();
+            log = Substitute.For<Log>();
             dataService = Substitute.For<DataService>();
         }
 
@@ -34,7 +34,7 @@ namespace UpdateExchangeRate.UnitTests.Services
             var expected = JobStatus.SuccessWithoutSendmail;
 
             // Act
-            var service = new NotificationServiceImp(mailService, logService, dataService);
+            var service = new NotificationServiceImp(mailService, log, dataService);
             var result = service.Execute();
 
             // Assert
@@ -50,7 +50,7 @@ namespace UpdateExchangeRate.UnitTests.Services
             var expected = JobStatus.Success;
 
             // Act
-            var service = new NotificationServiceImp(mailService, logService, dataService);
+            var service = new NotificationServiceImp(mailService, log, dataService);
             var result = service.Execute();
 
             // Assert

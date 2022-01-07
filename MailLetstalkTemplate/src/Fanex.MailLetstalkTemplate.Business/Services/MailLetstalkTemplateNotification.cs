@@ -111,7 +111,6 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
                 try
                 {
                     var data = dataService.QueryData(config.SPName);
-                    var dataTable = data.Tables[0];
                     filePath = excelService.ExportExcel(data);
 
                     jsonData = JsonConvert.SerializeObject(data, Formatting.Indented);

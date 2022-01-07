@@ -11,6 +11,11 @@
   },
   {
     "ReportFile": "Settlement-KPI/Settlement-KPI.json",
+    "IsActive": false,
+    "IsEmailEnabled": true
+  },
+  {
+    "ReportFile": "LicenseePerformance/LicenseePerformance.json",
     "IsActive": true,
     "IsEmailEnabled": true
   }

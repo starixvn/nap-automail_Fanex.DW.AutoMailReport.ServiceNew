@@ -70,8 +70,24 @@
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/20-TOAVGBetBenchmark"
     },
     {
-      "Source": "/nap/bet-credit-increment-789y/excel/LOCAL",
+      "Source": "/nap/big-credit/excel/LOCAL",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/22-BigCreditIncrement789Y"
+    },
+    {
+      "Source": "/nap/house-margin-monitoring/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/23-House-Margin-Monitoring"
+    },
+    {
+      "Source": "/nap/save-bet/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/NEW-SaveBet"
+    },
+    {
+      "Source": "/nap/save-bet/excel/LOCAL_1",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/NEW-SaveBet"
+    },
+    {
+      "Source": "/nap/save-bet/excel/LOCAL_2",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/NEW-SaveBet"
     }
   ]
 }

@@ -10,7 +10,7 @@ namespace TOControl.CustomerMovement.Executing
     {
         public static void Main()
         {
-            FanexDataRegisterService.ConfigureFanexData();
+            RegisterService.RegisterServices();
 
             Container container = new Container();
             SimpleInjectorService.Register(container);
@@ -21,9 +21,7 @@ namespace TOControl.CustomerMovement.Executing
             var result = service.Execute(notifiedByFunction);
 
             var json = JsonConvert.SerializeObject(result, Formatting.Indented);
-#pragma warning disable S2228 // Console logging should not be used
             Console.WriteLine(json);
-#pragma warning restore S2228 // Console logging should not be used
             Environment.Exit(0);
         }
     }

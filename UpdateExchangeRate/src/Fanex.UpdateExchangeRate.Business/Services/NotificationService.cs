@@ -1,6 +1,6 @@
-﻿using System;
-using Fanex.MailDelivery.Core.Models;
+﻿using Fanex.MailDelivery.Core.Models;
 using Fanex.Service.Core;
+using System;
 
 namespace Fanex.UpdateExchangeRate.Business.Services
 {
@@ -12,13 +12,13 @@ namespace Fanex.UpdateExchangeRate.Business.Services
     public class NotificationServiceImp : NotificationService
     {
         private readonly MailService mailService;
-        private readonly LogService logService;
+        private readonly Log log;
         private readonly DataService dataService;
 
-        public NotificationServiceImp(MailService mailService, LogService logService, DataService dataService)
+        public NotificationServiceImp(MailService mailService, Log log, DataService dataService)
         {
             this.mailService = mailService;
-            this.logService = logService;
+            this.log = log;
             this.dataService = dataService;
         }
 
@@ -34,16 +34,24 @@ namespace Fanex.UpdateExchangeRate.Business.Services
             {
                 result.Success = false;
                 result.Message = exception.Message;
-                logService.Log(exception);
+                log.Log(exception);
             }
             finally
             {
+                JobStatus jobStatus;
+                if (string.IsNullOrEmpty(result.Message))
+                {
+                    jobStatus = result.Success ? JobStatus.Success : JobStatus.SuccessWithoutSendmail;
+                }
+                else
+                {
+                    jobStatus = JobStatus.DataIsNotReady;
+                }
+
                 jobMessage = new JobMessage
                 {
                     Mail = result.Mail,
-                    JobStatus = result.Success ?
-                    JobStatus.Success :
-                    JobStatus.SuccessWithoutSendmail,
+                    JobStatus = jobStatus,
                     TaskLog = new TaskLog
                     {
                         LogTime = SystemTime.Now,

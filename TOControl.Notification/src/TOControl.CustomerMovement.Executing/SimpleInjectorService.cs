@@ -17,6 +17,7 @@ namespace TOControl.CustomerMovement.Executing
             container.Register<XMLService, XMLServiceImp>();
             container.Register<TOControlRepositoryService, TOControlRepositoryServiceImp>();
             container.Register<TransformDataService, TransformDataServiceImp>();
+            container.Register<Log, LogImp>();
 
             container.Register<MailMovementService, MailMovementServiceImp>();
             container.Register<ApplicationConfigurationService, ApplicationConfigurationServiceImp>();
