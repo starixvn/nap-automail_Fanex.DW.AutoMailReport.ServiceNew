@@ -4,7 +4,7 @@
   "CronSchedule": "0/59 * * * * ?",
   "Paths": [
     {
-      "Source": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel",
+      "Source": "\\\\10.18.200.21\\www\\Olympus\\Fanex.Excel",
       "SourceServerUsername": "",
       "SourceServerPassword": "",
       "SearchPattern": "*.*",

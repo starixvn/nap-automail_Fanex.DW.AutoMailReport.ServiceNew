@@ -3,7 +3,7 @@
   "DateRange": "Weekly",
   "FromDate": "2020-01-01",
   "ToDate": "2020-01-10",
-  "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\N88-SB-Member-Performance",
+  "Path": "\\\\10.2.190.81\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\N88-SB-Member-Performance",
   "Password": "Star168",
   "FunctionIdNodata": 90,
   "TemplateExcelFile": "N88-SB-Member-Performance/N88-SB-Member-Performance.xlsx",

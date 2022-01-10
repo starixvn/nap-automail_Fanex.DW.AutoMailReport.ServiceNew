@@ -3,7 +3,7 @@
   "DateRange": "Manual",
   "FromDate": "2020-01-01",
   "ToDate": "2020-11-30",
-  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\INR-Currency",
+  "Path": "\\\\10.18.200.21\\www\\Olympus\\Fanex.Excel\\INR-Currency",
   "Password": "",
   "FunctionIdNodata": 90,
   "TemplateExcelFile": "INR-Currency/INR-Currency.xlsx",

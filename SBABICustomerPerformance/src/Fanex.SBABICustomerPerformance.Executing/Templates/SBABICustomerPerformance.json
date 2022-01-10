@@ -4,6 +4,6 @@
   "ReportType": "Daily",
   "FromDate": "2020-09-01",
   "ToDate": "2020-09-30",
-  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\SBABICustomerPerformance",
+  "Path": "\\\\10.18.200.21\\www\\Olympus\\Fanex.Excel\\SBABICustomerPerformance",
   "Password": ""
 }

@@ -5,8 +5,8 @@
   "IsManual": false,
   "FromDate": "2021-01-01",
   "ToDate": "2021-05-31",
-  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\N88DailyWL",
-  "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\13",
+  "Path": "\\\\10.18.200.21\\www\\Olympus\\Fanex.Excel\\N88DailyWL",
+  "InternalPath": "\\\\10.18.200.21\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\13",
   "TargetName": "N88",
   "LicenseeNameGroups": [
     {

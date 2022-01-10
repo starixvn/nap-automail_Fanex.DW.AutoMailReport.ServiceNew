@@ -3,7 +3,7 @@
   "DateRange": "Monthly",
   "FromDate": "2020-01-01",
   "ToDate": "2020-01-31",
-  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\ActiveSupers",
+  "Path": "\\\\10.18.200.21\\www\\Olympus\\Fanex.Excel\\ActiveSupers",
   "Password": "",
   "FunctionIdNodata": 90,
   "TemplateExcelFile": "ActiveSupers/ActiveSupers.xlsx",

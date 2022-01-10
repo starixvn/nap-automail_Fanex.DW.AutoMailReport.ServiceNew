@@ -15,11 +15,13 @@ namespace Fanex.BetBuilder.Business.Services
         private readonly DateTimeService dateTimeService;
         private readonly ExcelPackage excelPackage;
         private readonly ExcelWorksheet monthlySheet;
+        private readonly Log log;
 
-        public ExcelServiceImp(ExcelPackage excelPackage, DateTimeService dateTimeService)
+        public ExcelServiceImp(ExcelPackage excelPackage, DateTimeService dateTimeService, Log log)
         {
             this.excelPackage = excelPackage;
             this.dateTimeService = dateTimeService;
+            this.log = log;
 
             var sheetName = $"{dateTimeService.FromDate():MM-yyyy}";
             monthlySheet = excelPackage.Workbook.Worksheets["Template"];
@@ -90,6 +92,8 @@ namespace Fanex.BetBuilder.Business.Services
 
             path = $@"{path}\{filename}";
             excelPackage.SaveAs(new FileInfo(path), AppConfigService.AppConfig.Password);
+
+            log.Log(path);
 
             return path;
         }

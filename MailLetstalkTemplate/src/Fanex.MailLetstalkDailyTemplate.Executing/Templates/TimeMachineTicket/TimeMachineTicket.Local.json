@@ -3,7 +3,7 @@
   "DateRange": "Yesterday",
   "FromDate": "2020-01-01",
   "ToDate": "2020-01-10",
-  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\TimeMachineTicket",
+  "Path": "\\\\10.18.200.21\\www\\Olympus\\Fanex.Excel\\TimeMachineTicket",
   "Password": "",
   "FunctionIdNodata": 90,
   "TemplateExcelFile": "TimeMachineTicket/TimeMachineTicket.xlsx",

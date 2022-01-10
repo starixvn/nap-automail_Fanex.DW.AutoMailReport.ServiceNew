@@ -5,7 +5,7 @@
   "ReportType": "Monthly",
   "FromDate": "2020-09-01",
   "ToDate": "2020-09-30",
-  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\NEW-DHWL",
+  "Path": "\\\\10.18.200.21\\www\\Olympus\\Fanex.Excel\\NEW-DHWL",
   "Password": "Star168",
   "TargetName": "daily-house-wl",
   "LetstalkGroup": "DWHL-UAT",
@@ -15,12 +15,12 @@
   "LetstalkGroups": {
     "Image": {
       "Group": "DWHL-UAT",
-      "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\2-DHWL-Daily",
+      "InternalPath": "\\\\10.18.200.21\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\2-DHWL-Daily",
       "MailId": 0
     },
     "Excel": {
       "Group": "",
-      "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\2-DHWL-Excel-Daily",
+      "InternalPath": "\\\\10.18.200.21\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\2-DHWL-Excel-Daily",
       "MailId": 364
     }
   }

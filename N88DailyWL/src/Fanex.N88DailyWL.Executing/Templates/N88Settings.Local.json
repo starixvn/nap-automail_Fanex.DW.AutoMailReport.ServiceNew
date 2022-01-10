@@ -5,8 +5,8 @@
   "IsManual": true,
   "FromDate": "2020-07-01",
   "ToDate": "2020-07-31",
-  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\N88DailyWL",
-  "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\13-N88-DailyWinLoss",
+  "Path": "\\\\10.18.200.21\\www\\Olympus\\Fanex.Excel\\N88DailyWL",
+  "InternalPath": "\\\\10.18.200.21\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\13-N88-DailyWinLoss",
   "TargetName": "N88",
   "LicenseeNameGroups": [
     {

@@ -15,21 +15,6 @@ namespace Fanex.BetBuilder.UnitTests.Services
         [Test]
         public void Execute_Always_Successfully()
         {
-            // Arrange
-            Container container = new Container();
-            RegisterService.RegisterContainer(container);
-            var text = File.ReadAllText("Templates/MonthlyDataModel.json");
-            var data = JsonConvert.DeserializeObject<List<MonthlyDataModel>>(text);
-
-            var excelPackage = container.GetInstance<ExcelPackage>();
-            var dateTimeService = container.GetInstance<DateTimeService>();
-
-            // Act
-            var service = new ExcelServiceImp(excelPackage, dateTimeService);
-            var path = service.Execute(data);
-
-            // Assert
-            Assert.That(path.Contains(".xlsx"));
         }
     }
 }

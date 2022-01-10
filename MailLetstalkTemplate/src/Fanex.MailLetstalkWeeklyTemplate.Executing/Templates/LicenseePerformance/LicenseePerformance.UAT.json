@@ -3,7 +3,7 @@
   "DateRange": "Weekly2",
   "FromDate": "2020-01-01",
   "ToDate": "2020-05-10",
-  "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LicenseePerformance",
+  "Path": "\\\\10.2.190.81\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LicenseePerformance",
   "Password": "",
   "FunctionIdNodata": 90,
   "TemplateExcelFile": "LicenseePerformance/LicenseePerformance.xlsx",

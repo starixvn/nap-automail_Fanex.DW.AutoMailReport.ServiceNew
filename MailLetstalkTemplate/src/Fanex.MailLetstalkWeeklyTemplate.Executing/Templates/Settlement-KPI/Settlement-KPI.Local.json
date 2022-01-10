@@ -3,7 +3,7 @@
   "DateRange": "Daily",
   "FromDate": "2020-01-01",
   "ToDate": "2020-01-10",
-  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\Settlement-KPI",
+  "Path": "\\\\10.18.200.21\\www\\Olympus\\Fanex.Excel\\Settlement-KPI",
   "Password": "",
   "FunctionIdNodata": 90,
   "TemplateExcelFile": "Settlement-KPI/Settlement-KPI.xlsx",

@@ -11,83 +11,87 @@
   "Paths": [
     {
       "Source": "/nap/mail-web-api-test/excel/LOCAL",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/NEW-DHWL"
+      "Destination": "//10.18.200.21/www/Olympus/Fanex.Excel/NEW-DHWL"
     },
     {
       "Source": "/nap/ba-daily-wl-service/excel/LOCAL",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/BADailyWinLoss"
+      "Destination": "//10.18.200.21/www/Olympus/Fanex.Excel/BADailyWinLoss"
     },
     {
       "Source": "/nap/mail-abnormal-bets-service/excel/LOCAL",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/AbnormalBetDailyReport-Licensee"
+      "Destination": "//10.18.200.21/www/Olympus/Fanex.Excel/AbnormalBetDailyReport-Licensee"
     },
     {
       "Source": "/nap/os-lic-pef-service/excel/LOCAL",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/OSLicPerfByTO"
+      "Destination": "//10.18.200.21/www/Olympus/Fanex.Excel/OSLicPerfByTO"
     },
     {
       "Source": "/nap/os-lic-pef-service/excel/LOCAL/InternalOneTime/12-OSLicPerfByTO",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/InternalOneTime/12-OSLicPerfByTO"
+      "Destination": "//10.18.200.21/www/Olympus/Fanex.Excel/InternalOneTime/12-OSLicPerfByTO"
     },
     {
       "Source": "/nap/lic-perf-rmb/excel/LOCAL",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/24-LicPerf-RMB"
+      "Destination": "//10.18.200.21/www/Olympus/Fanex.Excel/24-LicPerf-RMB"
     },
     {
       "Source": "/nap/soccer-perf/excel/LOCAL",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/11-Soccer-Perf"
+      "Destination": "//10.18.200.21/www/Olympus/Fanex.Excel/11-Soccer-Perf"
     },
     {
       "Source": "/nap/n88-daily-wl/excel/LOCAL",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/13-N88-Daily-WL"
+      "Destination": "//10.18.200.21/www/Olympus/Fanex.Excel/13-N88-Daily-WL"
     },
     {
       "Source": "/nap/lic-perf/excel/LOCAL",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/14-Lic-Perf"
+      "Destination": "//10.18.200.21/www/Olympus/Fanex.Excel/14-Lic-Perf"
     },
     {
       "Source": "/nap/saba-soccer/excel/LOCAL",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/15-Saba-Soccer-Punter"
+      "Destination": "//10.18.200.21/www/Olympus/Fanex.Excel/15-Saba-Soccer-Punter"
     },
     {
       "Source": "/nap/saba-soccer/excel/LOCAL/Hourly",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/16-SabaSportPunter-Hourly"
+      "Destination": "//10.18.200.21/www/Olympus/Fanex.Excel/16-SabaSportPunter-Hourly"
     },
     {
       "Source": "/nap/non-sport-punter/excel/LOCAL",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/18-TopNonSportPunter"
+      "Destination": "//10.18.200.21/www/Olympus/Fanex.Excel/18-TopNonSportPunter"
     },
     {
       "Source": "/nap/top-sb-agent/excel/LOCAL",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/19-TopSportbookAgents"
+      "Destination": "//10.18.200.21/www/Olympus/Fanex.Excel/19-TopSportbookAgents"
     },
     {
       "Source": "/nap/oanda/excel/LOCAL",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/OANDA"
+      "Destination": "//10.18.200.21/www/Olympus/Fanex.Excel/OANDA"
     },
     {
       "Source": "/nap/to-avg-bet-benchmark/excel/LOCAL",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/20-TOAVGBetBenchmark"
+      "Destination": "//10.18.200.21/www/Olympus/Fanex.Excel/20-TOAVGBetBenchmark"
     },
     {
       "Source": "/nap/big-credit/excel/LOCAL",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/22-BigCreditIncrement789Y"
+      "Destination": "//10.18.200.21/www/Olympus/Fanex.Excel/22-BigCreditIncrement789Y"
     },
     {
       "Source": "/nap/house-margin-monitoring/excel/LOCAL",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/23-House-Margin-Monitoring"
+      "Destination": "//10.18.200.21/www/Olympus/Fanex.Excel/23-House-Margin-Monitoring"
     },
     {
       "Source": "/nap/save-bet/excel/LOCAL",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/NEW-SaveBet"
+      "Destination": "//10.18.200.21/www/Olympus/Fanex.Excel/NEW-SaveBet"
     },
     {
       "Source": "/nap/save-bet/excel/LOCAL_1",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/NEW-SaveBet"
+      "Destination": "//10.18.200.21/www/Olympus/Fanex.Excel/NEW-SaveBet"
     },
     {
       "Source": "/nap/save-bet/excel/LOCAL_2",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/NEW-SaveBet"
+      "Destination": "//10.18.200.21/www/Olympus/Fanex.Excel/NEW-SaveBet"
+    },
+    {
+      "Source": "/nap/mail-service/excel/LOCAL",
+      "Destination": "//10.18.200.21/www/Olympus/Fanex.Excel/Mail-Service"
     }
   ]
 }

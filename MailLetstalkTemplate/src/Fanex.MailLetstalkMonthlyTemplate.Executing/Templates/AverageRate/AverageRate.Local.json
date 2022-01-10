@@ -3,7 +3,7 @@
   "DateRange": "Monthly2",
   "FromDate": "2020-02-01",
   "ToDate": "2020-02-10",
-  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\AverageRate",
+  "Path": "\\\\10.18.200.21\\www\\Olympus\\Fanex.Excel\\AverageRate",
   "Password": "",
   "FunctionIdNodata": 90,
   "TemplateExcelFile": "AverageRate/AverageRate.xlsx",

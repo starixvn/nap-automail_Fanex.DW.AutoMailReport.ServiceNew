@@ -4,7 +4,7 @@
   "CronSchedule": "0/15 * * * * ?",
   "Paths": [
     {
-      "Source": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\NEW-DHWL",
+      "Source": "\\\\10.18.200.21\\www\\Olympus\\Fanex.Excel\\NEW-DHWL",
       "SourceServerUsername": "",
       "SourceServerPassword": "",
       "SearchPattern": "*.*",

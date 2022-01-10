@@ -3,7 +3,7 @@
   "DateRange": "Monthly",
   "FromDate": "2020-03-01",
   "ToDate": "2020-03-31",
-  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\ExtraSuperCommission",
+  "Path": "\\\\10.18.200.21\\www\\Olympus\\Fanex.Excel\\ExtraSuperCommission",
   "Password": "",
   "FunctionIdNodata": 90,
   "TemplateExcelFile": "ExtraSuperCommission/ExtraSuperCommission.xlsx",

@@ -3,7 +3,7 @@
   "DateRange": "Monthly",
   "FromDate": "2020-03-01",
   "ToDate": "2020-03-31",
-  "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\ExtraSuperCommission",
+  "Path": "\\\\10.2.190.81\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\ExtraSuperCommission",
   "Password": "",
   "FunctionIdNodata": 90,
   "TemplateExcelFile": "ExtraSuperCommission/ExtraSuperCommission.xlsx",

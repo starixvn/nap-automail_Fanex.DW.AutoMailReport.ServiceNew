@@ -3,7 +3,7 @@
   "DateRange": "Manual",
   "FromDate": "2021-05-01",
   "ToDate": "2021-05-31",
-  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\N88-SB-Member-Performance",
+  "Path": "\\\\10.18.200.21\\www\\Olympus\\Fanex.Excel\\N88-SB-Member-Performance",
   "Password": "",
   "FunctionIdNodata": 90,
   "TemplateExcelFile": "N88-SB-Member-Performance/N88-SB-Member-Performance.xlsx",
