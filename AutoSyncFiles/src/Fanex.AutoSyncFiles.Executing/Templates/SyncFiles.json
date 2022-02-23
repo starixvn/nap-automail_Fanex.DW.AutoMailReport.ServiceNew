@@ -11,7 +11,7 @@
   "Paths": [
     {
       "Source": "/nap/os-lic-pef-service/excel/LOCAL/InternalOneTime/12-OSLicPerfByTO",
-      "Destination": "//10.18.200.21/www/Olympus/Fanex.Excel/InternalOneTime/12-OSLicPerfByTO"
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/InternalOneTime/12-OSLicPerfByTO"
     }
   ]
 }

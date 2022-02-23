@@ -8,7 +8,7 @@
   "TargetName": "Starix-Letstalk-Reports",
   "LetstalkGroup": "Starix-Letstalk-Reports-Issue-UAT",
   "Environment": "Local",
-  "AllowIP": "10.18.200.21",
+  "AllowIP": "10.18.200.120",
   "IsManual": false,
   "FromDate": "2019-04-22",
   "ToDate": "2019-04-22"

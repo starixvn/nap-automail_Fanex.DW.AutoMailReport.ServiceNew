@@ -3,7 +3,7 @@
   "DateRange": "Manual",
   "FromDate": "2021-01-01",
   "ToDate": "2021-10-10",
-  "Path": "\\\\10.18.200.21\\www\\Olympus\\Fanex.Excel\\Sportbook-CreditLine",
+  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\Sportbook-CreditLine",
   "Password": "",
   "FunctionIdNodata": 90,
   "TemplateExcelFile": "Sportbook-CreditLine/Sportbook-CreditLine.xlsx",

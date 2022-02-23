@@ -30,22 +30,22 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
                 {
                     if (!Convert.ToBoolean(row[ColumnName.IsDeposit]) && row[ColumnName.ProductShortName].Equals("Vgaming"))
                     {
-                        row[ColumnName.ProductShortName] = "SabaC";
-                        row[ColumnName.ProductName] = "Saba.club";
+                        row[ColumnName.ProductShortName] = "SabaG";
+                        row[ColumnName.ProductName] = "Saba.games";
                         row[ColumnName.OrderByProduct] = 201;
                     }
 
                     if (Convert.ToBoolean(row[ColumnName.IsDeposit]) && row[ColumnName.ProductShortName].Equals("Vgaming"))
                     {
-                        row[ColumnName.ProductShortName] = "SabaC";
-                        row[ColumnName.ProductName] = "Saba.club";
+                        row[ColumnName.ProductShortName] = "SabaG";
+                        row[ColumnName.ProductName] = "Saba.games";
                         row[ColumnName.OrderByProduct] = 201;
                     }
 
                     if (Convert.ToBoolean(row[ColumnName.IsDeposit]) && row[ColumnName.ProductShortName].Equals("Vgaming-JP"))
                     {
-                        row[ColumnName.ProductShortName] = "SabaC-JP";
-                        row[ColumnName.ProductName] = "Saba.club Jackpot Pool";
+                        row[ColumnName.ProductShortName] = "SabaG-JP";
+                        row[ColumnName.ProductName] = "Saba.games Jackpot Pool";
                         row[ColumnName.OrderByProduct] = 202;
                     }
                 });

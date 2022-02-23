@@ -3,7 +3,7 @@
   "DateRange": "Manual",
   "FromDate": "2021-01-01",
   "ToDate": "2021-01-10",
-  "Path": "\\\\10.18.200.21\\www\\Olympus\\Fanex.Excel\\LicenseePerformance",
+  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\LicenseePerformance",
   "Password": "",
   "FunctionIdNodata": 90,
   "TemplateExcelFile": "LicenseePerformance/LicenseePerformance.xlsx",

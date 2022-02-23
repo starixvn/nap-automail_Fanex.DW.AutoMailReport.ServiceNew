@@ -4,30 +4,30 @@
     "FirstColumn": 2,
     "LastRow": 54,
     "LastColumn": 4,
-    "CropWidth": 1255,
+    "CropWidth": 1050,
     "ImageName": "HNI-Daily",
     "SheetName": "Letstalk",
-    "X": 230,
-    "Y": 260,
+    "X": 200,
+    "Y": 230,
     "IsResize": false,
     "ResizeNewWidth": 500,
     "ImageQuality": 100,
-    "HeightPerRow": 90,
-    "AdjustHeight": 20
+    "HeightPerRow": 60,
+    "AdjustHeight": 0
   },
   "Margin": {
     "FirstRow": 1,
     "FirstColumn": 2,
     "LastColumn": 15,
-    "CropWidth": 4200,
+    "CropWidth": 3550,
     "ImageName": "DHWL-Margin",
     "SheetName": "Margin",
-    "X": 230,
-    "Y": 290,
+    "X": 200,
+    "Y": 250,
     "IsResize": true,
     "ResizeNewWidth": 1000,
     "ImageQuality": 100,
-    "HeightPerRow": 90,
-    "AdjustHeight": 90
+    "HeightPerRow": 80,
+    "AdjustHeight": "00"
   }
 }

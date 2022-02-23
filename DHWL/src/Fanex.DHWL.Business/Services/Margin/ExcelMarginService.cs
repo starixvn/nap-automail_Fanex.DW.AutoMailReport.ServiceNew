@@ -9,7 +9,7 @@ namespace Fanex.DHWL.Business.Services
 {
     public interface ExcelMarginService
     {
-        string Export(DataTable dailyRawData, bool isDaily);
+        string Export(DataTable dailyRawData, bool isDaily, int reportId);
 
         int LastRowIndex { get; set; }
     }
@@ -38,7 +38,7 @@ namespace Fanex.DHWL.Business.Services
             this.dataMarginService = dataMarginService;
         }
 
-        public string Export(DataTable dailyRawData, bool isDaily)
+        public string Export(DataTable dailyRawData, bool isDaily, int reportId)
         {
             var data = isDaily
                 ? dataMarginService.CalcDataForDaily(dailyRawData)
@@ -48,7 +48,7 @@ namespace Fanex.DHWL.Business.Services
             var formatTpl = excelPackage.Workbook.Worksheets["Format"];
             excelPackage.Workbook.Worksheets.Delete(formatTpl);
 
-            RenderTitle(dailyTemplate, isDaily);
+            RenderTitle(dailyTemplate, isDaily, reportId);
             RenderData(data, dailyTemplate);
             FormatData(data, dailyTemplate, formatTpl);
 
@@ -159,7 +159,7 @@ namespace Fanex.DHWL.Business.Services
             return path;
         }
 
-        private void RenderTitle(ExcelWorksheet template, bool isDaily)
+        private void RenderTitle(ExcelWorksheet template, bool isDaily, int reportId)
         {
             var todate = dateService.DateTime.ToDate;
             var isEndOfMonth = todate.AddDays(1).Day == 1;
@@ -173,6 +173,7 @@ namespace Fanex.DHWL.Business.Services
                 title = $"{todate:MMM-yyyy}";
             }
 
+            template.Cells["O1"].Value = $"{template.Cells["O1"].Value}.{reportId}";
             template.Cells["B2"].Value = title;
             template.Cells["O2"].Value = title;
         }

@@ -85,12 +85,13 @@ namespace Fanex.DHWL.Business.Services
             var dataSetReconciliation = dataService.QueryReconciliation();
             var dataReconciliation = dataSetReconciliation.Tables[0];
             var dataBA = dataSetReconciliation.Tables[1];
-            var cloneData = baseDataTable.Clone(monthlyRawData);
+
             var fromdate = dateTimeServiceProvider.DateTime.FromDate;
             var todate = dateTimeServiceProvider.DateTime.ToDate;
 
+            var reportId = 1;
             excelRawService.Export(monthlyRawData, "Monthly", fromdate, todate);
-            var images = imageDHWLService.Export(monthlyRawData, dataReconciliation, dataBA);
+            var images = imageDHWLService.Export(monthlyRawData, dataReconciliation, dataBA, reportId);
 
             CopyFiles(images);
             var status = messageService.SendMessage(images, AppConfigService.Config.LetstalkGroup);

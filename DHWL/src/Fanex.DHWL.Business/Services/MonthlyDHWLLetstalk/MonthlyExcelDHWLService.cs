@@ -12,7 +12,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
 {
     public interface MonthlyExcelDHWLService
     {
-        string Export(DataTable monthlyRawData, DataTable dataReconciliation, DataTable dataBA);
+        string Export(DataTable monthlyRawData, DataTable dataReconciliation, DataTable dataBA, int reportId);
 
         int LastRowIndex { get; set; }
 
@@ -57,7 +57,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             this.excelMarginService = excelMarginService;
         }
 
-        public string Export(DataTable monthlyRawData, DataTable dataReconciliation, DataTable dataBA)
+        public string Export(DataTable monthlyRawData, DataTable dataReconciliation, DataTable dataBA, int reportId)
         {
             var dataDHWL = dataDHWLService.CalTotalByProduct(monthlyRawData);
 
@@ -67,20 +67,22 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             var marginSheet = excelPackage.Workbook.Worksheets.Add("Monthly Margin");
             excelPackage.Workbook.Worksheets.Delete(formatTpl);
 
-            RenderTitle(template);
+            RenderTitle(template, reportId);
             RenderData(dataDHWL, template);
             FormatData(dataDHWL, template, formatTpl);
-            RenderAdjustment(monthlyRawData, template);
+
+            reportId++;
+            RenderAdjustment(monthlyRawData, template, reportId);
             RenderReconciliation(dataReconciliation);
             RenderBA(dataBA);
-            RenderMTDMargin(monthlyRawData, marginSheet);
+            RenderMTDMargin(monthlyRawData, marginSheet, reportId);
 
             return Save();
         }
 
-        private void RenderMTDMargin(DataTable monthlyRawData, ExcelWorksheet marginSheet)
+        private void RenderMTDMargin(DataTable monthlyRawData, ExcelWorksheet marginSheet, int reportId)
         {
-            var mtdMarginExcelPath = excelMarginService.Export(monthlyRawData, false);
+            var mtdMarginExcelPath = excelMarginService.Export(monthlyRawData, false, reportId);
             var excelPackageMargin = new ExcelPackage(new FileInfo(mtdMarginExcelPath), AppConfigService.Config.Password);
             var mtdMarginSheet = excelPackageMargin.Workbook.Worksheets["Margin"];
 
@@ -180,10 +182,12 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             template.Column(7).Hidden = true;
         }
 
-        private void RenderAdjustment(DataTable monthlyRawData, ExcelWorksheet template)
+        private void RenderAdjustment(DataTable monthlyRawData, ExcelWorksheet template, int reportId)
         {
             var todate = dateService.DateTime.ToDate;
             var dataAjustment = adjustmentService.CalcData(monthlyRawData);
+
+            template.Cells["K1"].Value = $"{template.Cells["K1"].Value}.{reportId}";
             template.Cells["I2"].Value = $"Explanation for Adjustment - {todate:MMM yyyy}";
             template.Cells["I4"].LoadFromCollection(dataAjustment, false);
 
@@ -207,10 +211,11 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             return path;
         }
 
-        private void RenderTitle(ExcelWorksheet template)
+        private void RenderTitle(ExcelWorksheet template, int reportId)
         {
             var todate = dateService.DateTime.ToDate;
             template.Cells["B2"].Value = $"Monthly House Net Income - {todate:MMM yyyy}";
+            template.Cells["C1"].Value = $"{template.Cells["C1"].Value}.{reportId}";
         }
 
         private void RenderReconciliation(DataTable dataConciliation)

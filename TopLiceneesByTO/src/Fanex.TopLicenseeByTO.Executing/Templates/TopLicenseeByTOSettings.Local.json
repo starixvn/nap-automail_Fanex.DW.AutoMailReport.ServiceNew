@@ -8,10 +8,10 @@
   "IsManual": true,
   "FromDate": "2021-05-01",
   "Todate": "2021-05-25",
-  "Path": "\\\\10.18.200.21\\www\\Olympus\\Fanex.Excel\\TopLicenseeByTO",
+  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\TopLicenseeByTO",
   "IsSentDirectly": true,
-  "InternalPath": "\\\\10.18.200.21\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\12-TopLicenseeByTO",
-  "InternalPathLicBySport": "\\\\10.18.200.21\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\12-TopLicenseeByTO-LicBySport",
+  "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\12-TopLicenseeByTO",
+  "InternalPathLicBySport": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\12-TopLicenseeByTO-LicBySport",
   "Password": "",
   "FunctionIdNodata": 90,
   "Sports": {

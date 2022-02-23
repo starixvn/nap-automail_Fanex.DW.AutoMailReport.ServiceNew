@@ -11,11 +11,11 @@
   "Paths": [
     {
       "Source": "/nap/os-lic-pef-service/excel/UAT",
-      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/12-OSLicPerfByTO-UAT"
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/25-OS-TopLicPerf-UAT"
     },
     {
-      "Source": "/nap/os-lic-pef-service/excel/UAT/InternalOneTime/12-OSLicPerfByTO-UAT",
-      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/12-OSLicPerfByTO-UAT"
+      "Source": "/nap/os-lic-pef-service/excel/UAT/InternalOneTime/25-OS-TopLicPerf-UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/25-OS-TopLicPerf-UAT"
     },
     {
       "Source": "/nap/sb-lic-perf/excel/UAT",
@@ -104,6 +104,10 @@
     {
       "Source": "/nap/save-bet/excel/UAT",
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/NEW-SaveBet"
+    },
+    {
+      "Source": "/nap/weverdat/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/Weverdat"
     }
   ]
 }

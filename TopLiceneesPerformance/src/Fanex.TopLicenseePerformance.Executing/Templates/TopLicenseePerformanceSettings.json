@@ -7,9 +7,9 @@
   "IsManual": true,
   "FromDate": "2020-01-01",
   "Todate": "2020-01-31",
-  "Path": "\\\\10.18.200.21\\www\\Olympus\\Fanex.Excel\\TopLicenseePerformance",
+  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\TopLicenseePerformance",
   "IsSentDirectly": true,
-  "InternalPath": "\\\\10.18.200.21\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\14-TopLicenseePerformance",
+  "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\14-TopLicenseePerformance",
   "Password": "",
   "FunctionIdNodata": 90,
   "Sports": {

@@ -9,7 +9,7 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
 {
     public interface DailyExcelDHWLService
     {
-        string Export(DataTable dailyRawData);
+        string Export(DataTable dailyRawData, int reportId);
 
         int LastRowIndex { get; set; }
     }
@@ -34,7 +34,7 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
             this.dateService = dateService;
         }
 
-        public string Export(DataTable dailyRawData)
+        public string Export(DataTable dailyRawData, int reportId)
         {
             var dataDHWL = dataDHWLService.CalTotalByProduct(dailyRawData);
 
@@ -43,7 +43,7 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
             var formatTpl = excelPackage.Workbook.Worksheets["Format"];
             excelPackage.Workbook.Worksheets.Delete(formatTpl);
 
-            RenderTitle(dailyTemplate);
+            RenderTitle(dailyTemplate, reportId);
             RenderData(dataDHWL, dailyTemplate);
             FormatData(dataDHWL, dailyTemplate, formatTpl);
 
@@ -139,9 +139,10 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
             return path;
         }
 
-        private void RenderTitle(ExcelWorksheet template)
+        private void RenderTitle(ExcelWorksheet template, int reportId)
         {
             var todate = dateService.DateTime.ToDate;
+            template.Cells["B2"].Value = $"{template.Cells["B2"].Value}.{reportId}";
             template.Cells["C3"].Value = $"{todate:dd-MMM-yyyy}";
         }
     }
