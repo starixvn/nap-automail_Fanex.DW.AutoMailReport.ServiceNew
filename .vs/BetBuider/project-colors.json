@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "88a37f25-b68b-4ad6-bc7a-18cd36762fe3": {
+      "ProjectGuid": "88a37f25-b68b-4ad6-bc7a-18cd36762fe3",
+      "DisplayName": "Fanex.BetBuilder.Business",
+      "ColorIndex": 0
+    },
+    "f6786558-b7ee-47f1-a135-8eb5a563fe58": {
+      "ProjectGuid": "f6786558-b7ee-47f1-a135-8eb5a563fe58",
+      "DisplayName": "Fanex.BetBuilder.Monthly.Executing",
+      "ColorIndex": 1
+    },
+    "58ca3c7b-369c-48c9-9c79-b3895ce95dc7": {
+      "ProjectGuid": "58ca3c7b-369c-48c9-9c79-b3895ce95dc7",
+      "DisplayName": "Fanex.BetBuilder.Daily.Executing",
+      "ColorIndex": 2
+    },
+    "d745ece8-c073-44a1-8def-62cc87caffff": {
+      "ProjectGuid": "d745ece8-c073-44a1-8def-62cc87caffff",
+      "DisplayName": "Fanex.BetBuilder.UnitTests",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}

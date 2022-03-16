@@ -5,7 +5,7 @@ namespace Fanex.DHWL.Business.Services.Margin
 {
     public interface ImageMarginService
     {
-        string Export(DataTable dailyRawData, bool isDaily);
+        string Export(DataTable dailyRawData, bool isDaily, int reportId);
     }
 
     public class ImageMarginServiceImp : ImageMarginService
@@ -24,11 +24,11 @@ namespace Fanex.DHWL.Business.Services.Margin
             this.mergeProductDataService = mergeProductDataService;
         }
 
-        public string Export(DataTable dailyRawData, bool isDaily)
+        public string Export(DataTable dailyRawData, bool isDaily, int reportId)
         {
             mergeProductDataService.MergeVGamingIntoSabaC(dailyRawData);
 
-            var excelPath = excelMarginService.Export(dailyRawData, isDaily);
+            var excelPath = excelMarginService.Export(dailyRawData, isDaily, reportId);
             var lastRow = excelMarginService.LastRowIndex;
             var image = AppConfigService.Config.ImageSettings["Margin"];
             image.LastRow = lastRow;

@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
-using System.Linq;
 
 namespace Fanex.AutoSyncFiles.Business.Services
 {
@@ -27,7 +26,8 @@ namespace Fanex.AutoSyncFiles.Business.Services
         {
             "Unable to read data from the transport connection",
             "Unable to write data to the transport connection:",
-            "Timed out trying to read data from the socket stream!"
+            "Timed out trying to read data from the socket stream!",
+            "Unable to identify the local data socket: Address already in use"
         };
 
         private bool isIgnoredLog = false;
@@ -92,6 +92,8 @@ namespace Fanex.AutoSyncFiles.Business.Services
                     Subject = "Auto Sync Files",
                     Body = string.Join(Environment.NewLine, downloadedFiles)
                 };
+
+                downloadedFiles.Clear();
             }
 
             return jobMessage;
@@ -102,7 +104,6 @@ namespace Fanex.AutoSyncFiles.Business.Services
             ServicePointManager.Expect100Continue = false;
             ftpClient.Connect();
             ftpClient.ConnectTimeout = 3600;
-            var utcNow = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now);
 
             foreach (var path in AppConfigService.AppConfig.Paths)
             {

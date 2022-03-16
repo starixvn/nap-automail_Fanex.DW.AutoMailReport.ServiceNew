@@ -3,7 +3,7 @@
   "CategorySentryLog": "NAP-Report-Service-UAT",
   "IsManual": false,
   "WinLostDate": "2020-01-19",
-  "FilePath": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\CN88DailyWinLoss",
+  "FilePath": "\\\\10.2.190.81\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\CN88DailyWinLoss",
   "TargetName": "CN88",
   "Group": "CN88-DailyWL-Test",
   "EN": {

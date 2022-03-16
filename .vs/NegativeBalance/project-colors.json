@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "55097a9b-cbd9-4121-ab8d-4d1bee786dbd": {
+      "ProjectGuid": "55097a9b-cbd9-4121-ab8d-4d1bee786dbd",
+      "DisplayName": "NegativeBalance.Business",
+      "ColorIndex": 0
+    },
+    "001b852a-c892-4ae6-9c04-4a0ccb8a809d": {
+      "ProjectGuid": "001b852a-c892-4ae6-9c04-4a0ccb8a809d",
+      "DisplayName": "NegativeBalance.Service",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

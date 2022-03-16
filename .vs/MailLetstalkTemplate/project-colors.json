@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "c1778ae6-8a64-44a4-a6e6-ec4ab3e0ef09": {
+      "ProjectGuid": "c1778ae6-8a64-44a4-a6e6-ec4ab3e0ef09",
+      "DisplayName": "Fanex.MailLetstalkWeeklyTemplate.Executing",
+      "ColorIndex": 0
+    },
+    "4afea0a1-4d1d-48b6-8fbf-ba282e90b13f": {
+      "ProjectGuid": "4afea0a1-4d1d-48b6-8fbf-ba282e90b13f",
+      "DisplayName": "Fanex.MailLetstalkTemplate.Business",
+      "ColorIndex": 1
+    },
+    "4851684a-daf6-40d5-aa10-8c2b4e07f526": {
+      "ProjectGuid": "4851684a-daf6-40d5-aa10-8c2b4e07f526",
+      "DisplayName": "Fanex.MailLetstalkMonthlyTemplate.Executing",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

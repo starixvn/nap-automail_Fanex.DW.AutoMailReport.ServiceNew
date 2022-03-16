@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "3ec206cf-96c9-452a-ac17-6491e3a50ba8": {
+      "ProjectGuid": "3ec206cf-96c9-452a-ac17-6491e3a50ba8",
+      "DisplayName": "Fanex.AutoDelFiles.Executing",
+      "ColorIndex": 0
+    },
+    "249f0ca1-f2ae-488a-a9cb-45795e905c7f": {
+      "ProjectGuid": "249f0ca1-f2ae-488a-a9cb-45795e905c7f",
+      "DisplayName": "Fanex.AutoDelFiles.Service",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

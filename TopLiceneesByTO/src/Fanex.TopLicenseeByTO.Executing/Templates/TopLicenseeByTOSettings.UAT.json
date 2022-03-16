@@ -8,10 +8,10 @@
   "IsManual": true,
   "FromDate": "2021-05-01",
   "Todate": "2021-05-24",
-  "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\TopLicenseeByTO",
+  "Path": "\\\\10.2.190.81\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\TopLicenseeByTO",
   "IsSentDirectly": true,
-  "InternalPath": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0500\\12-TopLicenseeByTO",
-  "InternalPathLicBySport": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0500\\12-TopLicenseeByTO-LicBySport",
+  "InternalPath": "\\\\10.2.190.81\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0500\\12-TopLicenseeByTO",
+  "InternalPathLicBySport": "\\\\10.2.190.81\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0500\\12-TopLicenseeByTO-LicBySport",
   "Password": "Star168",
   "FunctionIdNodata": 224,
   "Sports": {

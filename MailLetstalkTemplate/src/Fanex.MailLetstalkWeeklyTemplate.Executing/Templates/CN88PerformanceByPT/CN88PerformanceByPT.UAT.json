@@ -3,7 +3,7 @@
   "DateRange": "Weekly",
   "FromDate": "2020-01-01",
   "ToDate": "2020-05-10",
-  "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\CN88PerformanceByPT",
+  "Path": "\\\\10.2.190.81\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\CN88PerformanceByPT",
   "Password": "",
   "FunctionIdNodata": 90,
   "TemplateExcelFile": "CN88PerformanceByPT/CN88PerformanceByPT.xlsx",

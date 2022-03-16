@@ -11,95 +11,103 @@
   "Paths": [
     {
       "Source": "/nap/os-lic-pef-service/excel/UAT",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/12-OSLicPerfByTO-UAT"
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/25-OS-TopLicPerf-UAT"
     },
     {
-      "Source": "/nap/os-lic-pef-service/excel/UAT/InternalOneTime/12-OSLicPerfByTO-UAT",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/12-OSLicPerfByTO-UAT"
+      "Source": "/nap/os-lic-pef-service/excel/UAT/InternalOneTime/25-OS-TopLicPerf-UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/25-OS-TopLicPerf-UAT"
     },
     {
       "Source": "/nap/sb-lic-perf/excel/UAT",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/27-SBLicPerfByTO-UAT"
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/27-SBLicPerfByTO-UAT"
     },
     {
       "Source": "/nap/sb-lic-perf/excel/UAT/InternalOneTime/27-SBLicPerfByTO-UAT",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/27-SBLicPerfByTO-UAT"
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/27-SBLicPerfByTO-UAT"
     },
     {
       "Source": "/nap/mail-abnormal-bets-service/excel/UAT",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/AB Daily Report-UAT"
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/AB Daily Report-UAT"
     },
     {
       "Source": "/nap/mail-abnormal-bets-service/excel/UAT/AbnormalBetDailyReport_CSD",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/AbnormalBetDailyReport_CSD"
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/AbnormalBetDailyReport_CSD"
     },
     {
       "Source": "/nap/ta-perf/excel/UAT",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/TA-Perf-UAT"
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/TA-Perf-UAT"
     },
     {
       "Source": "/nap/ba-daily-wl-service/excel/UAT",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/BA-Daily-WL-UAT"
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/BA-Daily-WL-UAT"
     },
     {
       "Source": "/nap/top-licensee-by-to-service/excel/UAT",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/Top-Lic-By-TO-UAT"
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/Top-Lic-By-TO-UAT"
     },
     {
       "Source": "/nap/top-licensee-by-to-service/excel/UAT/InternalOneTime/12-TopLicByTO-LicBySport-UAT",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/12-TopLicByTO-LicBySport-UAT"
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/12-TopLicByTO-LicBySport-UAT"
     },
     {
       "Source": "/nap/top-licensee-by-to-service/excel/UAT/InternalOneTime/12-TopLicByTO-UAT",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/12-TopLicByTO-UAT"
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/12-TopLicByTO-UAT"
     },
     {
       "Source": "/nap/lic-perf-rmb/excel/UAT",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/24-LicPerf-RMB-UAT"
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/24-LicPerf-RMB-UAT"
     },
     {
       "Source": "/nap/soccer-perf/excel/UAT",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/11-Soccer-Perf-UAT"
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/11-Soccer-Perf-UAT"
     },
     {
       "Source": "/nap/n88-daily-wl/excel/UAT",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/13-N88-Daily-WL"
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/13-N88-Daily-WL"
     },
     {
       "Source": "/nap/lic-perf/excel/UAT",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/14-Lic-Perf"
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/14-Lic-Perf"
     },
     {
       "Source": "/nap/saba-soccer/excel/UAT",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/15-Saba-Soccer-Punter"
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/15-Saba-Soccer-Punter"
     },
     {
       "Source": "/nap/saba-soccer/excel/UAT/Hourly",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/16-SabaSportPunter-Hourly"
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/16-SabaSportPunter-Hourly"
     },
     {
       "Source": "/nap/non-sport-punter/excel/UAT",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/18-TopNonSportPunter"
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/18-TopNonSportPunter"
     },
     {
       "Source": "/nap/top-sb-agent/excel/UAT",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/19-TopSportbookAgents"
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/19-TopSportbookAgents"
     },
     {
       "Source": "/nap/oanda/excel/UAT",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/OANDA"
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/OANDA"
     },
     {
       "Source": "/nap/to-avg-bet-benchmark/excel/UAT",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/20-TOAVGBetBenchmark"
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/20-TOAVGBetBenchmark"
     },
     {
       "Source": "/nap/big-credit/excel/UAT",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/22-BigCreditIncrement789Y"
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/22-BigCreditIncrement789Y"
     },
     {
       "Source": "/nap/house-margin-monitoring/excel/UAT",
-      "Destination": "//10.40.40.73/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/23-House-Margin-Monitoring"
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/23-House-Margin-Monitoring"
+    },
+    {
+      "Source": "/nap/save-bet/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/NEW-SaveBet"
+    },
+    {
+      "Source": "/nap/weverdat/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/Weverdat"
     }
   ]
 }

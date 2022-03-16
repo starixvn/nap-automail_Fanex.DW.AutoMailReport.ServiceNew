@@ -1,8 +1,8 @@
 ﻿{
   "SentryClientKey": "https://ad29bef60cc04e78803c9030a33a2c06@sentry.nexdev.net/44",
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
-  "IsManual": false,  
+  "IsManual": false,
   "WinlostDate": "2019-05-19",
-  "FilePath": "\\\\10.19.10.73\\Fanex.Excel",
+  "FilePath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\BetBuilderMonthly",
   "Password": ""
 }

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Functions>
-  <Function SiteId="25" SiteName="Auto Mail">
-    <Setting Key="DailyJob_CheckTasksStatus" SpName="DailyJob_CheckTasksStatus" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
-    <Setting Key="Acc_Rpt_HouseNetIncome" SpName="Acc_Rpt_HouseNetIncome" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
-    <Setting Key="Acc_Rpt_HouseNetIncome_Reconciliation" SpName="Acc_Rpt_HouseNetIncome_Reconciliation_xtest" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
-  </Function>
+	<Function SiteId="25" SiteName="Auto Mail">
+		<Setting Key="DailyJob_CheckTasksStatus" SpName="DailyJob_CheckTasksStatus" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+		<Setting Key="Acc_Rpt_HouseNetIncome" SpName="Acc_Rpt_HouseNetIncome" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+		<Setting Key="Acc_Rpt_HouseNetIncome_Reconciliation" SpName="Acc_Rpt_HouseNetIncome_Reconciliation" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+	</Function>
 </Functions>

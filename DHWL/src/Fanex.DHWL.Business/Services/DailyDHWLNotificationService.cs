@@ -111,9 +111,14 @@ namespace Fanex.DHWL.Business.Services
             excelRawService.Export(dailyRawData, "Daily", fromdate, todate);
             var excelPath = excelDailyService.Export(cloneData);
 
-            var imageDHWLPath = imageDHWLService.Export(cloneDataDHWL);
-            var imageMarginPath = imageMarginService.Export(dailyRawData, true);
-            var imageMarginMTDPath = imageMarginService.Export(dailyRawData, false);
+            var reportId = 1;
+            var imageDHWLPath = imageDHWLService.Export(cloneDataDHWL, reportId);
+
+            reportId++;
+            var imageMarginPath = imageMarginService.Export(dailyRawData, true, reportId);
+
+            reportId++;
+            var imageMarginMTDPath = imageMarginService.Export(dailyRawData, false, reportId);
             var chartPath = chartExport.Export(dailyRawData);
             var images = new List<string>
             {

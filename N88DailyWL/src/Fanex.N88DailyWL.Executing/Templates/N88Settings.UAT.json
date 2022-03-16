@@ -5,8 +5,8 @@
   "IsManual": false,
   "FromDate": "2020-01-01",
   "ToDate": "2020-01-31",
-  "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\N88DailyWL",
-  "InternalPath": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0600\\13",
+  "Path": "\\\\10.2.190.81\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\N88DailyWL",
+  "InternalPath": "\\\\10.2.190.81\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0600\\13",
   "TargetName": "N88",
   "LicenseeNameGroups": [
     {

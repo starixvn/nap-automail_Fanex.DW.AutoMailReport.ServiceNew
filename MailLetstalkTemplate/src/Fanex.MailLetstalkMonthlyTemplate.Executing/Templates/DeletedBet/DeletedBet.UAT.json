@@ -3,7 +3,7 @@
   "DateRange": "Monthly",
   "FromDate": "2020-01-01",
   "ToDate": "2020-01-31",
-  "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\DeletedBet",
+  "Path": "\\\\10.2.190.81\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\DeletedBet",
   "Password": "Star168",
   "FunctionIdNodata": 224,
   "TemplateExcelFile": "DeletedBet/DeletedBet.xlsx",

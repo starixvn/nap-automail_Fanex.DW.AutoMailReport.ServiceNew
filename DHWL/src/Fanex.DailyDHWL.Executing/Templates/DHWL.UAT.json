@@ -2,10 +2,10 @@
   "SentryClientKey": "http://612764957dbb46ffa359103d8ffa08c6@10.99.99.51:801/59",
   "CategorySentryLog": "NAP-Report-Service-UAT",
   "IsCheckEnoughData": false,
-  "ReportType": "Manual",
+  "ReportType": "Daily",
   "FromDate": "2021-08-01",
   "ToDate": "2021-08-17",
-  "Path": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\NEW-DHWL",
+  "Path": "\\\\10.2.190.81\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\NEW-DHWL",
   "Password": "Star168",
   "TargetName": "daily-house-wl",
   "LetstalkGroup": "DWHL-UAT",
@@ -15,12 +15,12 @@
   "LetstalkGroups": {
     "Image": {
       "Group": "DWHL-UAT",
-      "InternalPath": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0600\\2-NEW-DHWL-Daily",
+      "InternalPath": "\\\\10.2.190.81\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0600\\2-NEW-DHWL-Daily",
       "MailId": 0
     },
     "Excel": {
       "Group": "",
-      "InternalPath": "\\\\10.40.40.73\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0600\\2-NEW-DHWL-Excel-Daily",
+      "InternalPath": "\\\\10.2.190.81\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0600\\2-NEW-DHWL-Excel-Daily",
       "MailId": 390
     }
   }
