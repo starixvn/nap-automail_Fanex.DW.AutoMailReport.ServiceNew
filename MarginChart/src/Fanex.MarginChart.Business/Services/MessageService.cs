@@ -3,6 +3,7 @@ using Fanex.LetstalkService.Core.Models;
 using Fanex.LetstalkService.Core.Services;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 
 namespace Fanex.MarginChart.Business.Services
 {
@@ -27,6 +28,7 @@ namespace Fanex.MarginChart.Business.Services
             {
                 var letstalkModel = CreateLetstalkModel(image, letstalkGroup);
                 var f = letstalkService.SendMessage(letstalkModel);
+                Thread.Sleep(5000);
                 result.Add(new FileInfo(image).Name, f);
             });
 

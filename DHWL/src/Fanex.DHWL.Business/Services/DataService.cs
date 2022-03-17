@@ -5,6 +5,7 @@ using Fanex.DHWL.Business.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 
 namespace Fanex.DHWL.Business.Services
 {
@@ -19,6 +20,8 @@ namespace Fanex.DHWL.Business.Services
         DataTable QueryLastMonthData();
 
         DataSet QueryReconciliation();
+
+        List<GetProductInfoModel> QueryGetProductInfo(int productId);
     }
 
     public class DataServiceImp : DataService
@@ -163,6 +166,12 @@ namespace Fanex.DHWL.Business.Services
             }
 
             return result;
+        }
+
+        public List<GetProductInfoModel> QueryGetProductInfo(int productId)
+        {
+            var criteria = new GetProductInfoCriteria { ProductID = productId };
+            return repository.Fetch<GetProductInfoModel>(criteria).ToList();
         }
     }
 }
