@@ -1,6 +1,8 @@
 \\*.local.exe.config
 \\*.uat.exe.config
 \\*.pro.exe.config
+\\*.sit.exe.config
 \\*.local.json
 \\*.uat.json
 \\*.pro.json
+\\*.sit.json

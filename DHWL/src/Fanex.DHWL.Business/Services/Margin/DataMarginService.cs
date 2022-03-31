@@ -104,7 +104,7 @@ namespace Fanex.DHWL.Business.Services
                          .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
                 MBCWL = data.AsEnumerable().Where(s => s[ColumnName.SiteGroup].Equals(Site.MBC))
                          .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
-                LicenseeWL = data.AsEnumerable().Where(s => !Converter.To<bool>(s[ColumnName.IsDeposit]))
+                LicenseeWL = data.AsEnumerable().Where(s => Converter.To<bool>(s[ColumnName.IsDeposit]))
                          .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
                 TotalWL = data.AsEnumerable()
                          .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),

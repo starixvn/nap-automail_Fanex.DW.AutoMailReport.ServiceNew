@@ -2,7 +2,7 @@
   "SentryClientKey": "https://ad29bef60cc04e78803c9030a33a2c06@sentry.nexdev.net/44",
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
   "IsCheckEnoughData": false,
-  "ReportType": "Manual",
+  "ReportType": "Daily",
   "FromDate": "2021-01-01",
   "ToDate": "2021-01-12",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\NEW-MarginChart",

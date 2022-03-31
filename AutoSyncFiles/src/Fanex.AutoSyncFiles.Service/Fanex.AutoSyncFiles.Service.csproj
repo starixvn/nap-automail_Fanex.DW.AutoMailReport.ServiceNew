@@ -242,6 +242,8 @@
     <Content Include="Templates\Fanex.AutoSyncFiles.Service.UAT.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\SyncFiles.SIT.json" />
+    <Content Include="Templates\Fanex.AutoSyncFiles.Service.SIT.exe.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.AutoSyncFiles.Business\Fanex.AutoSyncFiles.Business.csproj">

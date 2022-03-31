@@ -92,6 +92,10 @@
     {
       "Source": "/nap/weverdat/excel/LOCAL",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/Weverdat"
+    },
+    {
+      "Source": "/nap/cwl/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/GameWinLimitControl"
     }
   ]
 }
