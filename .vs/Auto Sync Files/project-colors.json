@@ -10,7 +10,12 @@
       "ProjectGuid": "9bb9e7b2-c666-4991-8749-d8ee40a395b7",
       "DisplayName": "Fanex.AutoSyncFiles.Business",
       "ColorIndex": 1
+    },
+    "dd7d2339-b73a-45a2-8471-c72bfefdaeb1": {
+      "ProjectGuid": "dd7d2339-b73a-45a2-8471-c72bfefdaeb1",
+      "DisplayName": "src",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 3
 }

@@ -136,6 +136,10 @@
     {
       "Source": "/nap/weverdat/excel/PROD",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/Weverdat"
+    },
+    {
+      "Source": "/nap/cwl/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/GameWinLimitControl"
     }
   ]
 }

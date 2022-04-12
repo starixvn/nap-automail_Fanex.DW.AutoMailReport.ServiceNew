@@ -1,5 +1,5 @@
 ﻿{
-  "SentryClientKey": "https://3b7a525209bf4d9683c7a127bc8f094f@172.16.4.109:800/22",
+  "SentryClientKey": "http://3b7a525209bf4d9683c7a127bc8f094f@172.16.4.109:800/22",
   "CategorySentryLog": "NAP-Service",
   "CronSchedule": "0/59 * * * * ?",
   "FTPConfig": {

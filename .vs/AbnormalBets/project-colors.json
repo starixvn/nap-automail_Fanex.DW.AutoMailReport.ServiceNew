@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "c0120497-cbcd-4538-b4f2-fcc3fe32fb43": {
+      "ProjectGuid": "c0120497-cbcd-4538-b4f2-fcc3fe32fb43",
+      "DisplayName": "Fanex.AbnormalBets.CSD.Executing",
+      "ColorIndex": 0
+    },
+    "ba4aaf08-0eb8-4a5f-bfb7-0aaadaeccc1d": {
+      "ProjectGuid": "ba4aaf08-0eb8-4a5f-bfb7-0aaadaeccc1d",
+      "DisplayName": "Fanex.AbnormalBets.Headline.Executing",
+      "ColorIndex": 1
+    },
+    "07fda9a5-e774-47d9-80ac-e4e141e026b8": {
+      "ProjectGuid": "07fda9a5-e774-47d9-80ac-e4e141e026b8",
+      "DisplayName": "Fanex.AbnormalBets.Licensee.Executing",
+      "ColorIndex": 2
+    },
+    "f84655b9-d4e0-42d0-9935-3fa98b5a3486": {
+      "ProjectGuid": "f84655b9-d4e0-42d0-9935-3fa98b5a3486",
+      "DisplayName": "Fanex.AbnormalBets.Business",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}
