@@ -108,6 +108,14 @@
     {
       "Source": "/nap/weverdat/excel/UAT",
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/Weverdat"
+    },
+    {
+      "Source": "/nap/cwl/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/GameWinLimitControl"
+    },
+    {
+      "Source": "/nap/dcwl/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/3-DCWL-UAT"
     }
   ]
 }

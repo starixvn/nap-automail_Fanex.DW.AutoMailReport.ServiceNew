@@ -30,7 +30,8 @@ namespace Fanex.MarginChart.Business.Models
             PaytoMuayThai,
             PaytoSupplier,
             ContributionAmount,
-            JackpotPrize
+            JackpotPrize,
+            MegaPrize
         };
 
         public List<string> IgnoreFigureRows

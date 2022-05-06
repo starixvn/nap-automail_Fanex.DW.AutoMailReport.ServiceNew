@@ -15,38 +15,62 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
 
     public class MergeProductDataServiceImp : MergeProductDataService
     {
-        private readonly List<string> productShortNames = new List<string>
+        private readonly DataService dataService;
+
+        public MergeProductDataServiceImp(DataService dataService)
         {
-            "Vgaming",
-            "Vgaming-JP"
-        };
+            this.dataService = dataService;
+        }
 
         public void MergeVGamingIntoSabaC(DataTable dataTable)
         {
+            var productShortNames = new List<string>();
+            var pSourceId = 66;
+            var pSource = dataService.QueryGetProductInfo(pSourceId);
+            var pSourceOrder = 220;
+            pSource.ForEach(p =>
+            {
+                productShortNames.Add(p.ProductShortName);
+            });
+
+            var productId = 42;
+            var products = dataService.QueryGetProductInfo(productId);
+            var orderByProduct = 201;
+
             dataTable.AsEnumerable()
-                .Where(s => s[ColumnName.ProductGroup].Equals(ProductGroup.RNGCasino) && productShortNames.Contains(s[ColumnName.ProductShortName]))
+                .Where(s => s[ColumnName.ProductGroup].Equals(ProductGroup.RNGCasino) && productShortNames.Contains(s[ColumnName.ProductShortName].ToString().Trim()))
                 .ToList()
                 .ForEach(row =>
                 {
-                    if (!Convert.ToBoolean(row[ColumnName.IsDeposit]) && row[ColumnName.ProductShortName].Equals("Vgaming"))
+                    pSourceOrder = 220;
+                    var pSourceInfo = pSource.FirstOrDefault(s => s.OrderByProduct == pSourceOrder);
+                    if (!Convert.ToBoolean(row[ColumnName.IsDeposit]) && row[ColumnName.ProductShortName].Equals(pSourceInfo.ProductShortName))
                     {
-                        row[ColumnName.ProductShortName] = "SabaG";
-                        row[ColumnName.ProductName] = "Saba.games";
-                        row[ColumnName.OrderByProduct] = 201;
+                        orderByProduct = 201;
+                        var info = products.FirstOrDefault(s => s.OrderByProduct == orderByProduct);
+                        row[ColumnName.ProductShortName] = info.ProductShortName;
+                        row[ColumnName.ProductName] = info.ProductName;
+                        row[ColumnName.OrderByProduct] = orderByProduct;
                     }
 
-                    if (Convert.ToBoolean(row[ColumnName.IsDeposit]) && row[ColumnName.ProductShortName].Equals("Vgaming"))
+                    if (Convert.ToBoolean(row[ColumnName.IsDeposit]) && row[ColumnName.ProductShortName].Equals(pSourceInfo.ProductShortName))
                     {
-                        row[ColumnName.ProductShortName] = "SabaG";
-                        row[ColumnName.ProductName] = "Saba.games";
-                        row[ColumnName.OrderByProduct] = 201;
+                        orderByProduct = 201;
+                        var info = products.FirstOrDefault(s => s.OrderByProduct == orderByProduct);
+                        row[ColumnName.ProductShortName] = info.ProductShortName;
+                        row[ColumnName.ProductName] = info.ProductName;
+                        row[ColumnName.OrderByProduct] = orderByProduct;
                     }
 
-                    if (Convert.ToBoolean(row[ColumnName.IsDeposit]) && row[ColumnName.ProductShortName].Equals("Vgaming-JP"))
+                    pSourceOrder = 221;
+                    pSourceInfo = pSource.FirstOrDefault(s => s.OrderByProduct == pSourceOrder);
+                    if (Convert.ToBoolean(row[ColumnName.IsDeposit]) && row[ColumnName.ProductShortName].Equals(pSourceInfo.ProductShortName))
                     {
-                        row[ColumnName.ProductShortName] = "SabaG-JP";
-                        row[ColumnName.ProductName] = "Saba.games Jackpot Pool";
-                        row[ColumnName.OrderByProduct] = 202;
+                        orderByProduct = 202;
+                        var info = products.FirstOrDefault(s => s.OrderByProduct == orderByProduct);
+                        row[ColumnName.ProductShortName] = info.ProductShortName;
+                        row[ColumnName.ProductName] = info.ProductName;
+                        row[ColumnName.OrderByProduct] = orderByProduct;
                     }
                 });
         }

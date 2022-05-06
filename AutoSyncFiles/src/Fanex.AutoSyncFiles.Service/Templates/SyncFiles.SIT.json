@@ -1,0 +1,17 @@
+﻿{
+  "SentryClientKey": "http://3b7a525209bf4d9683c7a127bc8f094f@172.16.4.109:800/22",
+  "CategorySentryLog": "NAP-Service",
+  "CronSchedule": "0/59 * * * * ?",
+  "FTPConfig": {
+    "Host": "172.16.2.44",
+    "UserName": "olympus",
+    "Password": "Pro_olympus_@1234aa",
+    "Port": 2121
+  },
+  "Paths": [
+    {
+      "Source": "/nap/cwl/excel/SIT",
+      "Destination": "//172.16.4.106/_Fanex.ExcelFiles/SIT/GameWinLimitControl"
+    }
+  ]
+}

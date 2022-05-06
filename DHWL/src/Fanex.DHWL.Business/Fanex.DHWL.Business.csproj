@@ -185,12 +185,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Criterias\GetDWStatusCriteria.cs" />
+    <Compile Include="Criterias\GetProductInfoCriteria.cs" />
     <Compile Include="Criterias\LiccenseeCheckDataReadyCriteria.cs" />
     <Compile Include="Models\AdjustmentModel.cs" />
     <Compile Include="Models\ChartAreasPosition.cs" />
     <Compile Include="Models\ColumnIndex.cs" />
     <Compile Include="Models\ColumnName.cs" />
     <Compile Include="Models\ConfigSettingModel.cs" />
+    <Compile Include="Models\GetProductInfoModel.cs" />
     <Compile Include="Models\LicenseeCheckDataReady.cs" />
     <Compile Include="Models\LicenseePerformance\LicenseePerformanceModel.cs" />
     <Compile Include="Models\MonthlyDHWLModel.cs" />

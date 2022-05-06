@@ -7,7 +7,7 @@ namespace Fanex.MarginChart.Business.Services.Margin
 {
     public interface ExcelMarginService
     {
-        string Export(List<MarginModel> data, bool isDaily, string category, string reportId);
+        string Export(List<MarginModel> data, bool isDaily, string category, string reportId, int reportIndex);
 
         int LastRowIndex { get; set; }
     }
@@ -32,25 +32,25 @@ namespace Fanex.MarginChart.Business.Services.Margin
             this.dateService = dateService;
         }
 
-        public string Export(List<MarginModel> data, bool isDaily, string category, string reportId)
+        public string Export(List<MarginModel> data, bool isDaily, string category, string reportId, int reportIndex)
         {
             excelPackage = new ExcelPackage(new FileInfo($"Templates/Margin-Letstalk.xlsx"));
             var template = excelPackage.Workbook.Worksheets["Margin"];
             LastRowIndex = StartRowIndex + data.Count;
 
-            RenderTitle(template, isDaily, category, reportId);
+            RenderTitle(template, isDaily, category, reportId, reportIndex);
             RenderData(template, data);
 
             return Save(isDaily, category);
         }
 
-        private void RenderTitle(ExcelWorksheet template, bool isDaily, string category, string reportId)
+        private void RenderTitle(ExcelWorksheet template, bool isDaily, string category, string reportId, int reportIndex)
         {
             var todate = dateService.DateTime.ToDate;
             template.Cells["B2"].Value = isDaily
                 ? $"{todate:yyyyMMdd} - {category.ToUpper()} MARGIN"
                 : $"MTD - {category.ToUpper()} MARGIN";
-            template.Cells["E1"].Value = reportId;
+            template.Cells["E1"].Value = $"{reportId}.{reportIndex}";
         }
 
         private void RenderData(ExcelWorksheet template, List<MarginModel> data)

@@ -29,9 +29,6 @@ namespace Fanex.AutoSyncFiles.Service
 
         public static void RegisterContainer(Container container)
         {
-            OnebookUMInitializer.InitializeUMClientManager();
-            OnebookUMInitializer.RegisterSimpleInjector(container);
-
             container.Register<Log, LogImp>();
             container.Register<SyncFilesService, SyncFilesServiceImp>();
             container.Register<MailService, MailServiceImp>();

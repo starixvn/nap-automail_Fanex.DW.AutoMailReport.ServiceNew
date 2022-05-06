@@ -79,19 +79,23 @@
     },
     {
       "Source": "/nap/save-bet/excel/LOCAL",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/NEW-SaveBet"
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/SaveBet"
     },
     {
       "Source": "/nap/save-bet/excel/LOCAL_1",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/NEW-SaveBet"
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/SaveBet"
     },
     {
       "Source": "/nap/save-bet/excel/LOCAL_2",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/NEW-SaveBet"
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/SaveBet"
     },
     {
       "Source": "/nap/weverdat/excel/LOCAL",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/Weverdat"
+    },
+    {
+      "Source": "/nap/cwl/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/GameWinLimitControl"
     }
   ]
 }

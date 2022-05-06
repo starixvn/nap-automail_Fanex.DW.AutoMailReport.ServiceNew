@@ -26,7 +26,7 @@ namespace Fanex.DHWL.Business.Models
         public const string Discount = "Discount";
         public const string Rebate = "Rebate";
 
-        public static List<string> IgnoreFigureRows = new List<string>
+        public static readonly List<string> IgnoreFigureRows = new List<string>
         {
             PaytoSupplier,
             RebateDiscount,
@@ -38,7 +38,7 @@ namespace Fanex.DHWL.Business.Models
             PaytoSupplier
         };
 
-        public static List<string> RoyaltyFees = new List<string>
+        public static readonly List<string> RoyaltyFees = new List<string>
         {
             PaytoMuayThai,
             PaytoSupplier,

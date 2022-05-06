@@ -113,7 +113,7 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
                     var data = dataService.QueryData(config.SPName);
                     filePath = excelService.ExportExcel(data);
 
-                    jsonData = JsonConvert.SerializeObject(data, Formatting.Indented);
+                    jsonData = "Reading data ...";
                     jsonExcelPath = JsonConvert.SerializeObject(filePath, Formatting.Indented);
 
                     if (report.IsEmailEnabled)
