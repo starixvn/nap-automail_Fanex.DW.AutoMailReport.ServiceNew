@@ -140,6 +140,26 @@
     {
       "Source": "/nap/cwl/excel/PROD",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/GameWinLimitControl"
+    },
+    {
+      "Source": "/nap/topmasterto/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/31-TopMasterByTO"
+    },
+    {
+      "Source": "/nap/owp/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/OWP"
+    },
+    {
+      "Source": "/nap/mtdbettypewl/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/MTDBettypeWinLoss"
+    },
+    {
+      "Source": "/nap/timemachine/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/TimeMachine"
+    },
+    {
+      "Source": "/nap/playerbetlimit/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/PlayerBetLimit"
     }
   ]
 }

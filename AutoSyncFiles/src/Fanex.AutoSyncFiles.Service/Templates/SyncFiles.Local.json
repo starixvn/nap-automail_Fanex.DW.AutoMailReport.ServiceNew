@@ -96,6 +96,30 @@
     {
       "Source": "/nap/cwl/excel/LOCAL",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/GameWinLimitControl"
+    },
+    {
+      "Source": "/nap/topmasterto/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/31-TopMasterByTO"
+    },
+    {
+      "Source": "/nap/playerbetlimit/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/PlayerBetLimit"
+    },
+    {
+      "Source": "/nap/owp/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/OWP"
+    },
+    {
+      "Source": "/nap/mtdbettypewl/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/MTDBettypeWinLoss"
+    },
+    {
+      "Source": "/nap/timemachine/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/TimeMachine"
+    },
+    {
+      "Source": "/nap/cwl-payout/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/33-CWLGamePayoutAlert"
     }
   ]
 }
