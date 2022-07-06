@@ -160,6 +160,10 @@
     {
       "Source": "/nap/playerbetlimit/excel/PROD",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/PlayerBetLimit"
+    },
+    {
+      "Source": "/nap/cwl-payout/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/33-CWLGamePayoutAlert"
     }
   ]
 }
