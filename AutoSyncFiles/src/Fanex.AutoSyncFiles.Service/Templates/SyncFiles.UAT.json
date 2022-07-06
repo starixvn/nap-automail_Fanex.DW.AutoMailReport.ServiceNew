@@ -116,6 +116,26 @@
     {
       "Source": "/nap/dcwl/excel/UAT",
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/3-DCWL-UAT"
+    },
+    {
+      "Source": "/nap/topmasterto/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/31-TopMasterByTO"
+    },
+    {
+      "Source": "/nap/owp/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/OWP"
+    },
+    {
+      "Source": "/nap/mtdbettypewl/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/MTDBettypeWinLoss"
+    },
+    {
+      "Source": "/nap/timemachine/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/TimeMachine"
+    },
+    {
+      "Source": "/nap/playerbetlimit/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/PlayerBetLimit"
     }
   ]
 }
