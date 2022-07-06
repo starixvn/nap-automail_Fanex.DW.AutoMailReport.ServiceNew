@@ -136,6 +136,10 @@
     {
       "Source": "/nap/playerbetlimit/excel/UAT",
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/PlayerBetLimit"
+    },
+    {
+      "Source": "/nap/cwl-payout/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/33-CWLGamePayoutAlert"
     }
   ]
 }
