@@ -18,7 +18,7 @@ namespace Fanex.ESportModelingData.Business.Services
             var root = AppConfigService.DateStart.ToOADate();
             var sport = exportBaseService.Replace(level.Key.Sport);
             var path = $@"{AppConfigService.AppConfig.FilePath}\{root}\{sport}";
-            Directory.CreateDirectory(path);
+            Directory.CreateDirectory(path.Trim());
 
             level.GroupBy(s => new { s.Status })
             .ToList()

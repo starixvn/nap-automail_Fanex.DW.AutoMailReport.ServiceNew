@@ -35,7 +35,7 @@ namespace Fanex.ESportModelingData.Business.Services
 
                         var folder = $@"{root}\{sport}\{gameName}\{bettypeGroupName}\{bettypeName}";
                         var path = $@"{AppConfigService.AppConfig.FilePath}\{folder}";
-                        Directory.CreateDirectory(path);
+                        Directory.CreateDirectory(path.Trim());
 
                         bettype.GroupBy(s => new { s.Status })
                         .ToList()

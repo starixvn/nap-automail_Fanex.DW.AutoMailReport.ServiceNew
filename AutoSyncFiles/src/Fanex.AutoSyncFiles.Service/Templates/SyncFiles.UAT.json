@@ -98,11 +98,19 @@
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/22-BigCreditIncrement789Y"
     },
     {
-      "Source": "/nap/house-margin-monitoring/excel/UAT",
+      "Source": "/nap/house-margin/excel/UAT",
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/23-House-Margin-Monitoring"
     },
     {
       "Source": "/nap/save-bet/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/NEW-SaveBet"
+    },
+    {
+      "Source": "/nap/save-bet/excel/UAT_1",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/NEW-SaveBet"
+    },
+    {
+      "Source": "/nap/save-bet/excel/UAT_2",
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/NEW-SaveBet"
     },
     {
@@ -140,6 +148,30 @@
     {
       "Source": "/nap/cwl-payout/excel/UAT",
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/33-CWLGamePayoutAlert"
+    },
+    {
+      "Source": "/nap/hwl/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/32-34-35-36-HWL"
+    },
+    {
+      "Source": "/nap/inactive-lic/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/InactiveLicensee"
+    },
+    {
+      "Source": "/nap/esport-modeling/excel/UAT/ESportsDaily",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/ESportsDaily"
+    },
+    {
+      "Source": "/nap/esport-modeling/excel/UAT/ESportsWeekly",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/ESportsWeekly"
+    },
+    {
+      "Source": "/nap/esport-modeling/excel/UAT/BasketballDaily",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/BasketballDaily"
+    },
+    {
+      "Source": "/nap/esport-modeling/excel/UAT/BasketballWeekly",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/BasketballWeekly"
     }
   ]
 }

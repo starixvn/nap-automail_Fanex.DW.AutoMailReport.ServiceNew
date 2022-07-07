@@ -27,7 +27,9 @@ namespace Fanex.ESportModelingData.Business.Services
 
         public void ExporDimension(string path, string name, string status, IGrouping<dynamic, RawModelingDataModel> statusGroups)
         {
+            name = name.Trim();
             name = Replace(name);
+            path = path.Trim();
 
             ExportBetCount(path, name, status, statusGroups);
             ExportMemberTurnover(path, name, status, statusGroups);
@@ -37,6 +39,7 @@ namespace Fanex.ESportModelingData.Business.Services
 
         private void ExportBetCount(string path, string name, string status, IGrouping<dynamic, RawModelingDataModel> statusGroups)
         {
+            name = name.Trim();
             var fileName = $@"{path}\{name} - Bet Count - {status}.csv";
             var data = new List<BetCountModel>();
             statusGroups.ToList()
@@ -54,6 +57,7 @@ namespace Fanex.ESportModelingData.Business.Services
 
         private void ExportMemberTurnover(string path, string name, string status, IGrouping<dynamic, RawModelingDataModel> statusGroups)
         {
+            name = name.Trim();
             var fileName = $@"{path}\{name} - Member Turnover - {status}.csv";
             var data = new List<MemberTurnoverModel>();
             statusGroups.ToList()
@@ -71,6 +75,7 @@ namespace Fanex.ESportModelingData.Business.Services
 
         private void ExportMemberWinLoss(string path, string name, string status, IGrouping<dynamic, RawModelingDataModel> statusGroups)
         {
+            name = name.Trim();
             var fileName = $@"{path}\{name} - Member Win Loss - {status}.csv";
             var data = new List<MemberWinLossModel>();
             statusGroups.ToList()
@@ -88,6 +93,7 @@ namespace Fanex.ESportModelingData.Business.Services
 
         private void ExportVirtualrateSetting(string path, string name, string status, IGrouping<dynamic, RawModelingDataModel> statusGroups)
         {
+            name = name.Trim();
             var fileName = $@"{path}\{name} - Virtualrate Setting - {status}.csv";
             var data = new List<VirtualrateSettingModel>();
             statusGroups.ToList()

@@ -11,12 +11,12 @@
   },
   {
     "ReportFile": "TimeMachineTicket/TimeMachineTicket.json",
-    "IsActive": false,
+    "IsActive": true,
     "IsEmailEnabled": true
   },
   {
     "ReportFile": "N88-SB-Member-Performance/N88-SB-Member-Performance.json",
-    "IsActive": true,
+    "IsActive": false,
     "IsEmailEnabled": true
   }
 ]

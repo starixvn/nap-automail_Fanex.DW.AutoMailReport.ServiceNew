@@ -74,7 +74,7 @@
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/22-BigCreditIncrement789Y"
     },
     {
-      "Source": "/nap/house-margin-monitoring/excel/LOCAL",
+      "Source": "/nap/house-margin/excel/LOCAL",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/23-House-Margin-Monitoring"
     },
     {
@@ -120,6 +120,30 @@
     {
       "Source": "/nap/cwl-payout/excel/LOCAL",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/33-CWLGamePayoutAlert"
+    },
+    {
+      "Source": "/nap/hwl/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/32-34-35-36-HWL"
+    },
+    {
+      "Source": "/nap/inactive-lic/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/InactiveLicensee"
+    },
+    {
+      "Source": "/nap/esport-modeling/excel/LOCAL/ESportsWeekly",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/ESportsWeekly"
+    },
+    {
+      "Source": "/nap/esport-modeling/excel/LOCAL/ESportsDaily",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/ESportsDaily"
+    },
+    {
+      "Source": "/nap/esport-modeling/excel/LOCAL/BasketballDaily",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/BasketballDaily"
+    },
+    {
+      "Source": "/nap/esport-modeling/excel/LOCAL/BasketballWeekly",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/BasketballWeekly"
     }
   ]
 }

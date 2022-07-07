@@ -39,7 +39,7 @@ namespace Fanex.ESportModelingData.Business.Services
                             var bettypeFolder = export.Replace(btRow.Key.BetType);
                             var folder = $@"{root}\{sport}\{gameFolder}\{mainBetTypeFolder}\{bettypeGroupFolder}\{bettypeFolder}";
                             var path = $@"{AppConfigService.AppConfig.FilePath}\{folder}";
-                            Directory.CreateDirectory(path);
+                            Directory.CreateDirectory(path.Trim());
 
                             btgRow.GroupBy(s => new { s.Status })
                             .ToList()
