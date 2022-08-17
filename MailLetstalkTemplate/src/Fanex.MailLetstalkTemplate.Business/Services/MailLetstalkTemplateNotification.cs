@@ -115,7 +115,7 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
 
                     jsonData = "Reading data ...";
                     jsonExcelPath = JsonConvert.SerializeObject(filePath, Formatting.Indented);
-
+                    log.Log(filePath);
                     if (report.IsEmailEnabled)
                     {
                         mailService.SendMail(filePath);

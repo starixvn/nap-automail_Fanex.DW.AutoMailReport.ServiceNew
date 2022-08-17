@@ -1,9 +1,11 @@
 ﻿using Fanex.MailDelivery.Core.Models;
 using Fanex.MarginChart.Business.Models;
 using Fanex.MarginChart.Business.Services.Margin;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 
 namespace Fanex.MarginChart.Business.Services
@@ -94,6 +96,13 @@ namespace Fanex.MarginChart.Business.Services
             }
 
             var dailyRawData = dataService.QueryMarginChartData();
+
+            var json = JsonConvert.SerializeObject(dailyRawData, Formatting.Indented);
+
+            Directory.CreateDirectory(AppConfigService.Config.Path);
+            var fileName = $"{AppConfigService.Config.Path}/MarginChartData.json";
+            File.WriteAllText(fileName, json);
+
             var source = baseDataTable.CloneWithoutIgnoreFigureRows(dailyRawData);
             var fromdate = dateTimeServiceProvider.DateTime.FromDate;
             var todate = dateTimeServiceProvider.DateTime.ToDate;

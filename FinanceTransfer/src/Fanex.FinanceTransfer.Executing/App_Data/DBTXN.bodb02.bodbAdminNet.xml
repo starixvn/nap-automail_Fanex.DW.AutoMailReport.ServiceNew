@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Functions>
-  <Function Name="Auto-mail">
-    <Setting Key="Acc_LicenseeTransfer_Job" SpName="Acc_LicenseeTransfer_Job" DbName="DBTXN.bodb02.bodbAdminNet" TimeOut="0" />
-  </Function>
+	<Function Name="Auto-mail">
+		<Setting Key="Acc_LicenseeTransfer_Job" SpName="Acc_LicenseeTransfer_Job_xpre" DbName="DBTXN.bodb02.bodbAdminNet" TimeOut="0" />
+	</Function>
 </Functions>

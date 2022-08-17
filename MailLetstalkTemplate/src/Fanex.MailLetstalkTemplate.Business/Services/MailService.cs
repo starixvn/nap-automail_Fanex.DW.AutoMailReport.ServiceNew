@@ -2,6 +2,7 @@
 using Fanex.MailDelivery.Core.Models;
 using Fanex.MailLetstalkTemplate.Business.Models;
 using Fanex.MailLetstalkTemplate.Business.Services.FormatMailTemplate;
+using Newtonsoft.Json;
 using RazorEngine;
 using RazorEngine.Templating;
 using System;
@@ -22,11 +23,16 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
     {
         private readonly DateRangeServiceProfier dateRangeServiceProfier;
         private readonly MailFormatProvider mailFormatProvider;
+        private readonly Log log;
 
-        public MailServiceImp(DateRangeServiceProfier dateRangeServiceProfier, MailFormatProvider mailFormatProvider)
+        public MailServiceImp(
+            DateRangeServiceProfier dateRangeServiceProfier,
+            MailFormatProvider mailFormatProvider,
+            Log log)
         {
             this.dateRangeServiceProfier = dateRangeServiceProfier;
             this.mailFormatProvider = mailFormatProvider;
+            this.log = log;
         }
 
         public bool IsMailSent(List<MailModel> mails, string mail)
@@ -58,6 +64,9 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
                 Attachments = attachments,
                 MailingListId = AppConfigService.Config.MailId
             };
+
+            var json = JsonConvert.SerializeObject(mail, Formatting.Indented);
+            log.Log($"MailLetstalkTemplate: {json}");
 
             MailClientHandler.Start();
             MailClientHandler.SendFunctionMail(mail);

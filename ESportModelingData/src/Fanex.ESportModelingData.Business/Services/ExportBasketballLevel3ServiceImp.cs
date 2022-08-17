@@ -27,7 +27,7 @@ namespace Fanex.ESportModelingData.Business.Services
                     var sport = exportBaseService.Replace(level.Key.Sport);
                     var folder = $@"{root}\{sport}\{exportBaseService.Replace(game.Key.Game)}\{exportBaseService.Replace(mainBetType.Key.MainBetType)}";
                     var path = $@"{AppConfigService.AppConfig.FilePath}\{folder}";
-                    Directory.CreateDirectory(path);
+                    Directory.CreateDirectory(path.Trim());
 
                     mainBetType.GroupBy(s => new { s.Status })
                     .ToList()

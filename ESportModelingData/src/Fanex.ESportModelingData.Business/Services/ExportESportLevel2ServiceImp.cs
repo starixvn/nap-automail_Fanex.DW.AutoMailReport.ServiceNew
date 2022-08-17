@@ -23,7 +23,7 @@ namespace Fanex.ESportModelingData.Business.Services
                 var sport = exportBaseService.Replace(level.Key.Sport);
                 var folder = $@"{root}\{sport}\{exportBaseService.Replace(game.Key.Game)}";
                 var path = $@"{AppConfigService.AppConfig.FilePath}\{folder}";
-                Directory.CreateDirectory(path);
+                Directory.CreateDirectory(path.Trim());
 
                 game.GroupBy(s => new { s.Status })
                 .ToList()

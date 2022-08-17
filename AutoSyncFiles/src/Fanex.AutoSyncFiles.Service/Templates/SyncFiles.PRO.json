@@ -98,7 +98,7 @@
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/22-BigCreditIncrement789Y"
     },
     {
-      "Source": "/nap/house-margin-monitoring/excel/PROD",
+      "Source": "/nap/house-margin/excel/PROD",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/23-House-Margin-Monitoring"
     },
     {
@@ -164,6 +164,30 @@
     {
       "Source": "/nap/cwl-payout/excel/PROD",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/33-CWLGamePayoutAlert"
+    },
+    {
+      "Source": "/nap/hwl/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/32-34-35-36-HWL"
+    },
+    {
+      "Source": "/nap/inactive-lic/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/InactiveLicensee"
+    },
+    {
+      "Source": "/nap/esport-modeling/excel/PROD/ESportsDaily",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/ESportsDaily"
+    },
+    {
+      "Source": "/nap/esport-modeling/excel/PROD/ESportsWeekly",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/ESportsWeekly"
+    },
+    {
+      "Source": "/nap/esport-modeling/excel/PROD/BasketballDaily",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/BasketballDaily"
+    },
+    {
+      "Source": "/nap/esport-modeling/excel/PROD/BasketballWeekly",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/BasketballWeekly"
     }
   ]
 }

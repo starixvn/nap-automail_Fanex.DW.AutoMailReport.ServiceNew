@@ -15,7 +15,7 @@ namespace Fanex.ESportModelingData.Business.Services
         {
             var sportName = GenerateName.SportNames[sport];
             var root = dateService.DateStart.ToOADate();
-            return $@"{ParentFolder()}\{sportName} {AppConfigService.AppConfig.Period} {dateService.DateStart:dd-MM-yyyy} To {dateService.DateEnd:dd-MM-yyyy}\{root}\{sportName}";
+            return $@"{ParentFolder()}\{sportName} {AppConfigService.AppConfig.Period} {dateService.DateStart:dd} To {dateService.DateEnd:dd}\{root}\{sportName}";
         }
 
         public string ParentFolder()
@@ -26,7 +26,7 @@ namespace Fanex.ESportModelingData.Business.Services
         public string ParentFolderPath(Sport sport, Period period)
         {
             var sportName = GenerateName.SportNames[sport];
-            return $@"{ParentFolder()}\{sportName} {AppConfigService.AppConfig.Period} {dateService.DateStart:dd-MM-yyyy} To {dateService.DateEnd:dd-MM-yyyy}";
+            return $@"{ParentFolder()}\{sportName} {AppConfigService.AppConfig.Period} {dateService.DateStart:dd} To {dateService.DateEnd:dd}";
         }
 
         public string Subject(Sport sport, Period period)

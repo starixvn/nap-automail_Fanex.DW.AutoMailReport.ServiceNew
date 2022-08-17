@@ -35,6 +35,9 @@ namespace Fanex.ESportModelingData.Business.Services
             var originalFilePath = AppConfigService.AppConfig.FilePath;
             var originalPath = AppConfigService.AppConfig.Path;
             AppConfigService.AppConfig.FilePath += $@"\{folderName}";
+
+            Directory.CreateDirectory(AppConfigService.AppConfig.FilePath);
+
             var levelInstances = LevelInstanceModellingData();
             var levelInstance = levelInstances[AppConfigService.AppConfig.Sport];
             rawData
