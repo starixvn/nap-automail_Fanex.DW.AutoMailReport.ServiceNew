@@ -87,7 +87,7 @@
     },
     {
       "Source": "/nap/oanda/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/OANDA"
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/OandaExchangeRate"
     },
     {
       "Source": "/nap/to-avg-bet-benchmark/excel/PROD",
@@ -188,6 +188,10 @@
     {
       "Source": "/nap/esport-modeling/excel/PROD/BasketballWeekly",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/BasketballWeekly"
+    },
+    {
+      "Source": "/nap/fin/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/FINManagementMonthlyReport"
     }
   ]
 }

@@ -144,6 +144,14 @@
     {
       "Source": "/nap/esport-modeling/excel/LOCAL/BasketballWeekly",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/BasketballWeekly"
+    },
+    {
+      "Source": "/nap/fin/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/FINManagementMonthlyReport"
+    },
+    {
+      "Source": "/nap/crypto/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/CryptoExchangeRate"
     }
   ]
 }
