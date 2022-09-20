@@ -152,6 +152,10 @@
     {
       "Source": "/nap/crypto/excel/LOCAL",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/CryptoExchangeRate"
+    },
+    {
+      "Source": "/nap/consistency-48-49-50-53/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/Consistency-48-49-50-53"
     }
   ]
 }

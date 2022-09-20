@@ -78,7 +78,7 @@
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/16-SabaSportPunter-Hourly"
     },
     {
-      "Source": "/nap/non-sport-punter/excel/PROD",
+      "Source": "/nap/non_sport_punter/excel/PROD",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/18-TopNonSportPunter"
     },
     {
@@ -192,6 +192,14 @@
     {
       "Source": "/nap/fin/excel/PROD",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/FINManagementMonthlyReport"
+    },
+    {
+      "Source": "/nap/crypto/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/CryptoExchangeRate"
+    },
+    {
+      "Source": "/nap/consistency-48-49-50-53/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/Consistency-48-49-50-53"
     }
   ]
 }

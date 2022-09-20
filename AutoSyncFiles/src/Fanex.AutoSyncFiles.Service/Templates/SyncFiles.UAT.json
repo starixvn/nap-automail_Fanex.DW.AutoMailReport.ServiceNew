@@ -78,7 +78,7 @@
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/16-SabaSportPunter-Hourly"
     },
     {
-      "Source": "/nap/non-sport-punter/excel/UAT",
+      "Source": "/nap/non_sport_punter/excel/UAT",
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/18-TopNonSportPunter"
     },
     {
@@ -176,6 +176,10 @@
     {
       "Source": "/nap/fin/excel/UAT",
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/FINManagementMonthlyReport"
+    },
+    {
+      "Source": "/nap/consistency-48-49-50-53/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/Consistency-48-49-50-53"
     }
   ]
 }
