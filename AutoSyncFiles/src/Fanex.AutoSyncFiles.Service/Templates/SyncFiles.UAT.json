@@ -102,15 +102,15 @@
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/23-House-Margin-Monitoring"
     },
     {
-      "Source": "/nap/save-bet/excel/UAT",
+      "Source": "/nap/save-bet/excel/UAT/Final",
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/NEW-SaveBet"
     },
     {
-      "Source": "/nap/save-bet/excel/UAT_1",
+      "Source": "/nap/save-bet/excel/UAT_1/Final",
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/NEW-SaveBet"
     },
     {
-      "Source": "/nap/save-bet/excel/UAT_2",
+      "Source": "/nap/save-bet/excel/UAT_2/Final",
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/NEW-SaveBet"
     },
     {
@@ -180,6 +180,10 @@
     {
       "Source": "/nap/consistency-48-49-50-53/excel/UAT",
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/Consistency-48-49-50-53"
+    },
+    {
+      "Source": "/nap/wcwl/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/WC-League"
     }
   ]
 }
