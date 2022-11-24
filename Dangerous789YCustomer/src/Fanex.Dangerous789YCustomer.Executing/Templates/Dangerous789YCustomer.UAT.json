@@ -12,7 +12,7 @@
   "FunctionIdNodata": 90,
   "TargetName": "daily-monitoring",
   "Threshold": 1,
-  "FPSApi": "http://10.99.99.101:7710/",
+  "FPSApi": "http://10.2.190.41:7710/",
   "Action": "Api/Cts/GetFlaggedCustByLvlNEvi?custIdList={0}&associatedLevel={1}&eviIdList=41,43,44,45,46,48,52,54,55,56,58,76,77,78,80",
   "Dangerous789YCustomerettings": {
     "Exceltitle": "Dangerous 789y Customer Tracking",

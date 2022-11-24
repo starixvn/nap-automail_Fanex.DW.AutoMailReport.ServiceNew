@@ -78,15 +78,15 @@
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/23-House-Margin-Monitoring"
     },
     {
-      "Source": "/nap/save-bet/excel/LOCAL",
+      "Source": "/nap/save-bet/excel/LOCAL/Final",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/SaveBet"
     },
     {
-      "Source": "/nap/save-bet/excel/LOCAL_1",
+      "Source": "/nap/save-bet/excel/LOCAL_1/Final",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/SaveBet"
     },
     {
-      "Source": "/nap/save-bet/excel/LOCAL_2",
+      "Source": "/nap/save-bet/excel/LOCAL_2/Final",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/SaveBet"
     },
     {
@@ -144,6 +144,22 @@
     {
       "Source": "/nap/esport-modeling/excel/LOCAL/BasketballWeekly",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/BasketballWeekly"
+    },
+    {
+      "Source": "/nap/fin/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/FINManagementMonthlyReport"
+    },
+    {
+      "Source": "/nap/crypto/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/CryptoExchangeRate"
+    },
+    {
+      "Source": "/nap/consistency-48-49-50-53/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/Consistency-48-49-50-53"
+    },
+    {
+      "Source": "/nap/wcwl/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/WC-League"
     }
   ]
 }
