@@ -74,7 +74,7 @@
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/15-Saba-Soccer-Punter"
     },
     {
-      "Source": "/nap/saba-soccer/excel/UAT/Hourly",
+      "Source": "/nap/saba-soccer/excel/PROD/Hourly",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/16-SabaSportPunter-Hourly"
     },
     {
@@ -102,35 +102,35 @@
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/23-House-Margin-Monitoring"
     },
     {
-      "Source": "/nap/save-bet/excel/PROD",
+      "Source": "/nap/save-bet/excel/PROD/Final",
       "Destination": "//10.40.40.22/Data.Web/Fanex.SaveBet.Excel"
     },
     {
-      "Source": "/nap/save-bet/excel/PROD_1",
+      "Source": "/nap/save-bet/excel/PROD_1/Final",
       "Destination": "//10.40.40.22/Data.Web/Fanex.SaveBet.Excel"
     },
     {
-      "Source": "/nap/save-bet/excel/PROD_2",
+      "Source": "/nap/save-bet/excel/PROD_2/Final",
       "Destination": "//10.40.40.22/Data.Web/Fanex.SaveBet.Excel"
     },
     {
-      "Source": "/nap/save-bet/excel/PROD_3",
+      "Source": "/nap/save-bet/excel/PROD_3/Final",
       "Destination": "//10.40.40.22/Data.Web/Fanex.SaveBet.Excel"
     },
     {
-      "Source": "/nap/save-bet/excel/PROD_4",
+      "Source": "/nap/save-bet/excel/PROD_4/Final",
       "Destination": "//10.40.40.22/Data.Web/Fanex.SaveBet.Excel"
     },
     {
-      "Source": "/nap/save-bet/excel/PROD_5",
+      "Source": "/nap/save-bet/excel/PROD_5/Final",
       "Destination": "//10.40.40.22/Data.Web/Fanex.SaveBet.Excel"
     },
     {
-      "Source": "/nap/save-bet/excel/PROD_6",
+      "Source": "/nap/save-bet/excel/PROD_6/Final",
       "Destination": "//10.40.40.22/Data.Web/Fanex.SaveBet.Excel"
     },
     {
-      "Source": "/nap/save-bet/excel/PROD_7",
+      "Source": "/nap/save-bet/excel/PROD_7/Final",
       "Destination": "//10.40.40.22/Data.Web/Fanex.SaveBet.Excel"
     },
     {
