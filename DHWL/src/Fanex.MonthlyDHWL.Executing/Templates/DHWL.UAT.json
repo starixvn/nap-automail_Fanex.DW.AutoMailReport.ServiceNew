@@ -1,6 +1,7 @@
 ﻿{
   "SentryClientKey": "http://612764957dbb46ffa359103d8ffa08c6@10.99.99.51:801/59",
   "CategorySentryLog": "NAP-Report-Service-UAT",
+  "IsCheckEnoughData": false,
   "ReportType": "Manual",
   "FromDate": "2020-12-01",
   "ToDate": "2020-12-31",

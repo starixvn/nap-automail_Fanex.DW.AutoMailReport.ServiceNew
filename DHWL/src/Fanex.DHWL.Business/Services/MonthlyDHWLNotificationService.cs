@@ -81,6 +81,17 @@ namespace Fanex.DHWL.Business.Services
 
         private ExecuteResultModel SendNotification()
         {
+            var checkData = dataService.CheckDataReadyMonthly();
+            if (checkData.Count > 0)
+            {
+                return new ExecuteResultModel
+                {
+                    Mail = new Mail(),
+                    Message = string.Join(",", checkData),
+                    Success = false
+                };
+            }
+
             var monthlyRawData = dataService.QueryDHWLData();
             var dataSetReconciliation = dataService.QueryReconciliation();
             var dataReconciliation = dataSetReconciliation.Tables[0];

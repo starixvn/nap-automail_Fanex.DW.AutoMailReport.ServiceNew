@@ -190,9 +190,6 @@
     <Compile Include="RegisterService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\DBLIC.bodb_LicenseeReport.bodbAdminNet.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="App_Data\DBWH.bodb_Account.dwrs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
