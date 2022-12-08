@@ -11,7 +11,7 @@
   "LetstalkGroup": "DHWL-PRE",
   "ProductList": "All",
   "DataMode": 1,
-  "PerformanceThreshold": 600000,
+  "PerformanceThreshold": 650000,
   "LetstalkGroups": {
     "Image": {
       "Group": "DWHL-PRO",
