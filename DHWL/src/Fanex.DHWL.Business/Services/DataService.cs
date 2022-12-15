@@ -13,7 +13,9 @@ namespace Fanex.DHWL.Business.Services
     {
         TaskstatusModel QueryDWStatus();
 
-        List<string> CheckDataAvailable();
+        List<string> CheckDataReadyDaily();
+
+        List<string> CheckDataReadyMonthly();
 
         DataTable QueryDHWLData();
 
@@ -48,12 +50,7 @@ namespace Fanex.DHWL.Business.Services
             return repository.Get<TaskstatusModel>(new GetDWStatusCriteria());
         }
 
-        private bool CheckLicenseeDataIsReady()
-        {
-            return repository.Get<LicenseeCheckDataReady>(new LiccenseeCheckDataReadyCriteria()).IsDataYesterdayReady;
-        }
-
-        public List<string> CheckDataAvailable()
+        public List<string> CheckDataReadyDaily()
         {
             var result = new List<string>();
             if (AppConfigService.Config.ReportType == ReportType.Manual || !AppConfigService.Config.IsCheckEnoughData)
@@ -77,6 +74,23 @@ namespace Fanex.DHWL.Business.Services
             if (!hniResultReady)
             {
                 result.Add("The data is not correct (data is not ready & ABS(MTD of Yesterday – [MTD of Today – Yesterday Data]) > 300K RM)");
+            }
+
+            return result;
+        }
+
+        public List<string> CheckDataReadyMonthly()
+        {
+            var result = new List<string>();
+            if (AppConfigService.Config.ReportType == ReportType.Manual || !AppConfigService.Config.IsCheckEnoughData)
+            {
+                return result;
+            }
+
+            var dataReady = QueryDWStatus().DataIsReady;
+            if (!dataReady)
+            {
+                result.Add("DataIsNotReady, TaskId = 77");
             }
 
             return result;

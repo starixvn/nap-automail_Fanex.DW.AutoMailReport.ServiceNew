@@ -1,7 +1,7 @@
 ﻿{
   "SentryClientKey": "https://ad29bef60cc04e78803c9030a33a2c06@sentry.nexdev.net/44",
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
-  "IsCheckEnoughData": false,
+  "IsCheckEnoughData": true,
   "ReportType": "Monthly",
   "FromDate": "2021-05-01",
   "ToDate": "2021-05-31",

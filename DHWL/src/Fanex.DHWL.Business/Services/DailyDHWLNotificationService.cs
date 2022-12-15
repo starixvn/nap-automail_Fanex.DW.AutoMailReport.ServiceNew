@@ -91,7 +91,7 @@ namespace Fanex.DHWL.Business.Services
 
         private ExecuteResultModel SendNotification()
         {
-            var checkData = dataService.CheckDataAvailable();
+            var checkData = dataService.CheckDataReadyDaily();
             if (checkData.Count > 0)
             {
                 return new ExecuteResultModel

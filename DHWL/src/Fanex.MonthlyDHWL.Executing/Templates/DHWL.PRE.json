@@ -1,6 +1,7 @@
 ﻿{
   "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.99.99.51:801/60",
   "CategorySentryLog": "NAP-Report-Service",
+  "IsCheckEnoughData": true,
   "ReportType": "Monthly",
   "FromDate": "2020-12-01",
   "ToDate": "2020-12-31",

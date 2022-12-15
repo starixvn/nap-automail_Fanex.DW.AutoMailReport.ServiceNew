@@ -186,7 +186,6 @@
   <ItemGroup>
     <Compile Include="Criterias\GetDWStatusCriteria.cs" />
     <Compile Include="Criterias\GetProductInfoCriteria.cs" />
-    <Compile Include="Criterias\LiccenseeCheckDataReadyCriteria.cs" />
     <Compile Include="Models\AdjustmentModel.cs" />
     <Compile Include="Models\ChartAreasPosition.cs" />
     <Compile Include="Models\ColumnIndex.cs" />
