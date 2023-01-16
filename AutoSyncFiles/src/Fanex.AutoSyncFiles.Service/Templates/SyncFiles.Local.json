@@ -164,6 +164,10 @@
     {
       "Source": "/nap/coprofit/excel/LOCAL",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/COProfit"
+    },
+    {
+      "Source": "/nap/id38/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/38-LiveSoccerPerfKO"
     }
   ]
 }
