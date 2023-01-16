@@ -26,11 +26,11 @@
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/27-SBLicPerfByTO-UAT"
     },
     {
-      "Source": "/nap/mail-abnormal-bets-service/excel/UAT",
+      "Source": "/nap/abnormalbets/excel/UAT",
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/AB Daily Report-UAT"
     },
     {
-      "Source": "/nap/mail-abnormal-bets-service/excel/UAT/AbnormalBetDailyReport_CSD",
+      "Source": "/nap/abnormalbets/excel/UAT/AbnormalBetDailyReport_CSD",
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/AbnormalBetDailyReport_CSD"
     },
     {
@@ -184,6 +184,10 @@
     {
       "Source": "/nap/wcwl/excel/UAT",
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/WC-League"
+    },
+    {
+      "Source": "/nap/coprofit/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/COProfit"
     }
   ]
 }

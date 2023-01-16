@@ -26,11 +26,11 @@
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/27-SBLicPerfByTO-PROD"
     },
     {
-      "Source": "/nap/mail-abnormal-bets-service/excel/PROD",
+      "Source": "/nap/abnormalbets/excel/PROD",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/AB Daily Report-PROD"
     },
     {
-      "Source": "/nap/mail-abnormal-bets-service/excel/PROD/AbnormalBetDailyReport_CSD",
+      "Source": "/nap/abnormalbets/excel/PROD/AbnormalBetDailyReport_CSD",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/AbnormalBetDailyReport_CSD"
     },
     {
@@ -204,6 +204,10 @@
     {
       "Source": "/nap/wcwl/excel/PROD",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/WC-League"
+    },
+    {
+      "Source": "/nap/coprofit/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/COProfit"
     }
   ]
 }
