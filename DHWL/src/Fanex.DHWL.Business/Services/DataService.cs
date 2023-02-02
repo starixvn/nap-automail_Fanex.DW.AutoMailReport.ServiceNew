@@ -11,13 +11,15 @@ namespace Fanex.DHWL.Business.Services
 {
     public interface DataService
     {
-        TaskstatusModel QueryDWStatus();
+        TaskstatusModel QueryDwStatus();
 
         List<string> CheckDataReadyDaily();
 
         List<string> CheckDataReadyMonthly();
 
-        DataTable QueryDHWLData();
+        DataTable QueryDhwlData();
+
+        DataTable QueryDhwlDataPreviousYear();
 
         DataTable QueryLastMonthData();
 
@@ -45,7 +47,7 @@ namespace Fanex.DHWL.Business.Services
             this.baseDataTable = baseDataTable;
         }
 
-        public TaskstatusModel QueryDWStatus()
+        public TaskstatusModel QueryDwStatus()
         {
             return repository.Get<TaskstatusModel>(new GetDWStatusCriteria());
         }
@@ -58,7 +60,7 @@ namespace Fanex.DHWL.Business.Services
                 return result;
             }
 
-            var dataReady = QueryDWStatus().DataIsReady;
+            var dataReady = QueryDwStatus().DataIsReady;
             if (!dataReady)
             {
                 result.Add("DataIsNotReady, TaskId = 77");
@@ -70,7 +72,7 @@ namespace Fanex.DHWL.Business.Services
                 result.Add("OANDA Service has a problem, some rates are not imported successfully.");
             }
 
-            var hniResultReady = HNIResultReady();
+            var hniResultReady = HniResultReady();
             if (!hniResultReady)
             {
                 result.Add("The data is not correct (data is not ready & ABS(MTD of Yesterday – [MTD of Today – Yesterday Data]) > 300K RM)");
@@ -87,7 +89,7 @@ namespace Fanex.DHWL.Business.Services
                 return result;
             }
 
-            var dataReady = QueryDWStatus().DataIsReady;
+            var dataReady = QueryDwStatus().DataIsReady;
             if (!dataReady)
             {
                 result.Add("DataIsNotReady, TaskId = 77");
@@ -108,7 +110,7 @@ namespace Fanex.DHWL.Business.Services
             return result;
         }
 
-        private bool HNIResultReady()
+        private static bool HniResultReady()
         {
             var result = false;
             using (ObjectDb db = new ObjectDb("Task_CheckHNIResultDatasetReadiness", 0))
@@ -121,16 +123,40 @@ namespace Fanex.DHWL.Business.Services
             return result;
         }
 
-        public DataTable QueryDHWLData()
+        public DataTable QueryDhwlData()
         {
             var fromDate = dateService.DateTime.FromDate;
             var toDate = dateService.DateTime.ToDate;
             return QueryRawData(fromDate, toDate, "Acc_Rpt_HouseNetIncome", false);
         }
 
+        public DataTable QueryDhwlDataPreviousYear()
+        {
+            var previousYear = new DateTimePreviousYearServiceImp(dateService);
+            var fromDate = previousYear.FromDate;
+            var toDate = previousYear.ToDate;
+            DataTable dataTable;
+
+            using (var db = new ObjectDb("Acc_Rpt_HouseNetIncome", 0))
+            {
+                db.SetParameterValue("fromdate", fromDate);
+                db.SetParameterValue("todate", toDate);
+                db.SetParameterValue("islicperf", false);
+
+                db.SetParameterValue("basecurrencyname", "MYR");
+                db.SetParameterValue("deposittype", 2);
+                db.SetParameterValue("datamode", 3);
+
+                var dataSet = db.ExecuteDataSet();
+                dataTable = baseDataTable.CombineAllInOneTable(dataSet);
+            }
+
+            return dataTable;
+        }
+
         private DataTable QueryRawData(DateTime fromDate, DateTime toDate, string spName, bool isLicPerf)
         {
-            var dataTable = new DataTable();
+            DataTable dataTable;
 
             using (ObjectDb db = new ObjectDb(spName, 0))
             {

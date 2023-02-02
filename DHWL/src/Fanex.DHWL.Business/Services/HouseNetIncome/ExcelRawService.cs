@@ -7,7 +7,7 @@ namespace Fanex.DHWL.Business.Services
 {
     public interface ExcelRawService
     {
-        string Export(DataTable dataTable, string fileName, DateTime fromdate, DateTime todate);
+        string Export(DataTable dailyRawData, string fileName, DateTime fromdate, DateTime todate);
     }
 
     public class ExcelRawServiceImp : ExcelRawService
@@ -23,22 +23,22 @@ namespace Fanex.DHWL.Business.Services
             this.dateService = dateService;
         }
 
-        public string Export(DataTable dataTable, string fileName, DateTime fromdate, DateTime todate)
+        public string Export(DataTable dailyRawData, string fileName, DateTime fromdate, DateTime todate)
         {
             excelPackage = new ExcelPackage(new FileInfo($"Templates/DHWL-RawData.xlsx"));
             var template = excelPackage.Workbook.Worksheets["DHWL-RawData"];
-            template.Cells["B5"].LoadFromDataTable(dataTable, true);
+            template.Cells["B5"].LoadFromDataTable(dailyRawData, true);
 
             RenderTitle(template, fromdate, todate);
-            RenderData(dataTable, template);
+            RenderData(dailyRawData, template);
 
             return Save(fileName);
         }
 
-        private void RenderData(DataTable dataTable, ExcelWorksheet template)
+        private void RenderData(DataTable dailyRawData, ExcelWorksheet template)
         {
             var startRowIndex = 6;
-            var maxRowIndex = dataTable.Rows.Count + startRowIndex - 1;
+            var maxRowIndex = dailyRawData.Rows.Count + startRowIndex - 1;
 
             for (int rowIndex = startRowIndex; rowIndex <= maxRowIndex; rowIndex++)
             {
@@ -51,7 +51,7 @@ namespace Fanex.DHWL.Business.Services
                 template.Column(columnIndex).AutoFit();
             }
 
-            for (int columnIndex = 11; columnIndex <= dataTable.Columns.Count + 1; columnIndex++)
+            for (int columnIndex = 11; columnIndex <= dailyRawData.Columns.Count + 1; columnIndex++)
             {
                 template.Cells[startRowIndex - 1, columnIndex, startRowIndex - 1, columnIndex].StyleID = template.Cells[startRowIndex - 1, 11].StyleID;
                 template.Cells[startRowIndex, columnIndex, maxRowIndex, columnIndex].StyleID = template.Cells[startRowIndex, 11].StyleID;

@@ -16,37 +16,73 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
         public List<MonthlyDHWLModel> CalTotalByProduct(DataTable monthlyRawData)
         {
             var result = new List<MonthlyDHWLModel>();
+            var resultSubTotal = new List<MonthlyDHWLModel>();
 
-            monthlyRawData.AsEnumerable()
-                .Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver))
-                .GroupBy(g => new
-                {
-                    ProductShortName = g[ColumnName.ProductShortName].ToString(),
-                    ProductGroup = g[ColumnName.ProductGroup].ToString(),
-                    OrderByProduct = Converter.To<int>(g[ColumnName.OrderByProduct])
-                })
-                .ToList()
-                .ForEach(product =>
-                {
-                    var row = new MonthlyDHWLModel
-                    {
-                        ProductShortName = product.Key.ProductShortName,
-                        ProductGroup = product.Key.ProductGroup,
-                        OrderByProduct = product.Key.OrderByProduct,
+            CalcWinLossAndMTDByProduct(monthlyRawData, result);
+            CalcSubTotalByProduct(result, resultSubTotal);
 
-                        WinLossMonthly = product.Sum(s => Converter.To<decimal>(s[ColumnName.Monthly])),
-                        WinLossMTD = product.Sum(s => Converter.To<decimal>(s[ColumnName.MTD]))
-                    };
+            CalcTotal(result, resultSubTotal);
 
-                    result.Add(row);
-                });
-
-            CalcTotal(result);
-
-            return result.OrderBy(o => o.OrderByProduct).ToList();
+            return resultSubTotal.OrderBy(o => o.OrderByProduct).ToList();
         }
 
-        private void CalcTotal(List<MonthlyDHWLModel> result)
+        private static void CalcWinLossAndMTDByProduct(DataTable monthlyRawData, List<MonthlyDHWLModel> result)
+        {
+            monthlyRawData.AsEnumerable()
+                            .Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver))
+                            .GroupBy(g => new
+                            {
+                                ProductShortName = g[ColumnName.ProductShortName].ToString(),
+                                ProductGroup = g[ColumnName.ProductGroup].ToString(),
+                                OrderByProduct = Converter.To<int>(g[ColumnName.OrderByProduct])
+                            })
+                            .ToList()
+                            .ForEach(product =>
+                            {
+                                var row = new MonthlyDHWLModel
+                                {
+                                    ProductShortName = product.Key.ProductShortName,
+                                    ProductGroup = product.Key.ProductGroup,
+                                    OrderByProduct = product.Key.OrderByProduct,
+
+                                    WinLossMonthly = product.Sum(s => Converter.To<decimal>(s[ColumnName.Monthly])),
+                                    WinLossMTD = product.Sum(s => Converter.To<decimal>(s[ColumnName.MTD]))
+                                };
+
+                                result.Add(row);
+                            });
+        }
+
+        private static void CalcSubTotalByProduct(List<MonthlyDHWLModel> result, List<MonthlyDHWLModel> resultSubTotal)
+        {
+            result.GroupBy(g => g.ProductGroup)
+                            .ToList()
+                            .ForEach(productGroup =>
+                            {
+                                resultSubTotal.Add(new MonthlyDHWLModel
+                                {
+                                    ProductShortName = productGroup.Key,
+                                    ProductGroup = $"{productGroup.Key}",
+                                    WinLossMonthly = productGroup.Sum(g => g.WinLossMonthly),
+                                    WinLossMTD = productGroup.Sum(s => s.WinLossMTD),
+                                    OrderByProduct = productGroup.Min(g => g.OrderByProduct) - 1,
+                                });
+
+                                productGroup.ToList().ForEach(product =>
+                                {
+                                    resultSubTotal.Add(new MonthlyDHWLModel
+                                    {
+                                        ProductShortName = product.ProductShortName,
+                                        WinLossMonthly = product.WinLossMonthly,
+                                        WinLossMTD = product.WinLossMTD,
+                                        ProductGroup = product.ProductGroup,
+                                        OrderByProduct = product.OrderByProduct,
+                                    });
+                                });
+                            });
+        }
+
+        private void CalcTotal(List<MonthlyDHWLModel> result, List<MonthlyDHWLModel> resultSubTotal)
         {
             var winLossMonthly = result.Sum(s => s.WinLossMonthly);
             var winLossMTD = result.Sum(s => s.WinLossMTD);
@@ -61,7 +97,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             var adj = new MonthlyDHWLModel
             {
                 ProductShortName = "Adjustment",
-                ProductGroup = "Adjustment",
+                ProductGroup = "Total",
                 OrderByProduct = 1001,
                 WinLossMTD = winLossMonthly - winLossMTD,
             };
@@ -69,14 +105,14 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             var netIncome = new MonthlyDHWLModel
             {
                 ProductShortName = "Net Income",
-                ProductGroup = "Net Income",
+                ProductGroup = "Total",
                 OrderByProduct = 1002,
                 WinLossMTD = winLossMonthly,
             };
 
-            result.Add(total);
-            result.Add(adj);
-            result.Add(netIncome);
+            resultSubTotal.Add(total);
+            resultSubTotal.Add(adj);
+            resultSubTotal.Add(netIncome);
         }
     }
 }

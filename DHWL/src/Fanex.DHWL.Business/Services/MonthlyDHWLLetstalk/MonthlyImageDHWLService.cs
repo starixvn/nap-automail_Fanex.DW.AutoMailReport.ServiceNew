@@ -6,14 +6,14 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
 {
     public interface MonthlyImageDHWLService
     {
-        List<string> Export(DataTable monthlyRawData, DataTable dataReconciliation, DataTable dataBA, int reportId);
+        List<string> Export(DataTable monthlyRawData, DataTable dataReconciliation, DataTable dataBa, int reportId);
 
         string FileName { get; set; }
     }
 
     public class MonthlyImageDHWLServiceImp : MonthlyImageDHWLService
     {
-        private readonly MonthlyExcelDHWLService excelDHWLService;
+        private readonly MonthlyExcelDHWLService excelDhwlService;
         private readonly ImageService imageService;
         private readonly MergeProductDataService mergeProductDataService;
 
@@ -23,34 +23,34 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
         }
 
         public MonthlyImageDHWLServiceImp(
-            MonthlyExcelDHWLService excelDHWLService,
+            MonthlyExcelDHWLService excelDhwlService,
             ImageService imageService,
             MergeProductDataService mergeProductDataService)
         {
-            this.excelDHWLService = excelDHWLService;
+            this.excelDhwlService = excelDhwlService;
             this.imageService = imageService;
             this.mergeProductDataService = mergeProductDataService;
         }
 
-        public List<string> Export(DataTable monthlyRawData, DataTable dataReconciliation, DataTable dataBA, int reportId)
+        public List<string> Export(DataTable monthlyRawData, DataTable dataReconciliation, DataTable dataBa, int reportId)
         {
             mergeProductDataService.MergeVGamingIntoSabaC(monthlyRawData);
-            var excelPath = excelDHWLService.Export(monthlyRawData, dataReconciliation, dataBA, reportId);
+            var excelPath = excelDhwlService.Export(monthlyRawData, dataReconciliation, dataBa, reportId);
             FileName = excelPath;
 
-            var imageDHWLMonthly = ExportDHWLMonthly(excelPath);
+            var imageDhwlMonthly = ExportDhwlMonthly(excelPath);
             var imageAdjustmentMonthly = ExportAdjustmentMonthly(excelPath);
 
             var result = AppConfigService.Config.IsAttachAdjument
-                ? new List<string> { imageDHWLMonthly, imageAdjustmentMonthly }
-                : new List<string> { imageDHWLMonthly, };
+                ? new List<string> { imageDhwlMonthly, imageAdjustmentMonthly }
+                : new List<string> { imageDhwlMonthly, };
 
             return result;
         }
 
-        private string ExportDHWLMonthly(string excelPath)
+        private string ExportDhwlMonthly(string excelPath)
         {
-            var lastRow = excelDHWLService.LastRowIndex;
+            var lastRow = excelDhwlService.LastRowIndex;
             var image = AppConfigService.Config.ImageSettings["DHWL"];
             image.LastRow = lastRow;
             image.CropHeight = lastRow * image.HeightPerRow + image.AdjustHeight;
@@ -59,7 +59,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
 
         private string ExportAdjustmentMonthly(string excelPath)
         {
-            var lastRow = excelDHWLService.LastAdjustmentRowIndex;
+            var lastRow = excelDhwlService.LastAdjustmentRowIndex;
             var image = AppConfigService.Config.ImageSettings["Adjustment"];
             image.LastRow = lastRow;
             image.CropHeight = lastRow * image.HeightPerRow + image.AdjustHeight;

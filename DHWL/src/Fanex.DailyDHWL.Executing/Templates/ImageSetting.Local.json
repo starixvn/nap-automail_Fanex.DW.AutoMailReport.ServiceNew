@@ -2,18 +2,17 @@
   "DHWL": {
     "FirstRow": 2,
     "FirstColumn": 2,
-    "LastRow": 54,
-    "LastColumn": 4,
-    "CropWidth": 1050,
+    "LastColumn": 16,
+    "CropWidth": 3050,
     "ImageName": "HNI-Daily",
     "SheetName": "Letstalk",
     "X": 200,
-    "Y": 230,
+    "Y": 260,
     "IsResize": false,
     "ResizeNewWidth": 500,
     "ImageQuality": 100,
-    "HeightPerRow": 60,
-    "AdjustHeight": 0
+    "HeightPerRow": 75,
+    "AdjustHeight": 50
   },
   "Margin": {
     "FirstRow": 1,
@@ -27,7 +26,7 @@
     "IsResize": true,
     "ResizeNewWidth": 1000,
     "ImageQuality": 100,
-    "HeightPerRow": 80,
-    "AdjustHeight": "00"
+    "HeightPerRow": 77,
+    "AdjustHeight": 0
   }
 }

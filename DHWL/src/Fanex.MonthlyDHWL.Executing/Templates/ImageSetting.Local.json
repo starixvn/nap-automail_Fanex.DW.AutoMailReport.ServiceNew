@@ -1,33 +1,32 @@
 ﻿{
   "DHWL": {
-    "FirstRow": 1,
+    "FirstRow": 2,
     "FirstColumn": 2,
-    "LastRow": 54,
-    "LastColumn": 4,
-    "CropWidth": 950,
+    "LastColumn": 17,
+    "CropWidth": 2170,
     "ImageName": "Monthly-Monthly",
     "SheetName": "Letstalk",
     "X": 200,
-    "Y": 230,
-    "IsResize": false,
-    "ResizeNewWidth": 500,
+    "Y": 200,
+    "IsResize": true,
+    "ResizeNewWidth": 800,
     "ImageQuality": 100,
-    "HeightPerRow": 70,
-    "AdjustHeight": "00"
+    "HeightPerRow": 85,
+    "AdjustHeight": 0
   },
   "Adjustment": {
-    "FirstRow": 1,
-    "FirstColumn": 9,
-    "LastColumn": 11,
+    "FirstRow": 2,
+    "FirstColumn": 23,
+    "LastColumn": 25,
     "CropWidth": 1400,
     "ImageName": "Adj",
     "SheetName": "Letstalk",
     "X": 200,
-    "Y": 230,
-    "IsResize": true,
+    "Y": 220,
+    "IsResize": false,
     "ResizeNewWidth": 800,
     "ImageQuality": 100,
-    "HeightPerRow": 80,
-    "AdjustHeight": 0
+    "HeightPerRow": 70,
+    "AdjustHeight": 30
   }
 }

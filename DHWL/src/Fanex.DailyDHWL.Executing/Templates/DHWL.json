@@ -3,14 +3,14 @@
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
   "IsCheckEnoughData": false,
   "ReportType": "Manual",
-  "FromDate": "2022-04-01",
-  "ToDate": "2022-04-08",
+  "FromDate": "2023-01-01",
+  "ToDate": "2023-01-31",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\NEW-DHWL",
   "Password": "",
   "TargetName": "daily-house-wl",
   "LetstalkGroup": "DWHL-UAT",
   "ProductList": "All",
-  "DataMode": 2,
+  "DataMode": 1,
   "PerformanceThreshold": 300000,
   "LetstalkGroups": {
     "Image": {
