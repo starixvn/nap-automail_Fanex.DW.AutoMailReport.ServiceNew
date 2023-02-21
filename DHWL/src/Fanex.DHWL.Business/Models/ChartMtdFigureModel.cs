@@ -12,8 +12,8 @@
             {
                 var diff = Mtd - PreviousMtd;
                 var result = diff > 0
-                    ? $"+{diff / PreviousMtd:P}"
-                    : $"{diff / PreviousMtd:P}";
+                    ? $"+{(diff / PreviousMtd) * 100:N}%"
+                    : $"{(diff / PreviousMtd) * 100:N}%";
 
                 return result;
             }
