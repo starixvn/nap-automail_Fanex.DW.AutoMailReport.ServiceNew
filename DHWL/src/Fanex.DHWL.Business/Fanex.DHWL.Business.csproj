@@ -188,6 +188,7 @@
     <Compile Include="Criterias\GetProductInfoCriteria.cs" />
     <Compile Include="Models\AdjustmentModel.cs" />
     <Compile Include="Models\ChartAreasPosition.cs" />
+    <Compile Include="Models\ChartMtdFigureModel.cs" />
     <Compile Include="Models\ColumnIndex.cs" />
     <Compile Include="Models\ColumnName.cs" />
     <Compile Include="Models\ConfigSettingModel.cs" />
@@ -215,6 +216,7 @@
     <Compile Include="Services\Chart\ChartDataService.cs" />
     <Compile Include="Services\Chart\ChartExport.cs" />
     <Compile Include="Services\Chart\ChartService.cs" />
+    <Compile Include="Services\DateTimePreviousYearServiceImp.cs" />
     <Compile Include="Services\LicenseePerformance\MergeProductDataService.cs" />
     <Compile Include="Services\MonthlyDHWLNotificationService.cs" />
     <Compile Include="Services\MonthlyDHWLLetstalk\MonthlyDataDHWLService.cs" />

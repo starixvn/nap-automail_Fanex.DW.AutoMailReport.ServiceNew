@@ -7,7 +7,7 @@ namespace Fanex.DHWL.Business.Services
 {
     public class DateTimeLastMonthServiceImp : DateTimeService
     {
-        private DateTimeService dateTimeService = Date[AppConfigService.Config.ReportType];
+        private readonly DateTimeService dateTimeService = Date[AppConfigService.Config.ReportType];
 
         private static Dictionary<ReportType, DateTimeService> Date
         {

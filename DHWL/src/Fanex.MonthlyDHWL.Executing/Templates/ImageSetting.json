@@ -1,32 +1,32 @@
 ﻿{
   "DHWL": {
-    "FirstRow": 1,
+    "FirstRow": 2,
     "FirstColumn": 2,
-    "LastColumn": 3,
-    "CropWidth": 650,
+    "LastColumn": 17,
+    "CropWidth": 1480,
     "ImageName": "Monthly-House-Net-Income",
     "SheetName": "Letstalk",
     "X": 130,
-    "Y": 160,
-    "IsResize": true,
+    "Y": 130,
+    "IsResize": false,
     "ResizeNewWidth": 1300,
     "ImageQuality": 100,
     "HeightPerRow": 52,
-    "AdjustHeight": -20
+    "AdjustHeight": 180
   },
   "Adjustment": {
-    "FirstRow": 1,
-    "FirstColumn": 9,
-    "LastColumn": 11,
+    "FirstRow": 2,
+    "FirstColumn": 23,
+    "LastColumn": 25,
     "CropWidth": 960,
     "ImageName": "Adjustment",
     "SheetName": "Letstalk",
     "X": 130,
-    "Y": 160,
+    "Y": 140,
     "IsResize": false,
     "ResizeNewWidth": 500,
     "ImageQuality": 100,
     "HeightPerRow": 52,
-    "AdjustHeight": 20
+    "AdjustHeight": 0
   }
 }

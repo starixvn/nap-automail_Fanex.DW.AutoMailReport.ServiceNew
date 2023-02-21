@@ -1,14 +1,12 @@
 ﻿using Fanex.DHWL.Business.Models;
-using Newtonsoft.Json;
 using System.Data;
-using System.IO;
 using System.Linq;
 
 namespace Fanex.DHWL.Business.Services
 {
     public interface ChartExport
     {
-        string Export(DataTable rawDataAllProducts);
+        string Export(DataTable rawDataAllProducts, DataTable previousRawData);
     }
 
     public class ChartExportImp : ChartExport
@@ -24,20 +22,28 @@ namespace Fanex.DHWL.Business.Services
             this.chartService = chartService;
         }
 
-        public string Export(DataTable rawDataAllProducts)
+        public string Export(DataTable rawDataAllProducts, DataTable previousRawData)
         {
-            var result = rawDataAllProducts.Rows.Count > 0
+            var dailyResult = rawDataAllProducts.Rows.Count > 0
                 ? rawDataAllProducts.AsEnumerable().Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver)).CopyToDataTable()
                 : rawDataAllProducts;
-            var sbfigure = calculatorService.CalculateSportsbookTotalForDaily(result);
-            var totalFigure = calculatorService.CalculateGrandTotalForDaily(result);
+            var previousResult = previousRawData.Rows.Count > 0
+                ? previousRawData.AsEnumerable().Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver)).CopyToDataTable()
+                : previousRawData;
 
-            var json_sbfigure = JsonConvert.SerializeObject(sbfigure, Formatting.Indented);
-            var json_totalFigure = JsonConvert.SerializeObject(totalFigure, Formatting.Indented);
-            File.WriteAllText($"{AppConfigService.Config.Path}/json_sbfigure.json", json_sbfigure);
-            File.WriteAllText($"{AppConfigService.Config.Path}/json_totalFigure.json", json_totalFigure);
+            var sbFigure = calculatorService.CalculateSportsbookTotalForDaily(dailyResult);
+            var totalFigure = calculatorService.CalculateGrandTotalForDaily(dailyResult);
+            var previousTotalFigure = calculatorService.CalculateGrandTotalForDaily(previousResult);
 
-            var chartPath = chartService.ExportDailyChart(sbfigure, totalFigure);
+            var mtd = totalFigure.Sum(s => s.Value);
+            var previousMtd = previousTotalFigure.Sum(s => s.Value);
+            var mtdFigure = new ChartMtdFigureModel
+            {
+                Mtd = mtd,
+                PreviousMtd = previousMtd
+            };
+
+            var chartPath = chartService.ExportDailyChart(sbFigure, totalFigure, mtdFigure);
 
             return chartPath;
         }

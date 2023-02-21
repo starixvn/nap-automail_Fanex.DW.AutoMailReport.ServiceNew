@@ -22,7 +22,7 @@ namespace Fanex.DHWL.Business.Services
         private readonly MailService mailService;
         private readonly FileService fileService;
         private readonly BaseDataTable baseDataTable;
-        private readonly MonthlyImageDHWLService imageDHWLService;
+        private readonly MonthlyImageDHWLService imageDhwlService;
         private readonly DateTimeServiceProvider dateTimeServiceProvider;
 
         public MonthlyDHWLNotificationServiceImp(
@@ -33,7 +33,7 @@ namespace Fanex.DHWL.Business.Services
             MailService mailService,
             FileService fileService,
             BaseDataTable baseDataTable,
-            MonthlyImageDHWLService imageDHWLService,
+            MonthlyImageDHWLService imageDhwlService,
             DateTimeServiceProvider dateTimeServiceProvider)
         {
             this.log = log;
@@ -43,7 +43,7 @@ namespace Fanex.DHWL.Business.Services
             this.mailService = mailService;
             this.fileService = fileService;
             this.baseDataTable = baseDataTable;
-            this.imageDHWLService = imageDHWLService;
+            this.imageDhwlService = imageDhwlService;
             this.dateTimeServiceProvider = dateTimeServiceProvider;
         }
 
@@ -92,24 +92,24 @@ namespace Fanex.DHWL.Business.Services
                 };
             }
 
-            var monthlyRawData = dataService.QueryDHWLData();
+            var monthlyRawData = dataService.QueryDhwlData();
             var dataSetReconciliation = dataService.QueryReconciliation();
             var dataReconciliation = dataSetReconciliation.Tables[0];
-            var dataBA = dataSetReconciliation.Tables[1];
+            var dataBa = dataSetReconciliation.Tables[1];
 
-            var fromdate = dateTimeServiceProvider.DateTime.FromDate;
-            var todate = dateTimeServiceProvider.DateTime.ToDate;
+            var fromDate = dateTimeServiceProvider.DateTime.FromDate;
+            var toDate = dateTimeServiceProvider.DateTime.ToDate;
 
             var reportId = 1;
-            excelRawService.Export(monthlyRawData, "Monthly", fromdate, todate);
-            var images = imageDHWLService.Export(monthlyRawData, dataReconciliation, dataBA, reportId);
+            excelRawService.Export(monthlyRawData, "Monthly", fromDate, toDate);
+            var images = imageDhwlService.Export(monthlyRawData, dataReconciliation, dataBa, reportId);
 
             CopyFiles(images);
             var status = messageService.SendMessage(images, AppConfigService.Config.LetstalkGroup);
             var errFile = status.Where(s => !s.Value).Select(s => s.Key).ToList();
 
-            var subject = $"Automail Report - Monthly HWL Report and Licensee Rebate & Discount Data Soft Copy Files - {todate:yyyy/MM/dd}";
-            var excelPath = imageDHWLService.FileName;
+            var subject = $"Automail Report - Monthly HWL Report and Licensee Rebate & Discount Data Soft Copy Files - {toDate:yyyy/MM/dd}";
+            var excelPath = imageDhwlService.FileName;
             var mail = mailService.SendMail(excelPath, subject);
 
             return new ExecuteResultModel

@@ -5,7 +5,7 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
 {
     public interface DailyImageDHWLService
     {
-        string Export(DataTable dailyRawData, int reportId);
+        string Export(DataTable dailyRawData);
     }
 
     public class DailyImageDHWLServiceImp : DailyImageDHWLService
@@ -24,11 +24,11 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
             this.mergeProductDataService = mergeProductDataService;
         }
 
-        public string Export(DataTable dailyRawData, int reportId)
+        public string Export(DataTable dailyRawData)
         {
             mergeProductDataService.MergeVGamingIntoSabaC(dailyRawData);
 
-            var excelPath = excelDHWLService.Export(dailyRawData, reportId);
+            var excelPath = excelDHWLService.Export(dailyRawData);
             var lastRow = excelDHWLService.LastRowIndex;
             var image = AppConfigService.Config.ImageSettings["DHWL"];
             image.LastRow = lastRow;

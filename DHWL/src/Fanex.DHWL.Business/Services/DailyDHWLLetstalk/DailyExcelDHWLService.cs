@@ -1,5 +1,6 @@
 ﻿using Fanex.DHWL.Business.Models;
 using OfficeOpenXml;
+using OfficeOpenXml.Style;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -9,14 +10,14 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
 {
     public interface DailyExcelDHWLService
     {
-        string Export(DataTable dailyRawData, int reportId);
+        string Export(DataTable dailyRawData);
 
         int LastRowIndex { get; set; }
     }
 
     public class DailyExcelDHWLServiceImp : DailyExcelDHWLService
     {
-        private readonly DailyDataDHWLService dataDHWLService;
+        private readonly DailyDataDHWLService dataDhwlService;
         private ExcelPackage excelPackage;
         private readonly DateTimeServiceProvider dateService;
         private const int StartRowIndex = 4;
@@ -27,32 +28,97 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
         }
 
         public DailyExcelDHWLServiceImp(
-            DailyDataDHWLService dataDHWLService,
+            DailyDataDHWLService dataDhwlService,
             DateTimeServiceProvider dateService)
         {
-            this.dataDHWLService = dataDHWLService;
+            this.dataDhwlService = dataDhwlService;
             this.dateService = dateService;
         }
 
-        public string Export(DataTable dailyRawData, int reportId)
+        public string Export(DataTable dailyRawData)
         {
-            var dataDHWL = dataDHWLService.CalTotalByProduct(dailyRawData);
+            var dataDhwl = dataDhwlService.CalTotalByProduct(dailyRawData);
 
             excelPackage = new ExcelPackage(new FileInfo($"Templates/DHWL-Letstalk.xlsx"));
             var dailyTemplate = excelPackage.Workbook.Worksheets["Letstalk"];
             var formatTpl = excelPackage.Workbook.Worksheets["Format"];
             excelPackage.Workbook.Worksheets.Delete(formatTpl);
 
-            RenderTitle(dailyTemplate, reportId);
-            RenderData(dataDHWL, dailyTemplate);
-            FormatData(dataDHWL, dailyTemplate, formatTpl);
+            RenderTitle(dailyTemplate);
+            RenderDataGroup1("B4", dataDhwl, dailyTemplate, formatTpl);
+            RenderDataGroup2("H4", dataDhwl, dailyTemplate, formatTpl);
+            RenderDataGroup3("N4", dataDhwl, dailyTemplate, formatTpl);
+            RenderGrandTotal(dataDhwl, dailyTemplate, formatTpl);
 
-            return Save();
+            return Save(dailyTemplate);
         }
 
-        private void RenderData(List<DailyDHWLModel> data, ExcelWorksheet template)
+        private void RenderGrandTotal(List<DailyDHWLModel> dataDhwl, ExcelWorksheet dailyTemplate, ExcelWorksheet formatTpl)
         {
-            template.Cells["B4"].LoadFromCollection(data, false);
+            var endRow = dailyTemplate.Dimension.End.Row + 2;
+            LastRowIndex = endRow;
+            formatTpl.Cells["B12:P12"].Copy(dailyTemplate.Cells[endRow, 2, endRow, 16]);
+            dailyTemplate.Row(endRow - 1).Height = 10;
+            dailyTemplate.Row(endRow).Height = 25;
+
+            var grandTotal = dataDhwl.FirstOrDefault(s => s.ProductGroup == "Total");
+            dailyTemplate.Cells[endRow, 2, endRow, 4].Merge = true;
+            dailyTemplate.Cells[endRow, 2, endRow, 4].Value = "Grand Total";
+            dailyTemplate.Cells[endRow, 2, endRow, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+            dailyTemplate.Cells[endRow, 2, endRow, 4].Style.Indent = 1;
+
+            dailyTemplate.Cells[endRow, 5, endRow, 10].Merge = true;
+            if (grandTotal != null)
+            {
+                dailyTemplate.Cells[endRow, 5, endRow, 10].Value = grandTotal.WinLossYesterday;
+                dailyTemplate.Cells[endRow, 5, endRow, 10].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+
+                dailyTemplate.Cells[endRow, 11, endRow, 16].Merge = true;
+                dailyTemplate.Cells[endRow, 11, endRow, 16].Value = grandTotal.WinLossMTD;
+            }
+
+            dailyTemplate.Cells[endRow, 11, endRow, 16].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+        }
+
+        private void RenderDataGroup1(string loadDataAtCell, List<DailyDHWLModel> dataDhwl, ExcelWorksheet dailyTemplate, ExcelWorksheet formatTpl)
+        {
+            var productGroup1 = new List<string> { "Sportsbook", "Live Casino" };
+            var dataGroup1 = dataDhwl.Where(s => productGroup1.Contains(s.ProductGroup)).ToList();
+
+            var startCol = 2;
+            var endCol = 4;
+            RenderData(loadDataAtCell, dataGroup1, dailyTemplate, startCol, endCol);
+            FormatData(dataGroup1, dailyTemplate, formatTpl, startCol, endCol);
+        }
+
+        private void RenderDataGroup2(string loadDataAtCell, List<DailyDHWLModel> dataDhwl, ExcelWorksheet dailyTemplate, ExcelWorksheet formatTpl)
+        {
+            var productGroup2 = new List<string> { "RNG Casino" };
+            var dataGroup2 = dataDhwl.Where(s => productGroup2.Contains(s.ProductGroup)).ToList();
+
+            var startCol = 8;
+            var endCol = 10;
+            RenderData(loadDataAtCell, dataGroup2, dailyTemplate, startCol, endCol);
+            FormatData(dataGroup2, dailyTemplate, formatTpl, startCol, endCol);
+        }
+
+        private void RenderDataGroup3(string loadDataAtCell, List<DailyDHWLModel> dataDhwl, ExcelWorksheet dailyTemplate, ExcelWorksheet formatTpl)
+        {
+            var productGroup3 = new List<string> { "Lottery/Keno", "Others" };
+            var dataGroup3 = dataDhwl.Where(s => productGroup3.Contains(s.ProductGroup)).ToList();
+
+            var startCol = 14;
+            var endCol = 16;
+            RenderData(loadDataAtCell, dataGroup3, dailyTemplate, startCol, endCol);
+            FormatData(dataGroup3, dailyTemplate, formatTpl, startCol, endCol);
+            var lastRowIndex = dataGroup3.Count + 4;
+            dailyTemplate.Cells[lastRowIndex, 16].Value = "ReportID #01";
+            dailyTemplate.Cells[lastRowIndex, 16].StyleID = formatTpl.Cells["B10"].StyleID;
+        }
+
+        private void RenderData(string loadDataAtCell, List<DailyDHWLModel> data, ExcelWorksheet template, int startCol, int endCol)
+        {
+            template.Cells[loadDataAtCell].LoadFromCollection(data, false);
 
             var maxRowIndex = data.Count + StartRowIndex - 1;
 
@@ -61,29 +127,17 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
                 template.Row(rowIndex).Height = 19.5;
             }
 
-            for (int columnIndex = 2; columnIndex <= 7; columnIndex++)
+            for (int columnIndex = startCol; columnIndex <= endCol; columnIndex++)
             {
-                if (columnIndex == 5)
-                {
-                    continue;
-                }
-
                 template.Cells[StartRowIndex, columnIndex, maxRowIndex, columnIndex].StyleID = template.Cells[StartRowIndex, columnIndex].StyleID;
             }
         }
 
-        private void FormatData(List<DailyDHWLModel> data, ExcelWorksheet template, ExcelWorksheet formatTpl)
+        private void FormatData(List<DailyDHWLModel> data, ExcelWorksheet template, ExcelWorksheet formatTpl, int startCol, int endCol)
         {
             var starIndexGroup = StartRowIndex;
             var endIndexGroup = starIndexGroup;
             var isStart = false;
-            var skipInsertBreakRow = new List<string> { "Total" };
-            var productGroups = data.GroupBy(g => new { ProductGroup = g.ProductGroup }).Select(p => p.Key.ProductGroup).ToList();
-            if (productGroups.Count > 1)
-            {
-                var beforeLastestGroup = productGroups[productGroups.Count - 2];
-                skipInsertBreakRow.Add(beforeLastestGroup);
-            }
 
             data.GroupBy(g => new { ProductGroup = g.ProductGroup }).ToList()
                 .ForEach(productGroup =>
@@ -98,32 +152,21 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
                         starIndexGroup = endIndexGroup + 1;
                     }
 
+                    template.Cells[starIndexGroup, startCol].StyleID = formatTpl.Cells["B6"].StyleID;
+                    template.Cells[starIndexGroup, startCol + 1, starIndexGroup, endCol].StyleID = formatTpl.Cells["D6"].StyleID;
+
                     endIndexGroup = starIndexGroup + productGroup.Count() - 1;
-
-                    if (!skipInsertBreakRow.Contains(productGroup.Key.ProductGroup))
-                    {
-                        template.InsertRow(endIndexGroup + 1, 1);
-                        starIndexGroup++;
-                        endIndexGroup++;
-                        template.Cells[endIndexGroup, 2, endIndexGroup, 4].StyleID = formatTpl.Cells["B2"].StyleID;
-                        template.Row(endIndexGroup).Height = 5;
-                    }
                 });
-
-            LastRowIndex = endIndexGroup;
-            for (var columnIndex = 2; columnIndex <= 4; columnIndex++)
-            {
-                var rowTplIndex = 4;
-                for (var rowInex = endIndexGroup; rowInex <= endIndexGroup + 5; rowInex++)
-                {
-                    template.Cells[rowInex, columnIndex].StyleID = formatTpl.Cells[rowTplIndex, columnIndex].StyleID;
-                    rowTplIndex++;
-                }
-            }
         }
 
-        private string Save()
+        private string Save(ExcelWorksheet dailyTemplate)
         {
+            var delCols = new List<int> { 6, 7, 12, 13, 18, 19 };
+            delCols.ForEach(col =>
+            {
+                dailyTemplate.Column(col).Hidden = true;
+            });
+
             var date = dateService.DateTime.ToDate;
             var fileName = $"Daily-DHWL-{date:yyyy_MM_dd}.xlsx";
 
@@ -139,11 +182,12 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
             return path;
         }
 
-        private void RenderTitle(ExcelWorksheet template, int reportId)
+        private void RenderTitle(ExcelWorksheet template)
         {
-            var todate = dateService.DateTime.ToDate;
-            template.Cells["B2"].Value = $"{template.Cells["B2"].Value}.{reportId}";
-            template.Cells["C3"].Value = $"{todate:dd-MMM-yyyy}";
+            var toDate = dateService.DateTime.ToDate;
+            template.Cells["C3"].Value = $"{toDate:dd-MMM-yyyy}";
+            template.Cells["I3"].Value = $"{toDate:dd-MMM-yyyy}";
+            template.Cells["O3"].Value = $"{toDate:dd-MMM-yyyy}";
         }
     }
 }

@@ -48,3 +48,4 @@ Fanex.AccountingReports.sln
 /Fanex.AccountingReports.Websites/App_Data/user-activity*.json
 **/node_modules/**
 /package-lock.json
+.vs*/

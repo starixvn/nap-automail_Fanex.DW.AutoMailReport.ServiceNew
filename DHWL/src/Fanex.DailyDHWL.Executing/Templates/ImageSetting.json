@@ -2,17 +2,17 @@
   "DHWL": {
     "FirstRow": 2,
     "FirstColumn": 2,
-    "LastColumn": 4,
-    "CropWidth": 725,
+    "LastColumn": 16,
+    "CropWidth": 2070,
     "ImageName": "HNI-Daily",
     "SheetName": "Letstalk",
     "X": 130,
-    "Y": 160,
+    "Y": 180,
     "IsResize": false,
     "ResizeNewWidth": 300,
     "ImageQuality": 100,
     "HeightPerRow": 52,
-    "AdjustHeight": -20
+    "AdjustHeight": 0
   },
   "Margin": {
     "FirstRow": 1,

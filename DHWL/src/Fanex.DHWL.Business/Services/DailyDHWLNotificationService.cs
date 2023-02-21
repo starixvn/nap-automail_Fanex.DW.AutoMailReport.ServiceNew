@@ -29,7 +29,7 @@ namespace Fanex.DHWL.Business.Services
 
         private readonly ChartExport chartExport;
 
-        private readonly DailyImageDHWLService imageDHWLService;
+        private readonly DailyImageDHWLService imageDhwlService;
         private readonly ImageMarginService imageMarginService;
         private readonly DateTimeServiceProvider dateTimeServiceProvider;
 
@@ -43,7 +43,7 @@ namespace Fanex.DHWL.Business.Services
             MailService mailService,
             BaseDataTable baseDataTable,
             ChartExport chartExport,
-            DailyImageDHWLService imageDHWLService,
+            DailyImageDHWLService imageDhwlService,
             ImageMarginService imageMarginService,
             DateTimeServiceProvider dateTimeServiceProvider)
         {
@@ -56,7 +56,7 @@ namespace Fanex.DHWL.Business.Services
             this.mailService = mailService;
             this.baseDataTable = baseDataTable;
             this.chartExport = chartExport;
-            this.imageDHWLService = imageDHWLService;
+            this.imageDhwlService = imageDhwlService;
             this.imageMarginService = imageMarginService;
             this.dateTimeServiceProvider = dateTimeServiceProvider;
         }
@@ -102,29 +102,30 @@ namespace Fanex.DHWL.Business.Services
                 };
             }
 
-            var dailyRawData = dataService.QueryDHWLData();
+            var dailyRawData = dataService.QueryDhwlData();
             var cloneData = baseDataTable.Clone(dailyRawData);
-            var cloneDataDHWL = baseDataTable.Clone(dailyRawData);
-            var fromdate = dateTimeServiceProvider.DateTime.FromDate;
-            var todate = dateTimeServiceProvider.DateTime.ToDate;
+            var cloneDataDhwl = baseDataTable.Clone(dailyRawData);
+            var fromDate = dateTimeServiceProvider.DateTime.FromDate;
+            var toDate = dateTimeServiceProvider.DateTime.ToDate;
+            var previousRawData = dataService.QueryDhwlDataPreviousYear();
 
-            excelRawService.Export(dailyRawData, "Daily", fromdate, todate);
+            excelRawService.Export(dailyRawData, "Daily", fromDate, toDate);
             var excelPath = excelDailyService.Export(cloneData);
 
             var reportId = 1;
-            var imageDHWLPath = imageDHWLService.Export(cloneDataDHWL, reportId);
+            var imageDhwlPath = imageDhwlService.Export(cloneDataDhwl);
 
             reportId++;
             var imageMarginPath = imageMarginService.Export(dailyRawData, true, reportId);
 
             reportId++;
-            var imageMarginMTDPath = imageMarginService.Export(dailyRawData, false, reportId);
-            var chartPath = chartExport.Export(dailyRawData);
+            var imageMarginMtdPath = imageMarginService.Export(dailyRawData, false, reportId);
+            var chartPath = chartExport.Export(dailyRawData, previousRawData);
             var images = new List<string>
             {
-                imageDHWLPath,
+                imageDhwlPath,
                 imageMarginPath,
-                imageMarginMTDPath,
+                imageMarginMtdPath,
                 chartPath
             };
 
@@ -132,7 +133,7 @@ namespace Fanex.DHWL.Business.Services
             var status = messageService.SendMessage(images, AppConfigService.Config.LetstalkGroup);
 
             var errFile = status.Where(s => !s.Value).Select(s => s.Key).ToList();
-            var subject = $"Automail Report - House Net Income - {todate:yyyy/MM/dd}";
+            var subject = $"Automail Report - House Net Income - {toDate:yyyy/MM/dd}";
             var mail = mailService.SendMail(excelPath, subject);
 
             return new ExecuteResultModel
