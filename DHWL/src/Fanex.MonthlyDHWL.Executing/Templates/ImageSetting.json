@@ -3,16 +3,16 @@
     "FirstRow": 2,
     "FirstColumn": 2,
     "LastColumn": 17,
-    "CropWidth": 1480,
+    "CropWidth": 1466,
     "ImageName": "Monthly-House-Net-Income",
     "SheetName": "Letstalk",
-    "X": 130,
-    "Y": 130,
+    "X": 127,
+    "Y": 138,
     "IsResize": false,
     "ResizeNewWidth": 1300,
     "ImageQuality": 100,
     "HeightPerRow": 52,
-    "AdjustHeight": 180
+    "AdjustHeight": 170
   },
   "Adjustment": {
     "FirstRow": 2,
