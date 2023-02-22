@@ -3,30 +3,30 @@
     "FirstRow": 2,
     "FirstColumn": 2,
     "LastColumn": 17,
-    "CropWidth": 2585,
+    "CropWidth": 2570,
     "ImageName": "Monthly-Monthly",
     "SheetName": "Letstalk",
-    "X": 220,
+    "X": 218,
     "Y": 230,
-    "IsResize": true,
+    "IsResize": false,
     "ResizeNewWidth": 800,
     "ImageQuality": 100,
     "HeightPerRow": 100,
-    "AdjustHeight": 0
+    "AdjustHeight": 12
   },
   "Adjustment": {
     "FirstRow": 2,
     "FirstColumn": 23,
     "LastColumn": 25,
-    "CropWidth": 1645,
+    "CropWidth": 1655,
     "ImageName": "Adj",
     "SheetName": "Letstalk",
-    "X": 240,
-    "Y": 250,
+    "X": 235,
+    "Y": 248,
     "IsResize": false,
     "ResizeNewWidth": 800,
     "ImageQuality": 100,
     "HeightPerRow": 88,
-    "AdjustHeight": 0
+    "AdjustHeight": 13
   }
 }

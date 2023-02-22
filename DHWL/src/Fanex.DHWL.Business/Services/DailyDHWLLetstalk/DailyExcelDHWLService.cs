@@ -72,9 +72,11 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
             {
                 dailyTemplate.Cells[endRow, 5, endRow, 10].Value = grandTotal.WinLossYesterday;
                 dailyTemplate.Cells[endRow, 5, endRow, 10].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                dailyTemplate.Cells[endRow, 5, endRow, 10].Style.Indent = 2;
 
                 dailyTemplate.Cells[endRow, 11, endRow, 16].Merge = true;
                 dailyTemplate.Cells[endRow, 11, endRow, 16].Value = grandTotal.WinLossMTD;
+                dailyTemplate.Cells[endRow, 11, endRow, 16].Style.Indent = 2;
             }
 
             dailyTemplate.Cells[endRow, 11, endRow, 16].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;

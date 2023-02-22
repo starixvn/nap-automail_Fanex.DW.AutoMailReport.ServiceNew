@@ -30,6 +30,7 @@ namespace Fanex.DHWL.Business.Services
         public string ExportDailyChart(Dictionary<int, double> sbFigure, Dictionary<int, double> totalFigure, ChartMtdFigureModel mtdFigure)
         {
             var font = new Font("Tahoma", 14);
+            var fontMtd = new Font("Tahoma", 19);
             var sportBookChart = "Sportsbook";
             var otherProductsChart = "OtherProduct";
             var totalChart = "Total";
@@ -37,7 +38,7 @@ namespace Fanex.DHWL.Business.Services
             Chart chart = new Chart();
 
             ConfigureChartAreas(totalFigure, font, chart);
-            ConfigureChartLegends(font, chart, mtdFigure);
+            ConfigureChartLegends(fontMtd, chart, mtdFigure);
             ConfigurationSportBookChart(font, sportBookChart, chart);
             ConfigurationOtherProductsChart(font, otherProductsChart, chart);
             ConfigurationTotalChart(font, totalChart, chart);
@@ -146,7 +147,7 @@ namespace Fanex.DHWL.Business.Services
             chart.Titles[1].Font = fontMtd;
             chart.Titles[1].Alignment = ContentAlignment.TopLeft;
             chart.Titles[1].ForeColor = Color.FromArgb(44, 185, 91);
-            chart.Titles[1].DockingOffset = -5;
+            chart.Titles[1].DockingOffset = -6;
 
             chart.Legends[0].Docking = Docking.Top;
             chart.Legends[0].IsDockedInsideChartArea = false;
@@ -170,9 +171,9 @@ namespace Fanex.DHWL.Business.Services
             var width = (numberOfDays * 1920 / 31) + 50;
             width = Math.Max(width, 200);
 
-            if (numberOfDays <= 5)
+            if (numberOfDays <= 7)
             {
-                width = 330;
+                width = 483;
             }
 
             var maxValue = Math.Round(totalFigure.Max(s => s.Value) / million, 0) + 1;

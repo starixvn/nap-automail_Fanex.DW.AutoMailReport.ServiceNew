@@ -6,13 +6,13 @@
     "CropWidth": 3050,
     "ImageName": "HNI-Daily",
     "SheetName": "Letstalk",
-    "X": 200,
+    "X": 190,
     "Y": 260,
     "IsResize": false,
-    "ResizeNewWidth": 500,
+    "ResizeNewWidth": 600,
     "ImageQuality": 100,
     "HeightPerRow": 75,
-    "AdjustHeight": 50
+    "AdjustHeight": 60
   },
   "Margin": {
     "FirstRow": 1,

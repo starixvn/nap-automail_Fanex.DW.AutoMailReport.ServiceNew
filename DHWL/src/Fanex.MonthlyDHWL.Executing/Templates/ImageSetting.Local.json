@@ -6,13 +6,13 @@
     "CropWidth": 2170,
     "ImageName": "Monthly-Monthly",
     "SheetName": "Letstalk",
-    "X": 200,
+    "X": 188,
     "Y": 200,
-    "IsResize": true,
+    "IsResize": false,
     "ResizeNewWidth": 800,
     "ImageQuality": 100,
     "HeightPerRow": 85,
-    "AdjustHeight": 0
+    "AdjustHeight": -5
   },
   "Adjustment": {
     "FirstRow": 2,

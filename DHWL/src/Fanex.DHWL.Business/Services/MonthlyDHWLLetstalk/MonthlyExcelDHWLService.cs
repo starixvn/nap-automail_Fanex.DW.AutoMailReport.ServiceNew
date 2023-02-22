@@ -135,6 +135,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
                 template.Cells[lastRow, 10, lastRow, 17].Merge = true;
                 template.Cells[lastRow, 10, lastRow, 17].StyleID = formatTpl.Cells[$"C{templateRow}"].StyleID;
                 template.Cells[lastRow, 10, lastRow, 17].Value = row.WinLossMTD;
+                template.Cells[lastRow, 10, lastRow, 17].Style.Indent = 1;
                 template.Row(lastRow).Height = formatTpl.Row(templateRow).Height;
             });
             ;
