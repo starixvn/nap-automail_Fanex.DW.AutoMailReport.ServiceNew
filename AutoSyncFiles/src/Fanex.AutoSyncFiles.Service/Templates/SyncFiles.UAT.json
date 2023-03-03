@@ -200,6 +200,10 @@
     {
       "Source": "/nap/id39/excel/UAT",
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/39-LiveSoccerPerfKO"
+    },
+    {
+      "Source": "/nap/idm01/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/01-NonLiveSoccerPerf"
     }
   ]
 }

@@ -176,6 +176,10 @@
     {
       "Source": "/nap/id39/excel/LOCAL",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/39-LiveSoccerPerfKO"
+    },
+    {
+      "Source": "/nap/idm01/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/01-NonLiveSoccerPerf"
     }
   ]
 }
