@@ -82,6 +82,10 @@
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/18-TopNonSportPunter"
     },
     {
+      "Source": "/nap/non_sport_punter/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/18-TopNonSportPunter"
+    },
+    {
       "Source": "/nap/top-sb-agent/excel/PROD",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/19-TopSportbookAgents"
     },
