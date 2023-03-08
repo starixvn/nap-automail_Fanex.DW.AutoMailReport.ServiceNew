@@ -43,5 +43,10 @@
     "ReportFile": "Settlement-KPI/Settlement-KPI.json",
     "IsActive": true,
     "IsEmailEnabled": true
+  },
+  {
+    "ReportFile": "CreditHeadlinePerformance/CreditHeadlinePerformance.json",
+    "IsActive": true,
+    "IsEmailEnabled": true
   }
 ]

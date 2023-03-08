@@ -1,0 +1,21 @@
+﻿{
+  "SPName": "Acc_Rpt_Monthly_Credit_Headline_Performance",
+  "DateRange": "Manual",
+  "FromDate": "2020-01-01",
+  "ToDate": "2023-10-10",
+  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\CreditLine",
+  "Password": "",
+  "FunctionIdNodata": 90,
+  "TemplateExcelFile": "CreditHeadlinePerformance/CreditHeadlinePerformance.xlsx",
+  "SheetExcelTemplateName": [ "Data" ],
+  "CellAddressRender": [ "B6" ],
+  "StartExelRowIndex": "6",
+  "EmailTemplate": "CreditHeadlinePerformance/CreditHeadlinePerformance.cshtml",
+  "EmailSubject": "Automail Report - Monthly Credit Headline Performance Report",
+  "MailId": "327",
+  "MailName": "Mail Template Testing",
+  "FileName": "Monthly_Credit_Headline_Performance_Report",
+  "StartExcelColumnIndex": 2,
+  "IsEnabledSectionHeader": true,
+  "Header": "Monthly Credit Headline Performance"
+}
