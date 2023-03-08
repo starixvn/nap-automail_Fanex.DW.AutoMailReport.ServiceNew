@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Functions>
-  <Function SiteId="25" SiteName="Auto Mail">
-    <Setting Key="BI_GetDWStatusByCube" SpName="BI_GetDWStatusByCube" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
-    <Setting Key="GET_SR_League" SpName="GET_SR_League" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
-    <Setting Key="Acc_Rpt_Automail_SportbookMonthlyCredit" SpName="Acc_Rpt_Automail_SportbookMonthlyCredit" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
-    <Setting Key="Acc_Rpt_Automail_EsportsMonthlySite" SpName="Acc_Rpt_Automail_EsportsMonthlySite" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
-    <Setting Key="Acc_Rpt_Automail_Currency" SpName="Acc_Rpt_Automail_Currency" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
-    <Setting Key="Acc_Rpt_Automail_ActiveSuper" SpName="Acc_Rpt_Automail_ActiveSuper" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
-    <Setting Key="NAP_Set_PerformanceReportSel" SpName="NAP_Set_PerformanceReportSel" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
-  </Function>
+	<Function SiteId="25" SiteName="Auto Mail">
+		<Setting Key="BI_GetDWStatusByCube" SpName="BI_GetDWStatusByCube" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+		<Setting Key="GET_SR_League" SpName="GET_SR_League" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+		<Setting Key="Acc_Rpt_Automail_SportbookMonthlyCredit" SpName="Acc_Rpt_Automail_SportbookMonthlyCredit" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+		<Setting Key="Acc_Rpt_Automail_EsportsMonthlySite" SpName="Acc_Rpt_Automail_EsportsMonthlySite" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+		<Setting Key="Acc_Rpt_Automail_Currency" SpName="Acc_Rpt_Automail_Currency" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+		<Setting Key="Acc_Rpt_Automail_ActiveSuper" SpName="Acc_Rpt_Automail_ActiveSuper" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+		<Setting Key="NAP_Set_PerformanceReportSel" SpName="NAP_Set_PerformanceReportSel" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+		<Setting Key="Acc_Rpt_Monthly_Credit_Headline_Performance" SpName="Acc_Rpt_Monthly_Credit_Headline_Performance" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+	</Function>
 </Functions>

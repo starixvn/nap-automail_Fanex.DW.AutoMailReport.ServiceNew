@@ -104,7 +104,7 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
                 newSheet.Cells[startRowIndex, columnIndex, maxRowIndex, columnIndex].StyleID = template.Cells[startRowIndex, columnIndex].StyleID;
             }
 
-            for (int rowIndex = startRowIndex; rowIndex <= maxRowIndex; rowIndex++)
+            for (int rowIndex = startRowIndex - 1; rowIndex <= maxRowIndex; rowIndex++)
             {
                 newSheet.Row(rowIndex).Height = 18;
             }

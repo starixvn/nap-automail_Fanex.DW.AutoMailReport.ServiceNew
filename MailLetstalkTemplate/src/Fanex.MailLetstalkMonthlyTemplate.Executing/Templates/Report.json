@@ -21,7 +21,7 @@
   },
   {
     "ReportFile": "Sportbook-CreditLine/Sportbook-CreditLine.json",
-    "IsActive": true,
+    "IsActive": false,
     "IsEmailEnabled": true
   },
   {
@@ -46,12 +46,17 @@
   },
   {
     "ReportFile": "DeletedBet/DeletedBet.json",
-    "IsActive": true,
+    "IsActive": false,
     "IsEmailEnabled": true
   },
   {
     "ReportFile": "Settlement-KPI/Settlement-KPI.json",
     "IsActive": false,
+    "IsEmailEnabled": true
+  },
+  {
+    "ReportFile": "CreditHeadlinePerformance/CreditHeadlinePerformance.json",
+    "IsActive": true,
     "IsEmailEnabled": true
   }
 ]
