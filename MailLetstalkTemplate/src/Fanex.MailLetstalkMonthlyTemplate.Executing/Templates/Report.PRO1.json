@@ -3,10 +3,5 @@
     "ReportFile": "PhoneBettingTicket/PhoneBettingTicket.json",
     "IsActive": true,
     "IsEmailEnabled": true
-  },
-  {
-    "ReportFile": "LicenseesPerformanceByCurrency/LicenseesPerformanceByCurrency.json",
-    "IsActive": true,
-    "IsEmailEnabled": true
   }
 ]
