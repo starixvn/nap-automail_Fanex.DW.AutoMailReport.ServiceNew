@@ -56,11 +56,6 @@
   },
   {
     "ReportFile": "CreditHeadlinePerformance/CreditHeadlinePerformance.json",
-    "IsActive": false,
-    "IsEmailEnabled": true
-  },
-  {
-    "ReportFile": "LicenseesPerformanceByCurrency/LicenseesPerformanceByCurrency.json",
     "IsActive": true,
     "IsEmailEnabled": true
   }
