@@ -11,7 +11,7 @@
   "CellAddressRender": [ "B6" ],
   "StartExelRowIndex": "6",
   "EmailTemplate": "CreditHeadlinePerformance/CreditHeadlinePerformance.cshtml",
-  "EmailSubject": "Automail Report - Monthly Credit Headline Performance Report",
+  "EmailSubject": "Automail Report - Monthly Credit Headline Performance",
   "MailId": "314",
   "MailName": "Mail Monthly Template - UAT",
   "FileName": "Monthly_Credit_Headline_Performance_Report",

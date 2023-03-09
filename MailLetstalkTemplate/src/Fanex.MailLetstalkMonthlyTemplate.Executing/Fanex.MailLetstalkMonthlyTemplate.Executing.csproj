@@ -299,6 +299,24 @@
     <Content Include="Templates\CreditHeadlinePerformance\CreditHeadlinePerformance.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Templates\LicenseesPerformanceByCurrency\LicenseesPerformanceByCurrency.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Templates\LicenseesPerformanceByCurrency\LicenseesPerformanceByCurrency.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\LicenseesPerformanceByCurrency\LicenseesPerformanceByCurrency.Local.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\LicenseesPerformanceByCurrency\LicenseesPerformanceByCurrency.PRO.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\LicenseesPerformanceByCurrency\LicenseesPerformanceByCurrency.UAT.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\LicenseesPerformanceByCurrency\LicenseesPerformanceByCurrency.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Templates\EsportsPerformancebySite\EsportsPerformancebySite.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
