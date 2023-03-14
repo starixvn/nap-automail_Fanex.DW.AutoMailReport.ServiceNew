@@ -31,6 +31,7 @@ namespace Fanex.AutoSyncFiles.Business.Services
         };
 
         private bool isIgnoredLog = false;
+        private string currentFolder = string.Empty;
 
         public SyncFilesServiceImp(Log log)
         {
@@ -101,26 +102,33 @@ namespace Fanex.AutoSyncFiles.Business.Services
 
         private void FTPDownloadFiles(List<string> downloadedFiles)
         {
-            ServicePointManager.Expect100Continue = false;
-            ftpClient.Connect();
-            ftpClient.ConnectTimeout = 3600;
-
             foreach (var path in AppConfigService.AppConfig.Paths)
             {
-                Directory.CreateDirectory(path.Destination);
-                var result = ftpClient.DownloadDirectory(path.Destination, path.Source, FtpFolderSyncMode.Update);
-
-                result.ForEach(file =>
+                try
                 {
-                    if (file.Type == FtpFileSystemObjectType.File)
+                    ServicePointManager.Expect100Continue = false;
+                    ftpClient.Connect();
+                    ftpClient.ConnectTimeout = 3600;
+                    Directory.CreateDirectory(path.Destination);
+                    var result = ftpClient.DownloadDirectory(path.Destination, path.Source, FtpFolderSyncMode.Update);
+
+                    result.ForEach(file =>
                     {
-                        var files = ftpClient.GetListing(file.RemotePath);
-                        foreach (FtpListItem item in files)
+                        if (file.Type == FtpFileSystemObjectType.File)
                         {
-                            downloadedFiles.Add(item.FullName);
+                            var files = ftpClient.GetListing(file.RemotePath);
+                            currentFolder = file.RemotePath;
+                            foreach (FtpListItem item in files)
+                            {
+                                downloadedFiles.Add(item.FullName);
+                            }
                         }
-                    }
-                });
+                    });
+                }
+                catch (Exception e)
+                {
+                    log.Log($"Fanex.AutoSyncFiles.Service: {currentFolder} - {e.Message}");
+                }
             }
         }
     }
