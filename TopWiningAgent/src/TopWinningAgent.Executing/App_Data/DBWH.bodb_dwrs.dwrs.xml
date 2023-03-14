@@ -2,6 +2,6 @@
 <Functions>
 	<Function Name="Auto-mail">
 		<Setting Key="DailyJob_CheckTasksStatus" SpName="DailyJob_CheckTasksStatus" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
-		<Setting Key="Acc_Rpt_Automail_TopWinningAgent_Weekly" SpName="Acc_Rpt_Automail_TopWinningAgent_Weekly" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
+		<Setting Key="Acc_Rpt_Automail_TopWinningAgent_Weekly" SpName="Acc_Rpt_Automail_TopWinningAgent_Weekly_xtest" DbName="DBWH.bodb_dwrs.dwrs" TimeOut="0" />
 	</Function>
 </Functions>
