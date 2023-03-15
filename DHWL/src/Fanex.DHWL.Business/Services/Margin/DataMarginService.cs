@@ -11,7 +11,9 @@ namespace Fanex.DHWL.Business.Services
     {
         List<MarginModel> CalcDataForDaily(DataTable source);
 
-        List<MarginModel> CalcDataForMTD(DataTable source);
+        List<MarginModel> CalcDataForMtd(DataTable source);
+
+        MarginModel GrandTotal { get; set; }
     }
 
     public class DataMarginServiceImp : DataMarginService
@@ -23,6 +25,8 @@ namespace Fanex.DHWL.Business.Services
             this.baseDataTable = baseDataTable;
         }
 
+        public MarginModel GrandTotal { get; set; }
+
         public List<MarginModel> CalcDataForDaily(DataTable source)
         {
             var data = baseDataTable.CloneWithoutIgnoreFigureRows(source);
@@ -32,11 +36,12 @@ namespace Fanex.DHWL.Business.Services
             CalcData(data, dailyColumnIndex, result);
             var royalFeesResult = CalcRoyalFeesData(royalFeesData, dailyColumnIndex);
             CalcGrandTotal(result, royalFeesResult);
+            GrandTotal = result.FirstOrDefault(s => s.ProductShortName.Equals("Total")) ?? new MarginModel();
 
             return result.OrderBy(o => o.OrderByProduct).ToList();
         }
 
-        public List<MarginModel> CalcDataForMTD(DataTable source)
+        public List<MarginModel> CalcDataForMtd(DataTable source)
         {
             var data = baseDataTable.CloneWithoutIgnoreFigureRows(source);
             var royalFeesData = baseDataTable.CloneRoyaltyFees(source);
@@ -45,11 +50,12 @@ namespace Fanex.DHWL.Business.Services
             CalcData(data, mtdColumnIndex, result);
             var royalFeesResult = CalcRoyalFeesData(royalFeesData, mtdColumnIndex);
             CalcGrandTotal(result, royalFeesResult);
+            GrandTotal = result.FirstOrDefault(s => s.ProductShortName.Equals("Total")) ?? new MarginModel();
 
             return result.OrderBy(o => o.OrderByProduct).ToList();
         }
 
-        private void CalcData(DataTable data, int calcAtColumnIndex, List<MarginModel> result)
+        private static void CalcData(DataTable data, int calcAtColumnIndex, List<MarginModel> result)
         {
             data.AsEnumerable()
                 .GroupBy(g => new
@@ -61,7 +67,7 @@ namespace Fanex.DHWL.Business.Services
                 .ToList()
                 .ForEach(product =>
                 {
-                    var margrin = new MarginModel
+                    var margin = new MarginModel
                     {
                         ProductShortName = product.Key.ProductShortName,
                         ProductGroup = product.Key.ProductGroup,
@@ -88,11 +94,11 @@ namespace Fanex.DHWL.Business.Services
                         .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
                     };
 
-                    result.Add(margrin);
+                    result.Add(margin);
                 });
         }
 
-        private MarginModel CalcRoyalFeesData(DataTable data, int calcAtColumnIndex)
+        private static MarginModel CalcRoyalFeesData(DataTable data, int calcAtColumnIndex)
         {
             var royaltyFees = new MarginModel
             {
@@ -113,7 +119,7 @@ namespace Fanex.DHWL.Business.Services
             return royaltyFees;
         }
 
-        private void CalcGrandTotal(List<MarginModel> data, MarginModel royalFeesResult)
+        private static void CalcGrandTotal(List<MarginModel> data, MarginModel royalFeesResult)
         {
             var grandTotal = new MarginModel
             {

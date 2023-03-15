@@ -3,6 +3,7 @@ using Fanex.LetstalkService.Core.Models;
 using Fanex.LetstalkService.Core.Services;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 
 namespace Fanex.DHWL.Business.Services
 {
@@ -26,8 +27,20 @@ namespace Fanex.DHWL.Business.Services
             imagePaths.ForEach(image =>
             {
                 var letstalkModel = CreateLetstalkModel(image, letstalkGroup);
-                var f = letstalkService.SendMessage(letstalkModel);
-                result.Add(new FileInfo(image).Name, f);
+                var status = letstalkService.SendMessage(letstalkModel);
+                var maxRetry = 10;
+                var retryCounter = 0;
+                if (!status)
+                {
+                    while (retryCounter < maxRetry && !status)
+                    {
+                        status = letstalkService.SendMessage(letstalkModel);
+                        retryCounter++;
+                        Thread.Sleep(5000);
+                    }
+                }
+
+                result.Add(new FileInfo(image).Name, status);
             });
 
             return result;

@@ -4,7 +4,6 @@ using Fanex.DHWL.Business.Services.Margin;
 using Fanex.MailDelivery.Core.Models;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 
 namespace Fanex.DHWL.Business.Services
@@ -113,13 +112,16 @@ namespace Fanex.DHWL.Business.Services
             var excelPath = excelDailyService.Export(cloneData);
 
             var reportId = 1;
-            var imageDhwlPath = imageDhwlService.Export(cloneDataDhwl);
 
             reportId++;
             var imageMarginPath = imageMarginService.Export(dailyRawData, true, reportId);
+            var grandTotalForDaily = imageMarginService.GrandTotal;
 
             reportId++;
             var imageMarginMtdPath = imageMarginService.Export(dailyRawData, false, reportId);
+            var grandTotalForMtd = imageMarginService.GrandTotal;
+
+            var imageDhwlPath = imageDhwlService.Export(cloneDataDhwl, grandTotalForDaily, grandTotalForMtd);
             var chartPath = chartExport.Export(dailyRawData, previousRawData);
             var images = new List<string>
             {

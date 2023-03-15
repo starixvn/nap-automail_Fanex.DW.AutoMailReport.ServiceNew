@@ -158,11 +158,18 @@ namespace Fanex.DHWL.Business.Services
         {
             var toDate = dateTimeService.DateTime.ToDate;
             var preToDate = new DateTimePreviousYearServiceImp(dateTimeService).ToDate;
-            var result = $"MTD (as of {toDate:yyyy-MM-dd}): {formatService.CutNumberOff(Convert.ToDecimal(mtdFigure.Mtd))}{Environment.NewLine}" +
-                         $"MTD (as of {preToDate:yyyy-MM-dd}): {formatService.CutNumberOff(Convert.ToDecimal(mtdFigure.PreviousMtd))}{Environment.NewLine}" +
-                         $"Diff %: {mtdFigure.Diff}";
+            var mtd = $"MTD (as of {toDate:yyyy-MM-dd}): {formatService.CutNumberOff(Convert.ToDecimal(mtdFigure.Mtd))} [{mtdFigure.Margin:P}]";
+            var previousMtd = $"MTD (as of {preToDate:yyyy-MM-dd}): {formatService.CutNumberOff(Convert.ToDecimal(mtdFigure.PreviousMtd))} [{mtdFigure.PreviousMargin:P}]";
+            var diff = $"Diff %: {mtdFigure.DiffMtd} [{mtdFigure.DiffMargin}]";
 
-            return result;
+            var result = new List<string>
+            {
+                mtd,
+                previousMtd,
+                diff
+            };
+
+            return string.Join(Environment.NewLine, result);
         }
 
         private void ConfigureChartAreas(Dictionary<int, double> totalFigure, Font font, Chart chart)

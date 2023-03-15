@@ -6,7 +6,7 @@
 
         public double PreviousMtd { get; set; }
 
-        public string Diff
+        public string DiffMtd
         {
             get
             {
@@ -15,6 +15,22 @@
                     ? $"+{(diff / PreviousMtd) * 100:N}%"
                     : $"{(diff / PreviousMtd) * 100:N}%";
 
+                return result;
+            }
+        }
+
+        public double Margin { get; set; }
+
+        public double PreviousMargin { get; set; }
+
+        public string DiffMargin
+        {
+            get
+            {
+                var diff = Margin - PreviousMargin;
+                var result = diff > 0
+                    ? $"+{diff * 100:N}%"
+                    : $"{diff * 100:N}%";
                 return result;
             }
         }

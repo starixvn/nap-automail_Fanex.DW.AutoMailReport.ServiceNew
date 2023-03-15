@@ -10,7 +10,7 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
 {
     public interface DailyExcelDHWLService
     {
-        string Export(DataTable dailyRawData);
+        string Export(DataTable dailyRawData, MarginModel grandTotalForDaily, MarginModel grandTotalForMtd);
 
         int LastRowIndex { get; set; }
     }
@@ -35,7 +35,7 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
             this.dateService = dateService;
         }
 
-        public string Export(DataTable dailyRawData)
+        public string Export(DataTable dailyRawData, MarginModel grandTotalForDaily, MarginModel grandTotalForMtd)
         {
             var dataDhwl = dataDhwlService.CalTotalByProduct(dailyRawData);
 
@@ -48,12 +48,17 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
             RenderDataGroup1("B4", dataDhwl, dailyTemplate, formatTpl);
             RenderDataGroup2("H4", dataDhwl, dailyTemplate, formatTpl);
             RenderDataGroup3("N4", dataDhwl, dailyTemplate, formatTpl);
-            RenderGrandTotal(dataDhwl, dailyTemplate, formatTpl);
+            RenderGrandTotal(dataDhwl, dailyTemplate, formatTpl, grandTotalForDaily, grandTotalForMtd);
 
             return Save(dailyTemplate);
         }
 
-        private void RenderGrandTotal(List<DailyDHWLModel> dataDhwl, ExcelWorksheet dailyTemplate, ExcelWorksheet formatTpl)
+        private void RenderGrandTotal(
+            List<DailyDHWLModel> dataDhwl,
+            ExcelWorksheet dailyTemplate,
+            ExcelWorksheet formatTpl,
+            MarginModel grandTotalForDaily,
+            MarginModel grandTotalForMtd)
         {
             var endRow = dailyTemplate.Dimension.End.Row + 2;
             LastRowIndex = endRow;
@@ -64,22 +69,22 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
             var grandTotal = dataDhwl.FirstOrDefault(s => s.ProductGroup == "Total");
             dailyTemplate.Cells[endRow, 2, endRow, 4].Merge = true;
             dailyTemplate.Cells[endRow, 2, endRow, 4].Value = "Grand Total";
-            dailyTemplate.Cells[endRow, 2, endRow, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-            dailyTemplate.Cells[endRow, 2, endRow, 4].Style.Indent = 1;
+            dailyTemplate.Cells[endRow, 2, endRow, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-            dailyTemplate.Cells[endRow, 5, endRow, 10].Merge = true;
             if (grandTotal != null)
             {
-                dailyTemplate.Cells[endRow, 5, endRow, 10].Value = grandTotal.WinLossYesterday;
-                dailyTemplate.Cells[endRow, 5, endRow, 10].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-                dailyTemplate.Cells[endRow, 5, endRow, 10].Style.Indent = 2;
+                dailyTemplate.Cells[endRow, 5, endRow, 9].Value = grandTotal.WinLossYesterday;
+                dailyTemplate.Cells[endRow, 5, endRow, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                dailyTemplate.Cells[endRow, 5, endRow, 9].Merge = true;
 
-                dailyTemplate.Cells[endRow, 11, endRow, 16].Merge = true;
-                dailyTemplate.Cells[endRow, 11, endRow, 16].Value = grandTotal.WinLossMTD;
-                dailyTemplate.Cells[endRow, 11, endRow, 16].Style.Indent = 2;
+                dailyTemplate.Cells[endRow, 10, endRow, 10].Value = grandTotalForDaily.TotalMargin;
+
+                dailyTemplate.Cells[endRow, 11, endRow, 15].Value = grandTotal.WinLossMTD;
+                dailyTemplate.Cells[endRow, 11, endRow, 15].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                dailyTemplate.Cells[endRow, 11, endRow, 15].Merge = true;
+
+                dailyTemplate.Cells[endRow, 16, endRow, 16].Value = grandTotalForMtd.TotalMargin;
             }
-
-            dailyTemplate.Cells[endRow, 11, endRow, 16].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
         }
 
         private void RenderDataGroup1(string loadDataAtCell, List<DailyDHWLModel> dataDhwl, ExcelWorksheet dailyTemplate, ExcelWorksheet formatTpl)

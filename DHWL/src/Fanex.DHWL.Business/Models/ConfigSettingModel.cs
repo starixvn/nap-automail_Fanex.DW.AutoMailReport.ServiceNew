@@ -9,6 +9,8 @@ namespace Fanex.DHWL.Business.Models
 
         public string SentryClientKey { get; set; }
 
+        public string LetstalkServiceApi { get; set; }
+
         public string CategorySentryLog { get; set; }
 
         public string Path { get; set; }
@@ -17,8 +19,6 @@ namespace Fanex.DHWL.Business.Models
 
         public string LetstalkGroup { get; set; }
 
-        public string LetstalkGroupLicPerf { get; set; }
-
         public string Password { get; set; }
 
         public ReportType ReportType { get; set; }
@@ -26,8 +26,6 @@ namespace Fanex.DHWL.Business.Models
         public DateTime FromDate { get; set; }
 
         public DateTime ToDate { get; set; }
-
-        public string ProductList { get; set; }
 
         public Dictionary<string, ImageProperty> ImageSettings { get; set; } = new Dictionary<string, ImageProperty>();
 

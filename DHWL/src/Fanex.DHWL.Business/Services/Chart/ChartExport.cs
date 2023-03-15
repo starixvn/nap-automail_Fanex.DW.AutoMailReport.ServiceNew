@@ -13,13 +13,16 @@ namespace Fanex.DHWL.Business.Services
     {
         private readonly ChartDataService calculatorService;
         private readonly ChartService chartService;
+        private readonly BaseDataTable baseDataTable;
 
         public ChartExportImp(
             ChartDataService calculatorService,
-            ChartService chartService)
+            ChartService chartService,
+            BaseDataTable baseDataTable)
         {
             this.calculatorService = calculatorService;
             this.chartService = chartService;
+            this.baseDataTable = baseDataTable;
         }
 
         public string Export(DataTable rawDataAllProducts, DataTable previousRawData)
@@ -42,10 +45,45 @@ namespace Fanex.DHWL.Business.Services
                 Mtd = mtd,
                 PreviousMtd = previousMtd
             };
-
+            CalcMargin(rawDataAllProducts, previousRawData, mtdFigure);
             var chartPath = chartService.ExportDailyChart(sbFigure, totalFigure, mtdFigure);
 
             return chartPath;
+        }
+
+        private void CalcMargin(DataTable rawDataAllProducts, DataTable previousRawData, ChartMtdFigureModel mtdFigure)
+        {
+            var rawDataAllProductsMtd = baseDataTable.CloneWithoutIgnoreFigureRows(rawDataAllProducts);
+            var previousRawDataMtd = baseDataTable.CloneWithoutIgnoreFigureRows(previousRawData);
+
+            var dailyResultMtd = rawDataAllProductsMtd.Rows.Count > 0
+                ? rawDataAllProductsMtd.AsEnumerable().Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver)).CopyToDataTable()
+                : rawDataAllProductsMtd;
+            var previousResultMtd = previousRawDataMtd.Rows.Count > 0
+                ? previousRawDataMtd.AsEnumerable().Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver)).CopyToDataTable()
+                : previousRawDataMtd;
+
+            var dailyResultTo = rawDataAllProductsMtd.Rows.Count > 0
+                ? rawDataAllProductsMtd.AsEnumerable().Where(s => s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver)).CopyToDataTable()
+                : rawDataAllProductsMtd;
+            var previousResultTo = previousRawDataMtd.Rows.Count > 0
+                ? previousRawDataMtd.AsEnumerable().Where(s => s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver)).CopyToDataTable()
+                : previousRawDataMtd;
+
+            var totalFigureMtd = calculatorService.CalculateGrandTotalForDaily(dailyResultMtd);
+            var previousTotalFigureMtd = calculatorService.CalculateGrandTotalForDaily(previousResultMtd);
+
+            var totalFigureTo = calculatorService.CalculateGrandTotalForDaily(dailyResultTo);
+            var previousTotalFigureTo = calculatorService.CalculateGrandTotalForDaily(previousResultTo);
+
+            var mtd = totalFigureMtd.Sum(s => s.Value);
+            var previousMtd = previousTotalFigureMtd.Sum(s => s.Value);
+
+            var to = totalFigureTo.Sum(s => s.Value);
+            var previousTo = previousTotalFigureTo.Sum(s => s.Value);
+
+            mtdFigure.Margin = to == 0 ? 0 : mtd / to;
+            mtdFigure.PreviousMargin = previousTo == 0 ? 0 : previousMtd / previousTo;
         }
     }
 }
