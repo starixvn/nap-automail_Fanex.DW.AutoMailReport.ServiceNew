@@ -2,6 +2,7 @@
 using Fanex.Data.Repository;
 using Fanex.DHWL.Business.Models;
 using Fanex.DHWL.Business.Services;
+using Fanex.DHWL.Business.Services.DailyChart;
 using Fanex.DHWL.Business.Services.DailyDHWLLetstalk;
 using Fanex.DHWL.Business.Services.LicenseePerformance;
 using Fanex.DHWL.Business.Services.Margin;
@@ -70,9 +71,9 @@ namespace Fanex.DailyDHWL.Executing
             container.Register<DateTimeService, DateTimeLastMonthServiceImp>();
             container.Register<DataHouseIncomeService, DataHouseIncomeServiceImp>();
             container.Register<DataLastMonthService, DataLastMonthServiceImp>();
-            container.Register<ChartService, ChartServiceImp>();
-            container.Register<ChartDataService, ChartDataServiceImp>();
-            container.Register<ChartExport, ChartExportImp>();
+            container.Register<DailyChartService, DailyChartServiceImp>();
+            container.Register<DailyChartExport, DailyChartExportImp>();
+            container.Register<DailyChartDataService, DailyChartDataServiceImp>();
             container.Register<FormatService, FormatServiceImp>();
             container.Register<DataMarginService, DataMarginServiceImp>();
             container.Register<ExcelMarginService, ExcelMarginServiceImp>();

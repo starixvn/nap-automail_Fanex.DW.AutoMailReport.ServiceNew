@@ -208,9 +208,13 @@
     <Compile Include="Services\Adjustment\AdjustmentDataService.cs" />
     <Compile Include="Services\AppConfigService.cs" />
     <Compile Include="Services\BaseDataTable.cs" />
-    <Compile Include="Services\Chart\ChartDataService.cs" />
-    <Compile Include="Services\Chart\ChartExport.cs" />
-    <Compile Include="Services\Chart\ChartService.cs" />
+    <Compile Include="Services\MonthlyChartNotificationService.cs" />
+    <Compile Include="Services\MonthlyChart\MonthlyChartDataService.cs" />
+    <Compile Include="Services\MonthlyChart\MonthlyChartExport.cs" />
+    <Compile Include="Services\MonthlyChart\MonthlyChartService.cs" />
+    <Compile Include="Services\DailyChart\DailyChartDataService.cs" />
+    <Compile Include="Services\DailyChart\DailyChartExport.cs" />
+    <Compile Include="Services\DailyChart\DailyChartService.cs" />
     <Compile Include="Services\DateTimePreviousYearServiceImp.cs" />
     <Compile Include="Services\LicenseePerformance\MergeProductDataService.cs" />
     <Compile Include="Services\MonthlyDHWLNotificationService.cs" />

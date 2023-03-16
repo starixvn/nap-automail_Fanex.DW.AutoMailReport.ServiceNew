@@ -5,6 +5,7 @@ using Fanex.DHWL.Business.Services;
 using Fanex.DHWL.Business.Services.Adjustment;
 using Fanex.DHWL.Business.Services.LicenseePerformance;
 using Fanex.DHWL.Business.Services.Margin;
+using Fanex.DHWL.Business.Services.MonthlyChart;
 using Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk;
 using Fanex.DHWL.Business.Services.MonthlyReconciliation;
 using Fanex.LetstalkService.Client;
@@ -65,9 +66,10 @@ namespace Fanex.MonthlyDHWL.Executing
             container.Register<DateTimeService, DateTimeLastMonthServiceImp>();
             container.Register<DataHouseIncomeService, DataHouseIncomeServiceImp>();
             container.Register<DataLastMonthService, DataLastMonthServiceImp>();
-            container.Register<ChartService, ChartServiceImp>();
-            container.Register<ChartDataService, ChartDataServiceImp>();
-            container.Register<ChartExport, ChartExportImp>();
+            container.Register<MonthlyChartExport, MonthlyChartExportImp>();
+            container.Register<MonthlyChartDataService, MonthlyChartDataServiceImp>();
+            container.Register<MonthlyChartService, MonthlyChartServiceImp>();
+
             container.Register<FormatService, FormatServiceImp>();
             container.Register<DataMarginService, DataMarginServiceImp>();
             container.Register<ExcelMarginService, ExcelMarginServiceImp>();

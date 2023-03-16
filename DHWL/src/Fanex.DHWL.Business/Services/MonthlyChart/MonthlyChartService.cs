@@ -7,42 +7,41 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms.DataVisualization.Charting;
 
-namespace Fanex.DHWL.Business.Services
+namespace Fanex.DHWL.Business.Services.MonthlyChart
 {
-    public interface ChartService
+    public interface MonthlyChartService
     {
-        string ExportDailyChart(Dictionary<int, double> sbFigure, Dictionary<int, double> totalFigure, ChartMtdFigureModel mtdFigure);
+        string ExportMonthlyChart(Dictionary<int, double> credit, Dictionary<int, double> lic, Dictionary<int, double> total, ChartMtdFigureModel mtdFigure);
     }
 
-    public class ChartServiceImp : ChartService
+    public class MonthlyChartServiceImp : MonthlyChartService
     {
         private readonly DateTimeServiceProvider dateTimeService;
         private readonly FormatService formatService;
 
         private readonly int million = 1000000;
 
-        public ChartServiceImp(DateTimeServiceProvider dateTimeService, FormatService formatService)
+        public MonthlyChartServiceImp(DateTimeServiceProvider dateTimeService, FormatService formatService)
         {
             this.dateTimeService = dateTimeService;
             this.formatService = formatService;
         }
 
-        public string ExportDailyChart(Dictionary<int, double> sbFigure, Dictionary<int, double> totalFigure, ChartMtdFigureModel mtdFigure)
+        public string ExportMonthlyChart(Dictionary<int, double> credit, Dictionary<int, double> lic, Dictionary<int, double> total, ChartMtdFigureModel mtdFigure)
         {
             var font = new Font("Tahoma", 14);
             var fontMtd = new Font("Tahoma", 19);
-            var sportBookChart = "Sportsbook";
-            var otherProductsChart = "OtherProduct";
-            var totalChart = "Total";
+            var creditChart = "Credit";
+            var licChart = "Lic";
 
             Chart chart = new Chart();
 
-            ConfigureChartAreas(totalFigure, font, chart);
+            ConfigureChartAreas(total, font, chart);
             ConfigureChartLegends(fontMtd, chart, mtdFigure);
-            ConfigurationSportBookChart(font, sportBookChart, chart);
-            ConfigurationOtherProductsChart(font, otherProductsChart, chart);
-            ConfigurationTotalChart(font, totalChart, chart);
-            AssignDataToCharts(sbFigure, totalFigure, sportBookChart, otherProductsChart, totalChart, chart);
+            ConfigurationCreditChart(font, creditChart, chart);
+            ConfigurationLicChart(font, licChart, chart);
+
+            AssignDataToCharts(credit, lic, creditChart, licChart, chart);
 
             return SaveChartToImage(chart);
         }
@@ -58,83 +57,54 @@ namespace Fanex.DHWL.Business.Services
         }
 
         private void AssignDataToCharts(
-            Dictionary<int, double> sbFigure,
-            Dictionary<int, double> totalFigure,
-            string sportBookChart,
-            string otherProductsChart,
-            string totalChart,
+            Dictionary<int, double> credit,
+            Dictionary<int, double> lic,
+            string creditChart,
+            string licChart,
             Chart chart)
         {
-            foreach (var month in sbFigure)
+            foreach (var month in credit)
             {
-                chart.Series[sportBookChart].Points.AddXY(month.Key, month.Value / million);
+                chart.Series[creditChart].Points.AddXY(month.Key, month.Value / million);
             }
 
-            foreach (var month in totalFigure)
+            foreach (var month in lic)
             {
-                var otherValue = totalFigure[month.Key] - sbFigure[month.Key];
-                chart.Series[otherProductsChart].Points.AddXY(month.Key, otherValue / million);
-
-                var total = month.Value / million;
-                var totalCutOffValue = Truncate(total, 1);
-                chart.Series[totalChart].Points.AddXY(month.Key, totalCutOffValue);
+                chart.Series[licChart].Points.AddXY(month.Key, month.Value / million);
             }
         }
 
-        private double Truncate(double value, int precision)
+        private static void ConfigurationLicChart(Font font, string licChart, Chart chart)
         {
-            double step = Math.Pow(10, precision);
-            var tmp = Math.Truncate(step * value);
-            return tmp / step;
+            chart.Series.Add(licChart);
+            chart.Series[licChart].LegendText = "Lic";
+            chart.Series[licChart].ChartType = SeriesChartType.StackedColumn;
+            chart.Series[licChart].Color = Color.FromArgb(251, 180, 64);
+            chart.Series[licChart].IsVisibleInLegend = true;
+            chart.Series[licChart].IsValueShownAsLabel = true;
+            chart.Series[licChart].LabelFormat = "#,##0.0m";
+            chart.Series[licChart].BorderWidth = 1;
+            chart.Series[licChart].Font = font;
         }
 
-        private static void ConfigurationTotalChart(Font font, string totalChart, Chart chart)
+        private static void ConfigurationCreditChart(Font font, string creditChart, Chart chart)
         {
-            chart.Series.Add(totalChart);
-            chart.Series[totalChart].LegendText = "Total";
-            chart.Series[totalChart].ChartType = SeriesChartType.Line;
-            chart.Series[totalChart].Color = Color.FromArgb(0, 69, 134);
-            chart.Series[totalChart].IsVisibleInLegend = true;
-            chart.Series[totalChart].IsValueShownAsLabel = true;
-            chart.Series[totalChart].LabelFormat = "#,##0.#m";
-            chart.Series[totalChart].BorderWidth = 3;
-            chart.Series[totalChart].Font = font;
-
-            chart.Series[totalChart].MarkerStyle = MarkerStyle.Triangle;
-            chart.Series[totalChart].MarkerSize = 15;
-        }
-
-        private static void ConfigurationOtherProductsChart(Font font, string otherProductsChart, Chart chart)
-        {
-            chart.Series.Add(otherProductsChart);
-            chart.Series[otherProductsChart].LegendText = "Others";
-            chart.Series[otherProductsChart].ChartType = SeriesChartType.Column;
-            chart.Series[otherProductsChart].Color = Color.FromArgb(251, 180, 64);
-            chart.Series[otherProductsChart].IsVisibleInLegend = true;
-            chart.Series[otherProductsChart].IsValueShownAsLabel = false;
-            chart.Series[otherProductsChart].LabelFormat = "#,##0.0m";
-            chart.Series[otherProductsChart].BorderWidth = 1;
-            chart.Series[otherProductsChart].Font = font;
-        }
-
-        private static void ConfigurationSportBookChart(Font font, string sportBookChart, Chart chart)
-        {
-            chart.Series.Add(sportBookChart);
-            chart.Series[sportBookChart].LegendText = "SB";
-            chart.Series[sportBookChart].ChartType = SeriesChartType.Column;
-            chart.Series[sportBookChart].Color = Color.FromArgb(133, 184, 253);
-            chart.Series[sportBookChart].IsVisibleInLegend = true;
-            chart.Series[sportBookChart].IsValueShownAsLabel = false;
-            chart.Series[sportBookChart].LabelFormat = "#,##0.0m";
-            chart.Series[sportBookChart].BorderWidth = 1;
-            chart.Series[sportBookChart].Font = font;
+            chart.Series.Add(creditChart);
+            chart.Series[creditChart].LegendText = "Credit";
+            chart.Series[creditChart].ChartType = SeriesChartType.StackedColumn;
+            chart.Series[creditChart].Color = Color.FromArgb(133, 184, 253);
+            chart.Series[creditChart].IsVisibleInLegend = true;
+            chart.Series[creditChart].IsValueShownAsLabel = true;
+            chart.Series[creditChart].LabelFormat = "#,##0.0m";
+            chart.Series[creditChart].BorderWidth = 1;
+            chart.Series[creditChart].Font = font;
         }
 
         private void ConfigureChartLegends(Font font, Chart chart, ChartMtdFigureModel mtdFigure)
         {
             var fontMtd = new Font(font, FontStyle.Bold);
             var fromDate = dateTimeService.DateTime.FromDate;
-            var title = $"DHWL [{fromDate:MMM-yyyy}]";
+            var title = $"DHWL YTD Chart [{fromDate:MMM-yyyy}]";
             chart.Legends.Add("legend1");
             chart.Titles.Add("Title");
             chart.Titles[0].Text = title;
@@ -151,6 +121,7 @@ namespace Fanex.DHWL.Business.Services
 
             chart.Legends[0].Docking = Docking.Top;
             chart.Legends[0].IsDockedInsideChartArea = false;
+            chart.Legends[0].BackColor = Color.FromArgb(231, 240, 249);
             chart.Legends[0].Alignment = StringAlignment.Center;
         }
 
@@ -178,19 +149,19 @@ namespace Fanex.DHWL.Business.Services
             var width = (numberOfDays * 1920 / 31) + 50;
             width = Math.Max(width, 200);
 
-            if (numberOfDays <= 7)
+            if (numberOfDays <= 9)
             {
-                width = 483;
+                width = 700;
             }
 
-            var maxValue = Math.Round(totalFigure.Max(s => s.Value) / million, 0) + 1;
+            var maxValue = Math.Round(totalFigure.Max(s => s.Value) / million, 0) + 20;
             var minList = new List<double>();
             totalFigure.ToList().ForEach(m =>
             {
                 minList.Add(totalFigure[m.Key]);
             });
 
-            var minValue = minList.Min(s => s) / million - 1;
+            var minValue = minList.Min(s => s) / million - 20;
             minValue = Math.Round(Math.Min(minValue, 0), 0);
 
             chart.Size = new Size(width, 900);
@@ -200,11 +171,12 @@ namespace Fanex.DHWL.Business.Services
             var position = positions[numberOfDays];
             chart.ChartAreas[0].InnerPlotPosition = new ElementPosition(position.InnerPlotPosition.X, position.InnerPlotPosition.Y, position.InnerPlotPosition.Width, position.InnerPlotPosition.Height);
             chart.ChartAreas[0].Position = new ElementPosition(position.Position.X, position.Position.Y, position.Position.Width, position.Position.Height);
+            chart.ChartAreas[0].BackColor = Color.FromArgb(231, 240, 249);
 
             chart.ChartAreas[0].AxisY.IsLabelAutoFit = true;
             chart.ChartAreas[0].AxisY.LabelStyle.Format = "#,##0m";
             chart.ChartAreas[0].AxisY.LabelStyle.Font = font;
-            chart.ChartAreas[0].AxisY.Interval = 1;
+            chart.ChartAreas[0].AxisY.Interval = 20;
             chart.ChartAreas[0].AxisY.ScaleView.SizeType = DateTimeIntervalType.Number;
             chart.ChartAreas[0].AxisY.ScaleView.Size = maxValue - minValue;
             chart.ChartAreas[0].AxisY.IsStartedFromZero = true;
@@ -212,7 +184,6 @@ namespace Fanex.DHWL.Business.Services
             chart.ChartAreas[0].AxisY.Maximum = maxValue;
             chart.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.FromArgb(217, 217, 217);
 
-            chart.ChartAreas[0].AxisX.Title = "Date";
             chart.ChartAreas[0].AxisX.TitleFont = font;
             chart.ChartAreas[0].AxisX.LabelStyle.Font = font;
             chart.ChartAreas[0].AxisX.Interval = 1;
@@ -226,23 +197,8 @@ namespace Fanex.DHWL.Business.Services
             foreach (var day in totalFigure)
             {
                 var labelX = new CustomLabel(day.Key - 1, day.Key + 1, day.Key.ToString(), 0, LabelMarkStyle.LineSideMark);
-                if (IsWeekendDays(day.Key))
-                {
-                    labelX.ForeColor = Color.Red;
-                }
-
                 chart.ChartAreas[0].AxisX.CustomLabels.Add(labelX);
             }
-        }
-
-        private bool IsWeekendDays(int day)
-        {
-            var fromDate = dateTimeService.DateTime.FromDate;
-            var currentMonth = fromDate.Month;
-            var currentYear = fromDate.Year;
-            var date = new DateTime(currentYear, currentMonth, day);
-
-            return date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday;
         }
     }
 }

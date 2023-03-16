@@ -1,4 +1,5 @@
 ﻿using Fanex.DHWL.Business.Models;
+using Fanex.DHWL.Business.Services.DailyChart;
 using Fanex.DHWL.Business.Services.DailyDHWLLetstalk;
 using Fanex.DHWL.Business.Services.Margin;
 using Fanex.MailDelivery.Core.Models;
@@ -26,7 +27,7 @@ namespace Fanex.DHWL.Business.Services
         private readonly MailService mailService;
         private readonly BaseDataTable baseDataTable;
 
-        private readonly ChartExport chartExport;
+        private readonly DailyChartExport chartExport;
 
         private readonly DailyImageDHWLService imageDhwlService;
         private readonly ImageMarginService imageMarginService;
@@ -41,7 +42,7 @@ namespace Fanex.DHWL.Business.Services
             FileService fileService,
             MailService mailService,
             BaseDataTable baseDataTable,
-            ChartExport chartExport,
+            DailyChartExport chartExport,
             DailyImageDHWLService imageDhwlService,
             ImageMarginService imageMarginService,
             DateTimeServiceProvider dateTimeServiceProvider)

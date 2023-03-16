@@ -25,6 +25,8 @@ namespace Fanex.DHWL.Business.Services
 
         DataSet QueryReconciliation();
 
+        DataTable QueryDhwlMonthlyChart();
+
         List<GetProductInfoModel> QueryGetProductInfo(int productId);
     }
 
@@ -212,6 +214,29 @@ namespace Fanex.DHWL.Business.Services
         {
             var criteria = new GetProductInfoCriteria { ProductID = productId };
             return repository.Fetch<GetProductInfoModel>(criteria).ToList();
+        }
+
+        public DataTable QueryDhwlMonthlyChart()
+        {
+            var fromDate = dateService.DateTime.FromDate;
+            var toDate = dateService.DateTime.ToDate;
+            DataTable dataTable;
+
+            using (var db = new ObjectDb("Acc_Rpt_HouseNetIncome", 0))
+            {
+                db.SetParameterValue("fromdate", fromDate);
+                db.SetParameterValue("todate", toDate);
+                db.SetParameterValue("islicperf", false);
+
+                db.SetParameterValue("basecurrencyname", "MYR");
+                db.SetParameterValue("deposittype", 2);
+                db.SetParameterValue("datamode", 4);
+
+                var dataSet = db.ExecuteDataSet();
+                dataTable = baseDataTable.CombineAllInOneTable(dataSet);
+            }
+
+            return dataTable;
         }
     }
 }
