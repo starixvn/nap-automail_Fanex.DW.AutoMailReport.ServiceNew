@@ -53,7 +53,7 @@ namespace Fanex.DHWL.Business.Services
             finally
             {
                 jobMessage.Mail = result.Mail;
-                jobMessage.JobStatus = result.Success ? JobStatus.Success : JobStatus.DataIsNotReady;
+                jobMessage.JobStatus = result.Success ? JobStatus.SuccessWithoutSendmail : JobStatus.DataIsNotReady;
                 jobMessage.TaskLog = new TaskLog
                 {
                     LogTime = DateTime.Now,
@@ -79,10 +79,14 @@ namespace Fanex.DHWL.Business.Services
 
             var monthlyRawData = dataService.QueryDhwlMonthlyChart();
 
-            var chartPath = chartExport.Export(monthlyRawData);
+            var chartPathCreditOnly = chartExport.Export(monthlyRawData, DepositType.CreditOnly);
+            var chartPathDepositOnly = chartExport.Export(monthlyRawData, DepositType.DepositOnly);
+            var chartPathAll = chartExport.Export(monthlyRawData, DepositType.All);
             var images = new List<string>
             {
-                chartPath
+                chartPathCreditOnly,
+                chartPathDepositOnly,
+                chartPathAll,
             };
 
             CopyFiles(images);

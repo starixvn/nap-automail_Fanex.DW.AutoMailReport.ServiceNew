@@ -1,12 +1,13 @@
 ﻿using Fanex.DHWL.Business.Models;
 using Fanex.DHWL.Business.Services.LicenseePerformance;
+using System.Collections.Generic;
 using System.Data;
 
 namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
 {
     public interface DailyImageDHWLService
     {
-        string Export(DataTable dailyRawData, MarginModel grandTotalForDaily, MarginModel grandTotalForMtd);
+        string Export(DataTable dailyRawData, List<MarginModel> grandTotalForDaily, List<MarginModel> grandTotalForMtd);
     }
 
     public class DailyImageDHWLServiceImp : DailyImageDHWLService
@@ -25,7 +26,7 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
             this.mergeProductDataService = mergeProductDataService;
         }
 
-        public string Export(DataTable dailyRawData, MarginModel grandTotalForDaily, MarginModel grandTotalForMtd)
+        public string Export(DataTable dailyRawData, List<MarginModel> grandTotalForDaily, List<MarginModel> grandTotalForMtd)
         {
             mergeProductDataService.MergeVGamingIntoSabaC(dailyRawData);
 

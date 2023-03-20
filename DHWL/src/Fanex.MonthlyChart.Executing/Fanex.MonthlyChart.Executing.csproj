@@ -220,6 +220,9 @@
     <Content Include="Templates\DHWL.PRE.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\DHWL-RawData.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.DHWL.Business\Fanex.DHWL.Business.csproj">

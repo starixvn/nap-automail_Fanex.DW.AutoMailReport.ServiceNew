@@ -116,11 +116,11 @@ namespace Fanex.DHWL.Business.Services
 
             reportId++;
             var imageMarginPath = imageMarginService.Export(dailyRawData, true, reportId);
-            var grandTotalForDaily = imageMarginService.GrandTotal;
+            var grandTotalForDaily = imageMarginService.GrandTotalList;
 
             reportId++;
             var imageMarginMtdPath = imageMarginService.Export(dailyRawData, false, reportId);
-            var grandTotalForMtd = imageMarginService.GrandTotal;
+            var grandTotalForMtd = imageMarginService.GrandTotalList;
 
             var imageDhwlPath = imageDhwlService.Export(cloneDataDhwl, grandTotalForDaily, grandTotalForMtd);
             var chartPath = chartExport.Export(dailyRawData, previousRawData);

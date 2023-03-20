@@ -36,17 +36,20 @@ namespace Fanex.DHWL.Business.Services
         private readonly DateTimeServiceProvider dateService;
         private readonly DateTimeService lastMonth;
         private readonly BaseDataTable baseDataTable;
+        private readonly ExcelRawService excelRawService;
 
         public DataServiceImp(
             IDynamicRepository repository,
             DateTimeServiceProvider dateService,
             DateTimeService lastMonth,
-            BaseDataTable baseDataTable)
+            BaseDataTable baseDataTable,
+            ExcelRawService excelRawService)
         {
             this.repository = repository;
             this.dateService = dateService;
             this.lastMonth = lastMonth;
             this.baseDataTable = baseDataTable;
+            this.excelRawService = excelRawService;
         }
 
         public TaskstatusModel QueryDwStatus()
@@ -153,6 +156,8 @@ namespace Fanex.DHWL.Business.Services
                 dataTable = baseDataTable.CombineAllInOneTable(dataSet);
             }
 
+            excelRawService.Export(dataTable, "LastYear", fromDate, toDate);
+
             return dataTable;
         }
 
@@ -235,6 +240,8 @@ namespace Fanex.DHWL.Business.Services
                 var dataSet = db.ExecuteDataSet();
                 dataTable = baseDataTable.CombineAllInOneTable(dataSet);
             }
+
+            excelRawService.Export(dataTable, "DHWL-YTD-Chart", fromDate, toDate);
 
             return dataTable;
         }

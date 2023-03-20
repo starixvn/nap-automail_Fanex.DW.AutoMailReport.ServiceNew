@@ -187,6 +187,7 @@
     <Compile Include="Models\ColumnIndex.cs" />
     <Compile Include="Models\ColumnName.cs" />
     <Compile Include="Models\ConfigSettingModel.cs" />
+    <Compile Include="Models\DepositType.cs" />
     <Compile Include="Models\GetProductInfoModel.cs" />
     <Compile Include="Models\LicenseeCheckDataReady.cs" />
     <Compile Include="Models\LicenseePerformance\LicenseePerformanceModel.cs" />

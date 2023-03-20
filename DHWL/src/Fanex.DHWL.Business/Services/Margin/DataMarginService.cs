@@ -13,7 +13,7 @@ namespace Fanex.DHWL.Business.Services
 
         List<MarginModel> CalcDataForMtd(DataTable source);
 
-        MarginModel GrandTotal { get; set; }
+        List<MarginModel> GrandTotalList { get; set; }
     }
 
     public class DataMarginServiceImp : DataMarginService
@@ -25,7 +25,7 @@ namespace Fanex.DHWL.Business.Services
             this.baseDataTable = baseDataTable;
         }
 
-        public MarginModel GrandTotal { get; set; }
+        public List<MarginModel> GrandTotalList { get; set; }
 
         public List<MarginModel> CalcDataForDaily(DataTable source)
         {
@@ -36,7 +36,6 @@ namespace Fanex.DHWL.Business.Services
             CalcData(data, dailyColumnIndex, result);
             var royalFeesResult = CalcRoyalFeesData(royalFeesData, dailyColumnIndex);
             CalcGrandTotal(result, royalFeesResult);
-            GrandTotal = result.FirstOrDefault(s => s.ProductShortName.Equals("Total")) ?? new MarginModel();
 
             return result.OrderBy(o => o.OrderByProduct).ToList();
         }
@@ -50,7 +49,6 @@ namespace Fanex.DHWL.Business.Services
             CalcData(data, mtdColumnIndex, result);
             var royalFeesResult = CalcRoyalFeesData(royalFeesData, mtdColumnIndex);
             CalcGrandTotal(result, royalFeesResult);
-            GrandTotal = result.FirstOrDefault(s => s.ProductShortName.Equals("Total")) ?? new MarginModel();
 
             return result.OrderBy(o => o.OrderByProduct).ToList();
         }
@@ -119,8 +117,9 @@ namespace Fanex.DHWL.Business.Services
             return royaltyFees;
         }
 
-        private static void CalcGrandTotal(List<MarginModel> data, MarginModel royalFeesResult)
+        private void CalcGrandTotal(List<MarginModel> data, MarginModel royalFeesResult)
         {
+            GrandTotalList = new List<MarginModel>();
             var grandTotal = new MarginModel
             {
                 ProductShortName = "Total",
@@ -145,11 +144,16 @@ namespace Fanex.DHWL.Business.Services
                 MBCWL = grandTotal.MBCWL + royalFeesResult.MBCWL,
                 LicenseeWL = grandTotal.LicenseeWL + royalFeesResult.LicenseeWL,
                 TotalWL = grandTotal.TotalWL + royalFeesResult.TotalWL,
+                TotalTO = grandTotal.TotalTO,
+                LicenseeTO = grandTotal.LicenseeTO,
             };
 
             data.Add(grandTotal);
             data.Add(royalFeesResult);
             data.Add(netTotal);
+
+            GrandTotalList.Add(grandTotal);
+            GrandTotalList.Add(netTotal);
         }
     }
 }

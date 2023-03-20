@@ -8,7 +8,7 @@
     "LetstalkOneTime": {
       "MailId": 358,
       "MailName": "Letstalk - OneTime",
-      "IsAllowResend": false
+      "IsAllowResend": true
     },
     "CheckData": {
       "MailId": 359,
@@ -25,13 +25,13 @@
     },
     {
       "FolderName": "2-DHWL-Daily",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - House Net Income Daily Report"
     },
     {
       "FolderName": "2-DHWL-Excel-Daily",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - House Net Income Daily Report"
     },
@@ -43,19 +43,19 @@
     },
     {
       "FolderName": "5-DHWL-Soccer-Margin-Test",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Daily Margin Chart - Soccer"
     },
     {
       "FolderName": "5-DHWL-OS-Margin-Test",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Daily Margin Chart - OS"
     },
     {
       "FolderName": "5-DHWL-Non-Sport-Margin-Test",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Daily Margin Chart - Non-Sport"
     },
@@ -67,31 +67,31 @@
     },
     {
       "FolderName": "12-TopLicenseeByTO-LicBySport",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Top licensees reports by sports"
     },
     {
       "FolderName": "13-N88-DailyWL-Test",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - N88 Daily Win Loss"
     },
     {
       "FolderName": "13-N8B-DailyWL-Test",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - N8B Daily Win Loss"
     },
     {
       "FolderName": "13-N8G-DailyWL-Test",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - N8G Daily Win Loss"
     },
     {
       "FolderName": "13-N88-DailyWL-Internal-Test",
-      "IsActive": true,
+      "IsActive": false,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - N88 Internal Daily Win Loss (All Images)"
     },

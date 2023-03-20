@@ -17,14 +17,14 @@
     "Position": {
       "X": 1.0,
       "Y": 19.0,
-      "Width": 97.0,
+      "Width": 95.0,
       "Height": 90.0
     },
     "InnerPlotPosition": {
-      "X": 25.0,
-      "Y": 10.0,
-      "Width": 73.0,
-      "Height": 75.0
+      "X": 10.0,
+      "Y": 5.0,
+      "Width": 90.0,
+      "Height": 80.0
     }
   },
   "3": {
@@ -49,7 +49,7 @@
       "Height": 90.0
     },
     "InnerPlotPosition": {
-      "X": 15.0,
+      "X": 10.0,
       "Y": 5.0,
       "Width": 85.0,
       "Height": 80.0
@@ -133,9 +133,9 @@
       "Height": 90.0
     },
     "InnerPlotPosition": {
-      "X": 7.0,
+      "X": 9.0,
       "Y": 0.0,
-      "Width": 95.0,
+      "Width": 90.0,
       "Height": 85.0
     }
   },
@@ -217,9 +217,9 @@
       "Height": 90.0
     },
     "InnerPlotPosition": {
-      "X": 5.0,
+      "X": 7.0,
       "Y": 0.0,
-      "Width": 97.0,
+      "Width": 95.0,
       "Height": 85.0
     }
   },
@@ -245,9 +245,9 @@
       "Height": 90.0
     },
     "InnerPlotPosition": {
-      "X": 4.0,
+      "X": 5.0,
       "Y": 0.0,
-      "Width": 97.0,
+      "Width": 95.0,
       "Height": 85.0
     }
   },
@@ -273,9 +273,9 @@
       "Height": 90.0
     },
     "InnerPlotPosition": {
-      "X": 4.0,
+      "X": 7.0,
       "Y": 0.0,
-      "Width": 98.0,
+      "Width": 95.0,
       "Height": 85.0
     }
   },
@@ -301,9 +301,9 @@
       "Height": 90.0
     },
     "InnerPlotPosition": {
-      "X": 4.0,
+      "X": 7.0,
       "Y": 0.0,
-      "Width": 98.0,
+      "Width": 95.0,
       "Height": 85.0
     }
   },
@@ -329,9 +329,9 @@
       "Height": 90.0
     },
     "InnerPlotPosition": {
-      "X": 3.0,
+      "X": 5.0,
       "Y": 0.0,
-      "Width": 99.0,
+      "Width": 97.0,
       "Height": 85.0
     }
   },
@@ -343,7 +343,7 @@
       "Height": 90.0
     },
     "InnerPlotPosition": {
-      "X": 3.0,
+      "X": 4.0,
       "Y": 0.0,
       "Width": 100.0,
       "Height": 85.0
@@ -357,7 +357,7 @@
       "Height": 90.0
     },
     "InnerPlotPosition": {
-      "X": 3.0,
+      "X": 4.0,
       "Y": 0.0,
       "Width": 100.0,
       "Height": 85.0
@@ -371,7 +371,7 @@
       "Height": 90.0
     },
     "InnerPlotPosition": {
-      "X": 3.0,
+      "X": 4.0,
       "Y": 0.0,
       "Width": 100.0,
       "Height": 85.0
@@ -385,7 +385,7 @@
       "Height": 90.0
     },
     "InnerPlotPosition": {
-      "X": 3.0,
+      "X": 4.0,
       "Y": 0.0,
       "Width": 100.0,
       "Height": 85.0
@@ -399,7 +399,7 @@
       "Height": 90.0
     },
     "InnerPlotPosition": {
-      "X": 3.0,
+      "X": 4.0,
       "Y": 0.0,
       "Width": 100.0,
       "Height": 85.0
@@ -413,7 +413,7 @@
       "Height": 90.0
     },
     "InnerPlotPosition": {
-      "X": 3.0,
+      "X": 4.0,
       "Y": 0.0,
       "Width": 100.0,
       "Height": 85.0
@@ -427,7 +427,7 @@
       "Height": 90.0
     },
     "InnerPlotPosition": {
-      "X": 3.0,
+      "X": 4.0,
       "Y": 0.0,
       "Width": 100.0,
       "Height": 85.0

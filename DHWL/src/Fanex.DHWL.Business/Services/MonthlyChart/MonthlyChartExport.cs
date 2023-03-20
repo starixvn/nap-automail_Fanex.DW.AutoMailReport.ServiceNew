@@ -1,4 +1,5 @@
 ﻿using Fanex.DHWL.Business.Models;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
@@ -6,7 +7,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyChart
 {
     public interface MonthlyChartExport
     {
-        string Export(DataTable rawDataAllProducts);
+        string Export(DataTable rawDataAllProducts, DepositType depositType);
     }
 
     public class MonthlyChartExportImp : MonthlyChartExport
@@ -14,75 +15,93 @@ namespace Fanex.DHWL.Business.Services.MonthlyChart
         private readonly MonthlyChartDataService calculatorService;
         private readonly MonthlyChartService chartService;
         private readonly BaseDataTable baseDataTable;
+        private readonly DateTimeServiceProvider dateTimeService;
 
         public MonthlyChartExportImp(
             MonthlyChartDataService calculatorService,
             MonthlyChartService chartService,
-            BaseDataTable baseDataTable)
+            BaseDataTable baseDataTable,
+            DateTimeServiceProvider dateTimeService)
         {
             this.calculatorService = calculatorService;
             this.chartService = chartService;
             this.baseDataTable = baseDataTable;
+            this.dateTimeService = dateTimeService;
         }
 
-        public string Export(DataTable rawDataAllProducts)
+        public string Export(DataTable rawDataAllProducts, DepositType depositType)
         {
-            var dailyResult = rawDataAllProducts.Rows.Count > 0
+            var wlAfterPay = rawDataAllProducts.Rows.Count > 0
                 ? rawDataAllProducts.AsEnumerable().Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver)).CopyToDataTable()
                 : rawDataAllProducts;
 
-            var credit = calculatorService.CalculateGrandTotalForMonthly(dailyResult, "2022");
-            var lic = calculatorService.CalculateGrandTotalForMonthly(dailyResult, "2023");
-            var total = calculatorService.CalcTotal(credit, lic);
+            var date = dateTimeService.DateTime.ToDate;
+            var lastYear = calculatorService.CalculateGrandTotalForMonthly(wlAfterPay, (date.Year - 1).ToString(), depositType);
+            var currentYear = calculatorService.CalculateGrandTotalForMonthly(wlAfterPay, date.Year.ToString(), depositType);
 
-            //var previousTotalFigure = calculatorService.CalculateGrandTotalForDaily(previousResult);
+            RefineData(lastYear, currentYear);
 
-            var mtd = lic.Sum(s => s.Value);
-            var previousMtd = 0;//previousTotalFigure.Sum(s => s.Value);
+            var wlMtdCurrentYear = currentYear.Sum(s => s.Value);
+            var wlMtdLastYear = lastYear.Sum(s => s.Value);
             var mtdFigure = new ChartMtdFigureModel
             {
-                Mtd = mtd,
-                PreviousMtd = previousMtd
+                Mtd = wlMtdCurrentYear,
+                PreviousMtd = wlMtdLastYear
             };
-            //   CalcMargin(rawDataAllProducts, previousRawData, mtdFigure);
-            var chartPath = chartService.ExportMonthlyChart(credit, lic, total, mtdFigure);
+
+            CalcMargin(rawDataAllProducts, mtdFigure, depositType);
+            var type = GetDepositType[depositType];
+            var chartPath = chartService.ExportMonthlyChart(lastYear, currentYear, mtdFigure, type);
 
             return chartPath;
         }
 
-        private void CalcMargin(DataTable rawDataAllProducts, DataTable previousRawData, ChartMtdFigureModel mtdFigure, string year)
+        private static void RefineData(Dictionary<int, double> lastYear, Dictionary<int, double> currentYear)
         {
-            var rawDataAllProductsMtd = baseDataTable.CloneWithoutIgnoreFigureRows(rawDataAllProducts);
-            var previousRawDataMtd = baseDataTable.CloneWithoutIgnoreFigureRows(previousRawData);
+            foreach (var month in lastYear)
+            {
+                if (!currentYear.ContainsKey(month.Key))
+                {
+                    currentYear.Add(month.Key, 0);
+                }
+            }
+        }
 
-            var dailyResultMtd = rawDataAllProductsMtd.Rows.Count > 0
-                ? rawDataAllProductsMtd.AsEnumerable().Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver)).CopyToDataTable()
-                : rawDataAllProductsMtd;
-            var previousResultMtd = previousRawDataMtd.Rows.Count > 0
-                ? previousRawDataMtd.AsEnumerable().Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver)).CopyToDataTable()
-                : previousRawDataMtd;
+        private void CalcMargin(DataTable rawDataAllProducts, ChartMtdFigureModel mtdFigure, DepositType depositType)
+        {
+            var wlAfterPay = rawDataAllProducts.Rows.Count > 0
+                ? rawDataAllProducts.AsEnumerable().Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver)).CopyToDataTable()
+                : rawDataAllProducts;
 
-            var dailyResultTo = rawDataAllProductsMtd.Rows.Count > 0
-                ? rawDataAllProductsMtd.AsEnumerable().Where(s => s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver)).CopyToDataTable()
-                : rawDataAllProductsMtd;
-            var previousResultTo = previousRawDataMtd.Rows.Count > 0
-                ? previousRawDataMtd.AsEnumerable().Where(s => s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver)).CopyToDataTable()
-                : previousRawDataMtd;
+            var date = dateTimeService.DateTime.ToDate;
+            var wlBeforePay = baseDataTable.CloneWithoutIgnoreFigureRows(wlAfterPay);
+            var to = rawDataAllProducts.AsEnumerable()
+                .Where(s => s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver)).CopyToDataTable();
+            var wlLastYear = calculatorService.CalculateGrandTotalForMonthly(wlBeforePay, (date.Year - 1).ToString(), depositType);
+            var wlCurrentYear = calculatorService.CalculateGrandTotalForMonthly(wlBeforePay, (date.Year).ToString(), depositType);
+            var toLastYear = calculatorService.CalculateGrandTotalForMonthly(to, (date.Year - 1).ToString(), depositType);
+            var toCurrentYear = calculatorService.CalculateGrandTotalForMonthly(to, date.Year.ToString(), depositType);
+            var totalWlLastYear = wlLastYear.Sum(s => s.Value);
+            var totalWlCurrentYear = wlCurrentYear.Sum(s => s.Value);
+            var totalToLastYear = toLastYear.Sum(s => s.Value);
+            var totalToCurrentYear = toCurrentYear.Sum(s => s.Value);
+            mtdFigure.PreviousMargin = totalToLastYear == 0 ? 0 : totalWlLastYear / totalToLastYear;
+            mtdFigure.Margin = totalToCurrentYear == 0 ? 0 : totalWlCurrentYear / totalToCurrentYear;
+        }
 
-            var totalFigureMtd = calculatorService.CalculateGrandTotalForMonthly(dailyResultMtd, year);
-            var previousTotalFigureMtd = calculatorService.CalculateGrandTotalForMonthly(previousResultMtd, year);
+        private static Dictionary<DepositType, string> GetDepositType
+        {
+            get
+            {
+                var type = new Dictionary<DepositType, string>
+                {
+                    { DepositType.CreditOnly, "Credit" },
+                    { DepositType.DepositOnly, "Licensee" },
+                    { DepositType.All, "Total" }
+                };
 
-            var totalFigureTo = calculatorService.CalculateGrandTotalForMonthly(dailyResultTo, year);
-            var previousTotalFigureTo = calculatorService.CalculateGrandTotalForMonthly(previousResultTo, year);
-
-            var mtd = totalFigureMtd.Sum(s => s.Value);
-            var previousMtd = previousTotalFigureMtd.Sum(s => s.Value);
-
-            var to = totalFigureTo.Sum(s => s.Value);
-            var previousTo = previousTotalFigureTo.Sum(s => s.Value);
-
-            mtdFigure.Margin = to == 0 ? 0 : mtd / to;
-            mtdFigure.PreviousMargin = previousTo == 0 ? 0 : previousMtd / previousTo;
+                return type;
+            }
         }
     }
 }

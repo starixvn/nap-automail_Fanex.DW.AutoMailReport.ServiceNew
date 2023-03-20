@@ -8,20 +8,33 @@ namespace Fanex.DHWL.Business.Services.MonthlyChart
 {
     public interface MonthlyChartDataService
     {
-        Dictionary<int, double> CalculateSportsbookTotalForDaily(DataTable rawDataAllProducts);
-
-        Dictionary<int, double> CalculateGrandTotalForMonthly(DataTable rawDataAllProducts, string year);
-
-        Dictionary<int, double> CalcTotal(Dictionary<int, double> value1, Dictionary<int, double> value2);
+        Dictionary<int, double> CalculateGrandTotalForMonthly(DataTable rawDataAllProducts, string year, DepositType depositType);
     }
 
     public class MonthlyChartDataServiceImp : MonthlyChartDataService
     {
-        public Dictionary<int, double> CalculateGrandTotalForMonthly(DataTable rawDataAllProducts, string year)
+        public Dictionary<int, double> CalculateGrandTotalForMonthly(DataTable rawDataAllProducts, string year, DepositType depositType)
         {
-            var dataByYear = rawDataAllProducts.AsEnumerable()
-                .Where(s => s["MonthOfYear"].ToString().Contains(year))
-                .CopyToDataTable();
+            var dataByYear = rawDataAllProducts.Clone();
+            if (depositType == DepositType.All)
+            {
+                var source = rawDataAllProducts.AsEnumerable()
+                    .Where(s => s["MonthOfYear"].ToString().Contains(year));
+                if (source.Any())
+                {
+                    dataByYear = source.CopyToDataTable();
+                }
+            }
+            else
+            {
+                var source = rawDataAllProducts.AsEnumerable()
+                    .Where(s => s["MonthOfYear"].ToString().Contains(year) &&
+                                Converter.To<int>(s["IsDeposit"]) == Converter.To<int>(depositType));
+                if (source.Any())
+                {
+                    dataByYear = source.CopyToDataTable();
+                }
+            }
 
             var resultByMonth = new Dictionary<int, double>();
             dataByYear.AsEnumerable().GroupBy(g => new { MonthOfYear = g["MonthOfYear"] }).ToList()
@@ -42,32 +55,6 @@ namespace Fanex.DHWL.Business.Services.MonthlyChart
                 });
 
             return resultByMonth;
-        }
-
-        public Dictionary<int, double> CalcTotal(Dictionary<int, double> value1, Dictionary<int, double> value2)
-        {
-            var result = new Dictionary<int, double>();
-            foreach (var item in value1)
-            {
-                result.Add(item.Key, value1[item.Key] + value2[item.Key]);
-            }
-
-            return result;
-        }
-
-        public Dictionary<int, double> CalculateSportsbookTotalForDaily(DataTable rawDataAllProducts)
-        {
-            var result = new Dictionary<int, double>();
-            for (var columnIndex = ColumnIndex.StartDateColumnIndex; columnIndex < rawDataAllProducts.Columns.Count; columnIndex++)
-            {
-                var total = rawDataAllProducts.AsEnumerable()
-                    .Where(s => s[ColumnName.ProductName].ToString().Equals("Sportsbook"))
-                    .Sum(s => Converter.To<double>(s[columnIndex]));
-                var date = Converter.To<int>(rawDataAllProducts.Columns[columnIndex].ColumnName);
-                result.Add(date, total);
-            }
-
-            return result;
         }
     }
 }

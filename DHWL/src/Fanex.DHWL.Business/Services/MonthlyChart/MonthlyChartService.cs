@@ -11,7 +11,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyChart
 {
     public interface MonthlyChartService
     {
-        string ExportMonthlyChart(Dictionary<int, double> credit, Dictionary<int, double> lic, Dictionary<int, double> total, ChartMtdFigureModel mtdFigure);
+        string ExportMonthlyChart(Dictionary<int, double> lastYear, Dictionary<int, double> currentYear, ChartMtdFigureModel mtdFigure, string depositType);
     }
 
     public class MonthlyChartServiceImp : MonthlyChartService
@@ -19,7 +19,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyChart
         private readonly DateTimeServiceProvider dateTimeService;
         private readonly FormatService formatService;
 
-        private readonly int million = 1000000;
+        private const int Million = 1000000;
 
         public MonthlyChartServiceImp(DateTimeServiceProvider dateTimeService, FormatService formatService)
         {
@@ -27,84 +27,94 @@ namespace Fanex.DHWL.Business.Services.MonthlyChart
             this.formatService = formatService;
         }
 
-        public string ExportMonthlyChart(Dictionary<int, double> credit, Dictionary<int, double> lic, Dictionary<int, double> total, ChartMtdFigureModel mtdFigure)
+        public string ExportMonthlyChart(Dictionary<int, double> lastYear, Dictionary<int, double> currentYear, ChartMtdFigureModel mtdFigure, string depositType)
         {
             var font = new Font("Tahoma", 14);
             var fontMtd = new Font("Tahoma", 19);
-            var creditChart = "Credit";
-            var licChart = "Lic";
+
+            var lastYearChart = "Last_Year_Chart";
+            var currentYearChart = "Current_Year_Chart";
+            var date = dateTimeService.DateTime.ToDate;
+            var legendTextLastYear = $"{date.Year - 1} {depositType}";
+            var legendTextCurrentYear = $"{date.Year} {depositType}";
 
             Chart chart = new Chart();
 
-            ConfigureChartAreas(total, font, chart);
-            ConfigureChartLegends(fontMtd, chart, mtdFigure);
-            ConfigurationCreditChart(font, creditChart, chart);
-            ConfigurationLicChart(font, licChart, chart);
+            var maxLastYear = lastYear.Max(s => s.Value);
+            var maxCurrentYear = currentYear.Max(s => s.Value);
+            var data = maxLastYear > maxCurrentYear ? lastYear : currentYear;
 
-            AssignDataToCharts(credit, lic, creditChart, licChart, chart);
+            ConfigureChartAreas(data, font, chart);
+            ConfigureChartLegends(fontMtd, chart, mtdFigure, depositType);
 
-            return SaveChartToImage(chart);
+            ConfigurationLastYearChart(font, lastYearChart, legendTextLastYear, chart);
+            ConfigurationCurrentYearChart(font, currentYearChart, legendTextCurrentYear, chart);
+
+            AssignDataToCharts(lastYear, currentYear, lastYearChart, currentYearChart, chart);
+
+            return SaveChartToImage(chart, depositType);
         }
 
-        private string SaveChartToImage(Chart chart)
+        private string SaveChartToImage(Chart chart, string depositType)
         {
             var folder = $@"{AppConfigService.Config.Path}\{dateTimeService.DateTime.ToDate:yyyy}\{dateTimeService.DateTime.ToDate:MM}";
             Directory.CreateDirectory(folder);
-            var fileName = $@"{folder}\House-Net-Income-Chart-On-{dateTimeService.DateTime.ToDate:yyyyMMdd}.png";
+            var fileName = $@"{folder}\DHWL-YTD-Chart-{depositType}-{dateTimeService.DateTime.ToDate:yyyy-MM}.png";
             chart.SaveImage(fileName, ImageFormat.Png);
 
             return fileName;
         }
 
         private void AssignDataToCharts(
-            Dictionary<int, double> credit,
-            Dictionary<int, double> lic,
-            string creditChart,
-            string licChart,
+            Dictionary<int, double> lastYear,
+            Dictionary<int, double> currentYear,
+            string lastYearChart,
+            string currentYearChart,
             Chart chart)
         {
-            foreach (var month in credit)
+            foreach (var month in lastYear)
             {
-                chart.Series[creditChart].Points.AddXY(month.Key, month.Value / million);
+                chart.Series[lastYearChart].Points.AddXY(month.Key, month.Value / Million);
             }
 
-            foreach (var month in lic)
+            foreach (var month in currentYear)
             {
-                chart.Series[licChart].Points.AddXY(month.Key, month.Value / million);
+                chart.Series[currentYearChart].Points.AddXY(month.Key, month.Value / Million);
             }
         }
 
-        private static void ConfigurationLicChart(Font font, string licChart, Chart chart)
+        private static void ConfigurationLastYearChart(Font font, string lastYearChart, string legendText, Chart chart)
         {
-            chart.Series.Add(licChart);
-            chart.Series[licChart].LegendText = "Lic";
-            chart.Series[licChart].ChartType = SeriesChartType.StackedColumn;
-            chart.Series[licChart].Color = Color.FromArgb(251, 180, 64);
-            chart.Series[licChart].IsVisibleInLegend = true;
-            chart.Series[licChart].IsValueShownAsLabel = true;
-            chart.Series[licChart].LabelFormat = "#,##0.0m";
-            chart.Series[licChart].BorderWidth = 1;
-            chart.Series[licChart].Font = font;
+            chart.Series.Add(lastYearChart);
+            chart.Series[lastYearChart].LegendText = legendText;
+            chart.Series[lastYearChart].ChartType = SeriesChartType.Column;
+            chart.Series[lastYearChart].Color = Color.FromArgb(133, 184, 253);
+            chart.Series[lastYearChart].IsVisibleInLegend = true;
+            chart.Series[lastYearChart].IsValueShownAsLabel = true;
+            chart.Series[lastYearChart].LabelFormat = "#,##0.0m";
+            chart.Series[lastYearChart].BorderWidth = 1;
+            chart.Series[lastYearChart].Font = font;
         }
 
-        private static void ConfigurationCreditChart(Font font, string creditChart, Chart chart)
+        private static void ConfigurationCurrentYearChart(Font font, string currentYearChart, string legendText, Chart chart)
         {
-            chart.Series.Add(creditChart);
-            chart.Series[creditChart].LegendText = "Credit";
-            chart.Series[creditChart].ChartType = SeriesChartType.StackedColumn;
-            chart.Series[creditChart].Color = Color.FromArgb(133, 184, 253);
-            chart.Series[creditChart].IsVisibleInLegend = true;
-            chart.Series[creditChart].IsValueShownAsLabel = true;
-            chart.Series[creditChart].LabelFormat = "#,##0.0m";
-            chart.Series[creditChart].BorderWidth = 1;
-            chart.Series[creditChart].Font = font;
+            chart.Series.Add(currentYearChart);
+            chart.Series[currentYearChart].LegendText = legendText;
+            chart.Series[currentYearChart].ChartType = SeriesChartType.Column;
+            chart.Series[currentYearChart].Color = Color.FromArgb(251, 180, 64);
+            chart.Series[currentYearChart].IsVisibleInLegend = true;
+            chart.Series[currentYearChart].IsValueShownAsLabel = true;
+            chart.Series[currentYearChart].LabelFormat = "#,##0.0m";
+            chart.Series[currentYearChart].BorderWidth = 1;
+            chart.Series[currentYearChart].Font = font;
         }
 
-        private void ConfigureChartLegends(Font font, Chart chart, ChartMtdFigureModel mtdFigure)
+        private void ConfigureChartLegends(Font font, Chart chart, ChartMtdFigureModel mtdFigure, string depositType)
         {
             var fontMtd = new Font(font, FontStyle.Bold);
             var fromDate = dateTimeService.DateTime.FromDate;
-            var title = $"DHWL YTD Chart [{fromDate:MMM-yyyy}]";
+
+            var title = depositType.Equals("Total") ? $"DHWL YTD [{fromDate:MMM-yyyy}]" : $"{depositType.ToUpper()} DHWL YTD [{fromDate:MMM-yyyy}]";
             chart.Legends.Add("legend1");
             chart.Titles.Add("Title");
             chart.Titles[0].Text = title;
@@ -117,7 +127,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyChart
             chart.Titles[1].Font = fontMtd;
             chart.Titles[1].Alignment = ContentAlignment.TopLeft;
             chart.Titles[1].ForeColor = Color.FromArgb(44, 185, 91);
-            chart.Titles[1].DockingOffset = -6;
+            chart.Titles[1].DockingOffset = -3;
 
             chart.Legends[0].Docking = Docking.Top;
             chart.Legends[0].IsDockedInsideChartArea = false;
@@ -129,8 +139,8 @@ namespace Fanex.DHWL.Business.Services.MonthlyChart
         {
             var toDate = dateTimeService.DateTime.ToDate;
             var preToDate = new DateTimePreviousYearServiceImp(dateTimeService).ToDate;
-            var mtd = $"MTD (as of {toDate:yyyy-MM-dd}): {formatService.CutNumberOff(Convert.ToDecimal(mtdFigure.Mtd))} [{mtdFigure.Margin:P}]";
-            var previousMtd = $"MTD (as of {preToDate:yyyy-MM-dd}): {formatService.CutNumberOff(Convert.ToDecimal(mtdFigure.PreviousMtd))} [{mtdFigure.PreviousMargin:P}]";
+            var mtd = $"YTD (as of {toDate:MMM yyyy}): {formatService.CutNumberOff(Convert.ToDecimal(mtdFigure.Mtd))} [{mtdFigure.Margin * 100:F}%]";
+            var previousMtd = $"YTD (as of {preToDate:MMM yyyy}): {formatService.CutNumberOff(Convert.ToDecimal(mtdFigure.PreviousMtd))} [{mtdFigure.PreviousMargin * 100:F}%]";
             var diff = $"Diff %: {mtdFigure.DiffMtd} [{mtdFigure.DiffMargin}]";
 
             var result = new List<string>
@@ -145,23 +155,23 @@ namespace Fanex.DHWL.Business.Services.MonthlyChart
 
         private void ConfigureChartAreas(Dictionary<int, double> totalFigure, Font font, Chart chart)
         {
-            var numberOfDays = totalFigure.Count;
+            var numberOfDays = totalFigure.Count * 2;
             var width = (numberOfDays * 1920 / 31) + 50;
             width = Math.Max(width, 200);
 
             if (numberOfDays <= 9)
             {
-                width = 700;
+                width = 650;
             }
 
-            var maxValue = Math.Round(totalFigure.Max(s => s.Value) / million, 0) + 20;
+            var maxValue = Math.Round(totalFigure.Max(s => s.Value) / Million, 0) + 40;
             var minList = new List<double>();
             totalFigure.ToList().ForEach(m =>
             {
                 minList.Add(totalFigure[m.Key]);
             });
 
-            var minValue = minList.Min(s => s) / million - 20;
+            var minValue = minList.Min(s => s) / Million;
             minValue = Math.Round(Math.Min(minValue, 0), 0);
 
             chart.Size = new Size(width, 900);
@@ -190,15 +200,36 @@ namespace Fanex.DHWL.Business.Services.MonthlyChart
             chart.ChartAreas[0].AxisX.Minimum = 0;
             chart.ChartAreas[0].AxisX.IsMarginVisible = true;
             chart.ChartAreas[0].AxisX.IsStartedFromZero = false;
-            chart.ChartAreas[0].AxisX.ScaleView.SizeType = DateTimeIntervalType.Days;
+            chart.ChartAreas[0].AxisX.ScaleView.SizeType = DateTimeIntervalType.Number;
             chart.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.FromArgb(217, 217, 217);
             chart.ChartAreas[0].AxisX.MinorTickMark.TickMarkStyle = TickMarkStyle.InsideArea;
 
-            foreach (var day in totalFigure)
+            var maxItem = totalFigure.Count;
+            var monthYear = Month();
+            var toMonth = dateTimeService.DateTime.ToDate.Month;
+            for (var month = 1; month <= maxItem; month++)
             {
-                var labelX = new CustomLabel(day.Key - 1, day.Key + 1, day.Key.ToString(), 0, LabelMarkStyle.LineSideMark);
+                var labelX = new CustomLabel(month - 1, month + 1, monthYear[month], 0, LabelMarkStyle.LineSideMark);
+                if (month > toMonth)
+                {
+                    labelX.ForeColor = Color.Transparent;
+                }
+
                 chart.ChartAreas[0].AxisX.CustomLabels.Add(labelX);
             }
+        }
+
+        private static Dictionary<int, string> Month()
+        {
+            var months = new Dictionary<int, string>();
+            for (var month = 1; month <= 12; month++)
+            {
+                var today = DateTime.Today;
+                var date = new DateTime(today.Year, month, 01);
+                months.Add(month, $"{date:MMM}");
+            }
+
+            return months;
         }
     }
 }

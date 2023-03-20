@@ -4,25 +4,17 @@
   "LetstalkServiceApi": "http://napmailletstalk.nexdev.net/",
   "IsCheckEnoughData": false,
   "ReportType": "Manual",
-  "FromDate": "2023-01-01",
-  "ToDate": "2023-01-31",
+  "FromDate": "2023-12-01",
+  "ToDate": "2023-12-31",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\NEW-DHWL",
   "Password": "",
   "TargetName": "daily-house-wl",
   "LetstalkGroup": "DWHL-UAT",
-  "ProductList": "All",
-  "IsAttachAdjument": true,
-  "DataMode": 1,
   "LetstalkGroups": {
     "Image": {
       "Group": "DWHL-UAT",
-      "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\2-DHWL-Daily",
+      "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\1-DHWL-Monthly",
       "MailId": 0
-    },
-    "Excel": {
-      "Group": "",
-      "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\2-DHWL-Excel-Daily",
-      "MailId": 364
     }
   }
 }

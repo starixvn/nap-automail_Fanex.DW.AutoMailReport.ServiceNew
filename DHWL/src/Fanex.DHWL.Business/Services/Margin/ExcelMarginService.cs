@@ -13,7 +13,7 @@ namespace Fanex.DHWL.Business.Services
 
         int LastRowIndex { get; set; }
 
-        MarginModel GrandTotal { get; set; }
+        List<MarginModel> GrandTotalList { get; set; }
     }
 
     public class ExcelMarginServiceImp : ExcelMarginService
@@ -39,7 +39,7 @@ namespace Fanex.DHWL.Business.Services
             this.dataMarginService = dataMarginService;
         }
 
-        public MarginModel GrandTotal { get; set; }
+        public List<MarginModel> GrandTotalList { get; set; }
 
         public string Export(DataTable dailyRawData, bool isDaily, int reportId)
         {
@@ -47,7 +47,7 @@ namespace Fanex.DHWL.Business.Services
                  ? dataMarginService.CalcDataForDaily(dailyRawData)
                  : dataMarginService.CalcDataForMtd(dailyRawData);
 
-            GrandTotal = dataMarginService.GrandTotal;
+            GrandTotalList = dataMarginService.GrandTotalList;
             excelPackage = new ExcelPackage(new FileInfo($"Templates/DHWL-Margin.xlsx"));
             var dailyTemplate = excelPackage.Workbook.Worksheets["Margin"];
             var formatTpl = excelPackage.Workbook.Worksheets["Format"];

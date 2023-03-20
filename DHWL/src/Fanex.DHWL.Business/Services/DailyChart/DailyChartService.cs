@@ -158,8 +158,8 @@ namespace Fanex.DHWL.Business.Services.DailyChart
         {
             var toDate = dateTimeService.DateTime.ToDate;
             var preToDate = new DateTimePreviousYearServiceImp(dateTimeService).ToDate;
-            var mtd = $"MTD (as of {toDate:yyyy-MM-dd}): {formatService.CutNumberOff(Convert.ToDecimal(mtdFigure.Mtd))} [{mtdFigure.Margin:P}]";
-            var previousMtd = $"MTD (as of {preToDate:yyyy-MM-dd}): {formatService.CutNumberOff(Convert.ToDecimal(mtdFigure.PreviousMtd))} [{mtdFigure.PreviousMargin:P}]";
+            var mtd = $"MTD (as of {toDate:yyyy-MM-dd}): {formatService.CutNumberOff(Convert.ToDecimal(mtdFigure.Mtd))} [{mtdFigure.Margin * 100:F}%]";
+            var previousMtd = $"MTD (as of {preToDate:yyyy-MM-dd}): {formatService.CutNumberOff(Convert.ToDecimal(mtdFigure.PreviousMtd))} [{mtdFigure.PreviousMargin * 100:F}%]";
             var diff = $"Diff %: {mtdFigure.DiffMtd} [{mtdFigure.DiffMargin}]";
 
             var result = new List<string>
@@ -180,7 +180,7 @@ namespace Fanex.DHWL.Business.Services.DailyChart
 
             if (numberOfDays <= 9)
             {
-                width = 607;
+                width = 650;
             }
 
             var maxValue = Math.Round(totalFigure.Max(s => s.Value) / million, 0) + 1;
