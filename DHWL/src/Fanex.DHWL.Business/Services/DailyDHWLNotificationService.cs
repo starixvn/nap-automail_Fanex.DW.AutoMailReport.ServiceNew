@@ -1,10 +1,10 @@
 ﻿using Fanex.DHWL.Business.Models;
+using Fanex.DHWL.Business.Services.DailyChart;
 using Fanex.DHWL.Business.Services.DailyDHWLLetstalk;
 using Fanex.DHWL.Business.Services.Margin;
 using Fanex.MailDelivery.Core.Models;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 
 namespace Fanex.DHWL.Business.Services
@@ -27,7 +27,7 @@ namespace Fanex.DHWL.Business.Services
         private readonly MailService mailService;
         private readonly BaseDataTable baseDataTable;
 
-        private readonly ChartExport chartExport;
+        private readonly DailyChartExport chartExport;
 
         private readonly DailyImageDHWLService imageDhwlService;
         private readonly ImageMarginService imageMarginService;
@@ -42,7 +42,7 @@ namespace Fanex.DHWL.Business.Services
             FileService fileService,
             MailService mailService,
             BaseDataTable baseDataTable,
-            ChartExport chartExport,
+            DailyChartExport chartExport,
             DailyImageDHWLService imageDhwlService,
             ImageMarginService imageMarginService,
             DateTimeServiceProvider dateTimeServiceProvider)
@@ -113,13 +113,16 @@ namespace Fanex.DHWL.Business.Services
             var excelPath = excelDailyService.Export(cloneData);
 
             var reportId = 1;
-            var imageDhwlPath = imageDhwlService.Export(cloneDataDhwl);
 
             reportId++;
             var imageMarginPath = imageMarginService.Export(dailyRawData, true, reportId);
+            var grandTotalForDaily = imageMarginService.GrandTotalList;
 
             reportId++;
             var imageMarginMtdPath = imageMarginService.Export(dailyRawData, false, reportId);
+            var grandTotalForMtd = imageMarginService.GrandTotalList;
+
+            var imageDhwlPath = imageDhwlService.Export(cloneDataDhwl, grandTotalForDaily, grandTotalForMtd);
             var chartPath = chartExport.Export(dailyRawData, previousRawData);
             var images = new List<string>
             {

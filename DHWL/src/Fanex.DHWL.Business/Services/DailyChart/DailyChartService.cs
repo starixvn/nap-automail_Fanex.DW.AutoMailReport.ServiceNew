@@ -7,21 +7,21 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms.DataVisualization.Charting;
 
-namespace Fanex.DHWL.Business.Services
+namespace Fanex.DHWL.Business.Services.DailyChart
 {
-    public interface ChartService
+    public interface DailyChartService
     {
         string ExportDailyChart(Dictionary<int, double> sbFigure, Dictionary<int, double> totalFigure, ChartMtdFigureModel mtdFigure);
     }
 
-    public class ChartServiceImp : ChartService
+    public class DailyChartServiceImp : DailyChartService
     {
         private readonly DateTimeServiceProvider dateTimeService;
         private readonly FormatService formatService;
 
         private readonly int million = 1000000;
 
-        public ChartServiceImp(DateTimeServiceProvider dateTimeService, FormatService formatService)
+        public DailyChartServiceImp(DateTimeServiceProvider dateTimeService, FormatService formatService)
         {
             this.dateTimeService = dateTimeService;
             this.formatService = formatService;
@@ -158,11 +158,18 @@ namespace Fanex.DHWL.Business.Services
         {
             var toDate = dateTimeService.DateTime.ToDate;
             var preToDate = new DateTimePreviousYearServiceImp(dateTimeService).ToDate;
-            var result = $"MTD (as of {toDate:yyyy-MM-dd}): {formatService.CutNumberOff(Convert.ToDecimal(mtdFigure.Mtd))}{Environment.NewLine}" +
-                         $"MTD (as of {preToDate:yyyy-MM-dd}): {formatService.CutNumberOff(Convert.ToDecimal(mtdFigure.PreviousMtd))}{Environment.NewLine}" +
-                         $"Diff %: {mtdFigure.Diff}";
+            var mtd = $"MTD (as of {toDate:yyyy-MM-dd}): {formatService.CutNumberOff(Convert.ToDecimal(mtdFigure.Mtd))} [{mtdFigure.Margin * 100:F}%]";
+            var previousMtd = $"MTD (as of {preToDate:yyyy-MM-dd}): {formatService.CutNumberOff(Convert.ToDecimal(mtdFigure.PreviousMtd))} [{mtdFigure.PreviousMargin * 100:F}%]";
+            var diff = $"Diff %: {mtdFigure.DiffMtd} [{mtdFigure.DiffMargin}]";
 
-            return result;
+            var result = new List<string>
+            {
+                mtd,
+                previousMtd,
+                diff
+            };
+
+            return string.Join(Environment.NewLine, result);
         }
 
         private void ConfigureChartAreas(Dictionary<int, double> totalFigure, Font font, Chart chart)
@@ -171,9 +178,9 @@ namespace Fanex.DHWL.Business.Services
             var width = (numberOfDays * 1920 / 31) + 50;
             width = Math.Max(width, 200);
 
-            if (numberOfDays <= 7)
+            if (numberOfDays <= 9)
             {
-                width = 483;
+                width = 650;
             }
 
             var maxValue = Math.Round(totalFigure.Max(s => s.Value) / million, 0) + 1;

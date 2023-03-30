@@ -2,11 +2,11 @@
 using Fanex.Data.Repository;
 using Fanex.DHWL.Business.Models;
 using Fanex.DHWL.Business.Services;
+using Fanex.DHWL.Business.Services.DailyChart;
 using Fanex.DHWL.Business.Services.DailyDHWLLetstalk;
 using Fanex.DHWL.Business.Services.LicenseePerformance;
 using Fanex.DHWL.Business.Services.Margin;
 using Fanex.LetstalkService.Client;
-using Fanex.LetstalkService.Core.Services;
 using Fanex.Logging;
 using Fanex.Logging.Sentry.RavenClient;
 using Newtonsoft.Json;
@@ -17,6 +17,8 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
+using AppConfigService = Fanex.DHWL.Business.Services.AppConfigService;
+using LetstalkApi = Fanex.LetstalkService.Core.Services.AppConfigService;
 
 namespace Fanex.DailyDHWL.Executing
 {
@@ -24,9 +26,16 @@ namespace Fanex.DailyDHWL.Executing
     {
         public static void RegisterServices()
         {
-            LoadConfig();
-            SentryRegister();
-            ConfigureFanexData();
+            try
+            {
+                LoadConfig();
+                ConfigureFanexData();
+                SentryRegister();
+            }
+            catch (Exception e)
+            {
+                File.AppendAllText($"{AppConfigService.Config.Path}/log.txt", $"{Environment.NewLine}{e.Message}");
+            }
         }
 
         private static void LoadConfig()
@@ -40,6 +49,8 @@ namespace Fanex.DailyDHWL.Executing
 
             text = File.ReadAllText("Templates/ImageSetting.json");
             AppConfigService.Config.ImageSettings = JsonConvert.DeserializeObject<Dictionary<string, ImageProperty>>(text);
+
+            LetstalkApi.Config.LetstalkServiceApi = AppConfigService.Config.LetstalkServiceApi;
         }
 
         public static void RegisterContainer(Container container)
@@ -60,9 +71,9 @@ namespace Fanex.DailyDHWL.Executing
             container.Register<DateTimeService, DateTimeLastMonthServiceImp>();
             container.Register<DataHouseIncomeService, DataHouseIncomeServiceImp>();
             container.Register<DataLastMonthService, DataLastMonthServiceImp>();
-            container.Register<ChartService, ChartServiceImp>();
-            container.Register<ChartDataService, ChartDataServiceImp>();
-            container.Register<ChartExport, ChartExportImp>();
+            container.Register<DailyChartService, DailyChartServiceImp>();
+            container.Register<DailyChartExport, DailyChartExportImp>();
+            container.Register<DailyChartDataService, DailyChartDataServiceImp>();
             container.Register<FormatService, FormatServiceImp>();
             container.Register<DataMarginService, DataMarginServiceImp>();
             container.Register<ExcelMarginService, ExcelMarginServiceImp>();
@@ -73,8 +84,6 @@ namespace Fanex.DailyDHWL.Executing
             container.Register<MergeProductDataService, MergeProductDataServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
-            container.Register<ApplicationSettingService, ApplicationSettingServiceImp>();
-            container.Register<WebApiClientService, WebApiClientServiceImp>();
         }
 
         private static void SentryRegister()

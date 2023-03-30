@@ -1,0 +1,20 @@
+﻿{
+  "SentryClientKey": "https://ad29bef60cc04e78803c9030a33a2c06@sentry.nexdev.net/44",
+  "CategorySentryLog": "NAP-Report-Service-LOCAL",
+  "LetstalkServiceApi": "http://napmailletstalk.nexdev.net/",
+  "IsCheckEnoughData": false,
+  "ReportType": "Manual",
+  "FromDate": "2023-12-01",
+  "ToDate": "2023-12-28",
+  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\NEW-DHWL",
+  "Password": "",
+  "TargetName": "daily-house-wl",
+  "LetstalkGroup": "DWHL-UAT",
+  "LetstalkGroups": {
+    "Image": {
+      "Group": "DWHL-UAT",
+      "InternalPath": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime\\1-DHWL-Monthly",
+      "MailId": 0
+    }
+  }
+}

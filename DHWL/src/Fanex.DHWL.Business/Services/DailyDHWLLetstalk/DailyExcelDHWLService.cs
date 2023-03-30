@@ -10,7 +10,7 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
 {
     public interface DailyExcelDHWLService
     {
-        string Export(DataTable dailyRawData);
+        string Export(DataTable dailyRawData, List<MarginModel> grandTotalForDaily, List<MarginModel> grandTotalForMtd);
 
         int LastRowIndex { get; set; }
     }
@@ -35,7 +35,7 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
             this.dateService = dateService;
         }
 
-        public string Export(DataTable dailyRawData)
+        public string Export(DataTable dailyRawData, List<MarginModel> grandTotalForDaily, List<MarginModel> grandTotalForMtd)
         {
             var dataDhwl = dataDhwlService.CalTotalByProduct(dailyRawData);
 
@@ -48,38 +48,116 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
             RenderDataGroup1("B4", dataDhwl, dailyTemplate, formatTpl);
             RenderDataGroup2("H4", dataDhwl, dailyTemplate, formatTpl);
             RenderDataGroup3("N4", dataDhwl, dailyTemplate, formatTpl);
-            RenderGrandTotal(dataDhwl, dailyTemplate, formatTpl);
+
+            RenderCreditTotal(dailyTemplate, formatTpl, grandTotalForDaily, grandTotalForMtd);
+            RenderDepositTotal(dailyTemplate, formatTpl, grandTotalForDaily, grandTotalForMtd);
+            RenderGrandTotal(dailyTemplate, formatTpl, grandTotalForDaily, grandTotalForMtd);
 
             return Save(dailyTemplate);
         }
 
-        private void RenderGrandTotal(List<DailyDHWLModel> dataDhwl, ExcelWorksheet dailyTemplate, ExcelWorksheet formatTpl)
+        private void RenderCreditTotal(
+            ExcelWorksheet dailyTemplate,
+            ExcelWorksheet formatTpl,
+            List<MarginModel> grandTotalForDaily,
+            List<MarginModel> grandTotalForMtd)
         {
             var endRow = dailyTemplate.Dimension.End.Row + 2;
             LastRowIndex = endRow;
             formatTpl.Cells["B12:P12"].Copy(dailyTemplate.Cells[endRow, 2, endRow, 16]);
             dailyTemplate.Row(endRow - 1).Height = 10;
+            dailyTemplate.Row(endRow).Height = 22;
+
+            dailyTemplate.Cells[endRow, 2, endRow, 4].Merge = true;
+            dailyTemplate.Cells[endRow, 2, endRow, 4].Value = "Credit Total";
+            dailyTemplate.Cells[endRow, 2, endRow, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+            var netTotalDaily = grandTotalForDaily.FirstOrDefault(s => s.ProductShortName.Equals("NET TOTAL")) ?? new MarginModel();
+            var totalDaily = grandTotalForDaily.FirstOrDefault(s => s.ProductShortName.Equals("Total")) ?? new MarginModel();
+            var netTotalMtd = grandTotalForMtd.FirstOrDefault(s => s.ProductShortName.Equals("NET TOTAL")) ?? new MarginModel();
+            var totalMtd = grandTotalForMtd.FirstOrDefault(s => s.ProductShortName.Equals("Total")) ?? new MarginModel();
+            var dailyWl = totalDaily.TotalWL - totalDaily.LicenseeWL;
+            var dailyTo = totalDaily.TotalTO - totalDaily.LicenseeTO;
+            var dailyMargin = dailyTo == 0 ? 0 : dailyWl / dailyTo;
+            dailyTemplate.Cells[endRow, 5, endRow, 9].Value = netTotalDaily.TotalWL - netTotalDaily.LicenseeWL;
+            dailyTemplate.Cells[endRow, 5, endRow, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+            dailyTemplate.Cells[endRow, 5, endRow, 9].Merge = true;
+            dailyTemplate.Cells[endRow, 10, endRow, 10].Value = dailyMargin;
+
+            var mtdWl = totalMtd.TotalWL - totalMtd.LicenseeWL;
+            var mtdTo = totalMtd.TotalTO - totalMtd.LicenseeTO;
+            var mtdMargin = mtdTo == 0 ? 0 : mtdWl / mtdTo;
+            dailyTemplate.Cells[endRow, 11, endRow, 15].Value = netTotalMtd.TotalWL - netTotalMtd.LicenseeWL;
+            dailyTemplate.Cells[endRow, 11, endRow, 15].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+            dailyTemplate.Cells[endRow, 11, endRow, 15].Merge = true;
+            dailyTemplate.Cells[endRow, 16, endRow, 16].Value = mtdMargin;
+        }
+
+        private void RenderDepositTotal(
+            ExcelWorksheet dailyTemplate,
+            ExcelWorksheet formatTpl,
+            List<MarginModel> grandTotalForDaily,
+            List<MarginModel> grandTotalForMtd)
+        {
+            var endRow = dailyTemplate.Dimension.End.Row + 1;
+            LastRowIndex = endRow;
+            formatTpl.Cells["B13:P13"].Copy(dailyTemplate.Cells[endRow, 2, endRow, 16]);
+            dailyTemplate.Row(endRow).Height = 22;
+
+            dailyTemplate.Cells[endRow, 2, endRow, 4].Merge = true;
+            dailyTemplate.Cells[endRow, 2, endRow, 4].Value = "Deposit Total";
+            dailyTemplate.Cells[endRow, 2, endRow, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+            var netTotalDaily = grandTotalForDaily.FirstOrDefault(s => s.ProductShortName.Equals("NET TOTAL")) ?? new MarginModel();
+            var totalDaily = grandTotalForDaily.FirstOrDefault(s => s.ProductShortName.Equals("Total")) ?? new MarginModel();
+            var netTotalMtd = grandTotalForMtd.FirstOrDefault(s => s.ProductShortName.Equals("NET TOTAL")) ?? new MarginModel();
+            var totalMtd = grandTotalForMtd.FirstOrDefault(s => s.ProductShortName.Equals("Total")) ?? new MarginModel();
+            var dailyWl = totalDaily.LicenseeWL;
+            var dailyTo = totalDaily.LicenseeTO;
+            var dailyMargin = dailyTo == 0 ? 0 : dailyWl / dailyTo;
+            dailyTemplate.Cells[endRow, 5, endRow, 9].Value = netTotalDaily.LicenseeWL;
+            dailyTemplate.Cells[endRow, 5, endRow, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+            dailyTemplate.Cells[endRow, 5, endRow, 9].Merge = true;
+            dailyTemplate.Cells[endRow, 10, endRow, 10].Value = dailyMargin;
+
+            var mtdWl = totalMtd.LicenseeWL;
+            var mtdTo = totalMtd.LicenseeTO;
+            var mtdMargin = mtdTo == 0 ? 0 : mtdWl / mtdTo;
+            dailyTemplate.Cells[endRow, 11, endRow, 15].Value = netTotalMtd.LicenseeWL;
+            dailyTemplate.Cells[endRow, 11, endRow, 15].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+            dailyTemplate.Cells[endRow, 11, endRow, 15].Merge = true;
+            dailyTemplate.Cells[endRow, 16, endRow, 16].Value = mtdMargin;
+        }
+
+        private void RenderGrandTotal(
+            ExcelWorksheet dailyTemplate,
+            ExcelWorksheet formatTpl,
+            List<MarginModel> grandTotalForDaily,
+            List<MarginModel> grandTotalForMtd)
+        {
+            var endRow = dailyTemplate.Dimension.End.Row + 1;
+            LastRowIndex = endRow;
+            formatTpl.Cells["B14:P14"].Copy(dailyTemplate.Cells[endRow, 2, endRow, 16]);
             dailyTemplate.Row(endRow).Height = 25;
 
-            var grandTotal = dataDhwl.FirstOrDefault(s => s.ProductGroup == "Total");
             dailyTemplate.Cells[endRow, 2, endRow, 4].Merge = true;
             dailyTemplate.Cells[endRow, 2, endRow, 4].Value = "Grand Total";
-            dailyTemplate.Cells[endRow, 2, endRow, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-            dailyTemplate.Cells[endRow, 2, endRow, 4].Style.Indent = 1;
+            dailyTemplate.Cells[endRow, 2, endRow, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-            dailyTemplate.Cells[endRow, 5, endRow, 10].Merge = true;
-            if (grandTotal != null)
-            {
-                dailyTemplate.Cells[endRow, 5, endRow, 10].Value = grandTotal.WinLossYesterday;
-                dailyTemplate.Cells[endRow, 5, endRow, 10].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
-                dailyTemplate.Cells[endRow, 5, endRow, 10].Style.Indent = 2;
+            var netTotalDaily = grandTotalForDaily.FirstOrDefault(s => s.ProductShortName.Equals("NET TOTAL")) ?? new MarginModel();
+            var totalDaily = grandTotalForDaily.FirstOrDefault(s => s.ProductShortName.Equals("Total")) ?? new MarginModel();
+            var netTotalMtd = grandTotalForMtd.FirstOrDefault(s => s.ProductShortName.Equals("NET TOTAL")) ?? new MarginModel();
+            var totalMtd = grandTotalForMtd.FirstOrDefault(s => s.ProductShortName.Equals("Total")) ?? new MarginModel();
 
-                dailyTemplate.Cells[endRow, 11, endRow, 16].Merge = true;
-                dailyTemplate.Cells[endRow, 11, endRow, 16].Value = grandTotal.WinLossMTD;
-                dailyTemplate.Cells[endRow, 11, endRow, 16].Style.Indent = 2;
-            }
+            dailyTemplate.Cells[endRow, 5, endRow, 9].Value = netTotalDaily.TotalWL;
+            dailyTemplate.Cells[endRow, 5, endRow, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+            dailyTemplate.Cells[endRow, 5, endRow, 9].Merge = true;
+            dailyTemplate.Cells[endRow, 10, endRow, 10].Value = totalDaily.TotalMargin;
 
-            dailyTemplate.Cells[endRow, 11, endRow, 16].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+            dailyTemplate.Cells[endRow, 11, endRow, 15].Value = netTotalMtd.TotalWL;
+            dailyTemplate.Cells[endRow, 11, endRow, 15].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+            dailyTemplate.Cells[endRow, 11, endRow, 15].Merge = true;
+            dailyTemplate.Cells[endRow, 16, endRow, 16].Value = totalMtd.TotalMargin;
         }
 
         private void RenderDataGroup1(string loadDataAtCell, List<DailyDHWLModel> dataDhwl, ExcelWorksheet dailyTemplate, ExcelWorksheet formatTpl)
@@ -87,8 +165,8 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
             var productGroup1 = new List<string> { "Sportsbook", "Live Casino" };
             var dataGroup1 = dataDhwl.Where(s => productGroup1.Contains(s.ProductGroup)).ToList();
 
-            var startCol = 2;
-            var endCol = 4;
+            const int startCol = 2;
+            const int endCol = 4;
             RenderData(loadDataAtCell, dataGroup1, dailyTemplate, startCol, endCol);
             FormatData(dataGroup1, dailyTemplate, formatTpl, startCol, endCol);
         }
@@ -98,8 +176,8 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
             var productGroup2 = new List<string> { "RNG Casino" };
             var dataGroup2 = dataDhwl.Where(s => productGroup2.Contains(s.ProductGroup)).ToList();
 
-            var startCol = 8;
-            var endCol = 10;
+            const int startCol = 8;
+            const int endCol = 10;
             RenderData(loadDataAtCell, dataGroup2, dailyTemplate, startCol, endCol);
             FormatData(dataGroup2, dailyTemplate, formatTpl, startCol, endCol);
         }
@@ -109,8 +187,8 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
             var productGroup3 = new List<string> { "Lottery/Keno", "Others" };
             var dataGroup3 = dataDhwl.Where(s => productGroup3.Contains(s.ProductGroup)).ToList();
 
-            var startCol = 14;
-            var endCol = 16;
+            const int startCol = 14;
+            const int endCol = 16;
             RenderData(loadDataAtCell, dataGroup3, dailyTemplate, startCol, endCol);
             FormatData(dataGroup3, dailyTemplate, formatTpl, startCol, endCol);
             var lastRowIndex = dataGroup3.Count + 4;
@@ -118,18 +196,18 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
             dailyTemplate.Cells[lastRowIndex, 16].StyleID = formatTpl.Cells["B10"].StyleID;
         }
 
-        private void RenderData(string loadDataAtCell, List<DailyDHWLModel> data, ExcelWorksheet template, int startCol, int endCol)
+        private static void RenderData(string loadDataAtCell, List<DailyDHWLModel> data, ExcelWorksheet template, int startCol, int endCol)
         {
             template.Cells[loadDataAtCell].LoadFromCollection(data, false);
 
             var maxRowIndex = data.Count + StartRowIndex - 1;
 
-            for (int rowIndex = StartRowIndex; rowIndex <= maxRowIndex; rowIndex++)
+            for (var rowIndex = StartRowIndex; rowIndex <= maxRowIndex; rowIndex++)
             {
                 template.Row(rowIndex).Height = 19.5;
             }
 
-            for (int columnIndex = startCol; columnIndex <= endCol; columnIndex++)
+            for (var columnIndex = startCol; columnIndex <= endCol; columnIndex++)
             {
                 template.Cells[StartRowIndex, columnIndex, maxRowIndex, columnIndex].StyleID = template.Cells[StartRowIndex, columnIndex].StyleID;
             }

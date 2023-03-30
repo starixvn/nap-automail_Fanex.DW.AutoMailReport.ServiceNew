@@ -4,16 +4,16 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
-namespace Fanex.DHWL.Business.Services
+namespace Fanex.DHWL.Business.Services.DailyChart
 {
-    public interface ChartDataService
+    public interface DailyChartDataService
     {
         Dictionary<int, double> CalculateSportsbookTotalForDaily(DataTable rawDataAllProducts);
 
         Dictionary<int, double> CalculateGrandTotalForDaily(DataTable rawDataAllProducts);
     }
 
-    public class ChartDataServiceImp : ChartDataService
+    public class DailyChartDataServiceImp : DailyChartDataService
     {
         public Dictionary<int, double> CalculateGrandTotalForDaily(DataTable rawDataAllProducts)
         {

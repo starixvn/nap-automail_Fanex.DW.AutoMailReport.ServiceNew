@@ -5,10 +5,10 @@ using Fanex.DHWL.Business.Services;
 using Fanex.DHWL.Business.Services.Adjustment;
 using Fanex.DHWL.Business.Services.LicenseePerformance;
 using Fanex.DHWL.Business.Services.Margin;
+using Fanex.DHWL.Business.Services.MonthlyChart;
 using Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk;
 using Fanex.DHWL.Business.Services.MonthlyReconciliation;
 using Fanex.LetstalkService.Client;
-using Fanex.LetstalkService.Core.Services;
 using Fanex.Logging;
 using Fanex.Logging.Sentry.RavenClient;
 using Newtonsoft.Json;
@@ -19,6 +19,8 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
+using AppConfigService = Fanex.DHWL.Business.Services.AppConfigService;
+using LetstalkApi = Fanex.LetstalkService.Core.Services.AppConfigService;
 
 namespace Fanex.MonthlyDHWL.Executing
 {
@@ -42,6 +44,8 @@ namespace Fanex.MonthlyDHWL.Executing
 
             text = File.ReadAllText("Templates/ImageSetting.json");
             AppConfigService.Config.ImageSettings = JsonConvert.DeserializeObject<Dictionary<string, ImageProperty>>(text);
+
+            LetstalkApi.Config.LetstalkServiceApi = AppConfigService.Config.LetstalkServiceApi;
         }
 
         public static void RegisterContainer(Container container)
@@ -62,9 +66,10 @@ namespace Fanex.MonthlyDHWL.Executing
             container.Register<DateTimeService, DateTimeLastMonthServiceImp>();
             container.Register<DataHouseIncomeService, DataHouseIncomeServiceImp>();
             container.Register<DataLastMonthService, DataLastMonthServiceImp>();
-            container.Register<ChartService, ChartServiceImp>();
-            container.Register<ChartDataService, ChartDataServiceImp>();
-            container.Register<ChartExport, ChartExportImp>();
+            container.Register<MonthlyChartExport, MonthlyChartExportImp>();
+            container.Register<MonthlyChartDataService, MonthlyChartDataServiceImp>();
+            container.Register<MonthlyChartService, MonthlyChartServiceImp>();
+
             container.Register<FormatService, FormatServiceImp>();
             container.Register<DataMarginService, DataMarginServiceImp>();
             container.Register<ExcelMarginService, ExcelMarginServiceImp>();
@@ -78,8 +83,6 @@ namespace Fanex.MonthlyDHWL.Executing
             container.Register<MergeProductDataService, MergeProductDataServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
-            container.Register<ApplicationSettingService, ApplicationSettingServiceImp>();
-            container.Register<WebApiClientService, WebApiClientServiceImp>();
         }
 
         private static void SentryRegister()

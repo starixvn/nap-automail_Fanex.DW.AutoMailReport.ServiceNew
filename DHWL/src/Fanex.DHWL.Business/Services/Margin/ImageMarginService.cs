@@ -1,4 +1,6 @@
-﻿using Fanex.DHWL.Business.Services.LicenseePerformance;
+﻿using Fanex.DHWL.Business.Models;
+using Fanex.DHWL.Business.Services.LicenseePerformance;
+using System.Collections.Generic;
 using System.Data;
 
 namespace Fanex.DHWL.Business.Services.Margin
@@ -6,6 +8,8 @@ namespace Fanex.DHWL.Business.Services.Margin
     public interface ImageMarginService
     {
         string Export(DataTable dailyRawData, bool isDaily, int reportId);
+
+        List<MarginModel> GrandTotalList { get; set; }
     }
 
     public class ImageMarginServiceImp : ImageMarginService
@@ -24,12 +28,16 @@ namespace Fanex.DHWL.Business.Services.Margin
             this.mergeProductDataService = mergeProductDataService;
         }
 
+        public List<MarginModel> GrandTotalList { get; set; }
+
         public string Export(DataTable dailyRawData, bool isDaily, int reportId)
         {
             mergeProductDataService.MergeVGamingIntoSabaC(dailyRawData);
 
             var excelPath = excelMarginService.Export(dailyRawData, isDaily, reportId);
             var lastRow = excelMarginService.LastRowIndex;
+            GrandTotalList = excelMarginService.GrandTotalList;
+
             var image = AppConfigService.Config.ImageSettings["Margin"];
             image.LastRow = lastRow;
             image.CropHeight = lastRow * image.HeightPerRow + image.AdjustHeight;
