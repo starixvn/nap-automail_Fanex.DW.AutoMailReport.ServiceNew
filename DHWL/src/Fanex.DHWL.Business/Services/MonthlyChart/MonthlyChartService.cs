@@ -18,13 +18,15 @@ namespace Fanex.DHWL.Business.Services.MonthlyChart
     {
         private readonly DateTimeServiceProvider dateTimeService;
         private readonly FormatService formatService;
+        private readonly Log log;
 
         private const int Million = 1000000;
 
-        public MonthlyChartServiceImp(DateTimeServiceProvider dateTimeService, FormatService formatService)
+        public MonthlyChartServiceImp(DateTimeServiceProvider dateTimeService, FormatService formatService, Log log)
         {
             this.dateTimeService = dateTimeService;
             this.formatService = formatService;
+            this.log = log;
         }
 
         public string ExportMonthlyChart(Dictionary<int, double> lastYear, Dictionary<int, double> currentYear, ChartMtdFigureModel mtdFigure, string depositType)
@@ -142,6 +144,15 @@ namespace Fanex.DHWL.Business.Services.MonthlyChart
             var mtd = $"YTD (as of {toDate:MMM yyyy}): {formatService.CutNumberOff(Convert.ToDecimal(mtdFigure.Mtd))} [{mtdFigure.Margin * 100:F}%]";
             var previousMtd = $"YTD (as of {preToDate:MMM yyyy}): {formatService.CutNumberOff(Convert.ToDecimal(mtdFigure.PreviousMtd))} [{mtdFigure.PreviousMargin * 100:F}%]";
             var diff = $"Diff %: {mtdFigure.DiffMtd} [{mtdFigure.DiffMargin}]";
+
+            var strLog = new List<string>
+            {
+                $"Margin={mtdFigure.Margin}",
+                $"PreviousMargin={mtdFigure.PreviousMargin}",
+                $"DiffMargin={mtdFigure.DiffMargin}"
+            };
+
+            log.Log($"DHWL YTD - {string.Join(",", strLog)}");
 
             var result = new List<string>
             {

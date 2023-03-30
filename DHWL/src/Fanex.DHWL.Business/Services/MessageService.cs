@@ -28,6 +28,7 @@ namespace Fanex.DHWL.Business.Services
             {
                 var letstalkModel = CreateLetstalkModel(image, letstalkGroup);
                 var status = letstalkService.SendMessage(letstalkModel);
+                Thread.Sleep(5000);
                 var maxRetry = 10;
                 var retryCounter = 0;
                 if (!status)
