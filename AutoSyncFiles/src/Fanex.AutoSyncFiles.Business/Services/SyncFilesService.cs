@@ -108,13 +108,13 @@ namespace Fanex.AutoSyncFiles.Business.Services
                 {
                     ServicePointManager.Expect100Continue = false;
                     ftpClient.Connect();
-                    ftpClient.ConnectTimeout = 3600;
+
                     Directory.CreateDirectory(path.Destination);
                     var result = ftpClient.DownloadDirectory(path.Destination, path.Source, FtpFolderSyncMode.Update);
 
                     result.ForEach(file =>
                     {
-                        if (file.Type == FtpFileSystemObjectType.File)
+                        if (file.Type == FtpObjectType.File)
                         {
                             var files = ftpClient.GetListing(file.RemotePath);
                             currentFolder = file.RemotePath;
