@@ -208,6 +208,10 @@
     {
       "Source": "/nap/creditmovement/excel/UAT",
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/CreditMovementExcelFile"
+    },
+    {
+      "Source": "/nap/idm03/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/WeeklyBasketballSpreadPerformanceReport_ID03"
     }
   ]
 }

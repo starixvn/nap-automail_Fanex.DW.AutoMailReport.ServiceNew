@@ -142,7 +142,8 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
             return new ExecuteResultModel
             {
                 Success = letstalkFails.Count == 0,
-                Message = string.Join(Environment.NewLine, letstalkFails)
+                Message = string.Join(Environment.NewLine, letstalkFails),
+                Mail = new Mail() { Subject = "Subject", Body = "Body" }
             };
         }
 

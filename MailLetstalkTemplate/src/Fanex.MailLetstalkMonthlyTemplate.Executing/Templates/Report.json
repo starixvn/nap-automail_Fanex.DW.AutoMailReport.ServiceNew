@@ -41,7 +41,7 @@
   },
   {
     "ReportFile": "ActiveSupers/ActiveSupers.json",
-    "IsActive": false,
+    "IsActive": true,
     "IsEmailEnabled": true
   },
   {
@@ -51,12 +51,12 @@
   },
   {
     "ReportFile": "Settlement-KPI/Settlement-KPI.json",
-    "IsActive": false,
+    "IsActive": true,
     "IsEmailEnabled": true
   },
   {
     "ReportFile": "CreditHeadlinePerformance/CreditHeadlinePerformance.json",
-    "IsActive": true,
+    "IsActive": false,
     "IsEmailEnabled": true
   }
 ]

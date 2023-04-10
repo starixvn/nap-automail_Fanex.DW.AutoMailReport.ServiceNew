@@ -1,5 +1,4 @@
 ﻿using Fanex.Common;
-using Fanex.Service.Core;
 using System;
 
 namespace Fanex.DHWL.Business.Services
@@ -10,7 +9,7 @@ namespace Fanex.DHWL.Business.Services
         {
             get
             {
-                var date = SystemTime.Now.AddDays(-1);
+                var date = DateTime.Today;
                 if (date.Day == 31 && date.Month == 12)
                 {
                     return Converter.To<DateTime>($"{date:yyyy-MM-01}");
@@ -24,7 +23,7 @@ namespace Fanex.DHWL.Business.Services
         {
             get
             {
-                var date = SystemTime.Now.AddDays(-1);
+                var date = DateTime.Today;
                 if (date.Day == 31 && date.Month == 12)
                 {
                     return Converter.To<DateTime>($"{date:yyyy-MM-dd}");

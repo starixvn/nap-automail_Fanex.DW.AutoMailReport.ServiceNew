@@ -20,11 +20,13 @@ namespace Fanex.DHWL.Business.Services.DailyChart
         private readonly FormatService formatService;
 
         private readonly int million = 1000000;
+        private readonly Log log;
 
-        public DailyChartServiceImp(DateTimeServiceProvider dateTimeService, FormatService formatService)
+        public DailyChartServiceImp(DateTimeServiceProvider dateTimeService, FormatService formatService, Log log)
         {
             this.dateTimeService = dateTimeService;
             this.formatService = formatService;
+            this.log = log;
         }
 
         public string ExportDailyChart(Dictionary<int, double> sbFigure, Dictionary<int, double> totalFigure, ChartMtdFigureModel mtdFigure)
@@ -158,9 +160,18 @@ namespace Fanex.DHWL.Business.Services.DailyChart
         {
             var toDate = dateTimeService.DateTime.ToDate;
             var preToDate = new DateTimePreviousYearServiceImp(dateTimeService).ToDate;
-            var mtd = $"MTD (as of {toDate:yyyy-MM-dd}): {formatService.CutNumberOff(Convert.ToDecimal(mtdFigure.Mtd))} [{mtdFigure.Margin * 100:F}%]";
-            var previousMtd = $"MTD (as of {preToDate:yyyy-MM-dd}): {formatService.CutNumberOff(Convert.ToDecimal(mtdFigure.PreviousMtd))} [{mtdFigure.PreviousMargin * 100:F}%]";
+            var mtd = $"MTD (as of {toDate:yyyy-MM-dd}): {formatService.CutNumberOff(Convert.ToDecimal(mtdFigure.Mtd))} [{mtdFigure.Margin * 100:#,##0.00}%]";
+            var previousMtd = $"MTD (as of {preToDate:yyyy-MM-dd}): {formatService.CutNumberOff(Convert.ToDecimal(mtdFigure.PreviousMtd))} [{mtdFigure.PreviousMargin * 100:#,##0.00}%]";
             var diff = $"Diff %: {mtdFigure.DiffMtd} [{mtdFigure.DiffMargin}]";
+
+            var strLog = new List<string>
+            {
+                $"Margin={mtdFigure.Margin}",
+                $"PreviousMargin={mtdFigure.PreviousMargin}",
+                $"DiffMargin={mtdFigure.DiffMargin}"
+            };
+
+            log.Log($"DHWL - {string.Join(",", strLog)}");
 
             var result = new List<string>
             {

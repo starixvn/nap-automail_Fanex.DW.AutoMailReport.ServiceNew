@@ -105,7 +105,7 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
             dailyTemplate.Row(endRow).Height = 22;
 
             dailyTemplate.Cells[endRow, 2, endRow, 4].Merge = true;
-            dailyTemplate.Cells[endRow, 2, endRow, 4].Value = "Deposit Total";
+            dailyTemplate.Cells[endRow, 2, endRow, 4].Value = "Licensee Total";
             dailyTemplate.Cells[endRow, 2, endRow, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
             var netTotalDaily = grandTotalForDaily.FirstOrDefault(s => s.ProductShortName.Equals("NET TOTAL")) ?? new MarginModel();
