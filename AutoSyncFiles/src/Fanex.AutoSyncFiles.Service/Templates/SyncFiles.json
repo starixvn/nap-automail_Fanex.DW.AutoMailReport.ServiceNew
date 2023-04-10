@@ -10,7 +10,7 @@
   },
   "Paths": [
     {
-      "Source": "/nap/to-avg-bet-benchmark/excel/LOCAL",
+      "Source": "/nap/consistency-48-49-50-53/excel/LOCAL",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/20-TOAVGBetBenchmark"
     }
   ]
