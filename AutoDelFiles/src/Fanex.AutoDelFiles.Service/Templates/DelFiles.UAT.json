@@ -8,7 +8,7 @@
       "SourceServerUsername": "10.40.40.62\\web1",
       "SourceServerPassword": "/J7LY/2ygbrcsSdLY7QBag==",
       "SearchPattern": "*.*",
-      "MaxAgeOfFileInDays": 120
+      "MaxAgeOfFileInDays": 180
     }
   ]
 }

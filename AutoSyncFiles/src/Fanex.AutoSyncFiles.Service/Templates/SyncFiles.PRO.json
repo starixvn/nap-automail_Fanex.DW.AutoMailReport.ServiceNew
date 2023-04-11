@@ -1,7 +1,7 @@
 ﻿{
   "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.99.99.51:801/60",
   "CategorySentryLog": "NAP-Report-Service",
-  "CronSchedule": "0/59 * * * * ?",
+  "CronSchedule": "0 0/2 * * * ?",
   "FTPConfig": {
     "Host": "10.2.27.8",
     "UserName": "olympus",
@@ -114,27 +114,7 @@
       "Destination": "//10.40.40.22/Data.Web/Fanex.SaveBet.Excel"
     },
     {
-      "Source": "/nap/save-bet/excel/PROD_2/Final",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.SaveBet.Excel"
-    },
-    {
       "Source": "/nap/save-bet/excel/PROD_3/Final",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.SaveBet.Excel"
-    },
-    {
-      "Source": "/nap/save-bet/excel/PROD_4/Final",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.SaveBet.Excel"
-    },
-    {
-      "Source": "/nap/save-bet/excel/PROD_5/Final",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.SaveBet.Excel"
-    },
-    {
-      "Source": "/nap/save-bet/excel/PROD_6/Final",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.SaveBet.Excel"
-    },
-    {
-      "Source": "/nap/save-bet/excel/PROD_7/Final",
       "Destination": "//10.40.40.22/Data.Web/Fanex.SaveBet.Excel"
     },
     {
