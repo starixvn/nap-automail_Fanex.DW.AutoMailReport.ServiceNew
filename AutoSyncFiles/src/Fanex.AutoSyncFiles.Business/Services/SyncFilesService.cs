@@ -16,7 +16,7 @@ namespace Fanex.AutoSyncFiles.Business.Services
     {
         private readonly Log log;
 
-        private readonly FtpClient ftpClient = new FtpClient(AppConfigService.AppConfig.FTPConfig.Host)
+        private FtpClient ftpClient = new FtpClient(AppConfigService.AppConfig.FTPConfig.Host)
         {
             Credentials = new NetworkCredential(AppConfigService.AppConfig.FTPConfig.UserName, AppConfigService.AppConfig.FTPConfig.Password),
             Port = AppConfigService.AppConfig.FTPConfig.Port
@@ -27,7 +27,9 @@ namespace Fanex.AutoSyncFiles.Business.Services
             "Unable to read data from the transport connection",
             "Unable to write data to the transport connection:",
             "Timed out trying to read data from the socket stream!",
-            "Unable to identify the local data socket: Address already in use"
+            "Unable to identify the local data socket: Address already in use",
+            "Cannot download non-existant directory",
+            "Could not find a part of the path"
         };
 
         private bool isIgnoredLog = false;
@@ -40,12 +42,11 @@ namespace Fanex.AutoSyncFiles.Business.Services
 
         public JobMessage Execute()
         {
-            var downloadedFiles = new List<string>();
             var jobStatus = JobStatus.DataIsNotReady;
             var jobMessage = new JobMessage
             {
                 JobStatus = jobStatus,
-                Mail = new Mail { Subject = "Auto Sync Files", Body = "Sysc file service is processing ..." },
+                Mail = new Mail { Subject = "Auto Sync Files", Body = "Sync file service is processing ..." },
             };
 
             try
@@ -58,7 +59,7 @@ namespace Fanex.AutoSyncFiles.Business.Services
                 isIgnoredLog = false;
                 AppConfigService.IsProcessing = true;
 
-                FTPDownloadFiles(downloadedFiles);
+                FtpDownloadFiles();
                 jobStatus = JobStatus.Success;
             }
             catch (Exception e)
@@ -76,8 +77,6 @@ namespace Fanex.AutoSyncFiles.Business.Services
                 {
                     log.Log(e);
                 }
-
-                downloadedFiles.Add(e.Message);
             }
             finally
             {
@@ -91,23 +90,21 @@ namespace Fanex.AutoSyncFiles.Business.Services
                 jobMessage.Mail = new Mail
                 {
                     Subject = "Auto Sync Files",
-                    Body = string.Join(Environment.NewLine, downloadedFiles)
+                    Body = "Auto Sync Files"
                 };
-
-                downloadedFiles.Clear();
             }
 
             return jobMessage;
         }
 
-        private void FTPDownloadFiles(List<string> downloadedFiles)
+        private void FtpDownloadFiles()
         {
             foreach (var path in AppConfigService.AppConfig.Paths)
             {
                 try
                 {
                     ServicePointManager.Expect100Continue = false;
-                    ftpClient.Connect();
+                    ftpClient.Connect(true);
 
                     Directory.CreateDirectory(path.Destination);
                     var result = ftpClient.DownloadDirectory(path.Destination, path.Source, FtpFolderSyncMode.Update);
@@ -116,18 +113,32 @@ namespace Fanex.AutoSyncFiles.Business.Services
                     {
                         if (file.Type == FtpObjectType.File)
                         {
-                            var files = ftpClient.GetListing(file.RemotePath);
                             currentFolder = file.RemotePath;
-                            foreach (FtpListItem item in files)
-                            {
-                                downloadedFiles.Add(item.FullName);
-                            }
                         }
                     });
                 }
                 catch (Exception e)
                 {
-                    log.Log($"Fanex.AutoSyncFiles.Service: {currentFolder} - {e.Message}");
+                    var isIgnoredLog2 = false;
+                    messages.ForEach(message =>
+                    {
+                        if (e.Message.Contains(message))
+                        {
+                            isIgnoredLog2 = true;
+                        }
+                    });
+
+                    if (!isIgnoredLog2)
+                    {
+                        log.Log($"Fanex.AutoSyncFiles.Service: {currentFolder} - {e.Message}");
+                        ftpClient.Disconnect();
+                        ftpClient.Dispose();
+                        ftpClient = new FtpClient(AppConfigService.AppConfig.FTPConfig.Host)
+                        {
+                            Credentials = new NetworkCredential(AppConfigService.AppConfig.FTPConfig.UserName, AppConfigService.AppConfig.FTPConfig.Password),
+                            Port = AppConfigService.AppConfig.FTPConfig.Port
+                        };
+                    }
                 }
             }
         }
