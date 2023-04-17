@@ -11,12 +11,17 @@
   },
   {
     "ReportFile": "Settlement-KPI/Settlement-KPI.json",
-    "IsActive": true,
+    "IsActive": false,
     "IsEmailEnabled": true
   },
   {
     "ReportFile": "LicenseePerformance/LicenseePerformance.json",
     "IsActive": false,
+    "IsEmailEnabled": true
+  },
+  {
+    "ReportFile": "SabaBasketballPinGoal/SabaBasketballPinGoal.json",
+    "IsActive": true,
     "IsEmailEnabled": true
   }
 ]
