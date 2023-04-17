@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Functions>
-  <Function SiteId="25" SiteName="Auto Mail">
-    <Setting Key="Acc_Rpt_Automail_WeeklyVoidTickets" SpName="Acc_Rpt_Automail_WeeklyVoidTickets" DbName="DBACC.bodb02.bodbAdminNet" TimeOut="0" />
-    <Setting Key="Acc_Rpt_N88_SB_Member_Performance_Weekly" SpName="Acc_Rpt_N88_SB_Member_Performance_Weekly" DbName="DBACC.bodb02.bodbAdminNet" TimeOut="0" />
-  </Function>
+	<Function SiteId="25" SiteName="Auto Mail">
+		<Setting Key="Acc_Rpt_Automail_WeeklyVoidTickets" SpName="Acc_Rpt_Automail_WeeklyVoidTickets" DbName="DBACC.bodb02.bodbAdminNet" TimeOut="0" />
+		<Setting Key="Acc_Rpt_Weekly_SABA_Basketball_Pingoal" SpName="Acc_Rpt_Weekly_SABA_Basketball_Pingoal" DbName="DBACC.bodb02.bodbAdminNet" TimeOut="0" />
+	</Function>
 </Functions>

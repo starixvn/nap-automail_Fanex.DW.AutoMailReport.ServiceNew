@@ -13,5 +13,10 @@
     "ReportFile": "LicenseePerformance/LicenseePerformance.json",
     "IsActive": true,
     "IsEmailEnabled": true
+  },
+  {
+    "ReportFile": "SabaBasketballPinGoal/SabaBasketballPinGoal.json",
+    "IsActive": true,
+    "IsEmailEnabled": true
   }
 ]

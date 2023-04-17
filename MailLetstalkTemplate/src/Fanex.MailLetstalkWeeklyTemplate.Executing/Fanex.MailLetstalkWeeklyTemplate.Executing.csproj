@@ -226,43 +226,7 @@
     <Content Include="Templates\LicenseeVoidTicket\LicenseeVoidTicket.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\CN88PerformanceByPT\CN88PerformanceByPT.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\CN88PerformanceByPT\CN88PerformanceByPT.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\CN88PerformanceByPT\CN88PerformanceByPT.Local.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\CN88PerformanceByPT\CN88PerformanceByPT.PRO.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\CN88PerformanceByPT\CN88PerformanceByPT.UAT.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\CN88PerformanceByPT\CN88PerformanceByPT.xlsx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Templates\Report.PRO.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\N88-SB-Member-Performance\N88-SB-Member-Performance.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\N88-SB-Member-Performance\N88-SB-Member-Performance.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\N88-SB-Member-Performance\N88-SB-Member-Performance.Local.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\N88-SB-Member-Performance\N88-SB-Member-Performance.PRO.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\N88-SB-Member-Performance\N88-SB-Member-Performance.UAT.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\N88-SB-Member-Performance\N88-SB-Member-Performance.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\Settlement-KPI\Settlement-KPI.cshtml">
@@ -299,6 +263,24 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\LicenseePerformance\LicenseePerformance.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\SabaBasketballPinGoal\SabaBasketballPinGoal.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\SabaBasketballPinGoal\SabaBasketballPinGoal.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\SabaBasketballPinGoal\SabaBasketballPinGoal.Local.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\SabaBasketballPinGoal\SabaBasketballPinGoal.PRO.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\SabaBasketballPinGoal\SabaBasketballPinGoal.UAT.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\SabaBasketballPinGoal\SabaBasketballPinGoal.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

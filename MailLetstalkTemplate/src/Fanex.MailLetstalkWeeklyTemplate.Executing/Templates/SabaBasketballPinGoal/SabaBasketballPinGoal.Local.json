@@ -1,0 +1,19 @@
+﻿{
+  "SPName": "Acc_Rpt_Weekly_SABA_Basketball_Pingoal",
+  "DateRange": "Weekly",
+  "FromDate": "2020-01-01",
+  "ToDate": "2020-01-10",
+  "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\SabaBasketballPinGoal",
+  "Password": "",
+  "FunctionIdNodata": 90,
+  "TemplateExcelFile": "SabaBasketballPinGoal/SabaBasketballPinGoal.xlsx",
+  "SheetExcelTemplateName": [ "Data" ],
+  "CellAddressRender": [ "A2" ],
+  "StartExelRowIndex": "2",
+  "EmailTemplate": "SabaBasketballPinGoal/SabaBasketballPinGoal.cshtml",
+  "EmailSubject": "Automail Report - Weekly Saba Basketball PinGoal Report",
+  "MailId": "327",
+  "MailName": "Mail Template Testing",
+  "FileName": "Saba_Basketball_PinGoal_Perf",
+  "StartExcelColumnIndex": 1
+}
