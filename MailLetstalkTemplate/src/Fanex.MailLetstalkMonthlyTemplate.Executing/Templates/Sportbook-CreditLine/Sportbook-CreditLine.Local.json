@@ -15,5 +15,6 @@
   "MailId": "327",
   "MailName": "Mail Template Testing",
   "FileName": "Monthly_Sportbook_Credit_Line_Performance_Report",
-  "StartExcelColumnIndex": 1
+  "StartExcelColumnIndex": 1,
+  "IsAllowAttachment": false
 }

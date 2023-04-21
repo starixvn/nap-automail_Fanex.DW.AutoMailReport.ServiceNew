@@ -1,7 +1,7 @@
 ﻿{
   "SentryClientKey": "http://612764957dbb46ffa359103d8ffa08c6@10.99.99.51:801/59",
   "CategorySentryLog": "NAP-Report-Service-UAT",
-  "CronSchedule": "0 0/2 * * * ?",
+  "CronSchedule": "0 0/1 * * * ?",
   "FTPConfig": {
     "Host": "10.2.190.41",
     "UserName": "olympus",
@@ -94,7 +94,7 @@
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/20-TOAVGBetBenchmark"
     },
     {
-      "Source": "/nap/big-credit/excel/UAT",
+      "Source": "/nap/idl22/excel/UAT",
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/22-BigCreditIncrement789Y"
     },
     {
@@ -212,6 +212,10 @@
     {
       "Source": "/nap/idm03/excel/UAT",
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/WeeklyBasketballSpreadPerformanceReport_ID03"
+    },
+    {
+      "Source": "/nap/idm04/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/04-DropTOByLic"
     }
   ]
 }

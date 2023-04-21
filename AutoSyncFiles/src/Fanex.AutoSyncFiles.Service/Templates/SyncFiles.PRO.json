@@ -1,7 +1,7 @@
 ﻿{
   "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.99.99.51:801/60",
   "CategorySentryLog": "NAP-Report-Service",
-  "CronSchedule": "0 0/2 * * * ?",
+  "CronSchedule": "0 0/1 * * * ?",
   "FTPConfig": {
     "Host": "10.2.27.8",
     "UserName": "olympus",
@@ -98,12 +98,8 @@
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/20-TOAVGBetBenchmark"
     },
     {
-      "Source": "/nap/big-credit/excel/PROD",
+      "Source": "/nap/idl22/excel/PROD",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/22-BigCreditIncrement789Y"
-    },
-    {
-      "Source": "/nap/house-margin/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/23-House-Margin-Monitoring"
     },
     {
       "Source": "/nap/save-bet/excel/PROD/Final",
@@ -216,6 +212,14 @@
     {
       "Source": "/nap/idm03/excel/PROD",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/WeeklyBasketballSpreadPerformanceReport_ID03"
+    },
+    {
+      "Source": "/nap/idm04/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/04-DropTOByLic"
+    },
+    {
+      "Source": "/nap/house-margin/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/23-House-Margin-Monitoring"
     }
   ]
 }

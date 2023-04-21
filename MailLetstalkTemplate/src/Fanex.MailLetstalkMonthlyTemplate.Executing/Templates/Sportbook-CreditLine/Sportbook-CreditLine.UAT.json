@@ -15,5 +15,6 @@
   "MailId": "314",
   "MailName": "Mail Monthly Template - UAT",
   "FileName": "Monthly_Sportbook_Credit_Line_Performance_Report",
-  "StartExcelColumnIndex": 1
+  "StartExcelColumnIndex": 1,
+  "IsAllowAttachment": false
 }

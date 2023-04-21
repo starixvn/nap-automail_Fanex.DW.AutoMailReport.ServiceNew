@@ -17,5 +17,6 @@
   "FileName": "Monthly_Credit_Headline_Performance_Report",
   "StartExcelColumnIndex": 2,
   "IsEnabledSectionHeader": true,
-  "Header": "Monthly Credit Headline Performance"
+  "Header": "Monthly Credit Headline Performance",
+  "IsAllowAttachment": false
 }
