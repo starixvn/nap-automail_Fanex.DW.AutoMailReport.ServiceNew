@@ -10,8 +10,8 @@
   },
   "Paths": [
     {
-      "Source": "/nap/consistency-48-49-50-53/excel/LOCAL",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/20-TOAVGBetBenchmark"
+      "Source": "/nap/idm03/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/WeeklyBasketballSpreadPerformanceReport_ID03"
     }
   ]
 }

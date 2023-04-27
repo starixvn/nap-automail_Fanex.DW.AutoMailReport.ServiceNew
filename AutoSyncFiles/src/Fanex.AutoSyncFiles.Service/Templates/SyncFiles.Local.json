@@ -70,7 +70,7 @@
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/20-TOAVGBetBenchmark"
     },
     {
-      "Source": "/nap/big-credit/excel/LOCAL",
+      "Source": "/nap/idl22/excel/LOCAL",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/22-BigCreditIncrement789Y"
     },
     {
@@ -188,6 +188,10 @@
     {
       "Source": "/nap/idm03/excel/LOCAL",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/WeeklyBasketballSpreadPerformanceReport_ID03"
+    },
+    {
+      "Source": "/nap/idm04/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/04-DropTOByLic"
     }
   ]
 }
