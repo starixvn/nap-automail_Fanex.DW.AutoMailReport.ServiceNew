@@ -101,18 +101,6 @@
       "Source": "/nap/idl22/excel/PROD",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/22-BigCreditIncrement789Y"
     },
-    //{
-    //  "Source": "/nap/save-bet/excel/PROD/Final",
-    //  "Destination": "//10.40.40.22/Data.Web/Fanex.SaveBet.Excel"
-    //},
-    //{
-    //  "Source": "/nap/save-bet/excel/PROD_1/Final",
-    //  "Destination": "//10.40.40.22/Data.Web/Fanex.SaveBet.Excel"
-    //},
-    //{
-    //  "Source": "/nap/save-bet/excel/PROD_3/Final",
-    //  "Destination": "//10.40.40.22/Data.Web/Fanex.SaveBet.Excel"
-    //},
     {
       "Source": "/nap/weverdat/excel/PROD",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/Weverdat"
@@ -220,6 +208,30 @@
     {
       "Source": "/nap/house-margin/excel/PROD",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/23-House-Margin-Monitoring"
+    },
+    {
+      "Source": "/nap/osbetmonitoring/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/OSBetMonitoring"
+    },
+    {
+      "Source": "/nap/reporting-service/excel/PROD/CompanyBalance",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/ReportingService_CompanyBalance"
+    },
+    {
+      "Source": "/nap/reporting-service/excel/PROD/CompanyStatement",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/ReportingService_CompanyStatement"
+    },
+    {
+      "Source": "/nap/reporting-service/excel/PROD/CompanyYesterdayBalance",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/ReportingService_CompanyYesterdayBalance"
+    },
+    {
+      "Source": "/nap/reporting-service/excel/PROD/DailyTurnover",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/ReportingService_DailyTurnover"
+    },
+    {
+      "Source": "/nap/reporting-service/excel/PROD/SuperYesterdayBalance",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/ReportingService_SuperYesterdayBalance"
     }
   ]
 }

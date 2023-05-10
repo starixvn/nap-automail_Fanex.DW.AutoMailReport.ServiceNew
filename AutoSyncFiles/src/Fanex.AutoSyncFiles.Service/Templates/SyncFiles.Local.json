@@ -78,18 +78,6 @@
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/23-House-Margin-Monitoring"
     },
     {
-      "Source": "/nap/save-bet/excel/LOCAL/Final",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/SaveBet"
-    },
-    {
-      "Source": "/nap/save-bet/excel/LOCAL_1/Final",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/SaveBet"
-    },
-    {
-      "Source": "/nap/save-bet/excel/LOCAL_2/Final",
-      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/SaveBet"
-    },
-    {
       "Source": "/nap/weverdat/excel/LOCAL",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/Weverdat"
     },
@@ -192,6 +180,30 @@
     {
       "Source": "/nap/idm04/excel/LOCAL",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/04-DropTOByLic"
+    },
+    {
+      "Source": "/nap/osbetmonitoring/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/OSBetMonitoring"
+    },
+    {
+      "Source": "/nap/reporting-service/excel/LOCAL/CompanyBalance",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/ReportingService_CompanyBalance"
+    },
+    {
+      "Source": "/nap/reporting-service/excel/LOCAL/CompanyStatement",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/ReportingService_CompanyStatement"
+    },
+    {
+      "Source": "/nap/reporting-service/excel/LOCAL/CompanyYesterdayBalance",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/ReportingService_CompanyYesterdayBalance"
+    },
+    {
+      "Source": "/nap/reporting-service/excel/LOCAL/DailyTurnover",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/ReportingService_DailyTurnover"
+    },
+    {
+      "Source": "/nap/reporting-service/excel/LOCAL/SuperYesterdayBalance",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/ReportingService_SuperYesterdayBalance"
     }
   ]
 }

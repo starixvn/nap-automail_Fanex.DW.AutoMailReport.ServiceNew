@@ -188,6 +188,9 @@
     <Content Include="App_Data\DBWH.bodb_Account.dwrs.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\DHWL-Mode.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Templates\template-push.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
