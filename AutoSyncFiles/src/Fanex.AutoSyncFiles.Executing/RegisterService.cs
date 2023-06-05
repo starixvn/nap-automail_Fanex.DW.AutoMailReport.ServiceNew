@@ -1,17 +1,17 @@
-﻿using Fanex.AutoSyncFiles.Business.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using Fanex.AutoSyncFiles.Business.Models;
 using Fanex.AutoSyncFiles.Business.Services;
 using Fanex.Logging;
 using Fanex.Logging.Sentry.RavenClient;
 using Newtonsoft.Json;
 using SharpRaven;
 using SimpleInjector;
-using System;
-using System.Collections.Generic;
-using System.IO;
 
-namespace Fanex.AutoSyncFiles.Service
+namespace Fanex.AutoSyncFiles.Executing
 {
-    public static class RegisterService
+  public static class RegisterService
     {
         public static void RegisterServices()
         {

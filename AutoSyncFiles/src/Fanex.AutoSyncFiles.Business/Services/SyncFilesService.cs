@@ -12,7 +12,7 @@ namespace Fanex.AutoSyncFiles.Business.Services
         JobMessage Execute();
     }
 
-    public class SyncFilesServiceImp : SyncFilesService
+    public class SyncFilesServiceImp : SyncFilesService, IDisposable
     {
         private readonly Log log;
 
@@ -32,7 +32,7 @@ namespace Fanex.AutoSyncFiles.Business.Services
             "Could not find a part of the path"
         };
 
-        private bool isIgnoredLog = false;
+        private bool isIgnoredLog;
         private string currentFolder = string.Empty;
 
         public SyncFilesServiceImp(Log log)
@@ -46,7 +46,7 @@ namespace Fanex.AutoSyncFiles.Business.Services
             var jobMessage = new JobMessage
             {
                 JobStatus = jobStatus,
-                Mail = new Mail { Subject = "Auto Sync Files", Body = "Sync file service is processing ..." },
+                Mail = new Mail { Subject = "Auto Sync Files", Body = "Sync file service is processing ..." }
             };
 
             try
@@ -80,6 +80,8 @@ namespace Fanex.AutoSyncFiles.Business.Services
             }
             finally
             {
+                ftpClient?.Disconnect();
+
                 AppConfigService.IsProcessing = false;
                 jobMessage.JobStatus = jobStatus;
                 jobMessage.Mail = new Mail
@@ -107,7 +109,7 @@ namespace Fanex.AutoSyncFiles.Business.Services
                     ftpClient.Connect();
 
                     Directory.CreateDirectory(path.Destination);
-                    var result = ftpClient.DownloadDirectory(path.Destination, path.Source, FtpFolderSyncMode.Update);
+                    var result = ftpClient.DownloadDirectory(path.Destination, path.Source);
 
                     result.ForEach(file =>
                     {
@@ -138,6 +140,11 @@ namespace Fanex.AutoSyncFiles.Business.Services
                 ftpClient.Dispose();
                 GC.Collect();
             }
+        }
+
+        public void Dispose()
+        {
+            ftpClient?.Dispose();
         }
     }
 }

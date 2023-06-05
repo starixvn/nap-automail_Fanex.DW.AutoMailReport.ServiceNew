@@ -7,7 +7,6 @@ using SharpRaven;
 using SimpleInjector;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
 
 namespace Fanex.AutoSyncFiles.Service
@@ -29,10 +28,10 @@ namespace Fanex.AutoSyncFiles.Service
 
         public static void RegisterContainer(Container container)
         {
-            container.Register<Log, LogImp>();
-            container.Register<SyncFilesService, SyncFilesServiceImp>();
-            container.Register<MailService, MailServiceImp>();
-            container.Register<NotificationService>();
+            container.RegisterSingleton<Log, LogImp>();
+            container.RegisterSingleton<SyncFilesService, SyncFilesServiceImp>();
+            container.RegisterSingleton<MailService, MailServiceImp>();
+            container.RegisterSingleton<NotificationService>();
 
             Container = container;
         }

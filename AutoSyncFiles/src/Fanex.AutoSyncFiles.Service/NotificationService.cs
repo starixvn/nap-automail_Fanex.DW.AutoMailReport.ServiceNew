@@ -26,10 +26,10 @@ namespace Fanex.AutoSyncFiles.Service
         {
             try
             {
-                IScheduler scheduler = await StdSchedulerFactory.GetDefaultScheduler();
+                var scheduler = await StdSchedulerFactory.GetDefaultScheduler();
                 await scheduler.Start();
-                IJobDetail job = JobBuilder.Create<NotificationJobImp>().Build();
-                ITrigger trigger = TriggerBuilder.Create()
+                var job = JobBuilder.Create<NotificationJobImp>().Build();
+                var trigger = TriggerBuilder.Create()
                 .WithIdentity("Sync Files", "Sync Files")
                 .StartNow()
                 .WithCronSchedule(AppConfigService.AppConfig.CronSchedule)

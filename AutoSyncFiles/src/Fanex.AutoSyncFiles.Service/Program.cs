@@ -10,7 +10,7 @@ namespace Fanex.AutoSyncFiles.Service
         {
             RegisterService.RegisterServices();
 
-            Container container = new Container();
+            var container = new Container();
             RegisterService.RegisterContainer(container);
             container.Verify(VerificationOption.VerifyOnly);
 

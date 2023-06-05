@@ -1,5 +1,4 @@
 ﻿using EnterpriseDT.Net.Ftp;
-using System;
 
 namespace Fanex.AutoSyncFiles.Business.Services
 {
@@ -9,7 +8,7 @@ namespace Fanex.AutoSyncFiles.Business.Services
         {
             try
             {
-                FTPConnection ftp = new FTPConnection();
+                var ftp = new FTPConnection();
                 ftp.ServerAddress = "10.18.200.131";
                 ftp.UserName = "olympus";
                 ftp.Password = "Pro_olympus_@1234aa";
@@ -19,9 +18,8 @@ namespace Fanex.AutoSyncFiles.Business.Services
                 ftp.DownloadFile("S:/Browsers", "/nap/mail-web-api-test/excel/LOCAL/2021/07", WriteMode.Overwrite);
                 ftp.Close();
             }
-            catch (Exception ex)
+            catch
             {
-                var s = ex.Message;
             }
         }
     }
