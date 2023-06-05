@@ -80,11 +80,6 @@ namespace Fanex.AutoSyncFiles.Business.Services
             }
             finally
             {
-                if (ftpClient != null)
-                {
-                    ftpClient.Disconnect();
-                }
-
                 AppConfigService.IsProcessing = false;
                 jobMessage.JobStatus = jobStatus;
                 jobMessage.Mail = new Mail
@@ -103,8 +98,13 @@ namespace Fanex.AutoSyncFiles.Business.Services
             {
                 try
                 {
-                    ServicePointManager.Expect100Continue = false;
-                    ftpClient.Connect(true);
+                    ftpClient = new FtpClient(AppConfigService.AppConfig.FTPConfig.Host)
+                    {
+                        Credentials = new NetworkCredential(AppConfigService.AppConfig.FTPConfig.UserName, AppConfigService.AppConfig.FTPConfig.Password),
+                        Port = AppConfigService.AppConfig.FTPConfig.Port
+                    };
+
+                    ftpClient.Connect();
 
                     Directory.CreateDirectory(path.Destination);
                     var result = ftpClient.DownloadDirectory(path.Destination, path.Source, FtpFolderSyncMode.Update);
@@ -131,15 +131,12 @@ namespace Fanex.AutoSyncFiles.Business.Services
                     if (!isIgnoredLog2)
                     {
                         log.Log($"Fanex.AutoSyncFiles.Service: {currentFolder} - {e.Message}");
-                        ftpClient.Disconnect();
-                        ftpClient.Dispose();
-                        ftpClient = new FtpClient(AppConfigService.AppConfig.FTPConfig.Host)
-                        {
-                            Credentials = new NetworkCredential(AppConfigService.AppConfig.FTPConfig.UserName, AppConfigService.AppConfig.FTPConfig.Password),
-                            Port = AppConfigService.AppConfig.FTPConfig.Port
-                        };
                     }
                 }
+
+                ftpClient.Disconnect();
+                ftpClient.Dispose();
+                GC.Collect();
             }
         }
     }
