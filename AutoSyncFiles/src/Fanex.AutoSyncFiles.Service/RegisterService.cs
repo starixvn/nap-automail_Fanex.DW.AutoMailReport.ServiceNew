@@ -30,7 +30,6 @@ namespace Fanex.AutoSyncFiles.Service
         {
             container.RegisterSingleton<Log, LogImp>();
             container.RegisterSingleton<SyncFilesService, SyncFilesServiceImp>();
-            container.RegisterSingleton<MailService, MailServiceImp>();
             container.RegisterSingleton<NotificationService>();
 
             Container = container;

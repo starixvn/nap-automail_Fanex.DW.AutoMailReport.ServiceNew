@@ -28,9 +28,8 @@ namespace Fanex.AutoSyncFiles.Executing
 
         public static void RegisterContainer(Container container)
         {
-            container.Register<Log, LogImp>();
-            container.Register<SyncFilesService, SyncFilesServiceImp>();
-            container.Register<MailService, MailServiceImp>();
+            container.RegisterSingleton<Log, LogImp>();
+            container.RegisterSingleton<SyncFilesService, SyncFilesServiceImp>();
         }
 
         private static void SentryRegister()

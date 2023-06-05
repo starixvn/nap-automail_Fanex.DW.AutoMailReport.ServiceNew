@@ -1,6 +1,5 @@
 ﻿using System;
 using Fanex.AutoSyncFiles.Business.Services;
-using Newtonsoft.Json;
 using SimpleInjector;
 
 namespace Fanex.AutoSyncFiles.Executing
@@ -15,10 +14,12 @@ namespace Fanex.AutoSyncFiles.Executing
             container.Verify(VerificationOption.VerifyOnly);
 
             var service = container.GetInstance<SyncFilesService>();
-            var jobMessage = service.Execute();
-            var json = JsonConvert.SerializeObject(jobMessage);
 
-            Console.Write(json);
+            service.Execute();
+
+            Console.WriteLine("Done");
+            Console.ReadLine();
+
             Environment.Exit(0);
         }
     }

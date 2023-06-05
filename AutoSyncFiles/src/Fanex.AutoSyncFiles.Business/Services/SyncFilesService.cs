@@ -1,5 +1,4 @@
-﻿using Fanex.MailDelivery.Core.Models;
-using FluentFTP;
+﻿using FluentFTP;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,10 +7,11 @@ using System.Net;
 namespace Fanex.AutoSyncFiles.Business.Services
 {
     using System.Linq;
+    using Models;
 
     public interface SyncFilesService
     {
-        JobMessage Execute();
+        void Execute();
     }
 
     public class SyncFilesServiceImp : SyncFilesService
@@ -33,93 +33,65 @@ namespace Fanex.AutoSyncFiles.Business.Services
             this.log = log;
         }
 
-        public JobMessage Execute()
+        public void Execute()
         {
-            var jobStatus = JobStatus.DataIsNotReady;
-            var jobMessage = new JobMessage
-            {
-                JobStatus = jobStatus,
-                Mail = new Mail { Subject = "Auto Sync Files", Body = "Sync file service is processing ..." }
-            };
-
             try
             {
-                if (AppConfigService.IsProcessing)
-                {
-                    return jobMessage;
-                }
-
-               
-                AppConfigService.IsProcessing = true;
-
-                FtpDownloadFiles();
-                jobStatus = JobStatus.Success;
+                FtpDownload();
             }
             catch (Exception e)
             {
-                jobStatus = JobStatus.JobFailed;
                 log.Log(e);
             }
-            finally
-            {
-                AppConfigService.IsProcessing = false;
-                jobMessage.JobStatus = jobStatus;
-                jobMessage.Mail = new Mail
-                {
-                    Subject = "Auto Sync Files",
-                    Body = "Auto Sync Files"
-                };
-            }
-
-            return jobMessage;
         }
 
-        private void FtpDownloadFiles()
+        private void FtpDownload()
         {
             using (var ftpClient = CreateFtpClient())
             {
-                FtpDownloadFilesByFtpClient(ftpClient);
+                FtpDownloadByFtpClient(ftpClient);
             }
 
             GC.Collect();
         }
 
-        private void FtpDownloadFilesByFtpClient(FtpClient ftpClient)
+        private void FtpDownloadByFtpClient(IFtpClient ftpClient)
         {
-            var currentFolder = string.Empty;
-
             foreach (var path in AppConfigService.AppConfig.Paths)
             {
-                try
+                TryDownloadFtpDirectory(ftpClient, path);
+            }
+        }
+
+        private void TryDownloadFtpDirectory(IFtpClient ftpClient, PathModel path)
+        {
+            var currentFolder = string.Empty;
+            try
+            {
+                if (!ftpClient.IsConnected)
                 {
-                    if (!ftpClient.IsConnected)
-                    {
-                        ftpClient.Connect();
-                    }
-
-                    Directory.CreateDirectory(path.Destination);
-                    var result = ftpClient.DownloadDirectory(path.Destination, path.Source);
-
-                    result.ForEach(file =>
-                    {
-                        if (file.Type == FtpObjectType.File)
-                        {
-                            currentFolder = file.RemotePath;
-                        }
-                    });
+                    ftpClient.Connect();
                 }
-                catch (Exception e)
+
+                Directory.CreateDirectory(path.Destination);
+                var result = ftpClient.DownloadDirectory(path.Destination, path.Source);
+
+                currentFolder = result
+                    .Where(f => f.Type == FtpFileSystemObjectType.File)
+                    .Select(f => f.RemotePath)
+                    .LastOrDefault();
+            }
+            catch (Exception e)
+            {
+                var isIgnoredLog = messages.Any(m => e.Message.Contains(m));
+                if (!isIgnoredLog)
                 {
-                    var isIgnoredLog = messages.Any(m => e.Message.Contains(m));
-                    if (!isIgnoredLog)
-                    {
-                        log.Log($"Fanex.AutoSyncFiles.Service: {currentFolder} - {e.Message}");
-                    }
+                    log.Log($"Fanex.AutoSyncFiles.Service: {currentFolder} - {e.Message}");
                 }
             }
         }
 
-        private FtpClient CreateFtpClient()
+        private static FtpClient CreateFtpClient()
         {
            return new FtpClient(AppConfigService.AppConfig.FTPConfig.Host)
             {

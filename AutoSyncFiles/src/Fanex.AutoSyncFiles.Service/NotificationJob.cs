@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace Fanex.AutoSyncFiles.Service
 {
+    [DisallowConcurrentExecution]
     public class NotificationJobImp : IJob
     {
         public async Task Execute(IJobExecutionContext context)
