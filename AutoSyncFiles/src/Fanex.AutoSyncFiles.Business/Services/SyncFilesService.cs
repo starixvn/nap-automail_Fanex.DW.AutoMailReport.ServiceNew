@@ -16,7 +16,7 @@ namespace Fanex.AutoSyncFiles.Business.Services
     {
         private readonly Log log;
 
-        private FtpClient ftpClient = new FtpClient(AppConfigService.AppConfig.FTPConfig.Host)
+        private readonly FtpClient ftpClient = new FtpClient(AppConfigService.AppConfig.FTPConfig.Host)
         {
             Credentials = new NetworkCredential(AppConfigService.AppConfig.FTPConfig.UserName, AppConfigService.AppConfig.FTPConfig.Password),
             Port = AppConfigService.AppConfig.FTPConfig.Port
@@ -100,13 +100,10 @@ namespace Fanex.AutoSyncFiles.Business.Services
             {
                 try
                 {
-                    ftpClient = new FtpClient(AppConfigService.AppConfig.FTPConfig.Host)
+                    if (!ftpClient.IsConnected)
                     {
-                        Credentials = new NetworkCredential(AppConfigService.AppConfig.FTPConfig.UserName, AppConfigService.AppConfig.FTPConfig.Password),
-                        Port = AppConfigService.AppConfig.FTPConfig.Port
-                    };
-
-                    ftpClient.Connect();
+                        ftpClient.Connect();
+                    }
 
                     Directory.CreateDirectory(path.Destination);
                     var result = ftpClient.DownloadDirectory(path.Destination, path.Source);
@@ -136,8 +133,6 @@ namespace Fanex.AutoSyncFiles.Business.Services
                     }
                 }
 
-                ftpClient.Disconnect();
-                ftpClient.Dispose();
                 GC.Collect();
             }
         }

@@ -12,6 +12,10 @@
     {
       "Source": "/nap/idm03/excel/LOCAL",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/WeeklyBasketballSpreadPerformanceReport_ID03"
+    },
+    {
+      "Source": "/nap/idm03/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/WeeklyBasketballSpreadPerformanceReport_ID03"
     }
   ]
 }
