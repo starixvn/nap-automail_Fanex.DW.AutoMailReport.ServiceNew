@@ -7,20 +7,16 @@ using System.Net;
 
 namespace Fanex.AutoSyncFiles.Business.Services
 {
+    using System.Linq;
+
     public interface SyncFilesService
     {
         JobMessage Execute();
     }
 
-    public class SyncFilesServiceImp : SyncFilesService, IDisposable
+    public class SyncFilesServiceImp : SyncFilesService
     {
         private readonly Log log;
-
-        private readonly FtpClient ftpClient = new FtpClient(AppConfigService.AppConfig.FTPConfig.Host)
-        {
-            Credentials = new NetworkCredential(AppConfigService.AppConfig.FTPConfig.UserName, AppConfigService.AppConfig.FTPConfig.Password),
-            Port = AppConfigService.AppConfig.FTPConfig.Port
-        };
 
         private readonly List<string> messages = new List<string>
         {
@@ -31,9 +27,6 @@ namespace Fanex.AutoSyncFiles.Business.Services
             "Cannot download non-existant directory",
             "Could not find a part of the path"
         };
-
-        private bool isIgnoredLog;
-        private string currentFolder = string.Empty;
 
         public SyncFilesServiceImp(Log log)
         {
@@ -56,7 +49,7 @@ namespace Fanex.AutoSyncFiles.Business.Services
                     return jobMessage;
                 }
 
-                isIgnoredLog = false;
+               
                 AppConfigService.IsProcessing = true;
 
                 FtpDownloadFiles();
@@ -65,23 +58,10 @@ namespace Fanex.AutoSyncFiles.Business.Services
             catch (Exception e)
             {
                 jobStatus = JobStatus.JobFailed;
-                messages.ForEach(message =>
-                {
-                    if (e.Message.Contains(message))
-                    {
-                        isIgnoredLog = true;
-                    }
-                });
-
-                if (!isIgnoredLog)
-                {
-                    log.Log(e);
-                }
+                log.Log(e);
             }
             finally
             {
-                ftpClient?.Disconnect();
-
                 AppConfigService.IsProcessing = false;
                 jobMessage.JobStatus = jobStatus;
                 jobMessage.Mail = new Mail
@@ -96,6 +76,18 @@ namespace Fanex.AutoSyncFiles.Business.Services
 
         private void FtpDownloadFiles()
         {
+            using (var ftpClient = CreateFtpClient())
+            {
+                FtpDownloadFilesByFtpClient(ftpClient);
+            }
+
+            GC.Collect();
+        }
+
+        private void FtpDownloadFilesByFtpClient(FtpClient ftpClient)
+        {
+            var currentFolder = string.Empty;
+
             foreach (var path in AppConfigService.AppConfig.Paths)
             {
                 try
@@ -118,28 +110,22 @@ namespace Fanex.AutoSyncFiles.Business.Services
                 }
                 catch (Exception e)
                 {
-                    var isIgnoredLog2 = false;
-                    messages.ForEach(message =>
-                    {
-                        if (e.Message.Contains(message))
-                        {
-                            isIgnoredLog2 = true;
-                        }
-                    });
-
-                    if (!isIgnoredLog2)
+                    var isIgnoredLog = messages.Any(m => e.Message.Contains(m));
+                    if (!isIgnoredLog)
                     {
                         log.Log($"Fanex.AutoSyncFiles.Service: {currentFolder} - {e.Message}");
                     }
                 }
-
-                GC.Collect();
             }
         }
 
-        public void Dispose()
+        private FtpClient CreateFtpClient()
         {
-            ftpClient?.Dispose();
+           return new FtpClient(AppConfigService.AppConfig.FTPConfig.Host)
+            {
+                Credentials = new NetworkCredential(AppConfigService.AppConfig.FTPConfig.UserName, AppConfigService.AppConfig.FTPConfig.Password),
+                Port = AppConfigService.AppConfig.FTPConfig.Port
+            };
         }
     }
 }
