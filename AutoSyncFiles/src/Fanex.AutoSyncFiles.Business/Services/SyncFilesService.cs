@@ -68,16 +68,11 @@ namespace Fanex.AutoSyncFiles.Business.Services
             var currentFolder = string.Empty;
             try
             {
-                if (!ftpClient.IsConnected)
-                {
-                    ftpClient.Connect();
-                }
-
                 Directory.CreateDirectory(path.Destination);
                 var result = ftpClient.DownloadDirectory(path.Destination, path.Source);
 
                 currentFolder = result
-                    .Where(f => f.Type == FtpFileSystemObjectType.File)
+                    .Where(f => f.Type == FtpObjectType.File)
                     .Select(f => f.RemotePath)
                     .LastOrDefault();
             }
@@ -93,11 +88,14 @@ namespace Fanex.AutoSyncFiles.Business.Services
 
         private static FtpClient CreateFtpClient()
         {
-           return new FtpClient(AppConfigService.AppConfig.FTPConfig.Host)
+           var client =  new FtpClient(AppConfigService.AppConfig.FTPConfig.Host)
             {
                 Credentials = new NetworkCredential(AppConfigService.AppConfig.FTPConfig.UserName, AppConfigService.AppConfig.FTPConfig.Password),
                 Port = AppConfigService.AppConfig.FTPConfig.Port
             };
+           client.AutoConnect();
+
+            return client;
         }
     }
 }
