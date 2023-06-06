@@ -4,6 +4,8 @@ using Topshelf.SimpleInjector;
 
 namespace Fanex.AutoSyncFiles.Service
 {
+    using System;
+
     internal class Program
     {
         private static void Main()
@@ -28,6 +30,9 @@ namespace Fanex.AutoSyncFiles.Service
                 config.SetDisplayName("Fanex.AutoSyncFiles.Service");
                 config.SetDescription("Fanex.AutoSyncFiles.Service");
             });
+
+            Console.WriteLine("Done");
+            Console.ReadLine();
         }
     }
 }

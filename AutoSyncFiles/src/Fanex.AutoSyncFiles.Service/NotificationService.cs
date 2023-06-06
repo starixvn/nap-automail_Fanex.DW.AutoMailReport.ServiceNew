@@ -1,50 +1,56 @@
 ﻿using Fanex.AutoSyncFiles.Business.Services;
-using Quartz;
-using Quartz.Impl;
 using System;
 
 namespace Fanex.AutoSyncFiles.Service
 {
+    using System.Timers;
+    using Topshelf;
+
     public class NotificationService
     {
-        private readonly Log logService;
+        private Timer timer;
 
-        public NotificationService(
-            Log logService
-        )
+        private readonly SyncFilesService syncFilesService;
+
+        private static bool running;
+
+        public NotificationService()
         {
-            this.logService = logService;
+            var container = RegisterService.Container;
+            syncFilesService = container.GetInstance<SyncFilesService>();
         }
 
         public bool Start()
         {
-            Execute();
+            timer?.Dispose();
+
+            var interval = AppConfigService.AppConfig.TimerPeriodInSecond * 1000;
+            timer = new Timer(interval);
+            timer.Elapsed += OnTimedEvent;
+            timer.Enabled = true;
+
             return true;
         }
 
-        private async void Execute()
+        private void OnTimedEvent(object source, ElapsedEventArgs e)
         {
-            try
+            if (running)
             {
-                var scheduler = await StdSchedulerFactory.GetDefaultScheduler();
-                await scheduler.Start();
-                var job = JobBuilder.Create<NotificationJobImp>().Build();
-                var trigger = TriggerBuilder.Create()
-                .WithIdentity("Sync Files", "Sync Files")
-                .StartNow()
-                .WithCronSchedule(AppConfigService.AppConfig.CronSchedule)
-                .Build();
+                return;
+            }
 
-                await scheduler.ScheduleJob(job, trigger);
-            }
-            catch (Exception ex)
-            {
-                logService.Log(ex);
-            }
+            running = true;
+            syncFilesService.Execute();
+            var log = $"Fanex.AutoSyncFiles.Service run at {DateTime.Now}{Environment.NewLine}";
+            Console.Out.WriteLine(log);
+            running = false;
         }
 
         public bool Stop()
         {
+            timer?.Stop();
+            timer?.Dispose();
+
             return true;
         }
     }
