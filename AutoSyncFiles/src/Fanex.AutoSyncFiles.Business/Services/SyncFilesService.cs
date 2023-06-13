@@ -1,5 +1,4 @@
-﻿using Fanex.MailDelivery.Core.Models;
-using FluentFTP;
+﻿using FluentFTP;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,20 +6,17 @@ using System.Net;
 
 namespace Fanex.AutoSyncFiles.Business.Services
 {
+    using System.Linq;
+    using Models;
+
     public interface SyncFilesService
     {
-        JobMessage Execute();
+        void Execute();
     }
 
     public class SyncFilesServiceImp : SyncFilesService
     {
         private readonly Log log;
-
-        private FtpClient ftpClient = new FtpClient(AppConfigService.AppConfig.FTPConfig.Host)
-        {
-            Credentials = new NetworkCredential(AppConfigService.AppConfig.FTPConfig.UserName, AppConfigService.AppConfig.FTPConfig.Password),
-            Port = AppConfigService.AppConfig.FTPConfig.Port
-        };
 
         private readonly List<string> messages = new List<string>
         {
@@ -32,112 +28,74 @@ namespace Fanex.AutoSyncFiles.Business.Services
             "Could not find a part of the path"
         };
 
-        private bool isIgnoredLog = false;
-        private string currentFolder = string.Empty;
-
         public SyncFilesServiceImp(Log log)
         {
             this.log = log;
         }
 
-        public JobMessage Execute()
+        public void Execute()
         {
-            var jobStatus = JobStatus.DataIsNotReady;
-            var jobMessage = new JobMessage
-            {
-                JobStatus = jobStatus,
-                Mail = new Mail { Subject = "Auto Sync Files", Body = "Sync file service is processing ..." },
-            };
-
             try
             {
-                if (AppConfigService.IsProcessing)
-                {
-                    return jobMessage;
-                }
-
-                isIgnoredLog = false;
-                AppConfigService.IsProcessing = true;
-
-                FtpDownloadFiles();
-                jobStatus = JobStatus.Success;
+                FtpDownload();
             }
             catch (Exception e)
             {
-                jobStatus = JobStatus.JobFailed;
-                messages.ForEach(message =>
-                {
-                    if (e.Message.Contains(message))
-                    {
-                        isIgnoredLog = true;
-                    }
-                });
-
-                if (!isIgnoredLog)
-                {
-                    log.Log(e);
-                }
+                log.Log(e);
             }
-            finally
-            {
-                AppConfigService.IsProcessing = false;
-                jobMessage.JobStatus = jobStatus;
-                jobMessage.Mail = new Mail
-                {
-                    Subject = "Auto Sync Files",
-                    Body = "Auto Sync Files"
-                };
-            }
-
-            return jobMessage;
         }
 
-        private void FtpDownloadFiles()
+        private void FtpDownload()
+        {
+            using (var ftpClient = CreateFtpClient())
+            {
+                FtpDownloadByFtpClient(ftpClient);
+            }
+
+            GC.Collect();
+        }
+
+        private void FtpDownloadByFtpClient(IFtpClient ftpClient)
         {
             foreach (var path in AppConfigService.AppConfig.Paths)
             {
-                try
-                {
-                    ftpClient = new FtpClient(AppConfigService.AppConfig.FTPConfig.Host)
-                    {
-                        Credentials = new NetworkCredential(AppConfigService.AppConfig.FTPConfig.UserName, AppConfigService.AppConfig.FTPConfig.Password),
-                        Port = AppConfigService.AppConfig.FTPConfig.Port
-                    };
-
-                    ftpClient.Connect();
-
-                    Directory.CreateDirectory(path.Destination);
-                    var result = ftpClient.DownloadDirectory(path.Destination, path.Source, FtpFolderSyncMode.Update);
-
-                    result.ForEach(file =>
-                    {
-                        if (file.Type == FtpObjectType.File)
-                        {
-                            currentFolder = file.RemotePath;
-                        }
-                    });
-                }
-                catch (Exception e)
-                {
-                    var isIgnoredLog2 = false;
-                    messages.ForEach(message =>
-                    {
-                        if (e.Message.Contains(message))
-                        {
-                            isIgnoredLog2 = true;
-                        }
-                    });
-
-                    if (!isIgnoredLog2)
-                    {
-                        log.Log($"Fanex.AutoSyncFiles.Service: {currentFolder} - {e.Message}");
-                    }
-                }
-
-                ftpClient.Disconnect();
-                ftpClient.Dispose();
-                GC.Collect();
+                TryDownloadFtpDirectory(ftpClient, path);
             }
+        }
+
+        private void TryDownloadFtpDirectory(IFtpClient ftpClient, PathModel path)
+        {
+            var currentFolder = string.Empty;
+            try
+            {
+                Directory.CreateDirectory(path.Destination);
+                var result = ftpClient.DownloadDirectory(path.Destination, path.Source);
+
+                currentFolder = result
+                    .Where(f => f.Type == FtpObjectType.File)
+                    .Select(f => f.RemotePath)
+                    .LastOrDefault();
+            }
+            catch (Exception e)
+            {
+                var isIgnoredLog = messages.Any(m => e.Message.Contains(m));
+                if (!isIgnoredLog)
+                {
+                    log.Log($"Fanex.AutoSyncFiles.Service: {currentFolder} - {e.Message}");
+                }
+            }
+        }
+
+        private static FtpClient CreateFtpClient()
+        {
+           var client =  new FtpClient(AppConfigService.AppConfig.FTPConfig.Host)
+            {
+                Credentials = new NetworkCredential(AppConfigService.AppConfig.FTPConfig.UserName, AppConfigService.AppConfig.FTPConfig.Password),
+                Port = AppConfigService.AppConfig.FTPConfig.Port
+            };
+           client.AutoConnect();
+
+            return client;
         }
     }
 }

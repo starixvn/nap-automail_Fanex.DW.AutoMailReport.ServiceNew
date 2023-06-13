@@ -4,13 +4,15 @@ using Topshelf.SimpleInjector;
 
 namespace Fanex.AutoSyncFiles.Service
 {
+    using System;
+
     internal class Program
     {
         private static void Main()
         {
             RegisterService.RegisterServices();
 
-            Container container = new Container();
+            var container = new Container();
             RegisterService.RegisterContainer(container);
             container.Verify(VerificationOption.VerifyOnly);
 
@@ -28,6 +30,9 @@ namespace Fanex.AutoSyncFiles.Service
                 config.SetDisplayName("Fanex.AutoSyncFiles.Service");
                 config.SetDescription("Fanex.AutoSyncFiles.Service");
             });
+
+            Console.WriteLine("Done");
+            Console.ReadLine();
         }
     }
 }

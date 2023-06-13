@@ -1,7 +1,7 @@
 ﻿{
   "SentryClientKey": "https://ad29bef60cc04e78803c9030a33a2c06@sentry.nexdev.net/44",
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
-  "CronSchedule": "0/59 * * * * ?",
+  "TimerPeriodInSecond": 300,
   "FTPConfig": {
     "Host": "10.18.200.131",
     "UserName": "olympus",
@@ -9,6 +9,10 @@
     "Port": 2121
   },
   "Paths": [
+    {
+      "Source": "/nap/idm03/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/WeeklyBasketballSpreadPerformanceReport_ID03"
+    },
     {
       "Source": "/nap/idm03/excel/LOCAL",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/WeeklyBasketballSpreadPerformanceReport_ID03"

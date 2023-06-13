@@ -8,7 +8,7 @@ namespace Fanex.AutoSyncFiles.Business.Models
 
         public string CategorySentryLog { get; set; }
 
-        public string CronSchedule { get; set; } = "0 0 0/1 * * ?";
+        public int TimerPeriodInSecond { get; set; } = 300;
 
         public FTPConfig FTPConfig { get; set; }
 

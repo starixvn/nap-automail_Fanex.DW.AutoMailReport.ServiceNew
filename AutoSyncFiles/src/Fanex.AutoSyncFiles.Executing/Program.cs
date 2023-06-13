@@ -1,24 +1,25 @@
-﻿using Fanex.AutoSyncFiles.Business.Services;
-using Newtonsoft.Json;
+﻿using System;
+using Fanex.AutoSyncFiles.Business.Services;
 using SimpleInjector;
-using System;
 
-namespace Fanex.AutoSyncFiles.Service
+namespace Fanex.AutoSyncFiles.Executing
 {
     internal class Program
     {
         private static void Main()
         {
             RegisterService.RegisterServices();
-            Container container = new Container();
+            var container = new Container();
             RegisterService.RegisterContainer(container);
             container.Verify(VerificationOption.VerifyOnly);
 
             var service = container.GetInstance<SyncFilesService>();
-            var jobMessage = service.Execute();
-            var json = JsonConvert.SerializeObject(jobMessage);
 
-            Console.Write(json);
+            service.Execute();
+
+            Console.WriteLine("Done");
+            Console.ReadLine();
+
             Environment.Exit(0);
         }
     }
