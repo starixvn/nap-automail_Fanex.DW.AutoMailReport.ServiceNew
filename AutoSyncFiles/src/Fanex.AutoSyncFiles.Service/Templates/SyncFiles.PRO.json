@@ -232,6 +232,10 @@
     {
       "Source": "/nap/reporting-service/excel/PROD/SuperYesterdayBalance",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/ReportingService_SuperYesterdayBalance"
+    },
+    {
+      "Source": "/nap/bettype3rdproduct/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/BettypeWith3rdProducts"
     }
   ]
 }
