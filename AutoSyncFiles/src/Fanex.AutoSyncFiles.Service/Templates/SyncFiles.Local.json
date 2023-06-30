@@ -204,6 +204,10 @@
     {
       "Source": "/nap/reporting-service/excel/LOCAL/SuperYesterdayBalance",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/ReportingService_SuperYesterdayBalance"
+    },
+    {
+      "Source": "/nap/bettype3rdproduct/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/BettypeWith3rdProducts"
     }
   ]
 }
