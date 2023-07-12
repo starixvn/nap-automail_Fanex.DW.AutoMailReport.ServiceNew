@@ -208,6 +208,10 @@
     {
       "Source": "/nap/bettype3rdproduct/excel/LOCAL",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/BettypeWith3rdProducts"
+    },
+    {
+      "Source": "/nap/fastmarket/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/FastMarketWeeklyPerformance"
     }
   ]
 }

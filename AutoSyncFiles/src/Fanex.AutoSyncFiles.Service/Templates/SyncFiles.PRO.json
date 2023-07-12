@@ -236,6 +236,10 @@
     {
       "Source": "/nap/bettype3rdproduct/excel/PROD",
       "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/BettypeWith3rdProducts"
+    },
+    {
+      "Source": "/nap/fastmarket/excel/PROD",
+      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/FastMarketWeeklyPerformance"
     }
   ]
 }
