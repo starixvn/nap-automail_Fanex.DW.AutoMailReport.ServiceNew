@@ -229,22 +229,19 @@
     <Content Include="Templates\Report.PRO.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Settlement-KPI\Settlement-KPI.cshtml">
+    <Content Include="Templates\SabaBasketballTracking\SabaBasketballTracking.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Settlement-KPI\Settlement-KPI.json">
+    <Content Include="Templates\SabaBasketballTracking\SabaBasketballTracking.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Settlement-KPI\Settlement-KPI.Local.json">
+    <Content Include="Templates\SabaBasketballTracking\SabaBasketballTracking.Local.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Settlement-KPI\Settlement-KPI.PRO.json">
+    <Content Include="Templates\SabaBasketballTracking\SabaBasketballTracking.PRO.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Settlement-KPI\Settlement-KPI.UAT.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Templates\Settlement-KPI\Settlement-KPI.xlsx">
+    <Content Include="Templates\SabaBasketballTracking\SabaBasketballTracking.UAT.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\LicenseePerformance\LicenseePerformance.cshtml">
@@ -281,6 +278,27 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\SabaBasketballPinGoal\SabaBasketballPinGoal.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Settlement-KPI\Settlement-KPI.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Settlement-KPI\Settlement-KPI.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Settlement-KPI\Settlement-KPI.Local.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Settlement-KPI\Settlement-KPI.PRO.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Settlement-KPI\Settlement-KPI.UAT.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Settlement-KPI\Settlement-KPI.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\SabaBasketballTracking\SabaBasketballTracking.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

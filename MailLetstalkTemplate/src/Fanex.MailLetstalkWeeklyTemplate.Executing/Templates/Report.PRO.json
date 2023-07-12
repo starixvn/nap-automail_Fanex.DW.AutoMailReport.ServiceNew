@@ -18,5 +18,10 @@
     "ReportFile": "SabaBasketballPinGoal/SabaBasketballPinGoal.json",
     "IsActive": true,
     "IsEmailEnabled": true
+  },
+  {
+    "ReportFile": "SabaBasketballTracking/SabaBasketballTracking.json",
+    "IsActive": true,
+    "IsEmailEnabled": true
   }
 ]
