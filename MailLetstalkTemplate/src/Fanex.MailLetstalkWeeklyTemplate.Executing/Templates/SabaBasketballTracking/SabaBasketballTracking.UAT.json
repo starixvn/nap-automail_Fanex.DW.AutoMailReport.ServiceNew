@@ -1,0 +1,19 @@
+﻿{
+  "SPName": "Acc_Rpt_WeeklySabaBasketballPerf",
+  "DateRange": "Weekly",
+  "FromDate": "2020-01-01",
+  "ToDate": "2020-01-10",
+  "Path": "\\\\10.2.190.81\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\SabaBasketballTracking",
+  "Password": "Star168",
+  "FunctionIdNodata": 90,
+  "TemplateExcelFile": "SabaBasketballTracking/SabaBasketballTracking.xlsx",
+  "SheetExcelTemplateName": [ "Data" ],
+  "CellAddressRender": [ "B3" ],
+  "StartExelRowIndex": "3",
+  "EmailTemplate": "SabaBasketballTracking/SabaBasketballTracking.cshtml",
+  "EmailSubject": "Automail Report - Weekly Saba Basketball Tracking",
+  "MailId": "326",
+  "MailName": "Mail Weekly Template - UAT",
+  "FileName": "SabaBasketballTracking",
+  "StartExcelColumnIndex": 2
+}
