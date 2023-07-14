@@ -3,7 +3,7 @@
   "CategorySentryLog": "NAP-Report-Service-UAT",
   "TimerPeriodInSecond": 300,
   "FTPConfig": {
-    "Host": "10.2.190.41",
+    "Host": "10.99.98.117",
     "UserName": "olympus",
     "Password": "Pro_olympus_@1234aa",
     "Port": 2121
