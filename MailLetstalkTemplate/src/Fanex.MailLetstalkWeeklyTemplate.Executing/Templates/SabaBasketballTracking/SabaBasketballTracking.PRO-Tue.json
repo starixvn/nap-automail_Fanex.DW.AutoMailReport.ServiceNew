@@ -1,7 +1,7 @@
 ﻿{
   "SPName": "Acc_Rpt_WeeklySabaBasketballPerf",
   "IsIgnoredCheckMailSent": false,
-  "DateRange": "Weekly",
+  "DateRange": "WeeklyTue",
   "FromDate": "2020-01-01",
   "ToDate": "2020-01-10",
   "Path": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\SabaBasketballTracking",

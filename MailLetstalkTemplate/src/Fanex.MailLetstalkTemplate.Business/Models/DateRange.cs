@@ -6,6 +6,7 @@
         Daily,
         Weekly,
         Weekly2,
+        WeeklyTue,
         Monthly,
         Monthly2,
         Yesterday,

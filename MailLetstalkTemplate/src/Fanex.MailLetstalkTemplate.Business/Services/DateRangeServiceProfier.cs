@@ -20,6 +20,7 @@ namespace Fanex.MailLetstalkTemplate.Business.Services
                     { DateRange.Daily, new DateRangeDailyServiceImp() },
                     { DateRange.Weekly, new DateRangeWeeklyServiceImp() },
                     { DateRange.Weekly2, new DateRangeWeekly2ServiceImp() },
+                    { DateRange.WeeklyTue, new DateRangeWeeklyTueServiceImp() },
                     { DateRange.Monthly, new DateRangeMonthlyServiceImp() },
                     { DateRange.Monthly2, new DateRangeMonthlyService2ndImp() },
                     { DateRange.Yesterday, new DateRangeYesterdayServiceImp() },
