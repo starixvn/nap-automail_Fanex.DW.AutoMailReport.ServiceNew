@@ -238,7 +238,7 @@
     <Content Include="Templates\SabaBasketballTracking\SabaBasketballTracking.Local.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\SabaBasketballTracking\SabaBasketballTracking.PRO.json">
+    <Content Include="Templates\SabaBasketballTracking\SabaBasketballTracking.PRO-Tue.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\SabaBasketballTracking\SabaBasketballTracking.UAT.json">
@@ -299,6 +299,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\SabaBasketballTracking\SabaBasketballTracking.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Report.PRO-Tue.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Fanex.MailLetstalkWeeklyTemplate.Executing.PRO-Tue.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\BaseSetting.PRO-Tue.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

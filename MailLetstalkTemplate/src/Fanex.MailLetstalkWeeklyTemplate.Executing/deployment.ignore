@@ -1,6 +1,8 @@
 \\*.local.exe.config
 \\*.uat.exe.config
 \\*.pro.exe.config
+\\*.pro-tue.exe.config
 \\*.local.json
 \\*.uat.json
 \\*.pro.json
+\\*.pro-tue.json

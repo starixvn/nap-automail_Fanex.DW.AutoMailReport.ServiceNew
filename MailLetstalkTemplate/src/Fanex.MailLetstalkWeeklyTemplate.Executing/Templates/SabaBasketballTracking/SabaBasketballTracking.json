@@ -1,6 +1,6 @@
 ﻿{
   "SPName": "Acc_Rpt_WeeklySabaBasketballPerf",
-  "DateRange": "Manual",
+  "DateRange": "WeeklyTue",
   "FromDate": "2023-01-01",
   "ToDate": "2023-07-15",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\SabaBasketballTracking",
