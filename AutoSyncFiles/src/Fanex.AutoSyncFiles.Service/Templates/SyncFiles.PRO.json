@@ -11,235 +11,279 @@
   "Paths": [
     {
       "Source": "/nap/os-lic-pef-service/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/25-OS-TopLicPerf-PROD"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/25-OS-TopLicPerf-PROD"
     },
     {
       "Source": "/nap/os-lic-pef-service/excel/PROD/InternalOneTime/25-OS-TopLicPerf-PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/25-OS-TopLicPerf-PROD"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/25-OS-TopLicPerf-PROD"
     },
     {
       "Source": "/nap/sb-lic-perf/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/27-SBLicPerfByTO-PROD"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/27-SBLicPerfByTO-PROD"
     },
     {
       "Source": "/nap/sb-lic-perf/excel/PROD/InternalOneTime/27-SBLicPerfByTO-PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/27-SBLicPerfByTO-PROD"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/LetstalkOneTime/InternalOneTime-0500/27-SBLicPerfByTO-PROD"
     },
     {
       "Source": "/nap/abnormalbets/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/AB Daily Report-PROD"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/AB Daily Report-PROD"
     },
     {
       "Source": "/nap/abnormalbets/excel/PROD/AbnormalBetDailyReport_CSD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/AbnormalBetDailyReport_CSD"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/AbnormalBetDailyReport_CSD"
     },
     {
       "Source": "/nap/ta-perf/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/TA-Perf-PROD"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/TA-Perf-PROD"
     },
     {
       "Source": "/nap/ba-daily-wl-service/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/BA-Daily-WL-PROD"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/BA-Daily-WL-PROD"
     },
     {
       "Source": "/nap/top-licensee-by-to-service/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/Top-Lic-By-TO-PROD"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/Top-Lic-By-TO-PROD"
     },
     {
       "Source": "/nap/dcwl/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/3-DCWL-PROD"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/3-DCWL-PROD"
     },
     {
       "Source": "/nap/dcwl/Excel/InternalOneTime/3-DCWL-PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/LetstalkOneTime/InternalOneTime-0600/3-DCWL-PROD"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/LetstalkOneTime/InternalOneTime-0600/3-DCWL-PROD"
     },
     {
       "Source": "/nap/lic-perf-rmb/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/24-LicPerf-RMB-PROD"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/24-LicPerf-RMB-PROD"
     },
     {
       "Source": "/nap/soccer-perf/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/11-Soccer-Perf-PROD"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/11-Soccer-Perf-PROD"
     },
     {
       "Source": "/nap/n88-daily-wl/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/13-N88-Daily-WL"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/13-N88-Daily-WL"
     },
     {
       "Source": "/nap/lic-perf/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/14-Lic-Perf"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/14-Lic-Perf"
     },
     {
       "Source": "/nap/saba-soccer/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/15-Saba-Soccer-Punter"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/15-Saba-Soccer-Punter"
     },
     {
       "Source": "/nap/saba-soccer/excel/PROD/Hourly",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/16-SabaSportPunter-Hourly"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/16-SabaSportPunter-Hourly"
     },
     {
       "Source": "/nap/non-sport-punter/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/18-TopNonSportPunter"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/18-TopNonSportPunter"
     },
     {
       "Source": "/nap/non_sport_punter/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/18-TopNonSportPunter"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/18-TopNonSportPunter"
     },
     {
       "Source": "/nap/top-sb-agent/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/19-TopSportbookAgents"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/19-TopSportbookAgents"
     },
     {
       "Source": "/nap/oanda/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/OandaExchangeRate"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/OandaExchangeRate"
     },
     {
       "Source": "/nap/to-avg-bet-benchmark/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/20-TOAVGBetBenchmark"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/20-TOAVGBetBenchmark"
     },
     {
       "Source": "/nap/idl22/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/22-BigCreditIncrement789Y"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/22-BigCreditIncrement789Y"
     },
     {
       "Source": "/nap/weverdat/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/Weverdat"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/Weverdat"
     },
     {
       "Source": "/nap/cwl/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/GameWinLimitControl"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/GameWinLimitControl"
     },
     {
       "Source": "/nap/topmasterto/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/31-TopMasterByTO"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/31-TopMasterByTO"
     },
     {
       "Source": "/nap/owp/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/OWP"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/OWP"
     },
     {
       "Source": "/nap/mtdbettypewl/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/MTDBettypeWinLoss"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/MTDBettypeWinLoss"
     },
     {
       "Source": "/nap/timemachine/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/TimeMachine"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/TimeMachine"
     },
     {
       "Source": "/nap/playerbetlimit/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/PlayerBetLimit"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/PlayerBetLimit"
     },
     {
       "Source": "/nap/cwl-payout/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/33-CWLGamePayoutAlert"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/33-CWLGamePayoutAlert"
     },
     {
       "Source": "/nap/hwl/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/32-34-35-36-HWL"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/32-34-35-36-HWL"
     },
     {
       "Source": "/nap/inactive-lic/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/InactiveLicensee"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/InactiveLicensee"
     },
     {
       "Source": "/nap/esportmodeling/excel/PROD/ESportsDaily",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/ESportsDaily"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/ESportsDaily"
     },
     {
       "Source": "/nap/esportmodeling/excel/PROD/ESportsWeekly",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/ESportsWeekly"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/ESportsWeekly"
     },
     {
       "Source": "/nap/esportmodeling/excel/PROD/BasketballDaily",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/BasketballDaily"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/BasketballDaily"
     },
     {
       "Source": "/nap/esportmodeling/excel/PROD/BasketballWeekly",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/BasketballWeekly"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/BasketballWeekly"
     },
     {
       "Source": "/nap/fin/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/FINManagementMonthlyReport"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/FINManagementMonthlyReport"
     },
     {
       "Source": "/nap/crypto/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/CryptoExchangeRate"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/CryptoExchangeRate"
     },
     {
       "Source": "/nap/consistency-48-49-50-53/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/Consistency-48-49-50-53"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/Consistency-48-49-50-53"
     },
     {
       "Source": "/nap/wcwl/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/WC-League"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/WC-League"
     },
     {
       "Source": "/nap/coprofit/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/COProfit"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/COProfit"
     },
     {
       "Source": "/nap/id37/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/37-LiveSoccerPerfKO"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/37-LiveSoccerPerfKO"
     },
     {
       "Source": "/nap/id38/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/38-LiveSoccerPerfKO"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/38-LiveSoccerPerfKO"
     },
     {
       "Source": "/nap/id39/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/39-LiveSoccerPerfKO"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/39-LiveSoccerPerfKO"
     },
     {
       "Source": "/nap/idm01/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/01-NonLiveSoccerPerf"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/01-NonLiveSoccerPerf"
     },
     {
       "Source": "/nap/creditmovement/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/CreditMovementExcelFile"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/CreditMovementExcelFile"
     },
     {
       "Source": "/nap/idm03/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/WeeklyBasketballSpreadPerformanceReport_ID03"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/WeeklyBasketballSpreadPerformanceReport_ID03"
     },
     {
       "Source": "/nap/idm04/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/04-DropTOByLic"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/04-DropTOByLic"
     },
     {
       "Source": "/nap/house-margin/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/23-House-Margin-Monitoring"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/23-House-Margin-Monitoring"
     },
     {
       "Source": "/nap/osbetmonitoring/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/OSBetMonitoring"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/OSBetMonitoring"
     },
     {
       "Source": "/nap/reporting-service/excel/PROD/CompanyBalance",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/ReportingService_CompanyBalance"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/ReportingService_CompanyBalance"
     },
     {
       "Source": "/nap/reporting-service/excel/PROD/CompanyStatement",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/ReportingService_CompanyStatement"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/ReportingService_CompanyStatement"
     },
     {
       "Source": "/nap/reporting-service/excel/PROD/CompanyYesterdayBalance",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/ReportingService_CompanyYesterdayBalance"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/ReportingService_CompanyYesterdayBalance"
     },
     {
       "Source": "/nap/reporting-service/excel/PROD/DailyTurnover",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/ReportingService_DailyTurnover"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/ReportingService_DailyTurnover"
     },
     {
       "Source": "/nap/reporting-service/excel/PROD/SuperYesterdayBalance",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/ReportingService_SuperYesterdayBalance"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/ReportingService_SuperYesterdayBalance"
     },
     {
       "Source": "/nap/bettype3rdproduct/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/BettypeWith3rdProducts"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/BettypeWith3rdProducts"
     },
     {
       "Source": "/nap/fastmarket/excel/PROD",
-      "Destination": "//10.40.40.22/Data.Web/Fanex.Excel/FastMarketWeeklyPerformance"
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/FastMarketWeeklyPerformance"
+    },
+    {
+      "Source": "/nap/betradar/excel/PROD",
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/BetradarVirtualSports"
+    },
+    {
+      "Source": "/nap/traderperf/excel/PROD",
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/TraderPerformance"
+    },
+    {
+      "Source": "/nap/eventmarkert/excel/PROD",
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/EventMarketOffer"
+    },
+    {
+      "Source": "/nap/topwinning/excel/PROD",
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/TopWinningAgent"
+    },
+    {
+      "Source": "/nap/template/excel/PROD",
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/Template"
+    },
+    {
+      "Source": "/nap/template/excel/PROD/Adhoc_OtherSports",
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/Adhoc_OtherSports"
+    },
+    {
+      "Source": "/nap/template/excel/PROD/CreditLine",
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/CreditLine"
+    },
+    {
+      "Source": "/nap/betbuilder/excel/PROD",
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/BetBuilder"
+    },
+    {
+      "Source": "/nap/exchangerate/excel/PROD",
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/UpdatedExchangeRate"
+    },
+    {
+      "Source": "/nap/scorebox/excel/PROD",
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/ScoreBox"
+    },
+    {
+      "Source": "/nap/esportdatamining/excel/PROD",
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/E_SportsWeeklyPowerBIData"
     }
   ]
 }

@@ -236,6 +236,42 @@
     {
       "Source": "/nap/fastmarket/excel/UAT",
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/FastMarketWeeklyPerformance"
+    },
+    {
+      "Source": "/nap/betradar/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/BetradarVirtualSports"
+    },
+    {
+      "Source": "/nap/traderperf/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/TraderPerformance"
+    },
+    {
+      "Source": "/nap/eventmarkert/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/EventMarketOffer"
+    },
+    {
+      "Source": "/nap/topwinning/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/TopWinningAgent"
+    },
+    {
+      "Source": "/nap/template/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/Template"
+    },
+    {
+      "Source": "/nap/betbuilder/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/BetBuilder"
+    },
+    {
+      "Source": "/nap/exchangerate/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/UpdatedExchangeRate"
+    },
+    {
+      "Source": "/nap/scorebox/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/ScoreBox"
+    },
+    {
+      "Source": "/nap/esportdatamining/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/E_SportsWeeklyPowerBIData"
     }
   ]
 }
