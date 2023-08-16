@@ -1,7 +1,7 @@
 ﻿{
   "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.99.99.51:801/60",
   "CategorySentryLog": "NAP-Report-Service",
-  "Path": "\\\\10.40.40.22\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0505",
+  "Path": "\\\\10.40.40.11\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0505",
   "TargetName": "daily-house-wl",
   "Group": "DHWL-PRE",
   "MailSettings": {
