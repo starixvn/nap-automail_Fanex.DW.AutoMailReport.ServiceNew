@@ -212,6 +212,42 @@
     {
       "Source": "/nap/fastmarket/excel/LOCAL",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/FastMarketWeeklyPerformance"
+    },
+    {
+      "Source": "/nap/betradar/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/BetradarVirtualSports"
+    },
+    {
+      "Source": "/nap/traderperf/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/TraderPerformance"
+    },
+    {
+      "Source": "/nap/eventmarkert/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/EventMarketOffer"
+    },
+    {
+      "Source": "/nap/topwinning/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/TopWinningAgent"
+    },
+    {
+      "Source": "/nap/template/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/Template"
+    },
+    {
+      "Source": "/nap/betbuilder/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/BetBuilder"
+    },
+    {
+      "Source": "/nap/exchangerate/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/UpdatedExchangeRate"
+    },
+    {
+      "Source": "/nap/scorebox/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/ScoreBox"
+    },
+    {
+      "Source": "/nap/esportdatamining/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/E_SportsWeeklyPowerBIData"
     }
   ]
 }
