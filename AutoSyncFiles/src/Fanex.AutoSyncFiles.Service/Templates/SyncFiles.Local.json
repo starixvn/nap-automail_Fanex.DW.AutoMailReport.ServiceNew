@@ -248,6 +248,18 @@
     {
       "Source": "/nap/esportdatamining/excel/LOCAL",
       "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/E_SportsWeeklyPowerBIData"
+    },
+    {
+      "Source": "/nap/otherbettypeperf/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/OtherBettypesPerformance"
+    },
+    {
+      "Source": "/nap/iboperf/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/IBO-Performance"
+    },
+    {
+      "Source": "/nap/soccernonlive/excel/LOCAL",
+      "Destination": "//10.18.200.120/www/Olympus/Fanex.Excel/SoccerNonLive"
     }
   ]
 }

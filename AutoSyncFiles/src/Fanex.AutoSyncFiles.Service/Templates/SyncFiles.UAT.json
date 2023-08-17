@@ -272,6 +272,18 @@
     {
       "Source": "/nap/esportdatamining/excel/UAT",
       "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/E_SportsWeeklyPowerBIData"
+    },
+    {
+      "Source": "/nap/otherbettypeperf/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/OtherBettypesPerformance"
+    },
+    {
+      "Source": "/nap/iboperf/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/IBO-Performance"
+    },
+    {
+      "Source": "/nap/soccernonlive/excel/UAT",
+      "Destination": "//10.2.190.81/e$/1.Service/2.Nap-Reports-Auto-Mail-Services/Fanex.Excel/SoccerNonLive"
     }
   ]
 }
