@@ -266,6 +266,10 @@
       "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/Adhoc_OtherSports"
     },
     {
+      "Source": "/nap/template/excel/PROD/Basketball-CO-Perf",
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/Adhoc_OtherSports"
+    },
+    {
       "Source": "/nap/template/excel/PROD/CreditLine",
       "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/CreditLine"
     },
@@ -284,6 +288,18 @@
     {
       "Source": "/nap/esportdatamining/excel/PROD",
       "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/E_SportsWeeklyPowerBIData"
+    },
+    {
+      "Source": "/nap/otherbettypeperf/excel/PROD",
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/OtherBettypesPerformance"
+    },
+    {
+      "Source": "/nap/iboperf/excel/PROD",
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/IBO-Performance"
+    },
+    {
+      "Source": "/nap/soccernonlive/excel/PROD",
+      "Destination": "//10.40.40.11/Data.Web/Fanex.Excel/SoccerNonLive"
     }
   ]
 }
