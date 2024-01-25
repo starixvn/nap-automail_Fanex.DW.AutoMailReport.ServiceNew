@@ -2,6 +2,7 @@
   "SentryClientKey": "http://612764957dbb46ffa359103d8ffa08c6@10.99.99.51:801/59",
   "CategorySentryLog": "NAP-Report-Service-UAT",
   "Path": "\\\\10.2.190.81\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0500",
+  "LetstalkServiceApi": "http://napmailletstalk.starixplay.com/",
   "TargetName": "daily-house-wl",
   "Group": "DWHL-UAT",
   "MailSettings": {
@@ -34,36 +35,6 @@
       "IsActive": true,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - Daily Margin Chart - Non-Sport"
-    },
-    {
-      "FolderName": "12-TopLicenseeByTO",
-      "IsActive": true,
-      "FolderMode": "Daily",
-      "ReportName": "Letstalk - Top Licensees by TO"
-    },
-    {
-      "FolderName": "12-TopLicenseeByTO-LicBySport",
-      "IsActive": true,
-      "FolderMode": "Daily",
-      "ReportName": "Letstalk - Top licensees reports by sports"
-    },
-    {
-      "FolderName": "18-TopNonSportPunters",
-      "IsActive": true,
-      "FolderMode": "Daily",
-      "ReportName": "Letstalk - Top Non-Sports Punters"
-    },
-    {
-      "FolderName": "19-TopSportbookAgents",
-      "IsActive": true,
-      "FolderMode": "Daily",
-      "ReportName": "Letstalk - Top Sportbook Agents"
-    },
-    {
-      "FolderName": "20-TOAVGBetBenchmark",
-      "IsActive": true,
-      "FolderMode": "Daily",
-      "ReportName": "Letstalk - Turnover/AVG Bet Benchmark"
     }
   ]
 }

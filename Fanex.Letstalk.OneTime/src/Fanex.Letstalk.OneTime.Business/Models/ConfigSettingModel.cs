@@ -17,5 +17,7 @@ namespace Fanex.Letstalk.OneTime.Business.Models
         public Dictionary<string, MailModel> MailSettings { get; set; }
 
         public List<FolderRegisterModel> Folders { get; set; }
+
+        public string LetstalkServiceApi { get; set; }
     }
 }
