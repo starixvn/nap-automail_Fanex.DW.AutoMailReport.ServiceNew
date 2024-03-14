@@ -164,7 +164,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="App.config" />
-    <Content Include="App_Data\DBMMS.bodb_MMS.bodbAdminNet.xml">
+    <Content Include="App_Data\DBMMS.bodb_MMS.wsv_nap.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="deployment.ignore">
