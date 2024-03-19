@@ -3,7 +3,6 @@ using Fanex.Data.Repository;
 using Fanex.Letstalk.OneTime.Business.Models;
 using Fanex.Letstalk.OneTime.Business.Services;
 using Fanex.LetstalkService.Client;
-using Fanex.LetstalkService.Core.Services;
 using Fanex.Logging;
 using Fanex.Logging.Sentry.RavenClient;
 using Newtonsoft.Json;
@@ -13,6 +12,8 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
+using AppConfigService = Fanex.Letstalk.OneTime.Business.Services.AppConfigService;
+using LetstalkConfig = Fanex.LetstalkService.Core.Services.AppConfigService;
 
 namespace Fanex.Letstalk.OneTime.Executing
 {
@@ -31,6 +32,7 @@ namespace Fanex.Letstalk.OneTime.Executing
 
             var text = File.ReadAllText("Templates/LetstalkOneTimeSettings.json");
             AppConfigService.AppConfig = JsonConvert.DeserializeObject<ConfigSettingModel>(text);
+            LetstalkConfig.Config.LetstalkServiceApi = AppConfigService.AppConfig.LetstalkServiceApi;
         }
 
         public static void RegisterContainer(Container container)
@@ -44,8 +46,6 @@ namespace Fanex.Letstalk.OneTime.Executing
             container.Register<FileService, FileServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
-            container.Register<ApplicationSettingService, ApplicationSettingServiceImp>();
-            container.Register<WebApiClientService, WebApiClientServiceImp>();
         }
 
         private static void SentryRegister()

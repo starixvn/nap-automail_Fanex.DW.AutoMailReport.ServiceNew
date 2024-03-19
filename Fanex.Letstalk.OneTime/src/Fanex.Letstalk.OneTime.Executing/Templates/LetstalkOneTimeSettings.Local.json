@@ -2,6 +2,7 @@
   "SentryClientKey": "https://ad29bef60cc04e78803c9030a33a2c06@sentry.nexdev.net/44",
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime",
+  "LetstalkServiceApi": "http://napmailletstalk.nexdev.net/",
   "TargetName": "daily-house-wl",
   "Group": "DWHL-UAT",
   "MailSettings": {
@@ -25,13 +26,13 @@
     },
     {
       "FolderName": "2-DHWL-Daily",
-      "IsActive": false,
+      "IsActive": true,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - House Net Income Daily Report"
     },
     {
       "FolderName": "2-DHWL-Excel-Daily",
-      "IsActive": false,
+      "IsActive": true,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - House Net Income Daily Report"
     },

@@ -2,6 +2,7 @@
   "SentryClientKey": "http://612764957dbb46ffa359103d8ffa08c6@10.99.99.51:801/59",
   "CategorySentryLog": "NAP-Report-Service-UAT",
   "Path": "\\\\10.2.190.81\\e$\\1.Service\\2.Nap-Reports-Auto-Mail-Services\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0600",
+  "LetstalkServiceApi": "http://napmailletstalk.starixplay.com/",
   "TargetName": "daily-house-wl",
   "Group": "DWHL-UAT",
   "MailSettings": {
@@ -25,39 +26,15 @@
     },
     {
       "FolderName": "2-DHWL-Daily",
-      "IsActive": false,
+      "IsActive": true,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - House Net Income Daily Report (Images) "
     },
     {
       "FolderName": "2-DHWL-Excel-Daily",
-      "IsActive": false,
+      "IsActive": true,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - House Net Income Daily Report (Excel)"
-    },
-    {
-      "FolderName": "13-N88-DailyWL-Test",
-      "IsActive": false,
-      "FolderMode": "Daily",
-      "ReportName": "Letstalk - N88 Daily Win Loss"
-    },
-    {
-      "FolderName": "13-N8B-DailyWL-Test",
-      "IsActive": false,
-      "FolderMode": "Daily",
-      "ReportName": "Letstalk - N8B Daily Win Loss"
-    },
-    {
-      "FolderName": "13-N8G-DailyWL-Test",
-      "IsActive": false,
-      "FolderMode": "Daily",
-      "ReportName": "Letstalk - N8G Daily Win Loss"
-    },
-    {
-      "FolderName": "13-N88-DailyWL-Internal-Test",
-      "IsActive": false,
-      "FolderMode": "Daily",
-      "ReportName": "Letstalk - N88 Internal Daily Win Loss (All Images)"
     }
   ]
 }

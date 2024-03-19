@@ -180,6 +180,7 @@ namespace Fanex.Letstalk.OneTime.Business.Services
 
             var mail = new Mail
             {
+                Title = "Auto Generated Report Administrator",
                 Subject = model.Subject,
                 Body = fileService.LoadMailTemplate(new List<string> { new FileInfo(filename).Name }),
                 Attachments = attachments,

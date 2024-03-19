@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Functions SiteId="66" SiteName="mSite">
+	<Function Name="MailDeliver">
+		<Setting Key="Mail_Report_GetMailTaskList" SpName="Mail_Report_GetMailTaskList" DbName="DBMMS.bodb_MMS.wsv_nap" />
+	</Function>
+</Functions>
