@@ -190,7 +190,7 @@
     <Compile Include="RegisterService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\DBLIC.bodb_LicenseeReport.bodbAdminNet.xml">
+    <Content Include="App_Data\DBLIC.bodb_LicenseeReport.wsv_nap.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\template-push.txt">
