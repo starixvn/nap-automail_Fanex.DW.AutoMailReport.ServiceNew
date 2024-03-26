@@ -11,7 +11,7 @@ namespace Fanex.DHWL.Business.Services.DailyChart
 {
     public interface DailyChartService
     {
-        string ExportDailyChart(Dictionary<int, double> sbFigure, Dictionary<int, double> totalFigure, ChartMtdFigureModel mtdFigure);
+        string ExportDailyChart(Dictionary<int, double> sbFigure, Dictionary<int, double> totalFigure, ChartMtdFigureModel mtdFigure, string title, string chartName);
     }
 
     public class DailyChartServiceImp : DailyChartService
@@ -29,7 +29,7 @@ namespace Fanex.DHWL.Business.Services.DailyChart
             this.log = log;
         }
 
-        public string ExportDailyChart(Dictionary<int, double> sbFigure, Dictionary<int, double> totalFigure, ChartMtdFigureModel mtdFigure)
+        public string ExportDailyChart(Dictionary<int, double> sbFigure, Dictionary<int, double> totalFigure, ChartMtdFigureModel mtdFigure, string title, string chartName)
         {
             var font = new Font("Tahoma", 14);
             var fontMtd = new Font("Tahoma", 19);
@@ -40,20 +40,20 @@ namespace Fanex.DHWL.Business.Services.DailyChart
             Chart chart = new Chart();
 
             ConfigureChartAreas(totalFigure, font, chart);
-            ConfigureChartLegends(fontMtd, chart, mtdFigure);
+            ConfigureChartLegends(fontMtd, chart, mtdFigure, title);
             ConfigurationSportBookChart(font, sportBookChart, chart);
             ConfigurationOtherProductsChart(font, otherProductsChart, chart);
             ConfigurationTotalChart(font, totalChart, chart);
             AssignDataToCharts(sbFigure, totalFigure, sportBookChart, otherProductsChart, totalChart, chart);
 
-            return SaveChartToImage(chart);
+            return SaveChartToImage(chart, chartName);
         }
 
-        private string SaveChartToImage(Chart chart)
+        private string SaveChartToImage(Chart chart, string chartName)
         {
             var folder = $@"{AppConfigService.Config.Path}\{dateTimeService.DateTime.ToDate:yyyy}\{dateTimeService.DateTime.ToDate:MM}";
             Directory.CreateDirectory(folder);
-            var fileName = $@"{folder}\House-Net-Income-Chart-On-{dateTimeService.DateTime.ToDate:yyyyMMdd}.png";
+            var fileName = $@"{folder}\{chartName}-On-{dateTimeService.DateTime.ToDate:yyyyMMdd}.png";
             chart.SaveImage(fileName, ImageFormat.Png);
 
             return fileName;
@@ -132,11 +132,11 @@ namespace Fanex.DHWL.Business.Services.DailyChart
             chart.Series[sportBookChart].Font = font;
         }
 
-        private void ConfigureChartLegends(Font font, Chart chart, ChartMtdFigureModel mtdFigure)
+        private void ConfigureChartLegends(Font font, Chart chart, ChartMtdFigureModel mtdFigure, string title)
         {
             var fontMtd = new Font(font, FontStyle.Bold);
             var fromDate = dateTimeService.DateTime.FromDate;
-            var title = $"DHWL [{fromDate:MMM-yyyy}]";
+            title = $"{title} [{fromDate:MMM-yyyy}]";
             chart.Legends.Add("legend1");
             chart.Titles.Add("Title");
             chart.Titles[0].Text = title;
