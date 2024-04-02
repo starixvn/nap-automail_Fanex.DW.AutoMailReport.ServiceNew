@@ -5,6 +5,7 @@ using Fanex.DHWL.Business.Services.Margin;
 using Fanex.MailDelivery.Core.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 
 namespace Fanex.DHWL.Business.Services
@@ -94,10 +95,12 @@ namespace Fanex.DHWL.Business.Services
             var checkData = dataService.CheckDataReadyDaily();
             if (checkData.Count > 0)
             {
+                var message = string.Join(",", checkData);
+                log.Log(new Exception($"Letstalk - DHWL - Daily - PRE: {message}"));
                 return new ExecuteResultModel
                 {
                     Mail = new Mail(),
-                    Message = string.Join(",", checkData),
+                    Message = message,
                     Success = false
                 };
             }
@@ -108,6 +111,10 @@ namespace Fanex.DHWL.Business.Services
             var fromDate = dateTimeServiceProvider.DateTime.FromDate;
             var toDate = dateTimeServiceProvider.DateTime.ToDate;
             var previousRawData = dataService.QueryDhwlDataPreviousYear();
+            var previousRawDataDeposit = previousRawData.AsEnumerable().Where(s => Convert.ToBoolean(s["IsDeposit"])).CopyToDataTable();
+            var previousRawDataCredit = previousRawData.AsEnumerable().Where(s => !Convert.ToBoolean(s["IsDeposit"])).CopyToDataTable();
+            var dailyRawDataDeposit = dailyRawData.AsEnumerable().Where(s => Convert.ToBoolean(s["IsDeposit"])).CopyToDataTable();
+            var dailyRawDataCredit = dailyRawData.AsEnumerable().Where(s => !Convert.ToBoolean(s["IsDeposit"])).CopyToDataTable();
 
             excelRawService.Export(dailyRawData, "Daily", fromDate, toDate);
             var excelPath = excelDailyService.Export(cloneData);
@@ -123,13 +130,17 @@ namespace Fanex.DHWL.Business.Services
             var grandTotalForMtd = imageMarginService.GrandTotalList;
 
             var imageDhwlPath = imageDhwlService.Export(cloneDataDhwl, grandTotalForDaily, grandTotalForMtd);
-            var chartPath = chartExport.Export(dailyRawData, previousRawData);
+            var chartPath = chartExport.Export(dailyRawData, previousRawData, "DHWL", "DHWL-Chart");
+            var chartPathCredit = chartExport.Export(dailyRawDataCredit, previousRawDataCredit, "CREDIT DHWL", "CREDIT-DHWL-Chart");
+            var chartPathDeposit = chartExport.Export(dailyRawDataDeposit, previousRawDataDeposit, "LICENSEE DHWL", "LICENSEE-DHWL-Chart");
             var images = new List<string>
             {
                 imageDhwlPath,
                 imageMarginPath,
                 imageMarginMtdPath,
-                chartPath
+                chartPath,
+                chartPathCredit,
+                chartPathDeposit
             };
 
             CopyFiles(excelPath, images);

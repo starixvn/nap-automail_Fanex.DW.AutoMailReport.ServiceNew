@@ -6,7 +6,7 @@ namespace Fanex.DHWL.Business.Services.DailyChart
 {
     public interface DailyChartExport
     {
-        string Export(DataTable rawDataAllProducts, DataTable previousRawData);
+        string Export(DataTable rawDataAllProducts, DataTable previousRawData, string title, string chartName);
     }
 
     public class DailyChartExportImp : DailyChartExport
@@ -25,7 +25,7 @@ namespace Fanex.DHWL.Business.Services.DailyChart
             this.baseDataTable = baseDataTable;
         }
 
-        public string Export(DataTable rawDataAllProducts, DataTable previousRawData)
+        public string Export(DataTable rawDataAllProducts, DataTable previousRawData, string title, string chartName)
         {
             var dailyResult = rawDataAllProducts.Rows.Count > 0
                 ? rawDataAllProducts.AsEnumerable().Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver)).CopyToDataTable()
@@ -46,7 +46,7 @@ namespace Fanex.DHWL.Business.Services.DailyChart
                 PreviousMtd = previousMtd
             };
             CalcMargin(rawDataAllProducts, previousRawData, mtdFigure);
-            var chartPath = chartService.ExportDailyChart(sbFigure, totalFigure, mtdFigure);
+            var chartPath = chartService.ExportDailyChart(sbFigure, totalFigure, mtdFigure, title, chartName);
 
             return chartPath;
         }
