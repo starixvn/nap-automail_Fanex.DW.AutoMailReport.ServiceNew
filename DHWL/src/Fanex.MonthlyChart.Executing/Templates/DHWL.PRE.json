@@ -10,6 +10,7 @@
   "InternalPath": "\\\\10.40.40.11\\Data.Web\\Fanex.Excel\\DHWL-PRE_InternalPath",
   "Password": "Star168",
   "TargetName": "daily-house-wl",
+  "PerformanceThreshold": 650000,
   "LetstalkGroup": "DHWL-PRE",
   "LetstalkGroups": {
     "Image": {

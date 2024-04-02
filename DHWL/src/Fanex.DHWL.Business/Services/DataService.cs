@@ -80,7 +80,8 @@ namespace Fanex.DHWL.Business.Services
             var hniResultReady = HniResultReady();
             if (!hniResultReady)
             {
-                result.Add("The data is not correct (data is not ready & ABS(MTD of Yesterday – [MTD of Today – Yesterday Data]) > 300K RM)");
+                var value = AppConfigService.Config.PerformanceThreshold / 1000;
+                result.Add($"The data is not correct (data is not ready & ABS(MTD of Yesterday – [MTD of Today – Yesterday Data]) > {value}K RM)");
             }
 
             return result;

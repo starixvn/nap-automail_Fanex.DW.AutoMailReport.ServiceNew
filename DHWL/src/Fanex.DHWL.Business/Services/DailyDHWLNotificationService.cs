@@ -95,10 +95,12 @@ namespace Fanex.DHWL.Business.Services
             var checkData = dataService.CheckDataReadyDaily();
             if (checkData.Count > 0)
             {
+                var message = string.Join(",", checkData);
+                log.Log(new Exception($"Letstalk - DHWL - Daily - PRE: {message}"));
                 return new ExecuteResultModel
                 {
                     Mail = new Mail(),
-                    Message = string.Join(",", checkData),
+                    Message = message,
                     Success = false
                 };
             }
