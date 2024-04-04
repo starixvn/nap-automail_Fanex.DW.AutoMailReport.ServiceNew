@@ -138,7 +138,9 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
                 template.Cells[lastRow, 10, lastRow, 17].Style.Indent = 1;
                 template.Row(lastRow).Height = formatTpl.Row(templateRow).Height;
             });
-            ;
+
+            lastRow++;
+            formatTpl.Cells["B11:B12"].Copy(template.Cells[lastRow, 2]);
         }
 
         private void RenderMtdMargin(DataTable monthlyRawData, ExcelWorksheet marginSheet, int reportId)
