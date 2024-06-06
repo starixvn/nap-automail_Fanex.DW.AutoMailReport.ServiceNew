@@ -3,9 +3,11 @@ using Fanex.DHWL.Business.Services.DailyChart;
 using Fanex.DHWL.Business.Services.DailyDHWLLetstalk;
 using Fanex.DHWL.Business.Services.Margin;
 using Fanex.MailDelivery.Core.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 
 namespace Fanex.DHWL.Business.Services
@@ -106,6 +108,10 @@ namespace Fanex.DHWL.Business.Services
             }
 
             var dailyRawData = dataService.QueryDhwlData();
+
+            var json = JsonConvert.SerializeObject(dailyRawData, Formatting.Indented);
+            File.WriteAllText($"{AppConfigService.Config.Path}/RawData.json", json);
+
             var cloneData = baseDataTable.Clone(dailyRawData);
             var cloneDataDhwl = baseDataTable.Clone(dailyRawData);
             var fromDate = dateTimeServiceProvider.DateTime.FromDate;
