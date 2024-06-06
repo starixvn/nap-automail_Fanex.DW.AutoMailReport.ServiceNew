@@ -3,11 +3,9 @@ using Fanex.DHWL.Business.Services.DailyChart;
 using Fanex.DHWL.Business.Services.DailyDHWLLetstalk;
 using Fanex.DHWL.Business.Services.Margin;
 using Fanex.MailDelivery.Core.Models;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.IO;
 using System.Linq;
 
 namespace Fanex.DHWL.Business.Services
@@ -34,6 +32,7 @@ namespace Fanex.DHWL.Business.Services
 
         private readonly DailyImageDHWLService imageDhwlService;
         private readonly ImageMarginService imageMarginService;
+        private readonly ImageMarginHedgingSpecialService imageMarginHedgingSpecialService;
         private readonly DateTimeServiceProvider dateTimeServiceProvider;
 
         public DailyDHWLNotificationServiceImp(
@@ -48,6 +47,7 @@ namespace Fanex.DHWL.Business.Services
             DailyChartExport chartExport,
             DailyImageDHWLService imageDhwlService,
             ImageMarginService imageMarginService,
+            ImageMarginHedgingSpecialService imageMarginHedgingSpecialService,
             DateTimeServiceProvider dateTimeServiceProvider)
         {
             this.log = log;
@@ -61,6 +61,7 @@ namespace Fanex.DHWL.Business.Services
             this.chartExport = chartExport;
             this.imageDhwlService = imageDhwlService;
             this.imageMarginService = imageMarginService;
+            this.imageMarginHedgingSpecialService = imageMarginHedgingSpecialService;
             this.dateTimeServiceProvider = dateTimeServiceProvider;
         }
 
@@ -109,8 +110,10 @@ namespace Fanex.DHWL.Business.Services
 
             var dailyRawData = dataService.QueryDhwlData();
 
-            var json = JsonConvert.SerializeObject(dailyRawData, Formatting.Indented);
-            File.WriteAllText($"{AppConfigService.Config.Path}/RawData.json", json);
+            //var json = JsonConvert.SerializeObject(dailyRawData, Formatting.Indented);
+            //File.WriteAllText($"{AppConfigService.Config.Path}/RawData-09.json", json);
+            //var json = File.ReadAllText("Templates/RawData-09.json");
+            //dailyRawData = JsonConvert.DeserializeObject<DataTable>(json);
 
             var cloneData = baseDataTable.Clone(dailyRawData);
             var cloneDataDhwl = baseDataTable.Clone(dailyRawData);
@@ -135,6 +138,14 @@ namespace Fanex.DHWL.Business.Services
             var imageMarginMtdPath = imageMarginService.Export(dailyRawData, false, reportId);
             var grandTotalForMtd = imageMarginService.GrandTotalList;
 
+            reportId++;
+            var imageMarginHedgingSpecialPath = imageMarginHedgingSpecialService.Export(dailyRawData, true, reportId);
+            var grandTotalHedgingSpecialForDaily = imageMarginHedgingSpecialService.GrandTotalList;
+
+            reportId++;
+            var imageMarginMtdHedgingSpecialPath = imageMarginHedgingSpecialService.Export(dailyRawData, false, reportId);
+            var grandTotalForHedgingSpecialMtd = imageMarginHedgingSpecialService.GrandTotalList;
+
             var imageDhwlPath = imageDhwlService.Export(cloneDataDhwl, grandTotalForDaily, grandTotalForMtd);
             var chartPath = chartExport.Export(dailyRawData, previousRawData, "DHWL", "DHWL-Chart");
             var chartPathCredit = chartExport.Export(dailyRawDataCredit, previousRawDataCredit, "CREDIT DHWL", "CREDIT-DHWL-Chart");
@@ -144,6 +155,8 @@ namespace Fanex.DHWL.Business.Services
                 imageDhwlPath,
                 imageMarginPath,
                 imageMarginMtdPath,
+                imageMarginHedgingSpecialPath,
+                imageMarginMtdHedgingSpecialPath,
                 chartPath,
                 chartPathCredit,
                 chartPathDeposit

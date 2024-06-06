@@ -65,6 +65,15 @@ namespace Fanex.DHWL.Business.Services
                 .ToList()
                 .ForEach(product =>
                 {
+                    var hedgingTo = product.Where(s => s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) && s[ColumnName.SiteGroup].Equals(Site.Hedging))
+                        .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex]));
+                    var hedgingWl = product.Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) && s[ColumnName.SiteGroup].Equals(Site.Hedging))
+                        .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex]));
+                    var specialTo = product.Where(s => s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) && s[ColumnName.SiteGroup].Equals(Site.Special))
+                        .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex]));
+                    var specialWl = product.Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) && s[ColumnName.SiteGroup].Equals(Site.Special))
+                        .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex]));
+
                     var margin = new MarginModel
                     {
                         ProductShortName = product.Key.ProductShortName,
@@ -77,9 +86,9 @@ namespace Fanex.DHWL.Business.Services
                         .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
 
                         MBCTO = product.Where(s => s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) && s[ColumnName.SiteGroup].Equals(Site.MBC))
-                        .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
+                        .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])) + hedgingTo + specialTo,
                         MBCWL = product.Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) && s[ColumnName.SiteGroup].Equals(Site.MBC))
-                        .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
+                        .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])) + hedgingWl + specialWl,
 
                         LicenseeTO = product.Where(s => s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) && Converter.To<bool>(s[ColumnName.IsDeposit]))
                         .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),

@@ -13,7 +13,7 @@
   "LetstalkGroup": "DWHL-UAT",
   "ProductList": "All",
   "IsAttachAdjument": true,
-  "DataMode": 1,
+  "DataMode": 2,
   "LetstalkGroups": {
     "Image": {
       "Group": "DWHL-UAT",

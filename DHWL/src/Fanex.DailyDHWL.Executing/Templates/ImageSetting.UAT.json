@@ -28,5 +28,20 @@
     "ImageQuality": 100,
     "HeightPerRow": 90,
     "AdjustHeight": 150
+  },
+  "MarginHedgingSpecial": {
+    "FirstRow": 1,
+    "FirstColumn": 2,
+    "LastColumn": 21,
+    "CropWidth": 5870,
+    "ImageName": "DHWL-Margin-HedgingSpecial",
+    "SheetName": "Margin",
+    "X": 220,
+    "Y": 300,
+    "IsResize": true,
+    "ResizeNewWidth": 2000,
+    "ImageQuality": 100,
+    "HeightPerRow": 90,
+    "AdjustHeight": 80
   }
 }

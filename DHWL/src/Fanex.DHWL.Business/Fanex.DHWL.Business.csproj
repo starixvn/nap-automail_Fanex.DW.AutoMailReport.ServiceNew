@@ -191,6 +191,7 @@
     <Compile Include="Models\GetProductInfoModel.cs" />
     <Compile Include="Models\LicenseeCheckDataReady.cs" />
     <Compile Include="Models\LicenseePerformance\LicenseePerformanceModel.cs" />
+    <Compile Include="Models\MarginHedgingSpecialModel.cs" />
     <Compile Include="Models\MonthlyDHWLModel.cs" />
     <Compile Include="Models\DailyDHWLModel.cs" />
     <Compile Include="Models\ExecuteResultModel.cs" />
@@ -209,6 +210,9 @@
     <Compile Include="Services\Adjustment\AdjustmentDataService.cs" />
     <Compile Include="Services\AppConfigService.cs" />
     <Compile Include="Services\BaseDataTable.cs" />
+    <Compile Include="Services\Margin\DataMarginHedgingSpecialService.cs" />
+    <Compile Include="Services\Margin\ExcelMarginHedgingSpecialService.cs" />
+    <Compile Include="Services\Margin\ImageMarginHedgingSpecialService.cs" />
     <Compile Include="Services\MonthlyChartNotificationService.cs" />
     <Compile Include="Services\MonthlyChart\MonthlyChartDataService.cs" />
     <Compile Include="Services\MonthlyChart\MonthlyChartExport.cs" />

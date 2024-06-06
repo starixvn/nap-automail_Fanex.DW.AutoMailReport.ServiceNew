@@ -3,7 +3,7 @@
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
   "LetstalkServiceApi": "http://napmailletstalk.nexdev.net/",
   "IsCheckEnoughData": false,
-  "ReportType": "Manual",
+  "ReportType": "Daily",
   "FromDate": "2024-03-01",
   "ToDate": "2024-03-19",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\NEW-DHWL",
