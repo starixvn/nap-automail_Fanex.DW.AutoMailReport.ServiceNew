@@ -11,8 +11,8 @@
     "IsResize": false,
     "ResizeNewWidth": 600,
     "ImageQuality": 100,
-    "HeightPerRow": 75,
-    "AdjustHeight": 90
+    "HeightPerRow": 77,
+    "AdjustHeight": 50
   },
   "Margin": {
     "FirstRow": 1,
@@ -22,11 +22,26 @@
     "ImageName": "DHWL-Margin",
     "SheetName": "Margin",
     "X": 200,
-    "Y": 250,
+    "Y": 240,
     "IsResize": true,
     "ResizeNewWidth": 1000,
     "ImageQuality": 100,
-    "HeightPerRow": 77,
+    "HeightPerRow": 78,
+    "AdjustHeight": 0
+  },
+  "MarginHedgingSpecial": {
+    "FirstRow": 1,
+    "FirstColumn": 2,
+    "LastColumn": 21,
+    "CropWidth": 4970,
+    "ImageName": "DHWL-Margin-HedgingSpecial",
+    "SheetName": "Margin",
+    "X": 190,
+    "Y": 260,
+    "IsResize": true,
+    "ResizeNewWidth": 2000,
+    "ImageQuality": 100,
+    "HeightPerRow": 78,
     "AdjustHeight": 0
   }
 }

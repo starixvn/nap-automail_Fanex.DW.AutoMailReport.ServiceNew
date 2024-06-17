@@ -76,11 +76,14 @@ namespace Fanex.DailyDHWL.Executing
             container.Register<DailyChartDataService, DailyChartDataServiceImp>();
             container.Register<FormatService, FormatServiceImp>();
             container.Register<DataMarginService, DataMarginServiceImp>();
+            container.Register<DataMarginHedgingSpecialService, DataMarginHedgingSpecialServiceImp>();
             container.Register<ExcelMarginService, ExcelMarginServiceImp>();
+            container.Register<ExcelMarginHedgingSpecialService, ExcelMarginHedgingSpecialServiceImp>();
             container.Register<DailyDataDHWLService, DailyDataDHWLServiceImp>();
             container.Register<DailyExcelDHWLService, DailyExcelDHWLServiceImp>();
             container.Register<DailyImageDHWLService, DailyImageDHWLServiceImp>();
             container.Register<ImageMarginService, ImageMarginServiceImp>();
+            container.Register<ImageMarginHedgingSpecialService, ImageMarginHedgingSpecialServiceImp>();
             container.Register<MergeProductDataService, MergeProductDataServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();

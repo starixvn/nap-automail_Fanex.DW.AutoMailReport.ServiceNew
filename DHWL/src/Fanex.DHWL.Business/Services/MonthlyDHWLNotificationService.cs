@@ -93,7 +93,18 @@ namespace Fanex.DHWL.Business.Services
             }
 
             var monthlyRawData = dataService.QueryDhwlData();
+
+            //var json = JsonConvert.SerializeObject(monthlyRawData, Formatting.Indented);
+            //File.WriteAllText($"{AppConfigService.Config.Path}/RawData-Monthly-05.json", json);
+            //var json = File.ReadAllText("Templates/RawData-Monthly-05.json");
+            //var monthlyRawData = JsonConvert.DeserializeObject<DataTable>(json);
+
             var dataSetReconciliation = dataService.QueryReconciliation();
+            //var jsonReconciliation = JsonConvert.SerializeObject(dataSetReconciliation, Formatting.Indented);
+            //File.WriteAllText($"{AppConfigService.Config.Path}/RawData-Monthly-Reconciliation-05.json", jsonReconciliation);
+            //var jsonReconciliation = File.ReadAllText("Templates/RawData-Monthly-Reconciliation-05.json");
+            //var dataSetReconciliation = JsonConvert.DeserializeObject<DataSet>(jsonReconciliation);
+
             var dataReconciliation = dataSetReconciliation.Tables[0];
             var dataBa = dataSetReconciliation.Tables[1];
 

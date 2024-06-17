@@ -72,7 +72,9 @@ namespace Fanex.MonthlyDHWL.Executing
 
             container.Register<FormatService, FormatServiceImp>();
             container.Register<DataMarginService, DataMarginServiceImp>();
+            container.Register<DataMarginHedgingSpecialService, DataMarginHedgingSpecialServiceImp>();
             container.Register<ExcelMarginService, ExcelMarginServiceImp>();
+            container.Register<ExcelMarginHedgingSpecialService, ExcelMarginHedgingSpecialServiceImp>();
             container.Register<MonthlyDataDHWLService, MonthlyDataDHWLServiceImp>();
             container.Register<MonthlyExcelDHWLService, MonthlyExcelDHWLServiceImp>();
             container.Register<MonthlyImageDHWLService, MonthlyImageDHWLServiceImp>();

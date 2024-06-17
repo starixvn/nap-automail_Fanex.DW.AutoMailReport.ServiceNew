@@ -28,6 +28,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
         private readonly MonthlyReconciliationExcelService reconciliation;
         private readonly MonthlyBAExcelService monthlyBaExcelService;
         private readonly ExcelMarginService excelMarginService;
+        private readonly ExcelMarginHedgingSpecialService excelMarginHedgingSpecialService;
 
         private const int StartRowIndex = 3;
 
@@ -47,7 +48,8 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             AdjustmentDataService adjustmentService,
             MonthlyReconciliationExcelService reconciliation,
             MonthlyBAExcelService monthlyBaExcelService,
-            ExcelMarginService excelMarginService)
+            ExcelMarginService excelMarginService,
+            ExcelMarginHedgingSpecialService excelMarginHedgingSpecialService)
         {
             this.dataDhwlService = dataDhwlService;
             this.dateService = dateService;
@@ -55,6 +57,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             this.monthlyBaExcelService = monthlyBaExcelService;
             this.reconciliation = reconciliation;
             this.excelMarginService = excelMarginService;
+            this.excelMarginHedgingSpecialService = excelMarginHedgingSpecialService;
         }
 
         public string Export(DataTable monthlyRawData, DataTable dataReconciliation, DataTable dataBa, int reportId)
@@ -64,7 +67,8 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             excelPackage = new ExcelPackage(new FileInfo($"Templates/DHWL-Letstalk.xlsx"));
             var template = excelPackage.Workbook.Worksheets["Letstalk"];
             var formatTpl = excelPackage.Workbook.Worksheets["Format"];
-            var marginSheet = excelPackage.Workbook.Worksheets.Add("Monthly Margin");
+            var marginSheet = excelPackage.Workbook.Worksheets["Monthly Margin"];
+            var marginHedgingSpecialSheet = excelPackage.Workbook.Worksheets["Monthly SB Margin"];
             excelPackage.Workbook.Worksheets.Delete(formatTpl);
 
             RenderTitle(template);
@@ -78,6 +82,8 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             RenderReconciliation(dataReconciliation);
             RenderBa(dataBa);
             RenderMtdMargin(monthlyRawData, marginSheet, reportId);
+            reportId++;
+            RenderMtdMarginHedgingSpecial(monthlyRawData, marginHedgingSpecialSheet, reportId);
 
             return Save(template);
         }
@@ -138,7 +144,37 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
                 template.Cells[lastRow, 10, lastRow, 17].Style.Indent = 1;
                 template.Row(lastRow).Height = formatTpl.Row(templateRow).Height;
             });
-            ;
+
+            lastRow++;
+            formatTpl.Cells["B11:B12"].Copy(template.Cells[lastRow, 2]);
+        }
+
+        private void RenderMtdMarginHedgingSpecial(DataTable monthlyRawData, ExcelWorksheet marginHedgingSpecialSheet, int reportId)
+        {
+            var data = monthlyRawData.AsEnumerable()
+                .Where(s => s[ColumnName.ProductGroup].Equals(ProductGroup.Sportsbook))
+                .CopyToDataTable();
+            var mtdMarginExcelPath = excelMarginHedgingSpecialService.Export(data, false, reportId);
+            var excelPackageMargin = new ExcelPackage(new FileInfo(mtdMarginExcelPath), AppConfigService.Config.Password);
+            var mtdMarginSheet = excelPackageMargin.Workbook.Worksheets["Margin"];
+
+            mtdMarginSheet.Cells[1, 2, excelMarginService.LastRowIndex, 21].Copy(marginHedgingSpecialSheet.Cells["A5"]);
+            marginHedgingSpecialSheet.View.ShowGridLines = false;
+            marginHedgingSpecialSheet.Cells["A2"].Value = $"Monthly Margin Report For {dateService.DateTime.ToDate: MMM yyyy}";
+            marginHedgingSpecialSheet.Cells["A2"].Style.Font.Bold = true;
+            marginHedgingSpecialSheet.Cells["A2"].Style.Font.Size = 14;
+
+            marginHedgingSpecialSheet.Cells["A3"].Value = $"Generated on {DateTime.Now:dd MMM yyyy hh:mm:ss tt}";
+
+            for (var rowIndex = 1; rowIndex <= excelMarginService.LastRowIndex; rowIndex++)
+            {
+                marginHedgingSpecialSheet.Row(rowIndex + 4).Height = mtdMarginSheet.Row(rowIndex).Height;
+            }
+
+            for (var colIndex = 1; colIndex <= 21; colIndex++)
+            {
+                marginHedgingSpecialSheet.Column(colIndex).Width = mtdMarginSheet.Column(colIndex + 1).Width;
+            }
         }
 
         private void RenderMtdMargin(DataTable monthlyRawData, ExcelWorksheet marginSheet, int reportId)
