@@ -97,7 +97,7 @@ namespace Fanex.DHWL.Business.Services
             //var json = JsonConvert.SerializeObject(monthlyRawData, Formatting.Indented);
             //File.WriteAllText($"{AppConfigService.Config.Path}/RawData-Monthly-05.json", json);
             //var json = File.ReadAllText("Templates/RawData-Monthly-05.json");
-            //monthlyRawData = JsonConvert.DeserializeObject<DataTable>(json);
+            //var monthlyRawData = JsonConvert.DeserializeObject<DataTable>(json);
 
             var dataSetReconciliation = dataService.QueryReconciliation();
             //var jsonReconciliation = JsonConvert.SerializeObject(dataSetReconciliation, Formatting.Indented);

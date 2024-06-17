@@ -141,8 +141,7 @@ namespace Fanex.DHWL.Business.Services
                 tplRowIndex++;
             }
 
-            formatTpl.Cells["B7:B9"].Copy(template.Cells[endIndexGroup + 1, 2]);
-            LastRowIndex = endIndexGroup + 4;
+            LastRowIndex = endIndexGroup + 1;
         }
 
         private string Save(bool isDaily)

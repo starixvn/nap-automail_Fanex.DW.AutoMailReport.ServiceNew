@@ -113,7 +113,7 @@ namespace Fanex.DHWL.Business.Services
             //var json = JsonConvert.SerializeObject(dailyRawData, Formatting.Indented);
             //File.WriteAllText($"{AppConfigService.Config.Path}/RawData-09.json", json);
             //var json = File.ReadAllText("Templates/RawData-09.json");
-            //dailyRawData = JsonConvert.DeserializeObject<DataTable>(json);
+            //var dailyRawData = JsonConvert.DeserializeObject<DataTable>(json);
 
             var cloneData = baseDataTable.Clone(dailyRawData);
             var cloneDataDhwl = baseDataTable.Clone(dailyRawData);
