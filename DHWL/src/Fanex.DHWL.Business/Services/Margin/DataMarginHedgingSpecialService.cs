@@ -29,14 +29,19 @@ namespace Fanex.DHWL.Business.Services
 
         public List<MarginHedgingSpecialModel> CalcDataForDaily(DataTable source)
         {
-            var data = baseDataTable.CloneWithoutIgnoreFigureRows(source)
-                .AsEnumerable()
-                .Where(s => s[ColumnName.ProductGroup].Equals(ProductGroup.Sportsbook))
-                .CopyToDataTable();
-            var royalFeesData = baseDataTable.CloneRoyaltyFees(source)
-                .AsEnumerable()
-                .Where(s => s[ColumnName.ProductGroup].Equals(ProductGroup.Sportsbook))
-                .CopyToDataTable();
+            var data = source.Rows.Count > 0
+                ? baseDataTable.CloneWithoutIgnoreFigureRows(source)
+                    .AsEnumerable()
+                    .Where(s => s[ColumnName.ProductGroup].Equals(ProductGroup.Sportsbook))
+                    .CopyToDataTable()
+                : source;
+            var royalFeesData = source.Rows.Count > 0
+                ? baseDataTable.CloneRoyaltyFees(source)
+                    .AsEnumerable()
+                    .Where(s => s[ColumnName.ProductGroup].Equals(ProductGroup.Sportsbook))
+                    .CopyToDataTable()
+                : source;
+
             var result = new List<MarginHedgingSpecialModel>();
             var dailyColumnIndex = data.Columns.Count - 1;
             CalcData(data, dailyColumnIndex, result);
@@ -48,14 +53,18 @@ namespace Fanex.DHWL.Business.Services
 
         public List<MarginHedgingSpecialModel> CalcDataForMtd(DataTable source)
         {
-            var data = baseDataTable.CloneWithoutIgnoreFigureRows(source)
-                .AsEnumerable()
-                .Where(s => s[ColumnName.ProductGroup].Equals(ProductGroup.Sportsbook))
-                .CopyToDataTable();
-            var royalFeesData = baseDataTable.CloneRoyaltyFees(source)
-                .AsEnumerable()
-                .Where(s => s[ColumnName.ProductGroup].Equals(ProductGroup.Sportsbook))
-                .CopyToDataTable();
+            var data = source.Rows.Count > 0
+                ? baseDataTable.CloneWithoutIgnoreFigureRows(source)
+                    .AsEnumerable()
+                    .Where(s => s[ColumnName.ProductGroup].Equals(ProductGroup.Sportsbook))
+                    .CopyToDataTable()
+                : source;
+            var royalFeesData = source.Rows.Count > 0
+                ? baseDataTable.CloneRoyaltyFees(source)
+                    .AsEnumerable()
+                    .Where(s => s[ColumnName.ProductGroup].Equals(ProductGroup.Sportsbook))
+                    .CopyToDataTable()
+                : source;
             var result = new List<MarginHedgingSpecialModel>();
             var mtdColumnIndex = ColumnIndex.MTDColumnIndex;
             CalcData(data, mtdColumnIndex, result);
