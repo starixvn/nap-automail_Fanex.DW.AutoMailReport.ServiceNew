@@ -122,8 +122,8 @@ namespace Fanex.DHWL.Business.Services
             var previousRawData = dataService.QueryDhwlDataPreviousYear();
             var previousRawDataDeposit = previousRawData.AsEnumerable().Where(s => Convert.ToBoolean(s["IsDeposit"])).CopyToDataTable();
             var previousRawDataCredit = previousRawData.AsEnumerable().Where(s => !Convert.ToBoolean(s["IsDeposit"])).CopyToDataTable();
-            var dailyRawDataDeposit = dailyRawData.AsEnumerable().Where(s => Convert.ToBoolean(s["IsDeposit"])).CopyToDataTable();
-            var dailyRawDataCredit = dailyRawData.AsEnumerable().Where(s => !Convert.ToBoolean(s["IsDeposit"])).CopyToDataTable();
+            var dailyRawDataDeposit = dailyRawData.Rows.Count > 0 ? dailyRawData.AsEnumerable().Where(s => Convert.ToBoolean(s["IsDeposit"])).CopyToDataTable() : dailyRawData;
+            var dailyRawDataCredit = dailyRawData.Rows.Count > 0 ? dailyRawData.AsEnumerable().Where(s => !Convert.ToBoolean(s["IsDeposit"])).CopyToDataTable() : dailyRawData;
 
             excelRawService.Export(dailyRawData, "Daily", fromDate, toDate);
             var excelPath = excelDailyService.Export(cloneData);
