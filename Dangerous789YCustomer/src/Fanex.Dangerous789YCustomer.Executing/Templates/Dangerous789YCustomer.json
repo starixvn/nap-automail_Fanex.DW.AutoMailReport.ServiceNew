@@ -12,7 +12,7 @@
   "FunctionIdNodata": 90,
   "TargetName": "daily-monitoring",
   "Threshold": 1,
-  "FPSApi": "http://ha.nexdev.net:7723/",
+  "FPSApi": "http://10.18.200.131:7723/",
   "Action": "Api/Cts/GetFlaggedCustByLvlNEvi?custIdList={0}&associatedLevel={1}&eviIdList=41,43,44,45,46,48,52,54,55,56,58,77,78,79,81",
   "Dangerous789YCustomerettings": {
     "Exceltitle": "Dangerous 789y Customer Tracking",
