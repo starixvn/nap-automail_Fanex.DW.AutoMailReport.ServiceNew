@@ -68,7 +68,7 @@ namespace Fanex.MarginChart.Business.Services
                 var table = dataSet.Tables[index];
                 foreach (DataRow row in table.Rows)
                 {
-                    if (!row[ColumnName.SiteGroup].Equals("CN88"))
+                    if (!row[ColumnName.SiteGroup].Equals("CN88") || !row[ColumnName.ProductShortName].Equals("Gaming Platform"))
                     {
                         result.ImportRow(row);
                     }
