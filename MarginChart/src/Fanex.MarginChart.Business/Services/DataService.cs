@@ -73,6 +73,7 @@ namespace Fanex.MarginChart.Business.Services
                 db.SetParameterValue("basecurrencyname", "MYR");
                 db.SetParameterValue("deposittype", 2);
                 db.SetParameterValue("datamode", AppConfigService.Config.DataMode);
+                db.SetParameterValue("excluproduct", "VS6");
 
                 var dataSet = db.ExecuteDataSet();
                 dataTable = baseDataTable.CombineAllInOneTable(dataSet);
