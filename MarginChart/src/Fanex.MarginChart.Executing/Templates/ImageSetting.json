@@ -3,15 +3,15 @@
     "FirstRow": 1,
     "FirstColumn": 2,
     "LastColumn": 5,
-    "CropWidth": 947,
+    "CropWidth": 1460,
     "ImageName": "Margin",
     "SheetName": "Margin",
-    "X": 135,
-    "Y": 175,
+    "X": 200,
+    "Y": 270,
     "IsResize": false,
     "ResizeNewWidth": 500,
     "ImageQuality": 100,
-    "HeightPerRow": 50,
-    "AdjustHeight": 10
+    "HeightPerRow": 80,
+    "AdjustHeight": 0
   }
 }

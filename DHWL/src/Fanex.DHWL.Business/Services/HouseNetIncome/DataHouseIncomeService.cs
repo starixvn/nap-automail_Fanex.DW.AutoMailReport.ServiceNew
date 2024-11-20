@@ -109,8 +109,8 @@ namespace Fanex.DHWL.Business.Services
                 var sourceRow = data.AsEnumerable().FirstOrDefault(s => s[ColumnName.ProductName] == row[ColumnName.ProductName]);
                 if (sourceRow == null)
                 {
-                    row[ColumnName.OrderByProduct] = 1000;
-                    row[ColumnName.OrderByFigure] = 1000;
+                    row[ColumnName.OrderByProduct] = 10000;
+                    row[ColumnName.OrderByFigure] = 10000;
                 }
                 else
                 {

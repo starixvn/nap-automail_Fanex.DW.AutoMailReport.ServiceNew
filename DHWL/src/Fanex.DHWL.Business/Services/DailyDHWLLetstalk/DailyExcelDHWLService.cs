@@ -184,7 +184,7 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
 
         private void RenderDataGroup3(string loadDataAtCell, List<DailyDHWLModel> dataDhwl, ExcelWorksheet dailyTemplate, ExcelWorksheet formatTpl)
         {
-            var productGroup3 = new List<string> { "Lottery/Keno", "Others" };
+            var productGroup3 = new List<string> { "Lottery/Keno", "Others", "Gaming Platform" };
             var dataGroup3 = dataDhwl.Where(s => productGroup3.Contains(s.ProductGroup)).ToList();
 
             const int startCol = 14;

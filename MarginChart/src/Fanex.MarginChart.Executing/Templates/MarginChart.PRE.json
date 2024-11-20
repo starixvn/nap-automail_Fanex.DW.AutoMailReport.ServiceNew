@@ -1,6 +1,7 @@
 ﻿{
   "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.99.99.51:801/60",
   "CategorySentryLog": "NAP-Report-Service",
+  "LetstalkServiceApi": "http://napmailletstalk.starixplay.com/",
   "IsCheckEnoughData": true,
   "ReportType": "Daily",
   "FromDate": "2021-01-01",

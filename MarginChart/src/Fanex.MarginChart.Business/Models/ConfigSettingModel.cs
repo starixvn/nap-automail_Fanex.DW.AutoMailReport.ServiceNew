@@ -9,6 +9,8 @@ namespace Fanex.MarginChart.Business.Models
 
         public string SentryClientKey { get; set; }
 
+        public string LetstalkServiceApi { get; set; }
+
         public string CategorySentryLog { get; set; }
 
         public string Path { get; set; }

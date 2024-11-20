@@ -1,7 +1,6 @@
 ﻿using Fanex.Data;
 using Fanex.Data.Repository;
 using Fanex.LetstalkService.Client;
-using Fanex.LetstalkService.Core.Services;
 using Fanex.Logging;
 using Fanex.Logging.Sentry.RavenClient;
 using Fanex.MarginChart.Business.Models;
@@ -15,6 +14,8 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
+using AppConfigService = Fanex.MarginChart.Business.Services.AppConfigService;
+using LetstalkApi = Fanex.LetstalkService.Core.Services.AppConfigService;
 
 namespace Fanex.MarginChart.Executing
 {
@@ -41,6 +42,8 @@ namespace Fanex.MarginChart.Executing
 
             text = File.ReadAllText("Templates/ProductSettings.json");
             AppConfigService.Config.ProductGroups = JsonConvert.DeserializeObject<List<ProductGroup>>(text);
+
+            LetstalkApi.Config.LetstalkServiceApi = AppConfigService.Config.LetstalkServiceApi;
         }
 
         public static void RegisterContainer(Container container)
@@ -63,8 +66,6 @@ namespace Fanex.MarginChart.Executing
             container.Register<ImageMarginService, ImageMarginServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
-            container.Register<ApplicationSettingService, ApplicationSettingServiceImp>();
-            container.Register<WebApiClientService, WebApiClientServiceImp>();
         }
 
         private static void SentryRegister()
