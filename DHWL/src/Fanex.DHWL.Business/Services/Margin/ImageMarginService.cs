@@ -32,7 +32,7 @@ namespace Fanex.DHWL.Business.Services.Margin
 
         public string Export(DataTable dailyRawData, bool isDaily, int reportId)
         {
-            mergeProductDataService.MergeVGamingIntoSabaC(dailyRawData);
+            mergeProductDataService.MergeProductsIntoSabaGame(dailyRawData);
 
             var excelPath = excelMarginService.Export(dailyRawData, isDaily, reportId);
             var lastRow = excelMarginService.LastRowIndex;
