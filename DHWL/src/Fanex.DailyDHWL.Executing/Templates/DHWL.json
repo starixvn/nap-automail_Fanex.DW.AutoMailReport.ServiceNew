@@ -11,7 +11,7 @@
   "TargetName": "daily-house-wl",
   "LetstalkGroup": "DWHL-UAT",
   "ProductList": "All",
-  "DataMode": 2,
+  "DataMode": 1,
   "PerformanceThreshold": 300000,
   "LetstalkGroups": {
     "Image": {
