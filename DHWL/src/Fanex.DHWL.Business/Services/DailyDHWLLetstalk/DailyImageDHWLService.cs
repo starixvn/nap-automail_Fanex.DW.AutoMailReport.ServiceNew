@@ -28,7 +28,7 @@ namespace Fanex.DHWL.Business.Services.DailyDHWLLetstalk
 
         public string Export(DataTable dailyRawData, List<MarginModel> grandTotalForDaily, List<MarginModel> grandTotalForMtd)
         {
-            mergeProductDataService.MergeVGamingIntoSabaC(dailyRawData);
+            mergeProductDataService.MergeProductsIntoSabaGame(dailyRawData);
 
             var excelPath = excelDHWLService.Export(dailyRawData, grandTotalForDaily, grandTotalForMtd);
             var lastRow = excelDHWLService.LastRowIndex;

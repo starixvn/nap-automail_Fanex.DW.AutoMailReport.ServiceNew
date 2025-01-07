@@ -34,7 +34,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
 
         public List<string> Export(DataTable monthlyRawData, DataTable dataReconciliation, DataTable dataBa, int reportId)
         {
-            mergeProductDataService.MergeVGamingIntoSabaC(monthlyRawData);
+            mergeProductDataService.MergeProductsIntoSabaGame(monthlyRawData);
             var excelPath = excelDhwlService.Export(monthlyRawData, dataReconciliation, dataBa, reportId);
             FileName = excelPath;
 

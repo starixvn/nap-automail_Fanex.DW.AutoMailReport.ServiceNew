@@ -73,7 +73,7 @@ namespace Fanex.DHWL.Business.Services
                 log.Log(new Exception($"Letstalk - DHWL - YTD: {message}"));
                 return new ExecuteResultModel
                 {
-                    Mail = new Mail(),
+                    Mail = new Mail { Subject = "Subject", Body = "Body", Title = "Title" },
                     Message = message,
                     Success = false
                 };
