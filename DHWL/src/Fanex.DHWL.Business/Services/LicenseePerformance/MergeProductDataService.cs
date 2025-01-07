@@ -84,7 +84,7 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
         private void MergeSabaKenoIntoSabaGame(DataTable dataTable)
         {
             var productShortNames = new List<string>();
-            var pSourceId = 82;
+            var pSourceId = 102;
             var pSource = dataService.QueryGetProductInfo(pSourceId);
             var pSourceOrder = 220;
             pSource.ForEach(p =>
