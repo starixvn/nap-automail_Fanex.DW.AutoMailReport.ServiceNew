@@ -26,6 +26,7 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
         {
             MergeVgamingIntoSabaGame(dataTable);
             MergeSabaKenoIntoSabaGame(dataTable);
+            MergeFunkyGames_Old_IntoFunkyGames(dataTable);
         }
 
         private void MergeVgamingIntoSabaGame(DataTable dataTable)
@@ -115,6 +116,48 @@ namespace Fanex.DHWL.Business.Services.LicenseePerformance
                     if (Convert.ToBoolean(row[ColumnName.IsDeposit]) && row[ColumnName.ProductShortName].Equals(pSourceInfo.ProductShortName))
                     {
                         orderByProduct = 201;
+                        var info = products.FirstOrDefault(s => s.OrderByProduct == orderByProduct);
+                        row[ColumnName.ProductShortName] = info.ProductShortName;
+                        row[ColumnName.ProductName] = info.ProductName;
+                        row[ColumnName.OrderByProduct] = orderByProduct;
+                    }
+                });
+        }
+
+        private void MergeFunkyGames_Old_IntoFunkyGames(DataTable dataTable)
+        {
+            var productShortNames = new List<string>();
+            var pSourceId = 50;
+            var pSource = dataService.QueryGetProductInfo(pSourceId);
+            var pSourceOrder = 213;
+            pSource.ForEach(p =>
+            {
+                productShortNames.Add(p.ProductShortName);
+            });
+
+            var productId = 104;
+            var products = dataService.QueryGetProductInfo(productId);
+            var orderByProduct = 239;
+
+            dataTable.AsEnumerable()
+                .Where(s => s[ColumnName.ProductGroup].Equals(ProductGroup.RNGCasino) && productShortNames.Contains(s[ColumnName.ProductShortName].ToString().Trim()))
+                .ToList()
+                .ForEach(row =>
+                {
+                    pSourceOrder = 213;
+                    var pSourceInfo = pSource.FirstOrDefault(s => s.OrderByProduct == pSourceOrder);
+                    if (!Convert.ToBoolean(row[ColumnName.IsDeposit]) && row[ColumnName.ProductShortName].Equals(pSourceInfo.ProductShortName))
+                    {
+                        orderByProduct = 239;
+                        var info = products.FirstOrDefault(s => s.OrderByProduct == orderByProduct);
+                        row[ColumnName.ProductShortName] = info.ProductShortName;
+                        row[ColumnName.ProductName] = info.ProductName;
+                        row[ColumnName.OrderByProduct] = orderByProduct;
+                    }
+
+                    if (Convert.ToBoolean(row[ColumnName.IsDeposit]) && row[ColumnName.ProductShortName].Equals(pSourceInfo.ProductShortName))
+                    {
+                        orderByProduct = 239;
                         var info = products.FirstOrDefault(s => s.OrderByProduct == orderByProduct);
                         row[ColumnName.ProductShortName] = info.ProductShortName;
                         row[ColumnName.ProductName] = info.ProductName;

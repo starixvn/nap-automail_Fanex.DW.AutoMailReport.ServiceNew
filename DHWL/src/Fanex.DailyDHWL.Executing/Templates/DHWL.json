@@ -4,14 +4,14 @@
   "LetstalkServiceApi": "http://napmailletstalk.nexdev.net/",
   "IsCheckEnoughData": false,
   "ReportType": "Manual",
-  "FromDate": "2024-12-01",
-  "ToDate": "2024-12-26",
+  "FromDate": "2025-03-01",
+  "ToDate": "2025-03-16",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\NEW-DHWL",
   "Password": "",
   "TargetName": "daily-house-wl",
   "LetstalkGroup": "DWHL-UAT",
   "ProductList": "All",
-  "DataMode": 1,
+  "DataMode": 2,
   "PerformanceThreshold": 300000,
   "LetstalkGroups": {
     "Image": {
