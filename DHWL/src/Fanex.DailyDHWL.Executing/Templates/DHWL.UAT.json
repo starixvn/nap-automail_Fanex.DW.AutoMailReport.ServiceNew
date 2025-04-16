@@ -12,7 +12,7 @@
   "LetstalkGroup": "DWHL-UAT",
   "ProductList": "All",
   "DataMode": 2,
-  "PerformanceThreshold": 300000,
+  "PerformanceThreshold": 650000,
   "LetstalkGroups": {
     "Image": {
       "Group": "DWHL-UAT",

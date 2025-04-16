@@ -68,20 +68,21 @@ namespace Fanex.DHWL.Business.Services
             var dataReady = QueryDwStatus().DataIsReady;
             if (!dataReady)
             {
-                result.Add("DataIsNotReady, TaskId = 77");
+                result.Add("- DataIsNotReady, TaskId = 77");
             }
 
             var oandaReady = OandaReady();
             if (!oandaReady)
             {
-                result.Add("OANDA Service has a problem, some rates are not imported successfully.");
+                result.Add("- OANDA Service has a problem, some rates are not imported successfully.");
             }
 
             var hniResultReady = HniResultReady();
             if (!hniResultReady)
             {
                 var value = AppConfigService.Config.PerformanceThreshold / 1000;
-                result.Add($"The data is not correct (data is not ready & ABS(MTD of Yesterday – [MTD of Today – Yesterday Data]) > {value}K RM)");
+                result.Add(
+                    $"- The data is not correct (data is not ready & ABS(MTD of Yesterday – [MTD of Today – Yesterday Data]) > {value}K RM)");
             }
 
             return result;
@@ -194,8 +195,8 @@ namespace Fanex.DHWL.Business.Services
             }
 
             var result = data.AsEnumerable()
-            .Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver))
-            .CopyToDataTable();
+                .Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver))
+                .CopyToDataTable();
 
             return result;
         }

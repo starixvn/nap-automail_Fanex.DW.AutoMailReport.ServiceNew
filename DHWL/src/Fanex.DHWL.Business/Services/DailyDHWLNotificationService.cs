@@ -98,7 +98,7 @@ namespace Fanex.DHWL.Business.Services
             var checkData = dataService.CheckDataReadyDaily();
             if (checkData.Count > 0)
             {
-                var message = string.Join(",", checkData);
+                var message = string.Join(Environment.NewLine, checkData);
                 log.Log(new Exception($"Letstalk - DHWL - Daily - PRE: {message}"));
                 return new ExecuteResultModel
                 {
@@ -120,10 +120,16 @@ namespace Fanex.DHWL.Business.Services
             var fromDate = dateTimeServiceProvider.DateTime.FromDate;
             var toDate = dateTimeServiceProvider.DateTime.ToDate;
             var previousRawData = dataService.QueryDhwlDataPreviousYear();
-            var previousRawDataDeposit = previousRawData.AsEnumerable().Where(s => Convert.ToBoolean(s["IsDeposit"])).CopyToDataTable();
-            var previousRawDataCredit = previousRawData.AsEnumerable().Where(s => !Convert.ToBoolean(s["IsDeposit"])).CopyToDataTable();
-            var dailyRawDataDeposit = dailyRawData.Rows.Count > 0 ? dailyRawData.AsEnumerable().Where(s => Convert.ToBoolean(s["IsDeposit"])).CopyToDataTable() : dailyRawData;
-            var dailyRawDataCredit = dailyRawData.Rows.Count > 0 ? dailyRawData.AsEnumerable().Where(s => !Convert.ToBoolean(s["IsDeposit"])).CopyToDataTable() : dailyRawData;
+            var previousRawDataDeposit = previousRawData.AsEnumerable().Where(s => Convert.ToBoolean(s["IsDeposit"]))
+                .CopyToDataTable();
+            var previousRawDataCredit = previousRawData.AsEnumerable().Where(s => !Convert.ToBoolean(s["IsDeposit"]))
+                .CopyToDataTable();
+            var dailyRawDataDeposit = dailyRawData.Rows.Count > 0
+                ? dailyRawData.AsEnumerable().Where(s => Convert.ToBoolean(s["IsDeposit"])).CopyToDataTable()
+                : dailyRawData;
+            var dailyRawDataCredit = dailyRawData.Rows.Count > 0
+                ? dailyRawData.AsEnumerable().Where(s => !Convert.ToBoolean(s["IsDeposit"])).CopyToDataTable()
+                : dailyRawData;
 
             excelRawService.Export(dailyRawData, "Daily", fromDate, toDate);
             var excelPath = excelDailyService.Export(cloneData);
@@ -143,13 +149,16 @@ namespace Fanex.DHWL.Business.Services
             var grandTotalHedgingSpecialForDaily = imageMarginHedgingSpecialService.GrandTotalList;
 
             reportId++;
-            var imageMarginMtdHedgingSpecialPath = imageMarginHedgingSpecialService.Export(dailyRawData, false, reportId);
+            var imageMarginMtdHedgingSpecialPath =
+                imageMarginHedgingSpecialService.Export(dailyRawData, false, reportId);
             var grandTotalForHedgingSpecialMtd = imageMarginHedgingSpecialService.GrandTotalList;
 
             var imageDhwlPath = imageDhwlService.Export(cloneDataDhwl, grandTotalForDaily, grandTotalForMtd);
             var chartPath = chartExport.Export(dailyRawData, previousRawData, "DHWL", "DHWL-Chart");
-            var chartPathCredit = chartExport.Export(dailyRawDataCredit, previousRawDataCredit, "CREDIT DHWL", "CREDIT-DHWL-Chart");
-            var chartPathDeposit = chartExport.Export(dailyRawDataDeposit, previousRawDataDeposit, "LICENSEE DHWL", "LICENSEE-DHWL-Chart");
+            var chartPathCredit = chartExport.Export(dailyRawDataCredit, previousRawDataCredit, "CREDIT DHWL",
+                "CREDIT-DHWL-Chart");
+            var chartPathDeposit = chartExport.Export(dailyRawDataDeposit, previousRawDataDeposit, "LICENSEE DHWL",
+                "LICENSEE-DHWL-Chart");
             var images = new List<string>
             {
                 imageDhwlPath,
