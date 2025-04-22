@@ -71,12 +71,18 @@ namespace Fanex.DHWL.Business.Services
                 result.Add("- DataIsNotReady, TaskId = 77");
             }
 
+            var oandaReady = OandaReady();
+            if (!oandaReady)
+            {
+                result.Add("- OANDA Service has a problem, some rates are not imported successfully.");
+            }
+
             var hniResultReady = HniResultReady();
             if (!hniResultReady)
             {
                 var value = AppConfigService.Config.PerformanceThreshold / 1000;
                 result.Add(
-                    $"- Detected a significant discrepancy (> {value}) between MTD up to the day before yesterday, generated in yesterday, and MTD up to the day before yesterday, generated in today.");
+                    $"- Detected a significant discrepancy (> {value}K RM) between MTD up to the day before yesterday, generated in yesterday, and MTD up to the day before yesterday, generated in today.");
             }
 
             return result;
