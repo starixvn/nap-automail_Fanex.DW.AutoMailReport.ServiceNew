@@ -2,8 +2,8 @@
   "SentryClientKey": "https://ad29bef60cc04e78803c9030a33a2c06@sentry.nexdev.net/44",
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
   "LetstalkServiceApi": "http://napmailletstalk.nexdev.net/",
-  "IsCheckEnoughData": false,
-  "ReportType": "Manual",
+  "IsCheckEnoughData": true,
+  "ReportType": "Daily",
   "FromDate": "2025-03-01",
   "ToDate": "2025-03-16",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\NEW-DHWL",
@@ -11,7 +11,7 @@
   "TargetName": "daily-house-wl",
   "LetstalkGroup": "DWHL-UAT",
   "ProductList": "All",
-  "DataMode": 2,
+  "DataMode": 1,
   "PerformanceThreshold": 300000,
   "LetstalkGroups": {
     "Image": {
