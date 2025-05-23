@@ -1,9 +1,13 @@
 ﻿using Fanex.LetstalkService.Client;
 using Fanex.LetstalkService.Core.Models;
 using Fanex.LetstalkService.Core.Services;
+using Fanex.Mattermost.Client;
+using Fanex.Mattermost.Client.Models;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Fanex.DHWL.Business.Services
 {
@@ -15,10 +19,14 @@ namespace Fanex.DHWL.Business.Services
     public class MessageServiceImp : MessageService
     {
         private readonly LetstalkClientService letstalkService;
+        private readonly MattermostClientService mattermostService;
 
-        public MessageServiceImp(LetstalkClientService letstalkService)
+        public MessageServiceImp(
+            LetstalkClientService letstalkService,
+            MattermostClientService mattermostService)
         {
             this.letstalkService = letstalkService;
+            this.mattermostService = mattermostService;
         }
 
         public Dictionary<string, bool> SendMessage(List<string> imagePaths, string letstalkGroup)
@@ -29,7 +37,7 @@ namespace Fanex.DHWL.Business.Services
                 var letstalkModel = CreateLetstalkModel(image, letstalkGroup);
                 var status = letstalkService.SendMessage(letstalkModel);
                 Thread.Sleep(5000);
-                var maxRetry = 10;
+                const int maxRetry = 10;
                 var retryCounter = 0;
                 if (!status)
                 {
@@ -44,17 +52,39 @@ namespace Fanex.DHWL.Business.Services
                 result.Add(new FileInfo(image).Name, status);
             });
 
+            _ = SendMessageToMattermost(imagePaths);
+
             return result;
         }
 
-        private LetstalkModel CreateLetstalkModel(string fileName, string letstalkGroup)
+        private async Task<bool> SendMessageToMattermost(List<string> images)
         {
-            var letstalkAttachments = new List<LetstalkAttachment>();
-            letstalkAttachments.Add(new LetstalkAttachment
+            var files = images.Select(image => new FileModel
             {
-                FileName = fileName,
-                Bytes = FileBinaryService.ConvertFileToBinary(fileName)
-            });
+                FileName = new FileInfo(image).Name,
+                FileBytes = File.ReadAllBytes(image),
+                MediaType = MediaType.Image,
+            }).ToList();
+
+            var messageRequest = new MessageRequest
+            {
+                ChannelId = AppConfigService.Config.Mattermost.ChannelId,
+                Files = files,
+            };
+            var result = await mattermostService.Send(messageRequest);
+            return result;
+        }
+
+        private static LetstalkModel CreateLetstalkModel(string fileName, string letstalkGroup)
+        {
+            var letstalkAttachments = new List<LetstalkAttachment>
+            {
+                new LetstalkAttachment
+                {
+                    FileName = fileName,
+                    Bytes = FileBinaryService.ConvertFileToBinary(fileName)
+                }
+            };
 
             return new LetstalkModel
             {

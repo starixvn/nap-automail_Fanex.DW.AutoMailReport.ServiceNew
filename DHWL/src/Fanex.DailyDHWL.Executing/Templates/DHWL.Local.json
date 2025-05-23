@@ -2,6 +2,11 @@
   "SentryClientKey": "https://ad29bef60cc04e78803c9030a33a2c06@sentry.nexdev.net/44",
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
   "LetstalkServiceApi": "http://napmailletstalk.nexdev.net/",
+  "Mattermost": {
+    "MattermostUrl": "http://mattermost-service.nexdev.net/",
+    "ChannelId": "5uadwig1ojniiyoyrthoest5fo",
+    "ChannelName": "robert-test"
+  },
   "IsCheckEnoughData": false,
   "ReportType": "Manual",
   "FromDate": "2025-03-01",

@@ -19,5 +19,7 @@ namespace Fanex.Letstalk.OneTime.Business.Models
         public List<FolderRegisterModel> Folders { get; set; }
 
         public string LetstalkServiceApi { get; set; }
+
+        public string MattermostUrl { get; set; }
     }
 }

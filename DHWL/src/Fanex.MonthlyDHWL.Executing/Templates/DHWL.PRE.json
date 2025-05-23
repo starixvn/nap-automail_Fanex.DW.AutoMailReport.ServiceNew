@@ -2,6 +2,11 @@
   "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.99.99.51:801/60",
   "CategorySentryLog": "NAP-Report-Service",
   "LetstalkServiceApi": "http://napmailletstalk.starixplay.com/",
+  "Mattermost": {
+    "MattermostUrl": "http://mattermost-synergy.starix-uat.nebula.prod",
+    "ChannelId": "5kshwbydcpb3fk6jq1mcza1igo",
+    "ChannelName": "Daily-Performance-UAT"
+  },
   "IsCheckEnoughData": true,
   "ReportType": "Monthly",
   "FromDate": "2020-12-01",

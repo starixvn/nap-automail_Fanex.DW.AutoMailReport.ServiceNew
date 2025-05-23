@@ -72,17 +72,17 @@ namespace Fanex.Letstalk.OneTime.Business.Services
             var mails = dataService.QueryMail(DateTime.Today, JobStatus.SuccessWithoutSendmail);
             var mailSettings = AppConfigService.AppConfig.MailSettings["LetstalkOneTime"];
             var isMailSent = mails.FirstOrDefault(s => s.MailId == mailSettings.MailId) != null;
-            bool sussess = false;
+            bool success = false;
             if (isMailSent && !mailSettings.IsAllowResend)
             {
                 message.Add($"{mailSettings.MailName} has been sent. Please be careful !!!");
-                sussess = false;
+                success = false;
             }
             else
             {
                 message = messageService.SendMessage();
-                sussess = message.Count == 0;
-                if (!sussess)
+                success = message.Count == 0;
+                if (!success)
                 {
                     SendLetstalkNoData();
                 }
@@ -90,7 +90,7 @@ namespace Fanex.Letstalk.OneTime.Business.Services
 
             return new ExecuteResultModel
             {
-                Success = sussess,
+                Success = success,
                 Mail = new Mail(),
                 Message = string.Join(Environment.NewLine, message)
             };

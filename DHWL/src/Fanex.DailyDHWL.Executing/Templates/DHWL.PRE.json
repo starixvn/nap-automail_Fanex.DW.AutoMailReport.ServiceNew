@@ -2,6 +2,11 @@
   "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.99.99.51:801/60",
   "CategorySentryLog": "NAP-Report-Service",
   "LetstalkServiceApi": "http://napmailletstalk.starixplay.com/",
+  "Mattermost": {
+    "MattermostUrl": "http://mattermost-synergy.starix-uat.nebula.prod",
+    "ChannelId": "pe1t3yrwpbnitpdddc8opjw8tr",
+    "ChannelName": "DHWL - Test"
+  },
   "IsCheckEnoughData": true,
   "ReportType": "Daily",
   "FromDate": "2020-12-01",

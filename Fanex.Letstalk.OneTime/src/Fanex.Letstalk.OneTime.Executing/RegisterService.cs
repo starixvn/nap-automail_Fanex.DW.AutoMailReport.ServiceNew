@@ -5,6 +5,7 @@ using Fanex.Letstalk.OneTime.Business.Services;
 using Fanex.LetstalkService.Client;
 using Fanex.Logging;
 using Fanex.Logging.Sentry.RavenClient;
+using Fanex.Mattermost.Client;
 using Newtonsoft.Json;
 using SharpRaven;
 using SimpleInjector;
@@ -33,6 +34,7 @@ namespace Fanex.Letstalk.OneTime.Executing
             var text = File.ReadAllText("Templates/LetstalkOneTimeSettings.json");
             AppConfigService.AppConfig = JsonConvert.DeserializeObject<ConfigSettingModel>(text);
             LetstalkConfig.Config.LetstalkServiceApi = AppConfigService.AppConfig.LetstalkServiceApi;
+            Mattermost.Client.AppConfigService.Config.MattermostServiceApi = AppConfigService.AppConfig.MattermostUrl;
         }
 
         public static void RegisterContainer(Container container)
@@ -46,6 +48,7 @@ namespace Fanex.Letstalk.OneTime.Executing
             container.Register<FileService, FileServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
+            container.Register<MattermostClientService, MattermostClientServiceImp>();
         }
 
         private static void SentryRegister()
@@ -56,11 +59,11 @@ namespace Fanex.Letstalk.OneTime.Executing
             });
 
             LogManager
-               .SetDefaultLogCategory(AppConfigService.AppConfig.CategorySentryLog)
-               .Use(new List<ILogEngine>
-               {
+                .SetDefaultLogCategory(AppConfigService.AppConfig.CategorySentryLog)
+                .Use(new List<ILogEngine>
+                {
                     sentry
-               });
+                });
         }
 
         private static void ConfigureFanexData()

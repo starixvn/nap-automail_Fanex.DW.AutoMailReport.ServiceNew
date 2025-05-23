@@ -12,7 +12,7 @@
     "ResizeNewWidth": 1000,
     "ImageQuality": 100,
     "HeightPerRow": 90,
-    "AdjustHeight": 120
+    "AdjustHeight": 140
   },
   "Margin": {
     "FirstRow": 1,
@@ -27,7 +27,7 @@
     "ResizeNewWidth": 1000,
     "ImageQuality": 100,
     "HeightPerRow": 90,
-    "AdjustHeight": 230
+    "AdjustHeight": 260
   },
   "MarginHedgingSpecial": {
     "FirstRow": 1,

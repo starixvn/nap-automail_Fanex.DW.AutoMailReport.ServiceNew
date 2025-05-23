@@ -34,7 +34,9 @@ namespace Fanex.DHWL.Business.Services
 
             if (!directoryInfo.Exists)
             {
-                throw new DirectoryNotFoundException("Source directory does not exist or could not be found or need a permission to access on this: " + source);
+                throw new DirectoryNotFoundException(
+                    "Source directory does not exist or could not be found or need a permission to access on this: " +
+                    source);
             }
 
             if (!Directory.Exists(destination))
@@ -119,8 +121,24 @@ namespace Fanex.DHWL.Business.Services
                 TargetName = AppConfigService.Config.TargetName,
                 Group = letstalkGroup.Group,
                 MailId = letstalkGroup.MailId,
-                Subject = letstalkGroup.MailId > 0 ? $"Automail Report - House Net Income - {date.AddDays(1):yyyy/MM/dd}" : string.Empty
+                Subject = letstalkGroup.MailId > 0
+                    ? $"Automail Report - House Net Income - {date.AddDays(1):yyyy/MM/dd}"
+                    : string.Empty
             });
+
+            if (letstalkGroup.MailId == 0)
+            {
+                logs.Add(new LogInternalOneTimeModel
+                {
+                    Date = $"{date:yyyyMMdd}",
+                    FolderName = fileInfo.Name,
+                    GenerateTime = $"{DateTime.Now:yyyy-MM-dd hh:mm:ss tt}",
+                    TargetName = "Mattermost",
+                    Group = AppConfigService.Config.Mattermost.ChannelId,
+                    MailId = 0,
+                    Subject = string.Empty
+                });
+            }
 
             var json = JsonConvert.SerializeObject(logs, Formatting.Indented);
             File.WriteAllText(fileName, json);

@@ -3,6 +3,7 @@
   "CategorySentryLog": "NAP-Report-Service-LOCAL",
   "Path": "\\\\10.18.200.120\\www\\Olympus\\Fanex.Excel\\InternalOneTime",
   "LetstalkServiceApi": "http://napmailletstalk.nexdev.net/",
+  "MattermostUrl": "http://mattermost-service.nexdev.net/",
   "TargetName": "daily-house-wl",
   "Group": "DWHL-UAT",
   "MailSettings": {
