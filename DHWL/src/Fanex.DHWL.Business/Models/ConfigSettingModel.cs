@@ -41,5 +41,7 @@ namespace Fanex.DHWL.Business.Models
         public decimal PerformanceThreshold { get; set; } = 200000;
 
         public MattermostModel Mattermost { get; set; }
+
+        public WebhookModel Webhook { get; set; }
     }
 }

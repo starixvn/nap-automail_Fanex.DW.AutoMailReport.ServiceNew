@@ -7,6 +7,14 @@
     "ChannelId": "pe1t3yrwpbnitpdddc8opjw8tr",
     "ChannelName": "DHWL - Test"
   },
+  "Webhook": {
+    "WebhookUrl": "https://api.nx.starix.work/nx-report-submission",
+    "WebhookHeaderKey": "robert-number-one-token",
+    "WebhookToken": "vDt8llIE1KDUMvZch80vBoYSulTfTLl42k2WB36tS6rbs6kEUuFIB00IOXdaSpi4",
+    "IsEnabled": true,
+    "UseProxy": true,
+    "ProxyUrl": "http://lisasqd.nebula.prod:8801"
+  },
   "IsCheckEnoughData": true,
   "ReportType": "Daily",
   "FromDate": "2020-12-01",
@@ -18,6 +26,7 @@
   "ProductList": "All",
   "DataMode": 1,
   "PerformanceThreshold": 650000,
+  "MailIdJsonPerfReport": 738,
   "LetstalkGroups": {
     "Image": {
       "Group": "DWHL-PRO",
