@@ -4,6 +4,8 @@ using Fanex.DHWL.Business.Models;
 using Fanex.DHWL.Business.Services;
 using Fanex.DHWL.Business.Services.DailyChart;
 using Fanex.DHWL.Business.Services.DailyDHWLLetstalk;
+using Fanex.DHWL.Business.Services.HouseNetIncome;
+using Fanex.DHWL.Business.Services.Json;
 using Fanex.DHWL.Business.Services.LicenseePerformance;
 using Fanex.DHWL.Business.Services.Margin;
 using Fanex.LetstalkService.Client;
@@ -90,6 +92,7 @@ namespace Fanex.DailyDHWL.Executing
             container.Register<ImageMarginService, ImageMarginServiceImp>();
             container.Register<ImageMarginHedgingSpecialService, ImageMarginHedgingSpecialServiceImp>();
             container.Register<MergeProductDataService, MergeProductDataServiceImp>();
+            container.Register<JsonDataService, JsonDataServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
             container.Register<MattermostClientService, MattermostClientServiceImp>();

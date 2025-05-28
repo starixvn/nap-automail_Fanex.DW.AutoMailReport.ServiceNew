@@ -1,5 +1,6 @@
 ﻿using Fanex.DHWL.Business.Models;
 using Fanex.DHWL.Business.Services.Adjustment;
+using Fanex.DHWL.Business.Services.Margin;
 using Fanex.DHWL.Business.Services.MonthlyReconciliation;
 using OfficeOpenXml;
 using System;
@@ -32,15 +33,9 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
 
         private const int StartRowIndex = 3;
 
-        public int LastRowIndex
-        {
-            get; set;
-        }
+        public int LastRowIndex { get; set; }
 
-        public int LastAdjustmentRowIndex
-        {
-            get; set;
-        }
+        public int LastAdjustmentRowIndex { get; set; }
 
         public MonthlyExcelDHWLServiceImp(
             MonthlyDataDHWLService dataDhwlService,
@@ -88,7 +83,8 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             return Save(template);
         }
 
-        private void RenderDataGroup1(string loadDataAtCell, List<MonthlyDHWLModel> dataDhwl, ExcelWorksheet template, ExcelWorksheet formatTpl)
+        private void RenderDataGroup1(string loadDataAtCell, List<MonthlyDHWLModel> dataDhwl, ExcelWorksheet template,
+            ExcelWorksheet formatTpl)
         {
             var productGroup1 = new List<string> { "Sportsbook", "Live Casino" };
             var dataGroup1 = dataDhwl.Where(s => productGroup1.Contains(s.ProductGroup)).ToList();
@@ -98,7 +94,8 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             FormatData(dataGroup1, template, formatTpl, startCol, endCol);
         }
 
-        private void RenderDataGroup2(string loadDataAtCell, List<MonthlyDHWLModel> dataDhwl, ExcelWorksheet template, ExcelWorksheet formatTpl)
+        private void RenderDataGroup2(string loadDataAtCell, List<MonthlyDHWLModel> dataDhwl, ExcelWorksheet template,
+            ExcelWorksheet formatTpl)
         {
             var productGroup2 = new List<string> { "RNG Casino" };
             var dataGroup2 = dataDhwl.Where(s => productGroup2.Contains(s.ProductGroup)).ToList();
@@ -108,7 +105,8 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             FormatData(dataGroup2, template, formatTpl, startCol, endCol);
         }
 
-        private void RenderDataGroup3(string loadDataAtCell, List<MonthlyDHWLModel> dataDhwl, ExcelWorksheet template, ExcelWorksheet formatTpl)
+        private void RenderDataGroup3(string loadDataAtCell, List<MonthlyDHWLModel> dataDhwl, ExcelWorksheet template,
+            ExcelWorksheet formatTpl)
         {
             var productGroup3 = new List<string> { "Lottery/Keno", "Others" };
             var dataGroup3 = dataDhwl.Where(s => productGroup3.Contains(s.ProductGroup)).ToList();
@@ -122,7 +120,8 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             template.Cells[lastRowIndex, 17].StyleID = formatTpl.Cells["D2"].StyleID;
         }
 
-        private void RenderGrandTotal(List<MonthlyDHWLModel> dataDhwl, ExcelWorksheet template, ExcelWorksheet formatTpl)
+        private void RenderGrandTotal(List<MonthlyDHWLModel> dataDhwl, ExcelWorksheet template,
+            ExcelWorksheet formatTpl)
         {
             var productGroup4 = new List<string> { "Total" };
             var dataGroup4 = dataDhwl.Where(s => productGroup4.Contains(s.ProductGroup)).ToList();
@@ -149,18 +148,21 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             formatTpl.Cells["B11:B12"].Copy(template.Cells[lastRow, 2]);
         }
 
-        private void RenderMtdMarginHedgingSpecial(DataTable monthlyRawData, ExcelWorksheet marginHedgingSpecialSheet, int reportId)
+        private void RenderMtdMarginHedgingSpecial(DataTable monthlyRawData, ExcelWorksheet marginHedgingSpecialSheet,
+            int reportId)
         {
             var data = monthlyRawData.AsEnumerable()
                 .Where(s => s[ColumnName.ProductGroup].Equals(ProductGroup.Sportsbook))
                 .CopyToDataTable();
             var mtdMarginExcelPath = excelMarginHedgingSpecialService.Export(data, false, reportId);
-            var excelPackageMargin = new ExcelPackage(new FileInfo(mtdMarginExcelPath), AppConfigService.Config.Password);
+            var excelPackageMargin =
+                new ExcelPackage(new FileInfo(mtdMarginExcelPath), AppConfigService.Config.Password);
             var mtdMarginSheet = excelPackageMargin.Workbook.Worksheets["Margin"];
 
             mtdMarginSheet.Cells[1, 2, excelMarginService.LastRowIndex, 21].Copy(marginHedgingSpecialSheet.Cells["A5"]);
             marginHedgingSpecialSheet.View.ShowGridLines = false;
-            marginHedgingSpecialSheet.Cells["A2"].Value = $"Monthly Margin Report For {dateService.DateTime.ToDate: MMM yyyy}";
+            marginHedgingSpecialSheet.Cells["A2"].Value =
+                $"Monthly Margin Report For {dateService.DateTime.ToDate: MMM yyyy}";
             marginHedgingSpecialSheet.Cells["A2"].Style.Font.Bold = true;
             marginHedgingSpecialSheet.Cells["A2"].Style.Font.Size = 14;
 
@@ -180,7 +182,8 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
         private void RenderMtdMargin(DataTable monthlyRawData, ExcelWorksheet marginSheet, int reportId)
         {
             var mtdMarginExcelPath = excelMarginService.Export(monthlyRawData, false, reportId);
-            var excelPackageMargin = new ExcelPackage(new FileInfo(mtdMarginExcelPath), AppConfigService.Config.Password);
+            var excelPackageMargin =
+                new ExcelPackage(new FileInfo(mtdMarginExcelPath), AppConfigService.Config.Password);
             var mtdMarginSheet = excelPackageMargin.Workbook.Worksheets["Margin"];
 
             mtdMarginSheet.Cells[1, 2, excelMarginService.LastRowIndex, 15].Copy(marginSheet.Cells["A5"]);
@@ -202,7 +205,8 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             }
         }
 
-        private static void RenderData(string loadDataAtCell, List<MonthlyDHWLModel> data, ExcelWorksheet template, int startCol, int endCol)
+        private static void RenderData(string loadDataAtCell, List<MonthlyDHWLModel> data, ExcelWorksheet template,
+            int startCol, int endCol)
         {
             template.Cells[loadDataAtCell].LoadFromCollection(data, false);
 
@@ -215,11 +219,13 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
 
             for (int columnIndex = startCol; columnIndex <= endCol; columnIndex++)
             {
-                template.Cells[StartRowIndex, columnIndex, maxRowIndex, columnIndex].StyleID = template.Cells[StartRowIndex, columnIndex].StyleID;
+                template.Cells[StartRowIndex, columnIndex, maxRowIndex, columnIndex].StyleID =
+                    template.Cells[StartRowIndex, columnIndex].StyleID;
             }
         }
 
-        private static void FormatData(List<MonthlyDHWLModel> data, ExcelWorksheet template, ExcelWorksheet formatTpl, int startCol, int endCol)
+        private static void FormatData(List<MonthlyDHWLModel> data, ExcelWorksheet template, ExcelWorksheet formatTpl,
+            int startCol, int endCol)
         {
             var starIndexGroup = StartRowIndex;
             var endIndexGroup = starIndexGroup;
@@ -262,13 +268,11 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
         private string Save(ExcelWorksheet template)
         {
             var hideCols = new List<int> { 4, 5, 6, 7, 11, 12, 13, 14, 18, 19, 20, 21 };
-            hideCols.ForEach(col =>
-            {
-                template.Column(col).Hidden = true;
-            });
+            hideCols.ForEach(col => { template.Column(col).Hidden = true; });
 
             var date = dateService.DateTime.ToDate;
-            var fileName = $"Monthly_HWL_Report_and_Licensee_Rebate_&_Discount_Data_Soft_Copy_Files_For_{date:yyyy_MM}.xlsx";
+            var fileName =
+                $"Monthly_HWL_Report_and_Licensee_Rebate_&_Discount_Data_Soft_Copy_Files_For_{date:yyyy_MM}.xlsx";
 
             var path = $@"{AppConfigService.Config.Path}\{date:yyyy}\{date:MM}";
             if (!Directory.Exists(path))

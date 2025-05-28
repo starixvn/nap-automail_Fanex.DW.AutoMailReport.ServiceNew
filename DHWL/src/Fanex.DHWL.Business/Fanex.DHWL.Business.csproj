@@ -223,11 +223,16 @@
     <Compile Include="Models\ReportType.cs" />
     <Compile Include="Models\RowFigureName.cs" />
     <Compile Include="Models\Site.cs" />
+    <Compile Include="Models\Json\CategoryModel.cs" />
+    <Compile Include="Models\Json\EventDateModel.cs" />
+    <Compile Include="Models\Json\TowlModel.cs" />
+    <Compile Include="Models\Json\TypeModel.cs" />
     <Compile Include="Models\TaskstatusModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Adjustment\AdjustmentDataService.cs" />
     <Compile Include="Services\AppConfigService.cs" />
     <Compile Include="Services\BaseDataTable.cs" />
+    <Compile Include="Services\Json\JsonDataService.cs" />
     <Compile Include="Services\Margin\DataMarginHedgingSpecialService.cs" />
     <Compile Include="Services\Margin\ExcelMarginHedgingSpecialService.cs" />
     <Compile Include="Services\Margin\ImageMarginHedgingSpecialService.cs" />

@@ -5,7 +5,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 
-namespace Fanex.DHWL.Business.Services
+namespace Fanex.DHWL.Business.Services.Margin
 {
     public interface ExcelMarginHedgingSpecialService
     {
@@ -24,10 +24,7 @@ namespace Fanex.DHWL.Business.Services
 
         private const int StartRowIndex = 4;
 
-        public int LastRowIndex
-        {
-            get; set;
-        }
+        public int LastRowIndex { get; set; }
 
         public ExcelMarginHedgingSpecialServiceImp(
             ExcelPackage excelPackage,
@@ -44,8 +41,8 @@ namespace Fanex.DHWL.Business.Services
         public string Export(DataTable dailyRawData, bool isDaily, int reportId)
         {
             var data = isDaily
-                 ? dataMarginService.CalcDataForDaily(dailyRawData)
-                 : dataMarginService.CalcDataForMtd(dailyRawData);
+                ? dataMarginService.CalcDataForDaily(dailyRawData)
+                : dataMarginService.CalcDataForMtd(dailyRawData);
 
             GrandTotalList = dataMarginService.GrandTotalList;
             excelPackage = new ExcelPackage(new FileInfo($"Templates/DHWL-MarginHedgingSpecial.xlsx"));
@@ -73,7 +70,8 @@ namespace Fanex.DHWL.Business.Services
 
             for (int columnIndex = 2; columnIndex <= 36; columnIndex++)
             {
-                template.Cells[StartRowIndex, columnIndex, maxRowIndex, columnIndex].StyleID = template.Cells[StartRowIndex, columnIndex].StyleID;
+                template.Cells[StartRowIndex, columnIndex, maxRowIndex, columnIndex].StyleID =
+                    template.Cells[StartRowIndex, columnIndex].StyleID;
             }
         }
 
@@ -83,7 +81,8 @@ namespace Fanex.DHWL.Business.Services
             var endIndexGroup = starIndexGroup;
             var isStart = false;
             var skipInsertBreakRow = new List<string> { "Total" };
-            var productGroups = data.GroupBy(g => new { ProductGroup = g.ProductGroup }).Select(p => p.Key.ProductGroup).ToList();
+            var productGroups = data.GroupBy(g => new { ProductGroup = g.ProductGroup }).Select(p => p.Key.ProductGroup)
+                .ToList();
             if (productGroups.Count > 1)
             {
                 var beforeLastestGroup = productGroups[productGroups.Count - 2];
@@ -131,6 +130,7 @@ namespace Fanex.DHWL.Business.Services
                         template.Cells[rowIndex, columnIndex].Value = "";
                     }
                 }
+
                 if (tplRowIndex == 5)
                 {
                     template.Row(rowIndex).Height = 27.6;

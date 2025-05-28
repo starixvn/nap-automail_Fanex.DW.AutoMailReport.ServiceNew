@@ -1,11 +1,15 @@
 ﻿using Fanex.DHWL.Business.Models;
 using Fanex.DHWL.Business.Services.DailyChart;
 using Fanex.DHWL.Business.Services.DailyDHWLLetstalk;
+using Fanex.DHWL.Business.Services.HouseNetIncome;
+using Fanex.DHWL.Business.Services.Json;
 using Fanex.DHWL.Business.Services.Margin;
 using Fanex.MailDelivery.Core.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 
 namespace Fanex.DHWL.Business.Services
@@ -34,6 +38,7 @@ namespace Fanex.DHWL.Business.Services
         private readonly ImageMarginService imageMarginService;
         private readonly ImageMarginHedgingSpecialService imageMarginHedgingSpecialService;
         private readonly DateTimeServiceProvider dateTimeServiceProvider;
+        private readonly JsonDataService jsonDataService;
 
         public DailyDHWLNotificationServiceImp(
             Log log,
@@ -48,7 +53,8 @@ namespace Fanex.DHWL.Business.Services
             DailyImageDHWLService imageDhwlService,
             ImageMarginService imageMarginService,
             ImageMarginHedgingSpecialService imageMarginHedgingSpecialService,
-            DateTimeServiceProvider dateTimeServiceProvider)
+            DateTimeServiceProvider dateTimeServiceProvider,
+            JsonDataService jsonDataService)
         {
             this.log = log;
             this.dataService = dataService;
@@ -63,6 +69,7 @@ namespace Fanex.DHWL.Business.Services
             this.imageMarginService = imageMarginService;
             this.imageMarginHedgingSpecialService = imageMarginHedgingSpecialService;
             this.dateTimeServiceProvider = dateTimeServiceProvider;
+            this.jsonDataService = jsonDataService;
         }
 
         public JobMessage Execute()
@@ -108,17 +115,20 @@ namespace Fanex.DHWL.Business.Services
                 };
             }
 
-            var dailyRawData = dataService.QueryDhwlData();
+            //var dailyRawData = dataService.QueryDhwlData();
 
             //var json = JsonConvert.SerializeObject(dailyRawData, Formatting.Indented);
             //File.WriteAllText($"{AppConfigService.Config.Path}/RawData-09.json", json);
-            //var json = File.ReadAllText("Templates/RawData-09.json");
-            //var dailyRawData = JsonConvert.DeserializeObject<DataTable>(json);
+            var json = File.ReadAllText("Templates/RawData-09.json");
+            var dailyRawData = JsonConvert.DeserializeObject<DataTable>(json);
 
             var cloneData = baseDataTable.Clone(dailyRawData);
             var cloneDataDhwl = baseDataTable.Clone(dailyRawData);
             var fromDate = dateTimeServiceProvider.DateTime.FromDate;
             var toDate = dateTimeServiceProvider.DateTime.ToDate;
+
+            jsonDataService.Execute(toDate, dailyRawData);
+
             var previousRawData = dataService.QueryDhwlDataPreviousYear();
             var previousRawDataDeposit = previousRawData.AsEnumerable().Where(s => Convert.ToBoolean(s["IsDeposit"]))
                 .CopyToDataTable();

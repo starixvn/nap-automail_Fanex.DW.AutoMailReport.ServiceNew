@@ -1,4 +1,5 @@
 ﻿using Fanex.DHWL.Business.Models;
+using Fanex.DHWL.Business.Services.HouseNetIncome;
 using Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk;
 using Fanex.MailDelivery.Core.Models;
 using System;
@@ -119,7 +120,8 @@ namespace Fanex.DHWL.Business.Services
             var status = messageService.SendMessage(images, AppConfigService.Config.LetstalkGroup);
             var errFile = status.Where(s => !s.Value).Select(s => s.Key).ToList();
 
-            var subject = $"Automail Report - Monthly HWL Report and Licensee Rebate & Discount Data Soft Copy Files - {toDate:yyyy/MM/dd}";
+            var subject =
+                $"Automail Report - Monthly HWL Report and Licensee Rebate & Discount Data Soft Copy Files - {toDate:yyyy/MM/dd}";
             var excelPath = imageDhwlService.FileName;
             var mail = mailService.SendMail(excelPath, subject);
 
