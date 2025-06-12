@@ -1,7 +1,9 @@
 ﻿using Fanex.DHWL.Business.Models;
 using Fanex.DHWL.Business.Services.DailyChart;
 using Fanex.DHWL.Business.Services.DailyDHWLLetstalk;
+using Fanex.DHWL.Business.Services.HouseNetIncome;
 using Fanex.DHWL.Business.Services.Margin;
+using Fanex.DHWL.Business.Services.Webhook;
 using Fanex.MailDelivery.Core.Models;
 using System;
 using System.Collections.Generic;
@@ -34,6 +36,7 @@ namespace Fanex.DHWL.Business.Services
         private readonly ImageMarginService imageMarginService;
         private readonly ImageMarginHedgingSpecialService imageMarginHedgingSpecialService;
         private readonly DateTimeServiceProvider dateTimeServiceProvider;
+        private readonly WebhookDataService webhookDataService;
 
         public DailyDHWLNotificationServiceImp(
             Log log,
@@ -48,7 +51,8 @@ namespace Fanex.DHWL.Business.Services
             DailyImageDHWLService imageDhwlService,
             ImageMarginService imageMarginService,
             ImageMarginHedgingSpecialService imageMarginHedgingSpecialService,
-            DateTimeServiceProvider dateTimeServiceProvider)
+            DateTimeServiceProvider dateTimeServiceProvider,
+            WebhookDataService webhookDataService)
         {
             this.log = log;
             this.dataService = dataService;
@@ -63,6 +67,7 @@ namespace Fanex.DHWL.Business.Services
             this.imageMarginService = imageMarginService;
             this.imageMarginHedgingSpecialService = imageMarginHedgingSpecialService;
             this.dateTimeServiceProvider = dateTimeServiceProvider;
+            this.webhookDataService = webhookDataService;
         }
 
         public JobMessage Execute()
@@ -119,6 +124,9 @@ namespace Fanex.DHWL.Business.Services
             var cloneDataDhwl = baseDataTable.Clone(dailyRawData);
             var fromDate = dateTimeServiceProvider.DateTime.FromDate;
             var toDate = dateTimeServiceProvider.DateTime.ToDate;
+
+            webhookDataService.Execute(toDate, dailyRawData);
+
             var previousRawData = dataService.QueryDhwlDataPreviousYear();
             var previousRawDataDeposit = previousRawData.AsEnumerable().Where(s => Convert.ToBoolean(s["IsDeposit"]))
                 .CopyToDataTable();

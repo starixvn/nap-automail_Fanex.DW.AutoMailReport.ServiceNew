@@ -4,11 +4,14 @@ using Fanex.DHWL.Business.Models;
 using Fanex.DHWL.Business.Services;
 using Fanex.DHWL.Business.Services.DailyChart;
 using Fanex.DHWL.Business.Services.DailyDHWLLetstalk;
+using Fanex.DHWL.Business.Services.HouseNetIncome;
 using Fanex.DHWL.Business.Services.LicenseePerformance;
 using Fanex.DHWL.Business.Services.Margin;
+using Fanex.DHWL.Business.Services.Webhook;
 using Fanex.LetstalkService.Client;
 using Fanex.Logging;
 using Fanex.Logging.Sentry.RavenClient;
+using Fanex.Mattermost.Client;
 using Newtonsoft.Json;
 using OfficeOpenXml;
 using SharpRaven;
@@ -45,12 +48,16 @@ namespace Fanex.DailyDHWL.Executing
             AppConfigService.Config = JsonConvert.DeserializeObject<ConfigSettingModel>(text);
 
             text = File.ReadAllText("Templates/ChartAreasPosition.json");
-            AppConfigService.Config.AreasPosition = JsonConvert.DeserializeObject<Dictionary<int, ChartAreasPosition>>(text);
+            AppConfigService.Config.AreasPosition =
+                JsonConvert.DeserializeObject<Dictionary<int, ChartAreasPosition>>(text);
 
             text = File.ReadAllText("Templates/ImageSetting.json");
-            AppConfigService.Config.ImageSettings = JsonConvert.DeserializeObject<Dictionary<string, ImageProperty>>(text);
+            AppConfigService.Config.ImageSettings =
+                JsonConvert.DeserializeObject<Dictionary<string, ImageProperty>>(text);
 
             LetstalkApi.Config.LetstalkServiceApi = AppConfigService.Config.LetstalkServiceApi;
+            Mattermost.Client.AppConfigService.Config.MattermostServiceApi =
+                AppConfigService.Config.Mattermost.MattermostUrl;
         }
 
         public static void RegisterContainer(Container container)
@@ -85,8 +92,10 @@ namespace Fanex.DailyDHWL.Executing
             container.Register<ImageMarginService, ImageMarginServiceImp>();
             container.Register<ImageMarginHedgingSpecialService, ImageMarginHedgingSpecialServiceImp>();
             container.Register<MergeProductDataService, MergeProductDataServiceImp>();
+            container.Register<WebhookDataService, WebhookDataServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
+            container.Register<MattermostClientService, MattermostClientServiceImp>();
         }
 
         private static void SentryRegister()
@@ -97,11 +106,11 @@ namespace Fanex.DailyDHWL.Executing
             });
 
             LogManager
-               .SetDefaultLogCategory(AppConfigService.Config.CategorySentryLog)
-               .Use(new List<ILogEngine>
-               {
+                .SetDefaultLogCategory(AppConfigService.Config.CategorySentryLog)
+                .Use(new List<ILogEngine>
+                {
                     sentry
-               });
+                });
         }
 
         private static void ConfigureFanexData()

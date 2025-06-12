@@ -3,6 +3,7 @@
   "CategorySentryLog": "NAP-Report-Service",
   "Path": "\\\\10.40.40.11\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0505",
   "LetstalkServiceApi": "http://napmailletstalk.starixplay.com/",
+  "MattermostUrl": "http://mattermost-synergy.starix-prod.nebula.prod",
   "TargetName": "daily-house-wl",
   "Group": "DHWL-PRE",
   "MailSettings": {

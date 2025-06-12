@@ -3,6 +3,7 @@ using Fanex.Data.Repository;
 using Fanex.DHWL.Business.Models;
 using Fanex.DHWL.Business.Services;
 using Fanex.DHWL.Business.Services.Adjustment;
+using Fanex.DHWL.Business.Services.HouseNetIncome;
 using Fanex.DHWL.Business.Services.LicenseePerformance;
 using Fanex.DHWL.Business.Services.Margin;
 using Fanex.DHWL.Business.Services.MonthlyChart;
@@ -40,7 +41,8 @@ namespace Fanex.MonthlyChart.Executing
             AppConfigService.Config = JsonConvert.DeserializeObject<ConfigSettingModel>(text);
 
             text = File.ReadAllText("Templates/ChartAreasPosition.json");
-            AppConfigService.Config.AreasPosition = JsonConvert.DeserializeObject<Dictionary<int, ChartAreasPosition>>(text);
+            AppConfigService.Config.AreasPosition =
+                JsonConvert.DeserializeObject<Dictionary<int, ChartAreasPosition>>(text);
 
             LetstalkApi.Config.LetstalkServiceApi = AppConfigService.Config.LetstalkServiceApi;
         }
@@ -92,11 +94,11 @@ namespace Fanex.MonthlyChart.Executing
             });
 
             LogManager
-               .SetDefaultLogCategory(AppConfigService.Config.CategorySentryLog)
-               .Use(new List<ILogEngine>
-               {
+                .SetDefaultLogCategory(AppConfigService.Config.CategorySentryLog)
+                .Use(new List<ILogEngine>
+                {
                     sentry
-               });
+                });
         }
 
         private static void ConfigureFanexData()

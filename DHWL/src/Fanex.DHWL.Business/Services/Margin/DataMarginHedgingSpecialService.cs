@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
-namespace Fanex.DHWL.Business.Services
+namespace Fanex.DHWL.Business.Services.Margin
 {
     public interface DataMarginHedgingSpecialService
     {
@@ -86,13 +86,21 @@ namespace Fanex.DHWL.Business.Services
                 .ToList()
                 .ForEach(product =>
                 {
-                    var hedgingTo = product.Where(s => s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) && s[ColumnName.SiteGroup].Equals(Site.Hedging))
+                    var hedgingTo = product.Where(s =>
+                            s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) &&
+                            s[ColumnName.SiteGroup].Equals(Site.Hedging))
                         .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex]));
-                    var hedgingWl = product.Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) && s[ColumnName.SiteGroup].Equals(Site.Hedging))
+                    var hedgingWl = product.Where(s =>
+                            !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) &&
+                            s[ColumnName.SiteGroup].Equals(Site.Hedging))
                         .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex]));
-                    var specialTo = product.Where(s => s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) && s[ColumnName.SiteGroup].Equals(Site.Special))
+                    var specialTo = product.Where(s =>
+                            s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) &&
+                            s[ColumnName.SiteGroup].Equals(Site.Special))
                         .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex]));
-                    var specialWl = product.Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) && s[ColumnName.SiteGroup].Equals(Site.Special))
+                    var specialWl = product.Where(s =>
+                            !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) &&
+                            s[ColumnName.SiteGroup].Equals(Site.Special))
                         .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex]));
 
                     var margin = new MarginHedgingSpecialModel
@@ -101,9 +109,13 @@ namespace Fanex.DHWL.Business.Services
                         ProductGroup = product.Key.ProductGroup,
                         OrderByProduct = product.Key.OrderByProduct,
 
-                        Seven89YTO = product.Where(s => s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) && s[ColumnName.SiteGroup].Equals(Site.Seven89Y))
+                        Seven89YTO = product.Where(s =>
+                                s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) &&
+                                s[ColumnName.SiteGroup].Equals(Site.Seven89Y))
                             .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
-                        Seven89YWL = product.Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) && s[ColumnName.SiteGroup].Equals(Site.Seven89Y))
+                        Seven89YWL = product.Where(s =>
+                                !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) &&
+                                s[ColumnName.SiteGroup].Equals(Site.Seven89Y))
                             .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
 
                         HedgingTO = hedgingTo,
@@ -112,19 +124,29 @@ namespace Fanex.DHWL.Business.Services
                         SpecialTO = specialTo,
                         SpecialWL = specialWl,
 
-                        MBCTO = product.Where(s => s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) && s[ColumnName.SiteGroup].Equals(Site.MBC))
+                        MBCTO = product.Where(s =>
+                                s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) &&
+                                s[ColumnName.SiteGroup].Equals(Site.MBC))
                             .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
-                        MBCWL = product.Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) && s[ColumnName.SiteGroup].Equals(Site.MBC))
+                        MBCWL = product.Where(s =>
+                                !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) &&
+                                s[ColumnName.SiteGroup].Equals(Site.MBC))
                             .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
 
-                        LicenseeTO = product.Where(s => s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) && Converter.To<bool>(s[ColumnName.IsDeposit]))
+                        LicenseeTO = product.Where(s =>
+                                s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) &&
+                                Converter.To<bool>(s[ColumnName.IsDeposit]))
                             .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
-                        LicenseeWL = product.Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) && Converter.To<bool>(s[ColumnName.IsDeposit]))
+                        LicenseeWL = product.Where(s =>
+                                !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver) &&
+                                Converter.To<bool>(s[ColumnName.IsDeposit]))
                             .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
 
-                        TotalTO = product.Where(s => s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver))
+                        TotalTO = product
+                            .Where(s => s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver))
                             .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
-                        TotalWL = product.Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver))
+                        TotalWL = product.Where(s =>
+                                !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver))
                             .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
                     };
 
@@ -141,17 +163,17 @@ namespace Fanex.DHWL.Business.Services
                 OrderByProduct = 100001,
 
                 Seven89YWL = data.AsEnumerable().Where(s => s[ColumnName.SiteGroup].Equals(Site.Seven89Y))
-                         .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
+                    .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
                 HedgingWL = data.AsEnumerable().Where(s => s[ColumnName.SiteGroup].Equals(Site.Hedging))
                     .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
                 SpecialWL = data.AsEnumerable().Where(s => s[ColumnName.SiteGroup].Equals(Site.Special))
                     .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
                 MBCWL = data.AsEnumerable().Where(s => s[ColumnName.SiteGroup].Equals(Site.MBC))
-                         .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
+                    .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
                 LicenseeWL = data.AsEnumerable().Where(s => Converter.To<bool>(s[ColumnName.IsDeposit]))
-                         .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
+                    .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
                 TotalWL = data.AsEnumerable()
-                         .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
+                    .Sum(s => Converter.To<decimal>(s[calcAtColumnIndex])),
             };
 
             return royaltyFees;

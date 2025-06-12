@@ -29,7 +29,8 @@ namespace Fanex.DHWL.Business.Models
 
         public Dictionary<string, ImageProperty> ImageSettings { get; set; } = new Dictionary<string, ImageProperty>();
 
-        public Dictionary<int, ChartAreasPosition> AreasPosition { get; set; } = new Dictionary<int, ChartAreasPosition>();
+        public Dictionary<int, ChartAreasPosition> AreasPosition { get; set; } =
+            new Dictionary<int, ChartAreasPosition>();
 
         public Dictionary<string, LetstalkGroup> LetstalkGroups { get; set; } = new Dictionary<string, LetstalkGroup>();
 
@@ -38,5 +39,9 @@ namespace Fanex.DHWL.Business.Models
         public int DataMode { get; set; } = 1;
 
         public decimal PerformanceThreshold { get; set; } = 200000;
+
+        public MattermostModel Mattermost { get; set; }
+
+        public WebhookModel Webhook { get; set; }
     }
 }

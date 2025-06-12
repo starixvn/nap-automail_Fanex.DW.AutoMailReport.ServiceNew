@@ -2,6 +2,27 @@
   "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@10.99.99.51:801/60",
   "CategorySentryLog": "NAP-Report-Service",
   "LetstalkServiceApi": "http://napmailletstalk.starixplay.com/",
+  "Mattermost": {
+    "MattermostUrl": "http://mattermost-synergy.starix-prod.nebula.prod",
+    "Channels": {
+      "PrePROD": {
+        "ChannelName": "DHWL - Test",
+        "ChannelId": "pe1t3yrwpbnitpdddc8opjw8tr"
+      },
+      "PROD": {
+        "ChannelName": "DHWL - Test",
+        "ChannelId": "pe1t3yrwpbnitpdddc8opjw8tr"
+      }
+    }
+  },
+  "Webhook": {
+    "WebhookUrl": "https://api.nx.starix.work/nx-report-submission",
+    "WebhookHeaderKey": "robert-number-one-token",
+    "WebhookToken": "vDt8llIE1KDUMvZch80vBoYSulTfTLl42k2WB36tS6rbs6kEUuFIB00IOXdaSpi4",
+    "IsEnabled": true,
+    "UseProxy": true,
+    "ProxyUrl": "http://lisasqd.nebula.prod:8801"
+  },
   "IsCheckEnoughData": true,
   "ReportType": "Daily",
   "FromDate": "2020-12-01",
@@ -13,6 +34,7 @@
   "ProductList": "All",
   "DataMode": 1,
   "PerformanceThreshold": 650000,
+  "MailIdJsonPerfReport": 0,
   "LetstalkGroups": {
     "Image": {
       "Group": "DWHL-PRO",

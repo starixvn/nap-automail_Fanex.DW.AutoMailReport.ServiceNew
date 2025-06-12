@@ -2,6 +2,7 @@
 using Fanex.Data.Repository;
 using Fanex.DHWL.Business.Criterias;
 using Fanex.DHWL.Business.Models;
+using Fanex.DHWL.Business.Services.HouseNetIncome;
 using System;
 using System.Collections.Generic;
 using System.Data;

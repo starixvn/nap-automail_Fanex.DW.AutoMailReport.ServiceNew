@@ -1,6 +1,6 @@
 ﻿using Fanex.DHWL.Business.Services;
 
-namespace Fanex.DHWL.Business.Models.LicenseeDHWLLetstalk
+namespace Fanex.DHWL.Business.Models.LicenseePerformance
 {
     public class LicenseePerformanceModel
     {
@@ -10,10 +10,7 @@ namespace Fanex.DHWL.Business.Models.LicenseeDHWLLetstalk
 
         public string StrTO
         {
-            get
-            {
-                return format.CutNumberOff(TO);
-            }
+            get { return format.CutNumberOff(TO); }
         }
 
         public string StrWL
@@ -31,18 +28,12 @@ namespace Fanex.DHWL.Business.Models.LicenseeDHWLLetstalk
 
         public decimal StrMargin
         {
-            get
-            {
-                return Margin;
-            }
+            get { return Margin; }
         }
 
         public string StrTOMTD
         {
-            get
-            {
-                return format.CutNumberOff(TOMTD);
-            }
+            get { return format.CutNumberOff(TOMTD); }
         }
 
         public string StrWLMTD
@@ -60,10 +51,7 @@ namespace Fanex.DHWL.Business.Models.LicenseeDHWLLetstalk
 
         public decimal StrMarginMTD
         {
-            get
-            {
-                return MarginMTD;
-            }
+            get { return MarginMTD; }
         }
 
         public string StrLicenseeFee
@@ -87,10 +75,7 @@ namespace Fanex.DHWL.Business.Models.LicenseeDHWLLetstalk
 
         public decimal Margin
         {
-            get
-            {
-                return TO == 0 ? 0 : WL / TO;
-            }
+            get { return TO == 0 ? 0 : WL / TO; }
         }
 
         public decimal TOMTD { get; set; }
@@ -99,10 +84,7 @@ namespace Fanex.DHWL.Business.Models.LicenseeDHWLLetstalk
 
         public decimal MarginMTD
         {
-            get
-            {
-                return TOMTD == 0 ? 0 : WLMTD / TOMTD;
-            }
+            get { return TOMTD == 0 ? 0 : WLMTD / TOMTD; }
         }
 
         public decimal LicenseeFee { get; set; }

@@ -3,6 +3,8 @@ using Fanex.LetstalkService.Client;
 using Fanex.LetstalkService.Core.Models;
 using Fanex.LetstalkService.Core.Services;
 using Fanex.MailDelivery.Core.Models;
+using Fanex.Mattermost.Client;
+using Fanex.Mattermost.Client.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -21,6 +23,7 @@ namespace Fanex.Letstalk.OneTime.Business.Services
     public class MessageServiceImp : MessageService
     {
         private readonly LetstalkClientService letstalkService;
+        private MattermostClientService mattermostService;
         private List<string> foldersNotReady = new List<string>();
         private Dictionary<string, OneTimeModel> foldersReadyToSend = new Dictionary<string, OneTimeModel>();
         private List<string> reportNameNotReady = new List<string>();
@@ -29,10 +32,12 @@ namespace Fanex.Letstalk.OneTime.Business.Services
 
         public MessageServiceImp(
             LetstalkClientService letstalkService,
+            MattermostClientService mattermostService,
             FileService fileService,
             MailService mailService)
         {
             this.letstalkService = letstalkService;
+            this.mattermostService = mattermostService;
             this.fileService = fileService;
             this.mailService = mailService;
         }
@@ -58,53 +63,63 @@ namespace Fanex.Letstalk.OneTime.Business.Services
 
             foreach (var f in subFolders)
             {
-                var logFolder = logs.LastOrDefault(s => s.FolderName == f.FolderName);
-                if (logFolder == null)
+                var logFolder =
+                    logs.LastOrDefault(s => s.FolderName == f.FolderName && !s.TargetName.Equals("Mattermost"));
+                RefineDataToSend("Letstalk", logFolder, f);
+
+                logFolder = logs.LastOrDefault(s => s.FolderName == f.FolderName && s.TargetName.Equals("Mattermost"));
+                if (logFolder != null)
                 {
-                    if (f.FolderMode == FolderMode.Daily)
-                    {
-                        foldersNotReady.Add(f.FolderName);
-                        reportNameNotReady.Add(f.ReportName);
-                    }
-
-                    continue;
+                    RefineDataToSend("Mattermost", logFolder, f);
                 }
+            }
+        }
 
-                var subFolder = $@"{AppConfigService.AppConfig.Path}\{f.FolderName}\{logFolder.Date}";
-                var subFiles = Directory.EnumerateFiles(subFolder);
-                if (subFiles.Count() == 0)
+        private void RefineDataToSend(string sentBy, OneTimeModel logFolder, FolderRegisterModel f)
+        {
+            if (logFolder == null)
+            {
+                if (f.FolderMode == FolderMode.Daily)
                 {
                     foldersNotReady.Add(f.FolderName);
                     reportNameNotReady.Add(f.ReportName);
-                    continue;
                 }
 
-                foreach (var file in subFiles)
-                {
-                    var createdDate = new FileInfo(file).LastWriteTime;
-                    var now = DateTime.Now;
-                    var diff = (now - createdDate).TotalSeconds;
-                    if (diff > 10800)
-                    {
-                        foldersNotReady.Add($"{file} is invalid file. Be careful !!!, You maybe send the old file to users. Please have a check.");
-                        if (!reportNameNotReady.Contains(f.ReportName))
-                        {
-                            reportNameNotReady.Add(f.ReportName);
-                        }
+                return;
+            }
 
-                        continue;
+            var subFolder = $@"{AppConfigService.AppConfig.Path}\{f.FolderName}\{logFolder.Date}";
+            var subFiles = Directory.EnumerateFiles(subFolder).ToList();
+            if (!subFiles.Any())
+            {
+                foldersNotReady.Add(f.FolderName);
+                reportNameNotReady.Add(f.ReportName);
+                return;
+            }
+
+            foreach (var file in subFiles)
+            {
+                var createdDate = new FileInfo(file).LastWriteTime;
+                var now = DateTime.Now;
+                var diff = (now - createdDate).TotalSeconds;
+                if (diff > 10800)
+                {
+                    foldersNotReady.Add(
+                        $"{file} is invalid file. Be careful !!!, You maybe send the old file to users. Please have a check.");
+                    if (!reportNameNotReady.Contains(f.ReportName))
+                    {
+                        reportNameNotReady.Add(f.ReportName);
                     }
                 }
-
-                foldersReadyToSend.Add(subFolder, logFolder);
             }
+
+            foldersReadyToSend.Add($"{sentBy}|{subFolder}", logFolder);
         }
 
         public List<string> SendMessage()
         {
             RefineData();
 
-            var countRetry = 0;
             var foldersSentBefore = fileService.ReadFolderSent();
             var foldersHaveSent = new List<string>();
 
@@ -120,7 +135,7 @@ namespace Fanex.Letstalk.OneTime.Business.Services
                     continue;
                 }
 
-                var fileNames = Directory.GetFiles(f.Key).ToList();
+                var fileNames = Directory.GetFiles(f.Key.Split('|')[1]).ToList();
                 foreach (var filename in fileNames)
                 {
                     var fileInfo = new FileInfo(filename);
@@ -144,24 +159,26 @@ namespace Fanex.Letstalk.OneTime.Business.Services
                         continue;
                     }
 
-                    var letstalkModel = CreateLetstalkModel(new List<string> { filename }, f.Value.TargetName, f.Value.Group);
-                    var status = letstalkService.SendMessage(letstalkModel);
-                    if (status && !foldersHaveSent.Contains(f.Value.FolderName))
+                    if (f.Value.TargetName.Equals("Mattermost"))
                     {
-                        foldersHaveSent.Add(f.Value.FolderName);
+                        var messageRequest = new MessageRequest
+                        {
+                            ChannelId = f.Value.Group,
+                            Files = new List<FileModel>
+                            {
+                                new FileModel
+                                {
+                                    FileName = fileInfo.Name,
+                                    FileBytes = File.ReadAllBytes(filename),
+                                    MediaType = fileInfo.Extension.Contains(".xlsx") ? MediaType.Excel : MediaType.Image
+                                }
+                            },
+                        };
+                        var result = mattermostService.Send(messageRequest);
                     }
-
-                    countRetry = 0;
-                    while (!status && countRetry < 10)
+                    else
                     {
-                        status = letstalkService.SendMessage(letstalkModel);
-                        countRetry++;
-                    }
-
-                    if (!status)
-                    {
-                        foldersNotReady.Insert(0, $"The files below can't be sent to users. Please have a check!!!");
-                        foldersNotReady.Add(filename);
+                        SendLetstalk(filename, f, foldersHaveSent);
                     }
                 }
             }
@@ -169,6 +186,31 @@ namespace Fanex.Letstalk.OneTime.Business.Services
             fileService.WriteFolderSent(foldersHaveSent);
 
             return foldersNotReady;
+        }
+
+        private void SendLetstalk(string filename, KeyValuePair<string, OneTimeModel> f, List<string> foldersHaveSent)
+        {
+            var countRetry = 0;
+            var letstalkModel = CreateLetstalkModel(new List<string> { filename }, f.Value.TargetName,
+                f.Value.Group);
+            var status = letstalkService.SendMessage(letstalkModel);
+            if (status && !foldersHaveSent.Contains(f.Value.FolderName))
+            {
+                foldersHaveSent.Add(f.Value.FolderName);
+            }
+
+            while (!status && countRetry < 10)
+            {
+                status = letstalkService.SendMessage(letstalkModel);
+                countRetry++;
+            }
+
+            if (!status)
+            {
+                foldersNotReady.Insert(0,
+                    $"The files below can't be sent to users. Please have a check!!!");
+                foldersNotReady.Add(filename);
+            }
         }
 
         private void SendMail(OneTimeModel model, string filename)

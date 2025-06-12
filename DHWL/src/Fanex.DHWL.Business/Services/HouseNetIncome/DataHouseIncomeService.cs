@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
-namespace Fanex.DHWL.Business.Services
+namespace Fanex.DHWL.Business.Services.HouseNetIncome
 {
     public interface DataHouseIncomeService
     {
@@ -34,10 +34,7 @@ namespace Fanex.DHWL.Business.Services
                 ColumnName.SubFigure
             };
 
-            columns.ForEach(column =>
-            {
-                data.Columns.Remove(column);
-            });
+            columns.ForEach(column => { data.Columns.Remove(column); });
 
             var result1 = data.Clone();
             var result2 = data.Clone();
@@ -47,27 +44,29 @@ namespace Fanex.DHWL.Business.Services
                 ProductName = row[ColumnName.ProductName],
                 Figure = row[ColumnName.Figure]
             })
-            .Where(t => !t.Key.Figure.Equals(RowFigureName.HouseTurnOver)).ToList()
-            .ForEach(product =>
-            {
-                CalcTotal(result1, product.ToList(), product.Key.ProductName.ToString(), product.Key.Figure.ToString());
-            });
+                .Where(t => !t.Key.Figure.Equals(RowFigureName.HouseTurnOver)).ToList()
+                .ForEach(product =>
+                {
+                    CalcTotal(result1, product.ToList(), product.Key.ProductName.ToString(),
+                        product.Key.Figure.ToString());
+                });
 
             result1.AsEnumerable().GroupBy(row => new
             {
                 ProductName = row[ColumnName.ProductName]
             }).ToList()
-            .ForEach(product =>
-            {
-                foreach (DataRow r in product)
+                .ForEach(product =>
                 {
-                    result2.ImportRow(r);
-                }
+                    foreach (DataRow r in product)
+                    {
+                        result2.ImportRow(r);
+                    }
 
-                CalcTotal(result2, product.Key.ProductName.ToString(), "Total");
-            });
+                    CalcTotal(result2, product.Key.ProductName.ToString(), "Total");
+                });
 
-            var rows = data.AsEnumerable().Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver)).ToList();
+            var rows = data.AsEnumerable()
+                .Where(s => !s[ColumnName.Figure].ToString().Equals(RowFigureName.HouseTurnOver)).ToList();
             CalcTotal(result2, rows, "Grand Total", string.Empty);
             result2 = ReOrder(data, result2);
 
@@ -81,7 +80,8 @@ namespace Fanex.DHWL.Business.Services
             totalRow[ColumnName.Figure] = figure;
             for (int columIndex = 4; columIndex < dataTable.Columns.Count; columIndex++)
             {
-                totalRow[columIndex] = dataTable.AsEnumerable().Where(p => p[ColumnName.ProductName].ToString() == productName)
+                totalRow[columIndex] = dataTable.AsEnumerable()
+                    .Where(p => p[ColumnName.ProductName].ToString() == productName)
                     .Sum(s => Converter.To<decimal>(s[columIndex]));
             }
 
@@ -104,22 +104,27 @@ namespace Fanex.DHWL.Business.Services
         private static DataTable ReOrder(DataTable data, DataTable result2)
         {
             result2.AsEnumerable().ToList()
-            .ForEach(row =>
-            {
-                var sourceRow = data.AsEnumerable().FirstOrDefault(s => s[ColumnName.ProductName] == row[ColumnName.ProductName]);
-                if (sourceRow == null)
+                .ForEach(row =>
                 {
-                    row[ColumnName.OrderByProduct] = 10000;
-                    row[ColumnName.OrderByFigure] = 10000;
-                }
-                else
-                {
-                    var orderByProduct = row[ColumnName.ProductName].ToString() == "Sportsbook" ? 1 : sourceRow[ColumnName.OrderByProduct];
-                    var orderByFigure = row[ColumnName.Figure].ToString() == "Total" ? 100 : sourceRow[ColumnName.OrderByFigure];
-                    row[ColumnName.OrderByProduct] = orderByProduct;
-                    row[ColumnName.OrderByFigure] = orderByFigure;
-                }
-            });
+                    var sourceRow = data.AsEnumerable()
+                        .FirstOrDefault(s => s[ColumnName.ProductName] == row[ColumnName.ProductName]);
+                    if (sourceRow == null)
+                    {
+                        row[ColumnName.OrderByProduct] = 10000;
+                        row[ColumnName.OrderByFigure] = 10000;
+                    }
+                    else
+                    {
+                        var orderByProduct = row[ColumnName.ProductName].ToString() == "Sportsbook"
+                            ? 1
+                            : sourceRow[ColumnName.OrderByProduct];
+                        var orderByFigure = row[ColumnName.Figure].ToString() == "Total"
+                            ? 100
+                            : sourceRow[ColumnName.OrderByFigure];
+                        row[ColumnName.OrderByProduct] = orderByProduct;
+                        row[ColumnName.OrderByFigure] = orderByFigure;
+                    }
+                });
 
             result2 = result2.AsEnumerable()
                 .OrderBy(s => s[ColumnName.OrderByProduct])
@@ -132,10 +137,7 @@ namespace Fanex.DHWL.Business.Services
                 ColumnName.OrderByFigure
             };
 
-            columns.ForEach(column =>
-            {
-                result2.Columns.Remove(column);
-            });
+            columns.ForEach(column => { result2.Columns.Remove(column); });
 
             return result2;
         }
