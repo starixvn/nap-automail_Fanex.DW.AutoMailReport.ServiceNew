@@ -66,9 +66,10 @@ namespace Fanex.DHWL.Business.Services
                 MediaType = MediaType.Image,
             }).ToList();
 
+            var matterMostChannel = AppConfigService.Config.Mattermost.Channels["PrePROD"];
             var messageRequest = new MessageRequest
             {
-                ChannelId = AppConfigService.Config.Mattermost.ChannelId,
+                ChannelId = matterMostChannel.ChannelId,
                 Files = files,
             };
             var result = await mattermostService.Send(messageRequest);

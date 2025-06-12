@@ -3,9 +3,17 @@
   "CategorySentryLog": "NAP-Report-Service",
   "LetstalkServiceApi": "http://napmailletstalk.starixplay.com/",
   "Mattermost": {
-    "MattermostUrl": "http://mattermost-synergy.starix-uat.nebula.prod",
-    "ChannelId": "pe1t3yrwpbnitpdddc8opjw8tr",
-    "ChannelName": "DHWL - Test"
+    "MattermostUrl": "http://mattermost-synergy.starix-prod.nebula.prod",
+    "Channels": {
+      "PrePROD": {
+        "ChannelName": "DHWL - Test",
+        "ChannelId": "pe1t3yrwpbnitpdddc8opjw8tr"
+      },
+      "PROD": {
+        "ChannelName": "DHWL - Test",
+        "ChannelId": "pe1t3yrwpbnitpdddc8opjw8tr"
+      }
+    }
   },
   "Webhook": {
     "WebhookUrl": "https://api.nx.starix.work/nx-report-submission",
@@ -26,7 +34,7 @@
   "ProductList": "All",
   "DataMode": 1,
   "PerformanceThreshold": 650000,
-  "MailIdJsonPerfReport": 738,
+  "MailIdJsonPerfReport": 0,
   "LetstalkGroups": {
     "Image": {
       "Group": "DWHL-PRO",

@@ -128,13 +128,14 @@ namespace Fanex.DHWL.Business.Services
 
             if (letstalkGroup.MailId == 0)
             {
+                var matterMostChannel = AppConfigService.Config.Mattermost.Channels["PROD"];
                 logs.Add(new LogInternalOneTimeModel
                 {
                     Date = $"{date:yyyyMMdd}",
                     FolderName = fileInfo.Name,
                     GenerateTime = $"{DateTime.Now:yyyy-MM-dd hh:mm:ss tt}",
                     TargetName = "Mattermost",
-                    Group = AppConfigService.Config.Mattermost.ChannelId,
+                    Group = matterMostChannel.ChannelId,
                     MailId = 0,
                     Subject = string.Empty
                 });

@@ -26,13 +26,13 @@
       "ReportName": "Letstalk - House Net Income Monthly Report"
     },
     {
-      "FolderName": "2-DHWL-Daily",
+      "FolderName": "2-NEW-DHWL-Daily",
       "IsActive": true,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - House Net Income Daily Report (Images) "
     },
     {
-      "FolderName": "2-DHWL-Excel-Daily",
+      "FolderName": "2-NEW-DHWL-Excel-Daily",
       "IsActive": true,
       "FolderMode": "Daily",
       "ReportName": "Letstalk - House Net Income Daily Report (Excel)"

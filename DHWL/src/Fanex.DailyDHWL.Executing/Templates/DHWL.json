@@ -4,14 +4,22 @@
   "LetstalkServiceApi": "http://napmailletstalk.nexdev.net/",
   "Mattermost": {
     "MattermostUrl": "http://mattermost-service.nexdev.net/",
-    "ChannelId": "5uadwig1ojniiyoyrthoest5fo",
-    "ChannelName": "robert-test"
+    "Channels": {
+      "PrePROD": {
+        "ChannelName": "robert-test",
+        "ChannelId": "5uadwig1ojniiyoyrthoest5fo"
+      },
+      "PROD": {
+        "ChannelName": "robert-test",
+        "ChannelId": "5uadwig1ojniiyoyrthoest5fo"
+      }
+    }
   },
   "Webhook": {
     "WebhookUrl": "https://api.nx.starix.work/nx-report-submission",
     "WebhookHeaderKey": "robert-number-one-token",
     "WebhookToken": "vDt8llIE1KDUMvZch80vBoYSulTfTLl42k2WB36tS6rbs6kEUuFIB00IOXdaSpi4",
-    "IsEnabled": true,
+    "IsEnabled": false,
     "UseProxy": false,
     "ProxyUrl": "http://lisasqd.nebula.prod:8801"
   },

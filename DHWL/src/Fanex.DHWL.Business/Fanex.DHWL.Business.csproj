@@ -199,6 +199,7 @@
     <Compile Include="Criterias\GetDWStatusCriteria.cs" />
     <Compile Include="Criterias\GetProductInfoCriteria.cs" />
     <Compile Include="Models\AdjustmentModel.cs" />
+    <Compile Include="Models\ChannelModel.cs" />
     <Compile Include="Models\ChartAreasPosition.cs" />
     <Compile Include="Models\ChartMtdFigureModel.cs" />
     <Compile Include="Models\ColumnIndex.cs" />
