@@ -175,7 +175,7 @@ namespace Fanex.Letstalk.OneTime.Business.Services
                             },
                         };
                         var result = mattermostService.Send(messageRequest);
-                        System.Threading.Thread.Sleep(2000); // To avoid rate limit
+                        System.Threading.Thread.Sleep(5000); // To avoid rate limit
                     }
                     else
                     {
@@ -204,6 +204,7 @@ namespace Fanex.Letstalk.OneTime.Business.Services
             {
                 status = letstalkService.SendMessage(letstalkModel);
                 countRetry++;
+                System.Threading.Thread.Sleep(5000); // To avoid rate limit
             }
 
             if (!status)
