@@ -175,6 +175,7 @@ namespace Fanex.Letstalk.OneTime.Business.Services
                             },
                         };
                         var result = mattermostService.Send(messageRequest);
+                        System.Threading.Thread.Sleep(2000); // To avoid rate limit
                     }
                     else
                     {
