@@ -5,9 +5,11 @@ using Fanex.DHWL.Business.Services.HouseNetIncome;
 using Fanex.DHWL.Business.Services.Margin;
 using Fanex.DHWL.Business.Services.Webhook;
 using Fanex.MailDelivery.Core.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 
 namespace Fanex.DHWL.Business.Services
@@ -113,12 +115,12 @@ namespace Fanex.DHWL.Business.Services
                 };
             }
 
-            var dailyRawData = dataService.QueryDhwlData();
+            // var dailyRawData = dataService.QueryDhwlData();
 
             //var json = JsonConvert.SerializeObject(dailyRawData, Formatting.Indented);
             //File.WriteAllText($"{AppConfigService.Config.Path}/RawData-09.json", json);
-            //var json = File.ReadAllText("Templates/RawData-09.json");
-            //var dailyRawData = JsonConvert.DeserializeObject<DataTable>(json);
+            var json = File.ReadAllText("Templates/RawData-09.json");
+            var dailyRawData = JsonConvert.DeserializeObject<DataTable>(json);
 
             var cloneData = baseDataTable.Clone(dailyRawData);
             var cloneDataDhwl = baseDataTable.Clone(dailyRawData);
