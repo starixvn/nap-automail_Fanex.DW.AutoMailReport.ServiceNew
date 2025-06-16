@@ -55,7 +55,7 @@ namespace Fanex.MonthlyChart.Executing
             container.Register<DataService, DataServiceImp>();
             container.Register<MonthlyChartNotificationService, MonthlyChartNotificationServiceImp>();
             container.Register(() => new ExcelPackage());
-            container.Register<ExcelRawService, ExcelRawServiceImp>();
+            container.Register<ExcelRawService, ExcelRawServiceImp>(Lifestyle.Transient);
             container.Register<DailyExcelService, DailyExcelServiceImp>();
             container.Register<ImageService, ImageServiceImp>();
             container.Register<MessageService, MessageServiceImp>();

@@ -5,7 +5,6 @@ using Fanex.DHWL.Business.Services.HouseNetIncome;
 using Fanex.DHWL.Business.Services.Margin;
 using Fanex.DHWL.Business.Services.Webhook;
 using Fanex.MailDelivery.Core.Models;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -74,6 +73,8 @@ namespace Fanex.DHWL.Business.Services
 
         public JobMessage Execute()
         {
+            log.Log("Daily DHWL Notification Service started at " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+
             var result = new ExecuteResultModel();
             JobMessage jobMessage = new JobMessage();
             try
@@ -85,6 +86,9 @@ namespace Fanex.DHWL.Business.Services
                 result.Success = false;
                 result.Message = e.Message;
                 log.Log(e);
+
+                var path = $"{AppConfigService.Config.Path}/{DateTime.Today:yyyyMMdd}";
+                File.WriteAllText($"{path}/DHWL-ErrLog.txt", $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} - {e.StackTrace}");
             }
             finally
             {
@@ -95,6 +99,9 @@ namespace Fanex.DHWL.Business.Services
                     LogTime = DateTime.Now,
                     Message = result.Message
                 };
+
+                var path = $"{AppConfigService.Config.Path}/{DateTime.Today:yyyyMMdd}";
+                File.WriteAllText($"{path}/DHWL-Log.txt", $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} - {result.Message}");
             }
 
             return jobMessage;
@@ -115,12 +122,12 @@ namespace Fanex.DHWL.Business.Services
                 };
             }
 
-            // var dailyRawData = dataService.QueryDhwlData();
+            var dailyRawData = dataService.QueryDhwlData();
 
             //var json = JsonConvert.SerializeObject(dailyRawData, Formatting.Indented);
-            //File.WriteAllText($"{AppConfigService.Config.Path}/RawData-09.json", json);
-            var json = File.ReadAllText("Templates/RawData-09.json");
-            var dailyRawData = JsonConvert.DeserializeObject<DataTable>(json);
+            //File.WriteAllText($"{AppConfigService.Config.Path}/DailyRawData.json", json);
+            //var json = File.ReadAllText("Templates/RawData-09.json");
+            //var dailyRawData = JsonConvert.DeserializeObject<DataTable>(json);
 
             var cloneData = baseDataTable.Clone(dailyRawData);
             var cloneDataDhwl = baseDataTable.Clone(dailyRawData);

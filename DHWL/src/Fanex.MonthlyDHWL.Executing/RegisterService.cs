@@ -59,7 +59,7 @@ namespace Fanex.MonthlyDHWL.Executing
             container.Register<DataService, DataServiceImp>();
             container.Register<MonthlyDHWLNotificationService, MonthlyDHWLNotificationServiceImp>();
             container.Register(() => new ExcelPackage());
-            container.Register<ExcelRawService, ExcelRawServiceImp>();
+            container.Register<ExcelRawService, ExcelRawServiceImp>(Lifestyle.Transient);
             container.Register<DailyExcelService, DailyExcelServiceImp>();
             container.Register<ImageService, ImageServiceImp>();
             container.Register<MessageService, MessageServiceImp>();
