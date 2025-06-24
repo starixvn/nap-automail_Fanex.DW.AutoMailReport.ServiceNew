@@ -103,8 +103,8 @@
       <HintPath>..\..\..\packages\Fanex.MailStation.Core.1.0.3\lib\net461\Fanex.MailDelivery.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.Mattermost.Client, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Fanex.Mattermost.Client.1.0.4\lib\net461\Fanex.Mattermost.Client.dll</HintPath>
+    <Reference Include="Fanex.Mattermost.Client, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Fanex.Mattermost.Client.1.0.6\lib\net461\Fanex.Mattermost.Client.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Service.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Fanex.Service.Core.1.0.0.2\lib\Fanex.Service.Core.dll</HintPath>
@@ -195,11 +195,16 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Topshelf, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b800c4cfcdeea87b, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Topshelf.4.0.1\lib\net452\Topshelf.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterService.cs" />
+    <Compile Include="Services\DHWLService.cs" />
+    <Compile Include="Services\ExecuteMonthlyChartDHWLService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\DBWH.bodb_Account.dwrs.xml">
@@ -240,6 +245,15 @@
     <Content Include="Templates\DHWL-RawData.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\Fanex.MonthlyChart.Executing.KLPROD.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\DHWL.KLPRO.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\RawData-Monthly-Chart-05.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.DHWL.Business\Fanex.DHWL.Business.csproj">
@@ -247,6 +261,7 @@
       <Name>Fanex.DHWL.Business</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

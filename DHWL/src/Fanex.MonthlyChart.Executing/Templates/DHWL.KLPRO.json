@@ -1,0 +1,34 @@
+﻿{
+  "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@http://sentry-stklprod-ovs.ops-klprod.gamora.prod/60",
+  "CategorySentryLog": "NAP-Report-Service",
+  "LetstalkServiceApi": "http://napmailletstalk.starix-klprod.gamora.prod/",
+  "Mattermost": {
+    "MattermostUrl": "http://mattermost-synergy.starix-klprod.gamora.prod/",
+    "Channels": {
+      "PrePROD": {
+        "ChannelName": "DHWL - Test",
+        "ChannelId": "pe1t3yrwpbnitpdddc8opjw8tr"
+      },
+      "PROD": {
+        "ChannelName": "DHWL - Test",
+        "ChannelId": "pe1t3yrwpbnitpdddc8opjw8tr"
+      }
+    }
+  },
+  "IsCheckEnoughData": false,
+  "ReportType": "Monthly",
+  "FromDate": "2020-12-01",
+  "ToDate": "2020-12-31",
+  "Path": "\\\\10.148.58.137\\Data.Web\\Fanex.Excel\\DHWL-PRE",
+  "InternalPath": "\\\\10.148.58.137\\Data.Web\\Fanex.Excel\\DHWL-PRE_InternalPath",
+  "Password": "Star168",
+  "TargetName": "daily-house-wl",
+  "PerformanceThreshold": 650000,
+  "LetstalkGroup": "DHWL-PRE",
+  "LetstalkGroups": {
+    "Image": {
+      "Group": "DWHL-PRO",
+      "InternalPath": "\\\\10.148.58.137\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0505\\1-DHWL-Monthly"
+    }
+  }
+}
