@@ -245,7 +245,7 @@
     <Content Include="Templates\DHWL-RawData.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\Fanex.MonthlyChart.Executing.KLPROD.exe.config">
+    <Content Include="Templates\Fanex.MonthlyChart.Executing.KLPRO.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\DHWL.KLPRO.json">

@@ -82,12 +82,12 @@ namespace Fanex.DHWL.Business.Services
                 };
             }
 
-            //var monthlyRawData = dataService.QueryDhwlMonthlyChart();
+            var monthlyRawData = dataService.QueryDhwlMonthlyChart();
 
             //var json = JsonConvert.SerializeObject(monthlyRawData, Formatting.Indented);
             //File.WriteAllText($"{AppConfigService.Config.Path}/RawData-Monthly-Chart-05.json", json);
-            var json = File.ReadAllText("Templates/RawData-Monthly-Chart-05.json");
-            var monthlyRawData = JsonConvert.DeserializeObject<DataTable>(json);
+            //var json = File.ReadAllText("Templates/RawData-Monthly-Chart-05.json");
+            //var monthlyRawData = JsonConvert.DeserializeObject<DataTable>(json);
 
             var chartPathCreditOnly = chartExport.Export(monthlyRawData, DepositType.CreditOnly);
             var chartPathDepositOnly = chartExport.Export(monthlyRawData, DepositType.DepositOnly);

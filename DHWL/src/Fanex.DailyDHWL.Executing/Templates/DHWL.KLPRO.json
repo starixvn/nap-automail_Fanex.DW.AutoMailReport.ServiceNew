@@ -6,12 +6,12 @@
     "MattermostUrl": "http://mattermost-synergy.starix-klprod.gamora.prod/",
     "Channels": {
       "PrePROD": {
-        "ChannelName": "DHWL - Test",
-        "ChannelId": "pe1t3yrwpbnitpdddc8opjw8tr"
+        "ChannelName": "DailyPerformanceUAT",
+        "ChannelId": "5kshwbydcpb3fk6jq1mcza1igo"
       },
       "PROD": {
-        "ChannelName": "DHWL - Test",
-        "ChannelId": "pe1t3yrwpbnitpdddc8opjw8tr"
+        "ChannelName": "DWHL",
+        "ChannelId": "8oqb65k6wbncunxtfycnuwzz6e"
       }
     }
   },
@@ -30,14 +30,14 @@
   "Path": "\\\\10.148.58.137\\Data.Web\\Fanex.Excel\\DHWL-PRE",
   "Password": "Star168",
   "TargetName": "daily-house-wl",
-  "LetstalkGroup": "DWHL-UAT",
+  "LetstalkGroup": "DHWL-PRE",
   "ProductList": "All",
   "DataMode": 1,
   "PerformanceThreshold": 650000,
   "MailIdJsonPerfReport": 0,
   "LetstalkGroups": {
     "Image": {
-      "Group": "DWHL-UAT",
+      "Group": "DWHL-PRO",
       "InternalPath": "\\\\10.148.58.137\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0505\\2-DHWL-Daily",
       "MailId": 0
     },

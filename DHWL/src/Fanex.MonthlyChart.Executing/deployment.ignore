@@ -1,8 +1,10 @@
 \\*.local.exe.config
 \\*.uat.exe.config
 \\*.pro.exe.config
+\\*.klpro.exe.config
 \\*.pre.exe.config
 \\*.local.json
 \\*.uat.json
 \\*.pro.json
 \\*.pre.json
+\\*.klpro.json
