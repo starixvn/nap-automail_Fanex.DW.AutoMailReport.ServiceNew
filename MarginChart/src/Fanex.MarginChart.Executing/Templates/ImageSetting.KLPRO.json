@@ -1,0 +1,17 @@
+﻿{
+  "Margin": {
+    "FirstRow": 1,
+    "FirstColumn": 2,
+    "LastColumn": 5,
+    "CropWidth": 1650,
+    "ImageName": "Margin",
+    "SheetName": "Margin",
+    "X": 235,
+    "Y": 305,
+    "IsResize": false,
+    "ResizeNewWidth": 500,
+    "ImageQuality": 100,
+    "HeightPerRow": 85,
+    "AdjustHeight": 30
+  }
+}

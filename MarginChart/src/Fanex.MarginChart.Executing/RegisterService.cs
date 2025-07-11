@@ -21,6 +21,8 @@ namespace Fanex.MarginChart.Executing
 {
     public static class RegisterService
     {
+        public static Container Container { get; set; }
+
         public static void RegisterServices()
         {
             LoadConfig();
@@ -35,10 +37,12 @@ namespace Fanex.MarginChart.Executing
             AppConfigService.Config = JsonConvert.DeserializeObject<ConfigSettingModel>(text);
 
             text = File.ReadAllText("Templates/ChartAreasPosition.json");
-            AppConfigService.Config.AreasPosition = JsonConvert.DeserializeObject<Dictionary<int, ChartAreasPosition>>(text);
+            AppConfigService.Config.AreasPosition =
+                JsonConvert.DeserializeObject<Dictionary<int, ChartAreasPosition>>(text);
 
             text = File.ReadAllText("Templates/ImageSetting.json");
-            AppConfigService.Config.ImageSettings = JsonConvert.DeserializeObject<Dictionary<string, ImageProperty>>(text);
+            AppConfigService.Config.ImageSettings =
+                JsonConvert.DeserializeObject<Dictionary<string, ImageProperty>>(text);
 
             text = File.ReadAllText("Templates/ProductSettings.json");
             AppConfigService.Config.ProductGroups = JsonConvert.DeserializeObject<List<ProductGroup>>(text);
@@ -76,11 +80,11 @@ namespace Fanex.MarginChart.Executing
             });
 
             LogManager
-               .SetDefaultLogCategory(AppConfigService.Config.CategorySentryLog)
-               .Use(new List<ILogEngine>
-               {
+                .SetDefaultLogCategory(AppConfigService.Config.CategorySentryLog)
+                .Use(new List<ILogEngine>
+                {
                     sentry
-               });
+                });
         }
 
         private static void ConfigureFanexData()
