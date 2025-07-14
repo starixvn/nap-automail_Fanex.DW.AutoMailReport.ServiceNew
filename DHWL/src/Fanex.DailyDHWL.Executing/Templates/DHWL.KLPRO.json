@@ -30,7 +30,7 @@
   "Path": "\\\\10.148.58.137\\Data.Web\\Fanex.Excel\\DHWL-PRE",
   "Password": "Star168",
   "TargetName": "daily-house-wl",
-  "LetstalkGroup": "DHWL-PRE",
+  "LetstalkGroup": "DWHL-PRO",
   "ProductList": "All",
   "DataMode": 1,
   "PerformanceThreshold": 650000,

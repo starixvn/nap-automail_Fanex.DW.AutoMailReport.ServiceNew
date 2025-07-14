@@ -1,0 +1,41 @@
+﻿{
+  "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@http://sentry-stklprod-ovs.ops-klprod.gamora.prod/60",
+  "CategorySentryLog": "NAP-Report-Service",
+  "Path": "\\\\10.148.58.137\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0500",
+  "LetstalkServiceApi": "http://napmailletstalk.starix-klprod.gamora.prod/",
+  "MattermostUrl": "http://mattermost-synergy.starix-klprod.gamora.prod/",
+  "TargetName": "daily-house-wl",
+  "Group": "DHWL-PRE",
+  "MailSettings": {
+    "LetstalkOneTime": {
+      "MailId": 376,
+      "MailName": "Letstalk - OneTime - 0500",
+      "IsAllowResend": false
+    },
+    "CheckData": {
+      "MailId": 382,
+      "MailName": "Letstalk - OneTime - 0500 - CheckData",
+      "IsAllowResend": false
+    }
+  },
+  "Folders": [
+    {
+      "FolderName": "5-DHWL-Soccer-Margin",
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Daily Margin Chart - Soccer"
+    },
+    {
+      "FolderName": "5-DHWL-OS-Margin",
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Daily Margin Chart - OS"
+    },
+    {
+      "FolderName": "5-DHWL-Non-Sport-Margin",
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - Daily Margin Chart - Non-Sport"
+    }
+  ]
+}

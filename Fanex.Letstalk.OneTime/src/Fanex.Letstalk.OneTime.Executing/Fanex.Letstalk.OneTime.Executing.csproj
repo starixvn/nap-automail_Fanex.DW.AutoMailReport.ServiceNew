@@ -170,11 +170,19 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Topshelf, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b800c4cfcdeea87b, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Topshelf.4.0.1\lib\net452\Topshelf.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterService.cs" />
+    <Compile Include="Services\ExecuteOneTimeService.cs" />
+    <Compile Include="Services\ExecuteOneTimeServiceUAT0600.cs" />
+    <Compile Include="Services\ExecuteOneTimeServiceKLPRO0505.cs" />
+    <Compile Include="Services\ExecuteOneTimeServiceKLPRO0500.cs" />
+    <Compile Include="Services\OneTimeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Templates\Message.txt">
@@ -207,7 +215,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Templates\Fanex.Letstalk.OneTime.Executing.UAT-0600.exe.config">
+    <Content Include="Templates\Fanex.Letstalk.OneTime.Executing.UAT.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\LetstalkOneTimeSettings.UAT-0600.json">
@@ -234,6 +242,15 @@
     <Content Include="Templates\Fanex.Letstalk.OneTime.Executing.PRO-0505.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\Fanex.Letstalk.OneTime.Executing.KLPRO.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\LetstalkOneTimeSettings.KLPRO-0500.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\LetstalkOneTimeSettings.KLPRO-0505.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.Letstalk.OneTime.Business\Fanex.Letstalk.OneTime.Business.csproj">
@@ -241,6 +258,7 @@
       <Name>Fanex.Letstalk.OneTime.Business</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

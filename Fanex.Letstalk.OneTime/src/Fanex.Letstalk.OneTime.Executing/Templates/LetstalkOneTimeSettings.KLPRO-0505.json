@@ -1,0 +1,41 @@
+﻿{
+  "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@http://sentry-stklprod-ovs.ops-klprod.gamora.prod/60",
+  "CategorySentryLog": "NAP-Report-Service",
+  "Path": "\\\\10.148.58.137\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0505",
+  "LetstalkServiceApi": "http://napmailletstalk.starix-klprod.gamora.prod/",
+  "MattermostUrl": "http://mattermost-synergy.starix-klprod.gamora.prod/",
+  "TargetName": "daily-house-wl",
+  "Group": "DHWL-PRE",
+  "MailSettings": {
+    "LetstalkOneTime": {
+      "MailId": 412,
+      "MailName": "Letstalk - OneTime - 0505",
+      "IsAllowResend": false
+    },
+    "CheckData": {
+      "MailId": 413,
+      "MailName": "Letstalk - OneTime - 0505 - CheckData",
+      "IsAllowResend": false
+    }
+  },
+  "Folders": [
+    {
+      "FolderName": "1-DHWL-Monthly",
+      "IsActive": true,
+      "FolderMode": "Monthly",
+      "ReportName": "Letstalk - House Net Income Monthly Report"
+    },
+    {
+      "FolderName": "2-DHWL-Daily",
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - House Net Income Daily Report (Images) "
+    },
+    {
+      "FolderName": "2-DHWL-Excel-Daily",
+      "IsActive": true,
+      "FolderMode": "Daily",
+      "ReportName": "Letstalk - House Net Income Daily Report (Excel)"
+    }
+  ]
+}

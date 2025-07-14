@@ -1,7 +1,5 @@
-﻿using Fanex.Letstalk.OneTime.Business.Services;
-using Newtonsoft.Json;
-using SimpleInjector;
-using System;
+﻿using Fanex.Letstalk.OneTime.Executing.Services;
+using Topshelf;
 
 namespace Fanex.Letstalk.OneTime.Executing
 {
@@ -9,17 +7,19 @@ namespace Fanex.Letstalk.OneTime.Executing
     {
         private static void Main()
         {
-            RegisterService.RegisterServices();
-            Container container = new Container();
-            RegisterService.RegisterContainer(container);
-            container.Verify(VerificationOption.VerifyOnly);
+            HostFactory.Run(x =>
+            {
+                x.Service<OneTimeService>(s =>
+                {
+                    s.ConstructUsing(name => new OneTimeService());
+                    s.WhenStarted(tc => tc.Start());
+                    s.WhenStopped(tc => tc.Stop());
+                });
 
-            var service = container.GetInstance<OneTimeNotificationService>();
-            var jobMessage = service.Execute();
-            var json = JsonConvert.SerializeObject(jobMessage);
-
-            Console.Write(json);
-            Environment.Exit(0);
+                x.SetDescription("Fanex.Letstalk.OneTime.Executing Host");
+                x.SetDisplayName("Fanex.Letstalk.OneTime.Executing");
+                x.SetServiceName("Fanex.Letstalk.OneTime.Executing");
+            });
         }
     }
 }
