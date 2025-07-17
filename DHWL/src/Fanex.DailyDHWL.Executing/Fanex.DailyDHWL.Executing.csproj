@@ -299,6 +299,9 @@
     <Content Include="Templates\ImageSetting.KLPRO.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\RawData-16.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fanex.DHWL.Business\Fanex.DHWL.Business.csproj">

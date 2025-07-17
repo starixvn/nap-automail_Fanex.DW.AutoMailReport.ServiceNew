@@ -122,31 +122,33 @@ namespace Fanex.DHWL.Business.Services
                 };
             }
 
-            var dailyRawData = dataService.QueryDhwlData();
+            var dailyRawFullData = dataService.QueryDhwlData();
 
-            //var json = JsonConvert.SerializeObject(dailyRawData, Formatting.Indented);
+            //var json = JsonConvert.SerializeObject(dailyRawFullData, Formatting.Indented);
             //File.WriteAllText($"{AppConfigService.Config.Path}/DailyRawData.json", json);
-            //var json = File.ReadAllText("Templates/RawData-09.json");
-            //var dailyRawData = JsonConvert.DeserializeObject<DataTable>(json);
+            //var json = File.ReadAllText("Templates/RawData-16.json");
+            //var dailyRawFullData = JsonConvert.DeserializeObject<DataTable>(json);
 
-            var cloneData = baseDataTable.Clone(dailyRawData);
+            var dailyRawData = baseDataTable.ThousandScale(dailyRawFullData);
+            var cloneData = baseDataTable.Clone(dailyRawFullData);
             var cloneDataDhwl = baseDataTable.Clone(dailyRawData);
             var fromDate = dateTimeServiceProvider.DateTime.FromDate;
             var toDate = dateTimeServiceProvider.DateTime.ToDate;
 
             webhookDataService.Execute(toDate, dailyRawData);
 
-            var previousRawData = dataService.QueryDhwlDataPreviousYear();
+            var previousRawData = baseDataTable.ThousandScale(dataService.QueryDhwlDataPreviousYear());
             var previousRawDataDeposit = previousRawData.AsEnumerable().Where(s => Convert.ToBoolean(s["IsDeposit"]))
                 .CopyToDataTable();
             var previousRawDataCredit = previousRawData.AsEnumerable().Where(s => !Convert.ToBoolean(s["IsDeposit"]))
                 .CopyToDataTable();
-            var dailyRawDataDeposit = dailyRawData.Rows.Count > 0
-                ? dailyRawData.AsEnumerable().Where(s => Convert.ToBoolean(s["IsDeposit"])).CopyToDataTable()
-                : dailyRawData;
-            var dailyRawDataCredit = dailyRawData.Rows.Count > 0
+            var dailyRawDataDeposit =
+                dailyRawData.AsEnumerable().Any(s => Convert.ToBoolean(s["IsDeposit"]))
+                    ? dailyRawData.AsEnumerable().Where(s => Convert.ToBoolean(s["IsDeposit"])).CopyToDataTable()
+                    : dailyRawData.Clone();
+            var dailyRawDataCredit = dailyRawData.AsEnumerable().Any(s => !Convert.ToBoolean(s["IsDeposit"]))
                 ? dailyRawData.AsEnumerable().Where(s => !Convert.ToBoolean(s["IsDeposit"])).CopyToDataTable()
-                : dailyRawData;
+                : dailyRawData.Clone();
 
             excelRawService.Export(dailyRawData, "Daily", fromDate, toDate);
             var excelPath = excelDailyService.Export(cloneData);
