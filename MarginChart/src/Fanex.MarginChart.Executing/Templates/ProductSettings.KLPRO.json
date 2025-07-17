@@ -1,0 +1,38 @@
+﻿[
+  {
+    "LetstalkGroup": "DHWL-Soccer-Margin",
+    "ProductCategory": "Soccer",
+    "Subject": "DHWL-Soccer",
+    "HeaderChart": "Daily Soccer House Turnover & Margin",
+    "GroupName": "SOCCER MARGIN",
+    "AxisXIntervalTurnover": 100,
+    "AxisY2IntervalMargin": 0.01,
+    "ConvertValue": 1000000,
+    "IsChartAttachment": true,
+    "ReportID": "ReportID #05"
+  },
+  {
+    "LetstalkGroup": "DHWL-OS-Margin",
+    "ProductCategory": "OtherSport",
+    "Subject": "DHWL-Other Sports",
+    "HeaderChart": "Daily Other Sports House Turnover & Margin",
+    "GroupName": "OTHER SPORTS MARGIN",
+    "AxisXIntervalTurnover": 5,
+    "AxisY2IntervalMargin": 0.01,
+    "ConvertValue": 1000000,
+    "IsChartAttachment": true,
+    "ReportID": "ReportID #06"
+  },
+  {
+    "LetstalkGroup": "DHWL-Non-Sport-Margin",
+    "ProductCategory": "NonSport",
+    "Subject": "DHWL-Non Sports",
+    "HeaderChart": "Daily Non Sport House Turnover & Margin",
+    "GroupName": "NON-SPORTS MARGIN",
+    "AxisXIntervalTurnover": 5,
+    "AxisY2IntervalMargin": 0.01,
+    "ConvertValue": 1000000,
+    "IsChartAttachment": true,
+    "ReportID": "ReportID #07"
+  }
+]

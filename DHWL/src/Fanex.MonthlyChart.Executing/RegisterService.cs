@@ -12,6 +12,7 @@ using Fanex.DHWL.Business.Services.MonthlyReconciliation;
 using Fanex.LetstalkService.Client;
 using Fanex.Logging;
 using Fanex.Logging.Sentry.RavenClient;
+using Fanex.Mattermost.Client;
 using Newtonsoft.Json;
 using OfficeOpenXml;
 using SharpRaven;
@@ -27,6 +28,8 @@ namespace Fanex.MonthlyChart.Executing
 {
     public static class RegisterService
     {
+        public static Container Container { get; set; }
+
         public static void RegisterServices()
         {
             LoadConfig();
@@ -45,6 +48,8 @@ namespace Fanex.MonthlyChart.Executing
                 JsonConvert.DeserializeObject<Dictionary<int, ChartAreasPosition>>(text);
 
             LetstalkApi.Config.LetstalkServiceApi = AppConfigService.Config.LetstalkServiceApi;
+            Mattermost.Client.AppConfigService.Config.MattermostServiceApi =
+                AppConfigService.Config.Mattermost.MattermostUrl;
         }
 
         public static void RegisterContainer(Container container)
@@ -55,7 +60,7 @@ namespace Fanex.MonthlyChart.Executing
             container.Register<DataService, DataServiceImp>();
             container.Register<MonthlyChartNotificationService, MonthlyChartNotificationServiceImp>();
             container.Register(() => new ExcelPackage());
-            container.Register<ExcelRawService, ExcelRawServiceImp>();
+            container.Register<ExcelRawService, ExcelRawServiceImp>(Lifestyle.Transient);
             container.Register<DailyExcelService, DailyExcelServiceImp>();
             container.Register<ImageService, ImageServiceImp>();
             container.Register<MessageService, MessageServiceImp>();
@@ -84,6 +89,7 @@ namespace Fanex.MonthlyChart.Executing
             container.Register<MergeProductDataService, MergeProductDataServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
+            container.Register<MattermostClientService, MattermostClientServiceImp>();
         }
 
         private static void SentryRegister()

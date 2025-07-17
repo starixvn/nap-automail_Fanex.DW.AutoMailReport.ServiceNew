@@ -1,0 +1,50 @@
+﻿{
+  "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@http://sentry-stklprod-ovs.ops-klprod.gamora.prod/60",
+  "CategorySentryLog": "NAP-Report-Service",
+  "LetstalkServiceApi": "http://napmailletstalk.starix-klprod.gamora.prod/",
+  "Mattermost": {
+    "MattermostUrl": "http://mattermost-synergy.starix-klprod.gamora.prod/",
+    "Channels": {
+      "PrePROD": {
+        "ChannelName": "DailyPerformanceUAT",
+        "ChannelId": "5kshwbydcpb3fk6jq1mcza1igo"
+      },
+      "PROD": {
+        "ChannelName": "DWHL",
+        "ChannelId": "8oqb65k6wbncunxtfycnuwzz6e"
+      }
+    }
+  },
+  "Webhook": {
+    "WebhookUrl": "https://api.nx.starix.work/nx-report-submission",
+    "WebhookHeaderKey": "robert-number-one-token",
+    "WebhookToken": "vDt8llIE1KDUMvZch80vBoYSulTfTLl42k2WB36tS6rbs6kEUuFIB00IOXdaSpi4",
+    "IsEnabled": false,
+    "UseProxy": true,
+    "ProxyUrl": "http://iusqd.gamora.prod:8801"
+  },
+  "IsCheckEnoughData": false,
+  "ReportType": "Daily",
+  "FromDate": "2025-06-01",
+  "ToDate": "2025-06-17",
+  "Path": "\\\\10.148.58.137\\Data.Web\\Fanex.Excel\\DHWL-PRE",
+  "Password": "Star168",
+  "TargetName": "daily-house-wl",
+  "LetstalkGroup": "DWHL-PRO",
+  "ProductList": "All",
+  "DataMode": 1,
+  "PerformanceThreshold": 650000,
+  "MailIdJsonPerfReport": 0,
+  "LetstalkGroups": {
+    "Image": {
+      "Group": "DWHL-PRO",
+      "InternalPath": "\\\\10.148.58.137\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0505\\2-DHWL-Daily",
+      "MailId": 0
+    },
+    "Excel": {
+      "Group": "",
+      "InternalPath": "\\\\10.148.58.137\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0505\\2-DHWL-Excel-Daily",
+      "MailId": 391
+    }
+  }
+}

@@ -20,6 +20,8 @@ namespace Fanex.Letstalk.OneTime.Executing
 {
     public static class RegisterService
     {
+        public static Container Container { get; set; }
+
         public static void RegisterServices()
         {
             ConfigureFanexData();
@@ -39,6 +41,7 @@ namespace Fanex.Letstalk.OneTime.Executing
 
         public static void RegisterContainer(Container container)
         {
+            Container = container;
             container.Register<Log, LogImp>();
             container.Register<OneTimeNotificationService, OneTimeNotificationServiceImp>();
             container.Register<MessageService, MessageServiceImp>();

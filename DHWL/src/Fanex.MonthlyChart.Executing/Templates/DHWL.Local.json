@@ -4,8 +4,16 @@
   "LetstalkServiceApi": "http://napmailletstalk.nexdev.net/",
   "Mattermost": {
     "MattermostUrl": "http://mattermost-service.nexdev.net/",
-    "ChannelId": "5uadwig1ojniiyoyrthoest5fo",
-    "ChannelName": "robert-test"
+    "Channels": {
+      "PrePROD": {
+        "ChannelName": "robert-test",
+        "ChannelId": "5uadwig1ojniiyoyrthoest5fo"
+      },
+      "PROD": {
+        "ChannelName": "robert-test",
+        "ChannelId": "5uadwig1ojniiyoyrthoest5fo"
+      }
+    }
   },
   "IsCheckEnoughData": true,
   "ReportType": "Monthly",

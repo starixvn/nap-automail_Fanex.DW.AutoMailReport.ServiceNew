@@ -6,12 +6,12 @@
     "MattermostUrl": "http://mattermost-synergy.starix-prod.nebula.prod",
     "Channels": {
       "PrePROD": {
-        "ChannelName": "DHWL - Test",
-        "ChannelId": "pe1t3yrwpbnitpdddc8opjw8tr"
+        "ChannelName": "DailyPerformanceUAT",
+        "ChannelId": "5kshwbydcpb3fk6jq1mcza1igo"
       },
       "PROD": {
-        "ChannelName": "DHWL - Test",
-        "ChannelId": "pe1t3yrwpbnitpdddc8opjw8tr"
+        "ChannelName": "DWHL",
+        "ChannelId": "8oqb65k6wbncunxtfycnuwzz6e"
       }
     }
   },

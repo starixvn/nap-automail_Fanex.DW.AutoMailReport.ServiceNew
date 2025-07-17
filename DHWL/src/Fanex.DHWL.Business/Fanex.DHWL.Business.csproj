@@ -100,8 +100,8 @@
       <HintPath>..\..\..\packages\Fanex.MailStation.Core.1.0.3\lib\net461\Fanex.MailDelivery.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.Mattermost.Client, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Fanex.Mattermost.Client.1.0.4\lib\net461\Fanex.Mattermost.Client.dll</HintPath>
+    <Reference Include="Fanex.Mattermost.Client, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Fanex.Mattermost.Client.1.0.6\lib\net461\Fanex.Mattermost.Client.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Service.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Fanex.Service.Core.1.0.0.2\lib\Fanex.Service.Core.dll</HintPath>

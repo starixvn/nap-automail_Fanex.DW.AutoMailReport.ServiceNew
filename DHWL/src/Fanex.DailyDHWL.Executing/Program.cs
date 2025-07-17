@@ -1,7 +1,5 @@
-﻿using Fanex.DHWL.Business.Services;
-using Newtonsoft.Json;
-using SimpleInjector;
-using System;
+﻿using Fanex.DailyDHWL.Executing.Services;
+using Topshelf;
 
 namespace Fanex.DailyDHWL.Executing
 {
@@ -9,17 +7,19 @@ namespace Fanex.DailyDHWL.Executing
     {
         private static void Main()
         {
-            RegisterService.RegisterServices();
-            Container container = new Container();
-            RegisterService.RegisterContainer(container);
-            container.Verify(VerificationOption.VerifyOnly);
+            HostFactory.Run(x =>
+            {
+                x.Service<DHWLService>(s =>
+                {
+                    s.ConstructUsing(name => new DHWLService());
+                    s.WhenStarted(tc => tc.Start());
+                    s.WhenStopped(tc => tc.Stop());
+                });
 
-            var service = container.GetInstance<DailyDHWLNotificationService>();
-            var jobMessage = service.Execute();
-            var json = JsonConvert.SerializeObject(jobMessage);
-
-            Console.Write(json);
-            Environment.Exit(0);
+                x.SetDescription("Fanex.DailyDHWL.Executing Host");
+                x.SetDisplayName("Fanex.DailyDHWL.Executing");
+                x.SetServiceName("Fanex.DailyDHWL.Executing");
+            });
         }
     }
 }

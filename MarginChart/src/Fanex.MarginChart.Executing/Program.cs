@@ -1,7 +1,5 @@
-﻿using Fanex.MarginChart.Business.Services;
-using Newtonsoft.Json;
-using SimpleInjector;
-using System;
+﻿using Fanex.MarginChart.Executing.Services;
+using Topshelf;
 
 namespace Fanex.MarginChart.Executing
 {
@@ -9,17 +7,19 @@ namespace Fanex.MarginChart.Executing
     {
         private static void Main()
         {
-            RegisterService.RegisterServices();
-            Container container = new Container();
-            RegisterService.RegisterContainer(container);
-            container.Verify(VerificationOption.VerifyOnly);
+            HostFactory.Run(x =>
+            {
+                x.Service<MarginChartService>(s =>
+                {
+                    s.ConstructUsing(name => new MarginChartService());
+                    s.WhenStarted(tc => tc.Start());
+                    s.WhenStopped(tc => tc.Stop());
+                });
 
-            var service = container.GetInstance<DailyMarginChartNotificationService>();
-            var jobMessage = service.Execute();
-            var json = JsonConvert.SerializeObject(jobMessage);
-
-            Console.Write(json);
-            Environment.Exit(0);
+                x.SetDescription("Fanex.MarginChart.Service Host");
+                x.SetDisplayName("Fanex.MarginChart.Service");
+                x.SetServiceName("Fanex.MarginChart.Service");
+            });
         }
     }
 }

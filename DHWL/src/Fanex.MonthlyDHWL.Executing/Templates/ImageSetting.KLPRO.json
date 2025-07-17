@@ -1,0 +1,32 @@
+﻿{
+  "DHWL": {
+    "FirstRow": 2,
+    "FirstColumn": 2,
+    "LastColumn": 17,
+    "CropWidth": 2170,
+    "ImageName": "Monthly-Monthly",
+    "SheetName": "Letstalk",
+    "X": 190,
+    "Y": 200,
+    "IsResize": false,
+    "ResizeNewWidth": 800,
+    "ImageQuality": 100,
+    "HeightPerRow": 85,
+    "AdjustHeight": 0
+  },
+  "Adjustment": {
+    "FirstRow": 2,
+    "FirstColumn": 23,
+    "LastColumn": 25,
+    "CropWidth": 1420,
+    "ImageName": "Adj",
+    "SheetName": "Letstalk",
+    "X": 190,
+    "Y": 190,
+    "IsResize": false,
+    "ResizeNewWidth": 800,
+    "ImageQuality": 100,
+    "HeightPerRow": 80,
+    "AdjustHeight": 0
+  }
+}

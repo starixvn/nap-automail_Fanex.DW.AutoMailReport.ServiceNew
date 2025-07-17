@@ -3,9 +3,17 @@
   "CategorySentryLog": "NAP-Report-Service",
   "LetstalkServiceApi": "http://napmailletstalk.starixplay.com/",
   "Mattermost": {
-    "MattermostUrl": "http://mattermost-synergy.starix-uat.nebula.prod",
-    "ChannelId": "5kshwbydcpb3fk6jq1mcza1igo",
-    "ChannelName": "Daily-Performance-UAT"
+    "MattermostUrl": "http://mattermost-synergy.starix-prod.nebula.prod",
+    "Channels": {
+      "PrePROD": {
+        "ChannelName": "DailyPerformanceUAT",
+        "ChannelId": "5kshwbydcpb3fk6jq1mcza1igo"
+      },
+      "PROD": {
+        "ChannelName": "DWHL",
+        "ChannelId": "8oqb65k6wbncunxtfycnuwzz6e"
+      }
+    }
   },
   "IsCheckEnoughData": true,
   "ReportType": "Monthly",

@@ -27,6 +27,8 @@ namespace Fanex.DailyDHWL.Executing
 {
     public static class RegisterService
     {
+        public static Container Container { get; set; }
+
         public static void RegisterServices()
         {
             try
@@ -68,7 +70,7 @@ namespace Fanex.DailyDHWL.Executing
             container.Register<DataService, DataServiceImp>();
             container.Register<DailyDHWLNotificationService, DailyDHWLNotificationServiceImp>();
             container.Register(() => new ExcelPackage());
-            container.Register<ExcelRawService, ExcelRawServiceImp>();
+            container.Register<ExcelRawService, ExcelRawServiceImp>(Lifestyle.Transient);
             container.Register<DailyExcelService, DailyExcelServiceImp>();
             container.Register<ImageService, ImageServiceImp>();
             container.Register<MessageService, MessageServiceImp>();

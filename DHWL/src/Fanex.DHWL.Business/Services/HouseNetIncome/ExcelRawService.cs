@@ -1,4 +1,4 @@
-﻿using OfficeOpenXml;
+using OfficeOpenXml;
 using System;
 using System.Data;
 using System.IO;
@@ -12,27 +12,57 @@ namespace Fanex.DHWL.Business.Services.HouseNetIncome
 
     public class ExcelRawServiceImp : ExcelRawService
     {
-        private ExcelPackage excelPackage;
         private readonly DateTimeServiceProvider dateService;
 
-        public ExcelRawServiceImp(
-            ExcelPackage excelPackage,
-            DateTimeServiceProvider dateService)
+        public ExcelRawServiceImp(DateTimeServiceProvider dateService)
         {
-            this.excelPackage = excelPackage;
             this.dateService = dateService;
         }
 
         public string Export(DataTable dailyRawData, string fileName, DateTime fromdate, DateTime todate)
         {
-            excelPackage = new ExcelPackage(new FileInfo($"Templates/DHWL-RawData.xlsx"));
-            var template = excelPackage.Workbook.Worksheets["DHWL-RawData"];
-            template.Cells["B5"].LoadFromDataTable(dailyRawData, true);
+            var templatePath = $"Templates/DHWL-RawData.xlsx";
 
-            RenderTitle(template, fromdate, todate);
-            RenderData(dailyRawData, template);
+            if (!File.Exists(templatePath))
+            {
+                throw new FileNotFoundException($"Template file not found: {templatePath}");
+            }
 
-            return Save(fileName);
+            ExcelPackage excelPackage = null;
+            try
+            {
+                excelPackage = new ExcelPackage(new FileInfo(templatePath));
+
+                if (excelPackage.Workbook == null)
+                {
+                    throw new InvalidOperationException("Excel workbook is null");
+                }
+
+                var template = excelPackage.Workbook.Worksheets["DHWL-RawData"];
+
+                if (template == null)
+                {
+                    throw new InvalidOperationException("Worksheet 'DHWL-RawData' not found in template");
+                }
+
+                template.Cells["B5"].LoadFromDataTable(dailyRawData, true);
+
+                RenderTitle(template, fromdate, todate);
+                RenderData(dailyRawData, template);
+
+                return Save(excelPackage, fileName);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"Error in ExcelRawService.Export: {ex.Message}", ex);
+            }
+            finally
+            {
+                if (excelPackage != null)
+                {
+                    excelPackage.Dispose();
+                }
+            }
         }
 
         private void RenderData(DataTable dailyRawData, ExcelWorksheet template)
@@ -62,7 +92,7 @@ namespace Fanex.DHWL.Business.Services.HouseNetIncome
             }
         }
 
-        private string Save(string fileName)
+        private string Save(ExcelPackage excelPackage, string fileName)
         {
             var date = dateService.DateTime.ToDate;
             var filename = $"{fileName} - RAW House Income - {date:yyyyMMdd}.xlsx";

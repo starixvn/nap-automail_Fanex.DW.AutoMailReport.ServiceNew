@@ -1,0 +1,16 @@
+﻿{
+  "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@http://sentry-stklprod-ovs.ops-klprod.gamora.prod/60",
+  "CategorySentryLog": "NAP-Report-Service",
+  "LetstalkServiceApi": "http://napmailletstalk.starix-klprod.gamora.prod/",
+  "IsCheckEnoughData": true,
+  "ReportType": "Daily",
+  "FromDate": "2021-01-01",
+  "ToDate": "2021-01-12",
+  "Path": "\\\\10.148.58.137\\Data.Web\\Fanex.Excel\\NEW-MarginChart",
+  "InternalPath": "\\\\10.148.58.137\\Data.Web\\Fanex.Excel\\LetstalkOneTime\\InternalOneTime-0500\\5",
+  "Password": "Star168",
+  "TargetName": "daily-house-wl",
+  "IsSentDirectly": false,
+  "ProductList": "All",
+  "DataMode": 1
+}
