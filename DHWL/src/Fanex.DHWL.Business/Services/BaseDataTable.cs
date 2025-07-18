@@ -13,7 +13,7 @@ namespace Fanex.DHWL.Business.Services
 
         DataTable CombineAllInOneTable(DataSet dataSet);
 
-        DataTable ThousandScale(DataTable source);
+        DataTable ThousandScale(DataTable source, int startScaleCol);
     }
 
     public class BaseDataTableImp : BaseDataTable
@@ -75,15 +75,16 @@ namespace Fanex.DHWL.Business.Services
             return result;
         }
 
-        public DataTable ThousandScale(DataTable source)
+        public DataTable ThousandScale(DataTable source, int startScaleCol)
         {
-            var result = source.Clone();
-            foreach (DataRow row in source.Rows)
+            var sourceClone = Clone(source);
+            var result = sourceClone.Clone();
+            foreach (DataRow row in sourceClone.Rows)
             {
                 var colIndex = 0;
-                foreach (DataColumn column in source.Columns)
+                foreach (DataColumn column in sourceClone.Columns)
                 {
-                    if (colIndex > 9)
+                    if (colIndex >= startScaleCol)
                     {
                         if (decimal.TryParse(row[column].ToString(), out var value))
                         {

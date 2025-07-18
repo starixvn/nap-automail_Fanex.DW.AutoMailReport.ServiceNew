@@ -1,11 +1,9 @@
 ﻿using Fanex.DHWL.Business.Models;
 using Fanex.DHWL.Business.Services.MonthlyChart;
 using Fanex.MailDelivery.Core.Models;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.IO;
 using System.Linq;
 
 namespace Fanex.DHWL.Business.Services
@@ -24,19 +22,22 @@ namespace Fanex.DHWL.Business.Services
         private readonly FileService fileService;
 
         private readonly MonthlyChartExport chartExport;
+        private readonly BaseDataTable baseDataTable;
 
         public MonthlyChartNotificationServiceImp(
             Log log,
             DataService dataService,
             MessageService messageService,
             FileService fileService,
-            MonthlyChartExport chartExport)
+            MonthlyChartExport chartExport,
+            BaseDataTable baseDataTable)
         {
             this.log = log;
             this.dataService = dataService;
             this.messageService = messageService;
             this.fileService = fileService;
             this.chartExport = chartExport;
+            this.baseDataTable = baseDataTable;
         }
 
         public JobMessage Execute()
@@ -88,10 +89,11 @@ namespace Fanex.DHWL.Business.Services
             //File.WriteAllText($"{AppConfigService.Config.Path}/RawData-Monthly-Chart-05.json", json);
             //var json = File.ReadAllText("Templates/RawData-Monthly-Chart-05.json");
             //var monthlyRawData = JsonConvert.DeserializeObject<DataTable>(json);
+            var monthlyRawDataScaled = baseDataTable.ThousandScale(monthlyRawData, 11);
 
-            var chartPathCreditOnly = chartExport.Export(monthlyRawData, DepositType.CreditOnly);
-            var chartPathDepositOnly = chartExport.Export(monthlyRawData, DepositType.DepositOnly);
-            var chartPathAll = chartExport.Export(monthlyRawData, DepositType.All);
+            var chartPathCreditOnly = chartExport.Export(monthlyRawDataScaled, DepositType.CreditOnly);
+            var chartPathDepositOnly = chartExport.Export(monthlyRawDataScaled, DepositType.DepositOnly);
+            var chartPathAll = chartExport.Export(monthlyRawDataScaled, DepositType.All);
             var images = new List<string>
             {
                 chartPathCreditOnly,

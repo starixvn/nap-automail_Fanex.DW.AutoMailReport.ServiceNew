@@ -129,7 +129,7 @@ namespace Fanex.DHWL.Business.Services
             //var json = File.ReadAllText("Templates/RawData-16.json");
             //var dailyRawFullData = JsonConvert.DeserializeObject<DataTable>(json);
 
-            var dailyRawData = baseDataTable.ThousandScale(dailyRawFullData);
+            var dailyRawData = baseDataTable.ThousandScale(dailyRawFullData, 10);
             var cloneData = baseDataTable.Clone(dailyRawFullData);
             var cloneDataDhwl = baseDataTable.Clone(dailyRawData);
             var fromDate = dateTimeServiceProvider.DateTime.FromDate;
@@ -137,7 +137,7 @@ namespace Fanex.DHWL.Business.Services
 
             webhookDataService.Execute(toDate, dailyRawData);
 
-            var previousRawData = baseDataTable.ThousandScale(dataService.QueryDhwlDataPreviousYear());
+            var previousRawData = baseDataTable.ThousandScale(dataService.QueryDhwlDataPreviousYear(), 10);
             var previousRawDataDeposit = previousRawData.AsEnumerable().Where(s => Convert.ToBoolean(s["IsDeposit"]))
                 .CopyToDataTable();
             var previousRawDataCredit = previousRawData.AsEnumerable().Where(s => !Convert.ToBoolean(s["IsDeposit"]))

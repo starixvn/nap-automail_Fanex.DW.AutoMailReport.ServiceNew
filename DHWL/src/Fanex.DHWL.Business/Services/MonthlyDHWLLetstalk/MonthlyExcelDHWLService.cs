@@ -13,7 +13,8 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
 {
     public interface MonthlyExcelDHWLService
     {
-        string Export(DataTable monthlyRawData, DataTable dataReconciliation, DataTable dataBA, int reportId);
+        string Export(DataTable monthlyRawData, DataTable dataReconciliation, DataTable dataBA, int reportId,
+            bool isScaledThousand);
 
         int LastRowIndex { get; set; }
 
@@ -55,7 +56,8 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             this.excelMarginHedgingSpecialService = excelMarginHedgingSpecialService;
         }
 
-        public string Export(DataTable monthlyRawData, DataTable dataReconciliation, DataTable dataBa, int reportId)
+        public string Export(DataTable monthlyRawData, DataTable dataReconciliation, DataTable dataBa, int reportId,
+            bool isScaledThousand)
         {
             var dataDhwl = dataDhwlService.CalTotalByProduct(monthlyRawData);
 
@@ -80,7 +82,7 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             reportId++;
             RenderMtdMarginHedgingSpecial(monthlyRawData, marginHedgingSpecialSheet, reportId);
 
-            return Save(template);
+            return Save(template, isScaledThousand);
         }
 
         private void RenderDataGroup1(string loadDataAtCell, List<MonthlyDHWLModel> dataDhwl, ExcelWorksheet template,
@@ -265,14 +267,15 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
             LastAdjustmentRowIndex = 8;
         }
 
-        private string Save(ExcelWorksheet template)
+        private string Save(ExcelWorksheet template, bool isScaledThousand)
         {
             var hideCols = new List<int> { 4, 5, 6, 7, 11, 12, 13, 14, 18, 19, 20, 21 };
             hideCols.ForEach(col => { template.Column(col).Hidden = true; });
 
             var date = dateService.DateTime.ToDate;
-            var fileName =
-                $"Monthly_HWL_Report_and_Licensee_Rebate_&_Discount_Data_Soft_Copy_Files_For_{date:yyyy_MM}.xlsx";
+            var fileName = isScaledThousand
+                ? $"Monthly_HWL_Report_and_Licensee_Rebate_&_Discount_Data_Soft_Copy_Files_For_{date:yyyy_MM}_Scaled.xlsx"
+                : $"Monthly_HWL_Report_and_Licensee_Rebate_&_Discount_Data_Soft_Copy_Files_For_{date:yyyy_MM}.xlsx";
 
             var path = $@"{AppConfigService.Config.Path}\{date:yyyy}\{date:MM}";
             if (!Directory.Exists(path))
