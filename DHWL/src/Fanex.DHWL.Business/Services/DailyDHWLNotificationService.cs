@@ -5,6 +5,7 @@ using Fanex.DHWL.Business.Services.HouseNetIncome;
 using Fanex.DHWL.Business.Services.Margin;
 using Fanex.DHWL.Business.Services.Webhook;
 using Fanex.MailDelivery.Core.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -174,6 +175,7 @@ namespace Fanex.DHWL.Business.Services
 
             var imageDhwlPath = imageDhwlService.Export(cloneDataDhwl, grandTotalForDaily, grandTotalForMtd);
             var chartPath = chartExport.Export(dailyRawData, previousRawData, "DHWL", "DHWL-Chart");
+
             var chartPathCredit = chartExport.Export(dailyRawDataCredit, previousRawDataCredit, "CREDIT DHWL",
                 "CREDIT-DHWL-Chart");
             var chartPathDeposit = chartExport.Export(dailyRawDataDeposit, previousRawDataDeposit, "LICENSEE DHWL",
@@ -190,6 +192,7 @@ namespace Fanex.DHWL.Business.Services
                 chartPathDeposit
             };
 
+            LogData(dailyRawData, previousRawData);
             CopyFiles(excelPath, images);
             var status = messageService.SendMessage(images, AppConfigService.Config.LetstalkGroup);
 
@@ -203,6 +206,16 @@ namespace Fanex.DHWL.Business.Services
                 Message = string.Join(Environment.NewLine, errFile),
                 Success = errFile.Count == 0
             };
+        }
+
+        private void LogData(DataTable dailyRawData, DataTable previousRawData)
+        {
+            var folderPath = $"{AppConfigService.Config.Path}/{DateTime.Now:yyyyMMdd}";
+            Directory.CreateDirectory(folderPath);
+            var json = JsonConvert.SerializeObject(dailyRawData, Formatting.Indented);
+            File.WriteAllText($"{folderPath}/DailyRawData_{DateTime.Now:yyyyMMdd}.json", json);
+            json = JsonConvert.SerializeObject(previousRawData, Formatting.Indented);
+            File.WriteAllText($"{folderPath}/PreviousRawData_{DateTime.Now:yyyyMMdd}.json", json);
         }
 
         private void CopyFiles(string dhwlExcelPath, List<string> images)

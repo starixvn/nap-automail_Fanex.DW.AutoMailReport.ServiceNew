@@ -1,8 +1,7 @@
 ﻿using Fanex.LetstalkService.Client;
 using Fanex.LetstalkService.Core.Models;
 using Fanex.LetstalkService.Core.Services;
-using Fanex.Mattermost.Client;
-using Fanex.Mattermost.Client.Models;
+using Fanex.RocketChat.Client;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -19,14 +18,17 @@ namespace Fanex.DHWL.Business.Services
     public class MessageServiceImp : MessageService
     {
         private readonly LetstalkClientService letstalkService;
-        private readonly MattermostClientService mattermostService;
+        private readonly RocketChatClientService rocketChatService;
+        private readonly Log log;
 
         public MessageServiceImp(
             LetstalkClientService letstalkService,
-            MattermostClientService mattermostService)
+            RocketChatClientService rocketChatService,
+            Log log)
         {
             this.letstalkService = letstalkService;
-            this.mattermostService = mattermostService;
+            this.rocketChatService = rocketChatService;
+            this.log = log;
         }
 
         public Dictionary<string, bool> SendMessage(List<string> imagePaths, string letstalkGroup)
@@ -52,27 +54,8 @@ namespace Fanex.DHWL.Business.Services
                 result.Add(new FileInfo(image).Name, status);
             });
 
-            _ = SendMessageToMattermost(imagePaths);
+            _ = SendMessageToRocketChat(imagePaths);
 
-            return result;
-        }
-
-        private async Task<bool> SendMessageToMattermost(List<string> images)
-        {
-            var files = images.Select(image => new FileModel
-            {
-                FileName = new FileInfo(image).Name,
-                FileBytes = File.ReadAllBytes(image),
-                MediaType = MediaType.Image,
-            }).ToList();
-
-            var matterMostChannel = AppConfigService.Config.Mattermost.Channels["PrePROD"];
-            var messageRequest = new MessageRequest
-            {
-                ChannelId = matterMostChannel.ChannelId,
-                Files = files,
-            };
-            var result = await mattermostService.Send(messageRequest);
             return result;
         }
 
@@ -95,6 +78,30 @@ namespace Fanex.DHWL.Business.Services
                 Subject = string.Empty,
                 Content = string.Empty
             };
+        }
+
+        private Task SendMessageToRocketChat(List<string> images)
+        {
+            var files = images.Select(image => new RocketChat.Client.Models.FileModel
+            {
+                FileName = new FileInfo(image).Name,
+                FileBytes = File.ReadAllBytes(image),
+                MediaType = RocketChat.Client.Models.MediaType.Image
+            }).ToList();
+
+            AppConfigService.Config.RocketChat.Channels.ToList().ForEach(channel =>
+            {
+                var channelName = channel.Value.ChannelName;
+                var messageRequest = new RocketChat.Client.Models.MessageRequest
+                {
+                    ChannelName = channelName,
+                    Files = files,
+                };
+
+                rocketChatService.Send(messageRequest);
+            });
+
+            return Task.CompletedTask;
         }
     }
 }

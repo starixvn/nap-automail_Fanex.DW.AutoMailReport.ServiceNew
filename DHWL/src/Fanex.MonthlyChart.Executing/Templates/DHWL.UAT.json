@@ -2,16 +2,12 @@
   "SentryClientKey": "http://612764957dbb46ffa359103d8ffa08c6@http://sentry-stklprod-ovs.ops-klprod.gamora.prod/59",
   "CategorySentryLog": "NAP-Report-Service-UAT",
   "LetstalkServiceApi": "http://napmailletstalk.starix-klprod.gamora.prod/",
-  "Mattermost": {
-    "MattermostUrl": "http://mattermost-synergy.starix-klprod.gamora.prod/",
+  "RocketChat": {
+    "RocketChatUrl": "http://rocketchat-synergy.starix-klprod.gamora.prod",
     "Channels": {
       "PrePROD": {
-        "ChannelName": "DHWL - Test",
-        "ChannelId": "pe1t3yrwpbnitpdddc8opjw8tr"
-      },
-      "PROD": {
-        "ChannelName": "DHWL - Test",
-        "ChannelId": "pe1t3yrwpbnitpdddc8opjw8tr"
+        "ChannelName": "DHWL-Test",
+        "ChannelId": "-"
       }
     }
   },

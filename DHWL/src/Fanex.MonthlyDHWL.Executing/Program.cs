@@ -15,10 +15,6 @@ namespace Fanex.MonthlyDHWL.Executing
                     s.WhenStarted(tc => tc.Start());
                     s.WhenStopped(tc => tc.Stop());
                 });
-
-                x.SetDescription("Fanex.MonthlyDHWL.Executing Host");
-                x.SetDisplayName("Fanex.MonthlyDHWL.Executing");
-                x.SetServiceName("Fanex.MonthlyDHWL.Executing");
             });
         }
     }

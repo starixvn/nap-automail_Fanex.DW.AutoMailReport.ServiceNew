@@ -12,7 +12,7 @@ using Fanex.DHWL.Business.Services.MonthlyReconciliation;
 using Fanex.LetstalkService.Client;
 using Fanex.Logging;
 using Fanex.Logging.Sentry.RavenClient;
-using Fanex.Mattermost.Client;
+using Fanex.RocketChat.Client;
 using Newtonsoft.Json;
 using OfficeOpenXml;
 using SharpRaven;
@@ -52,8 +52,9 @@ namespace Fanex.MonthlyDHWL.Executing
                 JsonConvert.DeserializeObject<Dictionary<string, ImageProperty>>(text);
 
             LetstalkApi.Config.LetstalkServiceApi = AppConfigService.Config.LetstalkServiceApi;
-            Mattermost.Client.AppConfigService.Config.MattermostServiceApi =
-                AppConfigService.Config.Mattermost.MattermostUrl;
+
+            RocketChat.Client.AppConfigService.Config.RocketChatServiceApi =
+                AppConfigService.Config.RocketChat.RocketChatUrl;
         }
 
         public static void RegisterContainer(Container container)
@@ -93,7 +94,7 @@ namespace Fanex.MonthlyDHWL.Executing
             container.Register<MergeProductDataService, MergeProductDataServiceImp>();
 
             container.Register<LetstalkClientService, LetstalkClientServiceImp>();
-            container.Register<MattermostClientService, MattermostClientServiceImp>();
+            container.Register<RocketChatClientService, RocketChatClientServiceImp>();
         }
 
         private static void SentryRegister()
