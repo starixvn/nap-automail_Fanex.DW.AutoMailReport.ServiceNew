@@ -11,7 +11,8 @@ namespace Fanex.MarginChart.Business.Services
 {
     public interface ChartService
     {
-        string ExportDailyChart(ProductGroup productGroup, string type, Dictionary<int, double> winloss, Dictionary<int, double> turnover);
+        string ExportDailyChart(ProductGroup productGroup, string type, Dictionary<int, double> winloss,
+            Dictionary<int, double> turnover);
     }
 
     public class ChartServiceImp : ChartService
@@ -33,7 +34,8 @@ namespace Fanex.MarginChart.Business.Services
             this.formatService = formatService;
         }
 
-        public string ExportDailyChart(ProductGroup productGroup, string type, Dictionary<int, double> winloss, Dictionary<int, double> turnover)
+        public string ExportDailyChart(ProductGroup productGroup, string type, Dictionary<int, double> winloss,
+            Dictionary<int, double> turnover)
         {
             var font = new Font("Tahoma", 14);
             var turnoverChart = "Turnover";
@@ -82,7 +84,8 @@ namespace Fanex.MarginChart.Business.Services
             return path;
         }
 
-        private void AssignDataToCharts(Dictionary<int, double> winlost, Dictionary<int, double> turnover, string turnoverChart, string marginChart, Chart chart)
+        private void AssignDataToCharts(Dictionary<int, double> winlost, Dictionary<int, double> turnover,
+            string turnoverChart, string marginChart, Chart chart)
         {
             foreach (var month in turnover)
             {
@@ -117,7 +120,7 @@ namespace Fanex.MarginChart.Business.Services
             chart.Series[turnoverChart].Color = turnoverColorColumnChart;
             chart.Series[turnoverChart].IsVisibleInLegend = true;
             chart.Series[turnoverChart].IsValueShownAsLabel = false;
-            chart.Series[turnoverChart].LabelFormat = "#,##0.0m";
+            chart.Series[turnoverChart].LabelFormat = "#,##0.0k";
             chart.Series[turnoverChart].BorderWidth = 1;
             chart.Series[turnoverChart].Font = font;
         }
@@ -149,11 +152,13 @@ namespace Fanex.MarginChart.Business.Services
 
             var positions = AppConfigService.Config.AreasPosition;
             var position = positions[numberofDays];
-            chart.ChartAreas[0].InnerPlotPosition = new ElementPosition(position.InnerPlotPosition.X, position.InnerPlotPosition.Y, position.InnerPlotPosition.Width, position.InnerPlotPosition.Height);
-            chart.ChartAreas[0].Position = new ElementPosition(position.Position.X, position.Position.Y, position.Position.Width, position.Position.Height);
+            chart.ChartAreas[0].InnerPlotPosition = new ElementPosition(position.InnerPlotPosition.X,
+                position.InnerPlotPosition.Y, position.InnerPlotPosition.Width, position.InnerPlotPosition.Height);
+            chart.ChartAreas[0].Position = new ElementPosition(position.Position.X, position.Position.Y,
+                position.Position.Width, position.Position.Height);
 
             chart.ChartAreas[0].AxisY.IsLabelAutoFit = true;
-            chart.ChartAreas[0].AxisY.LabelStyle.Format = "#,##0m";
+            chart.ChartAreas[0].AxisY.LabelStyle.Format = "#,##0k";
             chart.ChartAreas[0].AxisY.LabelStyle.Font = font;
             chart.ChartAreas[0].AxisY.LabelStyle.ForeColor = turnoverColorColumnChart;
             chart.ChartAreas[0].AxisY.Interval = axisXIntervalTurnover;
@@ -179,7 +184,8 @@ namespace Fanex.MarginChart.Business.Services
             var count = 1;
             foreach (var day in turnover)
             {
-                var labelX = new CustomLabel(day.Key - 1, day.Key + 1, day.Key.ToString(), 0, LabelMarkStyle.LineSideMark);
+                var labelX = new CustomLabel(day.Key - 1, day.Key + 1, day.Key.ToString(), 0,
+                    LabelMarkStyle.LineSideMark);
                 if (IsWeekendDays(day.Key))
                 {
                     labelX.ForeColor = Color.Red;
@@ -196,7 +202,8 @@ namespace Fanex.MarginChart.Business.Services
             }
         }
 
-        private void ConfigurationChartAreasMargin(Dictionary<int, double> winloss, Dictionary<int, double> turnover, Font font, Chart chart)
+        private void ConfigurationChartAreasMargin(Dictionary<int, double> winloss, Dictionary<int, double> turnover,
+            Font font, Chart chart)
         {
             var margins = new List<double>();
             winloss.ToList().ForEach(w =>

@@ -16,9 +16,9 @@ namespace Fanex.MarginChart.Executing
                     s.WhenStopped(tc => tc.Stop());
                 });
 
-                x.SetDescription("Fanex.MarginChart.Service Host");
-                x.SetDisplayName("Fanex.MarginChart.Service");
-                x.SetServiceName("Fanex.MarginChart.Service");
+                //x.SetDescription("Fanex.MarginChart.Executing Host");
+                //x.SetDisplayName("Fanex.MarginChart.Executing");
+                //x.SetServiceName("Fanex.MarginChart.Executing");
             });
         }
     }
