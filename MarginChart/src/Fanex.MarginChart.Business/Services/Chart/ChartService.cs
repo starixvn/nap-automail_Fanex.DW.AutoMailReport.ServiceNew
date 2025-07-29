@@ -24,7 +24,7 @@ namespace Fanex.MarginChart.Business.Services
         private readonly Color turnoverColorColumnChart = Color.FromArgb(91, 155, 213);
         private readonly Color gridLineColor = Color.FromArgb(242, 242, 242);
 
-        private int convertValue = 1000000;
+        private int convertValue = 1000;
         private int axisXIntervalTurnover = 100;
         private double axisY2IntervalMargin = 0.01;
 

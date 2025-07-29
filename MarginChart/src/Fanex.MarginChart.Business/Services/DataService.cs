@@ -14,6 +14,8 @@ namespace Fanex.MarginChart.Business.Services
         bool IsDataAvailable();
 
         DataTable QueryMarginChartData();
+
+        DataTable ThousandScale(DataTable source, int startScaleCol);
     }
 
     public class DataServiceImp : DataService
@@ -80,6 +82,43 @@ namespace Fanex.MarginChart.Business.Services
             }
 
             return dataTable;
+        }
+
+        private static DataTable Clone(DataTable source)
+        {
+            var result = source.Clone();
+            foreach (DataRow row in source.Rows)
+            {
+                result.ImportRow(row);
+            }
+
+            return result;
+        }
+
+        public DataTable ThousandScale(DataTable source, int startScaleCol)
+        {
+            var sourceClone = Clone(source);
+            var result = sourceClone.Clone();
+            foreach (DataRow row in sourceClone.Rows)
+            {
+                var colIndex = 0;
+                foreach (DataColumn column in sourceClone.Columns)
+                {
+                    if (colIndex >= startScaleCol)
+                    {
+                        if (decimal.TryParse(row[column].ToString(), out var value))
+                        {
+                            row[column] = value / 1000;
+                        }
+                    }
+
+                    colIndex++;
+                }
+
+                result.ImportRow(row);
+            }
+
+            return result;
         }
     }
 }

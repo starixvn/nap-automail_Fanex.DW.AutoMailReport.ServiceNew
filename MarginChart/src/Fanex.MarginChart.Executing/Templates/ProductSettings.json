@@ -7,7 +7,7 @@
     "GroupName": "SOCCER MARGIN",
     "AxisXIntervalTurnover": 100,
     "AxisY2IntervalMargin": 0.01,
-    "ConvertValue": 1000000,
+    "ConvertValue": 1000,
     "IsChartAttachment": true,
     "ReportID": "ReportID #05"
   },
@@ -19,7 +19,7 @@
     "GroupName": "OTHER SPORTS MARGIN",
     "AxisXIntervalTurnover": 5,
     "AxisY2IntervalMargin": 0.01,
-    "ConvertValue": 1000000,
+    "ConvertValue": 1000,
     "IsChartAttachment": true,
     "ReportID": "ReportID #06"
   },
@@ -31,7 +31,7 @@
     "GroupName": "NON-SPORTS MARGIN",
     "AxisXIntervalTurnover": 5,
     "AxisY2IntervalMargin": 0.01,
-    "ConvertValue": 1000000,
+    "ConvertValue": 1000,
     "IsChartAttachment": true,
     "ReportID": "ReportID #07"
   }

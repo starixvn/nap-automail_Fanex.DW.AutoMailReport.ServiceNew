@@ -95,7 +95,8 @@ namespace Fanex.MarginChart.Business.Services
                 };
             }
 
-            var dailyRawData = dataService.QueryMarginChartData();
+            var fullRawData = dataService.QueryMarginChartData();
+            var dailyRawData = dataService.ThousandScale(fullRawData, 10);
 
             var json = JsonConvert.SerializeObject(dailyRawData, Formatting.Indented);
 
@@ -120,18 +121,16 @@ namespace Fanex.MarginChart.Business.Services
                 var reportId = product.ReportID;
                 var reportIndex = 1;
 
-                var margins = ExportMargin(source, yesterdayColumnIndex, mtdColumnIndex, category, reportId, reportIndex);
+                var margins = ExportMargin(source, yesterdayColumnIndex, mtdColumnIndex, category, reportId,
+                    reportIndex);
                 var charts = ExportChart(product, source, category);
                 images.AddRange(margins);
                 images.AddRange(charts);
 
                 var status = CopyFiles(product.LetstalkGroup, images);
                 status
-                .ToList()
-                .ForEach(s =>
-                {
-                    statusSendImage.Add(s.Key, s.Value);
-                });
+                    .ToList()
+                    .ForEach(s => { statusSendImage.Add(s.Key, s.Value); });
             });
 
             var errFile = statusSendImage.Where(s => !s.Value).Select(s => s.Key).ToList();
@@ -144,7 +143,8 @@ namespace Fanex.MarginChart.Business.Services
             };
         }
 
-        private List<string> ExportMargin(DataTable source, int yesterdayColumnIndex, int mtdColumnIndex, string category, string reportId, int reportIndex)
+        private List<string> ExportMargin(DataTable source, int yesterdayColumnIndex, int mtdColumnIndex,
+            string category, string reportId, int reportIndex)
         {
             var dailyData = dataMarginService.CalcDataByCategory(source, category, yesterdayColumnIndex);
             var mtdData = dataMarginService.CalcDataByCategory(source, category, mtdColumnIndex);
@@ -166,11 +166,13 @@ namespace Fanex.MarginChart.Business.Services
         {
             var dataWLForCreditChart = dataMarginService.CalcWinLossForChart(category, source, DataType.Credit);
             var dataTOForCreditChart = dataMarginService.CalcTurnoverForChart(category, source, DataType.Credit);
-            var creditChart = chartService.ExportDailyChart(product, "Credit", dataWLForCreditChart, dataTOForCreditChart);
+            var creditChart =
+                chartService.ExportDailyChart(product, "Credit", dataWLForCreditChart, dataTOForCreditChart);
 
             var dataWLForLicenseeChart = dataMarginService.CalcWinLossForChart(category, source, DataType.Licensee);
             var dataTOForLicenseeChart = dataMarginService.CalcTurnoverForChart(category, source, DataType.Licensee);
-            var licenseeChart = chartService.ExportDailyChart(product, "Licensee", dataWLForLicenseeChart, dataTOForLicenseeChart);
+            var licenseeChart =
+                chartService.ExportDailyChart(product, "Licensee", dataWLForLicenseeChart, dataTOForLicenseeChart);
 
             var dataWLForAllChart = dataMarginService.CalcWinLossForChart(category, source, DataType.All);
             var dataTOForAllChart = dataMarginService.CalcTurnoverForChart(category, source, DataType.All);

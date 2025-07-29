@@ -3,7 +3,7 @@
   "CategorySentryLog": "NAP-Report-Service-UAT",
   "LetstalkServiceApi": "http://napmailletstalk.starix-klprod.gamora.prod/",
   "IsCheckEnoughData": false,
-  "ReportType": "Manual",
+  "ReportType": "Daily",
   "FromDate": "2025-07-01",
   "ToDate": "2025-07-27",
   "Path": "\\\\10.148.58.168\\Data.Web\\Fanex.Excel\\NEW-MarginChart",
