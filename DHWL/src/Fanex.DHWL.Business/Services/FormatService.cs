@@ -12,22 +12,41 @@ namespace Fanex.DHWL.Business.Services
     {
         public string CutNumberOff(decimal value)
         {
-            if (Math.Abs(value) < 1000)
+            if (Math.Abs(value) < 0.001m)
             {
-                return value.ToString("#0", CultureInfo.InvariantCulture);
+                return "0";
             }
 
-            if (Math.Abs(value) < 1000000)
+            if (Math.Abs(value) < 1000m)
             {
-                return value.ToString("#,k", CultureInfo.InvariantCulture);
+                var rounded = Math.Round(value, 0);
+                if (Math.Abs(value - rounded) < 0.001m)
+                {
+                    return ((int)rounded).ToString();
+                }
+
+                var decimalRounded = Math.Round(value, 2);
+                var result = decimalRounded.ToString("F2", CultureInfo.InvariantCulture);
+                return result.TrimEnd('0').TrimEnd('.');
             }
 
-            if (Math.Abs(value) < 1000000000)
+            if (Math.Abs(value) < 1000000m)
             {
-                return value.ToString("#,,.#0m", CultureInfo.InvariantCulture);
+                var divided = value / 1000m;
+                var rounded = Math.Round(divided, 1);
+                return rounded.ToString("F1", CultureInfo.InvariantCulture) + "k";
             }
 
-            return value.ToString("#,,,.#0b", CultureInfo.InvariantCulture);
+            if (Math.Abs(value) < 1000000000m)
+            {
+                var divided = value / 1000000m;
+                var rounded = Math.Round(divided, 2);
+                return rounded.ToString("F2", CultureInfo.InvariantCulture) + "m";
+            }
+
+            var billionDivided = value / 1000000000m;
+            var billionRounded = Math.Round(billionDivided, 2);
+            return billionRounded.ToString("F2", CultureInfo.InvariantCulture) + "b";
         }
     }
 }

@@ -16,30 +16,37 @@ namespace Fanex.DHWL.Business.Services.MonthlyDHWLLetstalk
         private readonly MonthlyExcelDHWLService excelDhwlService;
         private readonly ImageService imageService;
         private readonly MergeProductDataService mergeProductDataService;
+        private readonly BaseDataTable baseDataTable;
 
-        public string FileName
-        {
-            get; set;
-        }
+        public string FileName { get; set; }
 
         public MonthlyImageDHWLServiceImp(
             MonthlyExcelDHWLService excelDhwlService,
             ImageService imageService,
-            MergeProductDataService mergeProductDataService)
+            MergeProductDataService mergeProductDataService,
+            BaseDataTable baseDataTable)
         {
             this.excelDhwlService = excelDhwlService;
             this.imageService = imageService;
             this.mergeProductDataService = mergeProductDataService;
+            this.baseDataTable = baseDataTable;
         }
 
-        public List<string> Export(DataTable monthlyRawData, DataTable dataReconciliation, DataTable dataBa, int reportId)
+        public List<string> Export(DataTable monthlyRawData, DataTable dataReconciliation, DataTable dataBa,
+            int reportId)
         {
             mergeProductDataService.MergeProductsIntoSabaGame(monthlyRawData);
-            var excelPath = excelDhwlService.Export(monthlyRawData, dataReconciliation, dataBa, reportId);
+
+            var monthlyRawDataScaled = baseDataTable.ThousandScale(monthlyRawData, 2);
+            var dataReconciliationScaled = baseDataTable.ThousandScale(dataReconciliation, 2);
+            var dataBaScaled = baseDataTable.ThousandScale(dataBa, 2);
+            var excelPathScaled =
+                excelDhwlService.Export(monthlyRawDataScaled, dataReconciliationScaled, dataBaScaled, reportId, true);
+            var excelPath = excelDhwlService.Export(monthlyRawData, dataReconciliation, dataBa, reportId, false);
             FileName = excelPath;
 
-            var imageDhwlMonthly = ExportDhwlMonthly(excelPath);
-            var imageAdjustmentMonthly = ExportAdjustmentMonthly(excelPath);
+            var imageDhwlMonthly = ExportDhwlMonthly(excelPathScaled);
+            var imageAdjustmentMonthly = ExportAdjustmentMonthly(excelPathScaled);
 
             var result = AppConfigService.Config.IsAttachAdjument
                 ? new List<string> { imageDhwlMonthly, imageAdjustmentMonthly }

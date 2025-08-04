@@ -126,21 +126,6 @@ namespace Fanex.DHWL.Business.Services
                     : string.Empty
             });
 
-            if (letstalkGroup.MailId == 0)
-            {
-                var matterMostChannel = AppConfigService.Config.Mattermost.Channels["PROD"];
-                logs.Add(new LogInternalOneTimeModel
-                {
-                    Date = $"{date:yyyyMMdd}",
-                    FolderName = fileInfo.Name,
-                    GenerateTime = $"{DateTime.Now:yyyy-MM-dd hh:mm:ss tt}",
-                    TargetName = "Mattermost",
-                    Group = matterMostChannel.ChannelId,
-                    MailId = 0,
-                    Subject = string.Empty
-                });
-            }
-
             var json = JsonConvert.SerializeObject(logs, Formatting.Indented);
             File.WriteAllText(fileName, json);
         }

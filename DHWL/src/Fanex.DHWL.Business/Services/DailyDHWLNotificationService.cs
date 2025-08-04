@@ -5,6 +5,7 @@ using Fanex.DHWL.Business.Services.HouseNetIncome;
 using Fanex.DHWL.Business.Services.Margin;
 using Fanex.DHWL.Business.Services.Webhook;
 using Fanex.MailDelivery.Core.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -122,31 +123,33 @@ namespace Fanex.DHWL.Business.Services
                 };
             }
 
-            var dailyRawData = dataService.QueryDhwlData();
+            var dailyRawFullData = dataService.QueryDhwlData();
 
-            //var json = JsonConvert.SerializeObject(dailyRawData, Formatting.Indented);
+            //var json = JsonConvert.SerializeObject(dailyRawFullData, Formatting.Indented);
             //File.WriteAllText($"{AppConfigService.Config.Path}/DailyRawData.json", json);
-            //var json = File.ReadAllText("Templates/RawData-09.json");
-            //var dailyRawData = JsonConvert.DeserializeObject<DataTable>(json);
+            //var json = File.ReadAllText("Templates/RawData-16.json");
+            //var dailyRawFullData = JsonConvert.DeserializeObject<DataTable>(json);
 
-            var cloneData = baseDataTable.Clone(dailyRawData);
+            var dailyRawData = baseDataTable.ThousandScale(dailyRawFullData, 10);
+            var cloneData = baseDataTable.Clone(dailyRawFullData);
             var cloneDataDhwl = baseDataTable.Clone(dailyRawData);
             var fromDate = dateTimeServiceProvider.DateTime.FromDate;
             var toDate = dateTimeServiceProvider.DateTime.ToDate;
 
             webhookDataService.Execute(toDate, dailyRawData);
 
-            var previousRawData = dataService.QueryDhwlDataPreviousYear();
+            var previousRawData = baseDataTable.ThousandScale(dataService.QueryDhwlDataPreviousYear(), 10);
             var previousRawDataDeposit = previousRawData.AsEnumerable().Where(s => Convert.ToBoolean(s["IsDeposit"]))
                 .CopyToDataTable();
             var previousRawDataCredit = previousRawData.AsEnumerable().Where(s => !Convert.ToBoolean(s["IsDeposit"]))
                 .CopyToDataTable();
-            var dailyRawDataDeposit = dailyRawData.Rows.Count > 0
-                ? dailyRawData.AsEnumerable().Where(s => Convert.ToBoolean(s["IsDeposit"])).CopyToDataTable()
-                : dailyRawData;
-            var dailyRawDataCredit = dailyRawData.Rows.Count > 0
+            var dailyRawDataDeposit =
+                dailyRawData.AsEnumerable().Any(s => Convert.ToBoolean(s["IsDeposit"]))
+                    ? dailyRawData.AsEnumerable().Where(s => Convert.ToBoolean(s["IsDeposit"])).CopyToDataTable()
+                    : dailyRawData.Clone();
+            var dailyRawDataCredit = dailyRawData.AsEnumerable().Any(s => !Convert.ToBoolean(s["IsDeposit"]))
                 ? dailyRawData.AsEnumerable().Where(s => !Convert.ToBoolean(s["IsDeposit"])).CopyToDataTable()
-                : dailyRawData;
+                : dailyRawData.Clone();
 
             excelRawService.Export(dailyRawData, "Daily", fromDate, toDate);
             var excelPath = excelDailyService.Export(cloneData);
@@ -172,6 +175,7 @@ namespace Fanex.DHWL.Business.Services
 
             var imageDhwlPath = imageDhwlService.Export(cloneDataDhwl, grandTotalForDaily, grandTotalForMtd);
             var chartPath = chartExport.Export(dailyRawData, previousRawData, "DHWL", "DHWL-Chart");
+
             var chartPathCredit = chartExport.Export(dailyRawDataCredit, previousRawDataCredit, "CREDIT DHWL",
                 "CREDIT-DHWL-Chart");
             var chartPathDeposit = chartExport.Export(dailyRawDataDeposit, previousRawDataDeposit, "LICENSEE DHWL",
@@ -188,6 +192,7 @@ namespace Fanex.DHWL.Business.Services
                 chartPathDeposit
             };
 
+            LogData(dailyRawData, previousRawData);
             CopyFiles(excelPath, images);
             var status = messageService.SendMessage(images, AppConfigService.Config.LetstalkGroup);
 
@@ -201,6 +206,16 @@ namespace Fanex.DHWL.Business.Services
                 Message = string.Join(Environment.NewLine, errFile),
                 Success = errFile.Count == 0
             };
+        }
+
+        private void LogData(DataTable dailyRawData, DataTable previousRawData)
+        {
+            var folderPath = $"{AppConfigService.Config.Path}/{DateTime.Now:yyyyMMdd}";
+            Directory.CreateDirectory(folderPath);
+            var json = JsonConvert.SerializeObject(dailyRawData, Formatting.Indented);
+            File.WriteAllText($"{folderPath}/DailyRawData_{DateTime.Now:yyyyMMdd}.json", json);
+            json = JsonConvert.SerializeObject(previousRawData, Formatting.Indented);
+            File.WriteAllText($"{folderPath}/PreviousRawData_{DateTime.Now:yyyyMMdd}.json", json);
         }
 
         private void CopyFiles(string dhwlExcelPath, List<string> images)

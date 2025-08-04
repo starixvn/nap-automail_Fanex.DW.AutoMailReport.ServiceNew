@@ -15,10 +15,6 @@ namespace Fanex.DailyDHWL.Executing
                     s.WhenStarted(tc => tc.Start());
                     s.WhenStopped(tc => tc.Stop());
                 });
-
-                x.SetDescription("Fanex.DailyDHWL.Executing Host");
-                x.SetDisplayName("Fanex.DailyDHWL.Executing");
-                x.SetServiceName("Fanex.DailyDHWL.Executing");
             });
         }
     }

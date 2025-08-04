@@ -2,16 +2,16 @@
   "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@http://sentry-stklprod-ovs.ops-klprod.gamora.prod/60",
   "CategorySentryLog": "NAP-Report-Service",
   "LetstalkServiceApi": "http://napmailletstalk.starix-klprod.gamora.prod/",
-  "Mattermost": {
-    "MattermostUrl": "http://mattermost-synergy.starix-klprod.gamora.prod/",
+  "RocketChat": {
+    "RocketChatUrl": "http://rocketchat-synergy.starix-klprod.gamora.prod",
     "Channels": {
       "PrePROD": {
-        "ChannelName": "DailyPerformanceUAT",
-        "ChannelId": "5kshwbydcpb3fk6jq1mcza1igo"
+        "ChannelName": "Daily-Performance-UAT",
+        "ChannelId": "-"
       },
       "PROD": {
-        "ChannelName": "DWHL",
-        "ChannelId": "8oqb65k6wbncunxtfycnuwzz6e"
+        "ChannelName": "DHWL",
+        "ChannelId": "-"
       }
     }
   },
@@ -23,7 +23,7 @@
   "InternalPath": "\\\\10.148.58.137\\Data.Web\\Fanex.Excel\\DHWL-PRE_InternalPath",
   "Password": "Star168",
   "TargetName": "daily-house-wl",
-  "LetstalkGroup": "DHWL-PRE",
+  "LetstalkGroup": "DWHL-PRO",
   "ProductList": "All",
   "IsAttachAdjument": true,
   "DataMode": 1,

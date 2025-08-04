@@ -12,6 +12,8 @@ namespace Fanex.DHWL.Business.Services
         DataTable CloneRoyaltyFees(DataTable source);
 
         DataTable CombineAllInOneTable(DataSet dataSet);
+
+        DataTable ThousandScale(DataTable source, int startScaleCol);
     }
 
     public class BaseDataTableImp : BaseDataTable
@@ -68,6 +70,32 @@ namespace Fanex.DHWL.Business.Services
                         result.ImportRow(row);
                     }
                 }
+            }
+
+            return result;
+        }
+
+        public DataTable ThousandScale(DataTable source, int startScaleCol)
+        {
+            var sourceClone = Clone(source);
+            var result = sourceClone.Clone();
+            foreach (DataRow row in sourceClone.Rows)
+            {
+                var colIndex = 0;
+                foreach (DataColumn column in sourceClone.Columns)
+                {
+                    if (colIndex >= startScaleCol)
+                    {
+                        if (decimal.TryParse(row[column].ToString(), out var value))
+                        {
+                            row[column] = value / 1000;
+                        }
+                    }
+
+                    colIndex++;
+                }
+
+                result.ImportRow(row);
             }
 
             return result;
