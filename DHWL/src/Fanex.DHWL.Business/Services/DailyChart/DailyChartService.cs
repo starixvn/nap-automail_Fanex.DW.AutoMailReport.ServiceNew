@@ -48,7 +48,31 @@ namespace Fanex.DHWL.Business.Services.DailyChart
             ConfigurationTotalChart(font, totalChart, chart);
             AssignDataToCharts(sbFigure, totalFigure, sportBookChart, otherProductsChart, totalChart, chart);
 
-            return SaveChartToImage(chart, chartName);
+            var result = SaveChartToImage(chart, chartName);
+
+            SafePythonChart(sbFigure, totalFigure, mtdFigure, title, chartName);
+
+            return result;
+        }
+
+        private void SafePythonChart(Dictionary<int, double> sbFigure, Dictionary<int, double> totalFigure,
+            ChartMtdFigureModel mtdFigure, string title, string chartName)
+        {
+            try
+            {
+                var pythonService = new PythonChartService();
+                var task = pythonService.GenerateChart(sbFigure, totalFigure, mtdFigure, title, chartName)
+                    .ConfigureAwait(false);
+                task.GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                log.Log($"Error in SafePythonChart: {ex.Message}");
+                // Handle exception, e.g., log it or rethrow
+            }
+            finally
+            {
+            }
         }
 
         private string SaveChartToImage(Chart chart, string chartName)

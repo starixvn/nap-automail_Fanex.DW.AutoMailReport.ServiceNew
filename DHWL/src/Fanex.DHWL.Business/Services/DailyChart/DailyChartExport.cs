@@ -44,7 +44,7 @@ namespace Fanex.DHWL.Business.Services.DailyChart
             var totalFigure = calculatorService.CalculateGrandTotalForDaily(dailyResult);
             var previousTotalFigure = calculatorService.CalculateGrandTotalForDaily(previousResult);
 
-            WriteLog(sbFigure, totalFigure, previousTotalFigure);
+            WriteLog(sbFigure, totalFigure, previousTotalFigure, chartName);
 
             var mtd = totalFigure.Sum(s => s.Value);
             var previousMtd = previousTotalFigure.Sum(s => s.Value);
@@ -60,16 +60,17 @@ namespace Fanex.DHWL.Business.Services.DailyChart
         }
 
         private static void WriteLog(Dictionary<int, double> sbFigure, Dictionary<int, double> totalFigure,
-            Dictionary<int, double> previousTotalFigure)
+            Dictionary<int, double> previousTotalFigure, string chartName)
         {
             var jsonSbFigure = JsonConvert.SerializeObject(sbFigure, Formatting.Indented);
             var jsonTotalFigure = JsonConvert.SerializeObject(totalFigure, Formatting.Indented);
             var jsonPreviousTotalFigure = JsonConvert.SerializeObject(previousTotalFigure, Formatting.Indented);
             var path = $"{AppConfigService.Config.Path}/{DateTime.Now:yyyyMMdd}";
             Directory.CreateDirectory(path);
-            File.WriteAllText($"{path}/sbFigure{DateTime.Now:yyyyMMdd}.json", jsonSbFigure);
-            File.WriteAllText($"{path}/totalFigure{DateTime.Now:yyyyMMdd}.json", jsonTotalFigure);
-            File.WriteAllText($"{path}/previousTotalFigure{DateTime.Now:yyyyMMdd}.json", jsonPreviousTotalFigure);
+            File.WriteAllText($"{path}/sbFigure-{chartName}-{DateTime.Now:yyyyMMdd}.json", jsonSbFigure);
+            File.WriteAllText($"{path}/totalFigure-{chartName}-{DateTime.Now:yyyyMMdd}.json", jsonTotalFigure);
+            File.WriteAllText($"{path}/previousTotalFigure-{chartName}-{DateTime.Now:yyyyMMdd}.json",
+                jsonPreviousTotalFigure);
         }
 
         private void CalcMargin(DataTable rawDataAllProducts, DataTable previousRawData, ChartMtdFigureModel mtdFigure)
