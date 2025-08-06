@@ -9,6 +9,12 @@
         "ChannelName": "robert-test",
         "ChannelId": "-"
       }
+    },
+    "NewChartChannels": {
+      "PrePROD": {
+        "ChannelName": "DHWL-New-Chart-Test",
+        "ChannelId": "-"
+      }
     }
   },
   "Webhook": {

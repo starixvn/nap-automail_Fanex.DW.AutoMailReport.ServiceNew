@@ -9,6 +9,12 @@
         "ChannelName": "DHWL-Test",
         "ChannelId": "-"
       }
+    },
+    "NewChartChannels": {
+      "PrePROD": {
+        "ChannelName": "DHWL-New-Chart-Test",
+        "ChannelId": "-"
+      }
     }
   },
   "Webhook": {

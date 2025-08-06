@@ -50,7 +50,7 @@ namespace Fanex.DHWL.Business.Services.DailyChart
 
         private static readonly Log log = new LogImp();
 
-        public async Task GenerateChart(
+        public async Task<string> GenerateChart(
             Dictionary<int, double> sbFigure,
             Dictionary<int, double> totalFigure,
             ChartMtdFigureModel mtdFigure,
@@ -60,6 +60,9 @@ namespace Fanex.DHWL.Business.Services.DailyChart
             var toDate = dateTimeService.DateTime.ToDate;
             var preToDate = dateTimePreviousYearService.ToDate;
             var fromDate = dateTimeService.DateTime.FromDate;
+            var path = Path.Combine(AppConfigService.Config.Path, DateTime.Now.ToString("yyyyMMdd"));
+            Directory.CreateDirectory(path);
+            var fileName = Path.Combine(path, $"dhwl_chart-{title}-{DateTime.Now:yyyyMMdd}.png");
             var request = new DHWLChartRequest
             {
                 SbData = sbFigure.ToDictionary(k => k.Key.ToString(), v => v.Value),
@@ -77,39 +80,40 @@ namespace Fanex.DHWL.Business.Services.DailyChart
 
             var jsonContent = JsonConvert.SerializeObject(request);
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
-            log.Log($"Calling Python API: {apiUrl}");
 
             try
             {
-                log.Log("Starting HTTP request...");
                 var response = await client.PostAsync(apiUrl, content);
-                log.Log($"HTTP request completed. Status: {response.StatusCode}");
+
                 if (response.IsSuccessStatusCode)
                 {
                     var imageBytes = await response.Content.ReadAsByteArrayAsync();
-                    var path = $"{AppConfigService.Config.Path}/{DateTime.Now:yyyyMMdd}";
-                    Directory.CreateDirectory(path);
-                    File.WriteAllBytes($"{path}/dhwl_chart-{title}-{DateTime.Now:yyyyMMdd}.png", imageBytes);
-                    log.Log($"File dhwl_chart-{title}-{DateTime.Now:yyyyMMdd}.png is created!");
+                    File.WriteAllBytes(fileName, imageBytes);
                 }
                 else
                 {
                     var text = await response.Content.ReadAsStringAsync();
                     log.Log($"HTTP Error: {response.StatusCode} - {response.ReasonPhrase} - {text}");
+                    fileName = string.Empty;
                 }
             }
             catch (TaskCanceledException ex)
             {
                 log.Log($"HTTP Request Timeout: {ex.Message}");
+                fileName = string.Empty;
             }
             catch (HttpRequestException ex)
             {
                 log.Log($"HTTP Request Error: {ex.Message}");
+                fileName = string.Empty;
             }
             catch (Exception ex)
             {
                 log.Log($"Unexpected error in GenerateChart: {ex.Message}");
+                fileName = string.Empty;
             }
+
+            return fileName;
         }
     }
 }

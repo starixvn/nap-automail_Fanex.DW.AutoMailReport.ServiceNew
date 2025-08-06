@@ -22,7 +22,8 @@ namespace Fanex.DHWL.Business.Services.DailyChart
         public DailyChartExportImp(
             DailyChartDataService calculatorService,
             DailyChartService chartService,
-            BaseDataTable baseDataTable)
+            BaseDataTable baseDataTable
+        )
         {
             this.calculatorService = calculatorService;
             this.chartService = chartService;

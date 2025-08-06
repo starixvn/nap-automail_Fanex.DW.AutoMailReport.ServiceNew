@@ -9,6 +9,12 @@
         "ChannelName": "Daily-Performance-UAT",
         "ChannelId": "-"
       }
+    },
+    "NewChartChannels": {
+      "PrePROD": {
+        "ChannelName": "DHWL-New-Chart-Test",
+        "ChannelId": "-"
+      }
     }
   },
   "Webhook": {

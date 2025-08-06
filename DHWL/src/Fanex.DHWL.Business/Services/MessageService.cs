@@ -13,6 +13,8 @@ namespace Fanex.DHWL.Business.Services
     public interface MessageService
     {
         Dictionary<string, bool> SendMessage(List<string> imagePaths, string letstalkGroup);
+
+        Task SendMessageToRocketChat2(List<string> imagePaths);
     }
 
     public class MessageServiceImp : MessageService
@@ -57,6 +59,30 @@ namespace Fanex.DHWL.Business.Services
             _ = SendMessageToRocketChat(imagePaths);
 
             return result;
+        }
+
+        public Task SendMessageToRocketChat2(List<string> images)
+        {
+            var files = images.Select(image => new RocketChat.Client.Models.FileModel
+            {
+                FileName = new FileInfo(image).Name,
+                FileBytes = File.ReadAllBytes(image),
+                MediaType = RocketChat.Client.Models.MediaType.Image
+            }).ToList();
+
+            AppConfigService.Config.RocketChat.NewChartChannels.ToList().ForEach(channel =>
+            {
+                var channelName = channel.Value.ChannelName;
+                var messageRequest = new RocketChat.Client.Models.MessageRequest
+                {
+                    ChannelName = channelName,
+                    Files = files,
+                };
+
+                rocketChatService.Send(messageRequest);
+            });
+
+            return Task.CompletedTask;
         }
 
         private static LetstalkModel CreateLetstalkModel(string fileName, string letstalkGroup)
