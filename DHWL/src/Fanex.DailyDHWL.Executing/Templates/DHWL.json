@@ -19,6 +19,7 @@
     "UseProxy": false,
     "ProxyUrl": "http://lisasqd.nebula.prod:8801"
   },
+  "PythonChartApiUrl": "http://pythonchartapi.klc.nexdev.net",
   "IsCheckEnoughData": false,
   "ReportType": "Manual",
   "FromDate": "2025-05-01",

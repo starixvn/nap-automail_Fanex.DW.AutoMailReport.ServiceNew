@@ -1,10 +1,12 @@
 ﻿using Fanex.DHWL.Business.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Fanex.DHWL.Business.Services.DailyChart
@@ -50,6 +52,9 @@ namespace Fanex.DHWL.Business.Services.DailyChart
 
             var result = SaveChartToImage(chart, chartName);
 
+            var logMtdFigure = JsonConvert.SerializeObject(mtdFigure, Formatting.Indented);
+            log.Log($"DHWL - MTD Figure - {chartName}: {logMtdFigure}");
+
             SafePythonChart(sbFigure, totalFigure, mtdFigure, title, chartName);
 
             return result;
@@ -61,17 +66,21 @@ namespace Fanex.DHWL.Business.Services.DailyChart
             try
             {
                 var pythonService = new PythonChartService();
-                var task = pythonService.GenerateChart(sbFigure, totalFigure, mtdFigure, title, chartName)
-                    .ConfigureAwait(false);
-                task.GetAwaiter().GetResult();
+                Task.Run(async () =>
+                {
+                    try
+                    {
+                        await pythonService.GenerateChart(sbFigure, totalFigure, mtdFigure, title, chartName);
+                    }
+                    catch (Exception ex)
+                    {
+                        log.Log($"Error in Python chart generation: {ex.Message}");
+                    }
+                });
             }
             catch (Exception ex)
             {
                 log.Log($"Error in SafePythonChart: {ex.Message}");
-                // Handle exception, e.g., log it or rethrow
-            }
-            finally
-            {
             }
         }
 

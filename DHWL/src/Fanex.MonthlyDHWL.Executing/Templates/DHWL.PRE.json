@@ -22,7 +22,7 @@
   "LetstalkGroup": "DHWL-PRE",
   "ProductList": "All",
   "IsAttachAdjument": true,
-  "DataMode": 2,
+  "DataMode": 1,
   "LetstalkGroups": {
     "Image": {
       "Group": "DHWL-PRE",

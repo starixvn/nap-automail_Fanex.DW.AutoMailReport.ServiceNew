@@ -37,13 +37,17 @@ namespace Fanex.DHWL.Business.Services.DailyChart
 
     public class PythonChartService
     {
-        private const string ApiUrl = "http://pythonchartapi.starix-klprod.gamora.prod/dhwl";
+        private readonly string apiUrl = $"{AppConfigService.Config.PythonChartApiUrl}/dhwl";
         private static readonly DateTimeServiceProvider dateTimeService = new DateTimeServiceProviderImp();
 
         private static readonly DateTimeService dateTimePreviousYearService =
             new DateTimePreviousYearServiceImp(dateTimeService);
 
-        private static readonly HttpClient client = new HttpClient();
+        private static readonly HttpClient client = new HttpClient
+        {
+            Timeout = TimeSpan.FromMinutes(5)
+        };
+
         private static readonly Log log = new LogImp();
 
         public async Task GenerateChart(
@@ -73,21 +77,38 @@ namespace Fanex.DHWL.Business.Services.DailyChart
 
             var jsonContent = JsonConvert.SerializeObject(request);
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+            log.Log($"Calling Python API: {apiUrl}");
 
-            var response = await client.PostAsync(ApiUrl, content);
-
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var imageBytes = await response.Content.ReadAsByteArrayAsync();
-                var path = $"{AppConfigService.Config.Path}/{DateTime.Now:yyyyMMdd}";
-                Directory.CreateDirectory(path);
-                File.WriteAllBytes($"{path}/dhwl_chart-{title}-{DateTime.Now:yyyyMMdd}.png", imageBytes);
-                log.Log($"File dhwl_chart-{title}-{DateTime.Now:yyyyMMdd}.png is created!");
+                log.Log("Starting HTTP request...");
+                var response = await client.PostAsync(apiUrl, content);
+                log.Log($"HTTP request completed. Status: {response.StatusCode}");
+                if (response.IsSuccessStatusCode)
+                {
+                    var imageBytes = await response.Content.ReadAsByteArrayAsync();
+                    var path = $"{AppConfigService.Config.Path}/{DateTime.Now:yyyyMMdd}";
+                    Directory.CreateDirectory(path);
+                    File.WriteAllBytes($"{path}/dhwl_chart-{title}-{DateTime.Now:yyyyMMdd}.png", imageBytes);
+                    log.Log($"File dhwl_chart-{title}-{DateTime.Now:yyyyMMdd}.png is created!");
+                }
+                else
+                {
+                    var text = await response.Content.ReadAsStringAsync();
+                    log.Log($"HTTP Error: {response.StatusCode} - {response.ReasonPhrase} - {text}");
+                }
             }
-            else
+            catch (TaskCanceledException ex)
             {
-                var text = await response.Content.ReadAsStringAsync();
-                log.Log($"HTTP Error: {response.StatusCode} - {response.ReasonPhrase} - {text}");
+                log.Log($"HTTP Request Timeout: {ex.Message}");
+            }
+            catch (HttpRequestException ex)
+            {
+                log.Log($"HTTP Request Error: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                log.Log($"Unexpected error in GenerateChart: {ex.Message}");
             }
         }
     }
