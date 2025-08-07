@@ -1,4 +1,5 @@
 ﻿using Fanex.DHWL.Business.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -42,11 +43,13 @@ namespace Fanex.DHWL.Business.Services.MonthlyChart
             var legendTextLastYear = $"{date.Year - 1} {depositType}";
             var legendTextCurrentYear = $"{date.Year} {depositType}";
 
-            Chart chart = new Chart();
+            var chart = new Chart();
 
             var maxLastYear = lastYear.Max(s => s.Value);
             var maxCurrentYear = currentYear.Max(s => s.Value);
             var data = maxLastYear > maxCurrentYear ? lastYear : currentYear;
+
+            LogFile(lastYear, currentYear, mtdFigure, depositType, date);
 
             ConfigureChartAreas(data, font, chart);
             ConfigureChartLegends(fontMtd, chart, mtdFigure, depositType);
@@ -57,6 +60,20 @@ namespace Fanex.DHWL.Business.Services.MonthlyChart
             AssignDataToCharts(lastYear, currentYear, lastYearChart, currentYearChart, chart);
 
             return SaveChartToImage(chart, depositType);
+        }
+
+        private static void LogFile(Dictionary<int, double> lastYear, Dictionary<int, double> currentYear,
+            ChartMtdFigureModel mtdFigure,
+            string depositType, DateTime date)
+        {
+            var jsonLastYear = JsonConvert.SerializeObject(lastYear, Formatting.Indented);
+            var jsonCurrentYear = JsonConvert.SerializeObject(currentYear, Formatting.Indented);
+            var jsonMtdFigure = JsonConvert.SerializeObject(mtdFigure, Formatting.Indented);
+            var path = $@"{AppConfigService.Config.Path}/{date:yyyyMMdd}";
+            Directory.CreateDirectory(path);
+            File.WriteAllText($@"{path}/DHWL-YTD-LastYear-{depositType}-{date:yyyy-MM}.json", jsonLastYear);
+            File.WriteAllText($@"{path}/DHWL-YTD-CurrentYear-{depositType}-{date:yyyy-MM}.json", jsonCurrentYear);
+            File.WriteAllText($@"{path}/DHWL-YTD-MtdFigure-{depositType}-{date:yyyy-MM}.json", jsonMtdFigure);
         }
 
         private string SaveChartToImage(Chart chart, string depositType)

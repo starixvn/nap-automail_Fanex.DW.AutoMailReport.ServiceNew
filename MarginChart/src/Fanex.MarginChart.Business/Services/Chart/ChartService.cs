@@ -1,4 +1,5 @@
 ﻿using Fanex.MarginChart.Business.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -41,11 +42,13 @@ namespace Fanex.MarginChart.Business.Services
             var turnoverChart = "Turnover";
             var marginChart = "Margin";
 
+            LogFile(type, winloss, turnover);
+
             convertValue = productGroup.ConvertValue;
             axisXIntervalTurnover = productGroup.AxisXIntervalTurnover;
             axisY2IntervalMargin = productGroup.AxisY2IntervalMargin;
 
-            Chart chart = new Chart();
+            var chart = new Chart();
 
             ConfigurateChartAreasTurnover(turnover, font, chart);
             ConfigurationChartAreasMargin(winloss, turnover, font, chart);
@@ -55,6 +58,16 @@ namespace Fanex.MarginChart.Business.Services
             AssignDataToCharts(winloss, turnover, turnoverChart, marginChart, chart);
 
             return SaveChartToImage(productGroup.ProductCategory, productGroup.Subject, type, chart);
+        }
+
+        private static void LogFile(string type, Dictionary<int, double> winloss, Dictionary<int, double> turnover)
+        {
+            var jsonWinloss = JsonConvert.SerializeObject(winloss, Formatting.Indented);
+            var jsonTurnover = JsonConvert.SerializeObject(turnover, Formatting.Indented);
+            var path = $@"{AppConfigService.Config.Path}/{DateTime.Now:yyyyMMdd}";
+            Directory.CreateDirectory(path);
+            File.WriteAllText($@"{path}/Winloss-{type}-{DateTime.Now.AddDays(-1):yyyyMMdd}.json", jsonWinloss);
+            File.WriteAllText($@"{path}/Turnover-{type}-{DateTime.Now.AddDays(-1):yyyyMMdd}.json", jsonTurnover);
         }
 
         private string SaveChartToImage(string category, string subject, string type, Chart chart)
