@@ -26,7 +26,7 @@
     "ProxyUrl": "http://iusqd.gamora.prod:8801"
   },
   "PythonChartApiUrl": "http://pythonchartapi.starix-klprod.gamora.prod",
-  "IsCheckEnoughData": false,
+  "IsCheckEnoughData": true,
   "ReportType": "Daily",
   "FromDate": "2025-06-01",
   "ToDate": "2025-06-17",
