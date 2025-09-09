@@ -1,5 +1,5 @@
 ﻿{
-  "SentryClientKey": "http://73cf89332968496789f94795f1aa2877@http://sentry-stklprod-ovs.ops-klprod.gamora.prod/60",
+  "SentryClientKey": "http://612764957dbb46ffa359103d8ffa08c6@sentry-stklprod-ovs.ops-klprod.gamora.prod/59",
   "CategorySentryLog": "NAP-Report-Service",
   "LetstalkServiceApi": "http://napmailletstalk.starix-klprod.gamora.prod/",
   "RocketChat": {
@@ -7,6 +7,12 @@
     "Channels": {
       "PrePROD": {
         "ChannelName": "DHWL-Test",
+        "ChannelId": "-"
+      }
+    },
+    "NewChartChannels": {
+      "PrePROD": {
+        "ChannelName": "DHWL-New-Chart-Test",
         "ChannelId": "-"
       }
     }
@@ -19,6 +25,7 @@
     "UseProxy": true,
     "ProxyUrl": "http://iusqd.gamora.prod:8801"
   },
+  "PythonChartApiUrl": "http://pythonchartapi.starix-klprod.gamora.prod",
   "IsCheckEnoughData": false,
   "ReportType": "Daily",
   "FromDate": "2025-06-01",

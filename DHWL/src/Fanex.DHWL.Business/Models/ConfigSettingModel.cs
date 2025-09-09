@@ -43,5 +43,7 @@ namespace Fanex.DHWL.Business.Models
         public WebhookModel Webhook { get; set; }
 
         public RocketChatModel RocketChat { get; set; }
+
+        public string PythonChartApiUrl { get; set; }
     }
 }

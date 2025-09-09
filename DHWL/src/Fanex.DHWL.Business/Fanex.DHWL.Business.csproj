@@ -223,6 +223,7 @@
     <Compile Include="Services\Adjustment\AdjustmentDataService.cs" />
     <Compile Include="Services\AppConfigService.cs" />
     <Compile Include="Services\BaseDataTable.cs" />
+    <Compile Include="Services\DailyChart\PythonChartService.cs" />
     <Compile Include="Services\Webhook\WebhookDataService.cs" />
     <Compile Include="Services\Margin\DataMarginHedgingSpecialService.cs" />
     <Compile Include="Services\Margin\ExcelMarginHedgingSpecialService.cs" />

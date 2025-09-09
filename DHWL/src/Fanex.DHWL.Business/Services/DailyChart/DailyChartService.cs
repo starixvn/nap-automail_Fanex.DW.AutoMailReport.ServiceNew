@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Fanex.DHWL.Business.Services.DailyChart
@@ -22,12 +23,18 @@ namespace Fanex.DHWL.Business.Services.DailyChart
 
         private readonly int million = 1000; //1000000
         private readonly Log log;
+        private readonly MessageService messageService;
 
-        public DailyChartServiceImp(DateTimeServiceProvider dateTimeService, FormatService formatService, Log log)
+        public DailyChartServiceImp(
+            DateTimeServiceProvider dateTimeService,
+            FormatService formatService,
+            Log log,
+            MessageService messageService)
         {
             this.dateTimeService = dateTimeService;
             this.formatService = formatService;
             this.log = log;
+            this.messageService = messageService;
         }
 
         public string ExportDailyChart(Dictionary<int, double> sbFigure, Dictionary<int, double> totalFigure,
@@ -48,7 +55,57 @@ namespace Fanex.DHWL.Business.Services.DailyChart
             ConfigurationTotalChart(font, totalChart, chart);
             AssignDataToCharts(sbFigure, totalFigure, sportBookChart, otherProductsChart, totalChart, chart);
 
-            return SaveChartToImage(chart, chartName);
+            var result = SaveChartToImage(chart, chartName);
+            var newChart = SafePythonChart(sbFigure, totalFigure, mtdFigure, title, chartName);
+            _ = messageService.SendMessageToRocketChat2(new List<string> { newChart });
+            return result;
+        }
+
+        private string SafePythonChart(Dictionary<int, double> sbFigure, Dictionary<int, double> totalFigure,
+            ChartMtdFigureModel mtdFigure, string title, string chartName)
+        {
+            try
+            {
+                var pythonService = new PythonChartService();
+                var task = Task.Run(async () =>
+                {
+                    try
+                    {
+                        var fileName =
+                            await pythonService.GenerateChart(sbFigure, totalFigure, mtdFigure, title, chartName);
+                        if (!string.IsNullOrEmpty(fileName))
+                        {
+                            log.Log($"Python chart generated successfully: {fileName}");
+                            return fileName;
+                        }
+                        else
+                        {
+                            log.Log($"Python chart generation failed for {chartName}");
+                            return string.Empty;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        log.Log($"Error in Python chart generation: {ex.Message}");
+                        return string.Empty;
+                    }
+                });
+
+                if (task.Wait(TimeSpan.FromMinutes(5)))
+                {
+                    return task.Result;
+                }
+                else
+                {
+                    log.Log($"Python chart generation timeout for {chartName}");
+                    return string.Empty;
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Log($"Error in SafePythonChart: {ex.Message}");
+                return string.Empty;
+            }
         }
 
         private string SaveChartToImage(Chart chart, string chartName)

@@ -208,7 +208,7 @@ namespace Fanex.DHWL.Business.Services
             };
         }
 
-        private void LogData(DataTable dailyRawData, DataTable previousRawData)
+        private static void LogData(DataTable dailyRawData, DataTable previousRawData)
         {
             var folderPath = $"{AppConfigService.Config.Path}/{DateTime.Now:yyyyMMdd}";
             Directory.CreateDirectory(folderPath);
